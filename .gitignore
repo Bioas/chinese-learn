@@ -1,0 +1,35 @@
+# Freebuff tool metadata
+.freebuff/
+
+# Old Next.js project (migrated to Vite)
+chinese-learn/
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Misc
+.cache/
+*.tsbuildinfo
