@@ -1,34 +1,54 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import SpeakButton from '../components/SpeakButton';
 import Icon from '../components/Icon';
 import StrokeOrder from '../components/StrokeOrder';
+import useTranslation from '../hooks/useTranslation';
+import InkParticles from '../components/InkParticles';
 import { CATEGORIES, VOCABULARY, getSubcategoryIcon } from '../data/vocabulary';
 
+const FLASHCARD_INK_CHARS = ['學', '書', '墨', '筆', '紙', '硯', '畫', '文', '字', '詞'];
+
+function SealStamp({ label = '學' }) {
+  return <div className="flash-seal" style={{ bottom: '12px', right: '12px' }}>{label}</div>;
+}
+
+function CornerFlourishes() {
+  return (
+    <>
+      <div className="flash-corner tl" />
+      <div className="flash-corner br" />
+    </>
+  );
+}
+
 export default function Flashcards() {
+  const { t, meaning } = useTranslation();
   const { state, dispatch, studyWord, togglePinned } = useApp();
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
+  const [showSaved, setShowSaved] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [studyLimit, setStudyLimit] = useState(10);
   const [sessionStarted, setSessionStarted] = useState(false);
+  const [showInkFx, setShowInkFx] = useState(false);
 
   const filteredWords = useMemo(() => {
     let words = VOCABULARY;
-
+    if (showSaved) {
+      words = words.filter(w => state.savedWordIds.includes(w.id));
+    }
     if (selectedSubcategories.length > 0) {
       words = words.filter(w => selectedSubcategories.includes(w.subcategory));
     }
-
     if (selectedStatuses.length > 0) {
       words = words.filter(w => {
         const status = state.wordStatuses[w.id] || 'new';
         return selectedStatuses.includes(status);
       });
     }
-
     return words.sort(() => Math.random() - 0.5).slice(0, studyLimit);
-  }, [selectedSubcategories, selectedStatuses, studyLimit, state.wordStatuses]);
+  }, [showSaved, selectedSubcategories, selectedStatuses, studyLimit, state.wordStatuses, state.savedWordIds]);
 
   const startSession = () => {
     dispatch({ type: 'SET_FLASHCARD_WORDS', words: filteredWords });
@@ -38,16 +58,30 @@ export default function Flashcards() {
 
   const currentWord = state.flashcardWords[state.currentFlashcardIndex];
 
+  const handleFlip = () => {
+    if (!isFlipped) {
+      setShowInkFx(true);
+      setTimeout(() => setShowInkFx(false), 700);
+    }
+    setIsFlipped(!isFlipped);
+  };
+
   const handleNext = useCallback(() => {
+    if (state.currentFlashcardIndex >= state.flashcardWords.length - 1) return;
     if (currentWord) studyWord(currentWord.id);
     setIsFlipped(false);
+    setShowQuiz(false);
+    setSelectedAnswer(null);
     setTimeout(() => dispatch({ type: 'NEXT_FLASHCARD' }), 100);
-  }, [currentWord, studyWord, dispatch]);
+  }, [currentWord, studyWord, dispatch, state.currentFlashcardIndex, state.flashcardWords.length]);
 
   const handlePrev = useCallback(() => {
+    if (state.currentFlashcardIndex <= 0) return;
     setIsFlipped(false);
+    setShowQuiz(false);
+    setSelectedAnswer(null);
     setTimeout(() => dispatch({ type: 'PREV_FLASHCARD' }), 100);
-  }, [dispatch]);
+  }, [dispatch, state.currentFlashcardIndex]);
 
   const toggleSubcategory = (subId) => {
     setSelectedSubcategories(prev =>
@@ -66,151 +100,169 @@ export default function Flashcards() {
 
   if (sessionStarted && currentWord) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between animate-slide-up">
+      <div className="space-y-5 relative">
+        <InkParticles chars={FLASHCARD_INK_CHARS} />
+
+        {/* Header */}
+        <div className="flex items-center justify-between animate-slide-up relative z-10">
           <div>
             <h1 className="text-3xl lg:text-4xl font-bold">
-              <span className="gradient-text"><Icon name="flashcards" /> Flashcards</span>
+              <span className="gradient-text"><Icon name="flashcards" /> {t('flash.title')}</span>
             </h1>
             <p className="text-secondary mt-1">
-              Card {state.currentFlashcardIndex + 1} of {state.flashcardWords.length}
+              {t('flash.cardOf', { n: state.currentFlashcardIndex + 1, total: state.flashcardWords.length })}
             </p>
           </div>
           <button
             onClick={() => { setSessionStarted(false); setIsFlipped(false); }}
-            className="btn-secondary text-sm"
+            className="btn-end-session"
           >
-            <><Icon name="close" className="mr-1" /> End Session</>
+            <Icon name="close" /> {t('flash.endSession')}
           </button>
         </div>
 
-        <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
+        {/* Progress bar */}
+        <div className="flash-progress relative z-10">
           <div
-            className="h-full bg-accent-gradient rounded-full transition-all duration-500"
+            className="flash-progress-fill"
             style={{ width: `${((state.currentFlashcardIndex + 1) / state.flashcardWords.length) * 100}%` }}
           />
         </div>
 
-        <div className="flex justify-center animate-bounce-in">
-          <div
-            className="w-full max-w-lg aspect-[3/4] cursor-pointer"
-            style={{ perspective: '1000px' }}
-            onClick={() => setIsFlipped(!isFlipped)}
-          >
+        {/* Card */}
+        <div className="flex justify-center relative z-10">
+          <div className="w-full max-w-lg flash-deck animate-fade-in">
             <div
-              className="relative w-full h-full transition-transform duration-500 preserve-3d"
-              style={{ transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+              className="w-full aspect-[3/4] cursor-pointer flash-card"
+              style={{ perspective: '1200px' }}
+              onClick={handleFlip}
             >
-              <div className="absolute inset-0 glass-card flex flex-col items-center justify-center p-8 backface-hidden">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="text-6xl">{currentWord.chinese}</div>
-                  <SpeakButton text={currentWord.chinese} size="lg" />
+              <div
+                className="relative w-full h-full transition-transform duration-700 ease-out transform-style-3d"
+                style={{ transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+              >
+                {/* Front face */}
+                <div className="absolute inset-0 flex flex-col backface-hidden">
+                  <CornerFlourishes />
+                  <div className="flex-1 flex flex-col items-center justify-center px-8">
+                    <span className="text-7xl sm:text-8xl font-light tracking-wide" style={{ fontFamily: "'Noto Sans SC', serif" }}>
+                      {currentWord.chinese}
+                    </span>
+                    {state.showPinyin && (
+                      <p className="text-lg text-secondary italic tracking-wider mt-3">({currentWord.pinyin})</p>
+                    )}
+                    <div className="mt-3">
+                      <SpeakButton text={currentWord.chinese} size="lg" />
+                    </div>
+                  </div>
+                  <div className="pb-7 text-center">
+                    <p className="text-xs text-muted/60 tracking-wider">{t('flash.tapToFlip')}</p>
+                  </div>
+                  <SealStamp label={currentWord.chinese.charAt(0)} />
                 </div>
-                {state.showPinyin && (
-                  <p className="text-xl text-secondary italic">({currentWord.pinyin})</p>
-                )}
-                <p className="text-xs text-muted mt-8">tap to flip</p>
-                <div className="absolute top-4 right-4 text-xs text-muted">
-                  {currentWord.hskLevel > 0 ? `HSK ${currentWord.hskLevel}` : currentWord.subcategory}
+
+                {/* Back face */}
+                <div className="absolute inset-0 flex flex-col backface-hidden" style={{ transform: 'rotateY(180deg)' }}>
+                  <CornerFlourishes />
+                  <div className="flex-1 flex flex-col items-center justify-center px-5 sm:px-8 py-4 overflow-y-auto">
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="text-xl sm:text-2xl text-primary" style={{ fontFamily: "'Noto Sans SC', serif" }}>
+                        {currentWord.chinese}
+                      </span>
+                      <SpeakButton text={currentWord.chinese} size="md" />
+                    </div>
+                    {state.showPinyin && (
+                      <p className="text-sm text-secondary italic mb-2 tracking-wider">({currentWord.pinyin})</p>
+                    )}
+                    <p className="text-xl sm:text-2xl font-medium text-center mb-2">{meaning(currentWord)}</p>
+                    <StrokeOrder character={currentWord.chinese} size={80} />
+                    {currentWord.examples[0] && (
+                      <div className="mt-2 pt-2 border-t border-app text-center w-full max-w-xs">
+                        <p className="text-xs text-muted mb-1">{t('flash.example')}</p>
+                        <p className="text-sm sm:text-base">{currentWord.examples[0].chinese}</p>
+                        {state.showPinyin && (
+                          <p className="text-xs text-secondary italic">{currentWord.examples[0].pinyin}</p>
+                        )}
+                        {meaning(currentWord.examples[0], false) && (
+                          <p className="text-xs text-muted mt-0.5">{meaning(currentWord.examples[0], false)}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <div className="pb-4 text-center">
+                    <p className="text-xs text-muted/60 tracking-wider">{t('flash.tapToFlipBack')}</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="absolute inset-0 glass-card flex flex-col items-center justify-center p-4 sm:p-8 backface-hidden" style={{ transform: 'rotateY(180deg)' }}>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="text-2xl sm:text-3xl">{currentWord.chinese}</div>
-                  <SpeakButton text={currentWord.chinese} size="md" />
-                </div>
-                {state.showPinyin && (
-                  <p className="text-sm sm:text-lg text-secondary italic mb-2">({currentWord.pinyin})</p>
-                )}
-                <div className="text-center space-y-1 mb-2">
-                  <p className="text-xl sm:text-2xl text-primary font-medium">{currentWord.meaning}</p>
-                  <p className="text-base sm:text-lg text-secondary">{currentWord.meaningThai}</p>
-                </div>
-                {/* Stroke order */}
-                <StrokeOrder character={currentWord.chinese} size={80} />
-                {currentWord.examples[0] && (
-                  <div className="mt-3 pt-3 border-t border-app text-center w-full max-w-xs">
-                    <p className="text-xs text-muted mb-1">Example:</p>
-                    <p className="text-sm sm:text-lg">{currentWord.examples[0].chinese}</p>
-                    {state.showPinyin && (
-                      <p className="text-xs text-secondary italic">{currentWord.examples[0].pinyin}</p>
-                    )}
-                    <p className="text-xs text-muted mt-0.5">{currentWord.examples[0].meaning}</p>
-                  </div>
-                )}
-                <p className="text-xs text-muted mt-auto pt-2">tap to flip back</p>
-              </div>
+              {showInkFx && <div className="flash-ink-fx" />}
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4">
+        {/* Navigation buttons */}
+        <div className="flex items-center justify-center gap-3 relative z-10">
           <button
             onClick={handlePrev}
             disabled={state.currentFlashcardIndex === 0}
-            className="btn-secondary disabled:opacity-30"
+            className="btn-brush"
           >
-            <><Icon name="leftArrow" className="mr-1" /> Previous</>
+            <Icon name="leftArrow" /> <span>{t('flash.previous')}</span>
           </button>
 
           <button
-            onClick={() => {
-              setShowQuiz(true);
-              setSelectedAnswer(null);
-            }}
-            className="btn-primary"
+            onClick={() => { setShowQuiz(true); setSelectedAnswer(null); }}
+            className="btn-brush primary"
           >
-            <><Icon name="quiz" className="mr-1" /> Quiz Me</>
+            <Icon name="quiz" /> <span>{t('flash.quizMe')}</span>
           </button>
 
           <button
             onClick={handleNext}
             disabled={state.currentFlashcardIndex >= state.flashcardWords.length - 1}
-            className="btn-primary disabled:opacity-30"
+            className="btn-brush"
           >
-            <>Next <Icon name="rightArrow" className="ml-1" /></>
+            <span>{t('flash.next')}</span> <Icon name="rightArrow" />
           </button>
         </div>
 
+        {/* Quiz section */}
         {showQuiz && (
-          <div className="glass-card p-6 animate-fade-in">
-            <p className="text-sm text-secondary mb-3">What does this mean?</p>
-            <p className="text-3xl text-center mb-4">{currentWord.chinese}</p>
-            <div className="grid grid-cols-2 gap-3">
+          <div className="flash-quiz p-5 animate-fade-in relative z-10">
+            <p className="text-sm text-secondary mb-2 tracking-wider">{t('flash.whatDoesThisMean')}</p>
+            <p className="text-3xl text-center mb-5" style={{ fontFamily: "'Noto Sans SC', serif" }}>{currentWord.chinese}</p>
+            <div className="grid grid-cols-2 gap-2.5">
               {(() => {
-                const allThai = VOCABULARY
-                  .filter(v => v.id !== currentWord.id && v.meaningThai)
+                const allMeanings = VOCABULARY
+                  .filter(v => v.id !== currentWord.id)
                   .sort(() => Math.random() - 0.5)
                   .slice(0, 3)
-                  .map(v => v.meaningThai)
+                  .map(v => meaning(v))
                   .filter(Boolean);
-                const options = [currentWord.meaningThai, ...allThai].sort(() => Math.random() - 0.5);
+                const options = [meaning(currentWord), ...allMeanings].sort(() => Math.random() - 0.5);
                 return options.map((opt, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedAnswer(opt)}
-                    className={`p-3 rounded-xl border transition-all ${
+                    className={`flash-option ${
                       selectedAnswer === opt
-                        ? opt === currentWord.meaningThai
-                          ? 'border-green-500 bg-green-500/20 text-green-300'
-                          : 'border-red-500 bg-red-500/20 text-red-300'
-                        : 'border-app hover:border-blue-500/30 text-primary'
+                        ? opt === meaning(currentWord) ? 'correct' : 'wrong'
+                        : ''
                     }`}
                     disabled={selectedAnswer !== null}
                   >
                     {opt}
-                    {selectedAnswer === opt && opt === currentWord.meaningThai && <Icon name="check" />}
-                    {selectedAnswer === opt && opt !== currentWord.meaningThai && <Icon name="xmark" />}
+                    {selectedAnswer === opt && opt === meaning(currentWord) && <Icon name="check" />}
+                    {selectedAnswer === opt && opt !== meaning(currentWord) && <Icon name="xmark" />}
                   </button>
                 ));
               })()}
             </div>
             {selectedAnswer && (
-              <p className="text-center mt-3 text-sm text-secondary">
-                {selectedAnswer === currentWord.meaningThai
-                  ? <><Icon name="check" /> Correct! Well done!</>
-                  : <><Icon name="xmark" /> Correct answer: {currentWord.meaningThai}</>
+              <p className="text-center mt-4 text-sm text-secondary">
+                {selectedAnswer === meaning(currentWord)
+                  ? <><Icon name="check" /> {t('flash.correct')}</>
+                  : <><Icon name="xmark" /> {t('flash.correctAnswer', { answer: meaning(currentWord) })}</>
                 }
               </p>
             )}
@@ -221,45 +273,77 @@ export default function Flashcards() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="animate-slide-up">
+    <div className="space-y-6 relative">
+      <InkParticles chars={FLASHCARD_INK_CHARS} />
+
+      {/* Title */}
+      <div className="animate-slide-up relative z-10">
         <h1 className="text-3xl lg:text-4xl font-bold">
-          <span className="gradient-text"><Icon name="flashcards" /> Flashcards</span>
+          <span className="gradient-text"><Icon name="flashcards" /> {t('flash.title')}</span>
         </h1>
-        <p className="text-secondary mt-1">Interactive flashcard sessions with customizable settings</p>
+        <p className="text-secondary mt-1">{t('flash.subtitle')}</p>
       </div>
 
-      <div className="glass-card p-5 animate-slide-up">
-        <h3 className="font-semibold text-primary mb-4 flex items-center gap-2"><Icon name="cog" /> Display Settings</h3>
+      {/* Settings panel */}
+      <div className="flash-settings p-6 animate-slide-up relative z-10">
+        <h3 className="font-semibold mb-6 flex items-center gap-2">
+          <Icon name="cog" /> {t('flash.displaySettings')}
+        </h3>
 
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-primary">Show Pinyin</span>
+        <div className="space-y-5">
+          {/* Pinyin toggle */}
+          <div className="fade-slide-up" style={{ animationDelay: '0.05s' }}>
+            <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('flash.showPinyin')}</p>
             <button
               onClick={() => dispatch({ type: 'TOGGLE_PINYIN' })}
-              className={`relative w-12 h-6 rounded-full transition-colors ${state.showPinyin ? 'bg-blue-500' : 'bg-card-hover'}`}
+              className="relative h-7 w-14 rounded-full flex items-center px-1 transition-all duration-300"
+              style={{
+                background: state.showPinyin
+                  ? 'color-mix(in srgb, var(--accent-from) 15%, transparent)'
+                  : 'color-mix(in srgb, var(--accent-from) 8%, transparent)',
+                border: '1px solid var(--border-color)',
+              }}
             >
-              <div className={`absolute w-5 h-5 rounded-full bg-white top-0.5 transition-transform ${state.showPinyin ? 'translate-x-6' : 'translate-x-0.5'}`} />
+              <div
+                className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-all duration-300"
+                style={{
+                  left: state.showPinyin ? 'calc(50% + 1px)' : '1px',
+                  background: state.showPinyin
+                    ? 'var(--accent-gradient)'
+                    : 'var(--text-muted)',
+                  boxShadow: state.showPinyin
+                    ? '0 1px 3px rgba(249,115,22,0.3)'
+                    : 'none',
+                }}
+              />
             </button>
           </div>
 
-          <div>
-            <p className="text-sm text-secondary mb-2">Pinned Subcategories</p>
-            <div className="flex flex-wrap gap-2">
+          {/* Pinned subcategories + Saved */}
+          <div className="fade-slide-up" style={{ animationDelay: '0.1s' }}>
+            <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('flash.pinnedSubcategories')}</p>
+            <div className="flex flex-wrap gap-1.5">
               {state.pinnedSubcategories.map(subId => (
-                <span key={subId} className="chip pinned">
+                <span key={subId} className="ink-chip pinned">
                   {getSubcategoryIcon(subId)} {subId}
                 </span>
               ))}
-              {state.pinnedSubcategories.length === 0 && (
-                <span className="text-xs text-muted">No pinned subcategories. Double-click in Vocabulary to pin.</span>
-              )}
+              <button
+                onClick={() => { setShowSaved(!showSaved); setSelectedSubcategories([]); }}
+                className={`ink-chip flex items-center gap-1 ${
+                  showSaved ? 'active' : ''
+                }`}
+              >
+                <Icon name="bookmark" className="text-xs" />
+                <span>{t('flash.saved', { n: state.savedWordIds.length })}</span>
+              </button>
             </div>
           </div>
 
-          <div>
-            <p className="text-sm text-secondary mb-2">Other Subcategories</p>
-            <div className="flex flex-wrap gap-2">
+          {/* Category filter */}
+          <div className="fade-slide-up" style={{ animationDelay: '0.15s' }}>
+            <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('flash.otherSubcategories')}</p>
+            <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto">
               {CATEGORIES.map(cat =>
                 cat.subcategories.map(sub => {
                   const isPinned = state.pinnedSubcategories.includes(sub.id);
@@ -269,9 +353,9 @@ export default function Flashcards() {
                       key={sub.id}
                       onClick={() => toggleSubcategory(sub.id)}
                       onDoubleClick={() => togglePinned(sub.id)}
-                      className={`chip text-xs ${isSelected ? 'active' : ''} ${isPinned ? 'pinned' : ''}`}
+                      className={`ink-chip ${isSelected ? 'active' : ''} ${isPinned ? 'pinned' : ''}`}
                     >
-                      <Icon name={sub.icon} /> {sub.name}
+                      <Icon name={sub.icon} /> {state.language === 'th' ? sub.nameThai : sub.name}
                     </button>
                   );
                 })
@@ -279,44 +363,48 @@ export default function Flashcards() {
             </div>
           </div>
 
-          <div>
-            <p className="text-sm text-secondary mb-2">Filter by Status (Multiple)</p>
-            <div className="flex flex-wrap gap-2">
+          {/* Status filter */}
+          <div className="fade-slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('flash.filterByStatus')}</p>
+            <div className="flex flex-wrap gap-1.5">
               {['new', 'learning', 'reviewing', 'mastered'].map(status => (
                 <button
                   key={status}
                   onClick={() => toggleStatus(status)}
-                  className={`chip text-xs ${selectedStatuses.includes(status) ? 'active' : ''}`}
+                  className={`ink-chip ${selectedStatuses.includes(status) ? 'active' : ''}`}
                 >
-                  {status.charAt(0).toUpperCase() + status.slice(1)}
+                  {t('status.' + status)}
                 </button>
               ))}
             </div>
           </div>
 
-          <div>
-            <p className="text-sm text-secondary mb-2">Number of Vocabularies</p>
-            <div className="flex items-center gap-2">
+          {/* Study limit slider */}
+          <div className="fade-slide-up" style={{ animationDelay: '0.25s' }}>
+            <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('flash.numVocabularies')}</p>
+            <div className="flex items-center gap-3">
               <input
                 type="range"
                 min={5}
-                max={50}
+                max={200}
                 value={studyLimit}
                 onChange={(e) => setStudyLimit(Number(e.target.value))}
-                className="flex-1 accent-blue-500"
+                className="flex-1 ink-slider"
               />
-              <span className="text-sm text-primary font-medium min-w-[3rem] text-center">
+              <span className="text-sm font-medium min-w-[2.5rem] text-center tabular-nums">
                 {studyLimit}
               </span>
             </div>
           </div>
 
+          {/* Start button */}
           <button
             onClick={startSession}
-            className="btn-primary w-full justify-center mt-2"
+            className="btn-primary w-full justify-center mt-2 fade-slide-up"
+            style={{ animationDelay: '0.3s' }}
             disabled={filteredWords.length === 0}
           >
-            <><Icon name="flashcards" className="mr-1" /> Start Session ({Math.min(filteredWords.length, studyLimit)} cards)</>
+            <Icon name="flashcards" /> {t('flash.startSession', { n: Math.min(filteredWords.length, studyLimit) })}
           </button>
         </div>
       </div>

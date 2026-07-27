@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import Icon from './Icon';
+import useTranslation from '../hooks/useTranslation';
 
 export default function ContributionCalendar({ history }) {
+  const { t } = useTranslation();
   const weeks = useMemo(() => {
     const result = [];
     const today = new Date();
@@ -46,7 +48,7 @@ export default function ContributionCalendar({ history }) {
   }, [history]);
 
   const getColor = (count) => {
-    if (count === 0) return 'bg-gray-200 dark:bg-slate-800';
+    if (count === 0) return 'bg-gray-200 dark:bg-card-hover';
     if (count <= 3) return 'bg-green-300 dark:bg-green-900/60';
     if (count <= 6) return 'bg-green-400 dark:bg-green-700/60';
     if (count <= 10) return 'bg-green-500 dark:bg-green-500/60';
@@ -86,22 +88,22 @@ export default function ContributionCalendar({ history }) {
     <div className="glass-card p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="calendar" /> Contribution Calendar</h3>
-          <p className="text-xs text-secondary mt-0.5">365-Day Learning History</p>
+          <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="calendar" /> {t('calendar.title')}</h3>
+          <p className="text-xs text-secondary mt-0.5">{t('calendar.subtitle')}</p>
         </div>
         <div className="flex items-center gap-3 text-xs text-secondary">
-          <span>{totalDays} days</span>
+          <span>{t('calendar.days', { n: totalDays })}</span>
           <span className="w-px h-4 bg-card-hover" />
-          <span>Best: {longestStreak} days</span>
+          <span>{t('calendar.best', { n: longestStreak })}</span>
         </div>
       </div>
 
       <div className="overflow-x-auto pb-2">
         <div className="flex gap-0.5" style={{ minWidth: Math.max(weeks.length * 10, 500) }}>
           <div className="flex flex-col gap-0.5 mr-1 text-[8px] text-muted pt-4">
-            <span className="h-[10px]">Mon</span>
-            <span className="h-[10px]">Wed</span>
-            <span className="h-[10px]">Fri</span>
+            <span className="h-[10px]">{t('calendar.mon')}</span>
+            <span className="h-[10px]">{t('calendar.wed')}</span>
+            <span className="h-[10px]">{t('calendar.fri')}</span>
           </div>
 
           <div className="flex gap-0.5">
@@ -111,7 +113,7 @@ export default function ContributionCalendar({ history }) {
                   <div
                     key={`${wi}-${di}`}
                     className={`w-[10px] h-[10px] rounded-sm ${getColor(day.count)} transition-colors hover:ring-1 hover:ring-white/20 cursor-pointer`}
-                    title={`${day.date}: ${day.count} words studied`}
+                    title={t('calendar.dayLabel', { date: day.date, count: day.count })}
                   />
                 ))}
               </div>
@@ -121,13 +123,13 @@ export default function ContributionCalendar({ history }) {
       </div>
 
       <div className="flex items-center justify-end gap-1.5 mt-3 text-[10px] text-muted">
-        <span>Less</span>
-        <div className="w-[10px] h-[10px] rounded-sm bg-gray-200 dark:bg-slate-800" />
+        <span>{t('calendar.less')}</span>
+        <div className="w-[10px] h-[10px] rounded-sm bg-gray-200 dark:bg-card-hover" />
         <div className="w-[10px] h-[10px] rounded-sm bg-green-300 dark:bg-green-900/60" />
         <div className="w-[10px] h-[10px] rounded-sm bg-green-400 dark:bg-green-700/60" />
         <div className="w-[10px] h-[10px] rounded-sm bg-green-500 dark:bg-green-500/60" />
         <div className="w-[10px] h-[10px] rounded-sm bg-green-600 dark:bg-green-400/80" />
-        <span>More</span>
+        <span>{t('calendar.more')}</span>
       </div>
     </div>
   );

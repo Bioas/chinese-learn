@@ -14,10 +14,12 @@ const initialState = {
   quizCorrect: 0,
   quizWrong: 0,
   searchQuery: '',
+  savedWordIds: [],
   learningHistory: {},
   wordStatuses: {},
   lastStudyDate: null,
   theme: typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
+  language: 'en',
 };
 
 function appReducer(state, action) {
@@ -65,6 +67,8 @@ function appReducer(state, action) {
       return { ...state, showPinyin: !state.showPinyin };
     case 'SET_THEME':
       return { ...state, theme: action.theme };
+    case 'SET_LANGUAGE':
+      return { ...state, language: action.language };
     case 'SET_FLASHCARD_WORDS':
       return { ...state, flashcardWords: action.words, currentFlashcardIndex: 0 };
     case 'NEXT_FLASHCARD':
@@ -90,6 +94,12 @@ function appReducer(state, action) {
       return { ...state, quizIndex: 0, quizCorrect: 0, quizWrong: 0, quizWords: [] };
     case 'SET_SEARCH':
       return { ...state, searchQuery: action.query };
+    case 'TOGGLE_SAVED_WORD': {
+      const saved = state.savedWordIds.includes(action.wordId)
+        ? state.savedWordIds.filter(id => id !== action.wordId)
+        : [...state.savedWordIds, action.wordId];
+      return { ...state, savedWordIds: saved };
+    }
     case 'UPDATE_WORD_STATUS':
       return {
         ...state,
@@ -144,8 +154,16 @@ export function AppProvider({ children }) {
     dispatch({ type: 'UPDATE_WORD_STATUS', wordId, status });
   }, []);
 
+  const toggleSavedWord = useCallback((wordId) => {
+    dispatch({ type: 'TOGGLE_SAVED_WORD', wordId });
+  }, []);
+
   const setTheme = useCallback((theme) => {
     dispatch({ type: 'SET_THEME', theme });
+  }, []);
+
+  const setLanguage = useCallback((language) => {
+    dispatch({ type: 'SET_LANGUAGE', language });
   }, []);
 
   // Sync theme to <html> class
@@ -159,7 +177,7 @@ export function AppProvider({ children }) {
   }, [state.theme]);
 
   return (
-    <AppContext.Provider value={{ state, dispatch, studyWord, togglePinned, togglePinyin, updateWordStatus, setTheme }}>
+    <AppContext.Provider value={{ state, dispatch, studyWord, togglePinned, togglePinyin, updateWordStatus, toggleSavedWord, setTheme, setLanguage }}>
       {children}
     </AppContext.Provider>
   );

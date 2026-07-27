@@ -16,6 +16,10 @@ function estimateStrokeCount(char) {
 
 const CHAR_SIZE = 80; // Each character gets 80x80px
 
+function getCSSVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
 export default function StrokeOrder({ character, size = 120 }) {
   const containerRef = useRef(null);
   const [writers, setWriters] = useState([]);
@@ -60,13 +64,17 @@ export default function StrokeOrder({ character, size = 120 }) {
         const delay = Math.max(20, Math.min(60, Math.floor(1500 / estimateStrokeCount(ch))));
         const speed = Math.min(2.5, Math.max(1.0, 1.5 - (estimateStrokeCount(ch) - 5) * 0.03));
 
+        const strokeColor = getCSSVar('--accent-from') || '#38bdf8';
+        const radicalColor = getCSSVar('--accent-to') || '#818cf8';
+        const outlineColor = getCSSVar('--border-color') || '#334155';
+
         const writer = HanziWriter.create(wrapper, ch, {
           width: isMultiChar ? CHAR_SIZE : size,
           height: isMultiChar ? CHAR_SIZE : size,
           padding: 5,
-          strokeColor: '#38bdf8',
-          radicalColor: '#818cf8',
-          outlineColor: '#1e2d52',
+          strokeColor,
+          radicalColor,
+          outlineColor,
           strokeAnimationSpeed: speed,
           delayBetweenStrokes: delay,
           showOutline: false,
@@ -75,7 +83,8 @@ export default function StrokeOrder({ character, size = 120 }) {
 
         // Label below each char
         const label = document.createElement('span');
-        label.className = 'text-xs text-slate-500 mt-1 text-center';
+        label.className = 'text-xs mt-1 text-center';
+        label.style.color = getCSSVar('--text-muted') || '#94a3b8';
         label.textContent = ch;
         wrapper.appendChild(label);
 
@@ -164,33 +173,40 @@ export default function StrokeOrder({ character, size = 120 }) {
       <div className="relative group">
         <div
           ref={containerRef}
-          className="rounded-xl bg-slate-800/50 p-2 inline-flex items-start cursor-pointer transition-all duration-300 hover:bg-slate-700/50 hover:shadow-lg hover:shadow-blue-500/10 border border-slate-700/50 hover:border-blue-500/30"
+          className="rounded-xl p-2 inline-flex items-start cursor-pointer transition-all duration-300"
+          style={{
+            background: 'color-mix(in srgb, var(--bg-card) 80%, transparent)',
+            border: '1px solid var(--border-color)',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'color-mix(in srgb, var(--bg-card-hover) 80%, transparent)';
+            e.currentTarget.style.borderColor = 'color-mix(in srgb, var(--accent-from) 30%, transparent)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'color-mix(in srgb, var(--bg-card) 80%, transparent)';
+            e.currentTarget.style.borderColor = 'var(--border-color)';
+          }}
           onClick={toggleAnimation}
           title={isAnimating ? 'Pause' : 'Play stroke order'}
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          <div className="w-10 h-10 rounded-full bg-slate-900/70 flex items-center justify-center backdrop-blur-sm">
+          <div
+            className="w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm"
+            style={{ background: `color-mix(in srgb, var(--bg-card) 75%, transparent)` }}
+          >
             {isAnimating ? (
-              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style={{color: 'var(--accent-from)'}}>
                 <rect x="6" y="4" width="4" height="16" rx="1" />
                 <rect x="14" y="4" width="4" height="16" rx="1" />
               </svg>
             ) : (
-              <svg className="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-5 h-5 ml-0.5" viewBox="0 0 24 24" fill="currentColor" style={{color: 'var(--accent-from)'}}>
                 <path d="M8 5v14l11-7z" />
               </svg>
             )}
           </div>
         </div>
       </div>
-      {isAnimating && progress && (
-        <span className="text-[10px] text-blue-400 animate-pulse">
-          Drawing... ({progress})
-        </span>
-      )}
-      {isAnimating && !progress && (
-        <span className="text-[10px] text-blue-400 animate-pulse">Drawing...</span>
-      )}
     </div>
   );
 }

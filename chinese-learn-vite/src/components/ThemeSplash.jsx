@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useApp } from '../context/AppContext'
+import useTranslation from '../hooks/useTranslation'
 
 export default function ThemeSplash({ onFinish }) {
+  const { t } = useTranslation()
   const { state } = useApp()
   const [phase, setPhase] = useState('enter') // enter | hold | exit | done
   const isDark = state.theme === 'dark'
@@ -63,7 +65,7 @@ export default function ThemeSplash({ onFinish }) {
       style={{ backgroundColor: 'var(--bg-primary)' }}
       onClick={phase !== 'enter' ? finish : undefined}
       role="dialog"
-      aria-label={isDark ? 'Welcome animation - moon' : 'Welcome animation - sun'}
+      aria-label={isDark ? t('splash.moonLabel') : t('splash.sunLabel')}
     >
       {/* Skip button */}
       <button
@@ -71,9 +73,9 @@ export default function ThemeSplash({ onFinish }) {
         className="absolute top-6 right-6 z-10 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
           text-secondary hover:text-primary border border-transparent hover:border-border-app
           bg-secondary/50 hover:bg-card-hover backdrop-blur-sm"
-        aria-label="Skip splash animation"
+        aria-label={t('splash.skipLabel')}
       >
-        Skip →
+        {t('splash.skip')}
       </button>
 
       {/* Ambient glow */}
@@ -81,7 +83,7 @@ export default function ThemeSplash({ onFinish }) {
         className={`absolute inset-0 transition-all duration-1000 ${isDark ? 'opacity-40' : 'opacity-25'}`}
         style={{
           background: isDark
-            ? 'radial-gradient(ellipse at 50% 40%, rgba(56,189,248,0.12) 0%, transparent 60%)'
+            ? 'radial-gradient(ellipse at 50% 40%, rgba(249,115,22,0.15) 0%, transparent 60%)'
             : 'radial-gradient(ellipse at 50% 40%, rgba(249,115,22,0.15) 0%, transparent 60%)',
         }}
       />
@@ -113,13 +115,13 @@ export default function ThemeSplash({ onFinish }) {
 
             {/* Moon */}
             <div className="relative">
-              <div className="splash-moon-shadow" />
-              <svg width="120" height="120" viewBox="0 0 120 120" className="splash-moon-svg drop-shadow-[0_0_40px_rgba(56,189,248,0.3)]" aria-hidden="true">
+              <div className="splash-moon-shadow" style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%)' }} />
+              <svg width="120" height="120" viewBox="0 0 120 120" className="splash-moon-svg drop-shadow-[0_0_40px_rgba(249,115,22,0.3)]" aria-hidden="true">
                 <defs>
                   <radialGradient id="moonGrad" cx="40%" cy="35%" r="60%">
-                    <stop offset="0%" stopColor="#e0f2fe" />
-                    <stop offset="70%" stopColor="#7dd3fc" />
-                    <stop offset="100%" stopColor="#38bdf8" />
+                    <stop offset="0%" stopColor="#fef3c7" />
+                    <stop offset="50%" stopColor="#fbbf24" />
+                    <stop offset="100%" stopColor="#f97316" />
                   </radialGradient>
                   <filter id="moonGlow">
                     <feGaussianBlur stdDeviation="6" result="blur" />
@@ -139,8 +141,8 @@ export default function ThemeSplash({ onFinish }) {
             </div>
 
             <div className="mt-8 text-center splash-text-fade">
-              <p className="text-lg text-sky-400/80 font-light tracking-[0.2em]">学而时习之</p>
-              <p className="text-sm text-sky-300/40 mt-2 tracking-wider">Welcome</p>
+              <p className="text-lg text-amber-500/80 font-light tracking-[0.2em]">{t('splash.quoteDark')}</p>
+              <p className="text-sm text-amber-400/40 mt-2 tracking-wider">{t('splash.welcomeDark')}</p>
             </div>
           </div>
         ) : (
@@ -197,17 +199,17 @@ export default function ThemeSplash({ onFinish }) {
             <div className="mt-6 w-32 h-0.5 rounded-full splash-horizon" />
 
             <div className="mt-6 text-center splash-text-fade">
-              <p className="text-lg text-orange-500/80 font-light tracking-[0.2em]">一日之计在于晨</p>
-              <p className="text-sm text-orange-400/40 mt-2 tracking-wider">Welcome</p>
+              <p className="text-lg text-orange-500/80 font-light tracking-[0.2em]">{t('splash.quoteLight')}</p>
+              <p className="text-sm text-orange-400/40 mt-2 tracking-wider">{t('splash.welcomeLight')}</p>
             </div>
           </div>
         )}
 
         {/* Loading dots */}
         <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex gap-2 splash-dots">
-          <div className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-sky-400/60' : 'bg-orange-400/60'} splash-dot`} style={{ animationDelay: '0s' }} />
-          <div className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-sky-400/60' : 'bg-orange-400/60'} splash-dot`} style={{ animationDelay: '0.2s' }} />
-          <div className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-sky-400/60' : 'bg-orange-400/60'} splash-dot`} style={{ animationDelay: '0.4s' }} />
+          <div className="w-1.5 h-1.5 rounded-full bg-orange-400/60 splash-dot" style={{ animationDelay: '0s' }} />
+          <div className="w-1.5 h-1.5 rounded-full bg-orange-400/60 splash-dot" style={{ animationDelay: '0.2s' }} />
+          <div className="w-1.5 h-1.5 rounded-full bg-orange-400/60 splash-dot" style={{ animationDelay: '0.4s' }} />
         </div>
       </div>
     </div>

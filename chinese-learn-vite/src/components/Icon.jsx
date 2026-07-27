@@ -27,6 +27,8 @@ const ICON_MAP = {
   // Vocabulary
   pin: 'bxs-pin',
   chevronDown: 'bx-chevron-down',
+  chevronLeft: 'bx-chevron-left',
+  chevronRight: 'bx-chevron-right',
 
   // Flashcards
   cog: 'bx-cog',
