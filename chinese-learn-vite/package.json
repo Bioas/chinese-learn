@@ -8,9 +8,6 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "overrides": {
-    "rollup": "npm:@rollup/wasm-node@^4.62.3"
-  },
   "dependencies": {
     "boxicons": "^2.1.4",
     "hanzi-writer": "^3.7.3",
