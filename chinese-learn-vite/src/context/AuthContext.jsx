@@ -1,79 +1,54 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { supabase, isSupabaseReady } from '../lib/supabase';
 
 const AuthContext = createContext(null);
-
-const STORAGE_KEY = 'shangshan_user';
-
-function getStoredUser() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-function storeUser(user) {
-  if (user) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-  } else {
-    localStorage.removeItem(STORAGE_KEY);
-  }
-}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setUser(getStoredUser());
-    setLoading(false);
-  }, []);
+    if (!isSupabaseReady()) {
+      setLoading(false);
+      return;
+    }
 
-  const setPersistedUser = useCallback((u) => {
-    storeUser(u);
-    setUser(u);
+    // Check current session on mount
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription?.unsubscribe();
   }, []);
 
   const login = useCallback(async (email, password) => {
-    // Simulate network delay
-    await new Promise(r => setTimeout(r, 500));
-    if (!email || !password) throw new Error('Email and password are required.');
-    if (password.length < 4) throw new Error('Invalid credentials.');
-    const userObj = {
-      id: crypto.randomUUID?.() || Math.random().toString(36).slice(2),
-      email,
-      created_at: new Date().toISOString(),
-    };
-    setPersistedUser(userObj);
-  }, [setPersistedUser]);
+    if (!isSupabaseReady()) throw new Error('Supabase not configured. Please set environment variables.');
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+  }, []);
 
   const register = useCallback(async (email, password) => {
-    await new Promise(r => setTimeout(r, 500));
-    if (!email || !password) throw new Error('Email and password are required.');
-    if (password.length < 4) throw new Error('Password must be at least 4 characters.');
-    const userObj = {
-      id: crypto.randomUUID?.() || Math.random().toString(36).slice(2),
-      email,
-      created_at: new Date().toISOString(),
-    };
-    setPersistedUser(userObj);
-  }, [setPersistedUser]);
+    if (!isSupabaseReady()) throw new Error('Supabase not configured. Please set environment variables.');
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) throw error;
+  }, []);
 
   const loginWithGoogle = useCallback(async () => {
-    await new Promise(r => setTimeout(r, 600));
-    const userObj = {
-      id: crypto.randomUUID?.() || Math.random().toString(36).slice(2),
-      email: 'user@gmail.com',
-      provider: 'google',
-      created_at: new Date().toISOString(),
-    };
-    setPersistedUser(userObj);
-  }, [setPersistedUser]);
+    if (!isSupabaseReady()) throw new Error('Supabase not configured. Please set environment variables.');
+    const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
+    if (error) throw error;
+  }, []);
 
   const logout = useCallback(async () => {
-    setPersistedUser(null);
-  }, [setPersistedUser]);
+    if (!isSupabaseReady()) return;
+    await supabase.auth.signOut();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, loading, login, register, loginWithGoogle, logout }}>

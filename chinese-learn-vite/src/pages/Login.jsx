@@ -28,7 +28,7 @@ export default function Login({ onClose }) {
     try {
       if (isRegister) {
         await register(email, password);
-        onClose?.();
+        setSuccess(t('auth.registerSuccess'));
       } else {
         await login(email, password);
         onClose?.();

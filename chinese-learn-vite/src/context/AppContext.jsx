@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useReducer, useCallback, useEffect, useRef } from 'react';
 import { VOCABULARY } from '../data/vocabulary';
+import { supabase, isSupabaseReady } from '../lib/supabase';
+import { useAuth } from './AuthContext';
 
 const initialState = {
   vocabulary: VOCABULARY,
@@ -126,7 +128,9 @@ export function AppProvider({ children }) {
     return initial;
   });
 
+  const { user } = useAuth();
   const isFirstRender = useRef(true);
+  const syncTimeoutRef = useRef(null);
 
   // Save to localStorage on every state change (skip initial hydration)
   useEffect(() => {
@@ -137,6 +141,58 @@ export function AppProvider({ children }) {
     const { vocabulary, flashcardWords, quizWords, ...savable } = state;
     localStorage.setItem('chinese-learn-state', JSON.stringify(savable));
   }, [state]);
+
+  // Cloud sync: save to Supabase when state changes (debounced)
+  useEffect(() => {
+    if (!user || !isSupabaseReady() || isFirstRender.current) return;
+
+    if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+
+    syncTimeoutRef.current = setTimeout(async () => {
+      const { vocabulary: _, flashcardWords: __, quizWords: ___, ...syncable } = state;
+      try {
+        const { error } = await supabase.from('user_progress').upsert(
+          {
+            user_id: user.id,
+            data: syncable,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: 'user_id' }
+        );
+        if (error) console.warn('Supabase sync error:', error.message);
+      } catch (err) {
+        // Silently fail — offline is fine, local state persists
+        console.warn('Cloud sync failed (offline?):', err.message);
+      }
+    }, 3000); // Debounce 3s after last state change
+
+    return () => {
+      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+    };
+  }, [user, state]);
+
+  // Load from Supabase when user logs in, merging with local state
+  useEffect(() => {
+    if (!user || !isSupabaseReady()) return;
+
+    supabase
+      .from('user_progress')
+      .select('data')
+      .eq('user_id', user.id)
+      .single()
+      .then(({ data, error }) => {
+        if (error && error.code !== 'PGRST116') {
+          // PGRST116 = no rows found (new user) — ignore
+          console.warn('Supabase load error:', error.message);
+          return;
+        }
+        if (data?.data) {
+          // Merge: remote data takes priority over localStorage
+          const merged = { ...state, ...data.data };
+          dispatch({ type: 'LOAD_STATE', state: merged });
+        }
+      });
+  }, [user]);
 
   const studyWord = useCallback((wordId) => {
     dispatch({ type: 'STUDY_WORD', wordId });
