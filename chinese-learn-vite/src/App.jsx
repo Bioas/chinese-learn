@@ -8,6 +8,7 @@ import Vocabulary from './pages/Vocabulary'
 import Flashcards from './pages/Flashcards'
 import Quiz from './pages/Quiz'
 import Search from './pages/Search'
+import WordMap from './pages/WordMap'
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -58,6 +59,7 @@ export default function App() {
               <Route path="/flashcards" element={<Flashcards />} />
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/wordmap" element={<WordMap />} />
             </Routes>
           </div>
         </main>

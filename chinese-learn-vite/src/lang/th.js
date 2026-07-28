@@ -10,6 +10,7 @@ const th = {
   'nav.flashcards': 'บัตรคำ',
   'nav.quiz': 'แบบทดสอบ',
   'nav.search': 'ค้นหา',
+  'nav.wordmap': 'แผนที่คำศัพท์',
   'nav.toggleMenu': 'เปิด/ปิดเมนู',
 
   // Sidebar
@@ -34,7 +35,7 @@ const th = {
   'dash.consecutiveDays': 'วันติดต่อกัน',
   'dash.analytics': 'สถิติการเรียนรู้',
   'dash.mastered': 'เชี่ยวชาญ',
-  'dash.reviewing': 'ลืม',
+  'dash.reviewing': 'ทบทวน',
   'dash.learning': 'กำลังเรียน',
   'dash.new': 'ใหม่',
   'dash.masteredFraction': '{n}/{total} เชี่ยวชาญแล้ว',
@@ -71,11 +72,14 @@ const th = {
   'vocab.mastered': 'เชี่ยวชาญแล้ว',
   'vocab.remembered': 'จำได้',
   'vocab.learning': 'กำลังเรียน',
-  'vocab.reviewing': 'ลืม',
+  'vocab.reviewing': 'ทบทวน',
   'vocab.stillLearning': 'กำลังเรียนรู้',
   'vocab.saved': 'บันทึก',
   'vocab.noSaved': 'ยังไม่มีคำที่บันทึก',
   'vocab.noSavedHint': 'คลิกไอคอนบุ๊กมาร์กที่คำใดก็ได้เพื่อบันทึก',
+  'vocab.pagination.prev': 'ก่อนหน้า',
+  'vocab.pagination.next': 'ถัดไป',
+  'vocab.pagination.info': 'หน้า {page} จาก {total} · {n} คำต่อหน้า',
 
   // Flashcards
   'flash.title': 'บัตรคำ',
@@ -121,9 +125,9 @@ const th = {
   'quiz.tryAgain': 'ลองอีกครั้ง',
   'quiz.mode': 'โหมดแบบทดสอบ',
   'quiz.questionType': 'ประเภทคำถาม:',
-  'quiz.chineseToThai': 'จีน → อังกฤษ',
+  'quiz.chineseToThai': 'จีน → ไทย',
   'quiz.pinyin': 'พินอิน',
-  'quiz.thaiToChinese': 'อังกฤษ → จีน',
+  'quiz.thaiToChinese': 'ไทย → จีน',
   'quiz.pinnedSubcategories': 'หมวดหมู่ที่ปักหมุด',
   'quiz.noPinned': 'ไม่มีหมวดหมู่ที่ปักหมุด',
   'quiz.saved': 'ที่บันทึก ({n})',
@@ -132,6 +136,14 @@ const th = {
   'quiz.questions': 'จำนวนข้อ:',
   'quiz.showPinyin': 'แสดงพินอินในแบบทดสอบ',
   'quiz.start': 'เริ่มแบบทดสอบ',
+
+  // StrokeOrder
+  'stroke.pause': 'หยุด',
+  'stroke.play': 'เล่นลำดับขีด',
+
+  // LanguageToggle
+  'lang.en': 'อังกฤษ',
+  'lang.th': 'ไทย',
 
   // SpeakButton
   'speak.listen': 'ฟัง',
@@ -172,6 +184,20 @@ const th = {
   'status.reviewing': 'ทบทวน',
   'status.learning': 'กำลังเรียน',
   'status.new': 'ใหม่',
+
+  // Word Map
+  'wordmap.title': 'แผนที่คำศัพท์',
+  'wordmap.subtitle': 'สำรวจความเชื่อมโยงของคำศัพท์ผ่านตัวอักษรร่วม',
+  'wordmap.searchPlaceholder': 'ค้นหาคำศัพท์เพื่อดูความเชื่อมโยง...',
+  'wordmap.allCategories': 'ทุกหมวดหมู่',
+  'wordmap.wordCount': 'แสดง {shown} คำ (จาก {n} คำที่ตรงกัน)',
+  'wordmap.noMatches': 'ไม่พบคำศัพท์ที่ตรงกับเงื่อนไข',
+  'wordmap.adjustFilters': 'ลองปรับการค้นหาหรือหมวดหมู่ที่เลือก',
+  'wordmap.shared': 'ร่วม',
+  'wordmap.connectedBy': 'เชื่อมโยงผ่าน',
+  'wordmap.words': 'คำ',
+  'wordmap.save': 'บันทึก',
+  'wordmap.example': 'ตัวอย่างประโยค:',
 
   // Greeting
   'greeting.morning': '早上好! สวัสดีตอนเช้า!',

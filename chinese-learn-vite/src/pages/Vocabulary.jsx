@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { useApp } from '../context/AppContext';
 import SpeakButton from '../components/SpeakButton';
@@ -9,6 +9,50 @@ import InkParticles from '../components/InkParticles';
 import { CATEGORIES, VOCABULARY, getSubcategoryIcon } from '../data/vocabulary';
 
 const VOCAB_INK_CHARS = ['詞', '字', '典', '学', '習', '句', '文', '義', '读', '書'];
+
+/* ── Reusable scrollable chip row with fade hints ── */
+function ScrollFadeRow({ children, className = '' }) {
+  const ref = useRef(null);
+  const [scrolled, setScrolled] = useState({ left: false, right: false });
+
+  const update = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    setScrolled({
+      left: el.scrollLeft > 8,
+      right: el.scrollLeft + el.clientWidth < el.scrollWidth - 8,
+    });
+  }, []);
+
+  useEffect(() => {
+    update();
+    const onResize = () => update();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [update]);
+
+  return (
+    <div className="relative min-w-0">
+      <div
+        ref={ref}
+        onScroll={update}
+        className={`flex gap-2 overflow-x-auto scrollbar-none snap-x snap-proximity ${className}`}
+      >
+        {children}
+      </div>
+      <div
+        className={`absolute left-0 top-0 bottom-0 w-12 pointer-events-none bg-gradient-to-r from-[var(--bg-primary)] to-transparent transition-opacity duration-300 ${
+          scrolled.left ? 'opacity-100' : 'opacity-0'
+        } md:hidden`}
+      />
+      <div
+        className={`absolute right-0 top-0 bottom-0 w-12 pointer-events-none bg-gradient-to-l from-[var(--bg-primary)] to-transparent transition-opacity duration-300 ${
+          scrolled.right ? 'opacity-100' : 'opacity-0'
+        } md:hidden`}
+      />
+    </div>
+  );
+}
 
 export default function Vocabulary() {
   const { t, meaning } = useTranslation();
@@ -47,6 +91,12 @@ export default function Vocabulary() {
       words = words.filter(w => state.savedWordIds.includes(w.id));
     }
 
+    if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
+      // No subcategory selected → show ALL words from the current category
+      const subIds = currentCategory.subcategories.map(s => s.id);
+      words = words.filter(w => subIds.includes(w.subcategory));
+    }
+
     if (selectedSubcategories.length > 0) {
       words = words.filter(w => selectedSubcategories.includes(w.subcategory));
     }
@@ -59,7 +109,7 @@ export default function Vocabulary() {
     }
 
     return words;
-  }, [showSaved, selectedSubcategories, selectedStatuses, state.wordStatuses, state.savedWordIds]);
+  }, [showSaved, selectedSubcategories, selectedStatuses, currentCategory, state.wordStatuses, state.savedWordIds]);
 
   const totalPages = useMemo(() => Math.max(1, Math.ceil(filteredWords.length / ITEMS_PER_PAGE)), [filteredWords]);
   const paginatedWords = useMemo(() => {
@@ -118,31 +168,34 @@ export default function Vocabulary() {
         </div>
       )}
 
-      <div className="flex flex-wrap gap-2 animate-slide-up relative z-10">
-        {CATEGORIES.map(cat => (
+      <div className="w-full md:w-fit relative z-10 animate-slide-up">
+        <ScrollFadeRow className="md:flex-wrap md:overflow-visible">
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setSelectedCategory(cat.id);
+                setSelectedSubcategories([]);
+                setShowSaved(false);
+              }}
+              className={`chip flex items-center gap-1.5 snap-start shrink-0 ${selectedCategory === cat.id && !showSaved ? 'active' : ''}`}
+            >
+              <Icon name={cat.icon} />
+              <span>{state.language === 'th' ? cat.nameThai : cat.name}</span>
+            </button>
+          ))}
           <button
-            key={cat.id}
             onClick={() => {
-              setSelectedCategory(cat.id);
+              setShowSaved(true);
               setSelectedSubcategories([]);
-              setShowSaved(false);
             }}
-            className={`chip flex items-center gap-1.5 ${selectedCategory === cat.id && !showSaved ? 'active' : ''}`}
+            className={`chip flex items-center gap-1.5 snap-start shrink-0 ${showSaved ? 'active' : ''}`}
           >
-            <Icon name={cat.icon} />
-            <span>{state.language === 'th' ? cat.nameThai : cat.name}</span>
+            <Icon name="bookmark" />
+            <span>{t('vocab.saved')}</span>
           </button>
-        ))}
-        <button
-          onClick={() => {
-            setShowSaved(true);
-            setSelectedSubcategories([]);
-          }}
-          className={`chip flex items-center gap-1.5 ${showSaved ? 'active' : ''}`}
-        >
-          <Icon name="bookmark" />
-          <span>{t('vocab.saved')}</span>
-        </button>
+        </ScrollFadeRow>
+
       </div>
 
       {!showSaved && currentCategory && (
@@ -170,21 +223,23 @@ export default function Vocabulary() {
       )}
 
       <div className="glass-card p-4 animate-fade-in relative z-10">
-        <div className="flex flex-wrap items-center gap-4">
-          <span className="text-sm text-secondary">{t('vocab.filterByStatus')}</span>
-          {['new', 'learning', 'reviewing', 'mastered'].map(status => (
-            <button
-              key={status}
-              onClick={() => toggleStatus(status)}
-              className={`chip text-xs ${selectedStatuses.includes(status) ? 'active' : ''}`}
-            >
-              {t('status.' + status)}
-            </button>
-          ))}
-          <span className="text-xs text-muted ml-auto">
-            {t('vocab.wordCount', { n: filteredWords.length })}
-          </span>
+        <div className="flex md:flex-nowrap flex-wrap items-center gap-x-4 gap-y-2">
+          <span className="text-sm text-secondary shrink-0">{t('vocab.filterByStatus')}</span>
+          <ScrollFadeRow className="md:overflow-visible">
+            {['new', 'learning', 'reviewing', 'mastered'].map(status => (
+              <button
+                key={status}
+                onClick={() => toggleStatus(status)}
+                className={`chip text-xs snap-start shrink-0 ${selectedStatuses.includes(status) ? 'active' : ''}`}
+              >
+                {t('status.' + status)}
+              </button>
+            ))}
+          </ScrollFadeRow>
         </div>
+        <span className="absolute top-4 right-4 text-[10px] text-muted tracking-wider">
+          {t('vocab.wordCount', { n: filteredWords.length })}
+        </span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 animate-fade-in relative z-10">
@@ -206,7 +261,7 @@ export default function Vocabulary() {
         ) : (
           paginatedWords.map((word, index) => {
             const s = state.wordStatuses[word.id] || 'new';
-            const catColor = word.category === 'hsk' ? 'var(--accent-from)' : word.category === 'daily' ? 'var(--accent-to)' : 'var(--text-muted)';
+            const catColor = word.category === 'hsk' ? 'var(--accent-from)' : word.category === 'daily' ? 'var(--accent-to)' : word.category === 'health' ? '#f43f5e' : word.category === 'education' ? '#8b5cf6' : word.category === 'technology' ? '#06b6d4' : word.category === 'business' ? '#eab308' : word.category === 'nature' ? '#22c55e' : 'var(--text-muted)';
             return (
               <div
                 key={word.id}
@@ -217,7 +272,7 @@ export default function Vocabulary() {
                 <button
                   onClick={(e) => { e.stopPropagation(); toggleSavedWord(word.id); }}
                   className={`absolute top-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-lg transition-all duration-200 hover:scale-110 ${
-                    state.savedWordIds.includes(word.id) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                    state.savedWordIds.includes(word.id) ? 'opacity-100' : 'opacity-100 md:opacity-0 md:group-hover:opacity-100'
                   }`}
                   style={{
                     background: state.savedWordIds.includes(word.id) ? 'color-mix(in srgb, var(--accent-from) 15%, transparent)' : 'transparent',
@@ -345,7 +400,7 @@ export default function Vocabulary() {
                 style={{ color: 'var(--text-secondary)' }}
               >
                 <Icon name="chevronLeft" className="text-sm" />
-                <span className="hidden md:inline">Prev</span>
+                <span className="hidden md:inline">{t('vocab.pagination.prev')}</span>
               </button>
 
               <div className="flex items-center gap-0.5">
@@ -387,7 +442,7 @@ export default function Vocabulary() {
                 className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 disabled:opacity-20 disabled:cursor-default hover:bg-card-hover/50 active:scale-95"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                <span className="hidden md:inline">Next</span>
+                <span className="hidden md:inline">{t('vocab.pagination.next')}</span>
                 <Icon name="chevronRight" className="text-sm" />
               </button>
             </div>
@@ -432,7 +487,7 @@ export default function Vocabulary() {
 
             {/* Info bar */}
             <div className="px-3 pb-2 text-center text-[10px] text-muted/60 tracking-wider">
-              Page {page} of {totalPages} · {ITEMS_PER_PAGE} words per page
+              {t('vocab.pagination.info', { page, total: totalPages, n: ITEMS_PER_PAGE })}
             </div>
           </div>
         );
@@ -499,9 +554,6 @@ export default function Vocabulary() {
               </div>
             </div>
 
-            {/* divider */}
-            <div className="mx-8 h-px" style={{background: 'linear-gradient(90deg, transparent, var(--border-color), transparent)'}} />
-
             {/* body: stroke order + examples */}
             <div className="p-6 sm:p-8">
               <div className="flex flex-col lg:flex-row gap-8">
@@ -542,8 +594,8 @@ export default function Vocabulary() {
                           {state.showPinyin && (
                             <p className="text-xs text-secondary/70 italic mt-0.5">{ex.pinyin}</p>
                           )}
-                          {meaning(ex, false) && (
-                            <p className="text-xs text-muted mt-1 leading-relaxed">{meaning(ex, false)}</p>
+                          {meaning(ex) && (
+                            <p className="text-xs text-muted mt-1 leading-relaxed">{meaning(ex)}</p>
                           )}
                         </div>
                       </div>

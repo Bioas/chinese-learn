@@ -10,6 +10,7 @@ const en = {
   'nav.flashcards': 'Flashcards',
   'nav.quiz': 'Quiz',
   'nav.search': 'Search',
+  'nav.wordmap': 'Word Map',
   'nav.toggleMenu': 'Toggle menu',
 
   // Sidebar
@@ -76,6 +77,9 @@ const en = {
   'vocab.saved': 'Saved',
   'vocab.noSaved': 'No saved words yet',
   'vocab.noSavedHint': 'Click the bookmark icon on any word to save it here',
+  'vocab.pagination.prev': 'Prev',
+  'vocab.pagination.next': 'Next',
+  'vocab.pagination.info': 'Page {page} of {total} · {n} words per page',
 
   // Flashcards
   'flash.title': 'Flashcards',
@@ -134,6 +138,14 @@ const en = {
   'quiz.showPinyin': 'Show Pinyin in Quiz',
   'quiz.start': 'Start Quiz',
 
+  // StrokeOrder
+  'stroke.pause': 'Pause',
+  'stroke.play': 'Play stroke order',
+
+  // LanguageToggle
+  'lang.en': 'English',
+  'lang.th': 'Thai',
+
   // SpeakButton
   'speak.listen': 'Listen',
   'speak.speaking': 'Speaking…',
@@ -173,6 +185,20 @@ const en = {
   'status.reviewing': 'Reviewing',
   'status.learning': 'Learning',
   'status.new': 'New',
+
+  // Word Map
+  'wordmap.title': 'Word Map',
+  'wordmap.subtitle': 'Explore vocabulary connections through shared characters',
+  'wordmap.searchPlaceholder': 'Search words to explore connections...',
+  'wordmap.allCategories': 'All Categories',
+  'wordmap.wordCount': '{shown} words shown (of {n} matching)',
+  'wordmap.noMatches': 'No words match your filters.',
+  'wordmap.adjustFilters': 'Try adjusting your search or category filters',
+  'wordmap.shared': 'Shared',
+  'wordmap.connectedBy': 'Connected by',
+  'wordmap.words': 'words',
+  'wordmap.save': 'Save',
+  'wordmap.example': 'Example Sentence:',
 
   // Greeting
   'greeting.morning': '早上好! Good Morning!',

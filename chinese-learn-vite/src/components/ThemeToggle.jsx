@@ -12,7 +12,7 @@ export default function ThemeToggle() {
       {/* Mobile: mini pill */}
       <button
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
-        className="lg:hidden relative h-7 w-14 rounded-full flex items-center px-1 transition-all duration-300"
+        className="lg:hidden relative h-7 w-14 rounded-full flex items-center px-1 transition-all duration-300 hover:scale-105 active:scale-95"
         style={{
           background: isDark
             ? 'color-mix(in srgb, var(--accent-from) 15%, transparent)'
@@ -23,10 +23,13 @@ export default function ThemeToggle() {
       >
         <span className="flex-1 flex items-center justify-center z-10">
           <svg
-            className="w-3 h-3 transition-all duration-300"
+            key={isDark ? 'dark-sun' : 'light-sun'}
+            className="w-3 h-3"
             style={{
               color: isDark ? 'var(--text-muted)' : 'var(--accent-from)',
               opacity: isDark ? 0.35 : 1,
+              animation: isDark ? 'none' : 'iconSpinIn 0.4s ease-out',
+              transformOrigin: 'center',
             }}
             viewBox="0 0 24 24"
             fill="none"
@@ -47,10 +50,13 @@ export default function ThemeToggle() {
         </span>
         <span className="flex-1 flex items-center justify-center z-10">
           <svg
-            className="w-3 h-3 transition-all duration-300"
+            key={isDark ? 'dark-moon' : 'light-moon'}
+            className="w-3 h-3"
             style={{
               color: isDark ? 'var(--accent-from)' : 'var(--text-muted)',
               opacity: isDark ? 1 : 0.35,
+              animation: isDark ? 'iconSpinIn 0.4s ease-out' : 'none',
+              transformOrigin: 'center',
             }}
             viewBox="0 0 24 24"
             fill="none"
@@ -61,15 +67,14 @@ export default function ThemeToggle() {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </span>          <div
-            className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-all duration-300"
+            className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full"
             style={{
               left: isDark ? 'calc(50% + 1px)' : '1px',
-              background: isDark
-                ? 'linear-gradient(135deg, #d97706, #f97316)'
-                : 'linear-gradient(135deg, #f97316, #d97706)',
+              background: 'linear-gradient(135deg, var(--accent-from), var(--accent-to))',
               boxShadow: isDark
-                ? '0 1px 3px rgba(249,115,22,0.3)'
-                : '0 1px 3px rgba(249,115,22,0.25)',
+                ? '0 1px 3px var(--accent-glow)'
+                : '0 1px 3px var(--accent-glow)',
+              transition: 'left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s',
             }}
           />
       </button>
@@ -77,7 +82,7 @@ export default function ThemeToggle() {
       {/* Desktop: pill toggle */}
       <button
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
-        className="hidden lg:flex relative w-full h-9 rounded-xl items-center select-none"
+        className="hidden lg:flex relative w-full h-9 rounded-xl items-center select-none hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
         style={{
           background: isDark
             ? 'color-mix(in srgb, var(--accent-from) 12%, transparent)'
@@ -88,10 +93,13 @@ export default function ThemeToggle() {
       >
         <span className="flex-1 flex items-center justify-center z-10">
           <svg
-            className="w-3.5 h-3.5 transition-all duration-500"
+            key={isDark ? 'dark-sun' : 'light-sun'}
+            className="w-3.5 h-3.5"
             style={{
               color: isDark ? 'var(--text-muted)' : 'var(--accent-from)',
               opacity: isDark ? 0.4 : 1,
+              animation: isDark ? 'none' : 'iconSpinIn 0.5s ease-out',
+              transformOrigin: 'center',
             }}
             viewBox="0 0 24 24"
             fill="none"
@@ -113,10 +121,13 @@ export default function ThemeToggle() {
 
         <span className="flex-1 flex items-center justify-center z-10">
           <svg
-            className="w-3.5 h-3.5 transition-all duration-500"
+            key={isDark ? 'dark-moon' : 'light-moon'}
+            className="w-3.5 h-3.5"
             style={{
               color: isDark ? 'var(--accent-from)' : 'var(--text-muted)',
               opacity: isDark ? 1 : 0.4,
+              animation: isDark ? 'iconSpinIn 0.5s ease-out' : 'none',
+              transformOrigin: 'center',
             }}
             viewBox="0 0 24 24"
             fill="none"
@@ -127,15 +138,12 @@ export default function ThemeToggle() {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </span>          <div
-            className="absolute top-0.5 bottom-0.5 w-1/2 rounded-[10px] transition-all duration-500"
+            className="absolute top-0.5 bottom-0.5 w-1/2 rounded-[10px]"
             style={{
               left: isDark ? 'calc(50% + 2px)' : '2px',
-              background: isDark
-                ? 'linear-gradient(135deg, #d97706, #f97316)'
-                : 'linear-gradient(135deg, #f97316, #d97706)',
-              boxShadow: isDark
-                ? '0 1px 4px rgba(249,115,22,0.3)'
-                : '0 1px 4px rgba(249,115,22,0.25)',
+              background: 'linear-gradient(135deg, var(--accent-from), var(--accent-to))',
+              boxShadow: '0 1px 4px var(--accent-glow)',
+              transition: 'left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s',
             }}
           />
       </button>

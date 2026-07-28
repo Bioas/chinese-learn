@@ -375,6 +375,15 @@
   will-change: transform, opacity;
 }
 
+/* ─── Utility: hidden scrollbar ─── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Card deck shadow layers */
 .flash-deck {
   position: relative;
@@ -725,9 +734,12 @@
   appearance: none;
   height: 4px;
   border-radius: 2px;
-  background: color-mix(in srgb, var(--border-color) 50%, transparent);
   outline: none;
   transition: background 0.3s ease;
+  background-color: color-mix(in srgb, var(--border-color) 50%, transparent);
+  background-image: var(--accent-gradient);
+  background-repeat: no-repeat;
+  background-size: var(--pct, 0%) 100%;
 }
 
 .ink-slider::-webkit-slider-thumb {

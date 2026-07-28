@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import useTranslation from '../hooks/useTranslation';
 
 // Heuristic estimate for adaptive timing (not shown to user)
 function estimateStrokeCount(char) {
@@ -21,6 +22,7 @@ function getCSSVar(name) {
 }
 
 export default function StrokeOrder({ character, size = 120 }) {
+  const { t } = useTranslation();
   const containerRef = useRef(null);
   const [writers, setWriters] = useState([]);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -187,7 +189,7 @@ export default function StrokeOrder({ character, size = 120 }) {
             e.currentTarget.style.borderColor = 'var(--border-color)';
           }}
           onClick={toggleAnimation}
-          title={isAnimating ? 'Pause' : 'Play stroke order'}
+          title={isAnimating ? t('stroke.pause') : t('stroke.play')}
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
           <div

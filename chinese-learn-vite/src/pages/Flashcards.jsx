@@ -25,6 +25,7 @@ function CornerFlourishes() {
 export default function Flashcards() {
   const { t, meaning } = useTranslation();
   const { state, dispatch, studyWord, togglePinned } = useApp();
+  const [selectedCategory, setSelectedCategory] = useState('hsk');
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [showSaved, setShowSaved] = useState(false);
@@ -33,10 +34,19 @@ export default function Flashcards() {
   const [sessionStarted, setSessionStarted] = useState(false);
   const [showInkFx, setShowInkFx] = useState(false);
 
+  const currentCategory = useMemo(
+    () => CATEGORIES.find(c => c.id === selectedCategory),
+    [selectedCategory]
+  );
+
   const filteredWords = useMemo(() => {
     let words = VOCABULARY;
     if (showSaved) {
       words = words.filter(w => state.savedWordIds.includes(w.id));
+    }
+    if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
+      const subIds = currentCategory.subcategories.map(s => s.id);
+      words = words.filter(w => subIds.includes(w.subcategory));
     }
     if (selectedSubcategories.length > 0) {
       words = words.filter(w => selectedSubcategories.includes(w.subcategory));
@@ -48,7 +58,7 @@ export default function Flashcards() {
       });
     }
     return words.sort(() => Math.random() - 0.5).slice(0, studyLimit);
-  }, [showSaved, selectedSubcategories, selectedStatuses, studyLimit, state.wordStatuses, state.savedWordIds]);
+  }, [showSaved, selectedSubcategories, selectedStatuses, studyLimit, currentCategory, state.wordStatuses, state.savedWordIds]);
 
   const startSession = () => {
     dispatch({ type: 'SET_FLASHCARD_WORDS', words: filteredWords });
@@ -340,26 +350,38 @@ export default function Flashcards() {
             </div>
           </div>
 
-          {/* Category filter */}
+          {/* Category tabs */}
           <div className="fade-slide-up" style={{ animationDelay: '0.15s' }}>
             <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('flash.otherSubcategories')}</p>
-            <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto">
-              {CATEGORIES.map(cat =>
-                cat.subcategories.map(sub => {
-                  const isPinned = state.pinnedSubcategories.includes(sub.id);
-                  const isSelected = selectedSubcategories.includes(sub.id);
-                  return (
-                    <button
-                      key={sub.id}
-                      onClick={() => toggleSubcategory(sub.id)}
-                      onDoubleClick={() => togglePinned(sub.id)}
-                      className={`ink-chip ${isSelected ? 'active' : ''} ${isPinned ? 'pinned' : ''}`}
-                    >
-                      <Icon name={sub.icon} /> {state.language === 'th' ? sub.nameThai : sub.name}
-                    </button>
-                  );
-                })
-              )}
+            <div className="w-full md:w-fit">
+              <div className="flex gap-1.5 mb-2 overflow-x-auto scrollbar-none">
+                {CATEGORIES.map(cat => (
+                  <button
+                    key={cat.id}
+                    onClick={() => { setSelectedCategory(cat.id); setSelectedSubcategories([]); setShowSaved(false); }}
+                    className={`ink-chip shrink-0 ${selectedCategory === cat.id && !showSaved ? 'active' : ''}`}
+                  >
+                    <Icon name={cat.icon} className="text-xs" /> {state.language === 'th' ? cat.nameThai : cat.name}
+                  </button>
+                ))}
+              </div>
+              <div className="h-[1.5px] my-2" style={{background: 'var(--border-color)', opacity: 0.6}} />
+            </div>
+            <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto">
+              {!showSaved && currentCategory && currentCategory.subcategories.map(sub => {
+                const isPinned = state.pinnedSubcategories.includes(sub.id);
+                const isSelected = selectedSubcategories.includes(sub.id);
+                return (
+                  <button
+                    key={sub.id}
+                    onClick={() => toggleSubcategory(sub.id)}
+                    onDoubleClick={() => togglePinned(sub.id)}
+                    className={`ink-chip ${isSelected ? 'active' : ''} ${isPinned ? 'pinned' : ''}`}
+                  >
+                    <Icon name={sub.icon} /> {state.language === 'th' ? sub.nameThai : sub.name}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -390,6 +412,7 @@ export default function Flashcards() {
                 value={studyLimit}
                 onChange={(e) => setStudyLimit(Number(e.target.value))}
                 className="flex-1 ink-slider"
+                style={{'--pct': `${((studyLimit - 5) / (200 - 5)) * 100}%`}}
               />
               <span className="text-sm font-medium min-w-[2.5rem] text-center tabular-nums">
                 {studyLimit}

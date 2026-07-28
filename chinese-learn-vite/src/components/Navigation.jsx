@@ -17,6 +17,7 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
     { path: '/flashcards', label: t('nav.flashcards'), icon: 'flashcards' },
     { path: '/quiz', label: t('nav.quiz'), icon: 'quiz' },
     { path: '/search', label: t('nav.search'), icon: 'search' },
+    { path: '/wordmap', label: t('nav.wordmap'), icon: 'wordmap' },
   ];
 
   const isActive = (path) => {
@@ -25,6 +26,21 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
 
   return (
     <>
+      {/* Blur backdrop — outside header to avoid nested backdrop-filter suppression */}
+      <div
+        className={`fixed inset-0 z-40 bg-white/[0.01] ${
+          mobileMenuOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
+        style={{
+          transition: 'opacity 0.3s ease-out, backdrop-filter 0.3s ease-out, -webkit-backdrop-filter 0.3s ease-out',
+          backdropFilter: mobileMenuOpen ? 'blur(4px)' : 'blur(0px)',
+          WebkitBackdropFilter: mobileMenuOpen ? 'blur(4px)' : 'blur(0px)',
+        }}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
       {/* Mobile header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 dark:[background:color-mix(in_srgb,var(--bg-secondary)_95%,transparent)] backdrop-blur-md border-b border-slate-200 dark:[border-color:var(--border-color)] px-4 py-3">
         <div className="flex items-center justify-between">
@@ -37,64 +53,111 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
             {/* Theme icon button */}
             <button
               onClick={() => setTheme(state.theme === 'dark' ? 'light' : 'dark')}
-              className="w-8 h-8 rounded-lg hover:bg-card-hover/50 transition-all duration-300 flex items-center justify-center"
-              aria-label="Toggle theme"
+              className="w-8 h-8 rounded-lg hover:bg-card-hover/50 hover:scale-110 active:scale-90 transition-all duration-200 flex items-center justify-center"
+              aria-label={state.theme === 'dark' ? t('theme.lightMode') : t('theme.darkMode')}
             >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              <svg
+                key={state.theme}
+                className="w-4 h-4"
+                style={{
+                  animation: 'iconSpinIn 0.35s ease-out',
+                  transformOrigin: 'center',
+                }}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                {state.theme === 'dark' ? (
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                ) : (
+                  <>
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                  </>
+                )}
               </svg>
             </button>
             {/* Language icon button */}
             <button
               onClick={() => setLanguage(state.language === 'en' ? 'th' : 'en')}
-              className="w-10 h-10 rounded-xl hover:bg-card-hover/50 transition-all duration-300 flex items-center justify-center font-bold text-sm"
+              className="w-10 h-10 rounded-xl hover:bg-card-hover/50 hover:scale-110 active:scale-90 transition-all duration-200 flex items-center justify-center font-bold text-sm"
               style={{ color: 'var(--accent-from)' }}
               aria-label="Toggle language"
             >
-              {state.language === 'en' ? 'TH' : 'EN'}
+              <span
+                key={state.language}
+                style={{
+                  display: 'inline-block',
+                  animation: 'iconSpinIn 0.35s ease-out',
+                }}
+              >
+                {state.language === 'en' ? 'TH' : 'EN'}
+              </span>
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg hover:bg-card-hover/50 transition-colors"
+              className="w-10 h-10 rounded-xl hover:bg-card-hover/50 transition-all duration-300 flex items-center justify-center relative"
               aria-label={t('nav.toggleMenu')}
             >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+              <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-out ${
+                mobileMenuOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
+              }`}>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </div>
+              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out ${
+                mobileMenuOpen ? 'scale-100 opacity-100 rotate-0' : 'scale-0 opacity-0 rotate-90'
+              }`}>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
             </button>
           </div>
         </div>
 
-        {mobileMenuOpen && (
-          <div className="mt-3 pb-2 space-y-1" onClick={() => setMobileMenuOpen(false)}>
-            {NAV_ITEMS.map(item => (
+        {/* Mobile menu with animation */}
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-out ${
+            mobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="pt-1 pb-2 space-y-1" onClick={() => setMobileMenuOpen(false)}>
+            {NAV_ITEMS.map((item, index) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                   isActive(item.path)
                     ? 'bg-accent-subtle border-accent-subtle text-accent'
                     : 'hover:text-primary hover:bg-card-hover/50'
+                } ${
+                  mobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
                 }`}
+                style={{ transitionDelay: mobileMenuOpen ? `${index * 60}ms` : '0ms' }}
               >
-                <span className="text-xl"><Icon name={item.icon} className={isActive(item.path) ? 'text-accent' : 'nav-icon'} /></span>
-                <div className="font-medium">{item.label}</div>
+                <span className={`text-xl transition-transform duration-300 ${mobileMenuOpen ? 'scale-100' : 'scale-75'}`}>
+                  <Icon name={item.icon} className={isActive(item.path) ? 'text-accent' : 'nav-icon'} />
+                </span>
+                <div className={`font-medium transition-all duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ transitionDelay: mobileMenuOpen ? `${index * 60 + 30}ms` : '0ms' }}
+                >
+                  {item.label}
+                </div>
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
 
       {/* Desktop sidebar */}

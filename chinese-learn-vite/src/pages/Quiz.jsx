@@ -20,6 +20,7 @@ function CornerFlourishes() {
 export default function Quiz() {
   const { t, meaning } = useTranslation();
   const { state, dispatch, studyWord, togglePinned } = useApp();
+  const [selectedCategory, setSelectedCategory] = useState('hsk');
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [showSaved, setShowSaved] = useState(false);
@@ -29,11 +30,21 @@ export default function Quiz() {
   const [isCorrect, setIsCorrect] = useState(null);
   const [quizOver, setQuizOver] = useState(false);
 
+  const currentCategory = useMemo(
+    () => CATEGORIES.find(c => c.id === selectedCategory),
+    [selectedCategory]
+  );
+
   const startQuiz = useCallback(() => {
     let words = VOCABULARY;
 
     if (showSaved) {
       words = words.filter(w => state.savedWordIds.includes(w.id));
+    }
+
+    if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
+      const subIds = currentCategory.subcategories.map(s => s.id);
+      words = words.filter(w => subIds.includes(w.subcategory));
     }
 
     if (selectedSubcategories.length > 0) {
@@ -52,7 +63,7 @@ export default function Quiz() {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setQuizOver(false);
-  }, [showSaved, selectedSubcategories, selectedStatuses, numQuestions, state.wordStatuses, state.savedWordIds, dispatch]);
+  }, [showSaved, selectedSubcategories, selectedStatuses, numQuestions, currentCategory, state.wordStatuses, state.savedWordIds, dispatch]);
 
   const currentWord = state.quizWords[state.quizIndex];
   const totalQuestions = state.quizWords.length;
@@ -354,22 +365,22 @@ export default function Quiz() {
           {/* Question type */}
           <div className="fade-slide-up" style={{ animationDelay: '0.05s' }}>
             <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('quiz.questionType')}</p>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-none snap-x snap-proximity">
               <button
                 onClick={() => setQuestionType('meaning')}
-                className={`ink-chip ${questionType === 'meaning' ? 'active' : ''}`}
+                className={`ink-chip shrink-0 ${questionType === 'meaning' ? 'active' : ''}`}
               >
                 <Icon name="transfer" className="text-xs" /> {t('quiz.chineseToThai')}
               </button>
               <button
                 onClick={() => setQuestionType('pinyin')}
-                className={`ink-chip ${questionType === 'pinyin' ? 'active' : ''}`}
+                className={`ink-chip shrink-0 ${questionType === 'pinyin' ? 'active' : ''}`}
               >
                 <Icon name="fontFamily" className="text-xs" /> {t('quiz.pinyin')}
               </button>
               <button
                 onClick={() => setQuestionType('chinese')}
-                className={`ink-chip ${questionType === 'chinese' ? 'active' : ''}`}
+                className={`ink-chip shrink-0 ${questionType === 'chinese' ? 'active' : ''}`}
               >
                 <Icon name="transfer" className="text-xs" /> {t('quiz.thaiToChinese')}
               </button>
@@ -424,21 +435,33 @@ export default function Quiz() {
               </button>
             </div>
             <p className="text-xs font-semibold tracking-wider uppercase text-muted mb-2">{t('quiz.otherSubcategories')}</p>
-            <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto">
-              {CATEGORIES.map(cat =>
-                cat.subcategories.map(sub => (
+            <div className="w-full md:w-fit">
+              <div className="flex gap-1.5 mb-2 overflow-x-auto scrollbar-none">
+                {CATEGORIES.map(cat => (
                   <button
-                    key={sub.id}
-                    onClick={() => toggleSubcategory(sub.id)}
-                    onDoubleClick={() => togglePinned(sub.id)}
-                    className={`ink-chip ${
-                      selectedSubcategories.includes(sub.id) ? 'active' : ''
-                    } ${state.pinnedSubcategories.includes(sub.id) ? 'pinned' : ''}`}
+                    key={cat.id}
+                    onClick={() => { setSelectedCategory(cat.id); setSelectedSubcategories([]); setShowSaved(false); }}
+                    className={`ink-chip shrink-0 ${selectedCategory === cat.id && !showSaved ? 'active' : ''}`}
                   >
-                    <Icon name={sub.icon} className="text-xs" /> {state.language === 'th' ? sub.nameThai : sub.name}
+                    <Icon name={cat.icon} className="text-xs" /> {state.language === 'th' ? cat.nameThai : cat.name}
                   </button>
-                ))
-              )}
+                ))}
+              </div>
+              <div className="h-[1.5px] my-2" style={{background: 'var(--border-color)', opacity: 0.6}} />
+            </div>
+            <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto">
+              {!showSaved && currentCategory && currentCategory.subcategories.map(sub => (
+                <button
+                  key={sub.id}
+                  onClick={() => toggleSubcategory(sub.id)}
+                  onDoubleClick={() => togglePinned(sub.id)}
+                  className={`ink-chip ${
+                    selectedSubcategories.includes(sub.id) ? 'active' : ''
+                  } ${state.pinnedSubcategories.includes(sub.id) ? 'pinned' : ''}`}
+                >
+                  <Icon name={sub.icon} className="text-xs" /> {state.language === 'th' ? sub.nameThai : sub.name}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -469,6 +492,7 @@ export default function Quiz() {
                 value={numQuestions}
                 onChange={(e) => setNumQuestions(Number(e.target.value))}
                 className="flex-1 ink-slider"
+                style={{'--pct': `${((numQuestions - 5) / (30 - 5)) * 100}%`}}
               />
               <span className="text-sm font-medium min-w-[2.5rem] text-center tabular-nums">
                 {numQuestions}

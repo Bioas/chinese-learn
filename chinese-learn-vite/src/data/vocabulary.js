@@ -38,6 +38,66 @@ export const CATEGORIES = [
       { id: 'numbers', name: 'Numbers', nameThai: 'ตัวเลข', icon: 'numbers' },
     ]
   },
+  {
+    id: 'health',
+    name: 'Health',
+    nameThai: 'สุขภาพ',
+    icon: 'heart',
+    subcategories: [
+      { id: 'body', name: 'Body & Anatomy', nameThai: 'ร่างกายและอวัยวะ', icon: 'body' },
+      { id: 'illness', name: 'Illness & Symptoms', nameThai: 'โรคและอาการ', icon: 'illness' },
+      { id: 'exercise', name: 'Exercise & Fitness', nameThai: 'การออกกำลังกาย', icon: 'dumbbell' },
+      { id: 'nutrition', name: 'Food & Nutrition', nameThai: 'อาหารและโภชนาการ', icon: 'food' },
+    ]
+  },
+  {
+    id: 'education',
+    name: 'Education',
+    nameThai: 'การศึกษา',
+    icon: 'library',
+    subcategories: [
+      { id: 'school', name: 'School & Subjects', nameThai: 'โรงเรียนและวิชา', icon: 'school' },
+      { id: 'study', name: 'Learning & Study', nameThai: 'การเรียนรู้', icon: 'study' },
+      { id: 'exams', name: 'Exams & Grades', nameThai: 'การสอบและคะแนน', icon: 'exams' },
+      { id: 'research', name: 'Research & Academia', nameThai: 'การวิจัยและวิชาการ', icon: 'research' },
+    ]
+  },
+  {
+    id: 'technology',
+    name: 'Technology',
+    nameThai: 'เทคโนโลยี',
+    icon: 'cog',
+    subcategories: [
+      { id: 'computers', name: 'Computers & Internet', nameThai: 'คอมพิวเตอร์และอินเทอร์เน็ต', icon: 'computers' },
+      { id: 'communication', name: 'Communication', nameThai: 'การสื่อสาร', icon: 'messageDetail' },
+      { id: 'digital', name: 'Digital & Media', nameThai: 'ดิจิทัลและสื่อ', icon: 'digital' },
+      { id: 'ai', name: 'AI & Data', nameThai: 'AI และข้อมูล', icon: 'ai' },
+    ]
+  },
+  {
+    id: 'business',
+    name: 'Business',
+    nameThai: 'ธุรกิจ',
+    icon: 'barChart',
+    subcategories: [
+      { id: 'work', name: 'Work & Career', nameThai: 'การงานและอาชีพ', icon: 'work' },
+      { id: 'finance', name: 'Finance & Economy', nameThai: 'การเงินและเศรษฐกิจ', icon: 'finance' },
+      { id: 'office', name: 'Office & Company', nameThai: 'สำนักงานและบริษัท', icon: 'office' },
+      { id: 'market', name: 'Marketing & Trade', nameThai: 'การตลาดและการค้า', icon: 'market' },
+    ]
+  },
+  {
+    id: 'nature',
+    name: 'Nature',
+    nameThai: 'ธรรมชาติ',
+    icon: 'cloud',
+    subcategories: [
+      { id: 'animals', name: 'Animals', nameThai: 'สัตว์', icon: 'animals' },
+      { id: 'plants', name: 'Plants & Nature', nameThai: 'พืชและธรรมชาติ', icon: 'plants' },
+      { id: 'geography', name: 'Geography', nameThai: 'ภูมิศาสตร์', icon: 'geography' },
+      { id: 'environment', name: 'Environment', nameThai: 'สิ่งแวดล้อม', icon: 'environment' },
+    ]
+  },
 ];
 
 const SUBCATEGORY_ICONS = {
@@ -56,6 +116,26 @@ const SUBCATEGORY_ICONS = {
   family: 'family',
   colors: 'colors',
   numbers: 'numbers',
+  body: 'body',
+  illness: 'illness',
+  exercise: 'dumbbell',
+  nutrition: 'food',
+  school: 'school',
+  study: 'study',
+  exams: 'exams',
+  research: 'research',
+  computers: 'computers',
+  communication: 'messageDetail',
+  digital: 'digital',
+  ai: 'ai',
+  work: 'work',
+  finance: 'finance',
+  office: 'office',
+  market: 'market',
+  animals: 'animals',
+  plants: 'plants',
+  geography: 'geography',
+  environment: 'environment',
 };
 
 export function getSubcategoryIcon(subId) {
@@ -63,309 +143,309 @@ export function getSubcategoryIcon(subId) {
 }
 
 const HSK1_WORDS = [
-  { id: 'hsk1-001', chinese: '爱', pinyin: 'ài', meaning: 'To love; affection', meaningThai: 'รัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爱你。', pinyin: 'Wǒ ài nǐ.', meaning: 'I love you.' }] },
-  { id: 'hsk1-002', chinese: '八', pinyin: 'bā', meaning: 'Eight', meaningThai: 'แปด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '有八个人。', pinyin: 'Yǒu bā gè rén.', meaning: 'There are eight people.' }] },
-  { id: 'hsk1-003', chinese: '爸爸', pinyin: 'bà ba', meaning: 'Dad/Father', meaningThai: 'พ่อ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爸爸是医生。', pinyin: 'Wǒ bà ba shì yī shēng.', meaning: 'My dad is a doctor.' }] },
-  { id: 'hsk1-004', chinese: '杯子', pinyin: 'bēi zi', meaning: 'Cup/Glass', meaningThai: 'ถ้วย, แก้ว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一个杯子。', pinyin: 'Wǒ yǒu yī gè bēi zi.', meaning: 'I have a cup.' }] },
-  { id: 'hsk1-005', chinese: '北京', pinyin: 'Běi jīng', meaning: 'Beijing', meaningThai: 'ปักกิ่ง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '北京很大。', pinyin: 'Běi jīng hěn dà.', meaning: 'Beijing is very big.' }] },
-  { id: 'hsk1-006', chinese: '本', pinyin: 'běn', meaning: 'Classifier for books', meaningThai: 'เล่ม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一本书。', pinyin: 'Yī běn shū.', meaning: 'One book.' }] },
-  { id: 'hsk1-007', chinese: '不客气', pinyin: 'bú kè qi', meaning: "You're welcome", meaningThai: 'ไม่เป็นไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '不客气！', pinyin: 'Bú kè qi!', meaning: "You're welcome!" }] },
-  { id: 'hsk1-008', chinese: '不', pinyin: 'bù', meaning: 'Not/No', meaningThai: 'ไม่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我不是学生。', pinyin: 'Wǒ bú shì xué shēng.', meaning: 'I am not a student.' }] },
-  { id: 'hsk1-009', chinese: '菜', pinyin: 'cài', meaning: 'Dish/Vegetables', meaningThai: 'กับข้าว, ผัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这个菜很好吃。', pinyin: 'Zhè ge cài hěn hǎo chī.', meaning: 'This dish is delicious.' }] },
-  { id: 'hsk1-010', chinese: '茶', pinyin: 'chá', meaning: 'Tea', meaningThai: 'ชา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我要喝茶。', pinyin: 'Wǒ yào hē chá.', meaning: 'I want to drink tea.' }] },
-  { id: 'hsk1-011', chinese: '吃', pinyin: 'chī', meaning: 'To eat', meaningThai: 'กิน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你吃饭了吗？', pinyin: 'Nǐ chī fàn le ma?', meaning: 'Have you eaten?' }] },
-  { id: 'hsk1-012', chinese: '出租车', pinyin: 'chū zū chē', meaning: 'Taxi', meaningThai: 'แท็กซี่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我坐出租车去。', pinyin: 'Wǒ zuò chū zū chē qù.', meaning: 'I go by taxi.' }] },
-  { id: 'hsk1-013', chinese: '打电话', pinyin: 'dǎ diàn huà', meaning: 'To make a phone call', meaningThai: 'โทรศัพท์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我给你打电话。', pinyin: 'Wǒ gěi nǐ dǎ diàn huà.', meaning: 'I will call you.' }] },
-  { id: 'hsk1-014', chinese: '大', pinyin: 'dà', meaning: 'Big', meaningThai: 'ใหญ่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这个房子很大。', pinyin: 'Zhè ge fáng zi hěn dà.', meaning: 'This house is very big.' }] },
-  { id: 'hsk1-015', chinese: '的', pinyin: 'de', meaning: 'Possessive particle', meaningThai: 'ของ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我的书。', pinyin: 'Wǒ de shū.', meaning: 'My book.' }] },
-  { id: 'hsk1-016', chinese: '点', pinyin: 'diǎn', meaning: "O'clock; a little", meaningThai: 'โมง, จุด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '现在三点。', pinyin: 'Xiàn zài sān diǎn.', meaning: "It's 3 o'clock." }] },
-  { id: 'hsk1-017', chinese: '电脑', pinyin: 'diàn nǎo', meaning: 'Computer', meaningThai: 'คอมพิวเตอร์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有电脑。', pinyin: 'Wǒ yǒu diàn nǎo.', meaning: 'I have a computer.' }] },
-  { id: 'hsk1-018', chinese: '电视', pinyin: 'diàn shì', meaning: 'Television', meaningThai: 'โทรทัศน์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我看电视。', pinyin: 'Wǒ kàn diàn shì.', meaning: 'I watch TV.' }] },
-  { id: 'hsk1-019', chinese: '电影', pinyin: 'diàn yǐng', meaning: 'Movie/Film', meaningThai: 'ภาพยนตร์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爱看电影。', pinyin: 'Wǒ ài kàn diàn yǐng.', meaning: 'I love watching movies.' }] },
-  { id: 'hsk1-020', chinese: '东西', pinyin: 'dōng xi', meaning: 'Thing/Stuff', meaningThai: 'สิ่งของ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这是什么东西？', pinyin: 'Zhè shì shén me dōng xi?', meaning: 'What is this thing?' }] },
-  { id: 'hsk1-021', chinese: '都', pinyin: 'dōu', meaning: 'All/Both', meaningThai: 'ทั้งหมด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我们都是学生。', pinyin: 'Wǒ men dōu shì xué shēng.', meaning: 'We are all students.' }] },
-  { id: 'hsk1-022', chinese: '读', pinyin: 'dú', meaning: 'To read; to study', meaningThai: 'อ่าน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我读书。', pinyin: 'Wǒ dú shū.', meaning: 'I read a book.' }] },
-  { id: 'hsk1-023', chinese: '对不起', pinyin: 'duì bu qǐ', meaning: 'Sorry', meaningThai: 'ขอโทษ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '对不起，我错了。', pinyin: 'Duì bu qǐ, wǒ cuò le.', meaning: 'Sorry, I was wrong.' }] },
-  { id: 'hsk1-024', chinese: '多', pinyin: 'duō', meaning: 'Many/Much', meaningThai: 'มาก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '很多学生。', pinyin: 'Hěn duō xué shēng.', meaning: 'Many students.' }] },
-  { id: 'hsk1-025', chinese: '多少', pinyin: 'duō shao', meaning: 'How much/How many', meaningThai: 'เท่าไหร่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '多少钱？', pinyin: 'Duō shao qián?', meaning: 'How much money?' }] },
-  { id: 'hsk1-026', chinese: '儿子', pinyin: 'ér zi', meaning: 'Son', meaningThai: 'ลูกชาย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一个儿子。', pinyin: 'Wǒ yǒu yī gè ér zi.', meaning: 'I have a son.' }] },
-  { id: 'hsk1-027', chinese: '二', pinyin: 'èr', meaning: 'Two', meaningThai: 'สอง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '二个苹果。', pinyin: 'Èr gè píng guǒ.', meaning: 'Two apples.' }] },
-  { id: 'hsk1-028', chinese: '饭店', pinyin: 'fàn diàn', meaning: 'Restaurant/Hotel', meaningThai: 'ร้านอาหาร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我们去饭店吃饭。', pinyin: 'Wǒ men qù fàn diàn chī fàn.', meaning: 'We go to a restaurant to eat.' }] },
-  { id: 'hsk1-029', chinese: '飞机', pinyin: 'fēi jī', meaning: 'Airplane', meaningThai: 'เครื่องบิน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我坐飞机去。', pinyin: 'Wǒ zuò fēi jī qù.', meaning: 'I go by airplane.' }] },
-  { id: 'hsk1-030', chinese: '分钟', pinyin: 'fēn zhōng', meaning: 'Minute', meaningThai: 'นาที', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '等十分钟。', pinyin: 'Děng shí fēn zhōng.', meaning: 'Wait ten minutes.' }] },
-  { id: 'hsk1-031', chinese: '高兴', pinyin: 'gāo xìng', meaning: 'Happy/Glad', meaningThai: 'ดีใจ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我很高兴。', pinyin: 'Wǒ hěn gāo xìng.', meaning: 'I am very happy.' }] },
-  { id: 'hsk1-032', chinese: '个', pinyin: 'gè', meaning: 'General classifier', meaningThai: '(ลักษณะนาม)', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一个人。', pinyin: 'Yī gè rén.', meaning: 'One person.' }] },
-  { id: 'hsk1-033', chinese: '工作', pinyin: 'gōng zuò', meaning: 'Work/Job', meaningThai: 'ทำงาน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我工作很忙。', pinyin: 'Wǒ gōng zuò hěn máng.', meaning: 'My work is very busy.' }] },
-  { id: 'hsk1-034', chinese: '狗', pinyin: 'gǒu', meaning: 'Dog', meaningThai: 'หมา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这只狗很大。', pinyin: 'Zhè zhī gǒu hěn dà.', meaning: 'This dog is very big.' }] },
-  { id: 'hsk1-035', chinese: '汉语', pinyin: 'Hàn yǔ', meaning: 'Chinese language', meaningThai: 'ภาษาจีน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我学汉语。', pinyin: 'Wǒ xué Hàn yǔ.', meaning: 'I study Chinese.' }] },
-  { id: 'hsk1-036', chinese: '好', pinyin: 'hǎo', meaning: 'Good', meaningThai: 'ดี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天天气很好。', pinyin: 'Jīn tiān tiān qì hěn hǎo.', meaning: 'The weather is good today.' }] },
-  { id: 'hsk1-037', chinese: '号', pinyin: 'hào', meaning: 'Day of month; number', meaningThai: 'วันที่, เบอร์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天几号？', pinyin: 'Jīn tiān jǐ hào?', meaning: 'What date is today?' }] },
-  { id: 'hsk1-038', chinese: '喝', pinyin: 'hē', meaning: 'To drink', meaningThai: 'ดื่ม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我喝水。', pinyin: 'Wǒ hē shuǐ.', meaning: 'I drink water.' }] },
-  { id: 'hsk1-039', chinese: '和', pinyin: 'hé', meaning: 'And/With', meaningThai: 'และ, กับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我和朋友。', pinyin: 'Wǒ hé péng you.', meaning: 'Me and my friend.' }] },
-  { id: 'hsk1-040', chinese: '很', pinyin: 'hěn', meaning: 'Very', meaningThai: 'มาก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '她很高。', pinyin: 'Tā hěn gāo.', meaning: 'She is very tall.' }] },
-  { id: 'hsk1-041', chinese: '后面', pinyin: 'hòu miàn', meaning: 'Behind/Back', meaningThai: 'ด้านหลัง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '学校在后面。', pinyin: 'Xué xiào zài hòu miàn.', meaning: 'The school is behind.' }] },
-  { id: 'hsk1-042', chinese: '回', pinyin: 'huí', meaning: 'To return', meaningThai: 'กลับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我回家。', pinyin: 'Wǒ huí jiā.', meaning: 'I go home.' }] },
-  { id: 'hsk1-043', chinese: '会', pinyin: 'huì', meaning: 'Can; able to', meaningThai: 'สามารถ, เป็น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我会中文。', pinyin: 'Wǒ huì zhōng wén.', meaning: 'I can speak Chinese.' }] },
-  { id: 'hsk1-044', chinese: '几', pinyin: 'jǐ', meaning: 'How many; several', meaningThai: 'กี่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '几个人？', pinyin: 'Jǐ gè rén?', meaning: 'How many people?' }] },
-  { id: 'hsk1-045', chinese: '家', pinyin: 'jiā', meaning: 'Home/Family', meaningThai: 'บ้าน, ครอบครัว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我家在北京。', pinyin: 'Wǒ jiā zài Běi jīng.', meaning: 'My home is in Beijing.' }] },
-  { id: 'hsk1-046', chinese: '叫', pinyin: 'jiào', meaning: 'To be called; to call', meaningThai: 'ชื่อว่า, เรียก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你叫什么名字？', pinyin: 'Nǐ jiào shén me míng zì?', meaning: 'What is your name?' }] },
-  { id: 'hsk1-047', chinese: '今天', pinyin: 'jīn tiān', meaning: 'Today', meaningThai: 'วันนี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天星期三。', pinyin: 'Jīn tiān xīng qī sān.', meaning: 'Today is Wednesday.' }] },
-  { id: 'hsk1-048', chinese: '九', pinyin: 'jiǔ', meaning: 'Nine', meaningThai: 'เก้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '九个人。', pinyin: 'Jiǔ gè rén.', meaning: 'Nine people.' }] },
-  { id: 'hsk1-049', chinese: '开', pinyin: 'kāi', meaning: 'To open; to drive', meaningThai: 'เปิด, ขับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请开门。', pinyin: 'Qǐng kāi mén.', meaning: 'Please open the door.' }] },
-  { id: 'hsk1-050', chinese: '看', pinyin: 'kàn', meaning: 'To look; to watch', meaningThai: 'มอง, ดู', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我看书。', pinyin: 'Wǒ kàn shū.', meaning: 'I read a book.' }] },
-  { id: 'hsk1-051', chinese: '看见', pinyin: 'kàn jiàn', meaning: 'To see', meaningThai: 'มองเห็น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我看见他了。', pinyin: 'Wǒ kàn jiàn tā le.', meaning: 'I saw him.' }] },
-  { id: 'hsk1-052', chinese: '块', pinyin: 'kuài', meaning: 'Piece; yuan', meaningThai: 'หยวน, ก้อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '十块钱。', pinyin: 'Shí kuài qián.', meaning: 'Ten yuan.' }] },
-  { id: 'hsk1-053', chinese: '来', pinyin: 'lái', meaning: 'To come', meaningThai: 'มา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他来了。', pinyin: 'Tā lái le.', meaning: 'He came.' }] },
-  { id: 'hsk1-054', chinese: '老师', pinyin: 'lǎo shī', meaning: 'Teacher', meaningThai: 'ครู', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '老师好！', pinyin: 'Lǎo shī hǎo!', meaning: 'Hello, teacher!' }] },
-  { id: 'hsk1-055', chinese: '了', pinyin: 'le', meaning: 'Completed action marker', meaningThai: 'แล้ว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我吃了。', pinyin: 'Wǒ chī le.', meaning: 'I have eaten.' }] },
-  { id: 'hsk1-056', chinese: '冷', pinyin: 'lěng', meaning: 'Cold', meaningThai: 'หนาว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天很冷。', pinyin: 'Jīn tiān hěn lěng.', meaning: 'Today is very cold.' }] },
-  { id: 'hsk1-057', chinese: '里', pinyin: 'lǐ', meaning: 'Inside', meaningThai: 'ใน, ข้างใน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '在学校里。', pinyin: 'Zài xué xiào lǐ.', meaning: 'Inside the school.' }] },
-  { id: 'hsk1-058', chinese: '六', pinyin: 'liù', meaning: 'Six', meaningThai: 'หก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '六本书。', pinyin: 'Liù běn shū.', meaning: 'Six books.' }] },
-  { id: 'hsk1-059', chinese: '妈妈', pinyin: 'mā ma', meaning: 'Mom/Mother', meaningThai: 'แม่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '妈妈做的饭好吃。', pinyin: 'Mā ma zuò de fàn hǎo chī.', meaning: "Mom's cooking is delicious." }] },
-  { id: 'hsk1-060', chinese: '吗', pinyin: 'ma', meaning: 'Question particle', meaningThai: 'ไหม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你好吗？', pinyin: 'Nǐ hǎo ma?', meaning: 'How are you?' }] },
-  { id: 'hsk1-061', chinese: '买', pinyin: 'mǎi', meaning: 'To buy', meaningThai: 'ซื้อ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我买书。', pinyin: 'Wǒ mǎi shū.', meaning: 'I buy books.' }] },
-  { id: 'hsk1-062', chinese: '没关系', pinyin: 'méi guān xi', meaning: "It doesn't matter", meaningThai: 'ไม่เป็นไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '没关系，慢慢来。', pinyin: 'Méi guān xi, màn man lái.', meaning: "It doesn't matter, take your time." }] },
-  { id: 'hsk1-063', chinese: '没有', pinyin: 'méi yǒu', meaning: "To not have; haven't", meaningThai: 'ไม่มี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我没有钱。', pinyin: 'Wǒ méi yǒu qián.', meaning: "I don't have money." }] },
-  { id: 'hsk1-064', chinese: '米饭', pinyin: 'mǐ fàn', meaning: 'Rice', meaningThai: 'ข้าว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爱吃米饭。', pinyin: 'Wǒ ài chī mǐ fàn.', meaning: 'I love eating rice.' }] },
-  { id: 'hsk1-065', chinese: '明天', pinyin: 'míng tiān', meaning: 'Tomorrow', meaningThai: 'พรุ่งนี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '明天见。', pinyin: 'Míng tiān jiàn.', meaning: 'See you tomorrow.' }] },
-  { id: 'hsk1-066', chinese: '名字', pinyin: 'míng zì', meaning: 'Name', meaningThai: 'ชื่อ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我的名字是小明。', pinyin: 'Wǒ de míng zì shì Xiǎo Míng.', meaning: 'My name is Xiaoming.' }] },
-  { id: 'hsk1-067', chinese: '哪', pinyin: 'nǎ', meaning: 'Which', meaningThai: 'ไหน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '哪个是你的？', pinyin: 'Nǎ gè shì nǐ de?', meaning: 'Which one is yours?' }] },
-  { id: 'hsk1-068', chinese: '哪儿', pinyin: 'nǎr', meaning: 'Where', meaningThai: 'ที่ไหน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你去哪儿？', pinyin: 'Nǐ qù nǎr?', meaning: 'Where are you going?' }] },
-  { id: 'hsk1-069', chinese: '那', pinyin: 'nà', meaning: 'That', meaningThai: 'นั่น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '那是我的书。', pinyin: 'Nà shì wǒ de shū.', meaning: 'That is my book.' }] },
-  { id: 'hsk1-070', chinese: '呢', pinyin: 'ne', meaning: 'Question particle', meaningThai: 'ล่ะ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你呢？', pinyin: 'Nǐ ne?', meaning: 'And you?' }] },
-  { id: 'hsk1-071', chinese: '能', pinyin: 'néng', meaning: 'Can; be able to', meaningThai: 'สามารถ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我能来。', pinyin: 'Wǒ néng lái.', meaning: 'I can come.' }] },
-  { id: 'hsk1-072', chinese: '你', pinyin: 'nǐ', meaning: 'You', meaningThai: 'คุณ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你是老师吗？', pinyin: 'Nǐ shì lǎo shī ma?', meaning: 'Are you a teacher?' }] },
-  { id: 'hsk1-073', chinese: '年', pinyin: 'nián', meaning: 'Year', meaningThai: 'ปี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '新年快乐！', pinyin: 'Xīn nián kuài lè!', meaning: 'Happy New Year!' }] },
-  { id: 'hsk1-074', chinese: '女儿', pinyin: 'nǚ ér', meaning: 'Daughter', meaningThai: 'ลูกสาว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一个女儿。', pinyin: 'Wǒ yǒu yī gè nǚ ér.', meaning: 'I have a daughter.' }] },
-  { id: 'hsk1-075', chinese: '朋友', pinyin: 'péng you', meaning: 'Friend', meaningThai: 'เพื่อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是我的朋友。', pinyin: 'Tā shì wǒ de péng you.', meaning: 'He is my friend.' }] },
-  { id: 'hsk1-076', chinese: '漂亮', pinyin: 'piào liang', meaning: 'Beautiful', meaningThai: 'สวย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '她很漂亮。', pinyin: 'Tā hěn piào liang.', meaning: 'She is beautiful.' }] },
-  { id: 'hsk1-077', chinese: '苹果', pinyin: 'píng guǒ', meaning: 'Apple', meaningThai: 'แอปเปิ้ล', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '苹果很好吃。', pinyin: 'Píng guǒ hěn hǎo chī.', meaning: 'Apples are delicious.' }] },
-  { id: 'hsk1-078', chinese: '七', pinyin: 'qī', meaning: 'Seven', meaningThai: 'เจ็ด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '七点。', pinyin: 'Qī diǎn.', meaning: "Seven o'clock." }] },
-  { id: 'hsk1-079', chinese: '前面', pinyin: 'qián miàn', meaning: 'In front; ahead', meaningThai: 'ด้านหน้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '车站前面。', pinyin: 'Chē zhàn qián miàn.', meaning: 'In front of the station.' }] },
-  { id: 'hsk1-080', chinese: '钱', pinyin: 'qián', meaning: 'Money', meaningThai: 'เงิน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我没有钱。', pinyin: 'Wǒ méi yǒu qián.', meaning: "I don't have money." }] },
-  { id: 'hsk1-081', chinese: '请', pinyin: 'qǐng', meaning: 'Please; to invite', meaningThai: 'เชิญ, กรุณา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请进。', pinyin: 'Qǐng jìn.', meaning: 'Please come in.' }] },
-  { id: 'hsk1-082', chinese: '去', pinyin: 'qù', meaning: 'To go', meaningThai: 'ไป', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我去学校。', pinyin: 'Wǒ qù xué xiào.', meaning: 'I go to school.' }] },
-  { id: 'hsk1-083', chinese: '热', pinyin: 'rè', meaning: 'Hot', meaningThai: 'ร้อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天很热。', pinyin: 'Jīn tiān hěn rè.', meaning: 'Today is very hot.' }] },
-  { id: 'hsk1-084', chinese: '人', pinyin: 'rén', meaning: 'Person/People', meaningThai: 'คน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '很多人。', pinyin: 'Hěn duō rén.', meaning: 'Many people.' }] },
-  { id: 'hsk1-085', chinese: '认识', pinyin: 'rèn shi', meaning: 'To know; to recognize', meaningThai: 'รู้จัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我认识他。', pinyin: 'Wǒ rèn shi tā.', meaning: 'I know him.' }] },
-  { id: 'hsk1-086', chinese: '三', pinyin: 'sān', meaning: 'Three', meaningThai: 'สาม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '三个朋友。', pinyin: 'Sān gè péng you.', meaning: 'Three friends.' }] },
-  { id: 'hsk1-087', chinese: '商店', pinyin: 'shāng diàn', meaning: 'Store/Shop', meaningThai: 'ร้านค้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我去商店。', pinyin: 'Wǒ qù shāng diàn.', meaning: 'I go to the store.' }] },
-  { id: 'hsk1-088', chinese: '上', pinyin: 'shàng', meaning: 'On/Above/Up', meaningThai: 'บน, ด้านบน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '桌子上。', pinyin: 'Zhuō zi shàng.', meaning: 'On the table.' }] },
-  { id: 'hsk1-089', chinese: '上午', pinyin: 'shàng wǔ', meaning: 'Morning', meaningThai: 'ตอนเช้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '上午九点。', pinyin: 'Shàng wǔ jiǔ diǎn.', meaning: '9 am.' }] },
-  { id: 'hsk1-090', chinese: '少', pinyin: 'shǎo', meaning: 'Few/Little', meaningThai: 'น้อย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '很少人。', pinyin: 'Hěn shǎo rén.', meaning: 'Very few people.' }] },
-  { id: 'hsk1-091', chinese: '谁', pinyin: 'shéi', meaning: 'Who', meaningThai: 'ใคร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是谁？', pinyin: 'Tā shì shéi?', meaning: 'Who is he?' }] },
-  { id: 'hsk1-092', chinese: '什么', pinyin: 'shén me', meaning: 'What', meaningThai: 'อะไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这是什么？', pinyin: 'Zhè shì shén me?', meaning: 'What is this?' }] },
-  { id: 'hsk1-093', chinese: '十', pinyin: 'shí', meaning: 'Ten', meaningThai: 'สิบ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '十块钱。', pinyin: 'Shí kuài qián.', meaning: 'Ten yuan.' }] },
-  { id: 'hsk1-094', chinese: '时候', pinyin: 'shí hou', meaning: 'Time/Moment', meaningThai: 'เวลา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '什么时候？', pinyin: 'Shén me shí hou?', meaning: 'What time?' }] },
-  { id: 'hsk1-095', chinese: '是', pinyin: 'shì', meaning: 'To be (is/am/are)', meaningThai: 'เป็น, คือ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我是学生。', pinyin: 'Wǒ shì xué shēng.', meaning: 'I am a student.' }] },
-  { id: 'hsk1-096', chinese: '书', pinyin: 'shū', meaning: 'Book', meaningThai: 'หนังสือ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这本书很好。', pinyin: 'Zhè běn shū hěn hǎo.', meaning: 'This book is very good.' }] },
-  { id: 'hsk1-097', chinese: '水', pinyin: 'shuǐ', meaning: 'Water', meaningThai: 'น้ำ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我要喝水。', pinyin: 'Wǒ yào hē shuǐ.', meaning: 'I want to drink water.' }] },
-  { id: 'hsk1-098', chinese: '水果', pinyin: 'shuǐ guǒ', meaning: 'Fruit', meaningThai: 'ผลไม้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '水果很好吃。', pinyin: 'Shuǐ guǒ hěn hǎo chī.', meaning: 'Fruit is delicious.' }] },
-  { id: 'hsk1-099', chinese: '睡觉', pinyin: 'shuì jiào', meaning: 'To sleep', meaningThai: 'นอนหลับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我睡觉了。', pinyin: 'Wǒ shuì jiào le.', meaning: 'I went to sleep.' }] },
-  { id: 'hsk1-100', chinese: '说', pinyin: 'shuō', meaning: 'To speak; to say', meaningThai: 'พูด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他说中文。', pinyin: 'Tā shuō zhōng wén.', meaning: 'He speaks Chinese.' }] },
-  { id: 'hsk1-101', chinese: '四', pinyin: 'sì', meaning: 'Four', meaningThai: 'สี่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '四个苹果。', pinyin: 'Sì gè píng guǒ.', meaning: 'Four apples.' }] },
-  { id: 'hsk1-102', chinese: '岁', pinyin: 'suì', meaning: 'Years of age', meaningThai: 'ขวบ, ปี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我二十岁。', pinyin: 'Wǒ èr shí suì.', meaning: 'I am 20 years old.' }] },
-  { id: 'hsk1-103', chinese: '他', pinyin: 'tā', meaning: 'He/Him', meaningThai: 'เขา (ผู้ชาย)', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是老师。', pinyin: 'Tā shì lǎo shī.', meaning: 'He is a teacher.' }] },
-  { id: 'hsk1-104', chinese: '她', pinyin: 'tā', meaning: 'She/Her', meaningThai: 'เขา (ผู้หญิง)', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '她是医生。', pinyin: 'Tā shì yī shēng.', meaning: 'She is a doctor.' }] },
-  { id: 'hsk1-105', chinese: '太', pinyin: 'tài', meaning: 'Too; extremely', meaningThai: 'เกินไป', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '太好了！', pinyin: 'Tài hǎo le!', meaning: "That's great!" }] },
-  { id: 'hsk1-106', chinese: '天气', pinyin: 'tiān qì', meaning: 'Weather', meaningThai: 'อากาศ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '天气很好。', pinyin: 'Tiān qì hěn hǎo.', meaning: 'The weather is good.' }] },
-  { id: 'hsk1-107', chinese: '听', pinyin: 'tīng', meaning: 'To listen; to hear', meaningThai: 'ฟัง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我听音乐。', pinyin: 'Wǒ tīng yīn yuè.', meaning: 'I listen to music.' }] },
-  { id: 'hsk1-108', chinese: '同学', pinyin: 'tóng xué', meaning: 'Classmate', meaningThai: 'เพื่อนร่วมชั้น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是我的同学。', pinyin: 'Tā shì wǒ de tóng xué.', meaning: 'He is my classmate.' }] },
-  { id: 'hsk1-109', chinese: '喂', pinyin: 'wèi', meaning: 'Hello (on phone)', meaningThai: 'ฮัลโหล', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '喂，你好。', pinyin: 'Wèi, nǐ hǎo.', meaning: 'Hello?' }] },
-  { id: 'hsk1-110', chinese: '我', pinyin: 'wǒ', meaning: 'I/Me', meaningThai: 'ฉัน, ผม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我喜欢你。', pinyin: 'Wǒ xǐ huān nǐ.', meaning: 'I like you.' }] },
-  { id: 'hsk1-111', chinese: '我们', pinyin: 'wǒ men', meaning: 'We/Us', meaningThai: 'พวกเรา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我们是朋友。', pinyin: 'Wǒ men shì péng you.', meaning: 'We are friends.' }] },
-  { id: 'hsk1-112', chinese: '五', pinyin: 'wǔ', meaning: 'Five', meaningThai: 'ห้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '五本书。', pinyin: 'Wǔ běn shū.', meaning: 'Five books.' }] },
-  { id: 'hsk1-113', chinese: '喜欢', pinyin: 'xǐ huān', meaning: 'To like', meaningThai: 'ชอบ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我喜欢汉语。', pinyin: 'Wǒ xǐ huān Hàn yǔ.', meaning: 'I like Chinese.' }] },
-  { id: 'hsk1-114', chinese: '下', pinyin: 'xià', meaning: 'Down/Under/Next', meaningThai: 'ล่าง, ใต้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '在桌子下。', pinyin: 'Zài zhuō zi xià.', meaning: 'Under the table.' }] },
-  { id: 'hsk1-115', chinese: '下午', pinyin: 'xià wǔ', meaning: 'Afternoon', meaningThai: 'ตอนบ่าย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '下午两点。', pinyin: 'Xià wǔ liǎng diǎn.', meaning: '2 pm.' }] },
-  { id: 'hsk1-116', chinese: '下雨', pinyin: 'xià yǔ', meaning: 'To rain', meaningThai: 'ฝนตก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天下雨。', pinyin: 'Jīn tiān xià yǔ.', meaning: 'It is raining today.' }] },
-  { id: 'hsk1-117', chinese: '先生', pinyin: 'xiān shēng', meaning: 'Mr.; husband', meaningThai: 'คุณผู้ชาย, สามี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '王先生好。', pinyin: 'Wáng xiān shēng hǎo.', meaning: 'Hello Mr. Wang.' }] },
-  { id: 'hsk1-118', chinese: '现在', pinyin: 'xiàn zài', meaning: 'Now', meaningThai: 'ตอนนี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '现在几点？', pinyin: 'Xiàn zài jǐ diǎn?', meaning: 'What time is it now?' }] },
-  { id: 'hsk1-119', chinese: '想', pinyin: 'xiǎng', meaning: 'To want; to think', meaningThai: 'คิด, อยาก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我想回家。', pinyin: 'Wǒ xiǎng huí jiā.', meaning: 'I want to go home.' }] },
-  { id: 'hsk1-120', chinese: '小', pinyin: 'xiǎo', meaning: 'Small', meaningThai: 'เล็ก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这只猫很小。', pinyin: 'Zhè zhī māo hěn xiǎo.', meaning: 'This cat is very small.' }] },
-  { id: 'hsk1-121', chinese: '小姐', pinyin: 'xiǎo jiě', meaning: 'Miss; young lady', meaningThai: 'คุณผู้หญิง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '小姐，你好。', pinyin: 'Xiǎo jiě, nǐ hǎo.', meaning: 'Hello, miss.' }] },
-  { id: 'hsk1-122', chinese: '些', pinyin: 'xiē', meaning: 'Some; a few', meaningThai: 'บาง, เล็กน้อย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这些书。', pinyin: 'Zhè xiē shū.', meaning: 'These books.' }] },
-  { id: 'hsk1-123', chinese: '写', pinyin: 'xiě', meaning: 'To write', meaningThai: 'เขียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我写汉字。', pinyin: 'Wǒ xiě Hàn zì.', meaning: 'I write Chinese characters.' }] },
-  { id: 'hsk1-124', chinese: '谢谢', pinyin: 'xiè xie', meaning: 'Thank you', meaningThai: 'ขอบคุณ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '谢谢你的帮助。', pinyin: 'Xiè xiè nǐ de bāng zhù.', meaning: 'Thank you for your help.' }] },
-  { id: 'hsk1-125', chinese: '星期', pinyin: 'xīng qī', meaning: 'Week', meaningThai: 'สัปดาห์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一个星期。', pinyin: 'Yī gè xīng qī.', meaning: 'One week.' }] },
-  { id: 'hsk1-126', chinese: '学生', pinyin: 'xué shēng', meaning: 'Student', meaningThai: 'นักเรียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我是学生。', pinyin: 'Wǒ shì xué shēng.', meaning: 'I am a student.' }] },
-  { id: 'hsk1-127', chinese: '学习', pinyin: 'xué xí', meaning: 'To study', meaningThai: 'เรียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我学习汉语。', pinyin: 'Wǒ xué xí Hàn yǔ.', meaning: 'I study Chinese.' }] },
-  { id: 'hsk1-128', chinese: '学校', pinyin: 'xué xiào', meaning: 'School', meaningThai: 'โรงเรียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '学校很大。', pinyin: 'Xué xiào hěn dà.', meaning: 'The school is very big.' }] },
-  { id: 'hsk1-129', chinese: '一', pinyin: 'yī', meaning: 'One', meaningThai: 'หนึ่ง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一个朋友。', pinyin: 'Yī gè péng you.', meaning: 'One friend.' }] },
-  { id: 'hsk1-130', chinese: '一点儿', pinyin: 'yī diǎnr', meaning: 'A little bit', meaningThai: 'นิดหน่อย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我会一点儿汉语。', pinyin: 'Wǒ huì yī diǎnr Hàn yǔ.', meaning: 'I know a little Chinese.' }] },
-  { id: 'hsk1-131', chinese: '医生', pinyin: 'yī shēng', meaning: 'Doctor', meaningThai: 'หมอ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是医生。', pinyin: 'Tā shì yī shēng.', meaning: 'He is a doctor.' }] },
-  { id: 'hsk1-132', chinese: '医院', pinyin: 'yī yuàn', meaning: 'Hospital', meaningThai: 'โรงพยาบาล', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他在医院。', pinyin: 'Tā zài yī yuàn.', meaning: 'He is at the hospital.' }] },
-  { id: 'hsk1-133', chinese: '衣服', pinyin: 'yī fu', meaning: 'Clothes', meaningThai: 'เสื้อผ้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这件衣服很漂亮。', pinyin: 'Zhè jiàn yī fu hěn piào liang.', meaning: 'This piece of clothing is beautiful.' }] },
-  { id: 'hsk1-134', chinese: '椅子', pinyin: 'yǐ zi', meaning: 'Chair', meaningThai: 'เก้าอี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请坐椅子。', pinyin: 'Qǐng zuò yǐ zi.', meaning: 'Please sit on the chair.' }] },
-  { id: 'hsk1-135', chinese: '有', pinyin: 'yǒu', meaning: 'To have; there is/are', meaningThai: 'มี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一只狗。', pinyin: 'Wǒ yǒu yī zhī gǒu.', meaning: 'I have a dog.' }] },
-  { id: 'hsk1-136', chinese: '月', pinyin: 'yuè', meaning: 'Month; moon', meaningThai: 'เดือน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一月。', pinyin: 'Yī yuè.', meaning: 'January.' }] },
-  { id: 'hsk1-137', chinese: '再见', pinyin: 'zài jiàn', meaning: 'Goodbye', meaningThai: 'ลาก่อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '明天再见。', pinyin: 'Míng tiān zài jiàn.', meaning: 'See you tomorrow.' }] },
-  { id: 'hsk1-138', chinese: '在', pinyin: 'zài', meaning: 'At; in; on; -ing', meaningThai: 'อยู่ที่, กำลัง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我在学校。', pinyin: 'Wǒ zài xué xiào.', meaning: 'I am at school.' }] },
-  { id: 'hsk1-139', chinese: '怎么', pinyin: 'zěn me', meaning: 'How', meaningThai: 'อย่างไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你怎么去？', pinyin: 'Nǐ zěn me qù?', meaning: 'How do you go?' }] },
-  { id: 'hsk1-140', chinese: '怎么样', pinyin: 'zěn me yàng', meaning: 'How about it?', meaningThai: 'เป็นอย่างไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你怎么样？', pinyin: 'Nǐ zěn me yàng?', meaning: 'How are you?' }] },
-  { id: 'hsk1-141', chinese: '这', pinyin: 'zhè', meaning: 'This/These', meaningThai: 'นี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这是我的书。', pinyin: 'Zhè shì wǒ de shū.', meaning: 'This is my book.' }] },
-  { id: 'hsk1-142', chinese: '中国', pinyin: 'Zhōng guó', meaning: 'China', meaningThai: 'จีน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '中国很大。', pinyin: 'Zhōng guó hěn dà.', meaning: 'China is very big.' }] },
-  { id: 'hsk1-143', chinese: '中午', pinyin: 'zhōng wǔ', meaning: 'Noon/Midday', meaningThai: 'เที่ยงวัน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '中午十二点。', pinyin: 'Zhōng wǔ shí èr diǎn.', meaning: '12 noon.' }] },
-  { id: 'hsk1-144', chinese: '住', pinyin: 'zhù', meaning: 'To live; to stay', meaningThai: 'อยู่, พัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我住在中国。', pinyin: 'Wǒ zhù zài Zhōng guó.', meaning: 'I live in China.' }] },
-  { id: 'hsk1-145', chinese: '桌子', pinyin: 'zhuō zi', meaning: 'Table/Desk', meaningThai: 'โต๊ะ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '桌子上有书。', pinyin: 'Zhuō zi shàng yǒu shū.', meaning: 'There are books on the table.' }] },
-  { id: 'hsk1-146', chinese: '字', pinyin: 'zì', meaning: 'Character/Word', meaningThai: 'ตัวอักษร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这个字怎么写？', pinyin: 'Zhè gè zì zěn me xiě?', meaning: 'How do you write this character?' }] },
-  { id: 'hsk1-147', chinese: '昨天', pinyin: 'zuó tiān', meaning: 'Yesterday', meaningThai: 'เมื่อวาน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '昨天是星期一。', pinyin: 'Zuó tiān shì xīng qī yī.', meaning: 'Yesterday was Monday.' }] },
-  { id: 'hsk1-148', chinese: '做', pinyin: 'zuò', meaning: 'To do; to make', meaningThai: 'ทำ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你做什么？', pinyin: 'Nǐ zuò shén me?', meaning: 'What do you do?' }] },
-  { id: 'hsk1-149', chinese: '坐', pinyin: 'zuò', meaning: 'To sit; to take (vehicle)', meaningThai: 'นั่ง, โดยสาร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请坐。', pinyin: 'Qǐng zuò.', meaning: 'Please sit.' }] },
-  { id: 'hsk1-150', chinese: '猫', pinyin: 'māo', meaning: 'Cat', meaningThai: 'แมว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这只猫很可爱。', pinyin: 'Zhè zhī māo hěn kě ài.', meaning: 'This cat is very cute.' }] },
+  { id: 'hsk1-001', chinese: '爱', pinyin: 'ài', meaning: 'To love; affection', meaningThai: 'รัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爱你。', pinyin: 'Wǒ ài nǐ.', meaning: 'I love you.', meaningThai: 'ฉันรักคุณ' }] },
+  { id: 'hsk1-002', chinese: '八', pinyin: 'bā', meaning: 'Eight', meaningThai: 'แปด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '有八个人。', pinyin: 'Yǒu bā gè rén.', meaning: 'There are eight people.', meaningThai: 'มีแปดคน' }] },
+  { id: 'hsk1-003', chinese: '爸爸', pinyin: 'bà ba', meaning: 'Dad/Father', meaningThai: 'พ่อ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爸爸是医生。', pinyin: 'Wǒ bà ba shì yī shēng.', meaning: 'My dad is a doctor.', meaningThai: 'พ่อของฉันเป็นหมอ' }] },
+  { id: 'hsk1-004', chinese: '杯子', pinyin: 'bēi zi', meaning: 'Cup/Glass', meaningThai: 'ถ้วย, แก้ว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一个杯子。', pinyin: 'Wǒ yǒu yī gè bēi zi.', meaning: 'I have a cup.', meaningThai: 'ฉันมีถ้วย' }] },
+  { id: 'hsk1-005', chinese: '北京', pinyin: 'Běi jīng', meaning: 'Beijing', meaningThai: 'ปักกิ่ง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '北京很大。', pinyin: 'Běi jīng hěn dà.', meaning: 'Beijing is very big.', meaningThai: 'ปักกิ่งใหญ่มาก' }] },
+  { id: 'hsk1-006', chinese: '本', pinyin: 'běn', meaning: 'Classifier for books', meaningThai: 'เล่ม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一本书。', pinyin: 'Yī běn shū.', meaning: 'One book.', meaningThai: 'หนึ่งเล่ม' }] },
+  { id: 'hsk1-007', chinese: '不客气', pinyin: 'bú kè qi', meaning: "You're welcome", meaningThai: 'ไม่เป็นไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '不客气！', pinyin: 'Bú kè qi!', meaning: "You're welcome!", meaningThai: 'ไม่เป็นไร' }] },
+  { id: 'hsk1-008', chinese: '不', pinyin: 'bù', meaning: 'Not/No', meaningThai: 'ไม่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我不是学生。', pinyin: 'Wǒ bú shì xué shēng.', meaning: 'I am not a student.', meaningThai: 'ฉันไม่ใช่นักเรียน' }] },
+  { id: 'hsk1-009', chinese: '菜', pinyin: 'cài', meaning: 'Dish/Vegetables', meaningThai: 'กับข้าว, ผัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这个菜很好吃。', pinyin: 'Zhè ge cài hěn hǎo chī.', meaning: 'This dish is delicious.', meaningThai: 'อาหารจานนี้อร่อย' }] },
+  { id: 'hsk1-010', chinese: '茶', pinyin: 'chá', meaning: 'Tea', meaningThai: 'ชา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我要喝茶。', pinyin: 'Wǒ yào hē chá.', meaning: 'I want to drink tea.', meaningThai: 'ฉันอยากดื่มชา' }] },
+  { id: 'hsk1-011', chinese: '吃', pinyin: 'chī', meaning: 'To eat', meaningThai: 'กิน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你吃饭了吗？', pinyin: 'Nǐ chī fàn le ma?', meaning: 'Have you eaten?', meaningThai: 'กินข้าวหรือยัง?' }] },
+  { id: 'hsk1-012', chinese: '出租车', pinyin: 'chū zū chē', meaning: 'Taxi', meaningThai: 'แท็กซี่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我坐出租车去。', pinyin: 'Wǒ zuò chū zū chē qù.', meaning: 'I go by taxi.', meaningThai: 'ฉันไปโดยแท็กซี่' }] },
+  { id: 'hsk1-013', chinese: '打电话', pinyin: 'dǎ diàn huà', meaning: 'To make a phone call', meaningThai: 'โทรศัพท์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我给你打电话。', pinyin: 'Wǒ gěi nǐ dǎ diàn huà.', meaning: 'I will call you.', meaningThai: 'ฉันจะโทรหาคุณ' }] },
+  { id: 'hsk1-014', chinese: '大', pinyin: 'dà', meaning: 'Big', meaningThai: 'ใหญ่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这个房子很大。', pinyin: 'Zhè ge fáng zi hěn dà.', meaning: 'This house is very big.', meaningThai: 'บ้านหลังนี้ใหญ่มาก' }] },
+  { id: 'hsk1-015', chinese: '的', pinyin: 'de', meaning: 'Possessive particle', meaningThai: 'ของ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我的书。', pinyin: 'Wǒ de shū.', meaning: 'My book.', meaningThai: 'หนังสือของฉัน' }] },
+  { id: 'hsk1-016', chinese: '点', pinyin: 'diǎn', meaning: "O'clock; a little", meaningThai: 'โมง, จุด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '现在三点。', pinyin: 'Xiàn zài sān diǎn.', meaning: "It's 3 o'clock.", meaningThai: 'ตอนนี้สามนาฬิกา' }] },
+  { id: 'hsk1-017', chinese: '电脑', pinyin: 'diàn nǎo', meaning: 'Computer', meaningThai: 'คอมพิวเตอร์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有电脑。', pinyin: 'Wǒ yǒu diàn nǎo.', meaning: 'I have a computer.', meaningThai: 'ฉันมีคอมพิวเตอร์' }] },
+  { id: 'hsk1-018', chinese: '电视', pinyin: 'diàn shì', meaning: 'Television', meaningThai: 'โทรทัศน์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我看电视。', pinyin: 'Wǒ kàn diàn shì.', meaning: 'I watch TV.', meaningThai: 'ฉันดูทีวี' }] },
+  { id: 'hsk1-019', chinese: '电影', pinyin: 'diàn yǐng', meaning: 'Movie/Film', meaningThai: 'ภาพยนตร์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爱看电影。', pinyin: 'Wǒ ài kàn diàn yǐng.', meaning: 'I love watching movies.', meaningThai: 'ฉันชอบดูหนัง' }] },
+  { id: 'hsk1-020', chinese: '东西', pinyin: 'dōng xi', meaning: 'Thing/Stuff', meaningThai: 'สิ่งของ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这是什么东西？', pinyin: 'Zhè shì shén me dōng xi?', meaning: 'What is this thing?', meaningThai: 'สิ่งนี้คืออะไร?' }] },
+  { id: 'hsk1-021', chinese: '都', pinyin: 'dōu', meaning: 'All/Both', meaningThai: 'ทั้งหมด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我们都是学生。', pinyin: 'Wǒ men dōu shì xué shēng.', meaning: 'We are all students.', meaningThai: 'พวกเราทุกคนเป็นนักเรียน' }] },
+  { id: 'hsk1-022', chinese: '读', pinyin: 'dú', meaning: 'To read; to study', meaningThai: 'อ่าน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我读书。', pinyin: 'Wǒ dú shū.', meaning: 'I read a book.', meaningThai: 'ฉันอ่านหนังสือ' }] },
+  { id: 'hsk1-023', chinese: '对不起', pinyin: 'duì bu qǐ', meaning: 'Sorry', meaningThai: 'ขอโทษ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '对不起，我错了。', pinyin: 'Duì bu qǐ, wǒ cuò le.', meaning: 'Sorry, I was wrong.', meaningThai: 'ขอโทษ ฉันผิดเอง' }] },
+  { id: 'hsk1-024', chinese: '多', pinyin: 'duō', meaning: 'Many/Much', meaningThai: 'มาก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '很多学生。', pinyin: 'Hěn duō xué shēng.', meaning: 'Many students.', meaningThai: 'นักเรียนหลายคน' }] },
+  { id: 'hsk1-025', chinese: '多少', pinyin: 'duō shao', meaning: 'How much/How many', meaningThai: 'เท่าไหร่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '多少钱？', pinyin: 'Duō shao qián?', meaning: 'How much money?', meaningThai: 'เท่าไหร่?' }] },
+  { id: 'hsk1-026', chinese: '儿子', pinyin: 'ér zi', meaning: 'Son', meaningThai: 'ลูกชาย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一个儿子。', pinyin: 'Wǒ yǒu yī gè ér zi.', meaning: 'I have a son.', meaningThai: 'ฉันมีลูกชาย' }] },
+  { id: 'hsk1-027', chinese: '二', pinyin: 'èr', meaning: 'Two', meaningThai: 'สอง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '二个苹果。', pinyin: 'Èr gè píng guǒ.', meaning: 'Two apples.', meaningThai: 'แอปเปิ้ลสองลูก' }] },
+  { id: 'hsk1-028', chinese: '饭店', pinyin: 'fàn diàn', meaning: 'Restaurant/Hotel', meaningThai: 'ร้านอาหาร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我们去饭店吃饭。', pinyin: 'Wǒ men qù fàn diàn chī fàn.', meaning: 'We go to a restaurant to eat.', meaningThai: 'เราไปร้านอาหารกินข้าว' }] },
+  { id: 'hsk1-029', chinese: '飞机', pinyin: 'fēi jī', meaning: 'Airplane', meaningThai: 'เครื่องบิน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我坐飞机去。', pinyin: 'Wǒ zuò fēi jī qù.', meaning: 'I go by airplane.', meaningThai: 'ฉันไปโดยเครื่องบิน' }] },
+  { id: 'hsk1-030', chinese: '分钟', pinyin: 'fēn zhōng', meaning: 'Minute', meaningThai: 'นาที', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '等十分钟。', pinyin: 'Děng shí fēn zhōng.', meaning: 'Wait ten minutes.', meaningThai: 'รอสิบนาที' }] },
+  { id: 'hsk1-031', chinese: '高兴', pinyin: 'gāo xìng', meaning: 'Happy/Glad', meaningThai: 'ดีใจ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我很高兴。', pinyin: 'Wǒ hěn gāo xìng.', meaning: 'I am very happy.', meaningThai: 'ฉันมีความสุขมาก' }] },
+  { id: 'hsk1-032', chinese: '个', pinyin: 'gè', meaning: 'General classifier', meaningThai: '(ลักษณะนาม)', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一个人。', pinyin: 'Yī gè rén.', meaning: 'One person.', meaningThai: 'หนึ่งคน' }] },
+  { id: 'hsk1-033', chinese: '工作', pinyin: 'gōng zuò', meaning: 'Work/Job', meaningThai: 'ทำงาน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我工作很忙。', pinyin: 'Wǒ gōng zuò hěn máng.', meaning: 'My work is very busy.', meaningThai: 'งานของฉันยุ่งมาก' }] },
+  { id: 'hsk1-034', chinese: '狗', pinyin: 'gǒu', meaning: 'Dog', meaningThai: 'หมา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这只狗很大。', pinyin: 'Zhè zhī gǒu hěn dà.', meaning: 'This dog is very big.', meaningThai: 'หมาตัวนี้ใหญ่มาก' }] },
+  { id: 'hsk1-035', chinese: '汉语', pinyin: 'Hàn yǔ', meaning: 'Chinese language', meaningThai: 'ภาษาจีน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我学汉语。', pinyin: 'Wǒ xué Hàn yǔ.', meaning: 'I study Chinese.', meaningThai: 'ฉันเรียนภาษาจีน' }] },
+  { id: 'hsk1-036', chinese: '好', pinyin: 'hǎo', meaning: 'Good', meaningThai: 'ดี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天天气很好。', pinyin: 'Jīn tiān tiān qì hěn hǎo.', meaning: 'The weather is good today.', meaningThai: 'วันนี้อากาศดี' }] },
+  { id: 'hsk1-037', chinese: '号', pinyin: 'hào', meaning: 'Day of month; number', meaningThai: 'วันที่, เบอร์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天几号？', pinyin: 'Jīn tiān jǐ hào?', meaning: 'What date is today?', meaningThai: 'วันนี้วันที่เท่าไหร่?' }] },
+  { id: 'hsk1-038', chinese: '喝', pinyin: 'hē', meaning: 'To drink', meaningThai: 'ดื่ม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我喝水。', pinyin: 'Wǒ hē shuǐ.', meaning: 'I drink water.', meaningThai: 'ฉันดื่มน้ำ' }] },
+  { id: 'hsk1-039', chinese: '和', pinyin: 'hé', meaning: 'And/With', meaningThai: 'และ, กับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我和朋友。', pinyin: 'Wǒ hé péng you.', meaning: 'Me and my friend.', meaningThai: 'ฉันและเพื่อน' }] },
+  { id: 'hsk1-040', chinese: '很', pinyin: 'hěn', meaning: 'Very', meaningThai: 'มาก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '她很高。', pinyin: 'Tā hěn gāo.', meaning: 'She is very tall.', meaningThai: 'เธอสูงมาก' }] },
+  { id: 'hsk1-041', chinese: '后面', pinyin: 'hòu miàn', meaning: 'Behind/Back', meaningThai: 'ด้านหลัง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '学校在后面。', pinyin: 'Xué xiào zài hòu miàn.', meaning: 'The school is behind.', meaningThai: 'โรงเรียนอยู่ด้านหลัง' }] },
+  { id: 'hsk1-042', chinese: '回', pinyin: 'huí', meaning: 'To return', meaningThai: 'กลับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我回家。', pinyin: 'Wǒ huí jiā.', meaning: 'I go home.', meaningThai: 'ฉันกลับบ้าน' }] },
+  { id: 'hsk1-043', chinese: '会', pinyin: 'huì', meaning: 'Can; able to', meaningThai: 'สามารถ, เป็น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我会中文。', pinyin: 'Wǒ huì zhōng wén.', meaning: 'I can speak Chinese.', meaningThai: 'ฉันพูดภาษาจีนได้' }] },
+  { id: 'hsk1-044', chinese: '几', pinyin: 'jǐ', meaning: 'How many; several', meaningThai: 'กี่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '几个人？', pinyin: 'Jǐ gè rén?', meaning: 'How many people?', meaningThai: 'กี่คน?' }] },
+  { id: 'hsk1-045', chinese: '家', pinyin: 'jiā', meaning: 'Home/Family', meaningThai: 'บ้าน, ครอบครัว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我家在北京。', pinyin: 'Wǒ jiā zài Běi jīng.', meaning: 'My home is in Beijing.', meaningThai: 'บ้านของฉันอยู่ที่ปักกิ่ง' }] },
+  { id: 'hsk1-046', chinese: '叫', pinyin: 'jiào', meaning: 'To be called; to call', meaningThai: 'ชื่อว่า, เรียก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你叫什么名字？', pinyin: 'Nǐ jiào shén me míng zì?', meaning: 'What is your name?', meaningThai: 'คุณชื่ออะไร?' }] },
+  { id: 'hsk1-047', chinese: '今天', pinyin: 'jīn tiān', meaning: 'Today', meaningThai: 'วันนี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天星期三。', pinyin: 'Jīn tiān xīng qī sān.', meaning: 'Today is Wednesday.', meaningThai: 'วันนี้วันพุธ' }] },
+  { id: 'hsk1-048', chinese: '九', pinyin: 'jiǔ', meaning: 'Nine', meaningThai: 'เก้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '九个人。', pinyin: 'Jiǔ gè rén.', meaning: 'Nine people.', meaningThai: 'เก้าคน' }] },
+  { id: 'hsk1-049', chinese: '开', pinyin: 'kāi', meaning: 'To open; to drive', meaningThai: 'เปิด, ขับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请开门。', pinyin: 'Qǐng kāi mén.', meaning: 'Please open the door.', meaningThai: 'กรุณาเปิดประตู' }] },
+  { id: 'hsk1-050', chinese: '看', pinyin: 'kàn', meaning: 'To look; to watch', meaningThai: 'มอง, ดู', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我看书。', pinyin: 'Wǒ kàn shū.', meaning: 'I read a book.', meaningThai: 'ฉันอ่านหนังสือ' }] },
+  { id: 'hsk1-051', chinese: '看见', pinyin: 'kàn jiàn', meaning: 'To see', meaningThai: 'มองเห็น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我看见他了。', pinyin: 'Wǒ kàn jiàn tā le.', meaning: 'I saw him.', meaningThai: 'ฉันเห็นเขา' }] },
+  { id: 'hsk1-052', chinese: '块', pinyin: 'kuài', meaning: 'Piece; yuan', meaningThai: 'หยวน, ก้อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '十块钱。', pinyin: 'Shí kuài qián.', meaning: 'Ten yuan.', meaningThai: 'สิบบาท' }] },
+  { id: 'hsk1-053', chinese: '来', pinyin: 'lái', meaning: 'To come', meaningThai: 'มา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他来了。', pinyin: 'Tā lái le.', meaning: 'He came.', meaningThai: 'เขามาแล้ว' }] },
+  { id: 'hsk1-054', chinese: '老师', pinyin: 'lǎo shī', meaning: 'Teacher', meaningThai: 'ครู', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '老师好！', pinyin: 'Lǎo shī hǎo!', meaning: 'Hello, teacher!', meaningThai: 'สวัสดีครับคุณครู!' }] },
+  { id: 'hsk1-055', chinese: '了', pinyin: 'le', meaning: 'Completed action marker', meaningThai: 'แล้ว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我吃了。', pinyin: 'Wǒ chī le.', meaning: 'I have eaten.', meaningThai: 'ฉันกินแล้ว' }] },
+  { id: 'hsk1-056', chinese: '冷', pinyin: 'lěng', meaning: 'Cold', meaningThai: 'หนาว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天很冷。', pinyin: 'Jīn tiān hěn lěng.', meaning: 'Today is very cold.', meaningThai: 'วันนี้หนาวมาก' }] },
+  { id: 'hsk1-057', chinese: '里', pinyin: 'lǐ', meaning: 'Inside', meaningThai: 'ใน, ข้างใน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '在学校里。', pinyin: 'Zài xué xiào lǐ.', meaning: 'Inside the school.', meaningThai: 'ข้างในโรงเรียน' }] },
+  { id: 'hsk1-058', chinese: '六', pinyin: 'liù', meaning: 'Six', meaningThai: 'หก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '六本书。', pinyin: 'Liù běn shū.', meaning: 'Six books.', meaningThai: 'หนังสือหกเล่ม' }] },
+  { id: 'hsk1-059', chinese: '妈妈', pinyin: 'mā ma', meaning: 'Mom/Mother', meaningThai: 'แม่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '妈妈做的饭好吃。', pinyin: 'Mā ma zuò de fàn hǎo chī.', meaning: "Mom's cooking is delicious.", meaningThai: 'อาหารที่แม่ทำให้อร่อย' }] },
+  { id: 'hsk1-060', chinese: '吗', pinyin: 'ma', meaning: 'Question particle', meaningThai: 'ไหม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你好吗？', pinyin: 'Nǐ hǎo ma?', meaning: 'How are you?', meaningThai: 'สบายดีไหม?' }] },
+  { id: 'hsk1-061', chinese: '买', pinyin: 'mǎi', meaning: 'To buy', meaningThai: 'ซื้อ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我买书。', pinyin: 'Wǒ mǎi shū.', meaning: 'I buy books.', meaningThai: 'ฉันซื้อหนังสือ' }] },
+  { id: 'hsk1-062', chinese: '没关系', pinyin: 'méi guān xi', meaning: "It doesn't matter", meaningThai: 'ไม่เป็นไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '没关系，慢慢来。', pinyin: 'Méi guān xi, màn man lái.', meaning: "It doesn't matter, take your time.", meaningThai: 'ไม่เป็นไร ค่อยๆ ทำ' }] },
+  { id: 'hsk1-063', chinese: '没有', pinyin: 'méi yǒu', meaning: "To not have; haven't", meaningThai: 'ไม่มี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我没有钱。', pinyin: 'Wǒ méi yǒu qián.', meaning: "I don't have money.", meaningThai: 'ฉันไม่มีเงิน' }] },
+  { id: 'hsk1-064', chinese: '米饭', pinyin: 'mǐ fàn', meaning: 'Rice', meaningThai: 'ข้าว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我爱吃米饭。', pinyin: 'Wǒ ài chī mǐ fàn.', meaning: 'I love eating rice.', meaningThai: 'ฉันชอบกินข้าว' }] },
+  { id: 'hsk1-065', chinese: '明天', pinyin: 'míng tiān', meaning: 'Tomorrow', meaningThai: 'พรุ่งนี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '明天见。', pinyin: 'Míng tiān jiàn.', meaning: 'See you tomorrow.', meaningThai: 'เจอกันพรุ่งนี้' }] },
+  { id: 'hsk1-066', chinese: '名字', pinyin: 'míng zì', meaning: 'Name', meaningThai: 'ชื่อ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我的名字是小明。', pinyin: 'Wǒ de míng zì shì Xiǎo Míng.', meaning: 'My name is Xiaoming.', meaningThai: 'ฉันชื่อเสี่ยวหมิง' }] },
+  { id: 'hsk1-067', chinese: '哪', pinyin: 'nǎ', meaning: 'Which', meaningThai: 'ไหน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '哪个是你的？', pinyin: 'Nǎ gè shì nǐ de?', meaning: 'Which one is yours?', meaningThai: 'อันไหนเป็นของคุณ?' }] },
+  { id: 'hsk1-068', chinese: '哪儿', pinyin: 'nǎr', meaning: 'Where', meaningThai: 'ที่ไหน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你去哪儿？', pinyin: 'Nǐ qù nǎr?', meaning: 'Where are you going?', meaningThai: 'คุณกำลังไปไหน?' }] },
+  { id: 'hsk1-069', chinese: '那', pinyin: 'nà', meaning: 'That', meaningThai: 'นั่น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '那是我的书。', pinyin: 'Nà shì wǒ de shū.', meaning: 'That is my book.', meaningThai: 'นั่นคือหนังสือของฉัน' }] },
+  { id: 'hsk1-070', chinese: '呢', pinyin: 'ne', meaning: 'Question particle', meaningThai: 'ล่ะ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你呢？', pinyin: 'Nǐ ne?', meaning: 'And you?', meaningThai: 'แล้วคุณล่ะ?' }] },
+  { id: 'hsk1-071', chinese: '能', pinyin: 'néng', meaning: 'Can; be able to', meaningThai: 'สามารถ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我能来。', pinyin: 'Wǒ néng lái.', meaning: 'I can come.', meaningThai: 'ฉันมาได้' }] },
+  { id: 'hsk1-072', chinese: '你', pinyin: 'nǐ', meaning: 'You', meaningThai: 'คุณ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你是老师吗？', pinyin: 'Nǐ shì lǎo shī ma?', meaning: 'Are you a teacher?', meaningThai: 'คุณเป็นครูใช่ไหม?' }] },
+  { id: 'hsk1-073', chinese: '年', pinyin: 'nián', meaning: 'Year', meaningThai: 'ปี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '新年快乐！', pinyin: 'Xīn nián kuài lè!', meaning: 'Happy New Year!', meaningThai: 'สวัสดีปีใหม่!' }] },
+  { id: 'hsk1-074', chinese: '女儿', pinyin: 'nǚ ér', meaning: 'Daughter', meaningThai: 'ลูกสาว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一个女儿。', pinyin: 'Wǒ yǒu yī gè nǚ ér.', meaning: 'I have a daughter.', meaningThai: 'ฉันมีลูกสาว' }] },
+  { id: 'hsk1-075', chinese: '朋友', pinyin: 'péng you', meaning: 'Friend', meaningThai: 'เพื่อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是我的朋友。', pinyin: 'Tā shì wǒ de péng you.', meaning: 'He is my friend.', meaningThai: 'เขาเป็นเพื่อนของฉัน' }] },
+  { id: 'hsk1-076', chinese: '漂亮', pinyin: 'piào liang', meaning: 'Beautiful', meaningThai: 'สวย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '她很漂亮。', pinyin: 'Tā hěn piào liang.', meaning: 'She is beautiful.', meaningThai: 'เธอสวย' }] },
+  { id: 'hsk1-077', chinese: '苹果', pinyin: 'píng guǒ', meaning: 'Apple', meaningThai: 'แอปเปิ้ล', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '苹果很好吃。', pinyin: 'Píng guǒ hěn hǎo chī.', meaning: 'Apples are delicious.', meaningThai: 'แอปเปิ้ลอร่อย' }] },
+  { id: 'hsk1-078', chinese: '七', pinyin: 'qī', meaning: 'Seven', meaningThai: 'เจ็ด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '七点。', pinyin: 'Qī diǎn.', meaning: "Seven o'clock.", meaningThai: 'เจ็ดนาฬิกา' }] },
+  { id: 'hsk1-079', chinese: '前面', pinyin: 'qián miàn', meaning: 'In front; ahead', meaningThai: 'ด้านหน้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '车站前面。', pinyin: 'Chē zhàn qián miàn.', meaning: 'In front of the station.', meaningThai: 'หน้าสถานี' }] },
+  { id: 'hsk1-080', chinese: '钱', pinyin: 'qián', meaning: 'Money', meaningThai: 'เงิน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我没有钱。', pinyin: 'Wǒ méi yǒu qián.', meaning: "I don't have money.", meaningThai: 'ฉันไม่มีเงิน' }] },
+  { id: 'hsk1-081', chinese: '请', pinyin: 'qǐng', meaning: 'Please; to invite', meaningThai: 'เชิญ, กรุณา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请进。', pinyin: 'Qǐng jìn.', meaning: 'Please come in.', meaningThai: 'เชิญเข้าไปข้างใน' }] },
+  { id: 'hsk1-082', chinese: '去', pinyin: 'qù', meaning: 'To go', meaningThai: 'ไป', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我去学校。', pinyin: 'Wǒ qù xué xiào.', meaning: 'I go to school.', meaningThai: 'ฉันไปโรงเรียน' }] },
+  { id: 'hsk1-083', chinese: '热', pinyin: 'rè', meaning: 'Hot', meaningThai: 'ร้อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天很热。', pinyin: 'Jīn tiān hěn rè.', meaning: 'Today is very hot.', meaningThai: 'วันนี้ร้อนมาก' }] },
+  { id: 'hsk1-084', chinese: '人', pinyin: 'rén', meaning: 'Person/People', meaningThai: 'คน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '很多人。', pinyin: 'Hěn duō rén.', meaning: 'Many people.', meaningThai: 'คนมากมาย' }] },
+  { id: 'hsk1-085', chinese: '认识', pinyin: 'rèn shi', meaning: 'To know; to recognize', meaningThai: 'รู้จัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我认识他。', pinyin: 'Wǒ rèn shi tā.', meaning: 'I know him.', meaningThai: 'ฉันรู้จักเขา' }] },
+  { id: 'hsk1-086', chinese: '三', pinyin: 'sān', meaning: 'Three', meaningThai: 'สาม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '三个朋友。', pinyin: 'Sān gè péng you.', meaning: 'Three friends.', meaningThai: 'เพื่อนสามคน' }] },
+  { id: 'hsk1-087', chinese: '商店', pinyin: 'shāng diàn', meaning: 'Store/Shop', meaningThai: 'ร้านค้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我去商店。', pinyin: 'Wǒ qù shāng diàn.', meaning: 'I go to the store.', meaningThai: 'ฉันไปร้านค้า' }] },
+  { id: 'hsk1-088', chinese: '上', pinyin: 'shàng', meaning: 'On/Above/Up', meaningThai: 'บน, ด้านบน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '桌子上。', pinyin: 'Zhuō zi shàng.', meaning: 'On the table.', meaningThai: 'บนโต๊ะ' }] },
+  { id: 'hsk1-089', chinese: '上午', pinyin: 'shàng wǔ', meaning: 'Morning', meaningThai: 'ตอนเช้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '上午九点。', pinyin: 'Shàng wǔ jiǔ diǎn.', meaning: '9 am.', meaningThai: 'เก้าโมงเช้า' }] },
+  { id: 'hsk1-090', chinese: '少', pinyin: 'shǎo', meaning: 'Few/Little', meaningThai: 'น้อย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '很少人。', pinyin: 'Hěn shǎo rén.', meaning: 'Very few people.', meaningThai: 'คนน้อยมาก' }] },
+  { id: 'hsk1-091', chinese: '谁', pinyin: 'shéi', meaning: 'Who', meaningThai: 'ใคร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是谁？', pinyin: 'Tā shì shéi?', meaning: 'Who is he?', meaningThai: 'เขาเป็นใคร?' }] },
+  { id: 'hsk1-092', chinese: '什么', pinyin: 'shén me', meaning: 'What', meaningThai: 'อะไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这是什么？', pinyin: 'Zhè shì shén me?', meaning: 'What is this?', meaningThai: 'นี่คืออะไร?' }] },
+  { id: 'hsk1-093', chinese: '十', pinyin: 'shí', meaning: 'Ten', meaningThai: 'สิบ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '十块钱。', pinyin: 'Shí kuài qián.', meaning: 'Ten yuan.', meaningThai: 'สิบบาท' }] },
+  { id: 'hsk1-094', chinese: '时候', pinyin: 'shí hou', meaning: 'Time/Moment', meaningThai: 'เวลา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '什么时候？', pinyin: 'Shén me shí hou?', meaning: 'What time?', meaningThai: 'เวลาเท่าไหร่?' }] },
+  { id: 'hsk1-095', chinese: '是', pinyin: 'shì', meaning: 'To be (is/am/are)', meaningThai: 'เป็น, คือ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我是学生。', pinyin: 'Wǒ shì xué shēng.', meaning: 'I am a student.', meaningThai: 'ฉันเป็นนักเรียน' }] },
+  { id: 'hsk1-096', chinese: '书', pinyin: 'shū', meaning: 'Book', meaningThai: 'หนังสือ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这本书很好。', pinyin: 'Zhè běn shū hěn hǎo.', meaning: 'This book is very good.', meaningThai: 'หนังสือเล่มนี้ดีมาก' }] },
+  { id: 'hsk1-097', chinese: '水', pinyin: 'shuǐ', meaning: 'Water', meaningThai: 'น้ำ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我要喝水。', pinyin: 'Wǒ yào hē shuǐ.', meaning: 'I want to drink water.', meaningThai: 'ฉันอยากดื่มน้ำ' }] },
+  { id: 'hsk1-098', chinese: '水果', pinyin: 'shuǐ guǒ', meaning: 'Fruit', meaningThai: 'ผลไม้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '水果很好吃。', pinyin: 'Shuǐ guǒ hěn hǎo chī.', meaning: 'Fruit is delicious.', meaningThai: 'ผลไม้อร่อย' }] },
+  { id: 'hsk1-099', chinese: '睡觉', pinyin: 'shuì jiào', meaning: 'To sleep', meaningThai: 'นอนหลับ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我睡觉了。', pinyin: 'Wǒ shuì jiào le.', meaning: 'I went to sleep.', meaningThai: 'ฉันนอนหลับแล้ว' }] },
+  { id: 'hsk1-100', chinese: '说', pinyin: 'shuō', meaning: 'To speak; to say', meaningThai: 'พูด', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他说中文。', pinyin: 'Tā shuō zhōng wén.', meaning: 'He speaks Chinese.', meaningThai: 'เขาพูดภาษาจีน' }] },
+  { id: 'hsk1-101', chinese: '四', pinyin: 'sì', meaning: 'Four', meaningThai: 'สี่', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '四个苹果。', pinyin: 'Sì gè píng guǒ.', meaning: 'Four apples.', meaningThai: 'แอปเปิ้ลสี่ลูก' }] },
+  { id: 'hsk1-102', chinese: '岁', pinyin: 'suì', meaning: 'Years of age', meaningThai: 'ขวบ, ปี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我二十岁。', pinyin: 'Wǒ èr shí suì.', meaning: 'I am 20 years old.', meaningThai: 'ฉันอายุยี่สิบปี' }] },
+  { id: 'hsk1-103', chinese: '他', pinyin: 'tā', meaning: 'He/Him', meaningThai: 'เขา (ผู้ชาย)', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是老师。', pinyin: 'Tā shì lǎo shī.', meaning: 'He is a teacher.', meaningThai: 'เขาเป็นครู' }] },
+  { id: 'hsk1-104', chinese: '她', pinyin: 'tā', meaning: 'She/Her', meaningThai: 'เขา (ผู้หญิง)', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '她是医生。', pinyin: 'Tā shì yī shēng.', meaning: 'She is a doctor.', meaningThai: 'เธอเป็นหมอ' }] },
+  { id: 'hsk1-105', chinese: '太', pinyin: 'tài', meaning: 'Too; extremely', meaningThai: 'เกินไป', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '太好了！', pinyin: 'Tài hǎo le!', meaning: "That's great!", meaningThai: 'เยี่ยมมาก!' }] },
+  { id: 'hsk1-106', chinese: '天气', pinyin: 'tiān qì', meaning: 'Weather', meaningThai: 'อากาศ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '天气很好。', pinyin: 'Tiān qì hěn hǎo.', meaning: 'The weather is good.', meaningThai: 'อากาศดี' }] },
+  { id: 'hsk1-107', chinese: '听', pinyin: 'tīng', meaning: 'To listen; to hear', meaningThai: 'ฟัง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我听音乐。', pinyin: 'Wǒ tīng yīn yuè.', meaning: 'I listen to music.', meaningThai: 'ฉันฟังเพลง' }] },
+  { id: 'hsk1-108', chinese: '同学', pinyin: 'tóng xué', meaning: 'Classmate', meaningThai: 'เพื่อนร่วมชั้น', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是我的同学。', pinyin: 'Tā shì wǒ de tóng xué.', meaning: 'He is my classmate.', meaningThai: 'เขาเป็นเพื่อนร่วมชั้นของฉัน' }] },
+  { id: 'hsk1-109', chinese: '喂', pinyin: 'wèi', meaning: 'Hello (on phone)', meaningThai: 'ฮัลโหล', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '喂，你好。', pinyin: 'Wèi, nǐ hǎo.', meaning: 'Hello?', meaningThai: 'ฮัลโหล?' }] },
+  { id: 'hsk1-110', chinese: '我', pinyin: 'wǒ', meaning: 'I/Me', meaningThai: 'ฉัน, ผม', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我喜欢你。', pinyin: 'Wǒ xǐ huān nǐ.', meaning: 'I like you.', meaningThai: 'ฉันชอบคุณ' }] },
+  { id: 'hsk1-111', chinese: '我们', pinyin: 'wǒ men', meaning: 'We/Us', meaningThai: 'พวกเรา', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我们是朋友。', pinyin: 'Wǒ men shì péng you.', meaning: 'We are friends.', meaningThai: 'เราเป็นเพื่อนกัน' }] },
+  { id: 'hsk1-112', chinese: '五', pinyin: 'wǔ', meaning: 'Five', meaningThai: 'ห้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '五本书。', pinyin: 'Wǔ běn shū.', meaning: 'Five books.', meaningThai: 'หนังสือห้าเล่ม' }] },
+  { id: 'hsk1-113', chinese: '喜欢', pinyin: 'xǐ huān', meaning: 'To like', meaningThai: 'ชอบ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我喜欢汉语。', pinyin: 'Wǒ xǐ huān Hàn yǔ.', meaning: 'I like Chinese.', meaningThai: 'ฉันชอบภาษาจีน' }] },
+  { id: 'hsk1-114', chinese: '下', pinyin: 'xià', meaning: 'Down/Under/Next', meaningThai: 'ล่าง, ใต้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '在桌子下。', pinyin: 'Zài zhuō zi xià.', meaning: 'Under the table.', meaningThai: 'ใต้โต๊ะ' }] },
+  { id: 'hsk1-115', chinese: '下午', pinyin: 'xià wǔ', meaning: 'Afternoon', meaningThai: 'ตอนบ่าย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '下午两点。', pinyin: 'Xià wǔ liǎng diǎn.', meaning: '2 pm.', meaningThai: 'บ่ายสองโมง' }] },
+  { id: 'hsk1-116', chinese: '下雨', pinyin: 'xià yǔ', meaning: 'To rain', meaningThai: 'ฝนตก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '今天下雨。', pinyin: 'Jīn tiān xià yǔ.', meaning: 'It is raining today.', meaningThai: 'วันนี้ฝนตก' }] },
+  { id: 'hsk1-117', chinese: '先生', pinyin: 'xiān shēng', meaning: 'Mr.; husband', meaningThai: 'คุณผู้ชาย, สามี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '王先生好。', pinyin: 'Wáng xiān shēng hǎo.', meaning: 'Hello Mr. Wang.', meaningThai: 'สวัสดีคุณหวาง' }] },
+  { id: 'hsk1-118', chinese: '现在', pinyin: 'xiàn zài', meaning: 'Now', meaningThai: 'ตอนนี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '现在几点？', pinyin: 'Xiàn zài jǐ diǎn?', meaning: 'What time is it now?', meaningThai: 'ตอนนี้กี่โมง?' }] },
+  { id: 'hsk1-119', chinese: '想', pinyin: 'xiǎng', meaning: 'To want; to think', meaningThai: 'คิด, อยาก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我想回家。', pinyin: 'Wǒ xiǎng huí jiā.', meaning: 'I want to go home.', meaningThai: 'ฉันอยากกลับบ้าน' }] },
+  { id: 'hsk1-120', chinese: '小', pinyin: 'xiǎo', meaning: 'Small', meaningThai: 'เล็ก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这只猫很小。', pinyin: 'Zhè zhī māo hěn xiǎo.', meaning: 'This cat is very small.', meaningThai: 'แมวตัวนี้เล็กมาก' }] },
+  { id: 'hsk1-121', chinese: '小姐', pinyin: 'xiǎo jiě', meaning: 'Miss; young lady', meaningThai: 'คุณผู้หญิง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '小姐，你好。', pinyin: 'Xiǎo jiě, nǐ hǎo.', meaning: 'Hello, miss.', meaningThai: 'สวัสดีคุณผู้หญิง' }] },
+  { id: 'hsk1-122', chinese: '些', pinyin: 'xiē', meaning: 'Some; a few', meaningThai: 'บาง, เล็กน้อย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这些书。', pinyin: 'Zhè xiē shū.', meaning: 'These books.', meaningThai: 'หนังสือเหล่านี้' }] },
+  { id: 'hsk1-123', chinese: '写', pinyin: 'xiě', meaning: 'To write', meaningThai: 'เขียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我写汉字。', pinyin: 'Wǒ xiě Hàn zì.', meaning: 'I write Chinese characters.', meaningThai: 'ฉันเขียนตัวอักษรจีน' }] },
+  { id: 'hsk1-124', chinese: '谢谢', pinyin: 'xiè xie', meaning: 'Thank you', meaningThai: 'ขอบคุณ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '谢谢你的帮助。', pinyin: 'Xiè xiè nǐ de bāng zhù.', meaning: 'Thank you for your help.', meaningThai: 'ขอบคุณสำหรับความช่วยเหลือ' }] },
+  { id: 'hsk1-125', chinese: '星期', pinyin: 'xīng qī', meaning: 'Week', meaningThai: 'สัปดาห์', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一个星期。', pinyin: 'Yī gè xīng qī.', meaning: 'One week.', meaningThai: 'หนึ่งสัปดาห์' }] },
+  { id: 'hsk1-126', chinese: '学生', pinyin: 'xué shēng', meaning: 'Student', meaningThai: 'นักเรียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我是学生。', pinyin: 'Wǒ shì xué shēng.', meaning: 'I am a student.', meaningThai: 'ฉันเป็นนักเรียน' }] },
+  { id: 'hsk1-127', chinese: '学习', pinyin: 'xué xí', meaning: 'To study', meaningThai: 'เรียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我学习汉语。', pinyin: 'Wǒ xué xí Hàn yǔ.', meaning: 'I study Chinese.', meaningThai: 'ฉันเรียนภาษาจีน' }] },
+  { id: 'hsk1-128', chinese: '学校', pinyin: 'xué xiào', meaning: 'School', meaningThai: 'โรงเรียน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '学校很大。', pinyin: 'Xué xiào hěn dà.', meaning: 'The school is very big.', meaningThai: 'โรงเรียนใหญ่มาก' }] },
+  { id: 'hsk1-129', chinese: '一', pinyin: 'yī', meaning: 'One', meaningThai: 'หนึ่ง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一个朋友。', pinyin: 'Yī gè péng you.', meaning: 'One friend.', meaningThai: 'เพื่อนหนึ่งคน' }] },
+  { id: 'hsk1-130', chinese: '一点儿', pinyin: 'yī diǎnr', meaning: 'A little bit', meaningThai: 'นิดหน่อย', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我会一点儿汉语。', pinyin: 'Wǒ huì yī diǎnr Hàn yǔ.', meaning: 'I know a little Chinese.', meaningThai: 'ฉันรู้ภาษาจีนนิดหน่อย' }] },
+  { id: 'hsk1-131', chinese: '医生', pinyin: 'yī shēng', meaning: 'Doctor', meaningThai: 'หมอ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他是医生。', pinyin: 'Tā shì yī shēng.', meaning: 'He is a doctor.', meaningThai: 'เขาเป็นหมอ' }]},
+  { id: 'hsk1-132', chinese: '医院', pinyin: 'yī yuàn', meaning: 'Hospital', meaningThai: 'โรงพยาบาล', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '他在医院。', pinyin: 'Tā zài yī yuàn.', meaning: 'He is at the hospital.', meaningThai: 'เขาอยู่ที่โรงพยาบาล' }] },
+  { id: 'hsk1-133', chinese: '衣服', pinyin: 'yī fu', meaning: 'Clothes', meaningThai: 'เสื้อผ้า', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这件衣服很漂亮。', pinyin: 'Zhè jiàn yī fu hěn piào liang.', meaning: 'This piece of clothing is beautiful.', meaningThai: 'เสื้อตัวนี้สวย' }] },
+  { id: 'hsk1-134', chinese: '椅子', pinyin: 'yǐ zi', meaning: 'Chair', meaningThai: 'เก้าอี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请坐椅子。', pinyin: 'Qǐng zuò yǐ zi.', meaning: 'Please sit on the chair.', meaningThai: 'กรุณานั่งบนเก้าอี้' }] },
+  { id: 'hsk1-135', chinese: '有', pinyin: 'yǒu', meaning: 'To have; there is/are', meaningThai: 'มี', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我有一只狗。', pinyin: 'Wǒ yǒu yī zhī gǒu.', meaning: 'I have a dog.', meaningThai: 'ฉันมีหมา' }] },
+  { id: 'hsk1-136', chinese: '月', pinyin: 'yuè', meaning: 'Month; moon', meaningThai: 'เดือน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '一月。', pinyin: 'Yī yuè.', meaning: 'January.', meaningThai: 'เดือนมกราคม' }] },
+  { id: 'hsk1-137', chinese: '再见', pinyin: 'zài jiàn', meaning: 'Goodbye', meaningThai: 'ลาก่อน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '明天再见。', pinyin: 'Míng tiān zài jiàn.', meaning: 'See you tomorrow.', meaningThai: 'เจอกันพรุ่งนี้' }] },
+  { id: 'hsk1-138', chinese: '在', pinyin: 'zài', meaning: 'At; in; on; -ing', meaningThai: 'อยู่ที่, กำลัง', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我在学校。', pinyin: 'Wǒ zài xué xiào.', meaning: 'I am at school.', meaningThai: 'ฉันอยู่ที่โรงเรียน' }] },
+  { id: 'hsk1-139', chinese: '怎么', pinyin: 'zěn me', meaning: 'How', meaningThai: 'อย่างไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你怎么去？', pinyin: 'Nǐ zěn me qù?', meaning: 'How do you go?', meaningThai: 'คุณไปยังไง?' }] },
+  { id: 'hsk1-140', chinese: '怎么样', pinyin: 'zěn me yàng', meaning: 'How about it?', meaningThai: 'เป็นอย่างไร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你怎么样？', pinyin: 'Nǐ zěn me yàng?', meaning: 'How are you?', meaningThai: 'สบายดีไหม?' }] },
+  { id: 'hsk1-141', chinese: '这', pinyin: 'zhè', meaning: 'This/These', meaningThai: 'นี้', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这是我的书。', pinyin: 'Zhè shì wǒ de shū.', meaning: 'This is my book.', meaningThai: 'นี่คือหนังสือของฉัน' }] },
+  { id: 'hsk1-142', chinese: '中国', pinyin: 'Zhōng guó', meaning: 'China', meaningThai: 'จีน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '中国很大。', pinyin: 'Zhōng guó hěn dà.', meaning: 'China is very big.', meaningThai: 'จีนใหญ่มาก' }] },
+  { id: 'hsk1-143', chinese: '中午', pinyin: 'zhōng wǔ', meaning: 'Noon/Midday', meaningThai: 'เที่ยงวัน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '中午十二点。', pinyin: 'Zhōng wǔ shí èr diǎn.', meaning: '12 noon.', meaningThai: 'เที่ยงวัน' }] },
+  { id: 'hsk1-144', chinese: '住', pinyin: 'zhù', meaning: 'To live; to stay', meaningThai: 'อยู่, พัก', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '我住在中国。', pinyin: 'Wǒ zhù zài Zhōng guó.', meaning: 'I live in China.', meaningThai: 'ฉันอยู่ที่จีน' }] },
+  { id: 'hsk1-145', chinese: '桌子', pinyin: 'zhuō zi', meaning: 'Table/Desk', meaningThai: 'โต๊ะ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '桌子上有书。', pinyin: 'Zhuō zi shàng yǒu shū.', meaning: 'There are books on the table.', meaningThai: 'มีหนังสืออยู่บนโต๊ะ' }] },
+  { id: 'hsk1-146', chinese: '字', pinyin: 'zì', meaning: 'Character/Word', meaningThai: 'ตัวอักษร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这个字怎么写？', pinyin: 'Zhè gè zì zěn me xiě?', meaning: 'How do you write this character?', meaningThai: 'คุณเขียนตัวอักษรนี้ยังไง?' }] },
+  { id: 'hsk1-147', chinese: '昨天', pinyin: 'zuó tiān', meaning: 'Yesterday', meaningThai: 'เมื่อวาน', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '昨天是星期一。', pinyin: 'Zuó tiān shì xīng qī yī.', meaning: 'Yesterday was Monday.', meaningThai: 'เมื่อวานเป็นวันจันทร์' }] },
+  { id: 'hsk1-148', chinese: '做', pinyin: 'zuò', meaning: 'To do; to make', meaningThai: 'ทำ', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '你做什么？', pinyin: 'Nǐ zuò shén me?', meaning: 'What do you do?', meaningThai: 'คุณทำอะไร?' }] },
+  { id: 'hsk1-149', chinese: '坐', pinyin: 'zuò', meaning: 'To sit; to take (vehicle)', meaningThai: 'นั่ง, โดยสาร', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '请坐。', pinyin: 'Qǐng zuò.', meaning: 'Please sit.', meaningThai: 'กรุณานั่ง' }] },
+  { id: 'hsk1-150', chinese: '猫', pinyin: 'māo', meaning: 'Cat', meaningThai: 'แมว', category: 'hsk', subcategory: 'hsk1', hskLevel: 1, status: 'new', examples: [{ chinese: '这只猫很可爱。', pinyin: 'Zhè zhī māo hěn kě ài.', meaning: 'This cat is very cute.', meaningThai: 'แมวตัวนี้น่ารักมาก' }] },
 ];
 
 const HSK2_WORDS = [
-  { id: 'hsk2-001', chinese: '吧', pinyin: 'ba', meaning: 'Modal particle (suggestion)', meaningThai: 'นะ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们走吧。', pinyin: 'Wǒ men zǒu ba.', meaning: 'Let\'s go.' }] },
-  { id: 'hsk2-002', chinese: '白', pinyin: 'bái', meaning: 'White', meaningThai: 'ขาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '白色的花。', pinyin: 'Bái sè de huā.', meaning: 'White flowers.' }] },
-  { id: 'hsk2-003', chinese: '百', pinyin: 'bǎi', meaning: 'Hundred', meaningThai: 'ร้อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一百块钱。', pinyin: 'Yī bǎi kuài qián.', meaning: 'One hundred yuan.' }] },
-  { id: 'hsk2-004', chinese: '帮助', pinyin: 'bāng zhù', meaning: 'To help; help', meaningThai: 'ช่วยเหลือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '谢谢你帮助我。', pinyin: 'Xiè xiè nǐ bāng zhù wǒ.', meaning: 'Thank you for helping me.' }] },
-  { id: 'hsk2-005', chinese: '报纸', pinyin: 'bào zhǐ', meaning: 'Newspaper', meaningThai: 'หนังสือพิมพ์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我看报纸。', pinyin: 'Wǒ kàn bào zhǐ.', meaning: 'I read the newspaper.' }] },
-  { id: 'hsk2-006', chinese: '比', pinyin: 'bǐ', meaning: 'To compare; than', meaningThai: 'กว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他比我高。', pinyin: 'Tā bǐ wǒ gāo.', meaning: 'He is taller than me.' }] },
-  { id: 'hsk2-007', chinese: '别', pinyin: 'bié', meaning: 'Do not; other', meaningThai: 'อย่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '别说话。', pinyin: 'Bié shuō huà.', meaning: 'Don\'t speak.' }] },
-  { id: 'hsk2-008', chinese: '宾馆', pinyin: 'bīn guǎn', meaning: 'Guesthouse/Hotel', meaningThai: 'โรงแรม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我住在宾馆。', pinyin: 'Wǒ zhù zài bīn guǎn.', meaning: 'I stay at the hotel.' }] },
-  { id: 'hsk2-009', chinese: '长', pinyin: 'cháng', meaning: 'Long', meaningThai: 'ยาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这条路很长。', pinyin: 'Zhè tiáo lù hěn cháng.', meaning: 'This road is long.' }] },
-  { id: 'hsk2-010', chinese: '唱歌', pinyin: 'chàng gē', meaning: 'To sing', meaningThai: 'ร้องเพลง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她喜欢唱歌。', pinyin: 'Tā xǐ huān chàng gē.', meaning: 'She likes to sing.' }] },
-  { id: 'hsk2-011', chinese: '出', pinyin: 'chū', meaning: 'To go out', meaningThai: 'ออก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他出去了。', pinyin: 'Tā chū qù le.', meaning: 'He went out.' }] },
-  { id: 'hsk2-012', chinese: '穿', pinyin: 'chuān', meaning: 'To wear; to put on', meaningThai: 'สวมใส่', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她穿红色的衣服。', pinyin: 'Tā chuān hóng sè de yī fu.', meaning: 'She wears red clothes.' }] },
-  { id: 'hsk2-013', chinese: '次', pinyin: 'cì', meaning: 'Time (occurrence)', meaningThai: 'ครั้ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去过两次。', pinyin: 'Wǒ qù guò liǎng cì.', meaning: 'I have been there twice.' }] },
-  { id: 'hsk2-014', chinese: '从', pinyin: 'cóng', meaning: 'From', meaningThai: 'จาก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我从北京来。', pinyin: 'Wǒ cóng Běi jīng lái.', meaning: 'I come from Beijing.' }] },
-  { id: 'hsk2-015', chinese: '错', pinyin: 'cuò', meaning: 'Wrong; mistake', meaningThai: 'ผิด', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '对不起，我错了。', pinyin: 'Duì bu qǐ, wǒ cuò le.', meaning: 'Sorry, I was wrong.' }] },
-  { id: 'hsk2-016', chinese: '打篮球', pinyin: 'dǎ lán qiú', meaning: 'To play basketball', meaningThai: 'เล่นบาสเกตบอล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢打篮球。', pinyin: 'Wǒ xǐ huān dǎ lán qiú.', meaning: 'I like to play basketball.' }] },
-  { id: 'hsk2-017', chinese: '大家', pinyin: 'dà jiā', meaning: 'Everyone', meaningThai: 'ทุกคน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '大家好！', pinyin: 'Dà jiā hǎo!', meaning: 'Hello everyone!' }] },
-  { id: 'hsk2-018', chinese: '到', pinyin: 'dào', meaning: 'To arrive; until', meaningThai: 'ถึง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们到了。', pinyin: 'Wǒ men dào le.', meaning: 'We have arrived.' }] },
-  { id: 'hsk2-019', chinese: '得', pinyin: 'de', meaning: 'Structural particle (degree)', meaningThai: '(เสริม)', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他跑得很快。', pinyin: 'Tā pǎo de hěn kuài.', meaning: 'He runs very fast.' }] },
-  { id: 'hsk2-020', chinese: '等', pinyin: 'děng', meaning: 'To wait; etc.', meaningThai: 'รอ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请等一下。', pinyin: 'Qǐng děng yī xià.', meaning: 'Please wait a moment.' }] },
-  { id: 'hsk2-021', chinese: '弟弟', pinyin: 'dì di', meaning: 'Younger brother', meaningThai: 'น้องชาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我弟弟很高。', pinyin: 'Wǒ dì di hěn gāo.', meaning: 'My younger brother is tall.' }] },
-  { id: 'hsk2-022', chinese: '第一', pinyin: 'dì yī', meaning: 'First; number one', meaningThai: 'ที่หนึ่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他是第一名。', pinyin: 'Tā shì dì yī míng.', meaning: 'He is first place.' }] },
-  { id: 'hsk2-023', chinese: '懂', pinyin: 'dǒng', meaning: 'To understand', meaningThai: 'เข้าใจ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我懂了。', pinyin: 'Wǒ dǒng le.', meaning: 'I understand.' }] },
-  { id: 'hsk2-024', chinese: '对', pinyin: 'duì', meaning: 'Correct; towards', meaningThai: 'ถูก, ต่อ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你说得对。', pinyin: 'Nǐ shuō de duì.', meaning: 'You are right.' }] },
-  { id: 'hsk2-025', chinese: '房间', pinyin: 'fáng jiān', meaning: 'Room', meaningThai: 'ห้อง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个房间很大。', pinyin: 'Zhè ge fáng jiān hěn dà.', meaning: 'This room is big.' }] },
-  { id: 'hsk2-026', chinese: '非常', pinyin: 'fēi cháng', meaning: 'Very; extremely', meaningThai: 'มาก, พิเศษ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '非常好。', pinyin: 'Fēi cháng hǎo.', meaning: 'Very good.' }] },
-  { id: 'hsk2-027', chinese: '服务员', pinyin: 'fú wù yuán', meaning: 'Waiter; attendant', meaningThai: 'พนักงานบริการ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '服务员，点菜。', pinyin: 'Fú wù yuán, diǎn cài.', meaning: 'Waiter, I\'d like to order.' }] },
-  { id: 'hsk2-028', chinese: '高', pinyin: 'gāo', meaning: 'High; Tall', meaningThai: 'สูง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这座山很高。', pinyin: 'Zhè zuò shān hěn gāo.', meaning: 'This mountain is high.' }] },
-  { id: 'hsk2-029', chinese: '告诉', pinyin: 'gào su', meaning: 'To tell', meaningThai: 'บอก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请告诉我。', pinyin: 'Qǐng gào su wǒ.', meaning: 'Please tell me.' }] },
-  { id: 'hsk2-030', chinese: '哥哥', pinyin: 'gē ge', meaning: 'Older brother', meaningThai: 'พี่ชาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我哥哥是老师。', pinyin: 'Wǒ gē ge shì lǎo shī.', meaning: 'My older brother is a teacher.' }] },
-  { id: 'hsk2-031', chinese: '给', pinyin: 'gěi', meaning: 'To give; for', meaningThai: 'ให้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我给你一本书。', pinyin: 'Wǒ gěi nǐ yī běn shū.', meaning: 'I give you a book.' }] },
-  { id: 'hsk2-032', chinese: '公共汽车', pinyin: 'gōng gòng qì chē', meaning: 'Bus', meaningThai: 'รถเมล์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我坐公共汽车去。', pinyin: 'Wǒ zuò gōng gòng qì chē qù.', meaning: 'I go by bus.' }] },
-  { id: 'hsk2-033', chinese: '公司', pinyin: 'gōng sī', meaning: 'Company', meaningThai: 'บริษัท', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我在公司工作。', pinyin: 'Wǒ zài gōng sī gōng zuò.', meaning: 'I work at a company.' }] },
-  { id: 'hsk2-034', chinese: '贵', pinyin: 'guì', meaning: 'Expensive', meaningThai: 'แพง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个太贵了。', pinyin: 'Zhè ge tài guì le.', meaning: 'This is too expensive.' }] },
-  { id: 'hsk2-035', chinese: '过', pinyin: 'guò', meaning: 'Past experience particle', meaningThai: 'เคย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去过中国。', pinyin: 'Wǒ qù guò Zhōng guó.', meaning: 'I have been to China.' }] },
-  { id: 'hsk2-036', chinese: '还', pinyin: 'hái', meaning: 'Still; also', meaningThai: 'ยัง, ก็', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我还要吃。', pinyin: 'Wǒ hái yào chī.', meaning: 'I still want to eat.' }] },
-  { id: 'hsk2-037', chinese: '好吃', pinyin: 'hǎo chī', meaning: 'Delicious', meaningThai: 'อร่อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个菜很好吃。', pinyin: 'Zhè ge cài hěn hǎo chī.', meaning: 'This dish is delicious.' }] },
-  { id: 'hsk2-038', chinese: '黑', pinyin: 'hēi', meaning: 'Black; dark', meaningThai: 'ดำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他穿黑色的鞋。', pinyin: 'Tā chuān hēi sè de xié.', meaning: 'He wears black shoes.' }] },
-  { id: 'hsk2-039', chinese: '红', pinyin: 'hóng', meaning: 'Red', meaningThai: 'แดง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '红色的花。', pinyin: 'Hóng sè de huā.', meaning: 'Red flowers.' }] },
-  { id: 'hsk2-040', chinese: '火车站', pinyin: 'huǒ chē zhàn', meaning: 'Train station', meaningThai: 'สถานีรถไฟ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '火车站在哪儿？', pinyin: 'Huǒ chē zhàn zài nǎr?', meaning: 'Where is the train station?' }] },
-  { id: 'hsk2-041', chinese: '机场', pinyin: 'jī chǎng', meaning: 'Airport', meaningThai: 'สนามบิน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去机场。', pinyin: 'Wǒ qù jī chǎng.', meaning: 'I go to the airport.' }] },
-  { id: 'hsk2-042', chinese: '鸡蛋', pinyin: 'jī dàn', meaning: 'Egg', meaningThai: 'ไข่', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我吃鸡蛋。', pinyin: 'Wǒ chī jī dàn.', meaning: 'I eat eggs.' }] },
-  { id: 'hsk2-043', chinese: '件', pinyin: 'jiàn', meaning: 'Classifier (items)', meaningThai: '(ลักษณะนามสิ่งของ)', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一件衣服。', pinyin: 'Yī jiàn yī fu.', meaning: 'One piece of clothing.' }] },
-  { id: 'hsk2-044', chinese: '教室', pinyin: 'jiào shì', meaning: 'Classroom', meaningThai: 'ห้องเรียน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '教室很大。', pinyin: 'Jiào shì hěn dà.', meaning: 'The classroom is big.' }] },
-  { id: 'hsk2-045', chinese: '姐姐', pinyin: 'jiě jie', meaning: 'Older sister', meaningThai: 'พี่สาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我姐姐很漂亮。', pinyin: 'Wǒ jiě jie hěn piào liang.', meaning: 'My older sister is pretty.' }] },
-  { id: 'hsk2-046', chinese: '介绍', pinyin: 'jiè shào', meaning: 'To introduce', meaningThai: 'แนะนำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我介绍一下。', pinyin: 'Wǒ jiè shào yī xià.', meaning: 'Let me introduce.' }] },
-  { id: 'hsk2-047', chinese: '近', pinyin: 'jìn', meaning: 'Near; close', meaningThai: 'ใกล้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校很近。', pinyin: 'Xué xiào hěn jìn.', meaning: 'The school is very close.' }] },
-  { id: 'hsk2-048', chinese: '进', pinyin: 'jìn', meaning: 'To enter', meaningThai: 'เข้า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请进。', pinyin: 'Qǐng jìn.', meaning: 'Please come in.' }] },
-  { id: 'hsk2-049', chinese: '就', pinyin: 'jiù', meaning: 'Just; then; at once', meaningThai: 'ก็, แล้วก็', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我就来。', pinyin: 'Wǒ jiù lái.', meaning: 'I\'m coming right away.' }] },
-  { id: 'hsk2-050', chinese: '觉得', pinyin: 'jué de', meaning: 'To think; to feel', meaningThai: 'รู้สึก, คิดว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我觉得很好。', pinyin: 'Wǒ jué de hěn hǎo.', meaning: 'I think it\'s good.' }] },
-  { id: 'hsk2-051', chinese: '咖啡', pinyin: 'kā fēi', meaning: 'Coffee', meaningThai: 'กาแฟ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我要一杯咖啡。', pinyin: 'Wǒ yào yī bēi kā fēi.', meaning: 'I want a cup of coffee.' }] },
-  { id: 'hsk2-052', chinese: '开始', pinyin: 'kāi shǐ', meaning: 'To start; beginning', meaningThai: 'เริ่ม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们开始吧。', pinyin: 'Wǒ men kāi shǐ ba.', meaning: 'Let\'s start.' }] },
-  { id: 'hsk2-053', chinese: '考试', pinyin: 'kǎo shì', meaning: 'Exam; test', meaningThai: 'สอบ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '明天有考试。', pinyin: 'Míng tiān yǒu kǎo shì.', meaning: 'There is a test tomorrow.' }] },
-  { id: 'hsk2-054', chinese: '可能', pinyin: 'kě néng', meaning: 'Possible; maybe', meaningThai: 'เป็นไปได้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他可能不来。', pinyin: 'Tā kě néng bù lái.', meaning: 'He might not come.' }] },
-  { id: 'hsk2-055', chinese: '可以', pinyin: 'kě yǐ', meaning: 'Can; may', meaningThai: 'ได้, สามารถ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我可以进去吗？', pinyin: 'Wǒ kě yǐ jìn qù ma?', meaning: 'May I come in?' }] },
-  { id: 'hsk2-056', chinese: '课', pinyin: 'kè', meaning: 'Lesson; subject', meaningThai: 'วิชา, บทเรียน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我有汉语课。', pinyin: 'Wǒ yǒu Hàn yǔ kè.', meaning: 'I have Chinese class.' }] },
-  { id: 'hsk2-057', chinese: '快', pinyin: 'kuài', meaning: 'Fast; quick', meaningThai: 'เร็ว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他跑得很快。', pinyin: 'Tā pǎo de hěn kuài.', meaning: 'He runs fast.' }] },
-  { id: 'hsk2-058', chinese: '快乐', pinyin: 'kuài lè', meaning: 'Happy', meaningThai: 'มีความสุข', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '生日快乐！', pinyin: 'Shēng rì kuài lè!', meaning: 'Happy birthday!' }] },
-  { id: 'hsk2-059', chinese: '累', pinyin: 'lèi', meaning: 'Tired', meaningThai: 'เหนื่อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我很累。', pinyin: 'Wǒ hěn lèi.', meaning: 'I am very tired.' }] },
-  { id: 'hsk2-060', chinese: '离', pinyin: 'lí', meaning: 'From (distance)', meaningThai: 'ห่างจาก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校离我家很远。', pinyin: 'Xué xiào lí wǒ jiā hěn yuǎn.', meaning: 'The school is far from my home.' }] },
-  { id: 'hsk2-061', chinese: '两', pinyin: 'liǎng', meaning: 'Two (quantity)', meaningThai: 'สอง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '两个人。', pinyin: 'Liǎng gè rén.', meaning: 'Two people.' }] },
-  { id: 'hsk2-062', chinese: '零', pinyin: 'líng', meaning: 'Zero', meaningThai: 'ศูนย์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '零下十度。', pinyin: 'Líng xià shí dù.', meaning: 'Ten degrees below zero.' }] },
-  { id: 'hsk2-063', chinese: '路', pinyin: 'lù', meaning: 'Road; path', meaningThai: 'ถนน, เส้นทาง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这条路很长。', pinyin: 'Zhè tiáo lù hěn cháng.', meaning: 'This road is very long.' }] },
-  { id: 'hsk2-064', chinese: '旅游', pinyin: 'lǚ yóu', meaning: 'To travel; tourism', meaningThai: 'ท่องเที่ยว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去旅游。', pinyin: 'Wǒ qù lǚ yóu.', meaning: 'I go traveling.' }] },
-  { id: 'hsk2-065', chinese: '卖', pinyin: 'mài', meaning: 'To sell', meaningThai: 'ขาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他卖水果。', pinyin: 'Tā mài shuǐ guǒ.', meaning: 'He sells fruit.' }] },
-  { id: 'hsk2-066', chinese: '慢', pinyin: 'màn', meaning: 'Slow', meaningThai: 'ช้า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请说慢一点。', pinyin: 'Qǐng shuō màn yī diǎn.', meaning: 'Please speak slower.' }] },
-  { id: 'hsk2-067', chinese: '忙', pinyin: 'máng', meaning: 'Busy', meaningThai: 'ยุ่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我很忙。', pinyin: 'Wǒ hěn máng.', meaning: 'I am very busy.' }] },
-  { id: 'hsk2-068', chinese: '每', pinyin: 'měi', meaning: 'Each; every', meaningThai: 'ทุก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '每天早上。', pinyin: 'Měi tiān zǎo shang.', meaning: 'Every morning.' }] },
-  { id: 'hsk2-069', chinese: '妹妹', pinyin: 'mèi mei', meaning: 'Younger sister', meaningThai: 'น้องสาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我妹妹十岁。', pinyin: 'Wǒ mèi mei shí suì.', meaning: 'My younger sister is 10 years old.' }] },
-  { id: 'hsk2-070', chinese: '门', pinyin: 'mén', meaning: 'Door; gate', meaningThai: 'ประตู', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请开门。', pinyin: 'Qǐng kāi mén.', meaning: 'Please open the door.' }] },
-  { id: 'hsk2-071', chinese: '面条', pinyin: 'miàn tiáo', meaning: 'Noodles', meaningThai: 'ก๋วยเตี๋ยว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我爱吃面条。', pinyin: 'Wǒ ài chī miàn tiáo.', meaning: 'I love eating noodles.' }] },
-  { id: 'hsk2-072', chinese: '男', pinyin: 'nán', meaning: 'Male', meaningThai: 'ชาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他是个男生。', pinyin: 'Tā shì gè nán shēng.', meaning: 'He is a male student.' }] },
-  { id: 'hsk2-073', chinese: '您', pinyin: 'nín', meaning: 'You (polite)', meaningThai: 'ท่าน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '您好！', pinyin: 'Nín hǎo!', meaning: 'Hello (polite)!' }] },
-  { id: 'hsk2-074', chinese: '牛奶', pinyin: 'niú nǎi', meaning: 'Cow\'s milk', meaningThai: 'นม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喝牛奶。', pinyin: 'Wǒ hē niú nǎi.', meaning: 'I drink milk.' }] },
-  { id: 'hsk2-075', chinese: '女', pinyin: 'nǚ', meaning: 'Female; woman', meaningThai: 'หญิง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她是一个女生。', pinyin: 'Tā shì yī gè nǚ shēng.', meaning: 'She is a female student.' }] },
-  { id: 'hsk2-076', chinese: '旁边', pinyin: 'páng biān', meaning: 'Side; beside', meaningThai: 'ข้างๆ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校在商店旁边。', pinyin: 'Xué xiào zài shāng diàn páng biān.', meaning: 'The school is beside the store.' }] },
-  { id: 'hsk2-077', chinese: '跑步', pinyin: 'pǎo bù', meaning: 'To run; to jog', meaningThai: 'วิ่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢跑步。', pinyin: 'Wǒ xǐ huān pǎo bù.', meaning: 'I like running.' }] },
-  { id: 'hsk2-078', chinese: '便宜', pinyin: 'pián yi', meaning: 'Cheap; inexpensive', meaningThai: 'ถูก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个很便宜。', pinyin: 'Zhè ge hěn pián yi.', meaning: 'This is very cheap.' }] },
-  { id: 'hsk2-079', chinese: '票', pinyin: 'piào', meaning: 'Ticket', meaningThai: 'ตั๋ว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我买两张票。', pinyin: 'Wǒ mǎi liǎng zhāng piào.', meaning: 'I buy two tickets.' }] },
-  { id: 'hsk2-080', chinese: '起床', pinyin: 'qǐ chuáng', meaning: 'To get up', meaningThai: 'ตื่นนอน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我早上六点起床。', pinyin: 'Wǒ zǎo shang liù diǎn qǐ chuáng.', meaning: 'I get up at 6 am.' }] },
-  { id: 'hsk2-081', chinese: '千', pinyin: 'qiān', meaning: 'Thousand', meaningThai: 'พัน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一千块钱。', pinyin: 'Yī qiān kuài qián.', meaning: 'One thousand yuan.' }] },
-  { id: 'hsk2-082', chinese: '铅笔', pinyin: 'qiān bǐ', meaning: 'Pencil', meaningThai: 'ดินสอ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我用铅笔写字。', pinyin: 'Wǒ yòng qiān bǐ xiě zì.', meaning: 'I write with a pencil.' }] },
-  { id: 'hsk2-083', chinese: '晴', pinyin: 'qíng', meaning: 'Clear; sunny', meaningThai: 'แจ่มใส', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '今天晴天。', pinyin: 'Jīn tiān qíng tiān.', meaning: 'Today is sunny.' }] },
-  { id: 'hsk2-084', chinese: '去年', pinyin: 'qù nián', meaning: 'Last year', meaningThai: 'ปีที่แล้ว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '去年我去了北京。', pinyin: 'Qù nián wǒ qù le Běi jīng.', meaning: 'I went to Beijing last year.' }] },
-  { id: 'hsk2-085', chinese: '让', pinyin: 'ràng', meaning: 'To let; to allow', meaningThai: 'ให้, อนุญาต', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '让我看看。', pinyin: 'Ràng wǒ kàn kan.', meaning: 'Let me take a look.' }] },
-  { id: 'hsk2-086', chinese: '日', pinyin: 'rì', meaning: 'Day; sun', meaningThai: 'วัน, พระอาทิตย์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一月一日。', pinyin: 'Yī yuè yī rì.', meaning: 'January 1st.' }] },
-  { id: 'hsk2-087', chinese: '上班', pinyin: 'shàng bān', meaning: 'To go to work', meaningThai: 'ไปทำงาน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我每天上班。', pinyin: 'Wǒ měi tiān shàng bān.', meaning: 'I go to work every day.' }] },
-  { id: 'hsk2-088', chinese: '身体', pinyin: 'shēn tǐ', meaning: 'Body; health', meaningThai: 'ร่างกาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '保重身体。', pinyin: 'Bǎo zhòng shēn tǐ.', meaning: 'Take care of your health.' }] },
-  { id: 'hsk2-089', chinese: '生病', pinyin: 'shēng bìng', meaning: 'To get sick', meaningThai: 'ป่วย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他生病了。', pinyin: 'Tā shēng bìng le.', meaning: 'He got sick.' }] },
-  { id: 'hsk2-090', chinese: '生日', pinyin: 'shēng rì', meaning: 'Birthday', meaningThai: 'วันเกิด', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '生日快乐！', pinyin: 'Shēng rì kuài lè!', meaning: 'Happy birthday!' }] },
-  { id: 'hsk2-091', chinese: '时间', pinyin: 'shí jiān', meaning: 'Time', meaningThai: 'เวลา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '没有时间了。', pinyin: 'Méi yǒu shí jiān le.', meaning: 'There is no time left.' }] },
-  { id: 'hsk2-092', chinese: '事情', pinyin: 'shì qing', meaning: 'Matter; thing', meaningThai: 'เรื่อง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我有事情要做。', pinyin: 'Wǒ yǒu shì qing yào zuò.', meaning: 'I have things to do.' }] },
-  { id: 'hsk2-093', chinese: '手机', pinyin: 'shǒu jī', meaning: 'Cell phone', meaningThai: 'มือถือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我的手机没电了。', pinyin: 'Wǒ de shǒu jī méi diàn le.', meaning: 'My phone battery is dead.' }] },
-  { id: 'hsk2-094', chinese: '说话', pinyin: 'shuō huà', meaning: 'To speak; to talk', meaningThai: 'พูดคุย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请不要说话。', pinyin: 'Qǐng bù yào shuō huà.', meaning: 'Please don\'t talk.' }] },
-  { id: 'hsk2-095', chinese: '送', pinyin: 'sòng', meaning: 'To give; to send', meaningThai: 'ให้, ส่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我送你一本书。', pinyin: 'Wǒ sòng nǐ yī běn shū.', meaning: 'I give you a book as a gift.' }] },
-  { id: 'hsk2-096', chinese: '虽然', pinyin: 'suī rán', meaning: 'Although', meaningThai: 'ถึงแม้ว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '虽然很累，但是很开心。', pinyin: 'Suī rán hěn lèi, dàn shì hěn kāi xīn.', meaning: 'Although tired, (I\'m) very happy.' }] },
-  { id: 'hsk2-097', chinese: '它', pinyin: 'tā', meaning: 'It', meaningThai: 'มัน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '它是我的狗。', pinyin: 'Tā shì wǒ de gǒu.', meaning: 'It is my dog.' }] },
-  { id: 'hsk2-098', chinese: '踢足球', pinyin: 'tī zú qiú', meaning: 'To play soccer', meaningThai: 'เล่นฟุตบอล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他喜欢踢足球。', pinyin: 'Tā xǐ huān tī zú qiú.', meaning: 'He likes playing soccer.' }] },
-  { id: 'hsk2-099', chinese: '题目', pinyin: 'tí mù', meaning: 'Topic; question', meaningThai: 'หัวข้อ, โจทย์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个题目很难。', pinyin: 'Zhè ge tí mù hěn nán.', meaning: 'This question is difficult.' }] },
-  { id: 'hsk2-100', chinese: '跳舞', pinyin: 'tiào wǔ', meaning: 'To dance', meaningThai: 'เต้นรำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她喜欢跳舞。', pinyin: 'Tā xǐ huān tiào wǔ.', meaning: 'She likes dancing.' }] },
-  { id: 'hsk2-101', chinese: '外', pinyin: 'wài', meaning: 'Outside; foreign', meaningThai: 'นอก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他在外面。', pinyin: 'Tā zài wài miàn.', meaning: 'He is outside.' }] },
-  { id: 'hsk2-102', chinese: '完', pinyin: 'wán', meaning: 'To finish; complete', meaningThai: 'เสร็จ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我吃完了。', pinyin: 'Wǒ chī wán le.', meaning: 'I have finished eating.' }] },
-  { id: 'hsk2-103', chinese: '玩', pinyin: 'wán', meaning: 'To play; to have fun', meaningThai: 'เล่น', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们一起去玩吧。', pinyin: 'Wǒ men yī qǐ qù wán ba.', meaning: 'Let\'s go play together.' }] },
-  { id: 'hsk2-104', chinese: '晚上', pinyin: 'wǎn shang', meaning: 'Evening; night', meaningThai: 'ตอนเย็น', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '晚上好。', pinyin: 'Wǎn shang hǎo.', meaning: 'Good evening.' }] },
-  { id: 'hsk2-105', chinese: '往', pinyin: 'wǎng', meaning: 'Towards', meaningThai: 'ไปทาง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '往前走。', pinyin: 'Wǎng qián zǒu.', meaning: 'Go forward.' }] },
-  { id: 'hsk2-106', chinese: '为什么', pinyin: 'wèi shén me', meaning: 'Why', meaningThai: 'ทำไม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你为什么不来？', pinyin: 'Nǐ wèi shén me bù lái?', meaning: 'Why don\'t you come?' }] },
-  { id: 'hsk2-107', chinese: '问', pinyin: 'wèn', meaning: 'To ask', meaningThai: 'ถาม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请问，几点？', pinyin: 'Qǐng wèn, jǐ diǎn?', meaning: 'Excuse me, what time is it?' }] },
-  { id: 'hsk2-108', chinese: '问题', pinyin: 'wèn tí', meaning: 'Question; problem', meaningThai: 'ปัญหา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '没有问题。', pinyin: 'Méi yǒu wèn tí.', meaning: 'No problem.' }] },
-  { id: 'hsk2-109', chinese: '希望', pinyin: 'xī wàng', meaning: 'To hope; wish', meaningThai: 'หวัง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我希望你快乐。', pinyin: 'Wǒ xī wàng nǐ kuài lè.', meaning: 'I wish you happiness.' }] },
-  { id: 'hsk2-110', chinese: '西瓜', pinyin: 'xī guā', meaning: 'Watermelon', meaningThai: 'แตงโม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '西瓜很好吃。', pinyin: 'Xī guā hěn hǎo chī.', meaning: 'Watermelon is delicious.' }] },
-  { id: 'hsk2-111', chinese: '洗', pinyin: 'xǐ', meaning: 'To wash', meaningThai: 'ล้าง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我洗手。', pinyin: 'Wǒ xǐ shǒu.', meaning: 'I wash my hands.' }] },
-  { id: 'hsk2-112', chinese: '小时', pinyin: 'xiǎo shí', meaning: 'Hour', meaningThai: 'ชั่วโมง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我等了一个小时。', pinyin: 'Wǒ děng le yī gè xiǎo shí.', meaning: 'I waited for an hour.' }] },
-  { id: 'hsk2-113', chinese: '笑', pinyin: 'xiào', meaning: 'To laugh; to smile', meaningThai: 'หัวเราะ, ยิ้ม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她笑了。', pinyin: 'Tā xiào le.', meaning: 'She smiled.' }] },
-  { id: 'hsk2-114', chinese: '新', pinyin: 'xīn', meaning: 'New', meaningThai: 'ใหม่', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我买了一辆新车。', pinyin: 'Wǒ mǎi le yī liàng xīn chē.', meaning: 'I bought a new car.' }] },
-  { id: 'hsk2-115', chinese: '姓', pinyin: 'xìng', meaning: 'Surname; family name', meaningThai: 'นามสกุล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你姓什么？', pinyin: 'Nǐ xìng shén me?', meaning: 'What is your surname?' }] },
-  { id: 'hsk2-116', chinese: '休息', pinyin: 'xiū xi', meaning: 'To rest', meaningThai: 'พักผ่อน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们休息一下。', pinyin: 'Wǒ men xiū xi yī xià.', meaning: 'Let\'s rest a while.' }] },
-  { id: 'hsk2-117', chinese: '雪', pinyin: 'xuě', meaning: 'Snow', meaningThai: 'หิมะ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '下雪了。', pinyin: 'Xià xuě le.', meaning: 'It\'s snowing.' }] },
-  { id: 'hsk2-118', chinese: '颜色', pinyin: 'yán sè', meaning: 'Color', meaningThai: 'สี', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你喜欢什么颜色？', pinyin: 'Nǐ xǐ huān shén me yán sè?', meaning: 'What color do you like?' }] },
-  { id: 'hsk2-119', chinese: '眼睛', pinyin: 'yǎn jing', meaning: 'Eye', meaningThai: 'ตา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她的眼睛很大。', pinyin: 'Tā de yǎn jing hěn dà.', meaning: 'Her eyes are big.' }] },
-  { id: 'hsk2-120', chinese: '药', pinyin: 'yào', meaning: 'Medicine', meaningThai: 'ยา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我吃药了。', pinyin: 'Wǒ chī yào le.', meaning: 'I took medicine.' }] },
-  { id: 'hsk2-121', chinese: '要', pinyin: 'yào', meaning: 'To want; must', meaningThai: 'ต้องการ, ต้อง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我要去学校。', pinyin: 'Wǒ yào qù xué xiào.', meaning: 'I want to go to school.' }] },
-  { id: 'hsk2-122', chinese: '也', pinyin: 'yě', meaning: 'Also; too', meaningThai: 'ก็, ด้วย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我也喜欢。', pinyin: 'Wǒ yě xǐ huān.', meaning: 'I also like it.' }] },
-  { id: 'hsk2-123', chinese: '已经', pinyin: 'yǐ jīng', meaning: 'Already', meaningThai: 'แล้ว, เรียบร้อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我已经吃了。', pinyin: 'Wǒ yǐ jīng chī le.', meaning: 'I have already eaten.' }] },
-  { id: 'hsk2-124', chinese: '一起', pinyin: 'yī qǐ', meaning: 'Together', meaningThai: 'ด้วยกัน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们一起去。', pinyin: 'Wǒ men yī qǐ qù.', meaning: 'Let\'s go together.' }] },
-  { id: 'hsk2-125', chinese: '意思', pinyin: 'yì si', meaning: 'Meaning', meaningThai: 'ความหมาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这是什么意思？', pinyin: 'Zhè shì shén me yì si?', meaning: 'What does this mean?' }] },
-  { id: 'hsk2-126', chinese: '因为', pinyin: 'yīn wèi', meaning: 'Because', meaningThai: 'เพราะว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '因为忙，所以没来。', pinyin: 'Yīn wèi máng, suǒ yǐ méi lái.', meaning: 'Because (I was) busy, (I) didn\'t come.' }] },
-  { id: 'hsk2-127', chinese: '阴', pinyin: 'yīn', meaning: 'Overcast; cloudy', meaningThai: 'เมฆมาก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '今天阴天。', pinyin: 'Jīn tiān yīn tiān.', meaning: 'Today is overcast.' }] },
-  { id: 'hsk2-128', chinese: '游泳', pinyin: 'yóu yǒng', meaning: 'To swim', meaningThai: 'ว่ายน้ำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢游泳。', pinyin: 'Wǒ xǐ huān yóu yǒng.', meaning: 'I like swimming.' }] },
-  { id: 'hsk2-129', chinese: '右边', pinyin: 'yòu bian', meaning: 'Right side', meaningThai: 'ด้านขวา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '在右边。', pinyin: 'Zài yòu bian.', meaning: 'On the right side.' }] },
-  { id: 'hsk2-130', chinese: '鱼', pinyin: 'yú', meaning: 'Fish', meaningThai: 'ปลา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我爱吃鱼。', pinyin: 'Wǒ ài chī yú.', meaning: 'I love eating fish.' }] },
-  { id: 'hsk2-131', chinese: '远', pinyin: 'yuǎn', meaning: 'Far; distant', meaningThai: 'ไกล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校很远。', pinyin: 'Xué xiào hěn yuǎn.', meaning: 'The school is far.' }] },
-  { id: 'hsk2-132', chinese: '运动', pinyin: 'yùn dòng', meaning: 'Sports; exercise', meaningThai: 'กีฬา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢运动。', pinyin: 'Wǒ xǐ huān yùn dòng.', meaning: 'I like sports.' }] },
-  { id: 'hsk2-133', chinese: '再', pinyin: 'zài', meaning: 'Again; once more', meaningThai: 'อีกครั้ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '再说一次。', pinyin: 'Zài shuō yī cì.', meaning: 'Say it again.' }] },
-  { id: 'hsk2-134', chinese: '早上', pinyin: 'zǎo shang', meaning: 'Early morning', meaningThai: 'เช้า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '早上好！', pinyin: 'Zǎo shang hǎo!', meaning: 'Good morning!' }] },
-  { id: 'hsk2-135', chinese: '找', pinyin: 'zhǎo', meaning: 'To look for', meaningThai: 'หา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我找我的书。', pinyin: 'Wǒ zhǎo wǒ de shū.', meaning: 'I\'m looking for my book.' }] },
-  { id: 'hsk2-136', chinese: '着', pinyin: 'zhe', meaning: 'Progressive particle', meaningThai: 'กำลัง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他看着书。', pinyin: 'Tā kàn zhe shū.', meaning: 'He is reading a book.' }] },
-  { id: 'hsk2-137', chinese: '真', pinyin: 'zhēn', meaning: 'Really; truly', meaningThai: 'จริงๆ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '真好！', pinyin: 'Zhēn hǎo!', meaning: 'Really good!' }] },
-  { id: 'hsk2-138', chinese: '正在', pinyin: 'zhèng zài', meaning: 'In the process of', meaningThai: 'กำลัง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我正在吃饭。', pinyin: 'Wǒ zhèng zài chī fàn.', meaning: 'I am eating right now.' }] },
-  { id: 'hsk2-139', chinese: '知道', pinyin: 'zhī dào', meaning: 'To know', meaningThai: 'รู้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我知道。', pinyin: 'Wǒ zhī dào.', meaning: 'I know.' }] },
-  { id: 'hsk2-140', chinese: '准备', pinyin: 'zhǔn bèi', meaning: 'To prepare', meaningThai: 'เตรียม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我准备考试。', pinyin: 'Wǒ zhǔn bèi kǎo shì.', meaning: 'I prepare for the exam.' }] },
-  { id: 'hsk2-141', chinese: '走', pinyin: 'zǒu', meaning: 'To walk; to leave', meaningThai: 'เดิน, ไป', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们走吧。', pinyin: 'Wǒ men zǒu ba.', meaning: 'Let\'s go.' }] },
-  { id: 'hsk2-142', chinese: '最', pinyin: 'zuì', meaning: 'Most; -est', meaningThai: 'ที่สุด', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他最高。', pinyin: 'Tā zuì gāo.', meaning: 'He is the tallest.' }] },
-  { id: 'hsk2-143', chinese: '左边', pinyin: 'zuǒ bian', meaning: 'Left side', meaningThai: 'ด้านซ้าย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '在左边。', pinyin: 'Zài zuǒ bian.', meaning: 'On the left side.' }] },
-  { id: 'hsk2-144', chinese: '手表', pinyin: 'shǒu biǎo', meaning: 'Wrist watch', meaningThai: 'นาฬิกาข้อมือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我的手表很漂亮。', pinyin: 'Wǒ de shǒu biǎo hěn piào liang.', meaning: 'My watch is beautiful.' }] },
-  { id: 'hsk2-145', chinese: '妻子', pinyin: 'qī zi', meaning: 'Wife', meaningThai: 'ภรรยา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他的妻子很漂亮。', pinyin: 'Tā de qī zi hěn piào liang.', meaning: 'His wife is beautiful.' }] },
-  { id: 'hsk2-146', chinese: '丈夫', pinyin: 'zhàng fu', meaning: 'Husband', meaningThai: 'สามี', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她的丈夫是医生。', pinyin: 'Tā de zhàng fu shì yī shēng.', meaning: 'Her husband is a doctor.' }] },
-  { id: 'hsk2-147', chinese: '孩子', pinyin: 'hái zi', meaning: 'Child', meaningThai: 'เด็ก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '孩子们在玩。', pinyin: 'Hái zi men zài wán.', meaning: 'The children are playing.' }] },
-  { id: 'hsk2-148', chinese: '羊肉', pinyin: 'yáng ròu', meaning: 'Mutton; lamb', meaningThai: 'เนื้อแกะ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我爱吃羊肉。', pinyin: 'Wǒ ài chī yáng ròu.', meaning: 'I love eating lamb.' }] },
-  { id: 'hsk2-149', chinese: '健康', pinyin: 'jiàn kāng', meaning: 'Healthy; health', meaningThai: 'สุขภาพดี', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '祝你健康。', pinyin: 'Zhù nǐ jiàn kāng.', meaning: 'Wishing you good health.' }] },
-  { id: 'hsk2-150', chinese: '手表', pinyin: 'shǒu biǎo', meaning: 'Wristwatch', meaningThai: 'นาฬิกาข้อมือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我的手表快。', pinyin: 'Wǒ de shǒu biǎo kuài.', meaning: 'My watch is fast.' }] },
+  { id: 'hsk2-001', chinese: '吧', pinyin: 'ba', meaning: 'Modal particle (suggestion)', meaningThai: 'นะ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们走吧。', pinyin: 'Wǒ men zǒu ba.', meaning: 'Let\'s go.', meaningThai: 'ไปกันเถอะ' }] },
+  { id: 'hsk2-002', chinese: '白', pinyin: 'bái', meaning: 'White', meaningThai: 'ขาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '白色的花。', pinyin: 'Bái sè de huā.', meaning: 'White flowers.', meaningThai: 'ดอกไม้สีขาว' }] },
+  { id: 'hsk2-003', chinese: '百', pinyin: 'bǎi', meaning: 'Hundred', meaningThai: 'ร้อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一百块钱。', pinyin: 'Yī bǎi kuài qián.', meaning: 'One hundred yuan.', meaningThai: 'หนึ่งร้อยหยวน' }] },
+  { id: 'hsk2-004', chinese: '帮助', pinyin: 'bāng zhù', meaning: 'To help; help', meaningThai: 'ช่วยเหลือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '谢谢你帮助我。', pinyin: 'Xiè xiè nǐ bāng zhù wǒ.', meaning: 'Thank you for helping me.', meaningThai: 'ขอบคุณที่ช่วยฉัน' }] },
+  { id: 'hsk2-005', chinese: '报纸', pinyin: 'bào zhǐ', meaning: 'Newspaper', meaningThai: 'หนังสือพิมพ์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我看报纸。', pinyin: 'Wǒ kàn bào zhǐ.', meaning: 'I read the newspaper.', meaningThai: 'ฉันอ่านหนังสือพิมพ์' }] },
+  { id: 'hsk2-006', chinese: '比', pinyin: 'bǐ', meaning: 'To compare; than', meaningThai: 'กว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他比我高。', pinyin: 'Tā bǐ wǒ gāo.', meaning: 'He is taller than me.', meaningThai: 'เขาสูงกว่าฉัน' }] },
+  { id: 'hsk2-007', chinese: '别', pinyin: 'bié', meaning: 'Do not; other', meaningThai: 'อย่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '别说话。', pinyin: 'Bié shuō huà.', meaning: 'Don\'t speak.', meaningThai: 'อย่าพูด' }] },
+  { id: 'hsk2-008', chinese: '宾馆', pinyin: 'bīn guǎn', meaning: 'Guesthouse/Hotel', meaningThai: 'โรงแรม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我住在宾馆。', pinyin: 'Wǒ zhù zài bīn guǎn.', meaning: 'I stay at the hotel.', meaningThai: 'ฉันพักที่โรงแรม' }] },
+  { id: 'hsk2-009', chinese: '长', pinyin: 'cháng', meaning: 'Long', meaningThai: 'ยาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这条路很长。', pinyin: 'Zhè tiáo lù hěn cháng.', meaning: 'This road is long.', meaningThai: 'ถนนเส้นนี้ยาว' }] },
+  { id: 'hsk2-010', chinese: '唱歌', pinyin: 'chàng gē', meaning: 'To sing', meaningThai: 'ร้องเพลง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她喜欢唱歌。', pinyin: 'Tā xǐ huān chàng gē.', meaning: 'She likes to sing.', meaningThai: 'เธอชอบร้องเพลง' }] },
+  { id: 'hsk2-011', chinese: '出', pinyin: 'chū', meaning: 'To go out', meaningThai: 'ออก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他出去了。', pinyin: 'Tā chū qù le.', meaning: 'He went out.', meaningThai: 'เขาออกไปข้างนอก' }] },
+  { id: 'hsk2-012', chinese: '穿', pinyin: 'chuān', meaning: 'To wear; to put on', meaningThai: 'สวมใส่', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她穿红色的衣服。', pinyin: 'Tā chuān hóng sè de yī fu.', meaning: 'She wears red clothes.', meaningThai: 'เธอใส่เสื้อผ้าสีแดง' }] },
+  { id: 'hsk2-013', chinese: '次', pinyin: 'cì', meaning: 'Time (occurrence)', meaningThai: 'ครั้ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去过两次。', pinyin: 'Wǒ qù guò liǎng cì.', meaning: 'I have been there twice.', meaningThai: 'ฉันเคยไปที่นั่นสองครั้ง' }] },
+  { id: 'hsk2-014', chinese: '从', pinyin: 'cóng', meaning: 'From', meaningThai: 'จาก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我从北京来。', pinyin: 'Wǒ cóng Běi jīng lái.', meaning: 'I come from Beijing.', meaningThai: 'ฉันมาจากปักกิ่ง' }] },
+  { id: 'hsk2-015', chinese: '错', pinyin: 'cuò', meaning: 'Wrong; mistake', meaningThai: 'ผิด', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '对不起，我错了。', pinyin: 'Duì bu qǐ, wǒ cuò le.', meaning: 'Sorry, I was wrong.', meaningThai: 'ขอโทษ ฉันผิดเอง' }] },
+  { id: 'hsk2-016', chinese: '打篮球', pinyin: 'dǎ lán qiú', meaning: 'To play basketball', meaningThai: 'เล่นบาสเกตบอล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢打篮球。', pinyin: 'Wǒ xǐ huān dǎ lán qiú.', meaning: 'I like to play basketball.', meaningThai: 'ฉันชอบเล่นบาสเก็ตบอล' }] },
+  { id: 'hsk2-017', chinese: '大家', pinyin: 'dà jiā', meaning: 'Everyone', meaningThai: 'ทุกคน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '大家好！', pinyin: 'Dà jiā hǎo!', meaning: 'Hello everyone!', meaningThai: 'สวัสดีทุกคน!' }] },
+  { id: 'hsk2-018', chinese: '到', pinyin: 'dào', meaning: 'To arrive; until', meaningThai: 'ถึง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们到了。', pinyin: 'Wǒ men dào le.', meaning: 'We have arrived.', meaningThai: 'เรามาถึงแล้ว' }] },
+  { id: 'hsk2-019', chinese: '得', pinyin: 'de', meaning: 'Structural particle (degree)', meaningThai: '(เสริม)', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他跑得很快。', pinyin: 'Tā pǎo de hěn kuài.', meaning: 'He runs very fast.', meaningThai: 'เขาวิ่งเร็วมาก' }] },
+  { id: 'hsk2-020', chinese: '等', pinyin: 'děng', meaning: 'To wait; etc.', meaningThai: 'รอ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请等一下。', pinyin: 'Qǐng děng yī xià.', meaning: 'Please wait a moment.', meaningThai: 'กรุณารอสักครู่' }] },
+  { id: 'hsk2-021', chinese: '弟弟', pinyin: 'dì di', meaning: 'Younger brother', meaningThai: 'น้องชาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我弟弟很高。', pinyin: 'Wǒ dì di hěn gāo.', meaning: 'My younger brother is tall.', meaningThai: 'น้องชายของฉันสูง' }] },
+  { id: 'hsk2-022', chinese: '第一', pinyin: 'dì yī', meaning: 'First; number one', meaningThai: 'ที่หนึ่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他是第一名。', pinyin: 'Tā shì dì yī míng.', meaning: 'He is first place.', meaningThai: 'เขาได้ที่หนึ่ง' }] },
+  { id: 'hsk2-023', chinese: '懂', pinyin: 'dǒng', meaning: 'To understand', meaningThai: 'เข้าใจ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我懂了。', pinyin: 'Wǒ dǒng le.', meaning: 'I understand.', meaningThai: 'ฉันเข้าใจ' }] },
+  { id: 'hsk2-024', chinese: '对', pinyin: 'duì', meaning: 'Correct; towards', meaningThai: 'ถูก, ต่อ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你说得对。', pinyin: 'Nǐ shuō de duì.', meaning: 'You are right.', meaningThai: 'คุณพูดถูก' }] },
+  { id: 'hsk2-025', chinese: '房间', pinyin: 'fáng jiān', meaning: 'Room', meaningThai: 'ห้อง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个房间很大。', pinyin: 'Zhè ge fáng jiān hěn dà.', meaning: 'This room is big.', meaningThai: 'ห้องนี้ใหญ่' }] },
+  { id: 'hsk2-026', chinese: '非常', pinyin: 'fēi cháng', meaning: 'Very; extremely', meaningThai: 'มาก, พิเศษ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '非常好。', pinyin: 'Fēi cháng hǎo.', meaning: 'Very good.', meaningThai: 'ดีมาก' }] },
+  { id: 'hsk2-027', chinese: '服务员', pinyin: 'fú wù yuán', meaning: 'Waiter; attendant', meaningThai: 'พนักงานบริการ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '服务员，点菜。', pinyin: 'Fú wù yuán, diǎn cài.', meaning: 'Waiter, I\'d like to order.', meaningThai: 'บริกรครับ/คะ ขอสั่งอาหาร' }] },
+  { id: 'hsk2-028', chinese: '高', pinyin: 'gāo', meaning: 'High; Tall', meaningThai: 'สูง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这座山很高。', pinyin: 'Zhè zuò shān hěn gāo.', meaning: 'This mountain is high.', meaningThai: 'ภูเขาลูกนี้สูง' }] },
+  { id: 'hsk2-029', chinese: '告诉', pinyin: 'gào su', meaning: 'To tell', meaningThai: 'บอก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请告诉我。', pinyin: 'Qǐng gào su wǒ.', meaning: 'Please tell me.', meaningThai: 'กรุณาบอกฉัน' }] },
+  { id: 'hsk2-030', chinese: '哥哥', pinyin: 'gē ge', meaning: 'Older brother', meaningThai: 'พี่ชาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我哥哥是老师。', pinyin: 'Wǒ gē ge shì lǎo shī.', meaning: 'My older brother is a teacher.', meaningThai: 'พี่ชายของฉันเป็นครู' }] },
+  { id: 'hsk2-031', chinese: '给', pinyin: 'gěi', meaning: 'To give; for', meaningThai: 'ให้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我给你一本书。', pinyin: 'Wǒ gěi nǐ yī běn shū.', meaning: 'I give you a book.', meaningThai: 'ฉันให้หนังสือคุณ' }] },
+  { id: 'hsk2-032', chinese: '公共汽车', pinyin: 'gōng gòng qì chē', meaning: 'Bus', meaningThai: 'รถเมล์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我坐公共汽车去。', pinyin: 'Wǒ zuò gōng gòng qì chē qù.', meaning: 'I go by bus.', meaningThai: 'ฉันไปโดยรถบัส' }] },
+  { id: 'hsk2-033', chinese: '公司', pinyin: 'gōng sī', meaning: 'Company', meaningThai: 'บริษัท', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我在公司工作。', pinyin: 'Wǒ zài gōng sī gōng zuò.', meaning: 'I work at a company.', meaningThai: 'ฉันทำงานที่บริษัท' }] },
+  { id: 'hsk2-034', chinese: '贵', pinyin: 'guì', meaning: 'Expensive', meaningThai: 'แพง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个太贵了。', pinyin: 'Zhè ge tài guì le.', meaning: 'This is too expensive.', meaningThai: 'อันนี้แพงเกินไป' }] },
+  { id: 'hsk2-035', chinese: '过', pinyin: 'guò', meaning: 'Past experience particle', meaningThai: 'เคย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去过中国。', pinyin: 'Wǒ qù guò Zhōng guó.', meaning: 'I have been to China.', meaningThai: 'ฉันเคยไปจีน' }] },
+  { id: 'hsk2-036', chinese: '还', pinyin: 'hái', meaning: 'Still; also', meaningThai: 'ยัง, ก็', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我还要吃。', pinyin: 'Wǒ hái yào chī.', meaning: 'I still want to eat.', meaningThai: 'ฉันยังอยากกิน' }] },
+  { id: 'hsk2-037', chinese: '好吃', pinyin: 'hǎo chī', meaning: 'Delicious', meaningThai: 'อร่อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个菜很好吃。', pinyin: 'Zhè ge cài hěn hǎo chī.', meaning: 'This dish is delicious.', meaningThai: 'อาหารจานนี้อร่อย' }] },
+  { id: 'hsk2-038', chinese: '黑', pinyin: 'hēi', meaning: 'Black; dark', meaningThai: 'ดำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他穿黑色的鞋。', pinyin: 'Tā chuān hēi sè de xié.', meaning: 'He wears black shoes.', meaningThai: 'เขาใส่รองเท้าสีดำ' }] },
+  { id: 'hsk2-039', chinese: '红', pinyin: 'hóng', meaning: 'Red', meaningThai: 'แดง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '红色的花。', pinyin: 'Hóng sè de huā.', meaning: 'Red flowers.', meaningThai: 'ดอกไม้สีแดง' }] },
+  { id: 'hsk2-040', chinese: '火车站', pinyin: 'huǒ chē zhàn', meaning: 'Train station', meaningThai: 'สถานีรถไฟ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '火车站在哪儿？', pinyin: 'Huǒ chē zhàn zài nǎr?', meaning: 'Where is the train station?', meaningThai: 'สถานีรถไฟอยู่ที่ไหน?' }] },
+  { id: 'hsk2-041', chinese: '机场', pinyin: 'jī chǎng', meaning: 'Airport', meaningThai: 'สนามบิน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去机场。', pinyin: 'Wǒ qù jī chǎng.', meaning: 'I go to the airport.', meaningThai: 'ฉันไปสนามบิน' }] },
+  { id: 'hsk2-042', chinese: '鸡蛋', pinyin: 'jī dàn', meaning: 'Egg', meaningThai: 'ไข่', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我吃鸡蛋。', pinyin: 'Wǒ chī jī dàn.', meaning: 'I eat eggs.', meaningThai: 'ฉันกินไข่' }] },
+  { id: 'hsk2-043', chinese: '件', pinyin: 'jiàn', meaning: 'Classifier (items)', meaningThai: '(ลักษณะนามสิ่งของ)', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一件衣服。', pinyin: 'Yī jiàn yī fu.', meaning: 'One piece of clothing.', meaningThai: 'เสื้อผ้าหนึ่งตัว' }] },
+  { id: 'hsk2-044', chinese: '教室', pinyin: 'jiào shì', meaning: 'Classroom', meaningThai: 'ห้องเรียน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '教室很大。', pinyin: 'Jiào shì hěn dà.', meaning: 'The classroom is big.', meaningThai: 'ห้องเรียนใหญ่' }] },
+  { id: 'hsk2-045', chinese: '姐姐', pinyin: 'jiě jie', meaning: 'Older sister', meaningThai: 'พี่สาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我姐姐很漂亮。', pinyin: 'Wǒ jiě jie hěn piào liang.', meaning: 'My older sister is pretty.', meaningThai: 'พี่สาวของฉันสวย' }] },
+  { id: 'hsk2-046', chinese: '介绍', pinyin: 'jiè shào', meaning: 'To introduce', meaningThai: 'แนะนำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我介绍一下。', pinyin: 'Wǒ jiè shào yī xià.', meaning: 'Let me introduce.', meaningThai: 'ขอแนะนำตัว' }] },
+  { id: 'hsk2-047', chinese: '近', pinyin: 'jìn', meaning: 'Near; close', meaningThai: 'ใกล้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校很近。', pinyin: 'Xué xiào hěn jìn.', meaning: 'The school is very close.', meaningThai: 'โรงเรียนอยู่ใกล้มาก' }] },
+  { id: 'hsk2-048', chinese: '进', pinyin: 'jìn', meaning: 'To enter', meaningThai: 'เข้า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请进。', pinyin: 'Qǐng jìn.', meaning: 'Please come in.', meaningThai: 'เชิญเข้าไปข้างใน' }] },
+  { id: 'hsk2-049', chinese: '就', pinyin: 'jiù', meaning: 'Just; then; at once', meaningThai: 'ก็, แล้วก็', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我就来。', pinyin: 'Wǒ jiù lái.', meaning: 'I\'m coming right away.', meaningThai: 'ฉันกำลังจะมา' }] },
+  { id: 'hsk2-050', chinese: '觉得', pinyin: 'jué de', meaning: 'To think; to feel', meaningThai: 'รู้สึก, คิดว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我觉得很好。', pinyin: 'Wǒ jué de hěn hǎo.', meaning: 'I think it\'s good.', meaningThai: 'ฉันคิดว่ามันดี' }] },
+  { id: 'hsk2-051', chinese: '咖啡', pinyin: 'kā fēi', meaning: 'Coffee', meaningThai: 'กาแฟ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我要一杯咖啡。', pinyin: 'Wǒ yào yī bēi kā fēi.', meaning: 'I want a cup of coffee.', meaningThai: 'ฉันอยากได้กาแฟหนึ่งถ้วย' }] },
+  { id: 'hsk2-052', chinese: '开始', pinyin: 'kāi shǐ', meaning: 'To start; beginning', meaningThai: 'เริ่ม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们开始吧。', pinyin: 'Wǒ men kāi shǐ ba.', meaning: 'Let\'s start.', meaningThai: 'เริ่มกันเถอะ' }] },
+  { id: 'hsk2-053', chinese: '考试', pinyin: 'kǎo shì', meaning: 'Exam; test', meaningThai: 'สอบ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '明天有考试。', pinyin: 'Míng tiān yǒu kǎo shì.', meaning: 'There is a test tomorrow.', meaningThai: 'พรุ่งนี้มีสอบ' }] },
+  { id: 'hsk2-054', chinese: '可能', pinyin: 'kě néng', meaning: 'Possible; maybe', meaningThai: 'เป็นไปได้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他可能不来。', pinyin: 'Tā kě néng bù lái.', meaning: 'He might not come.', meaningThai: 'เขาอาจจะไม่มา' }] },
+  { id: 'hsk2-055', chinese: '可以', pinyin: 'kě yǐ', meaning: 'Can; may', meaningThai: 'ได้, สามารถ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我可以进去吗？', pinyin: 'Wǒ kě yǐ jìn qù ma?', meaning: 'May I come in?', meaningThai: 'ขอเข้าไปได้ไหม?' }] },
+  { id: 'hsk2-056', chinese: '课', pinyin: 'kè', meaning: 'Lesson; subject', meaningThai: 'วิชา, บทเรียน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我有汉语课。', pinyin: 'Wǒ yǒu Hàn yǔ kè.', meaning: 'I have Chinese class.', meaningThai: 'ฉันมีเรียนภาษาจีน' }] },
+  { id: 'hsk2-057', chinese: '快', pinyin: 'kuài', meaning: 'Fast; quick', meaningThai: 'เร็ว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他跑得很快。', pinyin: 'Tā pǎo de hěn kuài.', meaning: 'He runs fast.', meaningThai: 'เขาวิ่งเร็ว' }] },
+  { id: 'hsk2-058', chinese: '快乐', pinyin: 'kuài lè', meaning: 'Happy', meaningThai: 'มีความสุข', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '生日快乐！', pinyin: 'Shēng rì kuài lè!', meaning: 'Happy birthday!', meaningThai: 'สุขสันต์วันเกิด!' }] },
+  { id: 'hsk2-059', chinese: '累', pinyin: 'lèi', meaning: 'Tired', meaningThai: 'เหนื่อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我很累。', pinyin: 'Wǒ hěn lèi.', meaning: 'I am very tired.', meaningThai: 'ฉันเหนื่อยมาก' }] },
+  { id: 'hsk2-060', chinese: '离', pinyin: 'lí', meaning: 'From (distance)', meaningThai: 'ห่างจาก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校离我家很远。', pinyin: 'Xué xiào lí wǒ jiā hěn yuǎn.', meaning: 'The school is far from my home.', meaningThai: 'โรงเรียนไกลจากบ้านของฉัน' }] },
+  { id: 'hsk2-061', chinese: '两', pinyin: 'liǎng', meaning: 'Two (quantity)', meaningThai: 'สอง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '两个人。', pinyin: 'Liǎng gè rén.', meaning: 'Two people.', meaningThai: 'สองคน' }] },
+  { id: 'hsk2-062', chinese: '零', pinyin: 'líng', meaning: 'Zero', meaningThai: 'ศูนย์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '零下十度。', pinyin: 'Líng xià shí dù.', meaning: 'Ten degrees below zero.', meaningThai: 'ติดลบสิบองศา' }] },
+  { id: 'hsk2-063', chinese: '路', pinyin: 'lù', meaning: 'Road; path', meaningThai: 'ถนน, เส้นทาง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这条路很长。', pinyin: 'Zhè tiáo lù hěn cháng.', meaning: 'This road is very long.', meaningThai: 'ถนนเส้นนี้ยาวมาก' }] },
+  { id: 'hsk2-064', chinese: '旅游', pinyin: 'lǚ yóu', meaning: 'To travel; tourism', meaningThai: 'ท่องเที่ยว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我去旅游。', pinyin: 'Wǒ qù lǚ yóu.', meaning: 'I go traveling.', meaningThai: 'ฉันไปเที่ยว' }] },
+  { id: 'hsk2-065', chinese: '卖', pinyin: 'mài', meaning: 'To sell', meaningThai: 'ขาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他卖水果。', pinyin: 'Tā mài shuǐ guǒ.', meaning: 'He sells fruit.', meaningThai: 'เขาขายผลไม้' }] },
+  { id: 'hsk2-066', chinese: '慢', pinyin: 'màn', meaning: 'Slow', meaningThai: 'ช้า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请说慢一点。', pinyin: 'Qǐng shuō màn yī diǎn.', meaning: 'Please speak slower.', meaningThai: 'กรุณาพูดช้าลงหน่อย' }] },
+  { id: 'hsk2-067', chinese: '忙', pinyin: 'máng', meaning: 'Busy', meaningThai: 'ยุ่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我很忙。', pinyin: 'Wǒ hěn máng.', meaning: 'I am very busy.', meaningThai: 'ฉันยุ่งมาก' }] },
+  { id: 'hsk2-068', chinese: '每', pinyin: 'měi', meaning: 'Each; every', meaningThai: 'ทุก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '每天早上。', pinyin: 'Měi tiān zǎo shang.', meaning: 'Every morning.', meaningThai: 'ทุกเช้า' }] },
+  { id: 'hsk2-069', chinese: '妹妹', pinyin: 'mèi mei', meaning: 'Younger sister', meaningThai: 'น้องสาว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我妹妹十岁。', pinyin: 'Wǒ mèi mei shí suì.', meaning: 'My younger sister is 10 years old.', meaningThai: 'น้องสาวของฉันอายุสิบขวบ' }] },
+  { id: 'hsk2-070', chinese: '门', pinyin: 'mén', meaning: 'Door; gate', meaningThai: 'ประตู', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请开门。', pinyin: 'Qǐng kāi mén.', meaning: 'Please open the door.', meaningThai: 'กรุณาเปิดประตู' }] },
+  { id: 'hsk2-071', chinese: '面条', pinyin: 'miàn tiáo', meaning: 'Noodles', meaningThai: 'ก๋วยเตี๋ยว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我爱吃面条。', pinyin: 'Wǒ ài chī miàn tiáo.', meaning: 'I love eating noodles.', meaningThai: 'ฉันชอบกินก๋วยเตี๋ยว' }] },
+  { id: 'hsk2-072', chinese: '男', pinyin: 'nán', meaning: 'Male', meaningThai: 'ชาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他是个男生。', pinyin: 'Tā shì gè nán shēng.', meaning: 'He is a male student.', meaningThai: 'เขาเป็นนักเรียนชาย' }] },
+  { id: 'hsk2-073', chinese: '您', pinyin: 'nín', meaning: 'You (polite)', meaningThai: 'ท่าน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '您好！', pinyin: 'Nín hǎo!', meaning: 'Hello (polite)!', meaningThai: 'สวัสดีครับ/คะ!' }] },
+  { id: 'hsk2-074', chinese: '牛奶', pinyin: 'niú nǎi', meaning: 'Cow\'s milk', meaningThai: 'นม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喝牛奶。', pinyin: 'Wǒ hē niú nǎi.', meaning: 'I drink milk.', meaningThai: 'ฉันดื่มนม' }] },
+  { id: 'hsk2-075', chinese: '女', pinyin: 'nǚ', meaning: 'Female; woman', meaningThai: 'หญิง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她是一个女生。', pinyin: 'Tā shì yī gè nǚ shēng.', meaning: 'She is a female student.', meaningThai: 'เธอเป็นนักเรียนหญิง' }] },
+  { id: 'hsk2-076', chinese: '旁边', pinyin: 'páng biān', meaning: 'Side; beside', meaningThai: 'ข้างๆ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校在商店旁边。', pinyin: 'Xué xiào zài shāng diàn páng biān.', meaning: 'The school is beside the store.', meaningThai: 'โรงเรียนอยู่ข้างร้านค้า' }] },
+  { id: 'hsk2-077', chinese: '跑步', pinyin: 'pǎo bù', meaning: 'To run; to jog', meaningThai: 'วิ่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢跑步。', pinyin: 'Wǒ xǐ huān pǎo bù.', meaning: 'I like running.', meaningThai: 'ฉันชอบวิ่ง' }] },
+  { id: 'hsk2-078', chinese: '便宜', pinyin: 'pián yi', meaning: 'Cheap; inexpensive', meaningThai: 'ถูก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个很便宜。', pinyin: 'Zhè ge hěn pián yi.', meaning: 'This is very cheap.', meaningThai: 'อันนี้ถูกมาก' }] },
+  { id: 'hsk2-079', chinese: '票', pinyin: 'piào', meaning: 'Ticket', meaningThai: 'ตั๋ว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我买两张票。', pinyin: 'Wǒ mǎi liǎng zhāng piào.', meaning: 'I buy two tickets.', meaningThai: 'ฉันซื้อตั๋วสองใบ' }] },
+  { id: 'hsk2-080', chinese: '起床', pinyin: 'qǐ chuáng', meaning: 'To get up', meaningThai: 'ตื่นนอน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我早上六点起床。', pinyin: 'Wǒ zǎo shang liù diǎn qǐ chuáng.', meaning: 'I get up at 6 am.', meaningThai: 'ฉันตื่นตอนหกโมงเช้า' }] },
+  { id: 'hsk2-081', chinese: '千', pinyin: 'qiān', meaning: 'Thousand', meaningThai: 'พัน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一千块钱。', pinyin: 'Yī qiān kuài qián.', meaning: 'One thousand yuan.', meaningThai: 'หนึ่งพันหยวน' }] },
+  { id: 'hsk2-082', chinese: '铅笔', pinyin: 'qiān bǐ', meaning: 'Pencil', meaningThai: 'ดินสอ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我用铅笔写字。', pinyin: 'Wǒ yòng qiān bǐ xiě zì.', meaning: 'I write with a pencil.', meaningThai: 'ฉันเขียนด้วยดินสอ' }] },
+  { id: 'hsk2-083', chinese: '晴', pinyin: 'qíng', meaning: 'Clear; sunny', meaningThai: 'แจ่มใส', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '今天晴天。', pinyin: 'Jīn tiān qíng tiān.', meaning: 'Today is sunny.', meaningThai: 'วันนี้แดดออก' }] },
+  { id: 'hsk2-084', chinese: '去年', pinyin: 'qù nián', meaning: 'Last year', meaningThai: 'ปีที่แล้ว', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '去年我去了北京。', pinyin: 'Qù nián wǒ qù le Běi jīng.', meaning: 'I went to Beijing last year.', meaningThai: 'ฉันไปปักกิ่งปีที่แล้ว' }] },
+  { id: 'hsk2-085', chinese: '让', pinyin: 'ràng', meaning: 'To let; to allow', meaningThai: 'ให้, อนุญาต', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '让我看看。', pinyin: 'Ràng wǒ kàn kan.', meaning: 'Let me take a look.', meaningThai: 'ขอฉันดูหน่อย' }] },
+  { id: 'hsk2-086', chinese: '日', pinyin: 'rì', meaning: 'Day; sun', meaningThai: 'วัน, พระอาทิตย์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '一月一日。', pinyin: 'Yī yuè yī rì.', meaning: 'January 1st.', meaningThai: 'วันที่ 1 มกราคม' }] },
+  { id: 'hsk2-087', chinese: '上班', pinyin: 'shàng bān', meaning: 'To go to work', meaningThai: 'ไปทำงาน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我每天上班。', pinyin: 'Wǒ měi tiān shàng bān.', meaning: 'I go to work every day.', meaningThai: 'ฉันไปทำงานทุกวัน' }] },
+  { id: 'hsk2-088', chinese: '身体', pinyin: 'shēn tǐ', meaning: 'Body; health', meaningThai: 'ร่างกาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '保重身体。', pinyin: 'Bǎo zhòng shēn tǐ.', meaning: 'Take care of your health.', meaningThai: 'ดูแลสุขภาพด้วยนะ' }] },
+  { id: 'hsk2-089', chinese: '生病', pinyin: 'shēng bìng', meaning: 'To get sick', meaningThai: 'ป่วย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他生病了。', pinyin: 'Tā shēng bìng le.', meaning: 'He got sick.', meaningThai: 'เขาป่วย' }] },
+  { id: 'hsk2-090', chinese: '生日', pinyin: 'shēng rì', meaning: 'Birthday', meaningThai: 'วันเกิด', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '生日快乐！', pinyin: 'Shēng rì kuài lè!', meaning: 'Happy birthday!', meaningThai: 'สุขสันต์วันเกิด!' }] },
+  { id: 'hsk2-091', chinese: '时间', pinyin: 'shí jiān', meaning: 'Time', meaningThai: 'เวลา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '没有时间了。', pinyin: 'Méi yǒu shí jiān le.', meaning: 'There is no time left.', meaningThai: 'ไม่มีเวลาเหลือแล้ว' }] },
+  { id: 'hsk2-092', chinese: '事情', pinyin: 'shì qing', meaning: 'Matter; thing', meaningThai: 'เรื่อง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我有事情要做。', pinyin: 'Wǒ yǒu shì qing yào zuò.', meaning: 'I have things to do.', meaningThai: 'ฉันมีสิ่งที่ต้องทำ' }] },
+  { id: 'hsk2-093', chinese: '手机', pinyin: 'shǒu jī', meaning: 'Cell phone', meaningThai: 'มือถือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我的手机没电了。', pinyin: 'Wǒ de shǒu jī méi diàn le.', meaning: 'My phone battery is dead.', meaningThai: 'แบตเตอรี่โทรศัพท์ฉันหมด' }] },
+  { id: 'hsk2-094', chinese: '说话', pinyin: 'shuō huà', meaning: 'To speak; to talk', meaningThai: 'พูดคุย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请不要说话。', pinyin: 'Qǐng bù yào shuō huà.', meaning: 'Please don\'t talk.', meaningThai: 'กรุณาอย่าคุย' }] },
+  { id: 'hsk2-095', chinese: '送', pinyin: 'sòng', meaning: 'To give; to send', meaningThai: 'ให้, ส่ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我送你一本书。', pinyin: 'Wǒ sòng nǐ yī běn shū.', meaning: 'I give you a book as a gift.', meaningThai: 'ฉันให้หนังสือคุณเป็นของขวัญ' }] },
+  { id: 'hsk2-096', chinese: '虽然', pinyin: 'suī rán', meaning: 'Although', meaningThai: 'ถึงแม้ว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '虽然很累，但是很开心。', pinyin: 'Suī rán hěn lèi, dàn shì hěn kāi xīn.', meaning: 'Although tired, (I\'m) very happy.', meaningThai: 'ถึงจะเหนื่อยแต่ก็มีความสุขมาก' }] },
+  { id: 'hsk2-097', chinese: '它', pinyin: 'tā', meaning: 'It', meaningThai: 'มัน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '它是我的狗。', pinyin: 'Tā shì wǒ de gǒu.', meaning: 'It is my dog.', meaningThai: 'มันคือหมาของฉัน' }] },
+  { id: 'hsk2-098', chinese: '踢足球', pinyin: 'tī zú qiú', meaning: 'To play soccer', meaningThai: 'เล่นฟุตบอล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他喜欢踢足球。', pinyin: 'Tā xǐ huān tī zú qiú.', meaning: 'He likes playing soccer.', meaningThai: 'เขาชอบเล่นฟุตบอล' }] },
+  { id: 'hsk2-099', chinese: '题目', pinyin: 'tí mù', meaning: 'Topic; question', meaningThai: 'หัวข้อ, โจทย์', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这个题目很难。', pinyin: 'Zhè ge tí mù hěn nán.', meaning: 'This question is difficult.', meaningThai: 'คำถามนี้ยาก' }] },
+  { id: 'hsk2-100', chinese: '跳舞', pinyin: 'tiào wǔ', meaning: 'To dance', meaningThai: 'เต้นรำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她喜欢跳舞。', pinyin: 'Tā xǐ huān tiào wǔ.', meaning: 'She likes dancing.', meaningThai: 'เธอชอบเต้น' }] },
+  { id: 'hsk2-101', chinese: '外', pinyin: 'wài', meaning: 'Outside; foreign', meaningThai: 'นอก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他在外面。', pinyin: 'Tā zài wài miàn.', meaning: 'He is outside.', meaningThai: 'เขาอยู่ข้างนอก' }] },
+  { id: 'hsk2-102', chinese: '完', pinyin: 'wán', meaning: 'To finish; complete', meaningThai: 'เสร็จ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我吃完了。', pinyin: 'Wǒ chī wán le.', meaning: 'I have finished eating.', meaningThai: 'ฉันกินเสร็จแล้ว' }] },
+  { id: 'hsk2-103', chinese: '玩', pinyin: 'wán', meaning: 'To play; to have fun', meaningThai: 'เล่น', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们一起去玩吧。', pinyin: 'Wǒ men yī qǐ qù wán ba.', meaning: 'Let\'s go play together.', meaningThai: 'ไปเล่นด้วยกันเถอะ' }] },
+  { id: 'hsk2-104', chinese: '晚上', pinyin: 'wǎn shang', meaning: 'Evening; night', meaningThai: 'ตอนเย็น', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '晚上好。', pinyin: 'Wǎn shang hǎo.', meaning: 'Good evening.', meaningThai: 'สวัสดีตอนเย็น' }] },
+  { id: 'hsk2-105', chinese: '往', pinyin: 'wǎng', meaning: 'Towards', meaningThai: 'ไปทาง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '往前走。', pinyin: 'Wǎng qián zǒu.', meaning: 'Go forward.', meaningThai: 'เดินไปข้างหน้า' }] },
+  { id: 'hsk2-106', chinese: '为什么', pinyin: 'wèi shén me', meaning: 'Why', meaningThai: 'ทำไม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你为什么不来？', pinyin: 'Nǐ wèi shén me bù lái?', meaning: 'Why don\'t you come?', meaningThai: 'ทำไมคุณไม่มา' }] },
+  { id: 'hsk2-107', chinese: '问', pinyin: 'wèn', meaning: 'To ask', meaningThai: 'ถาม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '请问，几点？', pinyin: 'Qǐng wèn, jǐ diǎn?', meaning: 'Excuse me, what time is it?', meaningThai: 'ขอโทษครับ ตอนนี้กี่โมง?' }] },
+  { id: 'hsk2-108', chinese: '问题', pinyin: 'wèn tí', meaning: 'Question; problem', meaningThai: 'ปัญหา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '没有问题。', pinyin: 'Méi yǒu wèn tí.', meaning: 'No problem.', meaningThai: 'ไม่มีปัญหา' }] },
+  { id: 'hsk2-109', chinese: '希望', pinyin: 'xī wàng', meaning: 'To hope; wish', meaningThai: 'หวัง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我希望你快乐。', pinyin: 'Wǒ xī wàng nǐ kuài lè.', meaning: 'I wish you happiness.', meaningThai: 'ขอให้คุณมีความสุข' }] },
+  { id: 'hsk2-110', chinese: '西瓜', pinyin: 'xī guā', meaning: 'Watermelon', meaningThai: 'แตงโม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '西瓜很好吃。', pinyin: 'Xī guā hěn hǎo chī.', meaning: 'Watermelon is delicious.', meaningThai: 'แตงโมอร่อย' }] },
+  { id: 'hsk2-111', chinese: '洗', pinyin: 'xǐ', meaning: 'To wash', meaningThai: 'ล้าง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我洗手。', pinyin: 'Wǒ xǐ shǒu.', meaning: 'I wash my hands.', meaningThai: 'ฉันล้างมือ' }] },
+  { id: 'hsk2-112', chinese: '小时', pinyin: 'xiǎo shí', meaning: 'Hour', meaningThai: 'ชั่วโมง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我等了一个小时。', pinyin: 'Wǒ děng le yī gè xiǎo shí.', meaning: 'I waited for an hour.', meaningThai: 'ฉันรอหนึ่งชั่วโมง' }] },
+  { id: 'hsk2-113', chinese: '笑', pinyin: 'xiào', meaning: 'To laugh; to smile', meaningThai: 'หัวเราะ, ยิ้ม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她笑了。', pinyin: 'Tā xiào le.', meaning: 'She smiled.', meaningThai: 'เธอยิ้ม' }] },
+  { id: 'hsk2-114', chinese: '新', pinyin: 'xīn', meaning: 'New', meaningThai: 'ใหม่', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我买了一辆新车。', pinyin: 'Wǒ mǎi le yī liàng xīn chē.', meaning: 'I bought a new car.', meaningThai: 'ฉันซื้อรถใหม่' }] },
+  { id: 'hsk2-115', chinese: '姓', pinyin: 'xìng', meaning: 'Surname; family name', meaningThai: 'นามสกุล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你姓什么？', pinyin: 'Nǐ xìng shén me?', meaning: 'What is your surname?', meaningThai: 'คุณนามสกุลอะไร?' }] },
+  { id: 'hsk2-116', chinese: '休息', pinyin: 'xiū xi', meaning: 'To rest', meaningThai: 'พักผ่อน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们休息一下。', pinyin: 'Wǒ men xiū xi yī xià.', meaning: 'Let\'s rest a while.', meaningThai: 'พักสักครู่เถอะ' }] },
+  { id: 'hsk2-117', chinese: '雪', pinyin: 'xuě', meaning: 'Snow', meaningThai: 'หิมะ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '下雪了。', pinyin: 'Xià xuě le.', meaning: 'It\'s snowing.', meaningThai: 'หิมะกำลังตก' }] },
+  { id: 'hsk2-118', chinese: '颜色', pinyin: 'yán sè', meaning: 'Color', meaningThai: 'สี', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '你喜欢什么颜色？', pinyin: 'Nǐ xǐ huān shén me yán sè?', meaning: 'What color do you like?', meaningThai: 'คุณชอบสีอะไร?' }] },
+  { id: 'hsk2-119', chinese: '眼睛', pinyin: 'yǎn jing', meaning: 'Eye', meaningThai: 'ตา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她的眼睛很大。', pinyin: 'Tā de yǎn jing hěn dà.', meaning: 'Her eyes are big.', meaningThai: 'ดวงตาของเธอใหญ่' }] },
+  { id: 'hsk2-120', chinese: '药', pinyin: 'yào', meaning: 'Medicine', meaningThai: 'ยา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我吃药了。', pinyin: 'Wǒ chī yào le.', meaning: 'I took medicine.', meaningThai: 'ฉันกินยา' }] },
+  { id: 'hsk2-121', chinese: '要', pinyin: 'yào', meaning: 'To want; must', meaningThai: 'ต้องการ, ต้อง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我要去学校。', pinyin: 'Wǒ yào qù xué xiào.', meaning: 'I want to go to school.', meaningThai: 'ฉันอยากไปโรงเรียน' }] },
+  { id: 'hsk2-122', chinese: '也', pinyin: 'yě', meaning: 'Also; too', meaningThai: 'ก็, ด้วย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我也喜欢。', pinyin: 'Wǒ yě xǐ huān.', meaning: 'I also like it.', meaningThai: 'ฉันก็ชอบมันเหมือนกัน' }] },
+  { id: 'hsk2-123', chinese: '已经', pinyin: 'yǐ jīng', meaning: 'Already', meaningThai: 'แล้ว, เรียบร้อย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我已经吃了。', pinyin: 'Wǒ yǐ jīng chī le.', meaning: 'I have already eaten.', meaningThai: 'ฉันกินข้าวแล้ว' }] },
+  { id: 'hsk2-124', chinese: '一起', pinyin: 'yī qǐ', meaning: 'Together', meaningThai: 'ด้วยกัน', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们一起去。', pinyin: 'Wǒ men yī qǐ qù.', meaning: 'Let\'s go together.', meaningThai: 'ไปด้วยกันเถอะ' }] },
+  { id: 'hsk2-125', chinese: '意思', pinyin: 'yì si', meaning: 'Meaning', meaningThai: 'ความหมาย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '这是什么意思？', pinyin: 'Zhè shì shén me yì si?', meaning: 'What does this mean?', meaningThai: 'นี่หมายความว่าอะไร?' }] },
+  { id: 'hsk2-126', chinese: '因为', pinyin: 'yīn wèi', meaning: 'Because', meaningThai: 'เพราะว่า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '因为忙，所以没来。', pinyin: 'Yīn wèi máng, suǒ yǐ méi lái.', meaning: 'Because (I was) busy, (I) didn\'t come.', meaningThai: 'เพราะว่ายุ่ง เลยไม่ได้มา' }] },
+  { id: 'hsk2-127', chinese: '阴', pinyin: 'yīn', meaning: 'Overcast; cloudy', meaningThai: 'เมฆมาก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '今天阴天。', pinyin: 'Jīn tiān yīn tiān.', meaning: 'Today is overcast.', meaningThai: 'วันนี้เมฆมาก' }] },
+  { id: 'hsk2-128', chinese: '游泳', pinyin: 'yóu yǒng', meaning: 'To swim', meaningThai: 'ว่ายน้ำ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢游泳。', pinyin: 'Wǒ xǐ huān yóu yǒng.', meaning: 'I like swimming.', meaningThai: 'ฉันชอบว่ายน้ำ' }] },
+  { id: 'hsk2-129', chinese: '右边', pinyin: 'yòu bian', meaning: 'Right side', meaningThai: 'ด้านขวา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '在右边。', pinyin: 'Zài yòu bian.', meaning: 'On the right side.', meaningThai: 'ด้านขวา' }] },
+  { id: 'hsk2-130', chinese: '鱼', pinyin: 'yú', meaning: 'Fish', meaningThai: 'ปลา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我爱吃鱼。', pinyin: 'Wǒ ài chī yú.', meaning: 'I love eating fish.', meaningThai: 'ฉันชอบกินปลา' }] },
+  { id: 'hsk2-131', chinese: '远', pinyin: 'yuǎn', meaning: 'Far; distant', meaningThai: 'ไกล', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '学校很远。', pinyin: 'Xué xiào hěn yuǎn.', meaning: 'The school is far.', meaningThai: 'โรงเรียนอยู่ไกล' }] },
+  { id: 'hsk2-132', chinese: '运动', pinyin: 'yùn dòng', meaning: 'Sports; exercise', meaningThai: 'กีฬา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我喜欢运动。', pinyin: 'Wǒ xǐ huān yùn dòng.', meaning: 'I like sports.', meaningThai: 'ฉันชอบกีฬา' }] },
+  { id: 'hsk2-133', chinese: '再', pinyin: 'zài', meaning: 'Again; once more', meaningThai: 'อีกครั้ง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '再说一次。', pinyin: 'Zài shuō yī cì.', meaning: 'Say it again.', meaningThai: 'พูดอีกครั้ง' }] },
+  { id: 'hsk2-134', chinese: '早上', pinyin: 'zǎo shang', meaning: 'Early morning', meaningThai: 'เช้า', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '早上好！', pinyin: 'Zǎo shang hǎo!', meaning: 'Good morning!', meaningThai: 'สวัสดีตอนเช้า!' }] },
+  { id: 'hsk2-135', chinese: '找', pinyin: 'zhǎo', meaning: 'To look for', meaningThai: 'หา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我找我的书。', pinyin: 'Wǒ zhǎo wǒ de shū.', meaning: 'I\'m looking for my book.', meaningThai: 'ฉันกำลังหาหนังสือของฉัน' }] },
+  { id: 'hsk2-136', chinese: '着', pinyin: 'zhe', meaning: 'Progressive particle', meaningThai: 'กำลัง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他看着书。', pinyin: 'Tā kàn zhe shū.', meaning: 'He is reading a book.', meaningThai: 'เขากำลังอ่านหนังสือ' }] },
+  { id: 'hsk2-137', chinese: '真', pinyin: 'zhēn', meaning: 'Really; truly', meaningThai: 'จริงๆ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '真好！', pinyin: 'Zhēn hǎo!', meaning: 'Really good!', meaningThai: 'ดีจริงๆ!' }] },
+  { id: 'hsk2-138', chinese: '正在', pinyin: 'zhèng zài', meaning: 'In the process of', meaningThai: 'กำลัง', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我正在吃饭。', pinyin: 'Wǒ zhèng zài chī fàn.', meaning: 'I am eating right now.', meaningThai: 'ฉันกำลังกินข้าวตอนนี้' }] },
+  { id: 'hsk2-139', chinese: '知道', pinyin: 'zhī dào', meaning: 'To know', meaningThai: 'รู้', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我知道。', pinyin: 'Wǒ zhī dào.', meaning: 'I know.', meaningThai: 'ฉันรู้' }] },
+  { id: 'hsk2-140', chinese: '准备', pinyin: 'zhǔn bèi', meaning: 'To prepare', meaningThai: 'เตรียม', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我准备考试。', pinyin: 'Wǒ zhǔn bèi kǎo shì.', meaning: 'I prepare for the exam.', meaningThai: 'ฉันเตรียมตัวสอบ' }] },
+  { id: 'hsk2-141', chinese: '走', pinyin: 'zǒu', meaning: 'To walk; to leave', meaningThai: 'เดิน, ไป', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我们走吧。', pinyin: 'Wǒ men zǒu ba.', meaning: 'Let\'s go.', meaningThai: 'ไปกันเถอะ' }] },
+  { id: 'hsk2-142', chinese: '最', pinyin: 'zuì', meaning: 'Most; -est', meaningThai: 'ที่สุด', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他最高。', pinyin: 'Tā zuì gāo.', meaning: 'He is the tallest.', meaningThai: 'เขาสูงที่สุด' }] },
+  { id: 'hsk2-143', chinese: '左边', pinyin: 'zuǒ bian', meaning: 'Left side', meaningThai: 'ด้านซ้าย', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '在左边。', pinyin: 'Zài zuǒ bian.', meaning: 'On the left side.', meaningThai: 'ด้านซ้าย' }] },
+  { id: 'hsk2-144', chinese: '手表', pinyin: 'shǒu biǎo', meaning: 'Wrist watch', meaningThai: 'นาฬิกาข้อมือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我的手表很漂亮。', pinyin: 'Wǒ de shǒu biǎo hěn piào liang.', meaning: 'My watch is beautiful.', meaningThai: 'นาฬิกาของฉันสวย' }] },
+  { id: 'hsk2-145', chinese: '妻子', pinyin: 'qī zi', meaning: 'Wife', meaningThai: 'ภรรยา', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '他的妻子很漂亮。', pinyin: 'Tā de qī zi hěn piào liang.', meaning: 'His wife is beautiful.', meaningThai: 'ภรรยาของเขาสวย' }] },
+  { id: 'hsk2-146', chinese: '丈夫', pinyin: 'zhàng fu', meaning: 'Husband', meaningThai: 'สามี', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '她的丈夫是医生。', pinyin: 'Tā de zhàng fu shì yī shēng.', meaning: 'Her husband is a doctor.', meaningThai: 'สามีของเธอเป็นหมอ' }] },
+  { id: 'hsk2-147', chinese: '孩子', pinyin: 'hái zi', meaning: 'Child', meaningThai: 'เด็ก', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '孩子们在玩。', pinyin: 'Hái zi men zài wán.', meaning: 'The children are playing.', meaningThai: 'เด็กๆ กำลังเล่น' }] },
+  { id: 'hsk2-148', chinese: '羊肉', pinyin: 'yáng ròu', meaning: 'Mutton; lamb', meaningThai: 'เนื้อแกะ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我爱吃羊肉。', pinyin: 'Wǒ ài chī yáng ròu.', meaning: 'I love eating lamb.', meaningThai: 'ฉันชอบกินเนื้อแกะ' }] },
+  { id: 'hsk2-149', chinese: '健康', pinyin: 'jiàn kāng', meaning: 'Healthy; health', meaningThai: 'สุขภาพดี', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '祝你健康。', pinyin: 'Zhù nǐ jiàn kāng.', meaning: 'Wishing you good health.', meaningThai: 'ขอให้คุณมีสุขภาพแข็งแรง' }] },
+  { id: 'hsk2-150', chinese: '手表', pinyin: 'shǒu biǎo', meaning: 'Wristwatch', meaningThai: 'นาฬิกาข้อมือ', category: 'hsk', subcategory: 'hsk2', hskLevel: 2, status: 'new', examples: [{ chinese: '我的手表快。', pinyin: 'Wǒ de shǒu biǎo kuài.', meaning: 'My watch is fast.', meaningThai: 'นาฬิกาของฉันเดินเร็ว' }] },
 ];
 
 const HSK3_WORDS = [
@@ -468,7 +548,207 @@ const HSK3_WORDS = [
 {"id":"hsk3-097","chinese":"接","pinyin":"jiē","meaning":"To connect; to receive; to pick up","meaningThai":"รับ, เชื่อมต่อ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我去机场接他。","pinyin":"Wo qu ji chang jie ta.","meaning":"I go to the airport to pick him up.","meaningThai":"ฉันไปรับเขาที่สนามบิน"}]},
 {"id":"hsk3-098","chinese":"街道","pinyin":"jiē dào","meaning":"Street","meaningThai":"ถนน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这条街道很热闹。","pinyin":"Zhe tiao jie dao hen re nao.","meaning":"This street is lively.","meaningThai":"ถนนสายนี้คึกคักมาก"}]},
 {"id":"hsk3-099","chinese":"节目","pinyin":"jié mù","meaning":"Program; show","meaningThai":"รายการ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个节目很有意思。","pinyin":"Zhe ge jie mu hen you yi si.","meaning":"This show is interesting.","meaningThai":"รายการนี้น่าสนใจมาก"}]},
-{"id":"hsk3-100","chinese":"节日","pinyin":"jié rì","meaning":"Festival; holiday","meaningThai":"เทศกาล","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"春节是中国最重要的节日。","pinyin":"Chun jie shi zhong guo zui zhong yao de jie ri.","meaning":"Spring Festival is the most important festival in China.","meaningThai":"เทศกาลตรุษจีนเป็นเทศกาลที่สำคัญที่สุดของจีน"}]}
+{"id":"hsk3-100","chinese":"节日","pinyin":"jié rì","meaning":"Festival; holiday","meaningThai":"เทศกาล","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"春节是中国最重要的节日。","pinyin":"Chun jie shi zhong guo zui zhong yao de jie ri.","meaning":"Spring Festival is the most important festival in China.","meaningThai":"เทศกาลตรุษจีนเป็นเทศกาลที่สำคัญที่สุดของจีน"}]},
+{"id":"hsk3-101","chinese":"解决","pinyin":"jiě jué","meaning":"To solve; to resolve","meaningThai":"แก้ไข","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我们得解决这个问题。","pinyin":"Wo men dei jie jue zhe ge wen ti.","meaning":"We have to solve this problem.","meaningThai":"เราต้องแก้ปัญหานี้"}]},
+{"id":"hsk3-102","chinese":"借","pinyin":"jiè","meaning":"To borrow; to lend","meaningThai":"ยืม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我可以借你的书吗？","pinyin":"Wo ke yi jie ni de shu ma?","meaning":"Can I borrow your book?","meaningThai":"ฉันขอยืมหนังสือของคุณได้ไหม?"}]},
+{"id":"hsk3-103","chinese":"经常","pinyin":"jīng cháng","meaning":"Often; frequently","meaningThai":"บ่อยครั้ง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我经常去图书馆。","pinyin":"Wo jing chang qu tu shu guan.","meaning":"I often go to the library.","meaningThai":"ฉันไปห้องสมุดบ่อยครั้ง"}]},
+{"id":"hsk3-104","chinese":"经过","pinyin":"jīng guò","meaning":"To pass by; through","meaningThai":"ผ่าน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我每天经过那个公园。","pinyin":"Wo mei tian jing guo na ge gong yuan.","meaning":"I pass by that park every day.","meaningThai":"ฉันผ่านสวนนั้นทุกวัน"}]},
+{"id":"hsk3-105","chinese":"开始","pinyin":"kāi shǐ","meaning":"To start; to begin","meaningThai":"เริ่ม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"电影开始了。","pinyin":"Dian ying kai shi le.","meaning":"The movie started.","meaningThai":"หนังเริ่มแล้ว"}]},
+{"id":"hsk3-106","chinese":"考试","pinyin":"kǎo shì","meaning":"Exam; test","meaningThai":"สอบ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"明天有汉语考试。","pinyin":"Ming tian you Han yu kao shi.","meaning":"There is a Chinese exam tomorrow.","meaningThai":"พรุ่งนี้มีการสอบภาษาจีน"}]},
+{"id":"hsk3-107","chinese":"渴","pinyin":"kě","meaning":"Thirsty","meaningThai":"กระหายน้ำ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我很渴。","pinyin":"Wo hen ke.","meaning":"I am very thirsty.","meaningThai":"ฉันกระหายน้ำมาก"}]},
+{"id":"hsk3-108","chinese":"可爱","pinyin":"kě ài","meaning":"Cute; adorable","meaningThai":"น่ารัก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这只小猫很可爱。","pinyin":"Zhe zhi xiao mao hen ke ai.","meaning":"This kitten is very cute.","meaningThai":"ลูกแมวตัวนี้น่ารักมาก"}]},
+{"id":"hsk3-109","chinese":"可能","pinyin":"kě néng","meaning":"Maybe; possible","meaningThai":"อาจจะ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他可能不来了。","pinyin":"Ta ke neng bu lai le.","meaning":"He might not come.","meaningThai":"เขาอาจจะไม่มา"}]},
+{"id":"hsk3-110","chinese":"可以","pinyin":"kě yǐ","meaning":"Can; may","meaningThai":"สามารถ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我可以进来吗？","pinyin":"Wo ke yi jin lai ma?","meaning":"May I come in?","meaningThai":"ฉันเข้าไปได้ไหม?"}]},
+{"id":"hsk3-111","chinese":"刻","pinyin":"kè","meaning":"Quarter (of an hour)","meaningThai":"โมง (เศษ 15 นาที)","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"现在差一刻十二点。","pinyin":"Xian zai cha yi ke shi er dian.","meaning":"It's a quarter to twelve.","meaningThai":"อีกสิบห้านาทีจะเที่ยง"}]},
+{"id":"hsk3-112","chinese":"客气","pinyin":"kè qi","meaning":"Polite; reserved","meaningThai":"สุภาพ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你太客气了。","pinyin":"Ni tai ke qi le.","meaning":"You are too polite.","meaningThai":"คุณสุภาพเกินไป"}]},
+{"id":"hsk3-113","chinese":"空调","pinyin":"kōng tiáo","meaning":"Air conditioner","meaningThai":"เครื่องปรับอากาศ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"夏天离不开空调。","pinyin":"Xia tian li bu kai kong tiao.","meaning":"Can't do without AC in summer.","meaningThai":"หน้าร้อนขาดแอร์ไม่ได้"}]},
+{"id":"hsk3-114","chinese":"口","pinyin":"kǒu","meaning":"Mouth; measure for people","meaningThai":"ปาก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他家有三口人。","pinyin":"Ta jia you san kou ren.","meaning":"His family has three people.","meaningThai":"ครอบครัวเขามีสามคน"}]},
+{"id":"hsk3-115","chinese":"哭","pinyin":"kū","meaning":"To cry","meaningThai":"ร้องไห้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"孩子哭了。","pinyin":"Hai zi ku le.","meaning":"The child is crying.","meaningThai":"เด็กร้องไห้"}]},
+{"id":"hsk3-116","chinese":"裤子","pinyin":"kù zi","meaning":"Pants; trousers","meaningThai":"กางเกง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这条裤子很合适。","pinyin":"Zhe tiao ku zi hen he shi.","meaning":"These pants fit well.","meaningThai":"กางเกงตัวนี้เหมาะสม"}]},
+{"id":"hsk3-117","chinese":"快乐","pinyin":"kuài lè","meaning":"Happy; joyful","meaningThai":"มีความสุข","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"祝你生日快乐。","pinyin":"Zhu ni sheng ri kuai le.","meaning":"Happy birthday to you.","meaningThai":"สุขสันต์วันเกิด"}]},
+{"id":"hsk3-118","chinese":"累","pinyin":"lèi","meaning":"Tired","meaningThai":"เหนื่อย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我今天很累。","pinyin":"Wo jin tian hen lei.","meaning":"I am very tired today.","meaningThai":"วันนี้ฉันเหนื่อยมาก"}]},
+{"id":"hsk3-119","chinese":"离开","pinyin":"lí kāi","meaning":"To leave","meaningThai":"จากไป","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他离开了公司。","pinyin":"Ta li kai le gong si.","meaning":"He left the company.","meaningThai":"เขาออกจากบริษัทแล้ว"}]},
+{"id":"hsk3-120","chinese":"礼物","pinyin":"lǐ wù","meaning":"Gift; present","meaningThai":"ของขวัญ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这是我给你的礼物。","pinyin":"Zhe shi wo gei ni de li wu.","meaning":"This is a gift for you.","meaningThai":"นี่คือของขวัญสำหรับคุณ"}]},
+{"id":"hsk3-121","chinese":"历史","pinyin":"lì shǐ","meaning":"History","meaningThai":"ประวัติศาสตร์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我喜欢历史书。","pinyin":"Wo xi huan li shi shu.","meaning":"I like history books.","meaningThai":"ฉันชอบหนังสือประวัติศาสตร์"}]},
+{"id":"hsk3-122","chinese":"脸","pinyin":"liǎn","meaning":"Face","meaningThai":"ใบหน้า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她的脸上有笑容。","pinyin":"Ta de lian shang you xiao rong.","meaning":"There is a smile on her face.","meaningThai":"บนใบหน้าของเธอมีรอยยิ้ม"}]},
+{"id":"hsk3-123","chinese":"练习","pinyin":"liàn xí","meaning":"To practice","meaningThai":"ฝึกฝน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你要多练习口语。","pinyin":"Ni yao duo lian xi kou yu.","meaning":"You should practice speaking more.","meaningThai":"คุณต้องฝึกพูดมากๆ"}]},
+{"id":"hsk3-124","chinese":"凉快","pinyin":"liáng kuai","meaning":"Cool; refreshing","meaningThai":"เย็นสบาย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"秋天很凉快。","pinyin":"Qiu tian hen liang kuai.","meaning":"Autumn is cool.","meaningThai":"ฤดูใบไม้ร่วงเย็นสบาย"}]},
+{"id":"hsk3-125","chinese":"零","pinyin":"líng","meaning":"Zero","meaningThai":"ศูนย์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"温度是零下五度。","pinyin":"Wen du shi ling xia wu du.","meaning":"The temperature is minus five.","meaningThai":"อุณหภูมิติดลบห้าองศา"}]},
+{"id":"hsk3-126","chinese":"旅游","pinyin":"lǚ yóu","meaning":"To travel","meaningThai":"ท่องเที่ยว","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我喜欢旅游。","pinyin":"Wo xi huan lv you.","meaning":"I like to travel.","meaningThai":"ฉันชอบท่องเที่ยว"}]},
+{"id":"hsk3-127","chinese":"慢","pinyin":"màn","meaning":"Slow","meaningThai":"ช้า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请说慢一点。","pinyin":"Qing shuo man yi dian.","meaning":"Please speak slower.","meaningThai":"กรุณาพูดช้าๆหน่อย"}]},
+{"id":"hsk3-128","chinese":"忙","pinyin":"máng","meaning":"Busy","meaningThai":"ยุ่ง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他最近很忙。","pinyin":"Ta zui jin hen mang.","meaning":"He is busy lately.","meaningThai":"ช่วงนี้เขายุ่งมาก"}]},
+{"id":"hsk3-129","chinese":"猫","pinyin":"māo","meaning":"Cat","meaningThai":"แมว","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我有一只黑猫。","pinyin":"Wo you yi zhi hei mao.","meaning":"I have a black cat.","meaningThai":"ฉันมีแมวดำตัวหนึ่ง"}]},
+{"id":"hsk3-130","chinese":"帽子","pinyin":"mào zi","meaning":"Hat","meaningThai":"หมวก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这顶帽子很漂亮。","pinyin":"Zhe ding mao zi hen piao liang.","meaning":"This hat is beautiful.","meaningThai":"หมวกใบนี้สวยมาก"}]},
+{"id":"hsk3-131","chinese":"面包","pinyin":"miàn bāo","meaning":"Bread","meaningThai":"ขนมปัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我早上吃面包。","pinyin":"Wo zao shang chi mian bao.","meaning":"I eat bread in the morning.","meaningThai":"ฉันกินขนมปังตอนเช้า"}]},
+{"id":"hsk3-132","chinese":"明白","pinyin":"míng bai","meaning":"To understand","meaningThai":"เข้าใจ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我听明白了。","pinyin":"Wo ting ming bai le.","meaning":"I understand.","meaningThai":"ฉันเข้าใจแล้ว"}]},
+{"id":"hsk3-133","chinese":"拿","pinyin":"ná","meaning":"To take; to hold","meaningThai":"ถือ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请帮我拿一下。","pinyin":"Qing bang wo na yi xia.","meaning":"Please hold this for me.","meaningThai":"ช่วยถือให้หน่อย"}]},
+{"id":"hsk3-134","chinese":"奶奶","pinyin":"nǎi nai","meaning":"Grandmother","meaningThai":"ยาย, ย่า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"奶奶做的饭很好吃。","pinyin":"Nai nai zuo de fan hen hao chi.","meaning":"Grandma's cooking is delicious.","meaningThai":"อาหารที่ยายทำอร่อยมาก"}]},
+{"id":"hsk3-135","chinese":"南","pinyin":"nán","meaning":"South","meaningThai":"ใต้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"车站往南走。","pinyin":"Che zhan wang nan zou.","meaning":"The station is southward.","meaningThai":"สถานีไปทางใต้"}]},
+{"id":"hsk3-136","chinese":"难","pinyin":"nán","meaning":"Difficult","meaningThai":"ยาก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个汉字很难。","pinyin":"Zhe ge Han zi hen nan.","meaning":"This Chinese character is difficult.","meaningThai":"ตัวอักษรจีนนี้ยากมาก"}]},
+{"id":"hsk3-137","chinese":"难过","pinyin":"nán guò","meaning":"Sad; upset","meaningThai":"เศร้า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"听到这个消息很难过。","pinyin":"Ting dao zhe ge xiao xi hen nan guo.","meaning":"Sad to hear this news.","meaningThai":"เศร้าที่ได้ยินข่าวนี้"}]},
+{"id":"hsk3-138","chinese":"年级","pinyin":"nián jí","meaning":"Grade; year level","meaningThai":"ชั้นปี","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我在大学一年级。","pinyin":"Wo zai da xue yi nian ji.","meaning":"I am in my first year of university.","meaningThai":"ฉันอยู่ปีหนึ่งมหาวิทยาลัย"}]},
+{"id":"hsk3-139","chinese":"鸟","pinyin":"niǎo","meaning":"Bird","meaningThai":"นก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"树上有一只鸟。","pinyin":"Shu shang you yi zhi niao.","meaning":"There is a bird on the tree.","meaningThai":"มีนกอยู่บนต้นไม้"}]},
+{"id":"hsk3-140","chinese":"努力","pinyin":"nǔ lì","meaning":"Hardworking; diligent","meaningThai":"พยายาม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"只要你努力，就能成功。","pinyin":"Zhi yao ni nu li, jiu neng cheng gong.","meaning":"As long as you work hard, you can succeed.","meaningThai":"ตราบใดที่คุณพยายาม ก็จะสำเร็จ"}]},
+{"id":"hsk3-141","chinese":"爬山","pinyin":"pá shān","meaning":"To climb a mountain","meaningThai":"ปีนเขา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"周末我们去爬山吧。","pinyin":"Zhou mo wo men qu pa shan ba.","meaning":"Let's go hiking this weekend.","meaningThai":"สุดสัปดาห์นี้เราไปปีนเขากัน"}]},
+{"id":"hsk3-142","chinese":"盘子","pinyin":"pán zi","meaning":"Plate; dish","meaningThai":"จาน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请把盘子洗干净。","pinyin":"Qing ba pan zi xi gan jing.","meaning":"Please wash the plates.","meaningThai":"กรุณาล้างจานให้สะอาด"}]},
+{"id":"hsk3-143","chinese":"旁边","pinyin":"páng biān","meaning":"Beside; next to","meaningThai":"ข้างๆ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"银行在邮局旁边。","pinyin":"Yin hang zai you ju pang bian.","meaning":"The bank is next to the post office.","meaningThai":"ธนาคารอยู่ข้างๆไปรษณีย์"}]},
+{"id":"hsk3-144","chinese":"胖","pinyin":"pàng","meaning":"Fat; plump","meaningThai":"อ้วน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他比以前胖了。","pinyin":"Ta bi yi qian pang le.","meaning":"He is fatter than before.","meaningThai":"เขาอ้วนกว่าเมื่อก่อน"}]},
+{"id":"hsk3-145","chinese":"皮鞋","pinyin":"pí xié","meaning":"Leather shoes","meaningThai":"รองเท้าหนัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这双皮鞋很舒服。","pinyin":"Zhe shuang pi xie hen shu fu.","meaning":"These leather shoes are comfortable.","meaningThai":"รองเท้าหนังคู่นี้สบาย"}]},
+{"id":"hsk3-146","chinese":"啤酒","pinyin":"pí jiǔ","meaning":"Beer","meaningThai":"เบียร์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"来一杯啤酒。","pinyin":"Lai yi bei pi jiu.","meaning":"One beer, please.","meaningThai":"เบียร์หนึ่งแก้ว"}]},
+{"id":"hsk3-147","chinese":"片","pinyin":"piàn","meaning":"Piece; slice","meaningThai":"แผ่น, ชิ้น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请给我一片面包。","pinyin":"Qing gei wo yi pian mian bao.","meaning":"Please give me a slice of bread.","meaningThai":"ขอขนมปังหนึ่งแผ่น"}]},
+{"id":"hsk3-148","chinese":"票","pinyin":"piào","meaning":"Ticket","meaningThai":"ตั๋ว","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我买了两张电影票。","pinyin":"Wo mai le liang zhang dian ying piao.","meaning":"I bought two movie tickets.","meaningThai":"ฉันซื้อตั๋วหนังสองใบ"}]},
+{"id":"hsk3-149","chinese":"普通话","pinyin":"pǔ tōng huà","meaning":"Mandarin Chinese","meaningThai":"ภาษาจีนกลาง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我说普通话。","pinyin":"Wo shuo pu tong hua.","meaning":"I speak Mandarin.","meaningThai":"ฉันพูดภาษาจีนกลาง"}]},
+{"id":"hsk3-150","chinese":"妻子","pinyin":"qī zi","meaning":"Wife","meaningThai":"ภรรยา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他和他妻子一起来的。","pinyin":"Ta he ta qi zi yi qi lai de.","meaning":"He came with his wife.","meaningThai":"เขามากับภรรยา"}]},
+{"id":"hsk3-151","chinese":"奇怪","pinyin":"qí guài","meaning":"Strange; odd","meaningThai":"แปลก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"真奇怪，他为什么不来？","pinyin":"Zhen qi guai, ta wei shen me bu lai?","meaning":"How strange, why isn't he coming?","meaningThai":"แปลกจริงๆ ทำไมเขาไม่มา?"}]},
+{"id":"hsk3-152","chinese":"起床","pinyin":"qǐ chuáng","meaning":"To get up","meaningThai":"ลุกจากเตียง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我每天早上六点起床。","pinyin":"Wo mei tian zao shang liu dian qi chuang.","meaning":"I get up at six every morning.","meaningThai":"ฉันตื่นนอนหกโมงทุกเช้า"}]},
+{"id":"hsk3-153","chinese":"清楚","pinyin":"qīng chu","meaning":"Clear","meaningThai":"ชัดเจน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你说得很清楚。","pinyin":"Ni shuo de hen qing chu.","meaning":"You spoke very clearly.","meaningThai":"คุณพูดชัดเจนมาก"}]},
+{"id":"hsk3-154","chinese":"秋","pinyin":"qiū","meaning":"Autumn","meaningThai":"ฤดูใบไม้ร่วง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"秋天是旅游的好季节。","pinyin":"Qiu tian shi lv you de hao ji jie.","meaning":"Autumn is a good season to travel.","meaningThai":"ฤดูใบไม้ร่วงเป็นฤดูที่ดีสำหรับการท่องเที่ยว"}]},
+{"id":"hsk3-155","chinese":"裙子","pinyin":"qún zi","meaning":"Skirt","meaningThai":"กระโปรง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这条裙子很漂亮。","pinyin":"Zhe tiao qun zi hen piao liang.","meaning":"This skirt is beautiful.","meaningThai":"กระโปรงตัวนี้สวยมาก"}]},
+{"id":"hsk3-156","chinese":"然后","pinyin":"rán hòu","meaning":"Afterwards; then","meaningThai":"แล้วจึง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我先去超市，然后回家。","pinyin":"Wo xian qu chao shi, ran hou hui jia.","meaning":"I go to the supermarket first, then home.","meaningThai":"ฉันไปซุปเปอร์ก่อน แล้วจึงกลับบ้าน"}]},
+{"id":"hsk3-157","chinese":"认为","pinyin":"rèn wéi","meaning":"To think; to consider","meaningThai":"คิดว่า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我认为他说得对。","pinyin":"Wo ren wei ta shuo de dui.","meaning":"I think he is right.","meaningThai":"ฉันคิดว่าเขาพูดถูก"}]},
+{"id":"hsk3-158","chinese":"认真","pinyin":"rèn zhēn","meaning":"Serious; conscientious","meaningThai":"จริงจัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他学习很认真。","pinyin":"Ta xue xi hen ren zhen.","meaning":"He studies very seriously.","meaningThai":"เขาเรียนอย่างจริงจัง"}]},
+{"id":"hsk3-159","chinese":"容易","pinyin":"róng yì","meaning":"Easy","meaningThai":"ง่าย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个考试很容易。","pinyin":"Zhe ge kao shi hen rong yi.","meaning":"This exam is easy.","meaningThai":"ข้อสอบนี้ง่ายมาก"}]},
+{"id":"hsk3-160","chinese":"如果","pinyin":"rú guǒ","meaning":"If","meaningThai":"ถ้า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"如果下雨，我就不去了。","pinyin":"Ru guo xia yu, wo jiu bu qu le.","meaning":"If it rains, I won't go.","meaningThai":"ถ้าฝนตก ฉันจะไม่ไป"}]},
+{"id":"hsk3-161","chinese":"山","pinyin":"shān","meaning":"Mountain","meaningThai":"ภูเขา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这座山很高。","pinyin":"Zhe zuo shan hen gao.","meaning":"This mountain is very tall.","meaningThai":"ภูเขาลูกนี้สูงมาก"}]},
+{"id":"hsk3-162","chinese":"上网","pinyin":"shàng wǎng","meaning":"To go online","meaningThai":"ใช้อินเทอร์เน็ต","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我每天都上网。","pinyin":"Wo mei tian dou shang wang.","meaning":"I go online every day.","meaningThai":"ฉันใช้อินเทอร์เน็ตทุกวัน"}]},
+{"id":"hsk3-163","chinese":"生气","pinyin":"shēng qì","meaning":"Angry","meaningThai":"โกรธ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他生气了。","pinyin":"Ta sheng qi le.","meaning":"He is angry.","meaningThai":"เขาโกรธแล้ว"}]},
+{"id":"hsk3-164","chinese":"生日","pinyin":"shēng rì","meaning":"Birthday","meaningThai":"วันเกิด","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"今天是我的生日。","pinyin":"Jin tian shi wo de sheng ri.","meaning":"Today is my birthday.","meaningThai":"วันนี้เป็นวันเกิดของฉัน"}]},
+{"id":"hsk3-165","chinese":"声音","pinyin":"shēng yīn","meaning":"Sound; voice","meaningThai":"เสียง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她的声音很好听。","pinyin":"Ta de sheng yin hen hao ting.","meaning":"Her voice sounds nice.","meaningThai":"เสียงของเธอไพเราะ"}]},
+{"id":"hsk3-166","chinese":"世界","pinyin":"shì jiè","meaning":"World","meaningThai":"โลก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"世界很大，我想去看看。","pinyin":"Shi jie hen da, wo xiang qu kan kan.","meaning":"The world is big, I want to see it.","meaningThai":"โลกกว้างใหญ่ ฉันอยากไปดู"}]},
+{"id":"hsk3-167","chinese":"事情","pinyin":"shì qing","meaning":"Thing; matter; affair","meaningThai":"เรื่อง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我有事情要告诉你。","pinyin":"Wo you shi qing yao gao su ni.","meaning":"I have something to tell you.","meaningThai":"ฉันมีเรื่องจะบอกคุณ"}]},
+{"id":"hsk3-168","chinese":"手表","pinyin":"shǒu biǎo","meaning":"Wristwatch","meaningThai":"นาฬิกาข้อมือ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我的手表快了五分钟。","pinyin":"Wo de shou biao kuai le wu fen zhong.","meaning":"My watch is five minutes fast.","meaningThai":"นาฬิกาของฉันเร็วห้านาที"}]},
+{"id":"hsk3-169","chinese":"手机","pinyin":"shǒu jī","meaning":"Mobile phone","meaningThai":"โทรศัพท์มือถือ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我的手机没电了。","pinyin":"Wo de shou ji mei dian le.","meaning":"My phone is out of battery.","meaningThai":"โทรศัพท์ของฉันแบตหมด"}]},
+{"id":"hsk3-170","chinese":"瘦","pinyin":"shòu","meaning":"Thin","meaningThai":"ผอม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她越来越瘦了。","pinyin":"Ta yue lai yue shou le.","meaning":"She is getting thinner.","meaningThai":"เธอผอมลงเรื่อยๆ"}]},
+{"id":"hsk3-171","chinese":"舒服","pinyin":"shū fu","meaning":"Comfortable","meaningThai":"สบาย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这张床很舒服。","pinyin":"Zhe zhang chuang hen shu fu.","meaning":"This bed is very comfortable.","meaningThai":"เตียงนี้สบายมาก"}]},
+{"id":"hsk3-172","chinese":"双","pinyin":"shuāng","meaning":"Pair; double","meaningThai":"คู่","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我买了一双鞋。","pinyin":"Wo mai le yi shuang xie.","meaning":"I bought a pair of shoes.","meaningThai":"ฉันซื้อรองเท้าหนึ่งคู่"}]},
+{"id":"hsk3-173","chinese":"送","pinyin":"sòng","meaning":"To send; to give","meaningThai":"ส่ง, ให้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我送他一件礼物。","pinyin":"Wo song ta yi jian li wu.","meaning":"I gave him a gift.","meaningThai":"ฉันให้ของขวัญเขาชิ้นหนึ่ง"}]},
+{"id":"hsk3-174","chinese":"太阳","pinyin":"tài yáng","meaning":"Sun","meaningThai":"ดวงอาทิตย์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"今天太阳很大。","pinyin":"Jin tian tai yang hen da.","meaning":"The sun is strong today.","meaningThai":"วันนี้แดดแรง"}]},
+{"id":"hsk3-175","chinese":"特别","pinyin":"tè bié","meaning":"Special; particularly","meaningThai":"พิเศษ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"今天是个特别的日子。","pinyin":"Jin tian shi ge te bie de ri zi.","meaning":"Today is a special day.","meaningThai":"วันนี้เป็นวันพิเศษ"}]},
+{"id":"hsk3-176","chinese":"疼","pinyin":"téng","meaning":"Pain; sore","meaningThai":"เจ็บ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我头疼。","pinyin":"Wo tou teng.","meaning":"I have a headache.","meaningThai":"ฉันปวดหัว"}]},
+{"id":"hsk3-177","chinese":"提高","pinyin":"tí gāo","meaning":"To improve; to raise","meaningThai":"เพิ่มขึ้น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他的汉语水平提高了。","pinyin":"Ta de Han yu shui ping ti gao le.","meaning":"His Chinese has improved.","meaningThai":"ระดับภาษาจีนของเขาพัฒนาขึ้น"}]},
+{"id":"hsk3-178","chinese":"体育","pinyin":"tǐ yù","meaning":"Sports; physical education","meaningThai":"พลศึกษา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我喜欢体育课。","pinyin":"Wo xi huan ti yu ke.","meaning":"I like PE class.","meaningThai":"ฉันชอบวิชาพลศึกษา"}]},
+{"id":"hsk3-179","chinese":"甜","pinyin":"tián","meaning":"Sweet","meaningThai":"หวาน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个蛋糕很甜。","pinyin":"Zhe ge dan gao hen tian.","meaning":"This cake is very sweet.","meaningThai":"เค้กนี้หวานมาก"}]},
+{"id":"hsk3-180","chinese":"条","pinyin":"tiáo","meaning":"(measure for long/thin objects)","meaningThai":"เส้น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"一条鱼。","pinyin":"Yi tiao yu.","meaning":"One fish.","meaningThai":"ปลาหนึ่งตัว"}]},
+{"id":"hsk3-181","chinese":"头发","pinyin":"tóu fa","meaning":"Hair","meaningThai":"ผม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她的头发很长。","pinyin":"Ta de tou fa hen chang.","meaning":"Her hair is very long.","meaningThai":"ผมของเธอยาวมาก"}]},
+{"id":"hsk3-182","chinese":"突然","pinyin":"tū rán","meaning":"Sudden; suddenly","meaningThai":"ทันใดนั้น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"突然下雨了。","pinyin":"Tu ran xia yu le.","meaning":"It suddenly rained.","meaningThai":"ฝนตกทันใดนั้น"}]},
+{"id":"hsk3-183","chinese":"图书馆","pinyin":"tú shū guǎn","meaning":"Library","meaningThai":"ห้องสมุด","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"图书馆几点关门？","pinyin":"Tu shu guan ji dian guan men?","meaning":"What time does the library close?","meaningThai":"ห้องสมุดปิดกี่โมง?"}]},
+{"id":"hsk3-184","chinese":"腿","pinyin":"tuǐ","meaning":"Leg","meaningThai":"ขา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我的腿很疼。","pinyin":"Wo de tui hen teng.","meaning":"My leg hurts.","meaningThai":"ขาของฉันเจ็บมาก"}]},
+{"id":"hsk3-185","chinese":"完成","pinyin":"wán chéng","meaning":"To complete; to finish","meaningThai":"เสร็จ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"作业已经完成了。","pinyin":"Zuo ye yi jing wan cheng le.","meaning":"Homework is already done.","meaningThai":"การบ้านเสร็จแล้ว"}]},
+{"id":"hsk3-186","chinese":"碗","pinyin":"wǎn","meaning":"Bowl","meaningThai":"ชาม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请给我一个碗。","pinyin":"Qing gei wo yi ge wan.","meaning":"Please give me a bowl.","meaningThai":"ขอชามหนึ่งใบ"}]},
+{"id":"hsk3-187","chinese":"万","pinyin":"wàn","meaning":"Ten thousand","meaningThai":"หมื่น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个城市有一百万人。","pinyin":"Zhe ge cheng shi you yi bai wan ren.","meaning":"This city has one million people.","meaningThai":"เมืองนี้มีประชากรหนึ่งล้านคน"}]},
+{"id":"hsk3-188","chinese":"忘记","pinyin":"wàng jì","meaning":"To forget","meaningThai":"ลืม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我忘记带钥匙了。","pinyin":"Wo wang ji dai yao shi le.","meaning":"I forgot to bring the keys.","meaningThai":"ฉันลืมเอาถุงกุญแจ"}]},
+{"id":"hsk3-189","chinese":"为","pinyin":"wèi","meaning":"For; for the sake of","meaningThai":"เพื่อ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我为你感到骄傲。","pinyin":"Wo wei ni gan dao jiao ao.","meaning":"I am proud of you.","meaningThai":"ฉันภูมิใจในตัวคุณ"}]},
+{"id":"hsk3-190","chinese":"文化","pinyin":"wén huà","meaning":"Culture","meaningThai":"วัฒนธรรม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"中国文化很有特色。","pinyin":"Zhong guo wen hua hen you te se.","meaning":"Chinese culture is unique.","meaningThai":"วัฒนธรรมจีนมีเอกลักษณ์"}]},
+{"id":"hsk3-191","chinese":"西","pinyin":"xī","meaning":"West","meaningThai":"ตะวันตก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我家在城市的西边。","pinyin":"Wo jia zai cheng shi de xi bian.","meaning":"My home is in the west of the city.","meaningThai":"บ้านของฉันอยู่ทางตะวันตกของเมือง"}]},
+{"id":"hsk3-192","chinese":"希望","pinyin":"xī wàng","meaning":"Hope; wish","meaningThai":"หวัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我希望你能来。","pinyin":"Wo xi wang ni neng lai.","meaning":"I hope you can come.","meaningThai":"ฉันหวังว่าคุณจะมาได้"}]},
+{"id":"hsk3-193","chinese":"夏天","pinyin":"xià tiān","meaning":"Summer","meaningThai":"ฤดูร้อน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"夏天很热。","pinyin":"Xia tian hen re.","meaning":"Summer is very hot.","meaningThai":"ฤดูร้อนอากาศร้อนมาก"}]},
+{"id":"hsk3-194","chinese":"相信","pinyin":"xiāng xìn","meaning":"To believe","meaningThai":"เชื่อ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我相信你。","pinyin":"Wo xiang xin ni.","meaning":"I believe you.","meaningThai":"ฉันเชื่อคุณ"}]},
+{"id":"hsk3-195","chinese":"像","pinyin":"xiàng","meaning":"To resemble; like","meaningThai":"เหมือน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她长得像她妈妈。","pinyin":"Ta zhang de xiang ta ma ma.","meaning":"She looks like her mother.","meaningThai":"เธอหน้าตาเหมือนแม่ของเธอ"}]},
+{"id":"hsk3-196","chinese":"小心","pinyin":"xiǎo xīn","meaning":"Careful","meaningThai":"ระวัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"小心开车。","pinyin":"Xiao xin kai che.","meaning":"Drive carefully.","meaningThai":"ขับรถระวัง"}]},
+{"id":"hsk3-197","chinese":"校长","pinyin":"xiào zhǎng","meaning":"Principal","meaningThai":"อาจารย์ใหญ่","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"校长在开会。","pinyin":"Xiao zhang zai kai hui.","meaning":"The principal is in a meeting.","meaningThai":"อาจารย์ใหญ่กำลังประชุม"}]},
+{"id":"hsk3-198","chinese":"新闻","pinyin":"xīn wén","meaning":"News","meaningThai":"ข่าว","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我在看新闻。","pinyin":"Wo zai kan xin wen.","meaning":"I am watching the news.","meaningThai":"ฉันกำลังดูข่าว"}]},
+{"id":"hsk3-199","chinese":"新鲜","pinyin":"xīn xiān","meaning":"Fresh","meaningThai":"สด","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个水果很新鲜。","pinyin":"Zhe ge shui guo hen xin xian.","meaning":"This fruit is very fresh.","meaningThai":"ผลไม้นี้สดมาก"}]},
+{"id":"hsk3-200","chinese":"信","pinyin":"xìn","meaning":"Letter; to trust","meaningThai":"จดหมาย, เชื่อถือ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我写了一封信。","pinyin":"Wo xie le yi feng xin.","meaning":"I wrote a letter.","meaningThai":"ฉันเขียนจดหมาย"}]},
+{"id":"hsk3-201","chinese":"休息","pinyin":"xiū xi","meaning":"To rest","meaningThai":"พักผ่อน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你该休息了。","pinyin":"Ni gai xiu xi le.","meaning":"You should rest.","meaningThai":"คุณควรพักผ่อนแล้ว"}]},
+{"id":"hsk3-202","chinese":"需要","pinyin":"xū yào","meaning":"To need","meaningThai":"ต้องการ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我需要你的帮助。","pinyin":"Wo xu yao ni de bang zhu.","meaning":"I need your help.","meaningThai":"ฉันต้องการความช่วยเหลือของคุณ"}]},
+{"id":"hsk3-203","chinese":"选择","pinyin":"xuǎn zé","meaning":"To choose","meaningThai":"เลือก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你选好了吗？","pinyin":"Ni xuan hao le ma?","meaning":"Have you chosen yet?","meaningThai":"คุณเลือกแล้วหรือยัง?"}]},
+{"id":"hsk3-204","chinese":"眼睛","pinyin":"yǎn jīng","meaning":"Eye","meaningThai":"ตา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她的眼睛很大。","pinyin":"Ta de yan jing hen da.","meaning":"Her eyes are big.","meaningThai":"ตาของเธอใหญ่"}]},
+{"id":"hsk3-205","chinese":"羊肉","pinyin":"yáng ròu","meaning":"Mutton; lamb","meaningThai":"เนื้อแกะ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我喜欢吃羊肉。","pinyin":"Wo xi huan chi yang rou.","meaning":"I like to eat lamb.","meaningThai":"ฉันชอบกินเนื้อแกะ"}]},
+{"id":"hsk3-206","chinese":"药","pinyin":"yào","meaning":"Medicine","meaningThai":"ยา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你吃药了吗？","pinyin":"Ni chi yao le ma?","meaning":"Did you take your medicine?","meaningThai":"คุณกินยาหรือยัง?"}]},
+{"id":"hsk3-207","chinese":"要","pinyin":"yào","meaning":"To want; must","meaningThai":"ต้องการ, ต้อง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我要去上班了。","pinyin":"Wo yao qu shang ban le.","meaning":"I have to go to work.","meaningThai":"ฉันต้องไปทำงานแล้ว"}]},
+{"id":"hsk3-208","chinese":"爷爷","pinyin":"yé ye","meaning":"Grandfather","meaningThai":"ปู่, ตา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"爷爷身体很好。","pinyin":"Ye ye shen ti hen hao.","meaning":"Grandfather is in good health.","meaningThai":"ปู่สุขภาพดีมาก"}]},
+{"id":"hsk3-209","chinese":"衣服","pinyin":"yī fu","meaning":"Clothes","meaningThai":"เสื้อผ้า","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这件衣服很漂亮。","pinyin":"Zhe jian yi fu hen piao liang.","meaning":"This piece of clothing is beautiful.","meaningThai":"เสื้อตัวนี้สวยมาก"}]},
+{"id":"hsk3-210","chinese":"已经","pinyin":"yǐ jīng","meaning":"Already","meaningThai":"แล้ว","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他已经来了。","pinyin":"Ta yi jing lai le.","meaning":"He has already arrived.","meaningThai":"เขามาแล้ว"}]},
+{"id":"hsk3-211","chinese":"意思","pinyin":"yì si","meaning":"Meaning","meaningThai":"ความหมาย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个词是什么意思？","pinyin":"Zhe ge ci shi shen me yi si?","meaning":"What is the meaning of this word?","meaningThai":"คำนี้มีความหมายว่าอะไร?"}]},
+{"id":"hsk3-212","chinese":"因为","pinyin":"yīn wèi","meaning":"Because","meaningThai":"เพราะ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"因为下雨，所以没去。","pinyin":"Yin wei xia yu, suo yi mei qu.","meaning":"Because it rained, I didn't go.","meaningThai":"เพราะฝนตก เลยไม่ได้ไป"}]},
+{"id":"hsk3-213","chinese":"音乐","pinyin":"yīn yuè","meaning":"Music","meaningThai":"ดนตรี","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我喜欢听音乐。","pinyin":"Wo xi huan ting yin yue.","meaning":"I like listening to music.","meaningThai":"ฉันชอบฟังเพลง"}]},
+{"id":"hsk3-214","chinese":"银行","pinyin":"yín háng","meaning":"Bank","meaningThai":"ธนาคาร","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"银行几点开门？","pinyin":"Yin hang ji dian kai men?","meaning":"What time does the bank open?","meaningThai":"ธนาคารเปิดกี่โมง?"}]},
+{"id":"hsk3-215","chinese":"应该","pinyin":"yīng gāi","meaning":"Should; ought to","meaningThai":"ควร","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你应该早点来。","pinyin":"Ni ying gai zao dian lai.","meaning":"You should come earlier.","meaningThai":"คุณควรมาเร็วกว่านี้"}]},
+{"id":"hsk3-216","chinese":"用","pinyin":"yòng","meaning":"To use","meaningThai":"ใช้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请用中文回答。","pinyin":"Qing yong zhong wen hui da.","meaning":"Please answer in Chinese.","meaningThai":"กรุณาตอบเป็นภาษาจีน"}]},
+{"id":"hsk3-217","chinese":"游戏","pinyin":"yóu xì","meaning":"Game","meaningThai":"เกม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"孩子们在玩游戏。","pinyin":"Hai zi men zai wan you xi.","meaning":"Children are playing games.","meaningThai":"เด็กๆกำลังเล่นเกม"}]},
+{"id":"hsk3-218","chinese":"游泳","pinyin":"yóu yǒng","meaning":"To swim","meaningThai":"ว่ายน้ำ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"夏天我喜欢游泳。","pinyin":"Xia tian wo xi huan you yong.","meaning":"I like swimming in summer.","meaningThai":"หน้าร้อนฉันชอบว่ายน้ำ"}]},
+{"id":"hsk3-219","chinese":"右边","pinyin":"yòu biān","meaning":"Right side","meaningThai":"ด้านขวา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"医院在右边。","pinyin":"Yi yuan zai you bian.","meaning":"The hospital is on the right.","meaningThai":"โรงพยาบาลอยู่ด้านขวา"}]},
+{"id":"hsk3-220","chinese":"鱼","pinyin":"yú","meaning":"Fish","meaningThai":"ปลา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这条鱼很大。","pinyin":"Zhe tiao yu hen da.","meaning":"This fish is big.","meaningThai":"ปลาตัวนี้ใหญ่"}]},
+{"id":"hsk3-221","chinese":"语言","pinyin":"yǔ yán","meaning":"Language","meaningThai":"ภาษา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他在学多种语言。","pinyin":"Ta zai xue duo zhong yu yan.","meaning":"He is learning multiple languages.","meaningThai":"เขากำลังเรียนหลายภาษา"}]},
+{"id":"hsk3-222","chinese":"元","pinyin":"yuán","meaning":"Yuan (currency)","meaningThai":"หยวน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这本书五十元。","pinyin":"Zhe ben shu wu shi yuan.","meaning":"This book is fifty yuan.","meaningThai":"หนังสือเล่มนี้ห้าสิบหยวน"}]},
+{"id":"hsk3-223","chinese":"远","pinyin":"yuǎn","meaning":"Far","meaningThai":"ไกล","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"学校离我家很远。","pinyin":"Xue xiao li wo jia hen yuan.","meaning":"School is far from my home.","meaningThai":"โรงเรียนไกลจากบ้านฉันมาก"}]},
+{"id":"hsk3-224","chinese":"愿意","pinyin":"yuàn yì","meaning":"Willing","meaningThai":"ยินดี","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你愿意帮我吗？","pinyin":"Ni yuan yi bang wo ma?","meaning":"Are you willing to help me?","meaningThai":"คุณยินดีช่วยฉันไหม?"}]},
+{"id":"hsk3-225","chinese":"月亮","pinyin":"yuè liàng","meaning":"Moon","meaningThai":"พระจันทร์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"今晚月亮很亮。","pinyin":"Jin wan yue liang hen liang.","meaning":"The moon is bright tonight.","meaningThai":"คืนนี้พระจันทร์สว่างมาก"}]},
+{"id":"hsk3-226","chinese":"站","pinyin":"zhàn","meaning":"Station; to stand","meaningThai":"สถานี, ยืน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"火车站怎么走？","pinyin":"Huo che zhan zen me zou?","meaning":"How to get to the train station?","meaningThai":"ไปสถานีรถไฟยังไง?"}]},
+{"id":"hsk3-227","chinese":"丈夫","pinyin":"zhàng fu","meaning":"Husband","meaningThai":"สามี","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她丈夫是医生。","pinyin":"Ta zhang fu shi yi sheng.","meaning":"Her husband is a doctor.","meaningThai":"สามีของเธอเป็นหมอ"}]},
+{"id":"hsk3-228","chinese":"着急","pinyin":"zháo jí","meaning":"Anxious; worried","meaningThai":"ร้อนใจ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"别着急，慢慢来。","pinyin":"Bie zhao ji, man man lai.","meaning":"Don't worry, take your time.","meaningThai":"ไม่ต้องร้อนใจ ค่อยๆทำ"}]},
+{"id":"hsk3-229","chinese":"找到","pinyin":"zhǎo dào","meaning":"To find","meaningThai":"หาเจอ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我终于找到了。","pinyin":"Wo zhong yu zhao dao le.","meaning":"I finally found it.","meaningThai":"ฉันหาเจอแล้ว"}]},
+{"id":"hsk3-230","chinese":"照顾","pinyin":"zhào gù","meaning":"To take care of","meaningThai":"ดูแล","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请照顾好自己。","pinyin":"Qing zhao gu hao zi ji.","meaning":"Please take care of yourself.","meaningThai":"กรุณาดูแลตัวเองด้วย"}]},
+{"id":"hsk3-231","chinese":"照片","pinyin":"zhào piàn","meaning":"Photo; picture","meaningThai":"รูปถ่าย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"给我看看你的照片。","pinyin":"Gei wo kan kan ni de zhao pian.","meaning":"Show me your photos.","meaningThai":"ให้ฉันดูรูปของคุณหน่อย"}]},
+{"id":"hsk3-232","chinese":"真正","pinyin":"zhēn zhèng","meaning":"True; real","meaningThai":"แท้จริง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他是真正的朋友。","pinyin":"Ta shi zhen zheng de peng you.","meaning":"He is a true friend.","meaningThai":"เขาเป็นเพื่อนแท้"}]},
+{"id":"hsk3-233","chinese":"正在","pinyin":"zhèng zài","meaning":"In the middle of (doing)","meaningThai":"กำลัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我正在吃饭。","pinyin":"Wo zheng zai chi fan.","meaning":"I am eating right now.","meaningThai":"ฉันกำลังกินข้าว"}]},
+{"id":"hsk3-234","chinese":"知道","pinyin":"zhī dào","meaning":"To know","meaningThai":"รู้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我知道这件事。","pinyin":"Wo zhi dao zhe jian shi.","meaning":"I know about this matter.","meaningThai":"ฉันรู้เรื่องนี้"}]},
+{"id":"hsk3-235","chinese":"知识","pinyin":"zhī shi","meaning":"Knowledge","meaningThai":"ความรู้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"知识就是力量。","pinyin":"Zhi shi jiu shi li liang.","meaning":"Knowledge is power.","meaningThai":"ความรู้คือพลัง"}]},
+{"id":"hsk3-236","chinese":"中","pinyin":"zhōng","meaning":"Middle; in; during","meaningThai":"ใน, กลาง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"一年中有十二个月。","pinyin":"Yi nian zhong you shi er ge yue.","meaning":"There are twelve months in a year.","meaningThai":"ในหนึ่งปีมีสิบสองเดือน"}]},
+{"id":"hsk3-237","chinese":"中间","pinyin":"zhōng jiān","meaning":"Middle; center","meaningThai":"ตรงกลาง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"坐在我中间。","pinyin":"Zuo zai wo zhong jian.","meaning":"Sit in the middle.","meaningThai":"นั่งตรงกลาง"}]},
+{"id":"hsk3-238","chinese":"中文","pinyin":"zhōng wén","meaning":"Chinese language","meaningThai":"ภาษาจีน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你会说中文吗？","pinyin":"Ni hui shuo zhong wen ma?","meaning":"Can you speak Chinese?","meaningThai":"คุณพูดภาษาจีนได้ไหม?"}]},
+{"id":"hsk3-239","chinese":"重要","pinyin":"zhòng yào","meaning":"Important","meaningThai":"สำคัญ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这件事很重要。","pinyin":"Zhe jian shi hen zhong yao.","meaning":"This matter is very important.","meaningThai":"เรื่องนี้สำคัญมาก"}]},
+{"id":"hsk3-240","chinese":"周末","pinyin":"zhōu mò","meaning":"Weekend","meaningThai":"สุดสัปดาห์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"周末你有什么计划？","pinyin":"Zhou mo ni you shen me ji hua?","meaning":"What are your plans for the weekend?","meaningThai":"สุดสัปดาห์นี้มีแผนอะไรไหม?"}]},
+{"id":"hsk3-241","chinese":"主要","pinyin":"zhǔ yào","meaning":"Main; primary","meaningThai":"หลัก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"主要问题是什么？","pinyin":"Zhu yao wen ti shi shen me?","meaning":"What is the main problem?","meaningThai":"ปัญหาหลักคืออะไร?"}]},
+{"id":"hsk3-242","chinese":"准备","pinyin":"zhǔn bèi","meaning":"To prepare","meaningThai":"เตรียม","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我准备好了。","pinyin":"Wo zhun bei hao le.","meaning":"I am ready.","meaningThai":"ฉันเตรียมพร้อมแล้ว"}]},
+{"id":"hsk3-243","chinese":"字","pinyin":"zì","meaning":"Character; word","meaningThai":"ตัวอักษร","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个字怎么写？","pinyin":"Zhe ge zi zen me xie?","meaning":"How to write this character?","meaningThai":"ตัวอักษรนี้เขียนยังไง?"}]},
+{"id":"hsk3-244","chinese":"总是","pinyin":"zǒng shì","meaning":"Always","meaningThai":"เสมอ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他总是迟到。","pinyin":"Ta zong shi chi dao.","meaning":"He is always late.","meaningThai":"เขามาสายเสมอ"}]},
+{"id":"hsk3-245","chinese":"嘴","pinyin":"zuǐ","meaning":"Mouth","meaningThai":"ปาก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他的嘴很甜。","pinyin":"Ta de zui hen tian.","meaning":"He has a sweet mouth (speaks nicely).","meaningThai":"ปากของเขาหวาน"}]},
+{"id":"hsk3-246","chinese":"最近","pinyin":"zuì jìn","meaning":"Recently; lately","meaningThai":"เมื่อเร็วๆนี้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你最近怎么样？","pinyin":"Ni zui jin zen me yang?","meaning":"How have you been lately?","meaningThai":"ช่วงนี้คุณเป็นอย่างไรบ้าง?"}]},
+{"id":"hsk3-247","chinese":"作业","pinyin":"zuò yè","meaning":"Homework","meaningThai":"การบ้าน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"作业做完了吗？","pinyin":"Zuo ye zuo wan le ma?","meaning":"Have you finished your homework?","meaningThai":"ทำการบ้านเสร็จหรือยัง?"}]},
+{"id":"hsk3-248","chinese":"左右","pinyin":"zuǒ yòu","meaning":"Around; approximately","meaningThai":"ประมาณ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他三十岁左右。","pinyin":"Ta san shi sui zuo you.","meaning":"He is around thirty years old.","meaningThai":"เขาอายุประมาณสามสิบปี"}]},
+{"id":"hsk3-249","chinese":"座位","pinyin":"zuò wèi","meaning":"Seat","meaningThai":"ที่นั่ง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请坐你的座位。","pinyin":"Qing zuo ni de zuo wei.","meaning":"Please take your seat.","meaningThai":"กรุณานั่งที่นั่งของคุณ"}]},
+{"id":"hsk3-250","chinese":"做","pinyin":"zuò","meaning":"To do; to make","meaningThai":"ทำ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你在做什么？","pinyin":"Ni zai zuo shen me?","meaning":"What are you doing?","meaningThai":"คุณกำลังทำอะไร?"}]},
+{"id":"hsk3-251","chinese":"帮助","pinyin":"bāng zhù","meaning":"To help; assistance","meaningThai":"ช่วยเหลือ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"谢谢你的帮助。","pinyin":"Xie xie ni de bang zhu.","meaning":"Thank you for your help.","meaningThai":"ขอบคุณสำหรับความช่วยเหลือ"}]},
+{"id":"hsk3-252","chinese":"民族","pinyin":"mín zú","meaning":"Nation; ethnic group","meaningThai":"ชาติพันธุ์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"中国有五十六个民族。","pinyin":"Zhong guo you wu shi liu ge min zu.","meaning":"China has 56 ethnic groups.","meaningThai":"จีนมี 56 ชาติพันธุ์"}]},
+{"id":"hsk3-253","chinese":"注意","pinyin":"zhù yì","meaning":"To pay attention","meaningThai":"สังเกต","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请注意安全。","pinyin":"Qing zhu yi an quan.","meaning":"Please pay attention to safety.","meaningThai":"โปรดระวังความปลอดภัย"}]},
+{"id":"hsk3-254","chinese":"记得","pinyin":"jì de","meaning":"To remember","meaningThai":"จำได้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你记得我的电话吗？","pinyin":"Ni ji de wo de dian hua ma?","meaning":"Do you remember my phone number?","meaningThai":"คุณจำเบอร์โทรศัพท์ฉันได้ไหม?"}]},
+{"id":"hsk3-255","chinese":"决定","pinyin":"jué dìng","meaning":"To decide","meaningThai":"ตัดสินใจ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我决定学中文。","pinyin":"Wo jue ding xue zhong wen.","meaning":"I decided to learn Chinese.","meaningThai":"ฉันตัดสินใจเรียนภาษาจีน"}]},
+{"id":"hsk3-256","chinese":"打算","pinyin":"dǎ suàn","meaning":"To plan; intention","meaningThai":"วางแผน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你打算去哪儿？","pinyin":"Ni da suan qu na er?","meaning":"Where do you plan to go?","meaningThai":"คุณวางแผนจะไปไหน?"}]},
+{"id":"hsk3-257","chinese":"表示","pinyin":"biǎo shì","meaning":"To express; to show","meaningThai":"แสดง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他表示同意。","pinyin":"Ta biao shi tong yi.","meaning":"He expressed agreement.","meaningThai":"เขาแสดงความเห็นด้วย"}]},
+{"id":"hsk3-258","chinese":"打扫","pinyin":"dǎ sǎo","meaning":"To clean","meaningThai":"ทำความสะอาด","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我在打扫房间。","pinyin":"Wo zai da sao fang jian.","meaning":"I am cleaning the room.","meaningThai":"ฉันกำลังทำความสะอาดห้อง"}]},
+{"id":"hsk3-259","chinese":"担心","pinyin":"dān xīn","meaning":"To worry","meaningThai":"กังวล","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"别担心，没事的。","pinyin":"Bie dan xin, mei shi de.","meaning":"Don't worry, it's okay.","meaningThai":"ไม่ต้องกังวล ไม่เป็นไร"}]},
+{"id":"hsk3-260","chinese":"满意","pinyin":"mǎn yì","meaning":"Satisfied","meaningThai":"พอใจ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我对结果很满意。","pinyin":"Wo dui jie guo hen man yi.","meaning":"I am satisfied with the result.","meaningThai":"ฉันพอใจกับผลลัพธ์"}]},
+{"id":"hsk3-261","chinese":"羡慕","pinyin":"xiàn mù","meaning":"To envy","meaningThai":"อิจฉา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我很羡慕你的汉语。","pinyin":"Wo hen xian mu ni de Han yu.","meaning":"I envy your Chinese.","meaningThai":"ฉันอิจฉาภาษาจีนของคุณ"}]},
+{"id":"hsk3-262","chinese":"惊讶","pinyin":"jīng yà","meaning":"Surprised","meaningThai":"ประหลาดใจ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我很惊讶。","pinyin":"Wo hen jing ya.","meaning":"I am very surprised.","meaningThai":"ฉันประหลาดใจมาก"}]},
+{"id":"hsk3-263","chinese":"欢迎","pinyin":"huān yíng","meaning":"Welcome","meaningThai":"ยินดีต้อนรับ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"欢迎来中国。","pinyin":"Huan ying lai Zhong guo.","meaning":"Welcome to China.","meaningThai":"ยินดีต้อนรับสู่จีน"}]},
+{"id":"hsk3-264","chinese":"机会","pinyin":"jī huì","meaning":"Opportunity","meaningThai":"โอกาส","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这是一个好机会。","pinyin":"Zhe shi yi ge hao ji hui.","meaning":"This is a good opportunity.","meaningThai":"นี่เป็นโอกาสที่ดี"}]},
+{"id":"hsk3-265","chinese":"奇怪","pinyin":"qí guài","meaning":"Strange","meaningThai":"แปลก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"今天的天气真奇怪。","pinyin":"Jin tian de tian qi zhen qi guai.","meaning":"The weather today is really strange.","meaningThai":"วันนี้อากาศแปลกจริงๆ"}]},
+{"id":"hsk3-266","chinese":"聪明","pinyin":"cōng míng","meaning":"Clever; smart","meaningThai":"ฉลาด","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他非常聪明。","pinyin":"Ta fei chang cong ming.","meaning":"He is very clever.","meaningThai":"เขาฉลาดมาก"}]},
+{"id":"hsk3-267","chinese":"热情","pinyin":"rè qíng","meaning":"Warm; enthusiastic","meaningThai":"อบอุ่น, กระตือรือร้น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"她非常热情。","pinyin":"Ta fei chang re qing.","meaning":"She is very enthusiastic.","meaningThai":"เธอกระตือรือร้นมาก"}]},
+{"id":"hsk3-268","chinese":"勇敢","pinyin":"yǒng gǎn","meaning":"Brave","meaningThai":"กล้าหาญ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他非常勇敢。","pinyin":"Ta fei chang yong gan.","meaning":"He is very brave.","meaningThai":"เขากล้าหาญมาก"}]},
+{"id":"hsk3-269","chinese":"利用","pinyin":"lì yòng","meaning":"To utilize","meaningThai":"ใช้ประโยชน์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我们要利用好时间。","pinyin":"Wo men yao li yong hao shi jian.","meaning":"We should make good use of time.","meaningThai":"เราควรใช้เวลาให้เป็นประโยชน์"}]},
+{"id":"hsk3-270","chinese":"联系","pinyin":"lián xì","meaning":"To contact","meaningThai":"ติดต่อ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请跟我联系。","pinyin":"Qing gen wo lian xi.","meaning":"Please contact me.","meaningThai":"กรุณาติดต่อฉัน"}]},
+{"id":"hsk3-271","chinese":"另外","pinyin":"lìng wài","meaning":"In addition; other","meaningThai":"นอกจากนี้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"另外一个人也来了。","pinyin":"Ling wai yi ge ren ye lai le.","meaning":"Another person also came.","meaningThai":"อีกคนหนึ่งก็มาแล้ว"}]},
+{"id":"hsk3-272","chinese":"关系","pinyin":"guān xi","meaning":"Relationship","meaningThai":"ความสัมพันธ์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我们的关系很好。","pinyin":"Wo men de guan xi hen hao.","meaning":"Our relationship is good.","meaningThai":"ความสัมพันธ์ของเราดี"}]},
+{"id":"hsk3-273","chinese":"关于","pinyin":"guān yú","meaning":"About; regarding","meaningThai":"เกี่ยวกับ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我有一本关于中国的书。","pinyin":"Wo you yi ben guan yu Zhong guo de shu.","meaning":"I have a book about China.","meaningThai":"ฉันมีหนังสือเกี่ยวกับจีนหนึ่งเล่ม"}]},
+{"id":"hsk3-274","chinese":"国家","pinyin":"guó jiā","meaning":"Country; nation","meaningThai":"ประเทศ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"中国是一个大国。","pinyin":"Zhong guo shi yi ge da guo.","meaning":"China is a large country.","meaningThai":"จีนเป็นประเทศใหญ่"}]},
+{"id":"hsk3-275","chinese":"过去","pinyin":"guò qù","meaning":"Past; to go over","meaningThai":"อดีต, ผ่านไป","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"过去的事情就让它过去吧。","pinyin":"Guo qu de shi qing jiu rang ta guo qu ba.","meaning":"Let the past be the past.","meaningThai":"เรื่องในอดีตก็ปล่อยมันผ่านไป"}]},
+{"id":"hsk3-276","chinese":"还是","pinyin":"hái shì","meaning":"Still; or","meaningThai":"ยัง, หรือ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"你喝茶还是咖啡？","pinyin":"Ni he cha hai shi ka fei?","meaning":"Do you want tea or coffee?","meaningThai":"คุณต้องการชาหรือกาแฟ?"}]},
+{"id":"hsk3-277","chinese":"害怕","pinyin":"hài pà","meaning":"Afraid; scared","meaningThai":"กลัว","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他害怕黑暗。","pinyin":"Ta hai pa hei an.","meaning":"He is afraid of the dark.","meaningThai":"เขากลัวความมืด"}]},
+{"id":"hsk3-278","chinese":"喊","pinyin":"hǎn","meaning":"To shout","meaningThai":"ตะโกน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"不要喊，小声点。","pinyin":"Bu yao han, xiao sheng dian.","meaning":"Don't shout, lower your voice.","meaningThai":"อย่าตะโกน เบาๆหน่อย"}]},
+{"id":"hsk3-279","chinese":"好吃","pinyin":"hǎo chī","meaning":"Delicious","meaningThai":"อร่อย","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"这个菜真好吃。","pinyin":"Zhe ge cai zhen hao chi.","meaning":"This dish is really delicious.","meaningThai":"อาหารจานนี้อร่อยจริงๆ"}]},
+{"id":"hsk3-280","chinese":"好玩","pinyin":"hǎo wán","meaning":"Fun","meaningThai":"สนุก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"迪士尼很好玩。","pinyin":"Di shi ni hen hao wan.","meaning":"Disneyland is very fun.","meaningThai":"ดิสนีย์แลนด์สนุกมาก"}]},
+{"id":"hsk3-281","chinese":"后来","pinyin":"hòu lái","meaning":"Later; afterwards","meaningThai":"ภายหลัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"后来他明白了。","pinyin":"Hou lai ta ming bai le.","meaning":"Later he understood.","meaningThai":"ภายหลังเขาเข้าใจ"}]},
+{"id":"hsk3-282","chinese":"结果","pinyin":"jié guǒ","meaning":"Result","meaningThai":"ผลลัพธ์","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"比赛结果怎么样？","pinyin":"Bi sai jie guo zen me yang?","meaning":"How was the game result?","meaningThai":"ผลการแข่งขันเป็นอย่างไร?"}]},
+{"id":"hsk3-283","chinese":"节日","pinyin":"jié rì","meaning":"Holiday; festival","meaningThai":"เทศกาล","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"春节是最重要的节日。","pinyin":"Chun jie shi zui zhong yao de jie ri.","meaning":"Spring Festival is the most important holiday.","meaningThai":"ตรุษจีนเป็นเทศกาลที่สำคัญที่สุด"}]},
+{"id":"hsk3-284","chinese":"经常","pinyin":"jīng cháng","meaning":"Often","meaningThai":"บ่อยๆ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我经常跑步。","pinyin":"Wo jing chang pao bu.","meaning":"I often run.","meaningThai":"ฉันวิ่งบ่อยๆ"}]},
+{"id":"hsk3-285","chinese":"精神","pinyin":"jīng shén","meaning":"Spirit; energy","meaningThai":"จิตใจ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他精神很好。","pinyin":"Ta jing shen hen hao.","meaning":"He is in high spirits.","meaningThai":"เขาอารมณ์ดีมาก"}]},
+{"id":"hsk3-286","chinese":"开","pinyin":"kāi","meaning":"To open; to turn on","meaningThai":"เปิด","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请开灯。","pinyin":"Qing kai deng.","meaning":"Please turn on the light.","meaningThai":"กรุณาเปิดไฟ"}]},
+{"id":"hsk3-287","chinese":"开始","pinyin":"kāi shǐ","meaning":"To begin","meaningThai":"เริ่มต้น","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我们开始吧。","pinyin":"Wo men kai shi ba.","meaning":"Let's begin.","meaningThai":"มาเริ่มกันเถอะ"}]},
+{"id":"hsk3-288","chinese":"快乐","pinyin":"kuài lè","meaning":"Happy","meaningThai":"มีความสุข","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"祝你天天快乐。","pinyin":"Zhu ni tian tian kuai le.","meaning":"Wish you happiness every day.","meaningThai":"ขอให้มีความสุขทุกวัน"}]},
+{"id":"hsk3-289","chinese":"困难","pinyin":"kùn nan","meaning":"Difficulty","meaningThai":"ความยากลำบาก","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"遇到困难不要怕。","pinyin":"Yu dao kun nan bu yao pa.","meaning":"Don't be afraid of difficulties.","meaningThai":"พบความยากลำบากไม่ต้องกลัว"}]},
+{"id":"hsk3-290","chinese":"老年","pinyin":"lǎo nián","meaning":"Old age","meaningThai":"วัยชรา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"老年人需要照顾。","pinyin":"Lao nian ren xu yao zhao gu.","meaning":"Elderly people need care.","meaningThai":"ผู้สูงอายุต้องการการดูแล"}]},
+{"id":"hsk3-291","chinese":"礼物","pinyin":"lǐ wù","meaning":"Gift","meaningThai":"ของขวัญ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"谢谢你的礼物。","pinyin":"Xie xie ni de li wu.","meaning":"Thank you for the gift.","meaningThai":"ขอบคุณสำหรับของขวัญ"}]},
+{"id":"hsk3-292","chinese":"立刻","pinyin":"lì kè","meaning":"Immediately","meaningThai":"ทันที","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"请你立刻过来。","pinyin":"Qing ni li ke guo lai.","meaning":"Please come immediately.","meaningThai":"กรุณามาทันที"}]},
+{"id":"hsk3-293","chinese":"马上","pinyin":"mǎ shàng","meaning":"Immediately; right away","meaningThai":"เดี๋ยวนี้","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我马上到。","pinyin":"Wo ma shang dao.","meaning":"I will be there in a moment.","meaningThai":"ฉันจะถึงเดี๋ยวนี้"}]},
+{"id":"hsk3-294","chinese":"生气","pinyin":"shēng qì","meaning":"Angry","meaningThai":"โกรธ","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他生气了。","pinyin":"Ta sheng qi le.","meaning":"He is angry.","meaningThai":"เขาโกรธ"}]},
+{"id":"hsk3-295","chinese":"睡觉","pinyin":"shuì jiào","meaning":"To sleep","meaningThai":"นอน","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"该睡觉了。","pinyin":"Gai shui jiao le.","meaning":"It's time to sleep.","meaningThai":"ถึงเวลานอนแล้ว"}]},
+{"id":"hsk3-296","chinese":"体育","pinyin":"tǐ yù","meaning":"Physical education","meaningThai":"พลศึกษา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我喜欢上体育课。","pinyin":"Wo xi huan shang ti yu ke.","meaning":"I like PE class.","meaningThai":"ฉันชอบเรียนพลศึกษา"}]},
+{"id":"hsk3-297","chinese":"突然","pinyin":"tū rán","meaning":"Suddenly","meaningThai":"ทันที","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"他突然走了。","pinyin":"Ta tu ran zou le.","meaning":"He suddenly left.","meaningThai":"เขาก็จากไปทันที"}]},
+{"id":"hsk3-298","chinese":"问题","pinyin":"wèn tí","meaning":"Question; problem","meaningThai":"ปัญหา","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"我有一个问题。","pinyin":"Wo you yi ge wen ti.","meaning":"I have a question.","meaningThai":"ฉันมีคำถาม"}]},
+{"id":"hsk3-299","chinese":"希望","pinyin":"xī wàng","meaning":"Hope; wish","meaningThai":"หวัง","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"希望你能成功。","pinyin":"Xi wang ni neng cheng gong.","meaning":"I hope you can succeed.","meaningThai":"หวังว่าคุณจะประสบความสำเร็จ"}]},
+{"id":"hsk3-300","chinese":"幸福","pinyin":"xìng fú","meaning":"Happiness; blessed","meaningThai":"ความสุข","category":"hsk","subcategory":"hsk3","hskLevel":3,"status":"new","examples":[{"chinese":"祝你幸福。","pinyin":"Zhu ni xing fu.","meaning":"Wish you happiness.","meaningThai":"ขอให้คุณมีความสุข"}]}
 ];
 
 const GREETINGS_WORDS = [
@@ -1034,6 +1314,431 @@ const HSK4_WORDS = [
 {"id":"hsk4-173","chinese":"推迟","pinyin":"tuī chí","meaning":"To postpone","meaningThai":"เลื่อน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"会议推迟了。","pinyin":"Hui yi tui chi le.","meaning":"The meeting was postponed.","meaningThai":"การประชุมถูกเลื่อน"}]},
 {"id":"hsk4-174","chinese":"推辞","pinyin":"tuī cí","meaning":"To decline (an offer)","meaningThai":"ปฏิเสธ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他推辞了邀请。","pinyin":"Ta tui ci le yao qing.","meaning":"He declined the invitation.","meaningThai":"เขาปฏิเสธคำเชิญ"}]},
 {"id":"hsk4-175","chinese":"推举","pinyin":"tuī jǔ","meaning":"To elect; to recommend","meaningThai":"เสนอชื่อ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"大家推举他当代表。","pinyin":"Da jia tui ju ta dang dai biao.","meaning":"Everyone recommended him as representative.","meaningThai":"ทุกคนเสนอชื่อเขาเป็นตัวแทน"}]},
+{"id":"hsk4-176","chinese":"标准","pinyin":"biāo zhǔn","meaning":"Standard","meaningThai":"มาตรฐาน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是国际标准。","pinyin":"Zhe shi guo ji biao zhun.","meaning":"This is an international standard.","meaningThai":"นี่คือมาตรฐานสากล"}]},
+{"id":"hsk4-177","chinese":"表达","pinyin":"biǎo dá","meaning":"To express","meaningThai":"แสดงออก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"用语言表达你的想法。","pinyin":"Yong yu yan biao da ni de xiang fa.","meaning":"Express your thoughts with words.","meaningThai":"แสดงความคิดเห็นของคุณด้วยภาษา"}]},
+{"id":"hsk4-178","chinese":"表格","pinyin":"biǎo gé","meaning":"Form; table","meaningThai":"แบบฟอร์ม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请填一下这个表格。","pinyin":"Qing tian yi xia zhe ge biao ge.","meaning":"Please fill out this form.","meaningThai":"กรุณากรอกแบบฟอร์มนี้"}]},
+{"id":"hsk4-179","chinese":"表示","pinyin":"biǎo shì","meaning":"To express; to indicate","meaningThai":"แสดง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他点头表示同意。","pinyin":"Ta dian tou biao shi tong yi.","meaning":"He nodded to show agreement.","meaningThai":"เขาพยักหน้าแสดงความเห็นด้วย"}]},
+{"id":"hsk4-180","chinese":"表演","pinyin":"biǎo yǎn","meaning":"Performance; to perform","meaningThai":"การแสดง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她的表演很精彩。","pinyin":"Ta de biao yan hen jing cai.","meaning":"Her performance was brilliant.","meaningThai":"การแสดงของเธอเยี่ยมมาก"}]},
+{"id":"hsk4-181","chinese":"表扬","pinyin":"biǎo yáng","meaning":"To praise","meaningThai":"ชมเชย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老师表扬了他。","pinyin":"Lao shi biao yang le ta.","meaning":"The teacher praised him.","meaningThai":"ครูชมเชยเขา"}]},
+{"id":"hsk4-182","chinese":"病人","pinyin":"bìng rén","meaning":"Patient; sick person","meaningThai":"คนไข้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"病人需要休息。","pinyin":"Bing ren xu yao xiu xi.","meaning":"The patient needs rest.","meaningThai":"คนไข้ต้องการพักผ่อน"}]},
+{"id":"hsk4-183","chinese":"不仅","pinyin":"bù jǐn","meaning":"Not only","meaningThai":"ไม่เพียง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她不仅漂亮，而且聪明。","pinyin":"Ta bu jin piao liang, er qie cong ming.","meaning":"She is not only beautiful but also smart.","meaningThai":"เธอไม่เพียงสวย แต่ยังฉลาด"}]},
+{"id":"hsk4-184","chinese":"部分","pinyin":"bù fen","meaning":"Part; section","meaningThai":"ส่วนหนึ่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"大部分人都同意。","pinyin":"Da bu fen ren dou tong yi.","meaning":"Most people agree.","meaningThai":"ส่วนใหญ่เห็นด้วย"}]},
+{"id":"hsk4-185","chinese":"材料","pinyin":"cái liào","meaning":"Material","meaningThai":"วัสดุ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这些材料很贵。","pinyin":"Zhe xie cai liao hen gui.","meaning":"These materials are expensive.","meaningThai":"วัสดุเหล่านี้แพง"}]},
+{"id":"hsk4-186","chinese":"参观","pinyin":"cān guān","meaning":"To visit","meaningThai":"เยี่ยมชม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我们参观了博物馆。","pinyin":"Wo men can guan le bo wu guan.","meaning":"We visited the museum.","meaningThai":"เราเยี่ยมชมพิพิธภัณฑ์"}]},
+{"id":"hsk4-187","chinese":"餐厅","pinyin":"cān tīng","meaning":"Dining hall; restaurant","meaningThai":"ร้านอาหาร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这家餐厅的菜很好吃。","pinyin":"Zhe jia can ting de cai hen hao chi.","meaning":"The food at this restaurant is delicious.","meaningThai":"อาหารร้านนี้อร่อยมาก"}]},
+{"id":"hsk4-188","chinese":"厕所","pinyin":"cè suǒ","meaning":"Toilet; restroom","meaningThai":"ห้องน้ำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"厕所在哪儿？","pinyin":"Ce suo zai na er?","meaning":"Where is the restroom?","meaningThai":"ห้องน้ำอยู่ที่ไหน?"}]},
+{"id":"hsk4-189","chinese":"曾经","pinyin":"céng jīng","meaning":"Once; previously","meaningThai":"เคย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我曾经去过北京。","pinyin":"Wo ceng jing qu guo Bei jing.","meaning":"I have been to Beijing before.","meaningThai":"ฉันเคยไปปักกิ่ง"}]},
+{"id":"hsk4-190","chinese":"差别","pinyin":"chā bié","meaning":"Difference","meaningThai":"ความแตกต่าง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这两个有很大的差别。","pinyin":"Zhe liang ge you hen da de cha bie.","meaning":"These two are very different.","meaningThai":"สองอันนี้แตกต่างกันมาก"}]},
+{"id":"hsk4-191","chinese":"产品","pinyin":"chǎn pǐn","meaning":"Product","meaningThai":"ผลิตภัณฑ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个产品很受欢迎。","pinyin":"Zhe ge chan pin hen shou huan ying.","meaning":"This product is very popular.","meaningThai":"ผลิตภัณฑ์นี้เป็นที่นิยมมาก"}]},
+{"id":"hsk4-192","chinese":"长城","pinyin":"Cháng chéng","meaning":"Great Wall","meaningThai":"กำแพงเมืองจีน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"长城非常壮观。","pinyin":"Chang cheng fei chang zhuang guan.","meaning":"The Great Wall is spectacular.","meaningThai":"กำแพงเมืองจีนยิ่งใหญ่มาก"}]},
+{"id":"hsk4-193","chinese":"长江","pinyin":"Cháng Jiāng","meaning":"Yangtze River","meaningThai":"แม่น้ำแยงซี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"长江是中国最长的河流。","pinyin":"Chang jiang shi Zhong guo zui chang de he liu.","meaning":"The Yangtze is the longest river in China.","meaningThai":"แม่น้ำแยงซีเป็นแม่น้ำที่ยาวที่สุดในจีน"}]},
+{"id":"hsk4-194","chinese":"超过","pinyin":"chāo guò","meaning":"To exceed","meaningThai":"เกิน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"人数超过了一百。","pinyin":"Ren shu chao guo le yi bai.","meaning":"The number of people exceeded one hundred.","meaningThai":"จำนวนคนเกินร้อย"}]},
+{"id":"hsk4-195","chinese":"朝","pinyin":"cháo","meaning":"Towards; facing","meaningThai":"สู่, ทาง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他朝我笑了笑。","pinyin":"Ta chao wo xiao le xiao.","meaning":"He smiled at me.","meaningThai":"เขายิ้มมาทางฉัน"}]},
+{"id":"hsk4-196","chinese":"吵架","pinyin":"chǎo jià","meaning":"To quarrel","meaningThai":"ทะเลาะ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们吵架了。","pinyin":"Ta men chao jia le.","meaning":"They quarreled.","meaningThai":"พวกเขาทะเลาะกัน"}]},
+{"id":"hsk4-197","chinese":"成功","pinyin":"chéng gōng","meaning":"Success; successful","meaningThai":"ความสำเร็จ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"祝你成功。","pinyin":"Zhu ni cheng gong.","meaning":"Wish you success.","meaningThai":"ขอให้คุณประสบความสำเร็จ"}]},
+{"id":"hsk4-198","chinese":"成熟","pinyin":"chéng shú","meaning":"Mature; ripe","meaningThai":"สุก, เป็นผู้ใหญ่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他比以前成熟多了。","pinyin":"Ta bi yi qian cheng shu duo le.","meaning":"He is much more mature than before.","meaningThai":"เขาเป็นผู้ใหญ่กว่าเมื่อก่อนมาก"}]},
+{"id":"hsk4-199","chinese":"成为","pinyin":"chéng wéi","meaning":"To become","meaningThai":"กลายเป็น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他想成为一名医生。","pinyin":"Ta xiang cheng wei yi ming yi sheng.","meaning":"He wants to become a doctor.","meaningThai":"เขาอยากเป็นหมอ"}]},
+{"id":"hsk4-200","chinese":"诚实","pinyin":"chéng shí","meaning":"Honest","meaningThai":"ซื่อสัตย์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"诚实是一种美德。","pinyin":"Cheng shi shi yi zhong mei de.","meaning":"Honesty is a virtue.","meaningThai":"ความซื่อสัตย์เป็นคุณธรรม"}]},
+{"id":"hsk4-201","chinese":"吃惊","pinyin":"chī jīng","meaning":"To be surprised","meaningThai":"ตกใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个消息让我很吃惊。","pinyin":"Zhe ge xiao xi rang wo hen chi jing.","meaning":"This news surprised me.","meaningThai":"ข่าวนี้ทำให้ฉันตกใจ"}]},
+{"id":"hsk4-202","chinese":"重新","pinyin":"chóng xīn","meaning":"Again; anew","meaningThai":"ใหม่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请重新做一遍。","pinyin":"Qing chong xin zuo yi bian.","meaning":"Please do it again.","meaningThai":"กรุณาทำใหม่ครั้งหนึ่ง"}]},
+{"id":"hsk4-203","chinese":"抽烟","pinyin":"chōu yān","meaning":"To smoke","meaningThai":"สูบบุหรี่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这里不许抽烟。","pinyin":"Zhe li bu xu chou yan.","meaning":"No smoking here.","meaningThai":"ที่นี่ห้ามสูบบุหรี่"}]},
+{"id":"hsk4-204","chinese":"厨师","pinyin":"chú shī","meaning":"Chef","meaningThai":"เชฟ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是一名优秀的厨师。","pinyin":"Ta shi yi ming you xiu de chu shi.","meaning":"He is an excellent chef.","meaningThai":"เขาเป็นเชฟที่ยอดเยี่ยม"}]},
+{"id":"hsk4-205","chinese":"除了","pinyin":"chú le","meaning":"Except; besides","meaningThai":"ยกเว้น, นอกจาก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"除了英语，他还会法语。","pinyin":"Chu le ying yu, ta hai hui fa yu.","meaning":"Besides English, he also speaks French.","meaningThai":"นอกจากอังกฤษ เขายังพูดฝรั่งเศสได้"}]},
+{"id":"hsk4-206","chinese":"传统","pinyin":"chuán tǒng","meaning":"Tradition; traditional","meaningThai":"ประเพณี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"春节是中国的传统节日。","pinyin":"Chun jie shi Zhong guo de chuan tong jie ri.","meaning":"Spring Festival is a Chinese tradition.","meaningThai":"ตรุษจีนเป็นประเพณีของจีน"}]},
+{"id":"hsk4-207","chinese":"窗户","pinyin":"chuāng hu","meaning":"Window","meaningThai":"หน้าต่าง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请打开窗户。","pinyin":"Qing da kai chuang hu.","meaning":"Please open the window.","meaningThai":"กรุณาเปิดหน้าต่าง"}]},
+{"id":"hsk4-208","chinese":"创新","pinyin":"chuàng xīn","meaning":"Innovation","meaningThai":"นวัตกรรม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"创新很重要。","pinyin":"Chuang xin hen zhong yao.","meaning":"Innovation is very important.","meaningThai":"นวัตกรรมสำคัญมาก"}]},
+{"id":"hsk4-209","chinese":"词语","pinyin":"cí yǔ","meaning":"Word; term","meaningThai":"คำศัพท์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个词语怎么用？","pinyin":"Zhe ge ci yu zen me yong?","meaning":"How to use this word?","meaningThai":"คำนี้ใช้ยังไง?"}]},
+{"id":"hsk4-210","chinese":"从来","pinyin":"cóng lái","meaning":"Always; all along","meaningThai":"ตั้งแต่แรก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我从来没见过他。","pinyin":"Wo cong lai mei jian guo ta.","meaning":"I have never seen him.","meaningThai":"ฉันไม่เคยเห็นเขามาก่อน"}]},
+{"id":"hsk4-211","chinese":"聪明","pinyin":"cōng ming","meaning":"Clever; intelligent","meaningThai":"ฉลาด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这孩子真聪明。","pinyin":"Zhe hai zi zhen cong ming.","meaning":"This child is really smart.","meaningThai":"เด็กคนนี้ฉลาดจริงๆ"}]},
+{"id":"hsk4-212","chinese":"粗心","pinyin":"cū xīn","meaning":"Careless","meaningThai":"สะเพร่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他太粗心了。","pinyin":"Ta tai cu xin le.","meaning":"He is too careless.","meaningThai":"เขาสะเพร่าเกินไป"}]},
+{"id":"hsk4-213","chinese":"答应","pinyin":"dā yìng","meaning":"To promise; to agree","meaningThai":"ตอบตกลง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他答应帮我。","pinyin":"Ta da ying bang wo.","meaning":"He promised to help me.","meaningThai":"เขาตอบตกลงจะช่วยฉัน"}]},
+{"id":"hsk4-214","chinese":"答案","pinyin":"dá àn","meaning":"Answer; key","meaningThai":"คำตอบ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"答案在书后面。","pinyin":"Da an zai shu hou mian.","meaning":"The answer is at the back of the book.","meaningThai":"คำตอบอยู่ด้านหลังหนังสือ"}]},
+{"id":"hsk4-215","chinese":"打架","pinyin":"dǎ jià","meaning":"To fight","meaningThai":"ทะเลาะวิวาท","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们打架了。","pinyin":"Ta men da jia le.","meaning":"They fought.","meaningThai":"พวกเขาทะเลาะวิวาทกัน"}]},
+{"id":"hsk4-216","chinese":"打算","pinyin":"dǎ suàn","meaning":"To plan; intention","meaningThai":"วางแผน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你打算怎么办？","pinyin":"Ni da suan zen me ban?","meaning":"What do you plan to do?","meaningThai":"คุณวางแผนจะทำยังไง?"}]},
+{"id":"hsk4-217","chinese":"大海","pinyin":"dà hǎi","meaning":"Sea; ocean","meaningThai":"ทะเล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我喜欢看大海。","pinyin":"Wo xi huan kan da hai.","meaning":"I like looking at the sea.","meaningThai":"ฉันชอบมองทะเล"}]},
+{"id":"hsk4-218","chinese":"大家","pinyin":"dà jiā","meaning":"Everyone","meaningThai":"ทุกคน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"大家好！","pinyin":"Da jia hao!","meaning":"Hello everyone!","meaningThai":"สวัสดีทุกคน!"}]},
+{"id":"hsk4-219","chinese":"大使馆","pinyin":"dà shǐ guǎn","meaning":"Embassy","meaningThai":"สถานทูต","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我去大使馆办签证。","pinyin":"Wo qu da shi guan ban qian zheng.","meaning":"I go to the embassy to get a visa.","meaningThai":"ฉันไปสถานทูตขอวีซ่า"}]},
+{"id":"hsk4-220","chinese":"大约","pinyin":"dà yuē","meaning":"Approximately","meaningThai":"ประมาณ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"大约十个人。","pinyin":"Da yue shi ge ren.","meaning":"Approximately ten people.","meaningThai":"ประมาณสิบคน"}]},
+{"id":"hsk4-221","chinese":"代表","pinyin":"dài biǎo","meaning":"Representative; to represent","meaningThai":"ตัวแทน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他代表学校参加比赛。","pinyin":"Ta dai biao xue xiao can jia bi sai.","meaning":"He represents the school in the competition.","meaningThai":"เขาเป็นตัวแทนโรงเรียนเข้าร่วมแข่งขัน"}]},
+{"id":"hsk4-222","chinese":"大夫","pinyin":"dài fu","meaning":"Doctor","meaningThai":"หมอ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请大夫看病。","pinyin":"Qing dai fu kan bing.","meaning":"Please see a doctor.","meaningThai":"กรุณาไปหาหมอ"}]},
+{"id":"hsk4-223","chinese":"担心","pinyin":"dān xīn","meaning":"To worry","meaningThai":"กังวล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"别担心我。","pinyin":"Bie dan xin wo.","meaning":"Don't worry about me.","meaningThai":"ไม่ต้องกังวลเรื่องฉัน"}]},
+{"id":"hsk4-224","chinese":"但是","pinyin":"dàn shì","meaning":"But; however","meaningThai":"แต่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我想去，但是没时间。","pinyin":"Wo xiang qu, dan shi mei shi jian.","meaning":"I want to go, but I don't have time.","meaningThai":"ฉันอยากไป แต่ไม่มีเวลา"}]},
+{"id":"hsk4-225","chinese":"当然","pinyin":"dāng rán","meaning":"Of course","meaningThai":"แน่นอน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"当然可以。","pinyin":"Dang ran ke yi.","meaning":"Of course you can.","meaningThai":"แน่นอนได้"}]},
+{"id":"hsk4-226","chinese":"当时","pinyin":"dāng shí","meaning":"At that time","meaningThai":"ตอนนั้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"当时我不在。","pinyin":"Dang shi wo bu zai.","meaning":"I was not there at that time.","meaningThai":"ตอนนั้นฉันไม่อยู่"}]},
+{"id":"hsk4-227","chinese":"刀","pinyin":"dāo","meaning":"Knife","meaningThai":"มีด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请小心这把刀。","pinyin":"Qing xiao xin zhe ba dao.","meaning":"Please be careful with this knife.","meaningThai":"โปรดระวังมีดเล่มนี้"}]},
+{"id":"hsk4-228","chinese":"导演","pinyin":"dǎo yǎn","meaning":"Director","meaningThai":"ผู้กำกับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是一位著名的导演。","pinyin":"Ta shi yi wei zhu ming de dao yan.","meaning":"He is a famous director.","meaningThai":"เขาเป็นผู้กำกับที่มีชื่อเสียง"}]},
+{"id":"hsk4-229","chinese":"倒","pinyin":"dào","meaning":"To fall; to pour; inverted","meaningThai":"ล้ม, เท","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请倒杯茶。","pinyin":"Qing dao bei cha.","meaning":"Please pour a cup of tea.","meaningThai":"กรุณาเทน้ำชาหนึ่งถ้วย"}]},
+{"id":"hsk4-230","chinese":"道理","pinyin":"dào lǐ","meaning":"Reason; truth","meaningThai":"เหตุผล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你说得有道理。","pinyin":"Ni shuo de you dao li.","meaning":"What you said makes sense.","meaningThai":"คุณพูดมีเหตุผล"}]},
+{"id":"hsk4-231","chinese":"登记","pinyin":"dēng jì","meaning":"To register","meaningThai":"ลงทะเบียน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请在这里登记。","pinyin":"Qing zai zhe li deng ji.","meaning":"Please register here.","meaningThai":"กรุณาลงทะเบียนที่นี่"}]},
+{"id":"hsk4-232","chinese":"等待","pinyin":"děng dài","meaning":"To wait","meaningThai":"รอคอย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请耐心等待。","pinyin":"Qing nai xin deng dai.","meaning":"Please wait patiently.","meaningThai":"กรุณารออย่างอดทน"}]},
+{"id":"hsk4-233","chinese":"低","pinyin":"dī","meaning":"Low","meaningThai":"ต่ำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"温度很低。","pinyin":"Wen du hen di.","meaning":"The temperature is very low.","meaningThai":"อุณหภูมิต่ำมาก"}]},
+{"id":"hsk4-234","chinese":"的确","pinyin":"dí què","meaning":"Indeed; truly","meaningThai":"แน่นอน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的确很努力。","pinyin":"Ta di que hen nu li.","meaning":"He is indeed very hardworking.","meaningThai":"เขาขยันจริงๆ"}]},
+{"id":"hsk4-235","chinese":"地方","pinyin":"dì fāng","meaning":"Place; region","meaningThai":"สถานที่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是一个好地方。","pinyin":"Zhe shi yi ge hao di fang.","meaning":"This is a nice place.","meaningThai":"นี่เป็นสถานที่ที่ดี"}]},
+{"id":"hsk4-236","chinese":"地球","pinyin":"dì qiú","meaning":"Earth","meaningThai":"โลก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我们要保护地球。","pinyin":"Wo men yao bao hu di qiu.","meaning":"We must protect the Earth.","meaningThai":"เราต้องปกป้องโลก"}]},
+{"id":"hsk4-237","chinese":"地址","pinyin":"dì zhǐ","meaning":"Address","meaningThai":"ที่อยู่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请写下你的地址。","pinyin":"Qing xie xia ni de di zhi.","meaning":"Please write down your address.","meaningThai":"กรุณาเขียนที่อยู่ของคุณ"}]},
+{"id":"hsk4-238","chinese":"调查","pinyin":"diào chá","meaning":"To investigate; survey","meaningThai":"สำรวจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们在做市场调查。","pinyin":"Ta men zai zuo shi chang diao cha.","meaning":"They are doing market research.","meaningThai":"พวกเขากำลังสำรวจตลาด"}]},
+{"id":"hsk4-239","chinese":"掉","pinyin":"diào","meaning":"To fall; to drop","meaningThai":"ตก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"书掉地上了。","pinyin":"Shu diao di shang le.","meaning":"The book fell on the floor.","meaningThai":"หนังสือตกพื้น"}]},
+{"id":"hsk4-240","chinese":"丢","pinyin":"diū","meaning":"To lose","meaningThai":"ทำหาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我的钥匙丢了。","pinyin":"Wo de yao shi diu le.","meaning":"I lost my keys.","meaningThai":"ฉันทำกุญแจหาย"}]},
+{"id":"hsk4-241","chinese":"东方","pinyin":"dōng fāng","meaning":"East; eastern","meaningThai":"ตะวันออก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"太阳从东方升起。","pinyin":"Tai yang cong dong fang sheng qi.","meaning":"The sun rises from the east.","meaningThai":"พระอาทิตย์ขึ้นทางทิศตะวันออก"}]},
+{"id":"hsk4-242","chinese":"董事会","pinyin":"dǒng shì huì","meaning":"Board of directors","meaningThai":"คณะกรรมการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"董事会正在开会。","pinyin":"Dong shi hui zheng zai kai hui.","meaning":"The board is meeting.","meaningThai":"คณะกรรมการกำลังประชุม"}]},
+{"id":"hsk4-243","chinese":"动物","pinyin":"dòng wù","meaning":"Animal","meaningThai":"สัตว์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我喜欢小动物。","pinyin":"Wo xi huan xiao dong wu.","meaning":"I like small animals.","meaningThai":"ฉันชอบสัตว์เล็กๆ"}]},
+{"id":"hsk4-244","chinese":"动作","pinyin":"dòng zuò","meaning":"Movement; action","meaningThai":"ท่าทาง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的动作很快。","pinyin":"Ta de dong zuo hen kuai.","meaning":"His movements are fast.","meaningThai":"ท่าทางของเขาเร็ว"}]},
+{"id":"hsk4-245","chinese":"豆腐","pinyin":"dòu fu","meaning":"Tofu","meaningThai":"เต้าหู้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"豆腐很有营养。","pinyin":"Dou fu hen you ying yang.","meaning":"Tofu is very nutritious.","meaningThai":"เต้าหู้มีคุณค่าทางโภชนาการ"}]},
+{"id":"hsk4-246","chinese":"独立","pinyin":"dú lì","meaning":"Independent","meaningThai":"อิสระ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"孩子要学会独立。","pinyin":"Hai zi yao xue hui du li.","meaning":"Children need to learn to be independent.","meaningThai":"เด็กต้องเรียนรู้ที่จะพึ่งตนเอง"}]},
+{"id":"hsk4-247","chinese":"短期","pinyin":"duǎn qī","meaning":"Short-term","meaningThai":"ระยะสั้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是一个短期计划。","pinyin":"Zhe shi yi ge duan qi ji hua.","meaning":"This is a short-term plan.","meaningThai":"นี่เป็นแผนระยะสั้น"}]},
+{"id":"hsk4-248","chinese":"对","pinyin":"duì","meaning":"Correct; towards","meaningThai":"ถูก, ต่อ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"答案是对的。","pinyin":"Da an shi dui de.","meaning":"The answer is correct.","meaningThai":"คำตอบถูกต้อง"}]},
+{"id":"hsk4-249","chinese":"对方","pinyin":"duì fāng","meaning":"The other party","meaningThai":"อีกฝ่าย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"尊重对方的意见。","pinyin":"Zun zhong dui fang de yi jian.","meaning":"Respect the other party's opinion.","meaningThai":"เคารพความคิดเห็นของอีกฝ่าย"}]},
+{"id":"hsk4-250","chinese":"对话","pinyin":"duì huà","meaning":"Dialogue","meaningThai":"บทสนทนา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这一段对话很有意思。","pinyin":"Zhe yi duan dui hua hen you yi si.","meaning":"This dialogue is very interesting.","meaningThai":"บทสนทนานี้น่าสนใจมาก"}]},
+{"id":"hsk4-251","chinese":"对手","pinyin":"duì shǒu","meaning":"Opponent","meaningThai":"คู่แข่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是我的对手。","pinyin":"Ta shi wo de dui shou.","meaning":"He is my opponent.","meaningThai":"เขาเป็นคู่แข่งของฉัน"}]},
+{"id":"hsk4-252","chinese":"儿童","pinyin":"ér tóng","meaning":"Children","meaningThai":"เด็ก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"儿童是国家的未来。","pinyin":"Er tong shi guo jia de wei lai.","meaning":"Children are the future of the country.","meaningThai":"เด็กคืออนาคตของชาติ"}]},
+{"id":"hsk4-253","chinese":"而","pinyin":"ér","meaning":"And; but; yet","meaningThai":"และ, แต่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他聪明而努力。","pinyin":"Ta cong ming er nu li.","meaning":"He is smart and hardworking.","meaningThai":"เขาฉลาดและขยัน"}]},
+{"id":"hsk4-254","chinese":"发生","pinyin":"fā shēng","meaning":"To happen; to occur","meaningThai":"เกิดขึ้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"昨天发生了什么事？","pinyin":"Zuo tian fa sheng le shen me shi?","meaning":"What happened yesterday?","meaningThai":"เมื่อวานเกิดอะไรขึ้น?"}]},
+{"id":"hsk4-255","chinese":"发展","pinyin":"fā zhǎn","meaning":"To develop","meaningThai":"พัฒนา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"城市发展很快。","pinyin":"Cheng shi fa zhan hen kuai.","meaning":"The city is developing very fast.","meaningThai":"เมืองกำลังพัฒนาอย่างรวดเร็ว"}]},
+{"id":"hsk4-256","chinese":"法律","pinyin":"fǎ lǜ","meaning":"Law","meaningThai":"กฎหมาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"法律保护每个人的权利。","pinyin":"Fa lv bao hu mei ge ren de quan li.","meaning":"The law protects everyone's rights.","meaningThai":"กฎหมายปกป้องสิทธิของทุกคน"}]},
+{"id":"hsk4-257","chinese":"翻译","pinyin":"fān yì","meaning":"To translate; translator","meaningThai":"แปล, นักแปล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请翻译这句话。","pinyin":"Qing fan yi zhe ju hua.","meaning":"Please translate this sentence.","meaningThai":"กรุณาแปลประโยคนี้"}]},
+{"id":"hsk4-258","chinese":"烦恼","pinyin":"fán nǎo","meaning":"Worried; annoyed","meaningThai":"กังวลใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"别为小事烦恼。","pinyin":"Bie wei xiao shi fan nao.","meaning":"Don't worry about small things.","meaningThai":"อย่ากังวลเรื่องเล็กน้อย"}]},
+{"id":"hsk4-259","chinese":"反对","pinyin":"fǎn duì","meaning":"To oppose","meaningThai":"คัดค้าน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"很多人反对这个计划。","pinyin":"Hen duo ren fan dui zhe ge ji hua.","meaning":"Many people oppose this plan.","meaningThai":"หลายคนคัดค้านแผนนี้"}]},
+{"id":"hsk4-260","chinese":"方法","pinyin":"fāng fǎ","meaning":"Method; way","meaningThai":"วิธีการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"学习方法很重要。","pinyin":"Xue xi fang fa hen zhong yao.","meaning":"Learning methods are very important.","meaningThai":"วิธีการเรียนรู้สำคัญมาก"}]},
+{"id":"hsk4-261","chinese":"方面","pinyin":"fāng miàn","meaning":"Aspect; side","meaningThai":"ด้าน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"各方面都要考虑。","pinyin":"Ge fang mian dou yao kao lv.","meaning":"You need to consider every aspect.","meaningThai":"ต้องพิจารณาทุกด้าน"}]},
+{"id":"hsk4-262","chinese":"方向","pinyin":"fāng xiàng","meaning":"Direction","meaningThai":"ทิศทาง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他走错了方向。","pinyin":"Ta zou cuo le fang xiang.","meaning":"He went in the wrong direction.","meaningThai":"เขาไปผิดทิศทาง"}]},
+{"id":"hsk4-263","chinese":"访问","pinyin":"fǎng wèn","meaning":"To visit","meaningThai":"เยือน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"总统访问了中国。","pinyin":"Zong tong fang wen le Zhong guo.","meaning":"The president visited China.","meaningThai":"ประธานาธิบดีเยือนจีน"}]},
+{"id":"hsk4-264","chinese":"放弃","pinyin":"fàng qì","meaning":"To give up","meaningThai":"ละทิ้ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"不要放弃希望。","pinyin":"Bu yao fang qi xi wang.","meaning":"Don't give up hope.","meaningThai":"อย่าละทิ้งความหวัง"}]},
+{"id":"hsk4-265","chinese":"放松","pinyin":"fàng sōng","meaning":"To relax","meaningThai":"ผ่อนคลาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"听音乐可以放松心情。","pinyin":"Ting yin yue ke yi fang song xin qing.","meaning":"Listening to music can relax your mind.","meaningThai":"ฟังเพลงช่วยผ่อนคลายจิตใจ"}]},
+{"id":"hsk4-266","chinese":"费用","pinyin":"fèi yong","meaning":"Cost; expense","meaningThai":"ค่าใช้จ่าย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个月的费用很高。","pinyin":"Zhe ge yue de fei yong hen gao.","meaning":"This month's expenses are high.","meaningThai":"ค่าใช้จ่ายเดือนนี้สูงมาก"}]},
+{"id":"hsk4-267","chinese":"分析","pinyin":"fēn xī","meaning":"To analyze","meaningThai":"วิเคราะห์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我们需要分析这个问题。","pinyin":"Wo men xu yao fen xi zhe ge wen ti.","meaning":"We need to analyze this problem.","meaningThai":"เราต้องวิเคราะห์ปัญหานี้"}]},
+{"id":"hsk4-268","chinese":"丰富","pinyin":"fēng fù","meaning":"Rich; abundant","meaningThai":"อุดมสมบูรณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的经验很丰富。","pinyin":"Ta de jing yan hen feng fu.","meaning":"He has rich experience.","meaningThai":"เขามีประสบการณ์มากมาย"}]},
+{"id":"hsk4-269","chinese":"风景","pinyin":"fēng jǐng","meaning":"Scenery; landscape","meaningThai":"ทิวทัศน์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这里的风景很美。","pinyin":"Zhe li de feng jing hen mei.","meaning":"The scenery here is beautiful.","meaningThai":"ทิวทัศน์ที่นี่สวยมาก"}]},
+{"id":"hsk4-270","chinese":"否则","pinyin":"fǒu zé","meaning":"Otherwise","meaningThai":"ไม่อย่างนั้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"快走吧，否则要迟到了。","pinyin":"Kuai zou ba, fou ze yao chi dao le.","meaning":"Go quickly, otherwise you'll be late.","meaningThai":"รีบไปเถอะ ไม่อย่างนั้นจะสาย"}]},
+{"id":"hsk4-271","chinese":"符合","pinyin":"fú hé","meaning":"To conform to","meaningThai":"สอดคล้อง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这符合要求。","pinyin":"Zhe fu he yao qiu.","meaning":"This meets the requirements.","meaningThai":"นี่สอดคล้องกับข้อกำหนด"}]},
+{"id":"hsk4-272","chinese":"服务员","pinyin":"fú wù yuán","meaning":"Waiter; attendant","meaningThai":"พนักงานบริการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"服务员，点菜。","pinyin":"Fu wu yuan, dian cai.","meaning":"Waiter, I'd like to order.","meaningThai":"พนักงานครับ สั่งอาหาร"}]},
+{"id":"hsk4-273","chinese":"复杂","pinyin":"fù zá","meaning":"Complicated","meaningThai":"ซับซ้อน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个问题很复杂。","pinyin":"Zhe ge wen ti hen fu za.","meaning":"This problem is very complicated.","meaningThai":"ปัญหานี้ซับซ้อนมาก"}]},
+{"id":"hsk4-274","chinese":"负责","pinyin":"fù zé","meaning":"To be responsible for","meaningThai":"รับผิดชอบ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"谁负责这个项目？","pinyin":"Shui fu ze zhe ge xiang mu?","meaning":"Who is responsible for this project?","meaningThai":"ใครรับผิดชอบโครงการนี้?"}]},
+{"id":"hsk4-275","chinese":"改变","pinyin":"gǎi biàn","meaning":"To change","meaningThai":"เปลี่ยนแปลง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的想法改变了。","pinyin":"Ta de xiang fa gai bian le.","meaning":"His thoughts have changed.","meaningThai":"ความคิดของเขาเปลี่ยนไป"}]},
+{"id":"hsk4-276","chinese":"干净","pinyin":"gān jìng","meaning":"Clean","meaningThai":"สะอาด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"房间很干净。","pinyin":"Fang jian hen gan jing.","meaning":"The room is very clean.","meaningThai":"ห้องสะอาดมาก"}]},
+{"id":"hsk4-277","chinese":"感动","pinyin":"gǎn dòng","meaning":"To be moved; touched","meaningThai":"ประทับใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的话让我很感动。","pinyin":"Ta de hua rang wo hen gan dong.","meaning":"His words moved me deeply.","meaningThai":"คำพูดของเขาทำให้ฉันประทับใจ"}]},
+{"id":"hsk4-278","chinese":"感觉","pinyin":"gǎn jué","meaning":"Feeling; sensation","meaningThai":"ความรู้สึก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我感觉不舒服。","pinyin":"Wo gan jue bu shu fu.","meaning":"I don't feel well.","meaningThai":"ฉันรู้สึกไม่สบาย"}]},
+{"id":"hsk4-279","chinese":"感情","pinyin":"gǎn qíng","meaning":"Emotion; feeling","meaningThai":"อารมณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们的感情很好。","pinyin":"Ta men de gan qing hen hao.","meaning":"They have a good relationship.","meaningThai":"ความสัมพันธ์ของพวกเขาดี"}]},
+{"id":"hsk4-280","chinese":"感谢","pinyin":"gǎn xiè","meaning":"To thank","meaningThai":"ขอบคุณ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"非常感谢你的帮助。","pinyin":"Fei chang gan xie ni de bang zhu.","meaning":"Thank you very much for your help.","meaningThai":"ขอบคุณมากสำหรับความช่วยเหลือ"}]},
+{"id":"hsk4-281","chinese":"刚才","pinyin":"gāng cái","meaning":"Just now","meaningThai":"เมื่อกี้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"刚才有人找你。","pinyin":"Gang cai you ren zhao ni.","meaning":"Someone was looking for you just now.","meaningThai":"เมื่อกี้มีคนหาคุณ"}]},
+{"id":"hsk4-282","chinese":"高大","pinyin":"gāo dà","meaning":"Tall; high","meaningThai":"สูงใหญ่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他长得很高大。","pinyin":"Ta zhang de hen gao da.","meaning":"He is very tall.","meaningThai":"เขาสูงใหญ่"}]},
+{"id":"hsk4-283","chinese":"高速公路","pinyin":"gāo sù gōng lù","meaning":"Highway","meaningThai":"ทางด่วน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"高速公路很方便。","pinyin":"Gao su gong lu hen fang bian.","meaning":"Highways are very convenient.","meaningThai":"ทางด่วนสะดวกมาก"}]},
+{"id":"hsk4-284","chinese":"告诉","pinyin":"gào su","meaning":"To tell","meaningThai":"บอก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请告诉他我来过。","pinyin":"Qing gao su ta wo lai guo.","meaning":"Please tell him I came.","meaningThai":"กรุณาบอกเขาว่าฉันมา"}]},
+{"id":"hsk4-285","chinese":"哥哥","pinyin":"gē ge","meaning":"Elder brother","meaningThai":"พี่ชาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我哥哥在医院工作。","pinyin":"Wo ge ge zai yi yuan gong zuo.","meaning":"My elder brother works in a hospital.","meaningThai":"พี่ชายฉันทำงานที่โรงพยาบาล"}]},
+{"id":"hsk4-286","chinese":"鸽子","pinyin":"gē zi","meaning":"Pigeon","meaningThai":"นกพิราบ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"广场上有许多鸽子。","pinyin":"Guang chang shang you xu duo ge zi.","meaning":"There are many pigeons in the square.","meaningThai":"ที่จัตุรัสมีนกพิราบมากมาย"}]},
+{"id":"hsk4-287","chinese":"个人","pinyin":"gè rén","meaning":"Individual; personal","meaningThai":"ส่วนตัว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是个人隐私。","pinyin":"Zhe shi ge ren yin si.","meaning":"This is personal privacy.","meaningThai":"นี่คือความเป็นส่วนตัว"}]},
+{"id":"hsk4-288","chinese":"各种","pinyin":"gè zhǒng","meaning":"Various kinds","meaningThai":"ต่างๆ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"商店里有各种商品。","pinyin":"Shang dian li you ge zhong shang pin.","meaning":"The store has various products.","meaningThai":"ในร้านมีสินค้าต่างๆ"}]},
+{"id":"hsk4-289","chinese":"工程","pinyin":"gōng chéng","meaning":"Engineering; project","meaningThai":"วิศวกรรม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个工程很大。","pinyin":"Zhe ge gong cheng hen da.","meaning":"This project is very large.","meaningThai":"โครงการนี้ใหญ่มาก"}]},
+{"id":"hsk4-290","chinese":"功夫","pinyin":"gōng fu","meaning":"Kung fu; skill","meaningThai":"กังฟู","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他练了十年功夫。","pinyin":"Ta lian le shi nian gong fu.","meaning":"He practiced kung fu for ten years.","meaningThai":"เขาฝึกกังฟูมาสิบปี"}]},
+{"id":"hsk4-291","chinese":"工具","pinyin":"gōng jù","meaning":"Tool","meaningThai":"เครื่องมือ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这些工具很好用。","pinyin":"Zhe xie gong ju hen hao yong.","meaning":"These tools are easy to use.","meaningThai":"เครื่องมือเหล่านี้ใช้งานง่าย"}]},
+{"id":"hsk4-292","chinese":"公里","pinyin":"gōng lǐ","meaning":"Kilometer","meaningThai":"กิโลเมตร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"学校离家五公里。","pinyin":"Xue xiao li jia wu gong li.","meaning":"The school is five kilometers from home.","meaningThai":"โรงเรียนห่างจากบ้านห้ากิโลเมตร"}]},
+{"id":"hsk4-293","chinese":"公司","pinyin":"gōng sī","meaning":"Company","meaningThai":"บริษัท","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他在一家大公司工作。","pinyin":"Ta zai yi jia da gong si gong zuo.","meaning":"He works at a big company.","meaningThai":"เขาทำงานที่บริษัทใหญ่"}]},
+{"id":"hsk4-294","chinese":"功夫","pinyin":"gōng fu","meaning":"Time; effort","meaningThai":"เวลา, ความพยายาม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"只要功夫深铁杵磨成针。","pinyin":"Zhi yao gong fu shen tie chu mo cheng zhen.","meaning":"With enough effort, you can achieve anything.","meaningThai":"ถ้ามีความพยายาม ก็สามารถทำอะไรก็ได้สำเร็จ"}]},
+{"id":"hsk4-295","chinese":"共同","pinyin":"gòng tóng","meaning":"Common; joint","meaningThai":"ร่วมกัน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们有共同的爱好。","pinyin":"Ta men you gong tong de ai hao.","meaning":"They have common hobbies.","meaningThai":"พวกเขามีงานอดิเรกร่วมกัน"}]},
+{"id":"hsk4-296","chinese":"沟通","pinyin":"gōu tōng","meaning":"To communicate","meaningThai":"สื่อสาร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"沟通很重要。","pinyin":"Gou tong hen zhong yao.","meaning":"Communication is important.","meaningThai":"การสื่อสารสำคัญมาก"}]},
+{"id":"hsk4-297","chinese":"古代","pinyin":"gǔ dài","meaning":"Ancient times","meaningThai":"สมัยโบราณ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"中国古代有很多发明。","pinyin":"Zhong guo gu dai you hen duo fa ming.","meaning":"Ancient China had many inventions.","meaningThai":"จีนโบราณมีสิ่งประดิษฐ์มากมาย"}]},
+{"id":"hsk4-298","chinese":"鼓励","pinyin":"gǔ lì","meaning":"To encourage","meaningThai":"ให้กำลังใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老师鼓励我们努力学习。","pinyin":"Lao shi gu li wo men nu li xue xi.","meaning":"The teacher encourages us to study hard.","meaningThai":"ครูให้กำลังใจเราให้เรียนหนัก"}]},
+{"id":"hsk4-299","chinese":"故事","pinyin":"gù shi","meaning":"Story","meaningThai":"เรื่องราว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"讲一个故事好吗？","pinyin":"Jiang yi ge gu shi hao ma?","meaning":"Tell a story, okay?","meaningThai":"เล่าเรื่องสักเรื่องได้ไหม?"}]},
+{"id":"hsk4-300","chinese":"故意","pinyin":"gù yì","meaning":"On purpose; intentionally","meaningThai":"ตั้งใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他不是故意的。","pinyin":"Ta bu shi gu yi de.","meaning":"He didn't do it on purpose.","meaningThai":"เขาไม่ได้ตั้งใจ"}]},
+{"id":"hsk4-301","chinese":"关心","pinyin":"guān xīn","meaning":"To care about","meaningThai":"ใส่ใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"谢谢你的关心。","pinyin":"Xie xie ni de guan xin.","meaning":"Thank you for your concern.","meaningThai":"ขอบคุณที่ใส่ใจ"}]},
+{"id":"hsk4-302","chinese":"观众","pinyin":"guān zhòng","meaning":"Audience","meaningThai":"ผู้ชม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"观众很多。","pinyin":"Guan zhong hen duo.","meaning":"There are many audience members.","meaningThai":"ผู้ชมมากมาย"}]},
+{"id":"hsk4-303","chinese":"管理","pinyin":"guǎn lǐ","meaning":"To manage","meaningThai":"จัดการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他管理这家公司。","pinyin":"Ta guan li zhe jia gong si.","meaning":"He manages this company.","meaningThai":"เขาจัดการบริษัทนี้"}]},
+{"id":"hsk4-304","chinese":"光","pinyin":"guāng","meaning":"Light; only","meaningThai":"แสง, เท่านั้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"房间里没有光。","pinyin":"Fang jian li mei you guang.","meaning":"There is no light in the room.","meaningThai":"ในห้องไม่มีแสง"}]},
+{"id":"hsk4-305","chinese":"广播","pinyin":"guǎng bō","meaning":"Broadcast","meaningThai":"กระจายเสียง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"听广播可以学中文。","pinyin":"Ting guang bo ke yi xue zhong wen.","meaning":"Listening to broadcasts can help learn Chinese.","meaningThai":"ฟังกระจายเสียงช่วยเรียนภาษาจีน"}]},
+{"id":"hsk4-306","chinese":"广告","pinyin":"guǎng gào","meaning":"Advertisement","meaningThai":"โฆษณา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"电视上有很多广告。","pinyin":"Dian shi shang you hen duo guang gao.","meaning":"There are many ads on TV.","meaningThai":"ในทีวีมีโฆษณามากมาย"}]},
+{"id":"hsk4-307","chinese":"规定","pinyin":"guī dìng","meaning":"Rule; regulation","meaningThai":"กฎระเบียบ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"公司有严格的规定。","pinyin":"Gong si you yan ge de gui ding.","meaning":"The company has strict rules.","meaningThai":"บริษัทมีกฎระเบียบที่เข้มงวด"}]},
+{"id":"hsk4-308","chinese":"国籍","pinyin":"guó jí","meaning":"Nationality","meaningThai":"สัญชาติ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你的国籍是什么？","pinyin":"Ni de guo ji shi shen me?","meaning":"What is your nationality?","meaningThai":"คุณสัญชาติอะไร?"}]},
+{"id":"hsk4-309","chinese":"国庆节","pinyin":"Guó qìng jié","meaning":"National Day","meaningThai":"วันชาติ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"十月一日是国庆节。","pinyin":"Shi yue yi ri shi guo qing jie.","meaning":"October 1st is National Day.","meaningThai":"วันที่ 1 ตุลาคมเป็นวันชาติ"}]},
+{"id":"hsk4-310","chinese":"果然","pinyin":"guǒ rán","meaning":"As expected","meaningThai":"ตามที่คาดไว้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"果然下雨了。","pinyin":"Guo ran xia yu le.","meaning":"It rained as expected.","meaningThai":"ฝนตกตามที่คาดไว้"}]},
+{"id":"hsk4-311","chinese":"海关","pinyin":"hǎi guān","meaning":"Customs","meaningThai":"ศุลกากร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"过海关要检查护照。","pinyin":"Guo hai guan yao jian cha hu zhao.","meaning":"Going through customs requires a passport check.","meaningThai":"ผ่านศุลกากรต้องตรวจพาสปอร์ต"}]},
+{"id":"hsk4-312","chinese":"海洋","pinyin":"hǎi yáng","meaning":"Ocean","meaningThai":"มหาสมุทร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"太平洋是最大的海洋。","pinyin":"Tai ping yang shi zui da de hai yang.","meaning":"The Pacific is the largest ocean.","meaningThai":"มหาสมุทรแปซิฟิกใหญ่ที่สุด"}]},
+{"id":"hsk4-313","chinese":"寒假","pinyin":"hán jià","meaning":"Winter vacation","meaningThai":"ปิดเทอมฤดูหนาว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"寒假你有什么计划？","pinyin":"Han jia ni you shen me ji hua?","meaning":"What plans do you have for winter break?","meaningThai":"ปิดเทอมนี้มีแผนอะไรไหม?"}]},
+{"id":"hsk4-314","chinese":"行业","pinyin":"háng yè","meaning":"Industry; trade","meaningThai":"อุตสาหกรรม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个行业发展很快。","pinyin":"Zhe ge hang ye fa zhan hen kuai.","meaning":"This industry is growing fast.","meaningThai":"อุตสาหกรรมนี้เติบโตเร็ว"}]},
+{"id":"hsk4-315","chinese":"好","pinyin":"hǎo","meaning":"Good; well","meaningThai":"ดี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"一切都好。","pinyin":"Yi qie dou hao.","meaning":"Everything is fine.","meaningThai":"ทุกอย่างดี"}]},
+{"id":"hsk4-316","chinese":"好吃","pinyin":"hǎo chī","meaning":"Delicious","meaningThai":"อร่อย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个蛋糕好吃极了。","pinyin":"Zhe ge dan gao hao chi ji le.","meaning":"This cake is extremely delicious.","meaningThai":"เค้กนี้อร่อยมาก"}]},
+{"id":"hsk4-317","chinese":"好处","pinyin":"hǎo chù","meaning":"Benefit; advantage","meaningThai":"ประโยชน์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"运动有很多好处。","pinyin":"Yun dong you hen duo hao chu.","meaning":"Exercise has many benefits.","meaningThai":"การออกกำลังกายมีประโยชน์มากมาย"}]},
+{"id":"hsk4-318","chinese":"好像","pinyin":"hǎo xiàng","meaning":"Seems like","meaningThai":"เหมือน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他好像不高兴。","pinyin":"Ta hao xiang bu gao xing.","meaning":"He seems unhappy.","meaningThai":"เขาเหมือนไม่มีความสุข"}]},
+{"id":"hsk4-319","chinese":"号码","pinyin":"hào mǎ","meaning":"Number","meaningThai":"หมายเลข","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你的电话号码是多少？","pinyin":"Ni de dian hua hao ma shi duo shao?","meaning":"What is your phone number?","meaningThai":"เบอร์โทรศัพท์ของคุณคืออะไร?"}]},
+{"id":"hsk4-320","chinese":"合格","pinyin":"hé gé","meaning":"Qualified; up to standard","meaningThai":"ผ่านเกณฑ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他考试合格了。","pinyin":"Ta kao shi he ge le.","meaning":"He passed the exam.","meaningThai":"เขาสอบผ่าน"}]},
+{"id":"hsk4-321","chinese":"和平","pinyin":"hé píng","meaning":"Peace","meaningThai":"สันติภาพ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"世界需要和平。","pinyin":"Shi jie xu yao he ping.","meaning":"The world needs peace.","meaningThai":"โลกต้องการสันติภาพ"}]},
+{"id":"hsk4-322","chinese":"河流","pinyin":"hé liú","meaning":"River","meaningThai":"แม่น้ำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"黄河是中国第二长的河流。","pinyin":"Huang he shi Zhong guo di er chang de he liu.","meaning":"The Yellow River is China's second longest.","meaningThai":"แม่น้ำหวงเหอเป็นแม่น้ำที่ยาวเป็นอันดับสองของจีน"}]},
+{"id":"hsk4-323","chinese":"黑板","pinyin":"hēi bǎn","meaning":"Blackboard","meaningThai":"กระดานดำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老师在黑板上写字。","pinyin":"Lao shi zai hei ban shang xie zi.","meaning":"The teacher writes on the blackboard.","meaningThai":"ครูเขียนบนกระดานดำ"}]},
+{"id":"hsk4-324","chinese":"后悔","pinyin":"hòu huǐ","meaning":"To regret","meaningThai":"เสียใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我后悔没有早点学中文。","pinyin":"Wo hou hui mei you zao dian xue zhong wen.","meaning":"I regret not learning Chinese earlier.","meaningThai":"ฉันเสียใจที่ไม่ได้เรียนภาษาจีนก่อนหน้านี้"}]},
+{"id":"hsk4-325","chinese":"互联网","pinyin":"hù lián wǎng","meaning":"Internet","meaningThai":"อินเทอร์เน็ต","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"互联网改变了世界。","pinyin":"Hu lian wang gai bian le shi jie.","meaning":"The internet changed the world.","meaningThai":"อินเทอร์เน็ตเปลี่ยนแปลงโลก"}]},
+{"id":"hsk4-326","chinese":"护士","pinyin":"hù shi","meaning":"Nurse","meaningThai":"พยาบาล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她是一名护士。","pinyin":"Ta shi yi ming hu shi.","meaning":"She is a nurse.","meaningThai":"เธอเป็นพยาบาล"}]},
+{"id":"hsk4-327","chinese":"怀念","pinyin":"huái niàn","meaning":"To cherish the memory of","meaningThai":"คิดถึง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我很怀念大学生活。","pinyin":"Wo hen huai nian da xue sheng huo.","meaning":"I miss college life.","meaningThai":"ฉันคิดถึงชีวิตมหาวิทยาลัย"}]},
+{"id":"hsk4-328","chinese":"怀疑","pinyin":"huái yí","meaning":"To doubt","meaningThai":"สงสัย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我怀疑他说的话。","pinyin":"Wo huai yi ta shuo de hua.","meaning":"I doubt what he said.","meaningThai":"ฉันสงสัยคำพูดของเขา"}]},
+{"id":"hsk4-329","chinese":"环境","pinyin":"huán jìng","meaning":"Environment","meaningThai":"สิ่งแวดล้อม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"要保护环境。","pinyin":"Yao bao hu huan jing.","meaning":"We must protect the environment.","meaningThai":"ต้องปกป้องสิ่งแวดล้อม"}]},
+{"id":"hsk4-330","chinese":"黄河","pinyin":"Huáng Hé","meaning":"Yellow River","meaningThai":"แม่น้ำหวงเหอ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"黄河是中国文化的摇篮。","pinyin":"Huang he shi Zhong guo wen hua de yao lan.","meaning":"The Yellow River is the cradle of Chinese culture.","meaningThai":"แม่น้ำหวงเหอเป็นแหล่งกำเนิดวัฒนธรรมจีน"}]},
+{"id":"hsk4-331","chinese":"回忆","pinyin":"huí yì","meaning":"Memory; to recall","meaningThai":"ความทรงจำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"回忆过去是美好的。","pinyin":"Hui yi guo qu shi mei hao de.","meaning":"Recalling the past is beautiful.","meaningThai":"การระลึกถึงอดีตเป็นสิ่งสวยงาม"}]},
+{"id":"hsk4-332","chinese":"活动","pinyin":"huó dòng","meaning":"Activity; event","meaningThai":"กิจกรรม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"学校有很多活动。","pinyin":"Xue xiao you hen duo huo dong.","meaning":"There are many activities at school.","meaningThai":"โรงเรียนมีกิจกรรมมากมาย"}]},
+{"id":"hsk4-333","chinese":"活泼","pinyin":"huó pō","meaning":"Lively; active","meaningThai":"มีชีวิตชีวา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这孩子很活泼。","pinyin":"Zhe hai zi hen huo po.","meaning":"This child is very lively.","meaningThai":"เด็กคนนี้มีชีวิตชีวามาก"}]},
+{"id":"hsk4-334","chinese":"获得","pinyin":"huò dé","meaning":"To obtain","meaningThai":"ได้รับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他获得了奖学金。","pinyin":"Ta huo de le jiang xue jin.","meaning":"He obtained a scholarship.","meaningThai":"เขาได้รับทุนการศึกษา"}]},
+{"id":"hsk4-335","chinese":"基础","pinyin":"jī chǔ","meaning":"Foundation; base","meaningThai":"พื้นฐาน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"打好基础很重要。","pinyin":"Da hao ji chu hen zhong yao.","meaning":"Building a solid foundation is important.","meaningThai":"สร้างพื้นฐานที่แข็งแกร่งสำคัญมาก"}]},
+{"id":"hsk4-336","chinese":"激动","pinyin":"jī dòng","meaning":"Excited","meaningThai":"ตื่นเต้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"听到这个消息他很激动。","pinyin":"Ting dao zhe ge xiao xi ta hen ji dong.","meaning":"He was excited to hear this news.","meaningThai":"เขาตื่นเต้นที่ได้ยินข่าวนี้"}]},
+{"id":"hsk4-337","chinese":"积极","pinyin":"jī jí","meaning":"Active; positive","meaningThai":"กระตือรือร้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他学习很积极。","pinyin":"Ta xue xi hen ji ji.","meaning":"He studies very actively.","meaningThai":"เขาเรียนอย่างกระตือรือร้น"}]},
+{"id":"hsk4-338","chinese":"积累","pinyin":"jī lěi","meaning":"To accumulate","meaningThai":"สะสม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"知识需要慢慢积累。","pinyin":"Zhi shi xu yao man man ji lei.","meaning":"Knowledge needs to accumulate slowly.","meaningThai":"ความรู้ต้องค่อยๆสะสม"}]},
+{"id":"hsk4-339","chinese":"及","pinyin":"jí","meaning":"And; to reach","meaningThai":"และ, ถึง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你应该及时完成。","pinyin":"Ni ying gai ji shi wan cheng.","meaning":"You should finish on time.","meaningThai":"คุณควรทำให้เสร็จทันเวลา"}]},
+{"id":"hsk4-340","chinese":"即使","pinyin":"jí shǐ","meaning":"Even if","meaningThai":"แม้ว่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"即使下雨，我也要去。","pinyin":"Ji shi xia yu, wo ye yao qu.","meaning":"Even if it rains, I will go.","meaningThai":"แม้ว่าฝนตก ฉันก็จะไป"}]},
+{"id":"hsk4-341","chinese":"计划","pinyin":"jì huà","meaning":"Plan","meaningThai":"แผน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你有什么计划？","pinyin":"Ni you shen me ji hua?","meaning":"What are your plans?","meaningThai":"คุณมีแผนอะไรบ้าง?"}]},
+{"id":"hsk4-342","chinese":"记者","pinyin":"jì zhě","meaning":"Journalist","meaningThai":"นักข่าว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是一名记者。","pinyin":"Ta shi yi ming ji zhe.","meaning":"He is a journalist.","meaningThai":"เขาเป็นนักข่าว"}]},
+{"id":"hsk4-343","chinese":"技术","pinyin":"jì shù","meaning":"Technology; skill","meaningThai":"เทคโนโลยี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"技术发展很快。","pinyin":"Ji shu fa zhan hen kuai.","meaning":"Technology is developing fast.","meaningThai":"เทคโนโลยีพัฒนาเร็วมาก"}]},
+{"id":"hsk4-344","chinese":"季节","pinyin":"jì jié","meaning":"Season","meaningThai":"ฤดู","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"一年有四个季节。","pinyin":"Yi nian you si ge ji jie.","meaning":"There are four seasons in a year.","meaningThai":"หนึ่งปีมีสี่ฤดู"}]},
+{"id":"hsk4-345","chinese":"既然","pinyin":"jì rán","meaning":"Since; now that","meaningThai":"เนื่องจาก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"既然你来了，我们就开始吧。","pinyin":"Ji ran ni lai le, wo men jiu kai shi ba.","meaning":"Since you're here, let's begin.","meaningThai":"เนื่องจากคุณมาแล้ว เรามาเริ่มกันเลย"}]},
+{"id":"hsk4-346","chinese":"继续","pinyin":"jì xù","meaning":"To continue","meaningThai":"ต่อไป","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请继续。","pinyin":"Qing ji xu.","meaning":"Please continue.","meaningThai":"กรุณาต่อไป"}]},
+{"id":"hsk4-347","chinese":"加班","pinyin":"jiā bān","meaning":"To work overtime","meaningThai":"ทำงานล่วงเวลา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"今天要加班。","pinyin":"Jin tian yao jia ban.","meaning":"Overtime today.","meaningThai":"วันนี้ต้องทำงานล่วงเวลา"}]},
+{"id":"hsk4-348","chinese":"家具","pinyin":"jiā jù","meaning":"Furniture","meaningThai":"เฟอร์นิเจอร์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这套家具很贵。","pinyin":"Zhe tao jia ju hen gui.","meaning":"This set of furniture is expensive.","meaningThai":"เฟอร์นิเจอร์ชุดนี้แพง"}]},
+{"id":"hsk4-349","chinese":"价格","pinyin":"jià gé","meaning":"Price","meaningThai":"ราคา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"价格太贵了。","pinyin":"Jia ge tai gui le.","meaning":"The price is too expensive.","meaningThai":"ราคาแพงเกินไป"}]},
+{"id":"hsk4-350","chinese":"坚持","pinyin":"jiān chí","meaning":"To persist; to insist","meaningThai":"坚持 (坚持)","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"坚持就是胜利。","pinyin":"Jian chi jiu shi sheng li.","meaning":"Perseverance is victory.","meaningThai":"ความพากเพียรคือชัยชนะ"}]},
+{"id":"hsk4-351","chinese":"检查","pinyin":"jiǎn chá","meaning":"To inspect; to check","meaningThai":"ตรวจสอบ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请检查一下。","pinyin":"Qing jian cha yi xia.","meaning":"Please check it.","meaningThai":"กรุณาตรวจสอบ"}]},
+{"id":"hsk4-352","chinese":"简单","pinyin":"jiǎn dān","meaning":"Simple","meaningThai":"ง่าย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个很简单。","pinyin":"Zhe ge hen jian dan.","meaning":"This is very simple.","meaningThai":"อันนี้ง่ายมาก"}]},
+{"id":"hsk4-353","chinese":"简历","pinyin":"jiǎn lì","meaning":"Resume; CV","meaningThai":"ประวัติย่อ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请发一份简历过来。","pinyin":"Qing fa yi fen jian li guo lai.","meaning":"Please send a resume.","meaningThai":"กรุณาส่งประวัติย่อมา"}]},
+{"id":"hsk4-354","chinese":"建议","pinyin":"jiàn yì","meaning":"Suggestion; to suggest","meaningThai":"ข้อเสนอแนะ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你有什么建议？","pinyin":"Ni you shen me jian yi?","meaning":"Do you have any suggestions?","meaningThai":"คุณมีข้อเสนอแนะอะไรไหม?"}]},
+{"id":"hsk4-355","chinese":"建筑","pinyin":"jiàn zhù","meaning":"Building; architecture","meaningThai":"สถาปัตยกรรม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这座建筑很古老。","pinyin":"Zhe zuo jian zhu hen gu lao.","meaning":"This building is very old.","meaningThai":"สิ่งปลูกสร้างนี้โบราณมาก"}]},
+{"id":"hsk4-356","chinese":"健康","pinyin":"jiàn kāng","meaning":"Health; healthy","meaningThai":"สุขภาพ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"祝你健康。","pinyin":"Zhu ni jian kang.","meaning":"Wish you good health.","meaningThai":"ขอให้คุณสุขภาพดี"}]},
+{"id":"hsk4-357","chinese":"将来","pinyin":"jiāng lái","meaning":"Future","meaningThai":"อนาคต","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"将来我想当老师。","pinyin":"Jiang lai wo xiang dang lao shi.","meaning":"In the future I want to be a teacher.","meaningThai":"อนาคตฉันอยากเป็นครู"}]},
+{"id":"hsk4-358","chinese":"奖金","pinyin":"jiǎng jīn","meaning":"Bonus; award money","meaningThai":"เงินรางวัล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他拿到了年终奖金。","pinyin":"Ta na dao le nian zhong jiang jin.","meaning":"He got the year-end bonus.","meaningThai":"เขาได้รับเงินโบนัสปลายปี"}]},
+{"id":"hsk4-359","chinese":"降低","pinyin":"jiàng dī","meaning":"To lower; to reduce","meaningThai":"ลด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请降低声音。","pinyin":"Qing jiang di sheng yin.","meaning":"Please lower your voice.","meaningThai":"กรุณาลดเสียงลง"}]},
+{"id":"hsk4-360","chinese":"交流","pinyin":"jiāo liú","meaning":"To exchange; to communicate","meaningThai":"แลกเปลี่ยน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"文化交流很重要。","pinyin":"Wen hua jiao liu hen zhong yao.","meaning":"Cultural exchange is important.","meaningThai":"การแลกเปลี่ยนทางวัฒนธรรมสำคัญมาก"}]},
+{"id":"hsk4-361","chinese":"交通","pinyin":"jiāo tōng","meaning":"Traffic; transportation","meaningThai":"การจราจร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这里的交通很方便。","pinyin":"Zhe li de jiao tong hen fang bian.","meaning":"The transportation here is very convenient.","meaningThai":"การเดินทางที่นี่สะดวกมาก"}]},
+{"id":"hsk4-362","chinese":"骄傲","pinyin":"jiāo ào","meaning":"Proud; arrogant","meaningThai":"ภูมิใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我为她感到骄傲。","pinyin":"Wo wei ta gan dao jiao ao.","meaning":"I am proud of her.","meaningThai":"ฉันภูมิใจในตัวเธอ"}]},
+{"id":"hsk4-363","chinese":"饺子","pinyin":"jiǎo zi","meaning":"Dumplings","meaningThai":"เกี๊ยว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我喜欢吃饺子。","pinyin":"Wo xi huan chi jiao zi.","meaning":"I like eating dumplings.","meaningThai":"ฉันชอบกินเกี๊ยว"}]},
+{"id":"hsk4-364","chinese":"教育","pinyin":"jiào yù","meaning":"Education","meaningThai":"การศึกษา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"教育很重要。","pinyin":"Jiao yu hen zhong yao.","meaning":"Education is very important.","meaningThai":"การศึกษาสำคัญมาก"}]},
+{"id":"hsk4-365","chinese":"接","pinyin":"jiē","meaning":"To receive; to pick up","meaningThai":"รับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我去机场接你。","pinyin":"Wo qu ji chang jie ni.","meaning":"I will pick you up at the airport.","meaningThai":"ฉันไปรับคุณที่สนามบิน"}]},
+{"id":"hsk4-366","chinese":"街道","pinyin":"jiē dào","meaning":"Street","meaningThai":"ถนน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这条街道很热闹。","pinyin":"Zhe tiao jie dao hen re nao.","meaning":"This street is very lively.","meaningThai":"ถนนสายนี้คึกคักมาก"}]},
+{"id":"hsk4-367","chinese":"结果","pinyin":"jié guǒ","meaning":"Result; outcome","meaningThai":"ผลลัพธ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"比赛结果出来了。","pinyin":"Bi sai jie guo chu lai le.","meaning":"The competition results are out.","meaningThai":"ผลการแข่งขันออกมาแล้ว"}]},
+{"id":"hsk4-368","chinese":"结婚","pinyin":"jié hūn","meaning":"To get married","meaningThai":"แต่งงาน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们下个月结婚。","pinyin":"Ta men xia ge yue jie hun.","meaning":"They are getting married next month.","meaningThai":"พวกเขาจะแต่งงานเดือนหน้า"}]},
+{"id":"hsk4-369","chinese":"结束","pinyin":"jié shù","meaning":"To end; to finish","meaningThai":"สิ้นสุด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"会议结束了。","pinyin":"Hui yi jie shu le.","meaning":"The meeting ended.","meaningThai":"การประชุมสิ้นสุดลง"}]},
+{"id":"hsk4-370","chinese":"解释","pinyin":"jiě shì","meaning":"To explain","meaningThai":"อธิบาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请解释一下。","pinyin":"Qing jie shi yi xia.","meaning":"Please explain.","meaningThai":"กรุณาอธิบาย"}]},
+{"id":"hsk4-371","chinese":"尽管","pinyin":"jǐn guǎn","meaning":"Although; despite","meaningThai":"แม้จะ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"尽管天气不好，他还是来了。","pinyin":"Jin guan tian qi bu hao, ta hai shi lai le.","meaning":"Although the weather was bad, he still came.","meaningThai":"แม้อากาศจะไม่ดี เขาก็ยังมา"}]},
+{"id":"hsk4-372","chinese":"紧张","pinyin":"jǐn zhāng","meaning":"Nervous; tense","meaningThai":"ตึงเครียด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"考试前我很紧张。","pinyin":"Kao shi qian wo hen jin zhang.","meaning":"I'm very nervous before exams.","meaningThai":"ก่อนสอบฉันตึงเครียดมาก"}]},
+{"id":"hsk4-373","chinese":"进口","pinyin":"jìn kǒu","meaning":"Import","meaningThai":"นำเข้า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是进口产品。","pinyin":"Zhe shi jin kou chan pin.","meaning":"This is an imported product.","meaningThai":"นี่เป็นสินค้านำเข้า"}]},
+{"id":"hsk4-374","chinese":"禁止","pinyin":"jìn zhǐ","meaning":"To forbid; prohibited","meaningThai":"ห้าม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"禁止吸烟。","pinyin":"Jin zhi xi yan.","meaning":"No smoking.","meaningThai":"ห้ามสูบบุหรี่"}]},
+{"id":"hsk4-375","chinese":"精彩","pinyin":"jīng cǎi","meaning":"Brilliant; wonderful","meaningThai":"ยอดเยี่ยม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"表演很精彩。","pinyin":"Biao yan hen jing cai.","meaning":"The performance was brilliant.","meaningThai":"การแสดงยอดเยี่ยมมาก"}]},
+{"id":"hsk4-376","chinese":"经理","pinyin":"jīng lǐ","meaning":"Manager","meaningThai":"ผู้จัดการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是公司的经理。","pinyin":"Ta shi gong si de jing li.","meaning":"He is the company manager.","meaningThai":"เขาเป็นผู้จัดการบริษัท"}]},
+{"id":"hsk4-377","chinese":"经历","pinyin":"jīng lì","meaning":"Experience","meaningThai":"ประสบการณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他有丰富的经历。","pinyin":"Ta you feng fu de jing li.","meaning":"He has rich experience.","meaningThai":"เขามีประสบการณ์มากมาย"}]},
+{"id":"hsk4-378","chinese":"经验","pinyin":"jīng yàn","meaning":"Experience; knowledge","meaningThai":"ประสบการณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他有很多教学经验。","pinyin":"Ta you hen duo jiao xue jing yan.","meaning":"He has a lot of teaching experience.","meaningThai":"เขามีประสบการณ์สอนมาก"}]},
+{"id":"hsk4-379","chinese":"警察","pinyin":"jǐng chá","meaning":"Police","meaningThai":"ตำรวจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"警察来了。","pinyin":"Jing cha lai le.","meaning":"The police came.","meaningThai":"ตำรวจมาแล้ว"}]},
+{"id":"hsk4-380","chinese":"竞争","pinyin":"jìng zhēng","meaning":"Competition","meaningThai":"การแข่งขัน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"竞争很激烈。","pinyin":"Jing zheng hen ji lie.","meaning":"The competition is fierce.","meaningThai":"การแข่งขันรุนแรงมาก"}]},
+{"id":"hsk4-381","chinese":"举办","pinyin":"jǔ bàn","meaning":"To hold; to organize","meaningThai":"จัด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"北京举办了奥运会。","pinyin":"Bei jing ju ban le ao yun hui.","meaning":"Beijing held the Olympics.","meaningThai":"ปักกิ่งจัดโอลิมปิก"}]},
+{"id":"hsk4-382","chinese":"具体","pinyin":"jù tǐ","meaning":"Specific; concrete","meaningThai":"เฉพาะ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请说得具体一点。","pinyin":"Qing shuo de ju ti yi dian.","meaning":"Please be more specific.","meaningThai":"กรุณาพูดให้เฉพาะเจาะจงกว่านี้"}]},
+{"id":"hsk4-383","chinese":"巨大","pinyin":"jù dà","meaning":"Huge; enormous","meaningThai":"มหาศาล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"发生了巨大的变化。","pinyin":"Fa sheng le ju da de bian hua.","meaning":"A huge change happened.","meaningThai":"เกิดการเปลี่ยนแปลงครั้งใหญ่"}]},
+{"id":"hsk4-384","chinese":"开放","pinyin":"kāi fàng","meaning":"To open; open-minded","meaningThai":"เปิด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"中国越来越开放。","pinyin":"Zhong guo yue lai yue kai fang.","meaning":"China is becoming more open.","meaningThai":"จีนเปิดมากขึ้นเรื่อยๆ"}]},
+{"id":"hsk4-385","chinese":"开幕式","pinyin":"kāi mù shì","meaning":"Opening ceremony","meaningThai":"พิธีเปิด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"开幕式很精彩。","pinyin":"Kai mu shi hen jing cai.","meaning":"The opening ceremony was brilliant.","meaningThai":"พิธีเปิดยอดเยี่ยมมาก"}]},
+{"id":"hsk4-386","chinese":"看法","pinyin":"kàn fǎ","meaning":"Opinion; view","meaningThai":"ความคิดเห็น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你的看法是什么？","pinyin":"Ni de kan fa shi shen me?","meaning":"What is your opinion?","meaningThai":"ความคิดเห็นของคุณคืออะไร?"}]},
+{"id":"hsk4-387","chinese":"考虑","pinyin":"kǎo lǜ","meaning":"To consider","meaningThai":"พิจารณา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"让我考虑一下。","pinyin":"Rang wo kao lv yi xia.","meaning":"Let me think about it.","meaningThai":"ให้ฉันพิจารณาดูก่อน"}]},
+{"id":"hsk4-388","chinese":"科技","pinyin":"kē jì","meaning":"Science and technology","meaningThai":"วิทยาศาสตร์และเทคโนโลยี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"科技改变生活。","pinyin":"Ke ji gai bian sheng huo.","meaning":"Technology changes life.","meaningThai":"เทคโนโลยีเปลี่ยนชีวิต"}]},
+{"id":"hsk4-389","chinese":"科学","pinyin":"kē xué","meaning":"Science","meaningThai":"วิทยาศาสตร์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"科学很重要。","pinyin":"Ke xue hen zhong yao.","meaning":"Science is very important.","meaningThai":"วิทยาศาสตร์สำคัญมาก"}]},
+{"id":"hsk4-390","chinese":"科学家","pinyin":"kē xué jiā","meaning":"Scientist","meaningThai":"นักวิทยาศาสตร์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是一名科学家。","pinyin":"Ta shi yi ming ke xue jia.","meaning":"He is a scientist.","meaningThai":"เขาเป็นนักวิทยาศาสตร์"}]},
+{"id":"hsk4-391","chinese":"课程","pinyin":"kè chéng","meaning":"Course; curriculum","meaningThai":"หลักสูตร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个课程很难。","pinyin":"Zhe ge ke cheng hen nan.","meaning":"This course is very hard.","meaningThai":"หลักสูตรนี้ยากมาก"}]},
+{"id":"hsk4-392","chinese":"空间","pinyin":"kōng jiān","meaning":"Space; room","meaningThai":"พื้นที่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个房间空间很大。","pinyin":"Zhe ge fang jian kong jian hen da.","meaning":"This room has a lot of space.","meaningThai":"ห้องนี้มีพื้นที่มาก"}]},
+{"id":"hsk4-393","chinese":"空气","pinyin":"kōng qì","meaning":"Air","meaningThai":"อากาศ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这里的空气很好。","pinyin":"Zhe li de kong qi hen hao.","meaning":"The air here is very good.","meaningThai":"อากาศที่นี่ดีมาก"}]},
+{"id":"hsk4-394","chinese":"恐怕","pinyin":"kǒng pà","meaning":"I'm afraid; perhaps","meaningThai":"เกรงว่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"恐怕不行。","pinyin":"Kong pa bu xing.","meaning":"I'm afraid not.","meaningThai":"เกรงว่าจะไม่ได้"}]},
+{"id":"hsk4-395","chinese":"苦","pinyin":"kǔ","meaning":"Bitter; hard","meaningThai":"ขม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这药很苦。","pinyin":"Zhe yao hen ku.","meaning":"This medicine is very bitter.","meaningThai":"ยานี้ขมมาก"}]},
+{"id":"hsk4-396","chinese":"夸奖","pinyin":"kuā jiǎng","meaning":"To praise","meaningThai":"ชม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老师夸奖了他。","pinyin":"Lao shi kua jiang le ta.","meaning":"The teacher praised him.","meaningThai":"ครูชมเขา"}]},
+{"id":"hsk4-397","chinese":"快乐","pinyin":"kuài lè","meaning":"Happy","meaningThai":"มีความสุข","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"祝你生日快乐。","pinyin":"Zhu ni sheng ri kuai le.","meaning":"Happy birthday!","meaningThai":"สุขสันต์วันเกิด"}]},
+{"id":"hsk4-398","chinese":"筷子","pinyin":"kuài zi","meaning":"Chopsticks","meaningThai":"ตะเกียบ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你会用筷子吗？","pinyin":"Ni hui yong kuai zi ma?","meaning":"Can you use chopsticks?","meaningThai":"คุณใช้ตะเกียบเป็นไหม?"}]},
+{"id":"hsk4-399","chinese":"扩大","pinyin":"kuò dà","meaning":"To expand","meaningThai":"ขยาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"公司正在扩大规模。","pinyin":"Gong si zheng zai kuo da gui mo.","meaning":"The company is expanding.","meaningThai":"บริษัทกำลังขยายขนาด"}]},
+{"id":"hsk4-400","chinese":"垃圾","pinyin":"lā jī","meaning":"Garbage; trash","meaningThai":"ขยะ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请把垃圾扔掉。","pinyin":"Qing ba la ji reng diao.","meaning":"Please throw away the trash.","meaningThai":"กรุณาทิ้งขยะ"}]},
+{"id":"hsk4-401","chinese":"来自","pinyin":"lái zì","meaning":"To come from","meaningThai":"มาจาก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我来自中国。","pinyin":"Wo lai zi Zhong guo.","meaning":"I come from China.","meaningThai":"ฉันมาจากจีน"}]},
+{"id":"hsk4-402","chinese":"懒","pinyin":"lǎn","meaning":"Lazy","meaningThai":"ขี้เกียจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他太懒了。","pinyin":"Ta tai lan le.","meaning":"He is too lazy.","meaningThai":"เขาขี้เกียจเกินไป"}]},
+{"id":"hsk4-403","chinese":"浪费","pinyin":"làng fèi","meaning":"To waste","meaningThai":"เสีย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"不要浪费食物。","pinyin":"Bu yao lang fei shi wu.","meaning":"Don't waste food.","meaningThai":"อย่าเสียอาหาร"}]},
+{"id":"hsk4-404","chinese":"老板","pinyin":"lǎo bǎn","meaning":"Boss","meaningThai":"เจ้านาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老板很严格。","pinyin":"Lao ban hen yan ge.","meaning":"The boss is very strict.","meaningThai":"เจ้านายเข้มงวดมาก"}]},
+{"id":"hsk4-405","chinese":"老虎","pinyin":"lǎo hǔ","meaning":"Tiger","meaningThai":"เสือ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老虎是森林之王。","pinyin":"Lao hu shi sen lin zhi wang.","meaning":"The tiger is king of the forest.","meaningThai":"เสือเป็นราชาแห่งป่า"}]},
+{"id":"hsk4-406","chinese":"乐观","pinyin":"lè guān","meaning":"Optimistic","meaningThai":"มองโลกในแง่ดี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她性格很乐观。","pinyin":"Ta xing ge hen le guan.","meaning":"She has an optimistic personality.","meaningThai":"เธอมองโลกในแง่ดี"}]},
+{"id":"hsk4-407","chinese":"雷","pinyin":"léi","meaning":"Thunder","meaningThai":"ฟ้าผ่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"打雷了。","pinyin":"Da lei le.","meaning":"It's thundering.","meaningThai":"ฟ้าผ่าแล้ว"}]},
+{"id":"hsk4-408","chinese":"离婚","pinyin":"lí hūn","meaning":"To divorce","meaningThai":"หย่าร้าง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们离婚了。","pinyin":"Ta men li hun le.","meaning":"They got divorced.","meaningThai":"พวกเขาหย่าร้างกัน"}]},
+{"id":"hsk4-409","chinese":"厘米","pinyin":"lí mǐ","meaning":"Centimeter","meaningThai":"เซนติเมตร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"它大约十厘米长。","pinyin":"Ta da yue shi li mi chang.","meaning":"It is about ten centimeters long.","meaningThai":"มันยาวประมาณสิบเซนติเมตร"}]},
+{"id":"hsk4-410","chinese":"理论","pinyin":"lǐ lùn","meaning":"Theory","meaningThai":"ทฤษฎี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个理论很有名。","pinyin":"Zhe ge li lun hen you ming.","meaning":"This theory is very famous.","meaningThai":"ทฤษฎีนี้มีชื่อเสียงมาก"}]},
+{"id":"hsk4-411","chinese":"理想","pinyin":"lǐ xiǎng","meaning":"Ideal","meaningThai":"อุดมคติ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是我的理想工作。","pinyin":"Zhe shi wo de li xiang gong zuo.","meaning":"This is my ideal job.","meaningThai":"นี่คืองานในอุดมคติของฉัน"}]},
+{"id":"hsk4-412","chinese":"力量","pinyin":"lì liàng","meaning":"Strength; power","meaningThai":"พลัง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"团结就是力量。","pinyin":"Tuan jie jiu shi li liang.","meaning":"Unity is strength.","meaningThai":"ความสามัคคีคือพลัง"}]},
+{"id":"hsk4-413","chinese":"厉害","pinyin":"lì hai","meaning":"Formidable; amazing","meaningThai":"เก่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他中文说得真厉害。","pinyin":"Ta zhong wen shuo de zhen li hai.","meaning":"His Chinese is amazing.","meaningThai":"เขาพูดจีนเก่งจริงๆ"}]},
+{"id":"hsk4-414","chinese":"例如","pinyin":"lì rú","meaning":"For example","meaningThai":"เช่น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我喜欢运动，例如游泳和跑步。","pinyin":"Wo xi huan yun dong, li ru you yong he pao bu.","meaning":"I like sports, such as swimming and running.","meaningThai":"ฉันชอบออกกำลังกาย เช่น ว่ายน้ำและวิ่ง"}]},
+{"id":"hsk4-415","chinese":"俩","pinyin":"liǎ","meaning":"Two (people)","meaningThai":"สองคน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他们俩是好朋友。","pinyin":"Ta men lia shi hao peng you.","meaning":"They two are good friends.","meaningThai":"ทั้งสองคนเป็นเพื่อนที่ดี"}]},
+{"id":"hsk4-416","chinese":"连","pinyin":"lián","meaning":"Even; including","meaningThai":"แม้แต่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"连孩子都知道。","pinyin":"Lian hai zi dou zhi dao.","meaning":"Even children know.","meaningThai":"แม้แต่เด็กก็รู้"}]},
+{"id":"hsk4-417","chinese":"良好","pinyin":"liáng hǎo","meaning":"Good; positive","meaningThai":"ดี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"养成良好的习惯。","pinyin":"Yang cheng liang hao de xi guan.","meaning":"Develop good habits.","meaningThai":"สร้างนิสัยที่ดี"}]},
+{"id":"hsk4-418","chinese":"粮食","pinyin":"liáng shi","meaning":"Grain; food","meaningThai":"ธัญพืช","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"粮食很重要。","pinyin":"Liang shi hen zhong yao.","meaning":"Grain is very important.","meaningThai":"ธัญพืชสำคัญมาก"}]},
+{"id":"hsk4-419","chinese":"了","pinyin":"le","meaning":"(past marker)","meaningThai":"แล้ว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我吃完了。","pinyin":"Wo chi wan le.","meaning":"I finished eating.","meaningThai":"ฉันกินเสร็จแล้ว"}]},
+{"id":"hsk4-420","chinese":"另外","pinyin":"lìng wài","meaning":"In addition; other","meaningThai":"อีก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"另外一个人来了。","pinyin":"Ling wai yi ge ren lai le.","meaning":"Another person came.","meaningThai":"อีกคนมาแล้ว"}]},
+{"id":"hsk4-421","chinese":"流利","pinyin":"liú lì","meaning":"Fluent","meaningThai":"คล่อง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他汉语说得很流利。","pinyin":"Ta Han yu shuo de hen liu li.","meaning":"He speaks Chinese fluently.","meaningThai":"เขาพูดจีนได้คล่อง"}]},
+{"id":"hsk4-422","chinese":"流行","pinyin":"liú xíng","meaning":"Popular; fashionable","meaningThai":"นิยม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这首歌很流行。","pinyin":"Zhe shou ge hen liu xing.","meaning":"This song is very popular.","meaningThai":"เพลงนี้เป็นที่นิยม"}]},
+{"id":"hsk4-423","chinese":"龙","pinyin":"lóng","meaning":"Dragon","meaningThai":"มังกร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"龙是中国的象征。","pinyin":"Long shi Zhong guo de xiang zheng.","meaning":"The dragon is a symbol of China.","meaningThai":"มังกรเป็นสัญลักษณ์ของจีน"}]},
+{"id":"hsk4-424","chinese":"律师","pinyin":"lǜ shī","meaning":"Lawyer","meaningThai":"ทนายความ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是一名律师。","pinyin":"Ta shi yi ming lv shi.","meaning":"He is a lawyer.","meaningThai":"เขาเป็นทนายความ"}]},
+{"id":"hsk4-425","chinese":"马虎","pinyin":"mǎ hu","meaning":"Careless","meaningThai":"ลวก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他做事很马虎。","pinyin":"Ta zuo shi hen ma hu.","meaning":"He is very careless.","meaningThai":"เขาทำงานลวกมาก"}]},
+{"id":"hsk4-426","chinese":"满","pinyin":"mǎn","meaning":"Full","meaningThai":"เต็ม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"教室里坐满了人。","pinyin":"Jiao shi li zuo man le ren.","meaning":"The classroom is full of people.","meaningThai":"ห้องเรียนเต็มไปด้วยคน"}]},
+{"id":"hsk4-427","chinese":"矛盾","pinyin":"máo dùn","meaning":"Contradiction","meaningThai":"ขัดแย้ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的话有矛盾。","pinyin":"Ta de hua you mao dun.","meaning":"His words have contradictions.","meaningThai":"คำพูดของเขามีความขัดแย้ง"}]},
+{"id":"hsk4-428","chinese":"毛巾","pinyin":"máo jīn","meaning":"Towel","meaningThai":"ผ้าขนหนู","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请拿一条毛巾给我。","pinyin":"Qing na yi tiao mao jin gei wo.","meaning":"Please bring me a towel.","meaningThai":"ขอผ้าขนหนูผืนหนึ่งให้ฉัน"}]},
+{"id":"hsk4-429","chinese":"美丽","pinyin":"měi lì","meaning":"Beautiful","meaningThai":"สวยงาม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个花园很美丽。","pinyin":"Zhe ge hua yuan hen mei li.","meaning":"This garden is beautiful.","meaningThai":"สวนนี้สวยงามมาก"}]},
+{"id":"hsk4-430","chinese":"魅力","pinyin":"mèi lì","meaning":"Charm","meaningThai":"เสน่ห์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她很有魅力。","pinyin":"Ta hen you mei li.","meaning":"She is very charming.","meaningThai":"เธอมีเสน่ห์มาก"}]},
+{"id":"hsk4-431","chinese":"门","pinyin":"mén","meaning":"Door; gate","meaningThai":"ประตู","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请关上门。","pinyin":"Qing guan shang men.","meaning":"Please close the door.","meaningThai":"กรุณาปิดประตู"}]},
+{"id":"hsk4-432","chinese":"迷路","pinyin":"mí lù","meaning":"To get lost","meaningThai":"หลงทาง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我迷路了。","pinyin":"Wo mi lu le.","meaning":"I got lost.","meaningThai":"ฉันหลงทาง"}]},
+{"id":"hsk4-433","chinese":"秘密","pinyin":"mì mì","meaning":"Secret","meaningThai":"ความลับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是一个秘密。","pinyin":"Zhe shi yi ge mi mi.","meaning":"This is a secret.","meaningThai":"นี่คือความลับ"}]},
+{"id":"hsk4-434","chinese":"免费","pinyin":"miǎn fèi","meaning":"Free of charge","meaningThai":"ฟรี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个博物馆免费开放。","pinyin":"Zhe ge bo wu guan mian fei kai fang.","meaning":"This museum is free.","meaningThai":"พิพิธภัณฑ์นี้เปิดให้เข้าฟรี"}]},
+{"id":"hsk4-435","chinese":"民族","pinyin":"mín zú","meaning":"Ethnic group; nation","meaningThai":"ชาติพันธุ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"中国有五十六个民族。","pinyin":"Zhong guo you wu shi liu ge min zu.","meaning":"China has 56 ethnic groups.","meaningThai":"จีนมี 56 ชาติพันธุ์"}]},
+{"id":"hsk4-436","chinese":"母亲","pinyin":"mǔ qīn","meaning":"Mother","meaningThai":"มารดา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"母亲节快乐。","pinyin":"Mu qin jie kuai le.","meaning":"Happy Mother's Day.","meaningThai":"สุขสันต์วันแม่"}]},
+{"id":"hsk4-437","chinese":"目的","pinyin":"mù dì","meaning":"Purpose; goal","meaningThai":"จุดประสงค์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你的目的是什么？","pinyin":"Ni de mu di shi shen me?","meaning":"What is your purpose?","meaningThai":"จุดประสงค์ของคุณคืออะไร?"}]},
+{"id":"hsk4-438","chinese":"目前","pinyin":"mù qián","meaning":"Currently; at present","meaningThai":"ปัจจุบัน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"目前我还在学习。","pinyin":"Mu qian wo hai zai xue xi.","meaning":"Currently I'm still studying.","meaningThai":"ปัจจุบันฉันยังเรียนอยู่"}]},
+{"id":"hsk4-439","chinese":"耐心","pinyin":"nài xīn","meaning":"Patience; patient","meaningThai":"อดทน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"要有耐心。","pinyin":"Yao you nai xin.","meaning":"Be patient.","meaningThai":"ต้องอดทน"}]},
+{"id":"hsk4-440","chinese":"难道","pinyin":"nán dào","meaning":"Surely not; could it be","meaningThai":"หรือว่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"难道你不知道吗？","pinyin":"Nan dao ni bu zhi dao ma?","meaning":"Don't you know?","meaningThai":"หรือว่าคุณไม่รู้?"}]},
+{"id":"hsk4-441","chinese":"难受","pinyin":"nán shòu","meaning":"Uncomfortable; sad","meaningThai":"ไม่สบายใจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我很难受。","pinyin":"Wo hen nan shou.","meaning":"I feel very sad.","meaningThai":"ฉันรู้สึกไม่สบายใจมาก"}]},
+{"id":"hsk4-442","chinese":"内","pinyin":"nèi","meaning":"Inside; within","meaningThai":"ใน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请在三天内完成。","pinyin":"Qing zai san tian nei wan cheng.","meaning":"Please finish within three days.","meaningThai":"กรุณาทำภายในสามวัน"}]},
+{"id":"hsk4-443","chinese":"内容","pinyin":"nèi róng","meaning":"Content","meaningThai":"เนื้อหา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这本书的内容很丰富。","pinyin":"Zhe ben shu de nei rong hen feng fu.","meaning":"This book has rich content.","meaningThai":"เนื้อหาหนังสือเล่มนี้อุดมสมบูรณ์"}]},
+{"id":"hsk4-444","chinese":"能力","pinyin":"néng lì","meaning":"Ability; capability","meaningThai":"ความสามารถ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他有很强的能力。","pinyin":"Ta you hen qiang de neng li.","meaning":"He has strong abilities.","meaningThai":"เขามีความสามารถที่แข็งแกร่ง"}]},
+{"id":"hsk4-445","chinese":"年代","pinyin":"nián dài","meaning":"Decade; era","meaningThai":"ทศวรรษ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"八十年代流行音乐。","pinyin":"Ba shi nian dai liu xing yin yue.","meaning":"Music popular in the 80s.","meaningThai":"เพลงดังในยุค 80"}]},
+{"id":"hsk4-446","chinese":"年龄","pinyin":"nián líng","meaning":"Age","meaningThai":"อายุ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"你多大年龄？","pinyin":"Ni duo da nian ling?","meaning":"How old are you?","meaningThai":"คุณอายุเท่าไหร่?"}]},
+{"id":"hsk4-447","chinese":"年轻","pinyin":"nián qīng","meaning":"Young","meaningThai":"หนุ่มสาว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她看起来很年轻。","pinyin":"Ta kan qi lai hen nian qing.","meaning":"She looks very young.","meaningThai":"เธอดูหนุ่มสาวมาก"}]},
+{"id":"hsk4-448","chinese":"宁可","pinyin":"nìng kě","meaning":"Would rather","meaningThai":"ยอม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我宁可走路也不打车。","pinyin":"Wo ning ke zou lu ye bu da che.","meaning":"I would rather walk than take a taxi.","meaningThai":"ฉันยอมเดินดีกว่านั่งแท็กซี่"}]},
+{"id":"hsk4-449","chinese":"农村","pinyin":"nóng cūn","meaning":"Countryside; rural area","meaningThai":"ชนบท","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"农村的空气很好。","pinyin":"Nong cun de kong qi hen hao.","meaning":"The air in the countryside is good.","meaningThai":"อากาศในชนบทดีมาก"}]},
+{"id":"hsk4-450","chinese":"努力","pinyin":"nǔ lì","meaning":"Hardworking; to strive","meaningThai":"พยายาม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"努力学习，天天向上。","pinyin":"Nu li xue xi, tian tian xiang shang.","meaning":"Study hard and improve every day.","meaningThai":"เรียนหนัก แล้วจะดีขึ้นทุกวัน"}]},
+{"id":"hsk4-451","chinese":"暖和","pinyin":"nuǎn huo","meaning":"Warm","meaningThai":"อุ่น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"春天很暖和。","pinyin":"Chun tian hen nuan huo.","meaning":"Spring is very warm.","meaningThai":"ฤดูใบไม้ผลิอบอุ่นมาก"}]},
+{"id":"hsk4-452","chinese":"偶尔","pinyin":"ǒu ěr","meaning":"Occasionally","meaningThai":"บางครั้ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我偶尔去酒吧。","pinyin":"Wo ou er qu jiu ba.","meaning":"I occasionally go to bars.","meaningThai":"ฉันไปบาร์บางครั้ง"}]},
+{"id":"hsk4-453","chinese":"排队","pinyin":"pái duì","meaning":"To line up","meaningThai":"เข้าแถว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请排队等候。","pinyin":"Qing pai dui deng hou.","meaning":"Please line up and wait.","meaningThai":"กรุณาเข้าแถวรอ"}]},
+{"id":"hsk4-454","chinese":"排列","pinyin":"pái liè","meaning":"To arrange; to line up","meaningThai":"จัดเรียง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"按大小排列。","pinyin":"An da xiao pai lie.","meaning":"Arrange by size.","meaningThai":"จัดเรียงตามขนาด"}]},
+{"id":"hsk4-455","chinese":"判断","pinyin":"pàn duàn","meaning":"To judge; to determine","meaningThai":"ตัดสิน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"判断对错。","pinyin":"Pan duan dui cuo.","meaning":"Judge right or wrong.","meaningThai":"ตัดสินว่าถูกหรือผิด"}]},
+{"id":"hsk4-456","chinese":"旁边","pinyin":"páng biān","meaning":"Side; next to","meaningThai":"ข้างๆ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"银行在超市旁边。","pinyin":"Yin hang zai chao shi pang bian.","meaning":"The bank is next to the supermarket.","meaningThai":"ธนาคารอยู่ข้างๆซุปเปอร์มาเก็ต"}]},
+{"id":"hsk4-457","chinese":"跑步","pinyin":"pǎo bù","meaning":"To run; jogging","meaningThai":"วิ่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我每天早上跑步。","pinyin":"Wo mei tian zao shang pao bu.","meaning":"I jog every morning.","meaningThai":"ฉันวิ่งทุกเช้า"}]},
+{"id":"hsk4-458","chinese":"培训","pinyin":"péi xùn","meaning":"To train","meaningThai":"อบรม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"新员工需要培训。","pinyin":"Xin yuan gong xu yao pei xun.","meaning":"New employees need training.","meaningThai":"พนักงานใหม่ต้องได้รับการอบรม"}]},
+{"id":"hsk4-459","chinese":"赔偿","pinyin":"péi cháng","meaning":"To compensate","meaningThai":"ชดใช้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"损坏东西要赔偿。","pinyin":"Sun hui dong xi yao pei chang.","meaning":"Compensate for damaged items.","meaningThai":"ทำของเสียหายต้องชดใช้"}]},
+{"id":"hsk4-460","chinese":"碰","pinyin":"pèng","meaning":"To touch; to bump","meaningThai":"ชน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"别碰我的东西。","pinyin":"Bie peng wo de dong xi.","meaning":"Don't touch my things.","meaningThai":"อย่ามาแตะของฉัน"}]},
+{"id":"hsk4-461","chinese":"批评","pinyin":"pī píng","meaning":"To criticize","meaningThai":"วิจารณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"老师批评了他。","pinyin":"Lao shi pi ping le ta.","meaning":"The teacher criticized him.","meaningThai":"ครูวิจารณ์เขา"}]},
+{"id":"hsk4-462","chinese":"皮肤","pinyin":"pí fū","meaning":"Skin","meaningThai":"ผิวหนัง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她的皮肤很好。","pinyin":"Ta de pi fu hen hao.","meaning":"Her skin is very good.","meaningThai":"ผิวของเธอดีมาก"}]},
+{"id":"hsk4-463","chinese":"啤酒","pinyin":"pí jiǔ","meaning":"Beer","meaningThai":"เบียร์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"来一杯啤酒。","pinyin":"Lai yi bei pi jiu.","meaning":"One beer, please.","meaningThai":"เบียร์หนึ่งแก้ว"}]},
+{"id":"hsk4-464","chinese":"便宜","pinyin":"pián yi","meaning":"Cheap","meaningThai":"ถูก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个很便宜。","pinyin":"Zhe ge hen pian yi.","meaning":"This is very cheap.","meaningThai":"อันนี้ถูกมาก"}]},
+{"id":"hsk4-465","chinese":"骗人","pinyin":"piàn rén","meaning":"To deceive","meaningThai":"หลอก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他在骗人。","pinyin":"Ta zai pian ren.","meaning":"He is lying.","meaningThai":"เขากำลังหลอกคน"}]},
+{"id":"hsk4-466","chinese":"平方米","pinyin":"píng fāng mǐ","meaning":"Square meter","meaningThai":"ตารางเมตร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这套房子有一百平方米。","pinyin":"Zhe tao fang zi you yi bai ping fang mi.","meaning":"This house is 100 square meters.","meaningThai":"บ้านนี้มีหนึ่งร้อยตารางเมตร"}]},
+{"id":"hsk4-467","chinese":"平时","pinyin":"píng shí","meaning":"Usually; ordinarily","meaningThai":"ปกติ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"平时我七点起床。","pinyin":"Ping shi wo qi dian qi chuang.","meaning":"Usually I get up at seven.","meaningThai":"ปกติฉันตื่นเจ็ดโมง"}]},
+{"id":"hsk4-468","chinese":"瓶子","pinyin":"píng zi","meaning":"Bottle","meaningThai":"ขวด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请把瓶子扔了。","pinyin":"Qing ba ping zi reng le.","meaning":"Please throw away the bottle.","meaningThai":"กรุณาทิ้งขวด"}]},
+{"id":"hsk4-469","chinese":"破","pinyin":"pò","meaning":"Broken; to break","meaningThai":"แตก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"杯子破了。","pinyin":"Bei zi po le.","meaning":"The cup is broken.","meaningThai":"ถ้วยแตกแล้ว"}]},
+{"id":"hsk4-470","chinese":"普遍","pinyin":"pǔ biàn","meaning":"Universal; widespread","meaningThai":"ทั่วไป","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是一个普遍的问题。","pinyin":"Zhe shi yi ge pu bian de wen ti.","meaning":"This is a common problem.","meaningThai":"นี่เป็นปัญหาทั่วไป"}]},
+{"id":"hsk4-471","chinese":"普通","pinyin":"pǔ tōng","meaning":"Ordinary; common","meaningThai":"ธรรมดา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我只是一个普通人。","pinyin":"Wo zhi shi yi ge pu tong ren.","meaning":"I'm just an ordinary person.","meaningThai":"ฉันเป็นแค่คนธรรมดา"}]},
+{"id":"hsk4-472","chinese":"期待","pinyin":"qī dài","meaning":"To anticipate; to look forward","meaningThai":"คาดหวัง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我期待你的到来。","pinyin":"Wo qi dai ni de dao lai.","meaning":"I look forward to your arrival.","meaningThai":"ฉันคาดหวังการมาถึงของคุณ"}]},
+{"id":"hsk4-473","chinese":"其实","pinyin":"qí shí","meaning":"Actually; in fact","meaningThai":"ที่จริง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"其实我不太明白。","pinyin":"Qi shi wo bu tai ming bai.","meaning":"Actually I don't quite understand.","meaningThai":"ที่จริงฉันไม่ค่อยเข้าใจ"}]},
+{"id":"hsk4-474","chinese":"其他","pinyin":"qí tā","meaning":"Other","meaningThai":"อื่น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"其他人呢？","pinyin":"Qi ta ren ne?","meaning":"What about the others?","meaningThai":"คนอื่นล่ะ?"}]},
+{"id":"hsk4-475","chinese":"其中","pinyin":"qí zhōng","meaning":"Among them","meaningThai":"ในนั้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"其中一个人是我朋友。","pinyin":"Qi zhong yi ge ren shi wo peng you.","meaning":"Among them, one is my friend.","meaningThai":"ในนั้นคนหนึ่งเป็นเพื่อนฉัน"}]},
+{"id":"hsk4-476","chinese":"气候","pinyin":"qì hòu","meaning":"Climate","meaningThai":"ภูมิอากาศ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这里的气候很舒适。","pinyin":"Zhe li de qi hou hen shu shi.","meaning":"The climate here is comfortable.","meaningThai":"ภูมิอากาศที่นี่สบาย"}]},
+{"id":"hsk4-477","chinese":"千万","pinyin":"qiān wàn","meaning":"Ten million; must (advice)","meaningThai":"สิบล้าน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"千万别忘记。","pinyin":"Qian wan bie wang ji.","meaning":"Don't ever forget.","meaningThai":"อย่าลืมเด็ดขาด"}]},
+{"id":"hsk4-478","chinese":"签证","pinyin":"qiān zhèng","meaning":"Visa","meaningThai":"วีซ่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我的签证到期了。","pinyin":"Wo de qian zheng dao qi le.","meaning":"My visa has expired.","meaningThai":"วีซ่าของฉันหมดอายุแล้ว"}]},
+{"id":"hsk4-479","chinese":"前途","pinyin":"qián tú","meaning":"Future; prospects","meaningThai":"อนาคต","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他前途无量。","pinyin":"Ta qian tu wu liang.","meaning":"He has a bright future.","meaningThai":"เขามีอนาคตที่สดใส"}]},
+{"id":"hsk4-480","chinese":"千万","pinyin":"qiān wàn","meaning":"Must; be sure to","meaningThai":"อย่าลืม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"路上千万小心。","pinyin":"Lu shang qian wan xiao xin.","meaning":"Be sure to be careful on the way.","meaningThai":"ระหว่างทางอย่าลืมระวังตัว"}]},
+{"id":"hsk4-481","chinese":"强大","pinyin":"qiáng dà","meaning":"Powerful; strong","meaningThai":"แข็งแกร่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"中国越来越强大。","pinyin":"Zhong guo yue lai yue qiang da.","meaning":"China is becoming more powerful.","meaningThai":"จีนแข็งแกร่งขึ้นเรื่อยๆ"}]},
+{"id":"hsk4-482","chinese":"墙","pinyin":"qiáng","meaning":"Wall","meaningThai":"กำแพง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"墙上有一幅画。","pinyin":"Qiang shang you yi fu hua.","meaning":"There is a painting on the wall.","meaningThai":"บนกำแพงมีรูปภาพ"}]},
+{"id":"hsk4-483","chinese":"芹菜","pinyin":"qín cài","meaning":"Celery","meaningThai":"คื่นช่าย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我喜欢吃芹菜。","pinyin":"Wo xi huan chi qin cai.","meaning":"I like eating celery.","meaningThai":"ฉันชอบกินคื่นช่าย"}]},
+{"id":"hsk4-484","chinese":"青年","pinyin":"qīng nián","meaning":"Youth; young people","meaningThai":"เยาวชน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"青年是国家的未来。","pinyin":"Qing nian shi guo jia de wei lai.","meaning":"Young people are the country's future.","meaningThai":"เยาวชนคืออนาคตของชาติ"}]},
+{"id":"hsk4-485","chinese":"轻松","pinyin":"qīng sōng","meaning":"Relaxed; light","meaningThai":"สบาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这份工作很轻松。","pinyin":"Zhe fen gong zuo hen qing song.","meaning":"This job is very easy.","meaningThai":"งานนี้ง่ายมาก"}]},
+{"id":"hsk4-486","chinese":"情况","pinyin":"qíng kuàng","meaning":"Situation; condition","meaningThai":"สถานการณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"情况怎么样了？","pinyin":"Qing kuang zen me yang le?","meaning":"How is the situation?","meaningThai":"สถานการณ์เป็นยังไง?"}]},
+{"id":"hsk4-487","chinese":"穷","pinyin":"qióng","meaning":"Poor","meaningThai":"จน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他家以前很穷。","pinyin":"Ta jia yi qian hen qiong.","meaning":"His family used to be poor.","meaningThai":"ครอบครัวเขาเคยจนมาก"}]},
+{"id":"hsk4-488","chinese":"区别","pinyin":"qū bié","meaning":"Difference","meaningThai":"ความแตกต่าง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这两个有什么区别？","pinyin":"Zhe liang ge you shen me qu bie?","meaning":"What's the difference between these two?","meaningThai":"สองอันนี้แตกต่างกันอย่างไร?"}]},
+{"id":"hsk4-489","chinese":"全部","pinyin":"quán bù","meaning":"All; entire","meaningThai":"ทั้งหมด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"全部人都来了。","pinyin":"Quan bu ren dou lai le.","meaning":"Everyone came.","meaningThai":"ทุกคนมาแล้ว"}]},
+{"id":"hsk4-490","chinese":"缺乏","pinyin":"quē fá","meaning":"To lack","meaningThai":"ขาด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"缺乏经验。","pinyin":"Que fa jing yan.","meaning":"Lack of experience.","meaningThai":"ขาดประสบการณ์"}]},
+{"id":"hsk4-491","chinese":"确定","pinyin":"què dìng","meaning":"To confirm","meaningThai":"ยืนยัน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"时间确定了。","pinyin":"Shi jian que ding le.","meaning":"The time is confirmed.","meaningThai":"เวลายืนยันแล้ว"}]},
+{"id":"hsk4-492","chinese":"然后","pinyin":"rán hòu","meaning":"Then; after that","meaningThai":"แล้ว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"先吃饭，然后看电影。","pinyin":"Xian chi fan, ran hou kan dian ying.","meaning":"Eat first, then watch a movie.","meaningThai":"กินข้าวก่อน แล้วดูหนัง"}]},
+{"id":"hsk4-493","chinese":"热闹","pinyin":"rè nao","meaning":"Lively; bustling","meaningThai":"คึกคัก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"街上很热闹。","pinyin":"Jie shang hen re nao.","meaning":"The street is very lively.","meaningThai":"ถนนคึกคักมาก"}]},
+{"id":"hsk4-494","chinese":"任何","pinyin":"rèn hé","meaning":"Any","meaningThai":"ใดๆ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"任何人都可以参加。","pinyin":"Ren he ren dou ke yi can jia.","meaning":"Anyone can participate.","meaningThai":"ใครๆก็เข้าร่วมได้"}]},
+{"id":"hsk4-495","chinese":"任务","pinyin":"rèn wù","meaning":"Task; mission","meaningThai":"ภารกิจ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"任务完成了。","pinyin":"Ren wu wan cheng le.","meaning":"The mission is accomplished.","meaningThai":"ภารกิจเสร็จสมบูรณ์"}]},
+{"id":"hsk4-496","chinese":"仍然","pinyin":"réng rán","meaning":"Still; yet","meaningThai":"ยังคง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他仍然单身。","pinyin":"Ta reng ran dan shen.","meaning":"He is still single.","meaningThai":"เขายังโสด"}]},
+{"id":"hsk4-497","chinese":"日记","pinyin":"rì jì","meaning":"Diary","meaningThai":"ไดอารี่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我每天写日记。","pinyin":"Wo mei tian xie ri ji.","meaning":"I write in my diary every day.","meaningThai":"ฉันเขียนไดอารี่ทุกวัน"}]},
+{"id":"hsk4-498","chinese":"入口","pinyin":"rù kǒu","meaning":"Entrance","meaningThai":"ทางเข้า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"入口在那边。","pinyin":"Ru kou zai na bian.","meaning":"The entrance is over there.","meaningThai":"ทางเข้าอยู่ทางนั้น"}]},
+{"id":"hsk4-499","chinese":"软件","pinyin":"ruǎn jiàn","meaning":"Software","meaningThai":"ซอฟต์แวร์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个软件很好用。","pinyin":"Zhe ge ruan jian hen hao yong.","meaning":"This software is easy to use.","meaningThai":"ซอฟต์แวร์นี้ใช้งานง่าย"}]},
+{"id":"hsk4-500","chinese":"森林","pinyin":"sēn lín","meaning":"Forest","meaningThai":"ป่า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"森林里有很多动物。","pinyin":"Sen lin li you hen duo dong wu.","meaning":"There are many animals in the forest.","meaningThai":"ในป่ามีสัตว์มากมาย"}]},
+{"id":"hsk4-501","chinese":"沙发","pinyin":"shā fā","meaning":"Sofa","meaningThai":"โซฟา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"坐在沙发上。","pinyin":"Zuo zai sha fa shang.","meaning":"Sit on the sofa.","meaningThai":"นั่งบนโซฟา"}]},
+{"id":"hsk4-502","chinese":"善于","pinyin":"shàn yú","meaning":"Good at","meaningThai":"ชำนาญ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他善于与人沟通。","pinyin":"Ta shan yu yu ren gou tong.","meaning":"He is good at communicating.","meaningThai":"เขาชำนาญในการสื่อสารกับคน"}]},
+{"id":"hsk4-503","chinese":"商量","pinyin":"shāng liang","meaning":"To discuss","meaningThai":"ปรึกษา","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我们商量一下。","pinyin":"Wo men shang liang yi xia.","meaning":"Let's discuss it.","meaningThai":"เราปรึกษากันหน่อย"}]},
+{"id":"hsk4-504","chinese":"社会","pinyin":"shè huì","meaning":"Society","meaningThai":"สังคม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"社会在不断进步。","pinyin":"She hui zai bu duan jin bu.","meaning":"Society is constantly progressing.","meaningThai":"สังคมก้าวหน้าอย่างต่อเนื่อง"}]},
+{"id":"hsk4-505","chinese":"申请","pinyin":"shēn qǐng","meaning":"To apply","meaningThai":"สมัคร","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我申请了大学。","pinyin":"Wo shen qing le da xue.","meaning":"I applied to university.","meaningThai":"ฉันสมัครเรียนมหาวิทยาลัยแล้ว"}]},
+{"id":"hsk4-506","chinese":"甚至","pinyin":"shèn zhì","meaning":"Even; so much so","meaningThai":"แม้กระทั่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他甚至不会写自己的名字。","pinyin":"Ta shen zhi bu hui xie zi ji de ming zi.","meaning":"He can't even write his name.","meaningThai":"แม้กระทั่งเขียนชื่อตัวเองยังไม่ได้"}]},
+{"id":"hsk4-507","chinese":"生活","pinyin":"shēng huó","meaning":"Life; to live","meaningThai":"ชีวิต","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"生活很美好。","pinyin":"Sheng huo hen mei hao.","meaning":"Life is beautiful.","meaningThai":"ชีวิตช่างสวยงาม"}]},
+{"id":"hsk4-508","chinese":"省","pinyin":"shěng","meaning":"Province","meaningThai":"จังหวัด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"四川省很有名。","pinyin":"Si chuan sheng hen you ming.","meaning":"Sichuan province is very famous.","meaningThai":"มณฑลเสฉวนมีชื่อเสียงมาก"}]},
+{"id":"hsk4-509","chinese":"十分","pinyin":"shí fēn","meaning":"Very; extremely","meaningThai":"อย่างมาก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他十分高兴。","pinyin":"Ta shi fen gao xing.","meaning":"He is extremely happy.","meaningThai":"เขามีความสุขอย่างมาก"}]},
+{"id":"hsk4-510","chinese":"实际","pinyin":"shí jì","meaning":"Actual; practical","meaningThai":"จริง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"实际情况是这样的。","pinyin":"Shi ji qing kuang shi zhe yang de.","meaning":"The actual situation is like this.","meaningThai":"สถานการณ์จริงเป็นแบบนี้"}]},
+{"id":"hsk4-511","chinese":"实现","pinyin":"shí xiàn","meaning":"To realize; to achieve","meaningThai":"บรรลุ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"实现梦想。","pinyin":"Shi xian meng xiang.","meaning":"Realize your dreams.","meaningThai":"บรรลุความฝัน"}]},
+{"id":"hsk4-512","chinese":"使用","pinyin":"shǐ yòng","meaning":"To use","meaningThai":"ใช้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请正确使用。","pinyin":"Qing zheng que shi yong.","meaning":"Please use correctly.","meaningThai":"กรุณาใช้ให้ถูกต้อง"}]},
+{"id":"hsk4-513","chinese":"世纪","pinyin":"shì jì","meaning":"Century","meaningThai":"ศตวรรษ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"二十一世纪。","pinyin":"Er shi yi shi ji.","meaning":"The 21st century.","meaningThai":"ศตวรรษที่ 21"}]},
+{"id":"hsk4-514","chinese":"适合","pinyin":"shì hé","meaning":"To suit; to fit","meaningThai":"เหมาะสม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这件衣服很适合你。","pinyin":"Zhe jian yi fu hen shi he ni.","meaning":"This outfit suits you.","meaningThai":"เสื้อตัวนี้เหมาะสมกับคุณ"}]},
+{"id":"hsk4-515","chinese":"适应","pinyin":"shì yìng","meaning":"To adapt","meaningThai":"ปรับตัว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我需要时间适应新环境。","pinyin":"Wo xu yao shi jian shi ying xin huan jing.","meaning":"I need time to adapt to the new environment.","meaningThai":"ฉันต้องการเวลาปรับตัวกับสิ่งแวดล้อมใหม่"}]},
+{"id":"hsk4-516","chinese":"市场","pinyin":"shì chǎng","meaning":"Market","meaningThai":"ตลาด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个市场很大。","pinyin":"Zhe ge shi chang hen da.","meaning":"This market is very big.","meaningThai":"ตลาดนี้ใหญ่มาก"}]},
+{"id":"hsk4-517","chinese":"收入","pinyin":"shōu rù","meaning":"Income","meaningThai":"รายได้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的收入很高。","pinyin":"Ta de shou ru hen gao.","meaning":"His income is very high.","meaningThai":"รายได้ของเขาสูงมาก"}]},
+{"id":"hsk4-518","chinese":"收拾","pinyin":"shōu shi","meaning":"To tidy up","meaningThai":"เก็บ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"收拾房间。","pinyin":"Shou shi fang jian.","meaning":"Tidy up the room.","meaningThai":"เก็บห้อง"}]},
+{"id":"hsk4-519","chinese":"首都","pinyin":"shǒu dū","meaning":"Capital (city)","meaningThai":"เมืองหลวง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"北京是中国的首都。","pinyin":"Bei jing shi Zhong guo de shou du.","meaning":"Beijing is the capital of China.","meaningThai":"ปักกิ่งเป็นเมืองหลวงของจีน"}]},
+{"id":"hsk4-520","chinese":"首先","pinyin":"shǒu xiān","meaning":"First of all","meaningThai":"ก่อนอื่น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"首先，我要感谢大家。","pinyin":"Shou xian, wo yao gan xie da jia.","meaning":"First, I want to thank everyone.","meaningThai":"ก่อนอื่น ฉันต้องขอบคุณทุกคน"}]},
+{"id":"hsk4-521","chinese":"受","pinyin":"shòu","meaning":"To receive; to suffer","meaningThai":"ได้รับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她受了很多苦。","pinyin":"Ta shou le hen duo ku.","meaning":"She suffered a lot.","meaningThai":"เธอได้รับความทุกข์มาก"}]},
+{"id":"hsk4-522","chinese":"蔬菜","pinyin":"shū cài","meaning":"Vegetables","meaningThai":"ผัก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"多吃蔬菜对身体好。","pinyin":"Duo chi shu cai dui shen ti hao.","meaning":"Eating more vegetables is good for you.","meaningThai":"กินผักมากๆดีต่อสุขภาพ"}]},
+{"id":"hsk4-523","chinese":"熟悉","pinyin":"shú xī","meaning":"Familiar","meaningThai":"คุ้นเคย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我熟悉这里。","pinyin":"Wo shu xi zhe li.","meaning":"I am familiar with here.","meaningThai":"ฉันคุ้นเคยที่นี่"}]},
+{"id":"hsk4-524","chinese":"数量","pinyin":"shù liàng","meaning":"Quantity; amount","meaningThai":"จำนวน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"数量很大。","pinyin":"Shu liang hen da.","meaning":"The quantity is huge.","meaningThai":"จำนวนมหาศาล"}]},
+{"id":"hsk4-525","chinese":"数字","pinyin":"shù zì","meaning":"Number; digit","meaningThai":"ตัวเลข","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请写下数字。","pinyin":"Qing xie xia shu zi.","meaning":"Please write down the numbers.","meaningThai":"กรุณาเขียนตัวเลข"}]},
+{"id":"hsk4-526","chinese":"刷牙","pinyin":"shuā yá","meaning":"To brush teeth","meaningThai":"แปรงฟัน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"每天早晚要刷牙。","pinyin":"Mei tian zao wan yao shua ya.","meaning":"Brush teeth every morning and evening.","meaningThai":"แปรงฟันเช้าเย็นทุกวัน"}]},
+{"id":"hsk4-527","chinese":"帅","pinyin":"shuài","meaning":"Handsome","meaningThai":"หล่อ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他很帅。","pinyin":"Ta hen shuai.","meaning":"He is very handsome.","meaningThai":"เขาหล่อมาก"}]},
+{"id":"hsk4-528","chinese":"双","pinyin":"shuāng","meaning":"Pair; double","meaningThai":"คู่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"一双鞋。","pinyin":"Yi shuang xie.","meaning":"A pair of shoes.","meaningThai":"รองเท้าหนึ่งคู่"}]},
+{"id":"hsk4-529","chinese":"水平","pinyin":"shuǐ píng","meaning":"Level; standard","meaningThai":"ระดับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他的汉语水平很高。","pinyin":"Ta de Han yu shui ping hen gao.","meaning":"His Chinese level is high.","meaningThai":"ระดับภาษาจีนของเขาสูงมาก"}]},
+{"id":"hsk4-530","chinese":"睡觉","pinyin":"shuì jiào","meaning":"To sleep","meaningThai":"นอน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"早点睡觉。","pinyin":"Zao dian shui jiao.","meaning":"Go to sleep early.","meaningThai":"นอนแต่หัวค่ำ"}]},
+{"id":"hsk4-531","chinese":"顺序","pinyin":"shùn xù","meaning":"Order; sequence","meaningThai":"ลำดับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"按顺序排队。","pinyin":"An shun xu pai dui.","meaning":"Line up in order.","meaningThai":"เข้าแถวตามลำดับ"}]},
+{"id":"hsk4-532","chinese":"说明","pinyin":"shuō míng","meaning":"To explain; instructions","meaningThai":"อธิบาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请说明原因。","pinyin":"Qing shuo ming yuan yin.","meaning":"Please explain the reason.","meaningThai":"กรุณาอธิบายเหตุผล"}]},
+{"id":"hsk4-533","chinese":"司机","pinyin":"sī jī","meaning":"Driver","meaningThai":"คนขับ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"出租车司机。","pinyin":"Chu zu che si ji.","meaning":"Taxi driver.","meaningThai":"คนขับแท็กซี่"}]},
+{"id":"hsk4-534","chinese":"虽然","pinyin":"suī rán","meaning":"Although","meaningThai":"ถึงแม้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"虽然很累，但他很开心。","pinyin":"Sui ran hen lei, dan ta hen kai xin.","meaning":"Although tired, he was happy.","meaningThai":"ถึงแม้จะเหนื่อย แต่เขามีความสุข"}]},
+{"id":"hsk4-535","chinese":"随着","pinyin":"suí zhe","meaning":"Along with","meaningThai":"ตาม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"随着时间推移。","pinyin":"Sui zhe shi jian tui yi.","meaning":"As time goes by.","meaningThai":"ตามเวลาที่ผ่านไป"}]},
+{"id":"hsk4-536","chinese":"孙子","pinyin":"sūn zi","Meaning":"Grandson","meaningThai":"หลานชาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"孙子很可爱。","pinyin":"Sun zi hen ke ai.","meaning":"The grandson is very cute.","meaningThai":"หลานชายน่ารักมาก"}]},
+{"id":"hsk4-537","chinese":"所有","pinyin":"suǒ yǒu","meaning":"All","meaningThai":"ทั้งหมด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"所有人都到了。","pinyin":"Suo you ren dou dao le.","meaning":"Everyone has arrived.","meaningThai":"ทั้งหมดมาแล้ว"}]},
+{"id":"hsk4-538","chinese":"所以","pinyin":"suǒ yǐ","meaning":"So; therefore","meaningThai":"ดังนั้น","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"因为下雨，所以我没去。","pinyin":"Yin wei xia yu, suo yi wo mei qu.","meaning":"Because it rained, so I didn't go.","meaningThai":"เพราะฝนตก ดังนั้นฉันไม่ได้ไป"}]},
+{"id":"hsk4-539","chinese":"台","pinyin":"tái","meaning":"Platform; (measure for machines)","meaningThai":"เครื่อง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"一台电脑。","pinyin":"Yi tai dian nao.","meaning":"One computer.","meaningThai":"คอมพิวเตอร์หนึ่งเครื่อง"}]},
+{"id":"hsk4-540","chinese":"提高","pinyin":"tí gāo","meaning":"To improve; to raise","meaningThai":"เพิ่ม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"提高水平。","pinyin":"Ti gao shui ping.","meaning":"Raise the level.","meaningThai":"เพิ่มระดับ"}]},
+{"id":"hsk4-541","chinese":"提供","pinyin":"tí gōng","meaning":"To provide","meaningThai":"ให้","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我们提供免费服务。","pinyin":"Wo men ti gong mian fei fu wu.","meaning":"We provide free service.","meaningThai":"เราให้บริการฟรี"}]},
+{"id":"hsk4-542","chinese":"提前","pinyin":"tí qián","meaning":"In advance; ahead of time","meaningThai":"ล่วงหน้า","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请提前通知。","pinyin":"Qing ti qian tong zhi.","meaning":"Please notify in advance.","meaningThai":"กรุณาแจ้งล่วงหน้า"}]},
+{"id":"hsk4-543","chinese":"提醒","pinyin":"tí xǐng","meaning":"To remind","meaningThai":"เตือน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"提醒我一下。","pinyin":"Ti xing wo yi xia.","meaning":"Remind me.","meaningThai":"เตือนฉันหน่อย"}]},
+{"id":"hsk4-544","chinese":"填空","pinyin":"tián kòng","meaning":"Fill in the blank","meaningThai":"เติมคำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"做填空题。","pinyin":"Zuo tian kong ti.","meaning":"Do fill-in-the-blank questions.","meaningThai":"ทำข้อสอบเติมคำ"}]},
+{"id":"hsk4-545","chinese":"条件","pinyin":"tiáo jiàn","meaning":"Condition","meaningThai":"เงื่อนไข","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"条件很严格。","pinyin":"Tiao jian hen yan ge.","meaning":"The conditions are strict.","meaningThai":"เงื่อนไขเข้มงวดมาก"}]},
+{"id":"hsk4-546","chinese":"停","pinyin":"tíng","meaning":"To stop","meaningThai":"หยุด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"车停了。","pinyin":"Che ting le.","meaning":"The car stopped.","meaningThai":"รถหยุดแล้ว"}]},
+{"id":"hsk4-547","chinese":"挺","pinyin":"tǐng","meaning":"Quite; very","meaningThai":"ค่อนข้าง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这儿挺漂亮的。","pinyin":"Zhe er ting piao liang de.","meaning":"It's quite beautiful here.","meaningThai":"ที่นี่ค่อนข้างสวย"}]},
+{"id":"hsk4-548","chinese":"通过","pinyin":"tōng guò","meaning":"By means of; to pass","meaningThai":"ผ่าน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"通过考试。","pinyin":"Tong guo kao shi.","meaning":"Pass the exam.","meaningThai":"ผ่านการสอบ"}]},
+{"id":"hsk4-549","chinese":"通知","pinyin":"tōng zhī","meaning":"To notify; notice","meaningThai":"แจ้ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请大家注意通知。","pinyin":"Qing da jia zhu yi tong zhi.","meaning":"Everyone please pay attention to the notice.","meaningThai":"โปรดทุกคนสังเกตประกาศ"}]},
+{"id":"hsk4-550","chinese":"同事","pinyin":"tóng shì","meaning":"Colleague","meaningThai":"เพื่อนร่วมงาน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他是我同事。","pinyin":"Ta shi wo tong shi.","meaning":"He is my colleague.","meaningThai":"เขาเป็นเพื่อนร่วมงานของฉัน"}]},
+{"id":"hsk4-551","chinese":"同意","pinyin":"tóng yì","meaning":"To agree","meaningThai":"เห็นด้วย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我同意你的看法。","pinyin":"Wo tong yi ni de kan fa.","meaning":"I agree with you.","meaningThai":"ฉันเห็นด้วยกับคุณ"}]},
+{"id":"hsk4-552","chinese":"统一","pinyin":"tǒng yī","meaning":"Unified","meaningThai":"เป็นหนึ่ง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"统一管理。","pinyin":"Tong yi guan li.","meaning":"Unified management.","meaningThai":"การจัดการเป็นหนึ่ง"}]},
+{"id":"hsk4-553","chinese":"痛苦","pinyin":"tòng kǔ","meaning":"Pain; suffering","meaningThai":"เจ็บปวด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他很痛苦。","pinyin":"Ta hen tong ku.","meaning":"He is in pain.","meaningThai":"เขาเจ็บปวดมาก"}]},
+{"id":"hsk4-554","chinese":"推","pinyin":"tuī","meaning":"To push","meaningThai":"ผลัก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请推门。","pinyin":"Qing tui men.","meaning":"Please push the door.","meaningThai":"กรุณาผลักประตู"}]},
+{"id":"hsk4-555","chinese":"推荐","pinyin":"tuī jiàn","meaning":"To recommend","meaningThai":"แนะนำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我推荐这本书。","pinyin":"Wo tui jian zhe ben shu.","meaning":"I recommend this book.","meaningThai":"ฉันแนะนำหนังสือเล่มนี้"}]},
+{"id":"hsk4-556","chinese":"退","pinyin":"tuì","meaning":"To retreat; to return","meaningThai":"ถอย, คืน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请退后。","pinyin":"Qing tui hou.","meaning":"Please step back.","meaningThai":"กรุณาถอยหลัง"}]},
+{"id":"hsk4-557","chinese":"脱","pinyin":"tuō","meaning":"To take off","meaningThai":"ถอด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请脱鞋。","pinyin":"Qing tuo xie.","meaning":"Please take off your shoes.","meaningThai":"กรุณาถอดรองเท้า"}]},
+{"id":"hsk4-558","chinese":"外","pinyin":"wài","meaning":"Outside","meaningThai":"นอก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"在外面等我。","pinyin":"Zai wai mian deng wo.","meaning":"Wait for me outside.","meaningThai":"รอฉันข้างนอก"}]},
+{"id":"hsk4-559","chinese":"完成","pinyin":"wán chéng","meaning":"To complete","meaningThai":"เสร็จ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"作业完成了。","pinyin":"Zuo ye wan cheng le.","meaning":"The homework is completed.","meaningThai":"การบ้านเสร็จแล้ว"}]},
+{"id":"hsk4-560","chinese":"完全","pinyin":"wán quán","meaning":"Completely","meaningThai":"อย่างสมบูรณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我完全同意。","pinyin":"Wo wan quan tong yi.","meaning":"I completely agree.","meaningThai":"ฉันเห็นด้วยอย่างสมบูรณ์"}]},
+{"id":"hsk4-561","chinese":"网络","pinyin":"wǎng luò","meaning":"Internet; network","meaningThai":"เครือข่าย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"网络很方便。","pinyin":"Wang luo hen fang bian.","meaning":"The internet is very convenient.","meaningThai":"เครือข่ายสะดวกมาก"}]},
+{"id":"hsk4-562","chinese":"网站","pinyin":"wǎng zhàn","meaning":"Website","meaningThai":"เว็บไซต์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个网站很有用。","pinyin":"Zhe ge wang zhan hen you yong.","meaning":"This website is very useful.","meaningThai":"เว็บไซต์นี้มีประโยชน์มาก"}]},
+{"id":"hsk4-563","chinese":"危险","pinyin":"wēi xiǎn","meaning":"Dangerous","meaningThai":"อันตราย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这里很危险。","pinyin":"Zhe li hen wei xian.","meaning":"It's dangerous here.","meaningThai":"ที่นี่อันตรายมาก"}]},
+{"id":"hsk4-564","chinese":"味道","pinyin":"wèi dào","meaning":"Taste; flavor","meaningThai":"รสชาติ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个菜味道很好。","pinyin":"Zhe ge cai wei dao hen hao.","meaning":"This dish tastes great.","meaningThai":"อาหารจานนี้รสชาติดี"}]},
+{"id":"hsk4-565","chinese":"温度","pinyin":"wēn dù","meaning":"Temperature","meaningThai":"อุณหภูมิ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"今天温度很高。","pinyin":"Jin tian wen du hen gao.","meaning":"The temperature is high today.","meaningThai":"วันนี้อุณหภูมิสูงมาก"}]},
+{"id":"hsk4-566","chinese":"文章","pinyin":"wén zhāng","meaning":"Article; essay","meaningThai":"บทความ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这篇文章很好。","pinyin":"Zhe pian wen zhang hen hao.","meaning":"This article is good.","meaningThai":"บทความนี้ดีมาก"}]},
+{"id":"hsk4-567","chinese":"污染","pinyin":"wū rǎn","meaning":"Pollution","meaningThai":"มลพิษ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"空气污染很严重。","pinyin":"Kong qi wu ran hen yan zhong.","meaning":"Air pollution is serious.","meaningThai":"มลพิษทางอากาศรุนแรงมาก"}]},
+{"id":"hsk4-568","chinese":"无","pinyin":"wú","meaning":"Without; nothing","meaningThai":"ไม่มี","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"无人知道。","pinyin":"Wu ren zhi dao.","meaning":"No one knows.","meaningThai":"ไม่มีใครรู้"}]},
+{"id":"hsk4-569","chinese":"舞蹈","pinyin":"wǔ dǎo","meaning":"Dance","meaningThai":"เต้นรำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"她喜欢舞蹈。","pinyin":"Ta xi huan wu dao.","meaning":"She likes dancing.","meaningThai":"เธอชอบเต้นรำ"}]},
+{"id":"hsk4-570","chinese":"物理","pinyin":"wù lǐ","meaning":"Physics","meaningThai":"ฟิสิกส์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"物理很难。","pinyin":"Wu li hen nan.","meaning":"Physics is hard.","meaningThai":"ฟิสิกส์ยาก"}]},
+{"id":"hsk4-571","chinese":"误会","pinyin":"wù huì","meaning":"Misunderstanding","meaningThai":"เข้าใจผิด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是个误会。","pinyin":"Zhe shi ge wu hui.","meaning":"This is a misunderstanding.","meaningThai":"นี่เป็นความเข้าใจผิด"}]},
+{"id":"hsk4-572","chinese":"吸引","pinyin":"xī yǐn","meaning":"To attract","meaningThai":"ดึงดูด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这很吸引人。","pinyin":"Zhe hen xi yin ren.","meaning":"This is very attractive.","meaningThai":"นี่ดึงดูดคนมาก"}]},
+{"id":"hsk4-573","chinese":"习惯","pinyin":"xí guàn","meaning":"Habit; to get used to","meaningThai":"นิสัย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我习惯早睡早起。","pinyin":"Wo xi guan zao shui zao qi.","meaning":"I'm used to early to bed, early to rise.","meaningThai":"ฉันชินกับการนอนเร็วตื่นเร็ว"}]},
+{"id":"hsk4-574","chinese":"细节","pinyin":"xì jié","meaning":"Detail","meaningThai":"รายละเอียด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"注意细节。","pinyin":"Zhu yi xi jie.","meaning":"Pay attention to details.","meaningThai":"สังเกตรายละเอียด"}]},
+{"id":"hsk4-575","chinese":"下班","pinyin":"xià bān","meaning":"Get off work","meaningThai":"เลิกงาน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我五点下班。","pinyin":"Wo wu dian xia ban.","meaning":"I get off work at five.","meaningThai":"ฉันเลิกงานห้าโมง"}]},
+{"id":"hsk4-576","chinese":"下降","pinyin":"xià jiàng","meaning":"To decline","meaningThai":"ลดลง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"温度下降了。","pinyin":"Wen du xia jiang le.","meaning":"The temperature dropped.","meaningThai":"อุณหภูมิลดลงแล้ว"}]},
+{"id":"hsk4-577","chinese":"下载","pinyin":"xià zài","meaning":"To download","meaningThai":"ดาวน์โหลด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"下载这个软件。","pinyin":"Xia zai zhe ge ruan jian.","meaning":"Download this software.","meaningThai":"ดาวน์โหลดซอฟต์แวร์นี้"}]},
+{"id":"hsk4-578","chinese":"鲜艳","pinyin":"xiān yàn","meaning":"Bright; colorful","meaningThai":"สดใส","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"颜色很鲜艳。","pinyin":"Yan se hen xian yan.","meaning":"The colors are very bright.","meaningThai":"สีสันสดใสมาก"}]},
+{"id":"hsk4-579","chinese":"显示","pinyin":"xiǎn shì","meaning":"To display; to show","meaningThai":"แสดง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"屏幕显示时间。","pinyin":"Ping mu xian shi shi jian.","meaning":"The screen shows the time.","meaningThai":"หน้าจอแสดงเวลา"}]},
+{"id":"hsk4-580","chinese":"现代","pinyin":"xiàn dài","meaning":"Modern","meaningThai":"สมัยใหม่","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"现代城市很繁华。","pinyin":"Xian dai cheng shi hen fan hua.","meaning":"Modern cities are bustling.","meaningThai":"เมืองสมัยใหม่คึกคักมาก"}]},
+{"id":"hsk4-581","chinese":"现象","pinyin":"xiàn xiàng","meaning":"Phenomenon","meaningThai":"ปรากฏการณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这是一个有趣的现象。","pinyin":"Zhe shi yi ge you qu de xian xiang.","meaning":"This is an interesting phenomenon.","meaningThai":"นี่เป็นปรากฏการณ์ที่น่าสนใจ"}]},
+{"id":"hsk4-582","chinese":"相反","pinyin":"xiāng fǎn","meaning":"Opposite; contrary","meaningThai":"ตรงกันข้าม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"恰恰相反。","pinyin":"Qia qia xiang fan.","meaning":"Quite the opposite.","meaningThai":"ตรงกันข้ามเลย"}]},
+{"id":"hsk4-583","chinese":"相关","pinyin":"xiāng guān","meaning":"Related; relevant","meaningThai":"เกี่ยวข้อง","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这两件事相关。","pinyin":"Zhe liang jian shi xiang guan.","meaning":"These two matters are related.","meaningThai":"สองเรื่องนี้เกี่ยวข้องกัน"}]},
+{"id":"hsk4-584","chinese":"相同","pinyin":"xiāng tóng","meaning":"Same; identical","meaningThai":"เหมือนกัน","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我们观点相同。","pinyin":"Wo men guan dian xiang tong.","meaning":"We have the same viewpoint.","meaningThai":"เรามีมุมมองเหมือนกัน"}]},
+{"id":"hsk4-585","chinese":"香","pinyin":"xiāng","meaning":"Fragrant; aromatic","meaningThai":"หอม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"花香。","pinyin":"Hua xiang.","meaning":"Flower fragrance.","meaningThai":"กลิ่นดอกไม้หอม"}]},
+{"id":"hsk4-586","chinese":"项目","pinyin":"xiàng mù","meaning":"Project","meaningThai":"โครงการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个项目很大。","pinyin":"Zhe ge xiang mu hen da.","meaning":"This project is very large.","meaningThai":"โครงการนี้ใหญ่มาก"}]},
+{"id":"hsk4-587","chinese":"想象","pinyin":"xiǎng xiàng","meaning":"To imagine","meaningThai":"จินตนาการ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"想象一下未来的生活。","pinyin":"Xiang xiang yi xia wei lai de sheng huo.","meaning":"Imagine the future life.","meaningThai":"จินตนาการชีวิตในอนาคต"}]},
+{"id":"hsk4-588","chinese":"消","pinyin":"xiāo","meaning":"To eliminate","meaningThai":"ขจัด","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"消失不见了。","pinyin":"Xiao shi bu jian le.","meaning":"Disappeared.","meaningThai":"หายไป"}]},
+{"id":"hsk4-589","chinese":"消费","pinyin":"xiāo fèi","meaning":"To consume","meaningThai":"บริโภค","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"消费水平很高。","pinyin":"Xiao fei shui ping hen gao.","meaning":"The consumption level is very high.","meaningThai":"ระดับการบริโภคสูงมาก"}]},
+{"id":"hsk4-590","chinese":"小伙子","pinyin":"xiǎo huǒ zi","meaning":"Young man","meaningThai":"หนุ่ม","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"这个小伙子不错。","pinyin":"Zhe ge xiao huo zi bu cuo.","meaning":"This young man is good.","meaningThai":"หนุ่มคนนี้ไม่เลว"}]},
+{"id":"hsk4-591","chinese":"小说","pinyin":"xiǎo shuō","meaning":"Novel","meaningThai":"นิยาย","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"他在看小说。","pinyin":"Ta zai kan xiao shuo.","meaning":"He is reading a novel.","meaningThai":"เขากำลังอ่านนิยาย"}]},
+{"id":"hsk4-592","chinese":"效果","pinyin":"xiào guǒ","meaning":"Effect; result","meaningThai":"ผล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"效果很好。","pinyin":"Xiao guo hen hao.","meaning":"The effect is very good.","meaningThai":"ผลดีมาก"}]},
+{"id":"hsk4-593","chinese":"笑话","pinyin":"xiào hua","meaning":"Joke","meaningThai":"เรื่องตลก","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"讲个笑话。","pinyin":"Jiang ge xiao hua.","meaning":"Tell a joke.","meaningThai":"เล่าเรื่องตลกหน่อย"}]},
+{"id":"hsk4-594","chinese":"心情","pinyin":"xīn qíng","meaning":"Mood","meaningThai":"อารมณ์","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"心情很好。","pinyin":"Xin qing hen hao.","meaning":"In a good mood.","meaningThai":"อารมณ์ดีมาก"}]},
+{"id":"hsk4-595","chinese":"信任","pinyin":"xìn rèn","meaning":"To trust","meaningThai":"เชื่อถือ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"我信任你。","pinyin":"Wo xin ren ni.","meaning":"I trust you.","meaningThai":"ฉันเชื่อถือคุณ"}]},
+{"id":"hsk4-596","chinese":"信息","pinyin":"xìn xī","meaning":"Information","meaningThai":"ข้อมูล","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"谢谢你的信息。","pinyin":"Xie xie ni de xin xi.","meaning":"Thank you for the information.","meaningThai":"ขอบคุณสำหรับข้อมูล"}]},
+{"id":"hsk4-597","chinese":"行动","pinyin":"xíng dòng","meaning":"Action","meaningThai":"การกระทำ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"马上行动。","pinyin":"Ma shang xing dong.","meaning":"Take action immediately.","meaningThai":"ลงมือทำทันที"}]},
+{"id":"hsk4-598","chinese":"形成","pinyin":"xíng chéng","meaning":"To form","meaningThai":"ก่อตัว","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"习惯形成了。","pinyin":"Xi guan xing cheng le.","meaning":"Habits have formed.","meaningThai":"นิสัยก่อตัวแล้ว"}]},
+{"id":"hsk4-599","chinese":"幸福","pinyin":"xìng fú","meaning":"Happiness; blessed","meaningThai":"ความสุข","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"祝你幸福。","pinyin":"Zhu ni xing fu.","meaning":"Wish you happiness.","meaningThai":"ขอให้คุณมีความสุข"}]},
+{"id":"hsk4-600","chinese":"性别","pinyin":"xìng bié","meaning":"Gender","meaningThai":"เพศ","category":"hsk","subcategory":"hsk4","hskLevel":4,"status":"new","examples":[{"chinese":"请填写性别。","pinyin":"Qing tian xie xing bie.","meaning":"Please fill in gender.","meaningThai":"กรุณากรอกเพศ"}]}
 ];
 
 
@@ -1183,6 +1888,461 @@ const HSK5_WORDS = [
 {"id":"hsk5-143","chinese":"地铁","pinyin":"dì tiě","meaning":"Subway; metro","meaningThai":"รถไฟใต้ดิน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"坐地铁上班。","pinyin":"Zuo di tie shang ban.","meaning":"Take the subway to work.","meaningThai":"นั่งรถไฟใต้ดินไปทำงาน"}]},
 {"id":"hsk5-144","chinese":"地震","pinyin":"dì zhèn","meaning":"Earthquake","meaningThai":"แผ่นดินไหว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"发生了地震。","pinyin":"Fa sheng le di zhen.","meaning":"An earthquake occurred.","meaningThai":"เกิดแผ่นดินไหว"}]},
 {"id":"hsk5-145","chinese":"递送","pinyin":"dì sòng","meaning":"To deliver","meaningThai":"ส่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"递送包裹。","pinyin":"Di song bao guo.","meaning":"Deliver a package.","meaningThai":"ส่งพัสดุ"}]},
+{"id":"hsk5-146","chinese":"课本","pinyin":"kè běn","meaning":"Textbook","meaningThai":"หนังสือเรียน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"这本课本很有用。","pinyin":"Zhe ben ke ben hen you yong.","meaning":"This textbook is very useful.","meaningThai":"หนังสือเรียนเล่มนี้มีประโยชน์มาก"}]},
+{"id":"hsk5-147","chinese":"课程","pinyin":"kè chéng","meaning":"Course; curriculum","meaningThai":"หลักสูตร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"这门课程很难。","pinyin":"Zhe men ke cheng hen nan.","meaning":"This course is difficult.","meaningThai":"หลักสูตรนี้ยากมาก"}]},
+{"id":"hsk5-148","chinese":"教室","pinyin":"jiào shì","meaning":"Classroom","meaningThai":"ห้องเรียน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"教室很安静。","pinyin":"Jiao shi hen an jing.","meaning":"The classroom is quiet.","meaningThai":"ห้องเรียนเงียบมาก"}]},
+{"id":"hsk5-149","chinese":"教育","pinyin":"jiào yù","meaning":"Education","meaningThai":"การศึกษา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"教育很重要。","pinyin":"Jiao yu hen zhong yao.","meaning":"Education is very important.","meaningThai":"การศึกษามีความสำคัญมาก"}]},
+{"id":"hsk5-150","chinese":"教授","pinyin":"jiào shòu","meaning":"Professor","meaningThai":"ศาสตราจารย์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"教授很有名。","pinyin":"Jiao shou hen you ming.","meaning":"The professor is famous.","meaningThai":"ศาสตราจารย์มีชื่อเสียงมาก"}]},
+{"id":"hsk5-151","chinese":"解答","pinyin":"jiě dá","meaning":"To answer; solution","meaningThai":"แก้ปัญหา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"解答这个问题。","pinyin":"Jie da zhe ge wen ti.","meaning":"Solve this problem.","meaningThai":"แก้ปัญหานี้"}]},
+{"id":"hsk5-152","chinese":"解释","pinyin":"jiě shì","meaning":"To explain","meaningThai":"อธิบาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"请解释一下。","pinyin":"Qing jie shi yi xia.","meaning":"Please explain.","meaningThai":"กรุณาอธิบายหน่อย"}]},
+{"id":"hsk5-153","chinese":"考试","pinyin":"kǎo shì","meaning":"Exam; test","meaningThai":"การสอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"明天有考试。","pinyin":"Ming tian you kao shi.","meaning":"There is an exam tomorrow.","meaningThai":"พรุ่งนี้มีการสอบ"}]},
+{"id":"hsk5-154","chinese":"科学","pinyin":"kē xué","meaning":"Science","meaningThai":"วิทยาศาสตร์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"科学进步很快。","pinyin":"Ke xue jin bu hen kuai.","meaning":"Science advances quickly.","meaningThai":"วิทยาศาสตร์ก้าวหน้าเร็วมาก"}]},
+{"id":"hsk5-155","chinese":"科研","pinyin":"kē yán","meaning":"Scientific research","meaningThai":"งานวิจัยทางวิทยาศาสตร์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"从事科研工作。","pinyin":"Cong shi ke yan gong zuo.","meaning":"Engage in scientific research.","meaningThai":"ทำงานวิจัยทางวิทยาศาสตร์"}]},
+{"id":"hsk5-156","chinese":"刻苦","pinyin":"kè kǔ","meaning":"Diligent; hardworking","meaningThai":"ขยัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"刻苦学习。","pinyin":"Ke ku xue xi.","meaning":"Study diligently.","meaningThai":"เรียนอย่างขยันขันแข็ง"}]},
+{"id":"hsk5-157","chinese":"课题","pinyin":"kè tí","meaning":"Research topic","meaningThai":"หัวข้อวิจัย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"这个课题很有意义。","pinyin":"Zhe ge ke ti hen you yi yi.","meaning":"This research topic is meaningful.","meaningThai":"หัวข้อวิจัยนี้มีความหมาย"}]},
+{"id":"hsk5-158","chinese":"培养","pinyin":"péi yǎng","meaning":"To cultivate; to train","meaningThai":"อบรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"培养人才。","pinyin":"Pei yang ren cai.","meaning":"Cultivate talent.","meaningThai":"อบรมบุคลากร"}]},
+{"id":"hsk5-159","chinese":"批准","pinyin":"pī zhǔn","meaning":"To approve","meaningThai":"อนุมัติ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"已经批准了。","pinyin":"Yi jing pi zhun le.","meaning":"Already approved.","meaningThai":"ได้อนุมัติแล้ว"}]},
+{"id":"hsk5-160","chinese":"批评","pinyin":"pī píng","meaning":"To criticize","meaningThai":"วิจารณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"接受批评。","pinyin":"Jie shou pi ping.","meaning":"Accept criticism.","meaningThai":"ยอมรับคำวิจารณ์"}]},
+{"id":"hsk5-161","chinese":"皮肤","pinyin":"pí fū","meaning":"Skin","meaningThai":"ผิวหนัง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"皮肤很白。","pinyin":"Pi fu hen bai.","meaning":"Skin is very fair.","meaningThai":"ผิวขาวมาก"}]},
+{"id":"hsk5-162","chinese":"疲劳","pinyin":"pí láo","meaning":"Fatigue; tired","meaningThai":"เหนื่อยล้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"感到疲劳。","pinyin":"Gan dao pi lao.","meaning":"Feel fatigued.","meaningThai":"รู้สึกเหนื่อยล้า"}]},
+{"id":"hsk5-163","chinese":"便宜","pinyin":"pián yi","meaning":"Cheap","meaningThai":"ถูก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"这个很便宜。","pinyin":"Zhe ge hen pian yi.","meaning":"This is very cheap.","meaningThai":"อันนี้ถูกมาก"}]},
+{"id":"hsk5-164","chinese":"片面","pinyin":"piàn miàn","meaning":"One-sided","meaningThai":"ด้านเดียว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"看法太片面。","pinyin":"Kan fa tai pian mian.","meaning":"View is too one-sided.","meaningThai":"มุมมองด้านเดียวเกินไป"}]},
+{"id":"hsk5-165","chinese":"飘扬","pinyin":"piāo yáng","meaning":"To flutter; to wave","meaningThai":"ปลิว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"旗帜飘扬。","pinyin":"Qi zhi piao yang.","meaning":"The flag flutters.","meaningThai":"ธงปลิวไสว"}]},
+{"id":"hsk5-166","chinese":"贫穷","pinyin":"pín qióng","meaning":"Poor; poverty","meaningThai":"ยากจน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"摆脱贫穷。","pinyin":"Bai tuo pin qiong.","meaning":"Escape poverty.","meaningThai":"หลุดพ้นจากความยากจน"}]},
+{"id":"hsk5-167","chinese":"品德","pinyin":"pǐn dé","meaning":"Moral character","meaningThai":"คุณธรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"品德高尚。","pinyin":"Pin de gao shang.","meaning":"Noble character.","meaningThai":"มีคุณธรรมสูงส่ง"}]},
+{"id":"hsk5-168","chinese":"品种","pinyin":"pǐn zhǒng","meaning":"Variety; breed","meaningThai":"พันธุ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"新品种。","pinyin":"Xin pin zhong.","meaning":"New variety.","meaningThai":"พันธุ์ใหม่"}]},
+{"id":"hsk5-169","chinese":"平衡","pinyin":"píng héng","meaning":"Balance","meaningThai":"สมดุล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"保持平衡。","pinyin":"Bao chi ping heng.","meaning":"Maintain balance.","meaningThai":"รักษาสมดุล"}]},
+{"id":"hsk5-170","chinese":"平静","pinyin":"píng jìng","meaning":"Calm; peaceful","meaningThai":"สงบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"心情平静。","pinyin":"Xin qing ping jing.","meaning":"Calm mood.","meaningThai":"อารมณ์สงบ"}]},
+{"id":"hsk5-171","chinese":"平台","pinyin":"píng tái","meaning":"Platform","meaningThai":"แพลตฟอร์ม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"网络平台。","pinyin":"Wang luo ping tai.","meaning":"Online platform.","meaningThai":"แพลตฟอร์มออนไลน์"}]},
+{"id":"hsk5-172","chinese":"破产","pinyin":"pò chǎn","meaning":"Bankruptcy","meaningThai":"ล้มละลาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"公司破产了。","pinyin":"Gong si po chan le.","meaning":"The company went bankrupt.","meaningThai":"บริษัทล้มละลาย"}]},
+{"id":"hsk5-173","chinese":"普遍","pinyin":"pǔ biàn","meaning":"Universal; common","meaningThai":"ทั่วไป","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"普遍现象。","pinyin":"Pu bian xian xiang.","meaning":"Common phenomenon.","meaningThai":"ปรากฏการณ์ทั่วไป"}]},
+{"id":"hsk5-174","chinese":"朴素","pinyin":"pǔ sù","meaning":"Simple; plain","meaningThai":"เรียบง่าย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"生活朴素。","pinyin":"Sheng huo pu su.","meaning":"Simple life.","meaningThai":"ชีวิตที่เรียบง่าย"}]},
+{"id":"hsk5-175","chinese":"期待","pinyin":"qī dài","meaning":"To expect; anticipation","meaningThai":"คาดหวัง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"期待你的到来。","pinyin":"Qi dai ni de dao lai.","meaning":"Looking forward to your arrival.","meaningThai":"คอยวันคุณมา"}]},
+{"id":"hsk5-176","chinese":"期间","pinyin":"qī jiān","meaning":"Period; duration","meaningThai":"ช่วงเวลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"在此期间。","pinyin":"Zai ci qi jian.","meaning":"During this period.","meaningThai":"ในช่วงเวลานี้"}]},
+{"id":"hsk5-177","chinese":"期限","pinyin":"qī xiàn","meaning":"Deadline; time limit","meaningThai":"กำหนดเวลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"付款期限。","pinyin":"Fu kuan qi xian.","meaning":"Payment deadline.","meaningThai":"กำหนดเวลาชำระเงิน"}]},
+{"id":"hsk5-178","chinese":"欺骗","pinyin":"qī piàn","meaning":"To deceive; to cheat","meaningThai":"หลอกลวง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"不要欺骗别人。","pinyin":"Bu yao qi pian bie ren.","meaning":"Don't deceive others.","meaningThai":"อย่าหลอกลวงผู้อื่น"}]},
+{"id":"hsk5-179","chinese":"启发","pinyin":"qǐ fā","meaning":"To inspire; inspiration","meaningThai":"แรงบันดาลใจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"很有启发。","pinyin":"Hen you qi fa.","meaning":"Very inspiring.","meaningThai":"มีแรงบันดาลใจมาก"}]},
+{"id":"hsk5-180","chinese":"气氛","pinyin":"qì fēn","meaning":"Atmosphere","meaningThai":"บรรยากาศ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"气氛很好。","pinyin":"Qi fen hen hao.","meaning":"The atmosphere is great.","meaningThai":"บรรยากาศดีมาก"}]},
+{"id":"hsk5-181","chinese":"气候","pinyin":"qì hòu","meaning":"Climate","meaningThai":"สภาพอากาศ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"气候变暖。","pinyin":"Qi hou bian nuan.","meaning":"Climate warming.","meaningThai":"สภาพอากาศอุ่นขึ้น"}]},
+{"id":"hsk5-182","chinese":"奇迹","pinyin":"qí jì","meaning":"Miracle","meaningThai":"ปาฏิหาริย์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"创造奇迹。","pinyin":"Chuang zao qi ji.","meaning":"Create a miracle.","meaningThai":"สร้างปาฏิหาริย์"}]},
+{"id":"hsk5-183","chinese":"企业","pinyin":"qǐ yè","meaning":"Enterprise; company","meaningThai":"องค์กร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"民营企业。","pinyin":"Min ying qi ye.","meaning":"Private enterprise.","meaningThai":"องค์กรเอกชน"}]},
+{"id":"hsk5-184","chinese":"启发式","pinyin":"qǐ fā shì","meaning":"Heuristic; enlightening","meaningThai":"เชิงชี้นำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"启发式教学。","pinyin":"Qi fa shi jiao xue.","meaning":"Heuristic teaching.","meaningThai":"การสอนเชิงชี้นำ"}]},
+{"id":"hsk5-185","chinese":"牵涉","pinyin":"qiān shè","meaning":"To involve","meaningThai":"เกี่ยวข้อง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"牵涉到很多人。","pinyin":"Qian she dao hen duo ren.","meaning":"Involves many people.","meaningThai":"เกี่ยวข้องกับคนจำนวนมาก"}]},
+{"id":"hsk5-186","chinese":"谦虚","pinyin":"qiān xū","meaning":"Modest; humble","meaningThai":"ถ่อมตัว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"他很谦虚。","pinyin":"Ta hen qian xu.","meaning":"He is very modest.","meaningThai":"เขาถ่อมตัวมาก"}]},
+{"id":"hsk5-187","chinese":"前途","pinyin":"qián tú","meaning":"Future; prospects","meaningThai":"อนาคต","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"前途光明。","pinyin":"Qian tu guang ming.","meaning":"Bright future.","meaningThai":"อนาคตสดใส"}]},
+{"id":"hsk5-188","chinese":"潜力","pinyin":"qián lì","meaning":"Potential","meaningThai":"ศักยภาพ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"很有潜力。","pinyin":"Hen you qian li.","meaning":"Has great potential.","meaningThai":"มีศักยภาพมาก"}]},
+{"id":"hsk5-189","chinese":"强烈","pinyin":"qiáng liè","meaning":"Strong; intense","meaningThai":"รุนแรง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"强烈的感觉。","pinyin":"Qiang lie de gan jue.","meaning":"Strong feeling.","meaningThai":"ความรู้สึกรุนแรง"}]},
+{"id":"hsk5-190","chinese":"墙壁","pinyin":"qiáng bì","meaning":"Wall","meaningThai":"กำแพง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"白色的墙壁。","pinyin":"Bai se de qiang bi.","meaning":"White wall.","meaningThai":"กำแพงสีขาว"}]},
+{"id":"hsk5-191","chinese":"侵略","pinyin":"qīn lüè","meaning":"To invade; invasion","meaningThai":"รุกราน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"反对侵略。","pinyin":"Fan dui qin lue.","meaning":"Oppose invasion.","meaningThai":"ต่อต้านการรุกราน"}]},
+{"id":"hsk5-192","chinese":"勤劳","pinyin":"qín láo","meaning":"Diligent; hardworking","meaningThai":"ขยัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"勤劳的工人。","pinyin":"Qin lao de gong ren.","meaning":"Hardworking worker.","meaningThai":"กรรมกรที่ขยัน"}]},
+{"id":"hsk5-193","chinese":"青春","pinyin":"qīng chūn","meaning":"Youth","meaningThai":"วัยรุ่น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"珍惜青春。","pinyin":"Zhen xi qing chun.","meaning":"Cherish youth.","meaningThai":"รักษา青春"}]},
+{"id":"hsk5-194","chinese":"轻松","pinyin":"qīng sōng","meaning":"Relaxed; light","meaningThai":"ผ่อนคลาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"工作很轻松。","pinyin":"Gong zuo hen qing song.","meaning":"Work is very relaxed.","meaningThai":"งานสบายมาก"}]},
+{"id":"hsk5-195","chinese":"情况","pinyin":"qíng kuàng","meaning":"Situation; circumstance","meaningThai":"สถานการณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"情况如何？","pinyin":"Qing kuang ru he?","meaning":"How is the situation?","meaningThai":"สถานการณ์เป็นอย่างไร"}]},
+{"id":"hsk5-196","chinese":"请求","pinyin":"qǐng qiú","meaning":"To request; request","meaningThai":"ขอร้อง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"请求帮助。","pinyin":"Qing qiu bang zhu.","meaning":"Request help.","meaningThai":"ขอความช่วยเหลือ"}]},
+{"id":"hsk5-197","chinese":"区别","pinyin":"qū bié","meaning":"Difference","meaningThai":"ความแตกต่าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"有什么区别？","pinyin":"You shen me qu bie?","meaning":"What's the difference?","meaningThai":"มีความแตกต่างอะไร"}]},
+{"id":"hsk5-198","chinese":"取消","pinyin":"qǔ xiāo","meaning":"To cancel","meaningThai":"ยกเลิก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"取消预定。","pinyin":"Qu xiao yu ding.","meaning":"Cancel the reservation.","meaningThai":"ยกเลิกการจอง"}]},
+{"id":"hsk5-199","chinese":"全面","pinyin":"quán miàn","meaning":"Comprehensive","meaningThai":"ครอบคลุม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"全面发展。","pinyin":"Quan mian fa zhan.","meaning":"Comprehensive development.","meaningThai":"การพัฒนาที่ครอบคลุม"}]},
+{"id":"hsk5-200","chinese":"缺点","pinyin":"quē diǎn","meaning":"Shortcoming; flaw","meaningThai":"ข้อบกพร่อง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"每个人都有缺点。","pinyin":"Mei ge ren dou you que dian.","meaning":"Everyone has flaws.","meaningThai":"ทุกคนมีข้อบกพร่อง"}]},
+{"id":"hsk5-201","chinese":"缺乏","pinyin":"quē fá","meaning":"To lack; shortage","meaningThai":"ขาดแคลน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"缺乏经验。","pinyin":"Que fa jing yan.","meaning":"Lack experience.","meaningThai":"ขาดประสบการณ์"}]},
+{"id":"hsk5-202","chinese":"确认","pinyin":"què rèn","meaning":"To confirm","meaningThai":"ยืนยัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"请确认。","pinyin":"Qing que ren.","meaning":"Please confirm.","meaningThai":"กรุณายืนยัน"}]},
+{"id":"hsk5-203","chinese":"然而","pinyin":"rán ér","meaning":"However","meaningThai":"อย่างไรก็ตาม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"然而，情况变了。","pinyin":"Ran er, qing kuang bian le.","meaning":"However, the situation changed.","meaningThai":"อย่างไรก็ตาม สถานการณ์เปลี่ยนไป"}]},
+{"id":"hsk5-204","chinese":"热闹","pinyin":"rè nào","meaning":"Lively; bustling","meaningThai":"คึกคัก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"街上很热闹。","pinyin":"Jie shang hen re nao.","meaning":"The street is bustling.","meaningThai":"ถนนคึกคักมาก"}]},
+{"id":"hsk5-205","chinese":"人才","pinyin":"rén cái","meaning":"Talent; skilled person","meaningThai":"บุคลากรที่มีความสามารถ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"招聘人才。","pinyin":"Zhao pin ren cai.","meaning":"Recruit talent.","meaningThai":"รับสมัครบุคลากรที่มีความสามารถ"}]},
+{"id":"hsk5-206","chinese":"成分","pinyin":"chéng fèn","meaning":"Ingredient; component","meaningThai":"ส่วนประกอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"食品成分。","pinyin":"Shi pin cheng fen.","meaning":"Food ingredients.","meaningThai":"ส่วนประกอบอาหาร"}]},
+{"id":"hsk5-207","chinese":"成功","pinyin":"chéng gōng","meaning":"Success","meaningThai":"ความสำเร็จ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"祝你成功！","pinyin":"Zhu ni cheng gong!","meaning":"Wish you success!","meaningThai":"ขอให้คุณประสบความสำเร็จ"}]},
+{"id":"hsk5-208","chinese":"成果","pinyin":"chéng guǒ","meaning":"Achievement; result","meaningThai":"ผลลัพธ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"研究成果。","pinyin":"Yan jiu cheng guo.","meaning":"Research results.","meaningThai":"ผลการวิจัย"}]},
+{"id":"hsk5-209","chinese":"成就","pinyin":"chéng jiù","meaning":"Achievement","meaningThai":"ความสำเร็จ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"取得成就。","pinyin":"Qu de cheng jiu.","meaning":"Achieve success.","meaningThai":"ประสบความสำเร็จ"}]},
+{"id":"hsk5-210","chinese":"成立","pinyin":"chéng lì","meaning":"To establish","meaningThai":"ก่อตั้ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"成立公司。","pinyin":"Cheng li gong si.","meaning":"Establish a company.","meaningThai":"ก่อตั้งบริษัท"}]},
+{"id":"hsk5-211","chinese":"成熟","pinyin":"chéng shú","meaning":"Mature; ripe","meaningThai":"สุก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"水果成熟了。","pinyin":"Shui guo cheng shu le.","meaning":"The fruit is ripe.","meaningThai":"ผลไม้สุกแล้ว"}]},
+{"id":"hsk5-212","chinese":"成员","pinyin":"chéng yuán","meaning":"Member","meaningThai":"สมาชิก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"家庭成员。","pinyin":"Jia ting cheng yuan.","meaning":"Family member.","meaningThai":"สมาชิกในครอบครัว"}]},
+{"id":"hsk5-213","chinese":"诚实","pinyin":"chéng shí","meaning":"Honest","meaningThai":"ซื่อสัตย์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"他很诚实。","pinyin":"Ta hen cheng shi.","meaning":"He is very honest.","meaningThai":"เขาซื่อสัตย์มาก"}]},
+{"id":"hsk5-214","chinese":"承担","pinyin":"chéng dān","meaning":"To undertake; to bear","meaningThai":"รับผิดชอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"承担责任。","pinyin":"Cheng dan ze ren.","meaning":"Take responsibility.","meaningThai":"รับผิดชอบ"}]},
+{"id":"hsk5-215","chinese":"承认","pinyin":"chéng rèn","meaning":"To admit; to acknowledge","meaningThai":"ยอมรับ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"承认错误。","pinyin":"Cheng ren cuo wu.","meaning":"Admit mistakes.","meaningThai":"ยอมรับความผิดพลาด"}]},
+{"id":"hsk5-216","chinese":"城市","pinyin":"chéng shì","meaning":"City","meaningThai":"เมือง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"城市很大。","pinyin":"Cheng shi hen da.","meaning":"The city is big.","meaningThai":"เมืองใหญ่มาก"}]},
+{"id":"hsk5-217","chinese":"程度","pinyin":"chéng dù","meaning":"Degree; level","meaningThai":"ระดับ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"到一定程度。","pinyin":"Dao yi ding cheng du.","meaning":"To a certain degree.","meaningThai":"ถึงระดับหนึ่ง"}]},
+{"id":"hsk5-218","chinese":"程序","pinyin":"chéng xù","meaning":"Procedure; program","meaningThai":"โปรแกรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"电脑程序。","pinyin":"Dian nao cheng xu.","meaning":"Computer program.","meaningThai":"โปรแกรมคอมพิวเตอร์"}]},
+{"id":"hsk5-219","chinese":"吃亏","pinyin":"chī kuī","meaning":"To suffer losses","meaningThai":"เสียเปรียบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"不能吃亏。","pinyin":"Bu neng chi kui.","meaning":"Can't suffer losses.","meaningThai":"เสียเปรียบไม่ได้"}]},
+{"id":"hsk5-220","chinese":"充分","pinyin":"chōng fèn","meaning":"Sufficient; full","meaningThai":"เพียงพอ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"充分准备。","pinyin":"Chong fen zhun bei.","meaning":"Fully prepared.","meaningThai":"เตรียมพร้อมเพียงพอ"}]},
+{"id":"hsk5-221","chinese":"充满","pinyin":"chōng mǎn","meaning":"To be full of","meaningThai":"เต็มไปด้วย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"充满希望。","pinyin":"Chong man xi wang.","meaning":"Full of hope.","meaningThai":"เต็มไปด้วยความหวัง"}]},
+{"id":"hsk5-222","chinese":"充足","pinyin":"chōng zú","meaning":"Adequate; ample","meaningThai":"อุดมสมบูรณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"供应充足。","pinyin":"Gong ying chong zu.","meaning":"Supply is adequate.","meaningThai":"อุปทานเพียงพอ"}]},
+{"id":"hsk5-223","chinese":"重复","pinyin":"chóng fù","meaning":"To repeat","meaningThai":"ทำซ้ำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"不要重复。","pinyin":"Bu yao chong fu.","meaning":"Don't repeat.","meaningThai":"อย่าทำซ้ำ"}]},
+{"id":"hsk5-224","chinese":"重建","pinyin":"chóng jiàn","meaning":"To rebuild","meaningThai":"สร้างใหม่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"重建家园。","pinyin":"Chong jian jia yuan.","meaning":"Rebuild homeland.","meaningThai":"สร้างบ้านเกิดใหม่"}]},
+{"id":"hsk5-225","chinese":"抽象","pinyin":"chōu xiàng","meaning":"Abstract","meaningThai":"นามธรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"抽象概念。","pinyin":"Chou xiang gai nian.","meaning":"Abstract concept.","meaningThai":"แนวคิดนามธรรม"}]},
+{"id":"hsk5-226","chinese":"出版","pinyin":"chū bǎn","meaning":"To publish","meaningThai":"ตีพิมพ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"出版书籍。","pinyin":"Chu ban shu ji.","meaning":"Publish books.","meaningThai":"ตีพิมพ์หนังสือ"}]},
+{"id":"hsk5-227","chinese":"出口","pinyin":"chū kǒu","meaning":"Export; exit","meaningThai":"ส่งออก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"出口产品。","pinyin":"Chu kou chan pin.","meaning":"Export products.","meaningThai":"ส่งออกสินค้า"}]},
+{"id":"hsk5-228","chinese":"出现","pinyin":"chū xiàn","meaning":"To appear","meaningThai":"ปรากฏ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"出现了问题。","pinyin":"Chu xian le wen ti.","meaning":"A problem appeared.","meaningThai":"เกิดปัญหา"}]},
+{"id":"hsk5-229","chinese":"厨房","pinyin":"chú fáng","meaning":"Kitchen","meaningThai":"ครัว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"厨房很干净。","pinyin":"Chu fang hen gan jing.","meaning":"The kitchen is clean.","meaningThai":"ครัวสะอาดมาก"}]},
+{"id":"hsk5-230","chinese":"创造","pinyin":"chuàng zào","meaning":"To create","meaningThai":"สร้างสรรค์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"创造未来。","pinyin":"Chuang zao wei lai.","meaning":"Create the future.","meaningThai":"สร้างอนาคต"}]},
+{"id":"hsk5-231","chinese":"创作","pinyin":"chuàng zuò","meaning":"To create (art/writing)","meaningThai":"ประพันธ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"文学创作。","pinyin":"Wen xue chuang zuo.","meaning":"Literary creation.","meaningThai":"ประพันธ์วรรณกรรม"}]},
+{"id":"hsk5-232","chinese":"吹","pinyin":"chuī","meaning":"To blow","meaningThai":"เป่า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"风吹来了。","pinyin":"Feng chui lai le.","meaning":"The wind blows.","meaningThai":"ลมพัดมา"}]},
+{"id":"hsk5-233","chinese":"此外","pinyin":"cǐ wài","meaning":"Besides; moreover","meaningThai":"นอกจากนี้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"此外，还有一件事。","pinyin":"Ci wai, hai you yi jian shi.","meaning":"Besides, there is one more thing.","meaningThai":"นอกจากนี้ยังมีอีกเรื่องหนึ่ง"}]},
+{"id":"hsk5-234","chinese":"辞职","pinyin":"cí zhí","meaning":"To resign","meaningThai":"ลาออก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"他辞职了。","pinyin":"Ta ci zhi le.","meaning":"He resigned.","meaningThai":"เขาลาออกแล้ว"}]},
+{"id":"hsk5-235","chinese":"聪明","pinyin":"cōng míng","meaning":"Clever; smart","meaningThai":"ฉลาด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"他很聪明。","pinyin":"Ta hen cong ming.","meaning":"He is very smart.","meaningThai":"เขาฉลาดมาก"}]},
+{"id":"hsk5-236","chinese":"匆忙","pinyin":"cōng máng","meaning":"Hasty; hurried","meaningThai":"รีบร้อน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"匆忙离开。","pinyin":"Cong mang li kai.","meaning":"Leave hurriedly.","meaningThai":"รีบร้อนออกไป"}]},
+{"id":"hsk5-237","chinese":"村庄","pinyin":"cūn zhuāng","meaning":"Village","meaningThai":"หมู่บ้าน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"小村庄。","pinyin":"Xiao cun zhuang.","meaning":"Small village.","meaningThai":"หมู่บ้านเล็กๆ"}]},
+{"id":"hsk5-238","chinese":"措施","pinyin":"cuò shī","meaning":"Measure; step","meaningThai":"มาตรการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"采取措施。","pinyin":"Cai qu cuo shi.","meaning":"Take measures.","meaningThai":"ใช้มาตรการ"}]},
+{"id":"hsk5-239","chinese":"答案","pinyin":"dá àn","meaning":"Answer","meaningThai":"คำตอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"正确答案。","pinyin":"Zheng que da an.","meaning":"Correct answer.","meaningThai":"คำตอบที่ถูกต้อง"}]},
+{"id":"hsk5-240","chinese":"打扮","pinyin":"dǎ ban","meaning":"To dress up","meaningThai":"แต่งตัว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"她打扮得很漂亮。","pinyin":"Ta da ban de hen piao liang.","meaning":"She dressed up beautifully.","meaningThai":"เธอแต่งตัวสวยมาก"}]},
+{"id":"hsk5-241","chinese":"打扰","pinyin":"dǎ rǎo","meaning":"To disturb","meaningThai":"รบกวน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"打扰一下。","pinyin":"Da rao yi xia.","meaning":"Excuse me (lit. disturb for a moment).","meaningThai":"ขอรบกวนหน่อย"}]},
+{"id":"hsk5-242","chinese":"打印","pinyin":"dǎ yìn","meaning":"To print","meaningThai":"พิมพ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"打印文件。","pinyin":"Da yin wen jian.","meaning":"Print a document.","meaningThai":"พิมพ์เอกสาร"}]},
+{"id":"hsk5-243","chinese":"大大","pinyin":"dà dà","meaning":"Greatly; significantly","meaningThai":"อย่างมาก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"大大改善。","pinyin":"Da da gai shan.","meaning":"Greatly improve.","meaningThai":"ปรับปรุงอย่างมาก"}]},
+{"id":"hsk5-244","chinese":"大伙儿","pinyin":"dà huǒ r","meaning":"Everybody","meaningThai":"ทุกคน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"大伙儿都来了。","pinyin":"Da huo r dou lai le.","meaning":"Everybody came.","meaningThai":"ทุกคนมาแล้ว"}]},
+{"id":"hsk5-245","chinese":"大厦","pinyin":"dà shà","meaning":"Large building; mansion","meaningThai":"ตึกใหญ่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"商业大厦。","pinyin":"Shang ye da sha.","meaning":"Commercial building.","meaningThai":"ตึกพาณิชย์"}]},
+{"id":"hsk5-246","chinese":"代表","pinyin":"dài biǎo","meaning":"Representative","meaningThai":"ตัวแทน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"代表发言。","pinyin":"Dai biao fa yan.","meaning":"The representative speaks.","meaningThai":"ตัวแทนกล่าว"}]},
+{"id":"hsk5-247","chinese":"代替","pinyin":"dài tì","meaning":"To replace; to substitute","meaningThai":"แทนที่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"用这个代替。","pinyin":"Yong zhe ge dai ti.","meaning":"Use this instead.","meaningThai":"ใช้อันนี้แทน"}]},
+{"id":"hsk5-248","chinese":"担任","pinyin":"dān rèn","meaning":"To hold a position; to serve as","meaningThai":"ดำรงตำแหน่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"担任经理。","pinyin":"Dan ren jing li.","meaning":"Serve as manager.","meaningThai":"ดำรงตำแหน่งผู้จัดการ"}]},
+{"id":"hsk5-249","chinese":"耽误","pinyin":"dān wù","meaning":"To delay","meaningThai":"ล่าช้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"耽误时间。","pinyin":"Dan wu shi jian.","meaning":"Waste time.","meaningThai":"เสียเวลา"}]},
+{"id":"hsk5-250","chinese":"胆量","pinyin":"dǎn liàng","meaning":"Courage","meaningThai":"ความกล้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"很有胆量。","pinyin":"Hen you dan liang.","meaning":"Very courageous.","meaningThai":"กล้าหาญมาก"}]},
+{"id":"hsk5-251","chinese":"但","pinyin":"dàn","meaning":"But; however","meaningThai":"แต่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"但我不确定。","pinyin":"Dan wo bu que ding.","meaning":"But I'm not sure.","meaningThai":"แต่ฉันไม่แน่ใจ"}]},
+{"id":"hsk5-252","chinese":"蛋白质","pinyin":"dàn bái zhì","meaning":"Protein","meaningThai":"โปรตีน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"含有蛋白质。","pinyin":"Han you dan bai zhi.","meaning":"Contains protein.","meaningThai":"มีโปรตีน"}]},
+{"id":"hsk5-253","chinese":"当时","pinyin":"dāng shí","meaning":"At that time","meaningThai":"ในตอนนั้น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"当时我不知道。","pinyin":"Dang shi wo bu zhi dao.","meaning":"I didn't know at that time.","meaningThai":"ตอนนั้นฉันไม่รู้"}]},
+{"id":"hsk5-254","chinese":"导致","pinyin":"dǎo zhì","meaning":"To lead to; to cause","meaningThai":"นำไปสู่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"导致失败。","pinyin":"Dao zhi shi bai.","meaning":"Lead to failure.","meaningThai":"นำไปสู่ความล้มเหลว"}]},
+{"id":"hsk5-255","chinese":"道德","pinyin":"dào dé","meaning":"Morality; ethics","meaningThai":"ศีลธรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"道德标准。","pinyin":"Dao de biao zhun.","meaning":"Moral standards.","meaningThai":"มาตรฐานทางศีลธรรม"}]},
+{"id":"hsk5-256","chinese":"道理","pinyin":"dào lǐ","meaning":"Reason; principle","meaningThai":"เหตุผล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"讲道理。","pinyin":"Jiang dao li.","meaning":"Reason things out.","meaningThai":"ให้เหตุผล"}]},
+{"id":"hsk5-257","chinese":"登记","pinyin":"dēng jì","meaning":"To register","meaningThai":"ลงทะเบียน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"登记信息。","pinyin":"Deng ji xin xi.","meaning":"Register information.","meaningThai":"ลงทะเบียนข้อมูล"}]},
+{"id":"hsk5-258","chinese":"等待","pinyin":"děng dài","meaning":"To wait","meaningThai":"รอคอย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"等待机会。","pinyin":"Deng dai ji hui.","meaning":"Wait for an opportunity.","meaningThai":"รอโอกาส"}]},
+{"id":"hsk5-259","chinese":"等候","pinyin":"děng hòu","meaning":"To await","meaningThai":"รอ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"等候通知。","pinyin":"Deng hou tong zhi.","meaning":"Await notification.","meaningThai":"รอการแจ้งเตือน"}]},
+{"id":"hsk5-260","chinese":"敌人","pinyin":"dí rén","meaning":"Enemy","meaningThai":"ศัตรู","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"打败敌人。","pinyin":"Da bai di ren.","meaning":"Defeat the enemy.","meaningThai":"เอาชนะศัตรู"}]},
+{"id":"hsk5-261","chinese":"的确","pinyin":"dí què","meaning":"Indeed; truly","meaningThai":"แน่นอน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"的确如此。","pinyin":"Di que ru ci.","meaning":"Indeed it is so.","meaningThai":"แน่นอนว่าเป็นเช่นนั้น"}]},
+{"id":"hsk5-262","chinese":"地位","pinyin":"dì wèi","meaning":"Status; position","meaningThai":"ตำแหน่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"社会地位。","pinyin":"She hui di wei.","meaning":"Social status.","meaningThai":"สถานะทางสังคม"}]},
+{"id":"hsk5-263","chinese":"地震","pinyin":"dì zhèn","meaning":"Earthquake","meaningThai":"แผ่นดินไหว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"发生地震。","pinyin":"Fa sheng di zhen.","meaning":"Earthquake occurs.","meaningThai":"เกิดแผ่นดินไหว"}]},
+{"id":"hsk5-264","chinese":"地址","pinyin":"dì zhǐ","meaning":"Address","meaningThai":"ที่อยู่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"写下地址。","pinyin":"Xie xia di zhi.","meaning":"Write down the address.","meaningThai":"เขียนที่อยู่"}]},
+{"id":"hsk5-265","chinese":"典礼","pinyin":"diǎn lǐ","meaning":"Ceremony","meaningThai":"พิธี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"毕业典礼。","pinyin":"Bi ye dian li.","meaning":"Graduation ceremony.","meaningThai":"พิธีรับปริญญา"}]},
+{"id":"hsk5-266","chinese":"典型","pinyin":"diǎn xíng","meaning":"Typical; model","meaningThai":"โดยทั่วไป","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"典型案例。","pinyin":"Dian xing an li.","meaning":"Typical case.","meaningThai":"กรณีทั่วไป"}]},
+{"id":"hsk5-267","chinese":"点心","pinyin":"diǎn xīn","meaning":"Dim sum; snack","meaningThai":"ติ่มซำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"吃点心。","pinyin":"Chi dian xin.","meaning":"Eat dim sum.","meaningThai":"กินติ่มซำ"}]},
+{"id":"hsk5-268","chinese":"电力","pinyin":"diàn lì","meaning":"Electric power","meaningThai":"พลังงานไฟฟ้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"电力供应。","pinyin":"Dian li gong ying.","meaning":"Electric power supply.","meaningThai":"การจ่ายพลังงานไฟฟ้า"}]},
+{"id":"hsk5-269","chinese":"电脑","pinyin":"diàn nǎo","meaning":"Computer","meaningThai":"คอมพิวเตอร์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"用电脑工作。","pinyin":"Yong dian nao gong zuo.","meaning":"Work on the computer.","meaningThai":"ทำงานบนคอมพิวเตอร์"}]},
+{"id":"hsk5-270","chinese":"电视剧","pinyin":"diàn shì jù","meaning":"TV drama","meaningThai":"ละครโทรทัศน์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"看电视剧。","pinyin":"Kan dian shi ju.","meaning":"Watch TV drama.","meaningThai":"ดูละครโทรทัศน์"}]},
+{"id":"hsk5-271","chinese":"电台","pinyin":"diàn tái","meaning":"Radio station","meaningThai":"สถานีวิทยุ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"听电台。","pinyin":"Ting dian tai.","meaning":"Listen to the radio.","meaningThai":"ฟังวิทยุ"}]},
+{"id":"hsk5-272","chinese":"调查","pinyin":"diào chá","meaning":"To investigate; survey","meaningThai":"สำรวจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"市场调查。","pinyin":"Shi chang diao cha.","meaning":"Market survey.","meaningThai":"สำรวจตลาด"}]},
+{"id":"hsk5-273","chinese":"跌","pinyin":"diē","meaning":"To fall; to drop","meaningThai":"ตก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"价格下跌。","pinyin":"Jia ge xia die.","meaning":"Price drops.","meaningThai":"ราคาลดลง"}]},
+{"id":"hsk5-274","chinese":"冬季","pinyin":"dōng jì","meaning":"Winter season","meaningThai":"ฤดูหนาว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"冬季很冷。","pinyin":"Dong ji hen leng.","meaning":"Winter is cold.","meaningThai":"ฤดูหนาวอากาศหนาว"}]},
+{"id":"hsk5-275","chinese":"动力","pinyin":"dòng lì","meaning":"Motivation; power","meaningThai":"แรงผลักดัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"学习动力。","pinyin":"Xue xi dong li.","meaning":"Learning motivation.","meaningThai":"แรงผลักดันในการเรียน"}]},
+{"id":"hsk5-276","chinese":"动态","pinyin":"dòng tài","meaning":"Trend; dynamics","meaningThai":"แนวโน้ม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"市场动态。","pinyin":"Shi chang dong tai.","meaning":"Market trends.","meaningThai":"แนวโน้มตลาด"}]},
+{"id":"hsk5-277","chinese":"动物","pinyin":"dòng wù","meaning":"Animal","meaningThai":"สัตว์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"保护动物。","pinyin":"Bao hu dong wu.","meaning":"Protect animals.","meaningThai":"ปกป้องสัตว์"}]},
+{"id":"hsk5-278","chinese":"独立","pinyin":"dú lì","meaning":"Independent","meaningThai":"อิสระ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"独立生活。","pinyin":"Du li sheng huo.","meaning":"Independent living.","meaningThai":"ใช้ชีวิตอิสระ"}]},
+{"id":"hsk5-279","chinese":"独特","pinyin":"dú tè","meaning":"Unique","meaningThai":"เป็นเอกลักษณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"独特风格。","pinyin":"Du te feng ge.","meaning":"Unique style.","meaningThai":"สไตล์ที่เป็นเอกลักษณ์"}]},
+{"id":"hsk5-280","chinese":"度过","pinyin":"dù guò","meaning":"To spend (time); to pass","meaningThai":"ใช้เวลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"度过假期。","pinyin":"Du guo jia qi.","meaning":"Spend the holiday.","meaningThai":"ใช้เวลาช่วงวันหยุด"}]},
+{"id":"hsk5-281","chinese":"锻炼","pinyin":"duàn liàn","meaning":"To exercise","meaningThai":"ออกกำลังกาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"每天锻炼。","pinyin":"Mei tian duan lian.","meaning":"Exercise every day.","meaningThai":"ออกกำลังกายทุกวัน"}]},
+{"id":"hsk5-282","chinese":"对手","pinyin":"duì shǒu","meaning":"Opponent; rival","meaningThai":"คู่แข่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"强大的对手。","pinyin":"Qiang da de dui shou.","meaning":"Strong opponent.","meaningThai":"คู่แข่งที่แข็งแกร่ง"}]},
+{"id":"hsk5-283","chinese":"对象","pinyin":"duì xiàng","meaning":"Object; partner","meaningThai":"เป้าหมาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"研究对象。","pinyin":"Yan jiu dui xiang.","meaning":"Research object.","meaningThai":"เป้าหมายการวิจัย"}]},
+{"id":"hsk5-284","chinese":"对于","pinyin":"duì yú","meaning":"Regarding; concerning","meaningThai":"สำหรับ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"对于这个问题。","pinyin":"Dui yu zhe ge wen ti.","meaning":"Regarding this issue.","meaningThai":"สำหรับปัญหานี้"}]},
+{"id":"hsk5-285","chinese":"顿时","pinyin":"dùn shí","meaning":"Immediately; suddenly","meaningThai":"ทันที","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"顿时明白了。","pinyin":"Dun shi ming bai le.","meaning":"Suddenly understood.","meaningThai":"เข้าใจทันที"}]},
+{"id":"hsk5-286","chinese":"多余","pinyin":"duō yú","meaning":"Unnecessary; surplus","meaningThai":"ส่วนเกิน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"删除多余内容。","pinyin":"Shan chu duo yu nei rong.","meaning":"Delete unnecessary content.","meaningThai":"ลบเนื้อหาที่เกินจำเป็น"}]},
+{"id":"hsk5-287","chinese":"恶劣","pinyin":"è liè","meaning":"Harsh; nasty;恶劣","meaningThai":"เลวร้าย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"天气恶劣。","pinyin":"Tian qi e lie.","meaning":"Harsh weather.","meaningThai":"อากาศเลวร้าย"}]},
+{"id":"hsk5-288","chinese":"发表","pinyin":"fā biǎo","meaning":"To publish; to express","meaningThai":"ตีพิมพ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"发表文章。","pinyin":"Fa biao wen zhang.","meaning":"Publish an article.","meaningThai":"ตีพิมพ์บทความ"}]},
+{"id":"hsk5-289","chinese":"发财","pinyin":"fā cái","meaning":"To get rich","meaningThai":"ร่ำรวย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"恭喜发财。","pinyin":"Gong xi fa cai.","meaning":"Wish you wealth.","meaningThai":"ขอให้ร่ำรวย"}]},
+{"id":"hsk5-290","chinese":"发电","pinyin":"fā diàn","meaning":"To generate electricity","meaningThai":"ผลิตไฟฟ้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"水力发电。","pinyin":"Shui li fa dian.","meaning":"Hydroelectric power.","meaningThai":"ผลิตไฟฟ้าพลังน้ำ"}]},
+{"id":"hsk5-291","chinese":"发动机","pinyin":"fā dòng jī","meaning":"Engine; motor","meaningThai":"เครื่องยนต์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"汽车发动机。","pinyin":"Qi che fa dong ji.","meaning":"Car engine.","meaningThai":"เครื่องยนต์รถยนต์"}]},
+{"id":"hsk5-292","chinese":"发扬","pinyin":"fā yáng","meaning":"To promote; to develop","meaningThai":"ส่งเสริม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"发扬传统。","pinyin":"Fa yang chuan tong.","meaning":"Promote traditions.","meaningThai":"ส่งเสริมประเพณี"}]},
+{"id":"hsk5-293","chinese":"罚款","pinyin":"fá kuǎn","meaning":"Fine; penalty","meaningThai":"ค่าปรับ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"交罚款。","pinyin":"Jiao fa kuan.","meaning":"Pay a fine.","meaningThai":"จ่ายค่าปรับ"}]},
+{"id":"hsk5-294","chinese":"法院","pinyin":"fǎ yuàn","meaning":"Court (of law)","meaningThai":"ศาล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"最高法院。","pinyin":"Zui gao fa yuan.","meaning":"Supreme court.","meaningThai":"ศาลฎีกา"}]},
+{"id":"hsk5-295","chinese":"繁荣","pinyin":"fán róng","meaning":"Prosperous","meaningThai":"รุ่งเรือง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"经济繁荣。","pinyin":"Jing ji fan rong.","meaning":"Economic prosperity.","meaningThai":"เศรษฐกิจรุ่งเรือง"}]},
+{"id":"hsk5-296","chinese":"范围","pinyin":"fàn wéi","meaning":"Scope; range","meaningThai":"ขอบเขต","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"活动范围。","pinyin":"Huo dong fan wei.","meaning":"Scope of activity.","meaningThai":"ขอบเขตกิจกรรม"}]},
+{"id":"hsk5-297","chinese":"方案","pinyin":"fāng àn","meaning":"Plan; scheme","meaningThai":"แผน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"设计方案。","pinyin":"She ji fang an.","meaning":"Design plan.","meaningThai":"แผนการออกแบบ"}]},
+{"id":"hsk5-298","chinese":"方式","pinyin":"fāng shì","meaning":"Way; method","meaningThai":"วิธี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"生活方式。","pinyin":"Sheng huo fang shi.","meaning":"Lifestyle.","meaningThai":"วิถีชีวิต"}]},
+{"id":"hsk5-299","chinese":"防备","pinyin":"fáng bèi","meaning":"To guard against","meaningThai":"ป้องกัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"防备风险。","pinyin":"Fang bei feng xian.","meaning":"Guard against risks.","meaningThai":"ป้องกันความเสี่ยง"}]},
+{"id":"hsk5-300","chinese":"防止","pinyin":"fáng zhǐ","meaning":"To prevent","meaningThai":"ป้องกัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"防止事故。","pinyin":"Fang zhi shi gu.","meaning":"Prevent accidents.","meaningThai":"ป้องกันอุบัติเหตุ"}]},
+{"id":"hsk5-301","chinese":"仿佛","pinyin":"fǎng fú","meaning":"As if; seemingly","meaningThai":"ราวกับ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"仿佛在梦里。","pinyin":"Fang fu zai meng li.","meaning":"As if in a dream.","meaningThai":"ราวกับอยู่ในฝัน"}]},
+{"id":"hsk5-302","chinese":"非","pinyin":"fēi","meaning":"Not; non-","meaningThai":"ไม่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"非常满意。","pinyin":"Fei chang man yi.","meaning":"Very satisfied.","meaningThai":"พอใจมาก"}]},
+{"id":"hsk5-303","chinese":"肥胖","pinyin":"féi pàng","meaning":"Obese; fat","meaningThai":"อ้วน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"预防肥胖。","pinyin":"Yu fang fei pang.","meaning":"Prevent obesity.","meaningThai":"ป้องกันโรคอ้วน"}]},
+{"id":"hsk5-304","chinese":"费用","pinyin":"fèi yòng","meaning":"Cost; expense","meaningThai":"ค่าใช้จ่าย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"生活费用。","pinyin":"Sheng huo fei yong.","meaning":"Living expenses.","meaningThai":"ค่าครองชีพ"}]},
+{"id":"hsk5-305","chinese":"分配","pinyin":"fēn pèi","meaning":"To distribute; to allocate","meaningThai":"จัดสรร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"分配任务。","pinyin":"Fen pei ren wu.","meaning":"Assign tasks.","meaningThai":"จัดสรรงาน"}]},
+{"id":"hsk5-306","chinese":"分析","pinyin":"fēn xī","meaning":"To analyze","meaningThai":"วิเคราะห์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"数据分析。","pinyin":"Shu ju fen xi.","meaning":"Data analysis.","meaningThai":"การวิเคราะห์ข้อมูล"}]},
+{"id":"hsk5-307","chinese":"奋斗","pinyin":"fèn dòu","meaning":"To strive; to struggle","meaningThai":"ต่อสู้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"奋斗到底。","pinyin":"Fen dou dao di.","meaning":"Struggle to the end.","meaningThai":"ต่อสู้จนถึงที่สุด"}]},
+{"id":"hsk5-308","chinese":"风格","pinyin":"fēng gé","meaning":"Style","meaningThai":"สไตล์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"建筑风格。","pinyin":"Jian zhu feng ge.","meaning":"Architectural style.","meaningThai":"สไตล์สถาปัตยกรรม"}]},
+{"id":"hsk5-309","chinese":"风景","pinyin":"fēng jǐng","meaning":"Scenery; landscape","meaningThai":"ทิวทัศน์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"风景优美。","pinyin":"Feng jing you mei.","meaning":"Beautiful scenery.","meaningThai":"ทิวทัศน์สวยงาม"}]},
+{"id":"hsk5-310","chinese":"风俗","pinyin":"fēng sú","meaning":"Custom; tradition","meaningThai":"ประเพณี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"当地风俗。","pinyin":"Dang di feng su.","meaning":"Local customs.","meaningThai":"ประเพณีท้องถิ่น"}]},
+{"id":"hsk5-311","chinese":"风险","pinyin":"fēng xiǎn","meaning":"Risk","meaningThai":"ความเสี่ยง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"投资风险。","pinyin":"Tou zi feng xian.","meaning":"Investment risk.","meaningThai":"ความเสี่ยงในการลงทุน"}]},
+{"id":"hsk5-312","chinese":"负担","pinyin":"fù dān","meaning":"Burden","meaningThai":"ภาระ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"减轻负担。","pinyin":"Jian qing fu dan.","meaning":"Lighten the burden.","meaningThai":"ลดภาระ"}]},
+{"id":"hsk5-313","chinese":"妇女","pinyin":"fù nǚ","meaning":"Women","meaningThai":"สตรี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"妇女节。","pinyin":"Fu nv jie.","meaning":"Women's Day.","meaningThai":"วันสตรี"}]},
+{"id":"hsk5-314","chinese":"负责","pinyin":"fù zé","meaning":"To be responsible","meaningThai":"รับผิดชอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"负责管理。","pinyin":"Fu ze guan li.","meaning":"Responsible for management.","meaningThai":"รับผิดชอบการจัดการ"}]},
+{"id":"hsk5-315","chinese":"改革","pinyin":"gǎi gé","meaning":"Reform","meaningThai":"ปฏิรูป","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"改革开放。","pinyin":"Gai ge kai fang.","meaning":"Reform and opening up.","meaningThai":"การปฏิรูปและเปิดประเทศ"}]},
+{"id":"hsk5-316","chinese":"改进","pinyin":"gǎi jìn","meaning":"To improve","meaningThai":"ปรับปรุง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"不断改进。","pinyin":"Bu duan gai jin.","meaning":"Continuous improvement.","meaningThai":"ปรับปรุงอย่างต่อเนื่อง"}]},
+{"id":"hsk5-317","chinese":"改善","pinyin":"gǎi shàn","meaning":"To improve; to better","meaningThai":"พัฒนา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"改善生活。","pinyin":"Gai shan sheng huo.","meaning":"Improve life.","meaningThai":"พัฒนาคุณภาพชีวิต"}]},
+{"id":"hsk5-318","chinese":"改造","pinyin":"gǎi zào","meaning":"To transform; to reform","meaningThai":"เปลี่ยนแปลง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"技术改造。","pinyin":"Ji shu gai zao.","meaning":"Technological transformation.","meaningThai":"การเปลี่ยนแปลงทางเทคนิค"}]},
+{"id":"hsk5-319","chinese":"概括","pinyin":"gài kuò","meaning":"To summarize","meaningThai":"สรุป","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"概括一下。","pinyin":"Gai kuo yi xia.","meaning":"Summarize briefly.","meaningThai":"สรุปสักหน่อย"}]},
+{"id":"hsk5-320","chinese":"概念","pinyin":"gài niàn","meaning":"Concept","meaningThai":"แนวคิด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"基本概念。","pinyin":"Ji ben gai nian.","meaning":"Basic concept.","meaningThai":"แนวคิดพื้นฐาน"}]},
+{"id":"hsk5-321","chinese":"干净","pinyin":"gān jìng","meaning":"Clean","meaningThai":"สะอาด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"打扫干净。","pinyin":"Da sao gan jing.","meaning":"Clean up.","meaningThai":"ทำความสะอาด"}]},
+{"id":"hsk5-322","chinese":"感激","pinyin":"gǎn jī","meaning":"To be grateful","meaningThai":"รู้สึกขอบคุณ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"非常感激。","pinyin":"Fei chang gan ji.","meaning":"Very grateful.","meaningThai":"รู้สึกขอบคุณมาก"}]},
+{"id":"hsk5-323","chinese":"感觉","pinyin":"gǎn jué","meaning":"Feeling; sensation","meaningThai":"ความรู้สึก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"感觉很好。","pinyin":"Gan jue hen hao.","meaning":"Feel great.","meaningThai":"รู้สึกดีมาก"}]},
+{"id":"hsk5-324","chinese":"感情","pinyin":"gǎn qíng","meaning":"Emotion; affection","meaningThai":"อารมณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"感情丰富。","pinyin":"Gan qing feng fu.","meaning":"Emotionally rich.","meaningThai":"อารมณ์หลากหลาย"}]},
+{"id":"hsk5-325","chinese":"感受","pinyin":"gǎn shòu","meaning":"To experience; feeling","meaningThai":"ความรู้สึก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"感受生活。","pinyin":"Gan shou sheng huo.","meaning":"Experience life.","meaningThai":"สัมผัสชีวิต"}]},
+{"id":"hsk5-326","chinese":"干部","pinyin":"gàn bù","meaning":"Cadre; official","meaningThai":"เจ้าหน้าที่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"领导干部。","pinyin":"Ling dao gan bu.","meaning":"Leading cadre.","meaningThai":"เจ้าหน้าที่ผู้นำ"}]},
+{"id":"hsk5-327","chinese":"刚刚","pinyin":"gāng gāng","meaning":"Just now","meaningThai":"เพิ่งจะ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"刚刚开始。","pinyin":"Gang gang kai shi.","meaning":"Just started.","meaningThai":"เพิ่งจะเริ่ม"}]},
+{"id":"hsk5-328","chinese":"钢琴","pinyin":"gāng qín","meaning":"Piano","meaningThai":"เปียโน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"弹钢琴。","pinyin":"Tan gang qin.","meaning":"Play the piano.","meaningThai":"เล่นเปียโน"}]},
+{"id":"hsk5-329","chinese":"高等","pinyin":"gāo děng","meaning":"Higher (education)","meaningThai":"ชั้นสูง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"高等教育。","pinyin":"Gao deng jiao yu.","meaning":"Higher education.","meaningThai":"การศึกษาชั้นสูง"}]},
+{"id":"hsk5-330","chinese":"高度","pinyin":"gāo dù","meaning":"Height; altitude","meaningThai":"ความสูง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"高度关注。","pinyin":"Gao du guan zhu.","meaning":"High attention.","meaningThai":"ให้ความสนใจสูง"}]},
+{"id":"hsk5-331","chinese":"高级","pinyin":"gāo jí","meaning":"Advanced; senior","meaningThai":"ระดับสูง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"高级经理。","pinyin":"Gao ji jing li.","meaning":"Senior manager.","meaningThai":"ผู้จัดการระดับสูง"}]},
+{"id":"hsk5-332","chinese":"搞","pinyin":"gǎo","meaning":"To do; to make","meaningThai":"ทำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"搞好关系。","pinyin":"Gao hao guan xi.","meaning":"Build good relations.","meaningThai":"สร้างความสัมพันธ์ที่ดี"}]},
+{"id":"hsk5-333","chinese":"告别","pinyin":"gào bié","meaning":"To say goodbye","meaningThai":"ลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"告别朋友。","pinyin":"Gao bie peng you.","meaning":"Say goodbye to friends.","meaningThai":"ลาเพื่อน"}]},
+{"id":"hsk5-334","chinese":"革命","pinyin":"gé mìng","meaning":"Revolution","meaningThai":"การปฏิวัติ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"工业革命。","pinyin":"Gong ye ge ming.","meaning":"Industrial Revolution.","meaningThai":"การปฏิวัติอุตสาหกรรม"}]},
+{"id":"hsk5-335","chinese":"格外","pinyin":"gé wài","meaning":"Especially; exceptionally","meaningThai":"โดยเฉพาะ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"格外小心。","pinyin":"Ge wai xiao xin.","meaning":"Especially careful.","meaningThai":"ระวังเป็นพิเศษ"}]},
+{"id":"hsk5-336","chinese":"个别","pinyin":"gè bié","meaning":"Individual; specific","meaningThai":"แต่ละ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"个别情况。","pinyin":"Ge bie qing kuang.","meaning":"Individual case.","meaningThai":"แต่ละกรณี"}]},
+{"id":"hsk5-337","chinese":"个人","pinyin":"gè rén","meaning":"Individual; personal","meaningThai":"ส่วนตัว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"个人问题。","pinyin":"Ge ren wen ti.","meaning":"Personal problem.","meaningThai":"ปัญหาส่วนตัว"}]},
+{"id":"hsk5-338","chinese":"各项","pinyin":"gè xiàng","meaning":"Various items","meaningThai":"แต่ละด้าน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"各项工作。","pinyin":"Ge xiang gong zuo.","meaning":"Various tasks.","meaningThai":"งานแต่ละด้าน"}]},
+{"id":"hsk5-339","chinese":"根本","pinyin":"gēn běn","meaning":"Fundamental; basic","meaningThai":"พื้นฐาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"根本原因。","pinyin":"Gen ben yuan yin.","meaning":"Fundamental reason.","meaningThai":"สาเหตุพื้นฐาน"}]},
+{"id":"hsk5-340","chinese":"更加","pinyin":"gèng jiā","meaning":"Even more","meaningThai":"ยิ่งขึ้น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"更加努力。","pinyin":"Geng jia nu li.","meaning":"Even more effort.","meaningThai":"พยายามยิ่งขึ้น"}]},
+{"id":"hsk5-341","chinese":"工厂","pinyin":"gōng chǎng","meaning":"Factory","meaningThai":"โรงงาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"汽车工厂。","pinyin":"Qi che gong chang.","meaning":"Car factory.","meaningThai":"โรงงานผลิตรถยนต์"}]},
+{"id":"hsk5-342","chinese":"工具","pinyin":"gōng jù","meaning":"Tool","meaningThai":"เครื่องมือ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"学习工具。","pinyin":"Xue xi gong ju.","meaning":"Learning tool.","meaningThai":"เครื่องมือการเรียนรู้"}]},
+{"id":"hsk5-343","chinese":"工人","pinyin":"gōng rén","meaning":"Worker","meaningThai":"คนงาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"工厂工人。","pinyin":"Gong chang gong ren.","meaning":"Factory worker.","meaningThai":"คนงานโรงงาน"}]},
+{"id":"hsk5-344","chinese":"工业","pinyin":"gōng yè","meaning":"Industry","meaningThai":"อุตสาหกรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"工业发展。","pinyin":"Gong ye fa zhan.","meaning":"Industrial development.","meaningThai":"การพัฒนาอุตสาหกรรม"}]},
+{"id":"hsk5-345","chinese":"工资","pinyin":"gōng zī","meaning":"Salary; wage","meaningThai":"เงินเดือน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"提高工资。","pinyin":"Ti gao gong zi.","meaning":"Raise salary.","meaningThai":"ขึ้นเงินเดือน"}]},
+{"id":"hsk5-346","chinese":"工作人员","pinyin":"gōng zuò rén yuán","meaning":"Staff; personnel","meaningThai":"บุคลากร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"全体工作人员。","pinyin":"Quan ti gong zuo ren yuan.","meaning":"All staff.","meaningThai":"บุคลากรทั้งหมด"}]},
+{"id":"hsk5-347","chinese":"公布","pinyin":"gōng bù","meaning":"To announce; to publish","meaningThai":"ประกาศ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"公布结果。","pinyin":"Gong bu jie guo.","meaning":"Announce results.","meaningThai":"ประกาศผล"}]},
+{"id":"hsk5-348","chinese":"公共","pinyin":"gōng gòng","meaning":"Public","meaningThai":"สาธารณะ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"公共交通。","pinyin":"Gong gong jiao tong.","meaning":"Public transportation.","meaningThai":"ระบบขนส่งสาธารณะ"}]},
+{"id":"hsk5-349","chinese":"公平","pinyin":"gōng píng","meaning":"Fair; just","meaningThai":"ยุติธรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"公平竞争。","pinyin":"Gong ping jing zheng.","meaning":"Fair competition.","meaningThai":"การแข่งขันที่ยุติธรรม"}]},
+{"id":"hsk5-350","chinese":"贡献","pinyin":"gòng xiàn","meaning":"Contribution","meaningThai":"การมีส่วนร่วม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"做出贡献。","pinyin":"Zuo chu gong xian.","meaning":"Make a contribution.","meaningThai":"มีส่วนร่วม"}]},
+{"id":"hsk5-351","chinese":"沟通","pinyin":"gōu tōng","meaning":"To communicate","meaningThai":"สื่อสาร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"加强沟通。","pinyin":"Jia qiang gou tong.","meaning":"Strengthen communication.","meaningThai":"เสริมสร้างการสื่อสาร"}]},
+{"id":"hsk5-352","chinese":"构造","pinyin":"gòu zào","meaning":"Structure; construction","meaningThai":"โครงสร้าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"社会构造。","pinyin":"She hui gou zao.","meaning":"Social structure.","meaningThai":"โครงสร้างสังคม"}]},
+{"id":"hsk5-353","chinese":"古代","pinyin":"gǔ dài","meaning":"Ancient times","meaningThai":"โบราณ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"古代文化。","pinyin":"Gu dai wen hua.","meaning":"Ancient culture.","meaningThai":"วัฒนธรรมโบราณ"}]},
+{"id":"hsk5-354","chinese":"鼓励","pinyin":"gǔ lì","meaning":"To encourage","meaningThai":"ส่งเสริม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"互相鼓励。","pinyin":"Hu xiang gu li.","meaning":"Encourage each other.","meaningThai":"ส่งเสริมซึ่งกันและกัน"}]},
+{"id":"hsk5-355","chinese":"固定","pinyin":"gù dìng","meaning":"Fixed; regular","meaningThai":"คงที่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"固定收入。","pinyin":"Gu ding shou ru.","meaning":"Fixed income.","meaningThai":"รายได้คงที่"}]},
+{"id":"hsk5-356","chinese":"关怀","pinyin":"guān huái","meaning":"To care for; concern","meaningThai":"ห่วงใย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"关怀他人。","pinyin":"Guan huai ta ren.","meaning":"Care for others.","meaningThai":"ห่วงใยผู้อื่น"}]},
+{"id":"hsk5-357","chinese":"关键","pinyin":"guān jiàn","meaning":"Key; crucial","meaningThai":"สำคัญ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"关键问题。","pinyin":"Guan jian wen ti.","meaning":"Key issue.","meaningThai":"ปัญหาสำคัญ"}]},
+{"id":"hsk5-358","chinese":"观点","pinyin":"guān diǎn","meaning":"Point of view; perspective","meaningThai":"มุมมอง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"个人观点。","pinyin":"Ge ren guan dian.","meaning":"Personal perspective.","meaningThai":"มุมมองส่วนตัว"}]},
+{"id":"hsk5-359","chinese":"管理","pinyin":"guǎn lǐ","meaning":"To manage; management","meaningThai":"จัดการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"企业管理。","pinyin":"Qi ye guan li.","meaning":"Enterprise management.","meaningThai":"การจัดการองค์กร"}]},
+{"id":"hsk5-360","chinese":"光临","pinyin":"guāng lín","meaning":"To patronize; to visit","meaningThai":"มาเยือน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"欢迎光临。","pinyin":"Huan ying guang lin.","meaning":"Welcome.","meaningThai":"ยินดีต้อนรับ"}]},
+{"id":"hsk5-361","chinese":"广大","pinyin":"guǎng dà","meaning":"Vast; extensive","meaningThai":"กว้างใหญ่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"广大地区。","pinyin":"Guang da di qu.","meaning":"Vast area.","meaningThai":"พื้นที่กว้างใหญ่"}]},
+{"id":"hsk5-362","chinese":"广泛","pinyin":"guǎng fàn","meaning":"Wide; extensive","meaningThai":"อย่างกว้างขวาง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"广泛应用。","pinyin":"Guang fan ying yong.","meaning":"Widely used.","meaningThai":"ใช้อย่างกว้างขวาง"}]},
+{"id":"hsk5-363","chinese":"规矩","pinyin":"guī ju","meaning":"Rule; custom","meaningThai":"กฎ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"守规矩。","pinyin":"Shou gui ju.","meaning":"Follow the rules.","meaningThai":"ปฏิบัติตามกฎ"}]},
+{"id":"hsk5-364","chinese":"规模","pinyin":"guī mó","meaning":"Scale; scope","meaningThai":"ขนาด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"大规模。","pinyin":"Da gui mo.","meaning":"Large scale.","meaningThai":"ขนาดใหญ่"}]},
+{"id":"hsk5-365","chinese":"柜台","pinyin":"guì tái","meaning":"Counter (shop)","meaningThai":"เคาน์เตอร์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"服务柜台。","pinyin":"Fu wu gui tai.","meaning":"Service counter.","meaningThai":"เคาน์เตอร์บริการ"}]},
+{"id":"hsk5-366","chinese":"锅炉","pinyin":"guō lú","meaning":"Boiler","meaningThai":"หม้อต้ม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"锅炉房。","pinyin":"Guo lu fang.","meaning":"Boiler room.","meaningThai":"ห้องหม้อต้ม"}]},
+{"id":"hsk5-367","chinese":"国防","pinyin":"guó fáng","meaning":"National defense","meaningThai":"การป้องกันประเทศ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"国防力量。","pinyin":"Guo fang li liang.","meaning":"National defense capability.","meaningThai":"กำลังป้องกันประเทศ"}]},
+{"id":"hsk5-368","chinese":"国务院","pinyin":"guó wù yuàn","meaning":"State Council","meaningThai":"สภาแห่งรัฐ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"国务院发布。","pinyin":"Guo wu yuan fa bu.","meaning":"State Council issued.","meaningThai":"สภาแห่งรัฐประกาศ"}]},
+{"id":"hsk5-369","chinese":"过程","pinyin":"guò chéng","meaning":"Process","meaningThai":"กระบวนการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"生产过程。","pinyin":"Sheng chan guo cheng.","meaning":"Production process.","meaningThai":"กระบวนการผลิต"}]},
+{"id":"hsk5-370","chinese":"过渡","pinyin":"guò dù","meaning":"Transition","meaningThai":"การเปลี่ยนผ่าน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"过渡时期。","pinyin":"Guo du shi qi.","meaning":"Transition period.","meaningThai":"ช่วงเปลี่ยนผ่าน"}]},
+{"id":"hsk5-371","chinese":"海洋","pinyin":"hǎi yáng","meaning":"Ocean","meaningThai":"มหาสมุทร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"海洋生物。","pinyin":"Hai yang sheng wu.","meaning":"Marine life.","meaningThai":"สิ่งมีชีวิตในทะเล"}]},
+{"id":"hsk5-372","chinese":"寒冷","pinyin":"hán lěng","meaning":"Cold; freezing","meaningThai":"หนาว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"寒冷天气。","pinyin":"Han leng tian qi.","meaning":"Cold weather.","meaningThai":"อากาศหนาว"}]},
+{"id":"hsk5-373","chinese":"好比","pinyin":"hǎo bǐ","meaning":"Just like; can be compared to","meaningThai":"เปรียบเสมือน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"好比朋友。","pinyin":"Hao bi peng you.","meaning":"Just like friends.","meaningThai":"เปรียบเสมือนเพื่อน"}]},
+{"id":"hsk5-374","chinese":"号召","pinyin":"hào zhào","meaning":"To call for; appeal","meaningThai":"เรียกร้อง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"号召大家。","pinyin":"Hao zhao da jia.","meaning":"Call upon everyone.","meaningThai":"เรียกร้องให้ทุกคน"}]},
+{"id":"hsk5-375","chinese":"合法","pinyin":"hé fǎ","meaning":"Legal; lawful","meaningThai":"ถูกกฎหมาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"合法途径。","pinyin":"He fa tu jing.","meaning":"Legal means.","meaningThai":"วิธีการที่ถูกกฎหมาย"}]},
+{"id":"hsk5-376","chinese":"合同","pinyin":"hé tong","meaning":"Contract","meaningThai":"สัญญา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"签合同。","pinyin":"Qian he tong.","meaning":"Sign a contract.","meaningThai":"เซ็นสัญญา"}]},
+{"id":"hsk5-377","chinese":"合作","pinyin":"hé zuò","meaning":"To cooperate; cooperation","meaningThai":"ร่วมมือ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"合作项目。","pinyin":"He zuo xiang mu.","meaning":"Cooperative project.","meaningThai":"โครงการร่วมมือ"}]},
+{"id":"hsk5-378","chinese":"和平","pinyin":"hé píng","meaning":"Peace","meaningThai":"สันติภาพ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"世界和平。","pinyin":"Shi jie he ping.","meaning":"World peace.","meaningThai":"สันติภาพโลก"}]},
+{"id":"hsk5-379","chinese":"核心","pinyin":"hé xīn","meaning":"Core; nucleus","meaningThai":"หลัก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"核心技术。","pinyin":"He xin ji shu.","meaning":"Core technology.","meaningThai":"เทคโนโลยีหลัก"}]},
+{"id":"hsk5-380","chinese":"黑暗","pinyin":"hēi àn","meaning":"Dark","meaningThai":"มืด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"黑暗之中。","pinyin":"Hei an zhi zhong.","meaning":"In the dark.","meaningThai":"ในความมืด"}]},
+{"id":"hsk5-381","chinese":"后果","pinyin":"hòu guǒ","meaning":"Consequence","meaningThai":"ผลที่ตามมา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"承担后果。","pinyin":"Cheng dan hou guo.","meaning":"Bear the consequences.","meaningThai":"รับผลที่ตามมา"}]},
+{"id":"hsk5-382","chinese":"呼吸","pinyin":"hū xī","meaning":"To breathe; breath","meaningThai":"หายใจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"深呼吸。","pinyin":"Shen hu xi.","meaning":"Deep breath.","meaningThai":"หายใจลึก"}]},
+{"id":"hsk5-383","chinese":"互联网","pinyin":"hù lián wǎng","meaning":"Internet","meaningThai":"อินเทอร์เน็ต","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"互联网时代。","pinyin":"Hu lian wang shi dai.","meaning":"Internet era.","meaningThai":"ยุคอินเทอร์เน็ต"}]},
+{"id":"hsk5-384","chinese":"互助","pinyin":"hù zhù","meaning":"Mutual aid","meaningThai":"ช่วยเหลือซึ่งกันและกัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"互助合作。","pinyin":"Hu zhu he zuo.","meaning":"Mutual aid and cooperation.","meaningThai":"ช่วยเหลือและร่วมมือกัน"}]},
+{"id":"hsk5-385","chinese":"花费","pinyin":"huā fèi","meaning":"To spend (money/time)","meaningThai":"ใช้จ่าย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"花费时间。","pinyin":"Hua fei shi jian.","meaning":"Spend time.","meaningThai":"ใช้เวลา"}]},
+{"id":"hsk5-386","chinese":"化工","pinyin":"huà gōng","meaning":"Chemical industry","meaningThai":"อุตสาหกรรมเคมี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"化工产品。","pinyin":"Hua gong chan pin.","meaning":"Chemical products.","meaningThai":"ผลิตภัณฑ์เคมี"}]},
+{"id":"hsk5-387","chinese":"化学","pinyin":"huà xué","meaning":"Chemistry","meaningThai":"เคมี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"化学实验。","pinyin":"Hua xue shi yan.","meaning":"Chemistry experiment.","meaningThai":"การทดลองเคมี"}]},
+{"id":"hsk5-388","chinese":"怀疑","pinyin":"huái yí","meaning":"To doubt; to suspect","meaningThai":"สงสัย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"我怀疑。","pinyin":"Wo huai yi.","meaning":"I doubt it.","meaningThai":"ฉันสงสัย"}]},
+{"id":"hsk5-389","chinese":"怀孕","pinyin":"huái yùn","meaning":"To be pregnant","meaningThai":"ตั้งครรภ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"她怀孕了。","pinyin":"Ta huai yun le.","meaning":"She is pregnant.","meaningThai":"เธอตั้งครรภ์"}]},
+{"id":"hsk5-390","chinese":"环节","pinyin":"huán jié","meaning":"Link; segment","meaningThai":"ส่วน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"重要环节。","pinyin":"Zhong yao huan jie.","meaning":"Important link.","meaningThai":"ส่วนสำคัญ"}]},
+{"id":"hsk5-391","chinese":"环境","pinyin":"huán jìng","meaning":"Environment","meaningThai":"สิ่งแวดล้อม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"保护环境。","pinyin":"Bao hu huan jing.","meaning":"Protect the environment.","meaningThai":"ปกป้องสิ่งแวดล้อม"}]},
+{"id":"hsk5-392","chinese":"幻想","pinyin":"huàn xiǎng","meaning":"Illusion; fantasy","meaningThai":"จินตนาการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"不切实际的幻想。","pinyin":"Bu qie shi ji de huan xiang.","meaning":"Unrealistic fantasy.","meaningThai":"จินตนาการที่ไม่สมจริง"}]},
+{"id":"hsk5-393","chinese":"恢复","pinyin":"huī fù","meaning":"To recover; to restore","meaningThai":"ฟื้นฟู","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"恢复健康。","pinyin":"Hui fu jian kang.","meaning":"Recover health.","meaningThai":"ฟื้นฟูสุขภาพ"}]},
+{"id":"hsk5-394","chinese":"汇率","pinyin":"huì lǜ","meaning":"Exchange rate","meaningThai":"อัตราแลกเปลี่ยน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"美元汇率。","pinyin":"Mei yuan hui lv.","meaning":"US dollar exchange rate.","meaningThai":"อัตราแลกเปลี่ยนเงินดอลลาร์สหรัฐ"}]},
+{"id":"hsk5-395","chinese":"婚礼","pinyin":"hūn lǐ","meaning":"Wedding","meaningThai":"งานแต่งงาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"参加婚礼。","pinyin":"Can jia hun li.","meaning":"Attend a wedding.","meaningThai":"ร่วมงานแต่งงาน"}]},
+{"id":"hsk5-396","chinese":"活泼","pinyin":"huó pō","meaning":"Lively; active","meaningThai":"ร่าเริง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"活泼的孩子。","pinyin":"Huo po de hai zi.","meaning":"Lively child.","meaningThai":"เด็กร่าเริง"}]},
+{"id":"hsk5-397","chinese":"活跃","pinyin":"huó yuè","meaning":"Active; lively","meaningThai":"กระตือรือร้น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"气氛活跃。","pinyin":"Qi fen huo yue.","meaning":"Lively atmosphere.","meaningThai":"บรรยากาศกระตือรือร้น"}]},
+{"id":"hsk5-398","chinese":"或许","pinyin":"huò xǔ","meaning":"Perhaps; maybe","meaningThai":"บางที","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"或许是对的。","pinyin":"Huo xu shi dui de.","meaning":"Perhaps it's right.","meaningThai":"บางทีก็ถูก"}]},
+{"id":"hsk5-399","chinese":"机器","pinyin":"jī qì","meaning":"Machine","meaningThai":"เครื่องจักร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"机器运行。","pinyin":"Ji qi yun xing.","meaning":"Machine operates.","meaningThai":"เครื่องจักรทำงาน"}]},
+{"id":"hsk5-400","chinese":"肌肉","pinyin":"jī ròu","meaning":"Muscle","meaningThai":"กล้ามเนื้อ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"锻炼肌肉。","pinyin":"Duan lian ji rou.","meaning":"Build muscle.","meaningThai":"สร้างกล้ามเนื้อ"}]},
+{"id":"hsk5-401","chinese":"基本","pinyin":"jī běn","meaning":"Basic; fundamental","meaningThai":"พื้นฐาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"基本要求。","pinyin":"Ji ben yao qiu.","meaning":"Basic requirement.","meaningThai":"ข้อกำหนดพื้นฐาน"}]},
+{"id":"hsk5-402","chinese":"基层","pinyin":"jī céng","meaning":"Grassroots; basic level","meaningThai":"ระดับรากหญ้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"基层工作。","pinyin":"Ji ceng gong zuo.","meaning":"Grassroots work.","meaningThai":"งานระดับรากหญ้า"}]},
+{"id":"hsk5-403","chinese":"基础","pinyin":"jī chǔ","meaning":"Foundation; basis","meaningThai":"พื้นฐาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"打好基础。","pinyin":"Da hao ji chu.","meaning":"Lay a good foundation.","meaningThai":"สร้างพื้นฐานที่ดี"}]},
+{"id":"hsk5-404","chinese":"激动","pinyin":"jī dòng","meaning":"Excited; emotional","meaningThai":"ตื่นเต้น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"非常激动。","pinyin":"Fei chang ji dong.","meaning":"Very excited.","meaningThai":"ตื่นเต้นมาก"}]},
+{"id":"hsk5-405","chinese":"及时","pinyin":"jí shí","meaning":"Timely; in time","meaningThai":"ทันเวลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"及时处理。","pinyin":"Ji shi chu li.","meaning":"Handle in time.","meaningThai":"จัดการได้ทันเวลา"}]},
+{"id":"hsk5-406","chinese":"疾病","pinyin":"jí bìng","meaning":"Disease; illness","meaningThai":"โรค","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"预防疾病。","pinyin":"Yu fang ji bing.","meaning":"Prevent disease.","meaningThai":"ป้องกันโรค"}]},
+{"id":"hsk5-407","chinese":"集团","pinyin":"jí tuán","meaning":"Group; conglomerate","meaningThai":"กลุ่ม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"企业集团。","pinyin":"Qi ye ji tuan.","meaning":"Corporate group.","meaningThai":"กลุ่มบริษัท"}]},
+{"id":"hsk5-408","chinese":"集中","pinyin":"jí zhōng","meaning":"To concentrate; centralized","meaningThai":"รวมศูนย์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"集中精力。","pinyin":"Ji zhong jing li.","meaning":"Concentrate efforts.","meaningThai":"รวมพลัง"}]},
+{"id":"hsk5-409","chinese":"计划","pinyin":"jì huà","meaning":"Plan; to plan","meaningThai":"วางแผน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"制定计划。","pinyin":"Zhi ding ji hua.","meaning":"Make a plan.","meaningThai":"วางแผน"}]},
+{"id":"hsk5-410","chinese":"计算","pinyin":"jì suàn","meaning":"To calculate; computation","meaningThai":"คำนวณ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"计算成本。","pinyin":"Ji suan cheng ben.","meaning":"Calculate costs.","meaningThai":"คำนวณต้นทุน"}]},
+{"id":"hsk5-411","chinese":"技术","pinyin":"jì shù","meaning":"Technology; skill","meaningThai":"เทคโนโลยี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"技术革新。","pinyin":"Ji shu ge xin.","meaning":"Technological innovation.","meaningThai":"นวัตกรรมเทคโนโลยี"}]},
+{"id":"hsk5-412","chinese":"季节","pinyin":"jì jié","meaning":"Season","meaningThai":"ฤดูกาล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"四季变化。","pinyin":"Si ji bian hua.","meaning":"Four seasons change.","meaningThai":"การเปลี่ยนแปลงของสี่ฤดู"}]},
+{"id":"hsk5-413","chinese":"记忆","pinyin":"jì yì","meaning":"Memory","meaningThai":"ความทรงจำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"美好记忆。","pinyin":"Mei hao ji yi.","meaning":"Beautiful memory.","meaningThai":"ความทรงจำที่สวยงาม"}]},
+{"id":"hsk5-414","chinese":"纪录","pinyin":"jì lù","meaning":"Record","meaningThai":"บันทึก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"世界纪录。","pinyin":"Shi jie ji lu.","meaning":"World record.","meaningThai":"สถิติโลก"}]},
+{"id":"hsk5-415","chinese":"纪律","pinyin":"jì lǜ","meaning":"Discipline","meaningThai":"วินัย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"遵守纪律。","pinyin":"Zun shou ji lv.","meaning":"Observe discipline.","meaningThai":"รักษาวินัย"}]},
+{"id":"hsk5-416","chinese":"纪念","pinyin":"jì niàn","meaning":"To commemorate; souvenir","meaningThai":"ที่ระลึก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"纪念品。","pinyin":"Ji nian pin.","meaning":"Souvenir.","meaningThai":"ของที่ระลึก"}]},
+{"id":"hsk5-417","chinese":"技巧","pinyin":"jì qiǎo","meaning":"Skill; technique","meaningThai":"เทคนิค","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"掌握技巧。","pinyin":"Zhang wo ji qiao.","meaning":"Master the skill.","meaningThai":"เชี่ยวชาญเทคนิค"}]},
+{"id":"hsk5-418","chinese":"加强","pinyin":"jiā qiáng","meaning":"To strengthen; to enhance","meaningThai":"เสริมสร้าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"加强管理。","pinyin":"Jia qiang guan li.","meaning":"Strengthen management.","meaningThai":"เสริมสร้างการจัดการ"}]},
+{"id":"hsk5-419","chinese":"加班","pinyin":"jiā bān","meaning":"To work overtime","meaningThai":"ทำงานล่วงเวลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"今天加班。","pinyin":"Jin tian jia ban.","meaning":"Working overtime today.","meaningThai":"ทำงานล่วงเวลาวันนี้"}]},
+{"id":"hsk5-420","chinese":"家具","pinyin":"jiā jù","meaning":"Furniture","meaningThai":"เฟอร์นิเจอร์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"买家具。","pinyin":"Mai jia ju.","meaning":"Buy furniture.","meaningThai":"ซื้อเฟอร์นิเจอร์"}]},
+{"id":"hsk5-421","chinese":"家乡","pinyin":"jiā xiāng","meaning":"Hometown","meaningThai":"บ้านเกิด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"我爱家乡。","pinyin":"Wo ai jia xiang.","meaning":"I love my hometown.","meaningThai":"ฉันรักบ้านเกิด"}]},
+{"id":"hsk5-422","chinese":"假设","pinyin":"jiǎ shè","meaning":"Hypothesis; assumption","meaningThai":"สมมติฐาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"假设成立。","pinyin":"Jia she cheng li.","meaning":"The hypothesis holds.","meaningThai":"สมมติฐานเป็นจริง"}]},
+{"id":"hsk5-423","chinese":"价格","pinyin":"jià gé","meaning":"Price","meaningThai":"ราคา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"价格合理。","pinyin":"Jia ge he li.","meaning":"Reasonable price.","meaningThai":"ราคาสมเหตุสมผล"}]},
+{"id":"hsk5-424","chinese":"坚持","pinyin":"jiān chí","meaning":"To persist; to insist","meaningThai":"ยืนหยัด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"坚持到底。","pinyin":"Jian chi dao di.","meaning":"Persist to the end.","meaningThai":"ยืนหยัดจนถึงที่สุด"}]},
+{"id":"hsk5-425","chinese":"坚定","pinyin":"jiān dìng","meaning":"Firm; steadfast","meaningThai":"แน่วแน่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"坚定的信念。","pinyin":"Jian ding de xin nian.","meaning":"Firm belief.","meaningThai":"ความเชื่อที่แน่วแน่"}]},
+{"id":"hsk5-426","chinese":"坚强","pinyin":"jiān qiáng","meaning":"Strong; tough","meaningThai":"แข็งแกร่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"坚强的意志。","pinyin":"Jian qiang de yi zhi.","meaning":"Strong will.","meaningThai":"ความตั้งใจที่แข็งแกร่ง"}]},
+{"id":"hsk5-427","chinese":"坚决","pinyin":"jiān jué","meaning":"Resolute; determined","meaningThai":"แน่วแน่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"坚决支持。","pinyin":"Jian jue zhi chi.","meaning":"Resolutely support.","meaningThai":"สนับสนุนอย่างแน่วแน่"}]},
+{"id":"hsk5-428","chinese":"艰苦","pinyin":"jiān kǔ","meaning":"Difficult; arduous","meaningThai":"ลำบาก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"艰苦的岁月。","pinyin":"Jian ku de sui yue.","meaning":"Difficult times.","meaningThai":"ช่วงเวลาที่ลำบาก"}]},
+{"id":"hsk5-429","chinese":"监督","pinyin":"jiān dū","meaning":"To supervise; supervision","meaningThai":"ตรวจสอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"监督管理。","pinyin":"Jian du guan li.","meaning":"Supervision and management.","meaningThai":"การตรวจสอบการจัดการ"}]},
+{"id":"hsk5-430","chinese":"监狱","pinyin":"jiān yù","meaning":"Prison","meaningThai":"เรือนจำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"被关进监狱。","pinyin":"Bei guan jin jian yu.","meaning":"Be put in prison.","meaningThai":"ถูกขังในเรือนจำ"}]},
+{"id":"hsk5-431","chinese":"检查","pinyin":"jiǎn chá","meaning":"To inspect; to check","meaningThai":"ตรวจสอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"身体检查。","pinyin":"Shen ti jian cha.","meaning":"Physical examination.","meaningThai":"ตรวจร่างกาย"}]},
+{"id":"hsk5-432","chinese":"检讨","pinyin":"jiǎn tǎo","meaning":"To self-criticize; review","meaningThai":"ทบทวน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"自我检讨。","pinyin":"Zi wo jian tao.","meaning":"Self-review.","meaningThai":"ทบทวนตนเอง"}]},
+{"id":"hsk5-433","chinese":"减肥","pinyin":"jiǎn féi","meaning":"To lose weight","meaningThai":"ลดน้ำหนัก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"正在减肥。","pinyin":"Zheng zai jian fei.","meaning":"Currently losing weight.","meaningThai":"กำลังลดน้ำหนัก"}]},
+{"id":"hsk5-434","chinese":"减轻","pinyin":"jiǎn qīng","meaning":"To reduce; to alleviate","meaningThai":"บรรเทา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"减轻压力。","pinyin":"Jian qing ya li.","meaning":"Reduce pressure.","meaningThai":"บรรเทาความเครียด"}]},
+{"id":"hsk5-435","chinese":"简历","pinyin":"jiǎn lì","meaning":"Resume; CV","meaningThai":"ประวัติย่อ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"投递简历。","pinyin":"Tou di jian li.","meaning":"Submit a resume.","meaningThai":"ส่งประวัติย่อ"}]},
+{"id":"hsk5-436","chinese":"建立","pinyin":"jiàn lì","meaning":"To establish; to set up","meaningThai":"สร้าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"建立信任。","pinyin":"Jian li xin ren.","meaning":"Build trust.","meaningThai":"สร้างความไว้วางใจ"}]},
+{"id":"hsk5-437","chinese":"建设","pinyin":"jiàn shè","meaning":"To build; construction","meaningThai":"ก่อสร้าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"城市建设。","pinyin":"Cheng shi jian she.","meaning":"Urban construction.","meaningThai":"การก่อสร้างเมือง"}]},
+{"id":"hsk5-438","chinese":"建筑","pinyin":"jiàn zhù","meaning":"Building; architecture","meaningThai":"สถาปัตยกรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"古建筑。","pinyin":"Gu jian zhu.","meaning":"Ancient architecture.","meaningThai":"สถาปัตยกรรมโบราณ"}]},
+{"id":"hsk5-439","chinese":"健康","pinyin":"jiàn kāng","meaning":"Health; healthy","meaningThai":"สุขภาพ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"身体健康。","pinyin":"Shen ti jian kang.","meaning":"Good health.","meaningThai":"สุขภาพแข็งแรง"}]},
+{"id":"hsk5-440","chinese":"键盘","pinyin":"jiàn pán","meaning":"Keyboard","meaningThai":"แป้นพิมพ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"电脑键盘。","pinyin":"Dian nao jian pan.","meaning":"Computer keyboard.","meaningThai":"แป้นพิมพ์คอมพิวเตอร์"}]},
+{"id":"hsk5-441","chinese":"讲究","pinyin":"jiǎng jiū","meaning":"To be particular about; exquisite","meaningThai":"พิถีพิถัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"讲究卫生。","pinyin":"Jiang jiu wei sheng.","meaning":"Be particular about hygiene.","meaningThai":"พิถีพิถันเรื่องความสะอาด"}]},
+{"id":"hsk5-442","chinese":"奖励","pinyin":"jiǎng lì","meaning":"Reward; to reward","meaningThai":"รางวัล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"给予奖励。","pinyin":"Gei yu jiang li.","meaning":"Give a reward.","meaningThai":"ให้รางวัล"}]},
+{"id":"hsk5-443","chinese":"降低","pinyin":"jiàng dī","meaning":"To reduce; to lower","meaningThai":"ลด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"降低成本。","pinyin":"Jiang di cheng ben.","meaning":"Reduce costs.","meaningThai":"ลดต้นทุน"}]},
+{"id":"hsk5-444","chinese":"交流","pinyin":"jiāo liú","meaning":"To exchange; communication","meaningThai":"แลกเปลี่ยน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"文化交流。","pinyin":"Wen hua jiao liu.","meaning":"Cultural exchange.","meaningThai":"การแลกเปลี่ยนทางวัฒนธรรม"}]},
+{"id":"hsk5-445","chinese":"交通","pinyin":"jiāo tōng","meaning":"Transportation; traffic","meaningThai":"การจราจร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"交通便利。","pinyin":"Jiao tong bian li.","meaning":"Convenient transportation.","meaningThai":"การคมนาคมสะดวก"}]},
+{"id":"hsk5-446","chinese":"骄傲","pinyin":"jiāo ào","meaning":"Proud; arrogant","meaningThai":"หยิ่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"值得骄傲。","pinyin":"Zhi de jiao ao.","meaning":"Worth being proud of.","meaningThai":"น่าภูมิใจ"}]},
+{"id":"hsk5-447","chinese":"角度","pinyin":"jiǎo dù","meaning":"Angle; perspective","meaningThai":"มุมมอง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"从不同角度。","pinyin":"Cong bu tong jiao du.","meaning":"From different angles.","meaningThai":"จากมุมมองที่แตกต่าง"}]},
+{"id":"hsk5-448","chinese":"脚步","pinyin":"jiǎo bù","meaning":"Footstep; pace","meaningThai":"ก้าว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"加快脚步。","pinyin":"Jia kuai jiao bu.","meaning":"Quicken your pace.","meaningThai":"เร่งก้าว"}]},
+{"id":"hsk5-449","chinese":"教材","pinyin":"jiào cái","meaning":"Teaching material","meaningThai":"สื่อการสอน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"编写教材。","pinyin":"Bian xie jiao cai.","meaning":"Compile teaching materials.","meaningThai":"เขียนสื่อการสอน"}]},
+{"id":"hsk5-450","chinese":"教练","pinyin":"jiào liàn","meaning":"Coach; trainer","meaningThai":"โค้ช","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"足球教练。","pinyin":"Zu qiu jiao lian.","meaning":"Football coach.","meaningThai":"โค้ชฟุตบอล"}]},
+{"id":"hsk5-451","chinese":"教训","pinyin":"jiào xùn","meaning":"Lesson; to teach a lesson","meaningThai":"บทเรียน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"吸取教训。","pinyin":"Xi qu jiao xun.","meaning":"Learn a lesson.","meaningThai":"เรียนรู้บทเรียน"}]},
+{"id":"hsk5-452","chinese":"接待","pinyin":"jiē dài","meaning":"To receive; to host","meaningThai":"ต้อนรับ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"接待客人。","pinyin":"Jie dai ke ren.","meaning":"Receive guests.","meaningThai":"ต้อนรับแขก"}]},
+{"id":"hsk5-453","chinese":"接近","pinyin":"jiē jìn","meaning":"To approach; near","meaningThai":"ใกล้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"接近完成。","pinyin":"Jie jin wan cheng.","meaning":"Near completion.","meaningThai":"ใกล้เสร็จ"}]},
+{"id":"hsk5-454","chinese":"结构","pinyin":"jié gòu","meaning":"Structure","meaningThai":"โครงสร้าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"经济结构。","pinyin":"Jing ji jie gou.","meaning":"Economic structure.","meaningThai":"โครงสร้างเศรษฐกิจ"}]},
+{"id":"hsk5-455","chinese":"结合","pinyin":"jié hé","meaning":"To combine; to integrate","meaningThai":"ผสมผสาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"理论与实践结合。","pinyin":"Li lun yu shi jian jie he.","meaning":"Combine theory and practice.","meaningThai":"ผสมผสานทฤษฎีและปฏิบัติ"}]},
+{"id":"hsk5-456","chinese":"节约","pinyin":"jié yuē","meaning":"To save; to economize","meaningThai":"ประหยัด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"节约用水。","pinyin":"Jie yue yong shui.","meaning":"Save water.","meaningThai":"ประหยัดน้ำ"}]},
+{"id":"hsk5-457","chinese":"结论","pinyin":"jié lùn","meaning":"Conclusion","meaningThai":"ข้อสรุป","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"得出结论。","pinyin":"De chu jie lun.","meaning":"Draw a conclusion.","meaningThai":"ได้ข้อสรุป"}]},
+{"id":"hsk5-458","chinese":"解放","pinyin":"jiě fàng","meaning":"To liberate; liberation","meaningThai":"ปลดปล่อย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"思想解放。","pinyin":"Si xiang jie fang.","meaning":"Ideological liberation.","meaningThai":"การปลดปล่อยความคิด"}]},
+{"id":"hsk5-459","chinese":"解决","pinyin":"jiě jué","meaning":"To solve; to resolve","meaningThai":"แก้ไข","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"解决问题。","pinyin":"Jie jue wen ti.","meaning":"Solve the problem.","meaningThai":"แก้ปัญหา"}]},
+{"id":"hsk5-460","chinese":"界限","pinyin":"jiè xiàn","meaning":"Boundary; limit","meaningThai":"ขอบเขต","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"划清界限。","pinyin":"Hua qing jie xian.","meaning":"Draw a clear boundary.","meaningThai":"กำหนดขอบเขตให้ชัดเจน"}]},
+{"id":"hsk5-461","chinese":"金融","pinyin":"jīn róng","meaning":"Finance; banking","meaningThai":"การเงิน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"金融机构。","pinyin":"Jin rong ji gou.","meaning":"Financial institution.","meaningThai":"สถาบันการเงิน"}]},
+{"id":"hsk5-462","chinese":"金属","pinyin":"jīn shǔ","meaning":"Metal","meaningThai":"โลหะ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"金属材料。","pinyin":"Jin shu cai liao.","meaning":"Metal material.","meaningThai":"วัสดุโลหะ"}]},
+{"id":"hsk5-463","chinese":"尽力","pinyin":"jìn lì","meaning":"To do one's best","meaningThai":"พยายามอย่างเต็มที่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"尽力而为。","pinyin":"Jin li er wei.","meaning":"Do one's best.","meaningThai":"พยายามอย่างเต็มที่"}]},
+{"id":"hsk5-464","chinese":"尽可能","pinyin":"jìn kě néng","meaning":"As much as possible","meaningThai":"เท่าที่จะทำได้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"尽可能早来。","pinyin":"Jin ke neng zao lai.","meaning":"Come as early as possible.","meaningThai":"มาให้เร็วที่สุดเท่าที่จะทำได้"}]},
+{"id":"hsk5-465","chinese":"谨慎","pinyin":"jǐn shèn","meaning":"Cautious; prudent","meaningThai":"ระมัดระวัง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"谨慎行事。","pinyin":"Jin shen xing shi.","meaning":"Act cautiously.","meaningThai":"ทำอย่างระมัดระวัง"}]},
+{"id":"hsk5-466","chinese":"进步","pinyin":"jìn bù","meaning":"Progress; advancement","meaningThai":"ความก้าวหน้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"取得进步。","pinyin":"Qu de jin bu.","meaning":"Make progress.","meaningThai":"มีความก้าวหน้า"}]},
+{"id":"hsk5-467","chinese":"禁止","pinyin":"jìn zhǐ","meaning":"To prohibit; to forbid","meaningThai":"ห้าม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"禁止吸烟。","pinyin":"Jin zhi xi yan.","meaning":"No smoking.","meaningThai":"ห้ามสูบบุหรี่"}]},
+{"id":"hsk5-468","chinese":"经历","pinyin":"jīng lì","meaning":"Experience; to experience","meaningThai":"ประสบการณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"丰富经历。","pinyin":"Feng fu jing li.","meaning":"Rich experience.","meaningThai":"ประสบการณ์มากมาย"}]},
+{"id":"hsk5-469","chinese":"经济","pinyin":"jīng jì","meaning":"Economy; economic","meaningThai":"เศรษฐกิจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"经济发展。","pinyin":"Jing ji fa zhan.","meaning":"Economic development.","meaningThai":"การพัฒนาเศรษฐกิจ"}]},
+{"id":"hsk5-470","chinese":"经理","pinyin":"jīng lǐ","meaning":"Manager","meaningThai":"ผู้จัดการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"部门经理。","pinyin":"Bu men jing li.","meaning":"Department manager.","meaningThai":"ผู้จัดการแผนก"}]},
+{"id":"hsk5-471","chinese":"经历","pinyin":"jīng lì","meaning":"To go through; experience","meaningThai":"ประสบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"亲身经历。","pinyin":"Qin shen jing li.","meaning":"Personal experience.","meaningThai":"ประสบการณ์ด้วยตนเอง"}]},
+{"id":"hsk5-472","chinese":"经验","pinyin":"jīng yàn","meaning":"Experience","meaningThai":"ประสบการณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"工作经验。","pinyin":"Gong zuo jing yan.","meaning":"Work experience.","meaningThai":"ประสบการณ์การทำงาน"}]},
+{"id":"hsk5-473","chinese":"经营","pinyin":"jīng yíng","meaning":"To operate; to manage","meaningThai":"ดำเนินการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"经营业务。","pinyin":"Jing ying ye wu.","meaning":"Operate a business.","meaningThai":"ดำเนินธุรกิจ"}]},
+{"id":"hsk5-474","chinese":"井","pinyin":"jǐng","meaning":"Well (water)","meaningThai":"บ่อ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"水井。","pinyin":"Shui jing.","meaning":"Water well.","meaningThai":"บ่อน้ำ"}]},
+{"id":"hsk5-475","chinese":"竞赛","pinyin":"jìng sài","meaning":"Competition; contest","meaningThai":"การแข่งขัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"体育竞赛。","pinyin":"Ti yu jing sai.","meaning":"Sports competition.","meaningThai":"การแข่งขันกีฬา"}]},
+{"id":"hsk5-476","chinese":"竞争","pinyin":"jìng zhēng","meaning":"Competition; to compete","meaningThai":"การแข่งขัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"市场竞争。","pinyin":"Shi chang jing zheng.","meaning":"Market competition.","meaningThai":"การแข่งขันทางการตลาด"}]},
+{"id":"hsk5-477","chinese":"镜子","pinyin":"jìng zi","meaning":"Mirror","meaningThai":"กระจก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"照镜子。","pinyin":"Zhao jing zi.","meaning":"Look in the mirror.","meaningThai":"ส่องกระจก"}]},
+{"id":"hsk5-478","chinese":"纠正","pinyin":"jiū zhèng","meaning":"To correct; to rectify","meaningThai":"แก้ไข","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"纠正错误。","pinyin":"Jiu zheng cuo wu.","meaning":"Correct mistakes.","meaningThai":"แก้ไขข้อผิดพลาด"}]},
+{"id":"hsk5-479","chinese":"究竟","pinyin":"jiū jìng","meaning":"Actually; exactly","meaningThai":"จริงๆ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"究竟是谁？","pinyin":"Jiu jing shi shei?","meaning":"Who is it exactly?","meaningThai":"จริงๆแล้วเป็นใคร"}]},
+{"id":"hsk5-480","chinese":"居住","pinyin":"jū zhù","meaning":"To reside; to live","meaningThai":"อาศัย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"居住环境。","pinyin":"Ju zhu huan jing.","meaning":"Living environment.","meaningThai":"สภาพแวดล้อมที่อยู่อาศัย"}]},
+{"id":"hsk5-481","chinese":"举办","pinyin":"jǔ bàn","meaning":"To hold; to conduct","meaningThai":"จัด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"举办活动。","pinyin":"Ju ban huo dong.","meaning":"Hold an event.","meaningThai":"จัดกิจกรรม"}]},
+{"id":"hsk5-482","chinese":"局面","pinyin":"jú miàn","meaning":"Situation; aspect","meaningThai":"สถานการณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"打开局面。","pinyin":"Da kai ju mian.","meaning":"Open up a new situation.","meaningThai":"เปิดสถานการณ์ใหม่"}]},
+{"id":"hsk5-483","chinese":"巨大","pinyin":"jù dà","meaning":"Huge; enormous","meaningThai":"มหาศาล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"巨大的变化。","pinyin":"Ju da de bian hua.","meaning":"Huge change.","meaningThai":"การเปลี่ยนแปลงครั้งใหญ่"}]},
+{"id":"hsk5-484","chinese":"具有","pinyin":"jù yǒu","meaning":"To have; to possess","meaningThai":"มี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"具有意义。","pinyin":"Ju you yi yi.","meaning":"Have significance.","meaningThai":"มีความหมาย"}]},
+{"id":"hsk5-485","chinese":"捐款","pinyin":"juān kuǎn","meaning":"To donate; donation","meaningThai":"บริจาค","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"慈善捐款。","pinyin":"Ci shan juan kuan.","meaning":"Charitable donation.","meaningThai":"บริจาคการกุศล"}]},
+{"id":"hsk5-486","chinese":"觉悟","pinyin":"jué wù","meaning":"Consciousness; awareness","meaningThai":"การตระหนัก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"提高觉悟。","pinyin":"Ti gao jue wu.","meaning":"Raise awareness.","meaningThai":"เพิ่มความตระหนัก"}]},
+{"id":"hsk5-487","chinese":"军队","pinyin":"jūn duì","meaning":"Army; military","meaningThai":"กองทัพ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"人民军队。","pinyin":"Ren min jun dui.","meaning":"People's army.","meaningThai":"กองทัพประชาชน"}]},
+{"id":"hsk5-488","chinese":"开放","pinyin":"kāi fàng","meaning":"To open; open (policy)","meaningThai":"เปิด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"对外开放。","pinyin":"Dui wai kai fang.","meaning":"Opening to the outside world.","meaningThai":"เปิดสู่ภายนอก"}]},
+{"id":"hsk5-489","chinese":"开辟","pinyin":"kāi pì","meaning":"To open up; to establish","meaningThai":"เปิดทาง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"开辟新市场。","pinyin":"Kai pi xin shi chang.","meaning":"Open up new markets.","meaningThai":"เปิดตลาดใหม่"}]},
+{"id":"hsk5-490","chinese":"开始","pinyin":"kāi shǐ","meaning":"To start; beginning","meaningThai":"เริ่มต้น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"开始工作。","pinyin":"Kai shi gong zuo.","meaning":"Start work.","meaningThai":"เริ่มทำงาน"}]},
+{"id":"hsk5-491","chinese":"开展","pinyin":"kāi zhǎn","meaning":"To launch; to develop","meaningThai":"ดำเนินการ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"开展活动。","pinyin":"Kai zhan huo dong.","meaning":"Launch an activity.","meaningThai":"ดำเนินกิจกรรม"}]},
+{"id":"hsk5-492","chinese":"看法","pinyin":"kàn fǎ","meaning":"View; opinion","meaningThai":"ความคิดเห็น","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"个人看法。","pinyin":"Ge ren kan fa.","meaning":"Personal opinion.","meaningThai":"ความคิดเห็นส่วนตัว"}]},
+{"id":"hsk5-493","chinese":"考察","pinyin":"kǎo chá","meaning":"To inspect; to investigate","meaningThai":"ตรวจสอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"实地考察。","pinyin":"Shi di kao cha.","meaning":"Field investigation.","meaningThai":"ตรวจสอบภาคสนาม"}]},
+{"id":"hsk5-494","chinese":"考验","pinyin":"kǎo yàn","meaning":"Test; trial","meaningThai":"บททดสอบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"经受考验。","pinyin":"Jing shou kao yan.","meaning":"Withstand the test.","meaningThai":"ผ่านบททดสอบ"}]},
+{"id":"hsk5-495","chinese":"科技","pinyin":"kē jì","meaning":"Science and technology","meaningThai":"วิทยาศาสตร์และเทคโนโลยี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"科技发展。","pinyin":"Ke ji fa zhan.","meaning":"Technological development.","meaningThai":"การพัฒนาทางวิทยาศาสตร์และเทคโนโลยี"}]},
+{"id":"hsk5-496","chinese":"科学家","pinyin":"kē xué jiā","meaning":"Scientist","meaningThai":"นักวิทยาศาสตร์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"著名科学家。","pinyin":"Zhu ming ke xue jia.","meaning":"Famous scientist.","meaningThai":"นักวิทยาศาสตร์ที่มีชื่อเสียง"}]},
+{"id":"hsk5-497","chinese":"可靠","pinyin":"kě kào","meaning":"Reliable; trustworthy","meaningThai":"เชื่อถือได้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"可靠消息。","pinyin":"Ke kao xiao xi.","meaning":"Reliable news.","meaningThai":"ข่าวที่เชื่อถือได้"}]},
+{"id":"hsk5-498","chinese":"可怕","pinyin":"kě pà","meaning":"Terrible; frightening","meaningThai":"น่ากลัว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"太可怕了。","pinyin":"Tai ke pa le.","meaning":"Too terrible!","meaningThai":"น่ากลัวมาก"}]},
+{"id":"hsk5-499","chinese":"可借","pinyin":"kě jiè","meaning":"Borrowable","meaningThai":"ยืมได้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"这本书可借。","pinyin":"Zhe ben shu ke jie.","meaning":"This book can be borrowed.","meaningThai":"หนังสือเล่มนี้ยืมได้"}]},
+{"id":"hsk5-500","chinese":"客户","pinyin":"kè hù","meaning":"Client; customer","meaningThai":"ลูกค้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"重要客户。","pinyin":"Zhong yao ke hu.","meaning":"Important client.","meaningThai":"ลูกค้าสำคัญ"}]},
+{"id":"hsk5-501","chinese":"空间","pinyin":"kōng jiān","meaning":"Space; room","meaningThai":"พื้นที่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"存储空间。","pinyin":"Cun chu kong jian.","meaning":"Storage space.","meaningThai":"พื้นที่จัดเก็บ"}]},
+{"id":"hsk5-502","chinese":"空气","pinyin":"kōng qì","meaning":"Air","meaningThai":"อากาศ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"新鲜空气。","pinyin":"Xin xian kong qi.","meaning":"Fresh air.","meaningThai":"อากาศบริสุทธิ์"}]},
+{"id":"hsk5-503","chinese":"控制","pinyin":"kòng zhì","meaning":"To control","meaningThai":"ควบคุม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"控制情绪。","pinyin":"Kong zhi qing xu.","meaning":"Control emotions.","meaningThai":"ควบคุมอารมณ์"}]},
+{"id":"hsk5-504","chinese":"口头","pinyin":"kǒu tóu","meaning":"Oral; verbal","meaningThai":"ปากเปล่า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"口头承诺。","pinyin":"Kou tou cheng nuo.","meaning":"Verbal promise.","meaningThai":"สัญญาด้วยวาจา"}]},
+{"id":"hsk5-505","chinese":"苦","pinyin":"kǔ","meaning":"Bitter; hard","meaningThai":"ขม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"吃苦耐劳。","pinyin":"Chi ku nai lao.","meaning":"Bear hardships.","meaningThai":"อดทนต่อความยากลำบาก"}]},
+{"id":"hsk5-506","chinese":"快活","pinyin":"kuài huo","meaning":"Joyful; happy","meaningThai":"ร่าเริง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"过得快活。","pinyin":"Guo de kuai huo.","meaning":"Live happily.","meaningThai":"ใช้ชีวิตอย่างมีความสุข"}]},
+{"id":"hsk5-507","chinese":"宽敞","pinyin":"kuān chǎng","meaning":"Spacious; roomy","meaningThai":"กว้างขวาง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"房间宽敞。","pinyin":"Fang jian kuan chang.","meaning":"Spacious room.","meaningThai":"ห้องกว้างขวาง"}]},
+{"id":"hsk5-508","chinese":"扩充","pinyin":"kuò chōng","meaning":"To expand; to augment","meaningThai":"ขยาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"扩充知识。","pinyin":"Kuo chong zhi shi.","meaning":"Expand knowledge.","meaningThai":"ขยายความรู้"}]},
+{"id":"hsk5-509","chinese":"垃圾","pinyin":"lā jī","meaning":"Garbage; trash","meaningThai":"ขยะ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"垃圾分类。","pinyin":"La ji fen lei.","meaning":"Garbage classification.","meaningThai":"การแยกขยะ"}]},
+{"id":"hsk5-510","chinese":"劳动","pinyin":"láo dòng","meaning":"Labor; work","meaningThai":"แรงงาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"体力劳动。","pinyin":"Ti li lao dong.","meaning":"Physical labor.","meaningThai":"แรงงานทางกาย"}]},
+{"id":"hsk5-511","chinese":"老板","pinyin":"lǎo bǎn","meaning":"Boss","meaningThai":"เจ้านาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"公司老板。","pinyin":"Gong si lao ban.","meaning":"Company boss.","meaningThai":"เจ้านายบริษัท"}]},
+{"id":"hsk5-512","chinese":"乐观","pinyin":"lè guān","meaning":"Optimistic","meaningThai":"มองโลกในแง่ดี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"乐观态度。","pinyin":"Le guan tai du.","meaning":"Optimistic attitude.","meaningThai":"ทัศนคติที่มองโลกในแง่ดี"}]},
+{"id":"hsk5-513","chinese":"类似","pinyin":"lèi sì","meaning":"Similar","meaningThai":"คล้ายกัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"类似情况。","pinyin":"Lei si qing kuang.","meaning":"Similar situation.","meaningThai":"สถานการณ์คล้ายกัน"}]},
+{"id":"hsk5-514","chinese":"类型","pinyin":"lèi xíng","meaning":"Type; category","meaningThai":"ประเภท","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"产品类型。","pinyin":"Chan pin lei xing.","meaning":"Product type.","meaningThai":"ประเภทผลิตภัณฑ์"}]},
+{"id":"hsk5-515","chinese":"冷淡","pinyin":"lěng dàn","meaning":"Indifferent; cold","meaningThai":"เฉยชา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"态度冷淡。","pinyin":"Tai du leng dan.","meaning":"Cold attitude.","meaningThai":"ทัศนคติที่เฉยชา"}]},
+{"id":"hsk5-516","chinese":"离婚","pinyin":"lí hūn","meaning":"To divorce","meaningThai":"หย่าร้าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"他们离婚了。","pinyin":"Ta men li hun le.","meaning":"They got divorced.","meaningThai":"พวกเขาหย่าร้างกัน"}]},
+{"id":"hsk5-517","chinese":"理解","pinyin":"lǐ jiě","meaning":"To understand","meaningThai":"เข้าใจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"互相理解。","pinyin":"Hu xiang li jie.","meaning":"Mutual understanding.","meaningThai":"เข้าใจซึ่งกันและกัน"}]},
+{"id":"hsk5-518","chinese":"理论","pinyin":"lǐ lùn","meaning":"Theory","meaningThai":"ทฤษฎี","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"理论知识。","pinyin":"Li lun zhi shi.","meaning":"Theoretical knowledge.","meaningThai":"ความรู้ทางทฤษฎี"}]},
+{"id":"hsk5-519","chinese":"力量","pinyin":"lì liàng","meaning":"Strength; power","meaningThai":"กำลัง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"团结就是力量。","pinyin":"Tuan jie jiu shi li liang.","meaning":"Unity is strength.","meaningThai":"ความสามัคคีคือพลัง"}]},
+{"id":"hsk5-520","chinese":"利润","pinyin":"lì rùn","meaning":"Profit","meaningThai":"กำไร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"获得利润。","pinyin":"Huo de li run.","meaning":"Obtain profit.","meaningThai":"ได้รับกำไร"}]},
+{"id":"hsk5-521","chinese":"利益","pinyin":"lì yì","meaning":"Benefit; interest","meaningThai":"ผลประโยชน์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"共同利益。","pinyin":"Gong tong li yi.","meaning":"Common interest.","meaningThai":"ผลประโยชน์ร่วมกัน"}]},
+{"id":"hsk5-522","chinese":"利用","pinyin":"lì yòng","meaning":"To utilize; to use","meaningThai":"ใช้ประโยชน์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"利用资源。","pinyin":"Li yong zi yuan.","meaning":"Utilize resources.","meaningThai":"ใช้ทรัพยากรให้เกิดประโยชน์"}]},
+{"id":"hsk5-523","chinese":"连忙","pinyin":"lián máng","meaning":"Hastily; promptly","meaningThai":"รีบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"连忙道歉。","pinyin":"Lian mang dao qian.","meaning":"Hastily apologize.","meaningThai":"รีบขอโทษ"}]},
+{"id":"hsk5-524","chinese":"连续","pinyin":"lián xù","meaning":"Continuous","meaningThai":"ต่อเนื่อง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"连续工作。","pinyin":"Lian xu gong zuo.","meaning":"Work continuously.","meaningThai":"ทำงานต่อเนื่อง"}]},
+{"id":"hsk5-525","chinese":"联合","pinyin":"lián hé","meaning":"United; combined","meaningThai":"ร่วม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"联合起来。","pinyin":"Lian he qi lai.","meaning":"Join together.","meaningThai":"ร่วมมือกัน"}]},
+{"id":"hsk5-526","chinese":"联系","pinyin":"lián xì","meaning":"Contact; connection","meaningThai":"ติดต่อ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"保持联系。","pinyin":"Bao chi lian xi.","meaning":"Stay in touch.","meaningThai":"ติดต่อกันไว้"}]},
+{"id":"hsk5-527","chinese":"粮食","pinyin":"liáng shi","meaning":"Grain; food","meaningThai":"ธัญพืช","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"粮食安全。","pinyin":"Liang shi an quan.","meaning":"Food security.","meaningThai":"ความมั่นคงทางอาหาร"}]},
+{"id":"hsk5-528","chinese":"疗法","pinyin":"liáo fǎ","meaning":"Therapy; treatment","meaningThai":"การบำบัด","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"物理疗法。","pinyin":"Wu li liao fa.","meaning":"Physical therapy.","meaningThai":"กายภาพบำบัด"}]},
+{"id":"hsk5-529","chinese":"辽阔","pinyin":"liáo kuò","meaning":"Vast; extensive","meaningThai":"กว้างใหญ่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"辽阔的草原。","pinyin":"Liao kuo de cao yuan.","meaning":"Vast grassland.","meaningThai":"ทุ่งหญ้ากว้างใหญ่"}]},
+{"id":"hsk5-530","chinese":"了解","pinyin":"liǎo jiě","meaning":"To understand; to find out","meaningThai":"เข้าใจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"了解情况。","pinyin":"Liao jie qing kuang.","meaning":"Understand the situation.","meaningThai":"เข้าใจสถานการณ์"}]},
+{"id":"hsk5-531","chinese":"邻居","pinyin":"lín jū","meaning":"Neighbor","meaningThai":"เพื่อนบ้าน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"邻居关系。","pinyin":"Lin ju guan xi.","meaning":"Neighborly relations.","meaningThai":"ความสัมพันธ์เพื่อนบ้าน"}]},
+{"id":"hsk5-532","chinese":"零件","pinyin":"líng jiàn","meaning":"Part; component","meaningThai":"ชิ้นส่วน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"汽车零件。","pinyin":"Qi che ling jian.","meaning":"Car parts.","meaningThai":"ชิ้นส่วนรถยนต์"}]},
+{"id":"hsk5-533","chinese":"领导","pinyin":"lǐng dǎo","meaning":"Leader; to lead","meaningThai":"ผู้นำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"领导班子。","pinyin":"Ling dao ban zi.","meaning":"Leadership team.","meaningThai":"ทีมผู้นำ"}]},
+{"id":"hsk5-534","chinese":"领域","pinyin":"lǐng yù","meaning":"Field; domain","meaningThai":"สาขา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"研究领域。","pinyin":"Yan jiu ling yu.","meaning":"Research field.","meaningThai":"สาขาการวิจัย"}]},
+{"id":"hsk5-535","chinese":"流动","pinyin":"liú dòng","meaning":"To flow; mobile","meaningThai":"ไหล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"人才流动。","pinyin":"Ren cai liu dong.","meaning":"Talent flow.","meaningThai":"การเคลื่อนย้ายบุคลากร"}]},
+{"id":"hsk5-536","chinese":"流行","pinyin":"liú xíng","meaning":"Popular; fashionable","meaningThai":"เป็นที่นิยม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"流行音乐。","pinyin":"Liu xing yin yue.","meaning":"Pop music.","meaningThai":"เพลงยอดนิยม"}]},
+{"id":"hsk5-537","chinese":"龙头","pinyin":"lóng tóu","meaning":"Faucet; leader (fig.)","meaningThai":"ก๊อกน้ำ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"水龙头。","pinyin":"Shui long tou.","meaning":"Water faucet.","meaningThai":"ก๊อกน้ำ"}]},
+{"id":"hsk5-538","chinese":"路线","pinyin":"lù xiàn","meaning":"Route; line","meaningThai":"เส้นทาง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"旅行路线。","pinyin":"Lv xing lu xian.","meaning":"Travel route.","meaningThai":"เส้นทางการเดินทาง"}]},
+{"id":"hsk5-539","chinese":"旅行","pinyin":"lǚ xíng","meaning":"To travel; trip","meaningThai":"เดินทาง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"出国旅行。","pinyin":"Chu guo lv xing.","meaning":"Travel abroad.","meaningThai":"เดินทางต่างประเทศ"}]},
+{"id":"hsk5-540","chinese":"律师","pinyin":"lǜ shī","meaning":"Lawyer","meaningThai":"ทนายความ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"聘请律师。","pinyin":"Pin qing lv shi.","meaning":"Hire a lawyer.","meaningThai":"จ้างทนายความ"}]},
+{"id":"hsk5-541","chinese":"履行","pinyin":"lǚ xíng","meaning":"To fulfill; to perform","meaningThai":"ปฏิบัติ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"履行承诺。","pinyin":"Lv xing cheng nuo.","meaning":"Fulfill a promise.","meaningThai":"ปฏิบัติตามคำมั่นสัญญา"}]},
+{"id":"hsk5-542","chinese":"轮流","pinyin":"lún liú","meaning":"To take turns","meaningThai":"ผลัดกัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"轮流值班。","pinyin":"Lun liu zhi ban.","meaning":"Take turns on duty.","meaningThai":"ผลัดกันเวร"}]},
+{"id":"hsk5-543","chinese":"论文","pinyin":"lùn wén","meaning":"Paper; thesis","meaningThai":"วิทยานิพนธ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"发表论文。","pinyin":"Fa biao lun wen.","meaning":"Publish a paper.","meaningThai":"ตีพิมพ์วิทยานิพนธ์"}]},
+{"id":"hsk5-544","chinese":"落后","pinyin":"luò hòu","meaning":"Backward; to fall behind","meaningThai":"ล้าหลัง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"技术落后。","pinyin":"Ji shu luo hou.","meaning":"Technologically backward.","meaningThai":"เทคโนโลยีล้าหลัง"}]},
+{"id":"hsk5-545","chinese":"满意","pinyin":"mǎn yì","meaning":"Satisfied","meaningThai":"พอใจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"非常满意。","pinyin":"Fei chang man yi.","meaning":"Very satisfied.","meaningThai":"พอใจมาก"}]},
+{"id":"hsk5-546","chinese":"矛盾","pinyin":"máo dùn","meaning":"Contradiction","meaningThai":"ความขัดแย้ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"产生矛盾。","pinyin":"Chan sheng mao dun.","meaning":"Create conflict.","meaningThai":"เกิดความขัดแย้ง"}]},
+{"id":"hsk5-547","chinese":"贸易","pinyin":"mào yì","meaning":"Trade; commerce","meaningThai":"การค้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"国际贸易。","pinyin":"Guo ji mao yi.","meaning":"International trade.","meaningThai":"การค้าระหว่างประเทศ"}]},
+{"id":"hsk5-548","chinese":"没错","pinyin":"méi cuò","meaning":"Correct; right","meaningThai":"ถูกต้อง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"你说的没错。","pinyin":"Ni shuo de mei cuo.","meaning":"You're right.","meaningThai":"คุณพูดถูกต้อง"}]},
+{"id":"hsk5-549","chinese":"美观","pinyin":"měi guān","meaning":"Beautiful; aesthetic","meaningThai":"สวยงาม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"外观美观。","pinyin":"Wai guan mei guan.","meaning":"Beautiful appearance.","meaningThai":"รูปลักษณ์สวยงาม"}]},
+{"id":"hsk5-550","chinese":"面积","pinyin":"miàn jī","meaning":"Area (measurement)","meaningThai":"พื้นที่","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"居住面积。","pinyin":"Ju zhu mian ji.","meaning":"Living area.","meaningThai":"พื้นที่อยู่อาศัย"}]},
+{"id":"hsk5-551","chinese":"面临","pinyin":"miàn lín","meaning":"To face; to confront","meaningThai":"เผชิญ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"面临挑战。","pinyin":"Mian lin tiao zhan.","meaning":"Face challenges.","meaningThai":"เผชิญกับความท้าทาย"}]},
+{"id":"hsk5-552","chinese":"面前","pinyin":"miàn qián","meaning":"In front of; before","meaningThai":"ข้างหน้า","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"在面前。","pinyin":"Zai mian qian.","meaning":"In front.","meaningThai":"อยู่ข้างหน้า"}]},
+{"id":"hsk5-553","chinese":"描写","pinyin":"miáo xiě","meaning":"To describe","meaningThai":"บรรยาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"描写人物。","pinyin":"Miao xie ren wu.","meaning":"Describe a character.","meaningThai":"บรรยายตัวละคร"}]},
+{"id":"hsk5-554","chinese":"民间","pinyin":"mín jiān","meaning":"Folk; civilian","meaningThai":"พื้นบ้าน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"民间故事。","pinyin":"Min jian gu shi.","meaning":"Folk tale.","meaningThai":"นิทานพื้นบ้าน"}]},
+{"id":"hsk5-555","chinese":"民主","pinyin":"mín zhǔ","meaning":"Democracy","meaningThai":"ประชาธิปไตย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"民主制度。","pinyin":"Min zhu zhi du.","meaning":"Democratic system.","meaningThai":"ระบบประชาธิปไตย"}]},
+{"id":"hsk5-556","chinese":"明显","pinyin":"míng xiǎn","meaning":"Obvious; clear","meaningThai":"ชัดเจน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"明显进步。","pinyin":"Ming xian jin bu.","meaning":"Obvious progress.","meaningThai":"ความก้าวหน้าที่ชัดเจน"}]},
+{"id":"hsk5-557","chinese":"明星","pinyin":"míng xīng","meaning":"Star; celebrity","meaningThai":"ดารา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"电影明星。","pinyin":"Dian ying ming xing.","meaning":"Movie star.","meaningThai":"ดาราหนัง"}]},
+{"id":"hsk5-558","chinese":"命令","pinyin":"mìng lìng","meaning":"Command; order","meaningThai":"คำสั่ง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"下达命令。","pinyin":"Xia da ming ling.","meaning":"Issue a command.","meaningThai":"ออกคำสั่ง"}]},
+{"id":"hsk5-559","chinese":"命运","pinyin":"mìng yùn","meaning":"Fate; destiny","meaningThai":"โชคชะตา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"改变命运。","pinyin":"Gai bian ming yun.","meaning":"Change destiny.","meaningThai":"เปลี่ยนแปลงโชคชะตา"}]},
+{"id":"hsk5-560","chinese":"模范","pinyin":"mó fàn","meaning":"Model; example","meaningThai":"แบบอย่าง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"劳动模范。","pinyin":"Lao dong mo fan.","meaning":"Model worker.","meaningThai":"แบบอย่างแรงงาน"}]},
+{"id":"hsk5-561","chinese":"模仿","pinyin":"mó fǎng","meaning":"To imitate","meaningThai":"เลียนแบบ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"模仿动作。","pinyin":"Mo fang dong zuo.","meaning":"Imitate actions.","meaningThai":"เลียนแบบการเคลื่อนไหว"}]},
+{"id":"hsk5-562","chinese":"模型","pinyin":"mó xíng","meaning":"Model; mold","meaningThai":"แบบจำลอง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"3D模型。","pinyin":"San D mo xing.","meaning":"3D model.","meaningThai":"แบบจำลอง 3 มิติ"}]},
+{"id":"hsk5-563","chinese":"目标","pinyin":"mù biāo","meaning":"Goal; target","meaningThai":"เป้าหมาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"奋斗目标。","pinyin":"Fen dou mu biao.","meaning":"Striving goal.","meaningThai":"เป้าหมายในการต่อสู้"}]},
+{"id":"hsk5-564","chinese":"目前","pinyin":"mù qián","meaning":"Currently; at present","meaningThai":"ปัจจุบัน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"目前情况。","pinyin":"Mu qian qing kuang.","meaning":"Current situation.","meaningThai":"สถานการณ์ปัจจุบัน"}]},
+{"id":"hsk5-565","chinese":"耐心","pinyin":"nài xīn","meaning":"Patience","meaningThai":"ความอดทน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"要有耐心。","pinyin":"Yao you nai xin.","meaning":"Be patient.","meaningThai":"ต้องมีความอดทน"}]},
+{"id":"hsk5-566","chinese":"脑袋","pinyin":"nǎo dài","meaning":"Head; brain","meaningThai":"หัว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"脑袋疼。","pinyin":"Nao dai teng.","meaning":"Headache.","meaningThai":"ปวดหัว"}]},
+{"id":"hsk5-567","chinese":"内科","pinyin":"nèi kē","meaning":"Internal medicine","meaningThai":"อายุรกรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"内科医生。","pinyin":"Nei ke yi sheng.","meaning":"Physician (internal medicine).","meaningThai":"แพทย์อายุรกรรม"}]},
+{"id":"hsk5-568","chinese":"内容","pinyin":"nèi róng","meaning":"Content","meaningThai":"เนื้อหา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"学习内容。","pinyin":"Xue xi nei rong.","meaning":"Learning content.","meaningThai":"เนื้อหาการเรียนรู้"}]},
+{"id":"hsk5-569","chinese":"能源","pinyin":"néng yuán","meaning":"Energy (resources)","meaningThai":"พลังงาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"可再生能源。","pinyin":"Ke zai sheng neng yuan.","meaning":"Renewable energy.","meaningThai":"พลังงานหมุนเวียน"}]},
+{"id":"hsk5-570","chinese":"年代","pinyin":"nián dài","meaning":"Era; decade","meaningThai":"ยุค","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"二十年代。","pinyin":"Er shi nian dai.","meaning":"The twenties.","meaningThai":"ยุคยี่สิบ"}]},
+{"id":"hsk5-571","chinese":"年纪","pinyin":"nián jì","meaning":"Age","meaningThai":"อายุ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"年纪大了。","pinyin":"Nian ji da le.","meaning":"Getting old.","meaningThai":"อายุมากแล้ว"}]},
+{"id":"hsk5-572","chinese":"年轻","pinyin":"nián qīng","meaning":"Young","meaningThai":"หนุ่มสาว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"年轻人。","pinyin":"Nian qing ren.","meaning":"Young person.","meaningThai":"คนหนุ่มสาว"}]},
+{"id":"hsk5-573","chinese":"宁可","pinyin":"nìng kě","meaning":"Would rather","meaningThai":"ยอม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"宁可放弃。","pinyin":"Ning ke fang qi.","meaning":"Would rather give up.","meaningThai":"ยอมแพ้ดีกว่า"}]},
+{"id":"hsk5-574","chinese":"农业","pinyin":"nóng yè","meaning":"Agriculture","meaningThai":"เกษตรกรรม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"农业发展。","pinyin":"Nong ye fa zhan.","meaning":"Agricultural development.","meaningThai":"การพัฒนาเกษตรกรรม"}]},
+{"id":"hsk5-575","chinese":"女人","pinyin":"nǚ rén","meaning":"Woman","meaningThai":"ผู้หญิง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"成功女人。","pinyin":"Cheng gong nv ren.","meaning":"Successful woman.","meaningThai":"ผู้หญิงที่ประสบความสำเร็จ"}]},
+{"id":"hsk5-576","chinese":"偶然","pinyin":"ǒu rán","meaning":"By chance; accidental","meaningThai":"โดยบังเอิญ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"偶然发现。","pinyin":"Ou ran fa xian.","meaning":"Discover by chance.","meaningThai":"พบโดยบังเอิญ"}]},
+{"id":"hsk5-577","chinese":"排放","pinyin":"pái fàng","meaning":"To emit; to discharge","meaningThai":"ปล่อย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"尾气排放。","pinyin":"Wei qi pai fang.","meaning":"Exhaust emission.","meaningThai":"การปล่อยไอเสีย"}]},
+{"id":"hsk5-578","chinese":"排队","pinyin":"pái duì","meaning":"To line up; queue","meaningThai":"ต่อแถว","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"排队等候。","pinyin":"Pai dui deng hou.","meaning":"Queue up and wait.","meaningThai":"ต่อแถวรอ"}]},
+{"id":"hsk5-579","chinese":"排列","pinyin":"pái liè","meaning":"To arrange; to rank","meaningThai":"จัดเรียง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"按顺序排列。","pinyin":"An shun xu pai lie.","meaning":"Arrange in order.","meaningThai":"จัดเรียงตามลำดับ"}]},
+{"id":"hsk5-580","chinese":"赔偿","pinyin":"péi cháng","meaning":"To compensate; compensation","meaningThai":"ชดใช้","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"赔偿损失。","pinyin":"Pei chang sun shi.","meaning":"Compensate for losses.","meaningThai":"ชดใช้ความเสียหาย"}]},
+{"id":"hsk5-581","chinese":"配合","pinyin":"pèi hé","meaning":"To cooperate; to coordinate","meaningThai":"ประสานงาน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"密切配合。","pinyin":"Mi qie pei he.","meaning":"Close cooperation.","meaningThai":"ประสานงานอย่างใกล้ชิด"}]},
+{"id":"hsk5-582","chinese":"烹饪","pinyin":"pēng rèn","meaning":"Cooking; culinary","meaningThai":"การทำอาหาร","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"烹饪技术。","pinyin":"Peng ren ji shu.","meaning":"Cooking skills.","meaningThai":"เทคนิคการทำอาหาร"}]},
+{"id":"hsk5-583","chinese":"批评","pinyin":"pī píng","meaning":"To criticize; criticism","meaningThai":"วิพากษ์วิจารณ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"接受批评。","pinyin":"Jie shou pi ping.","meaning":"Accept criticism.","meaningThai":"ยอมรับคำวิจารณ์"}]},
+{"id":"hsk5-584","chinese":"品种","pinyin":"pǐn zhǒng","meaning":"Variety; breed","meaningThai":"สายพันธุ์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"植物品种。","pinyin":"Zhi wu pin zhong.","meaning":"Plant variety.","meaningThai":"สายพันธุ์พืช"}]},
+{"id":"hsk5-585","chinese":"评价","pinyin":"píng jià","meaning":"To evaluate; evaluation","meaningThai":"ประเมิน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"综合评价。","pinyin":"Zong he ping jia.","meaning":"Comprehensive evaluation.","meaningThai":"การประเมินที่ครอบคลุม"}]},
+{"id":"hsk5-586","chinese":"贫困","pinyin":"pín kùn","meaning":"Poor; impoverished","meaningThai":"ยากจน","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"摆脱贫困。","pinyin":"Bai tuo pin kun.","meaning":"Escape poverty.","meaningThai":"หลุดพ้นจากความยากจน"}]},
+{"id":"hsk5-587","chinese":"平常","pinyin":"píng cháng","meaning":"Ordinary; usual","meaningThai":"ปกติ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"平常心。","pinyin":"Ping chang xin.","meaning":"Ordinary mind.","meaningThai":"ใจปกติ"}]},
+{"id":"hsk5-588","chinese":"平等","pinyin":"píng děng","meaning":"Equality","meaningThai":"ความเท่าเทียม","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"男女平等。","pinyin":"Nan nv ping deng.","meaning":"Gender equality.","meaningThai":"ความเท่าเทียมทางเพศ"}]},
+{"id":"hsk5-589","chinese":"平方","pinyin":"píng fāng","meaning":"Square (measurement)","meaningThai":"ตาราง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"平方米。","pinyin":"Ping fang mi.","meaning":"Square meter.","meaningThai":"ตารางเมตร"}]},
+{"id":"hsk5-590","chinese":"平衡","pinyin":"píng héng","meaning":"Balance","meaningThai":"สมดุล","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"生态平衡。","pinyin":"Sheng tai ping heng.","meaning":"Ecological balance.","meaningThai":"สมดุลทางนิเวศวิทยา"}]},
+{"id":"hsk5-591","chinese":"平均","pinyin":"píng jūn","meaning":"Average","meaningThai":"เฉลี่ย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"平均收入。","pinyin":"Ping jun shou ru.","meaning":"Average income.","meaningThai":"รายได้เฉลี่ย"}]},
+{"id":"hsk5-592","chinese":"评选","pinyin":"píng xuǎn","meaning":"To select through evaluation","meaningThai":"คัดเลือก","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"评选优秀。","pinyin":"Ping xuan you xiu.","meaning":"Select the excellent.","meaningThai":"คัดเลือกผู้ยอดเยี่ยม"}]},
+{"id":"hsk5-593","chinese":"破产","pinyin":"pò chǎn","meaning":"Bankruptcy; to go bankrupt","meaningThai":"ล้มละลาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"企业破产。","pinyin":"Qi ye po chan.","meaning":"Enterprise bankruptcy.","meaningThai":"กิจการล้มละลาย"}]},
+{"id":"hsk5-594","chinese":"普遍","pinyin":"pǔ biàn","meaning":"Universal; common","meaningThai":"ทั่วๆไป","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"普遍现象。","pinyin":"Pu bian xian xiang.","meaning":"Common phenomenon.","meaningThai":"ปรากฏการณ์ทั่วๆไป"}]},
+{"id":"hsk5-595","chinese":"普及","pinyin":"pǔ jí","meaning":"To popularize; widespread","meaningThai":"แพร่หลาย","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"普及教育。","pinyin":"Pu ji jiao yu.","meaning":"Popularize education.","meaningThai":"การศึกษาที่แพร่หลาย"}]},
+{"id":"hsk5-596","chinese":"期间","pinyin":"qī jiān","meaning":"Period; duration","meaningThai":"ช่วง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"假期期间。","pinyin":"Jia qi qi jian.","meaning":"During the holiday.","meaningThai":"ช่วงวันหยุด"}]},
+{"id":"hsk5-597","chinese":"期限","pinyin":"qī xiàn","meaning":"Time limit; deadline","meaningThai":"กำหนดเวลา","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"有效期限。","pinyin":"You xiao qi xian.","meaning":"Validity period.","meaningThai":"ระยะเวลาที่มีผล"}]},
+{"id":"hsk5-598","chinese":"欺骗","pinyin":"qī piàn","meaning":"To deceive; fraud","meaningThai":"หลอกลวง","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"欺骗消费者。","pinyin":"Qi pian xiao fei zhe.","meaning":"Deceive consumers.","meaningThai":"หลอกลวงผู้บริโภค"}]},
+{"id":"hsk5-599","chinese":"奇迹","pinyin":"qí jì","meaning":"Miracle; wonder","meaningThai":"ปาฏิหาริย์","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"医学奇迹。","pinyin":"Yi xue qi ji.","meaning":"Medical miracle.","meaningThai":"ปาฏิหาริย์ทางการแพทย์"}]},
+{"id":"hsk5-600","chinese":"企业","pinyin":"qǐ yè","meaning":"Enterprise; business","meaningThai":"วิสาหกิจ","category":"hsk","subcategory":"hsk5","hskLevel":5,"status":"new","examples":[{"chinese":"中小企业。","pinyin":"Zhong xiao qi ye.","meaning":"Small and medium enterprises.","meaningThai":"วิสาหกิจขนาดกลางและขนาดย่อม"}]}
 ];
 
 
@@ -1281,10 +2441,9931 @@ const HSK6_WORDS = [
 {"id":"hsk6-092","chinese":"打扮","pinyin":"dǎ ban","meaning":"To dress up","meaningThai":"แต่งตัว","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"精心打扮。","pinyin":"Jing xin da ban.","meaning":"Dress up carefully.","meaningThai":"แต่งตัวอย่างพิถีพิถัน"}]},
 {"id":"hsk6-093","chinese":"打倒","pinyin":"dǎ dǎo","meaning":"To overthrow","meaningThai":"โค่นล้ม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"打倒敌人。","pinyin":"Da dao di ren.","meaning":"Overthrow the enemy.","meaningThai":"โค่นล้มศัตรู"}]},
 {"id":"hsk6-094","chinese":"代表","pinyin":"dài biǎo","meaning":"Representative","meaningThai":"ตัวแทน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"三个代表。","pinyin":"San ge dai biao.","meaning":"Three represents.","meaningThai":"สามตัวแทน"}]},
+{"id":"hsk6-95","chinese":"代表","pinyin":"dài biǎo","meaning":"Representative; to represent","meaningThai":"ตัวแทน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"代表出席。","pinyin":"Dai biao chu xi.","meaning":"Attend as a representative.","meaningThai":"เข้าร่วมในฐานะตัวแทน"}]},
+{"id":"hsk6-96","chinese":"担任","pinyin":"dān rèn","meaning":"To hold a position","meaningThai":"ดำรงตำแหน่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"担任主席。","pinyin":"Dan ren zhu xi.","meaning":"Serve as chairman.","meaningThai":"ดำรงตำแหน่งประธาน"}]},
+{"id":"hsk6-97","chinese":"担心","pinyin":"dān xīn","meaning":"To worry","meaningThai":"กังวล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"不要担心。","pinyin":"Bu yao dan xin.","meaning":"Don't worry.","meaningThai":"ไม่ต้องกังวล"}]},
+{"id":"hsk6-98","chinese":"单纯","pinyin":"dān chún","meaning":"Simple; pure","meaningThai":"บริสุทธิ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"思想单纯。","pinyin":"Si xiang dan chun.","meaning":"Pure thoughts.","meaningThai":"ความคิดบริสุทธิ์"}]},
+{"id":"hsk6-99","chinese":"单调","pinyin":"dān diào","meaning":"Monotonous; dull","meaningThai":"ซ้ำซาก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"生活单调。","pinyin":"Sheng huo dan diao.","meaning":"Monotonous life.","meaningThai":"ชีวิตที่ซ้ำซาก"}]},
+{"id":"hsk6-100","chinese":"单位","pinyin":"dān wèi","meaning":"Unit; organization","meaningThai":"หน่วย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"工作单位。","pinyin":"Gong zuo dan wei.","meaning":"Work unit.","meaningThai":"หน่วยงาน"}]},
+{"id":"hsk6-101","chinese":"单元","pinyin":"dān yuán","meaning":"Unit (section)","meaningThai":"หน่วย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"第一单元。","pinyin":"Di yi dan yuan.","meaning":"First unit.","meaningThai":"หน่วยที่หนึ่ง"}]},
+{"id":"hsk6-102","chinese":"耽误","pinyin":"dān wù","meaning":"To delay","meaningThai":"ล่าช้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"耽误时间。","pinyin":"Dan wu shi jian.","meaning":"Delay time.","meaningThai":"เสียเวลา"}]},
+{"id":"hsk6-103","chinese":"胆怯","pinyin":"dǎn qiè","meaning":"Timid; cowardly","meaningThai":"ขี้ขลาด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"不要胆怯。","pinyin":"Bu yao dan qie.","meaning":"Don't be timid.","meaningThai":"อย่ากลัว"}]},
+{"id":"hsk6-104","chinese":"淡薄","pinyin":"dàn bó","meaning":"Thin; weak; indifferent","meaningThai":"จาง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"兴趣淡薄。","pinyin":"Xing qu dan bo.","meaning":"Interest wanes.","meaningThai":"ความสนใจจางลง"}]},
+{"id":"hsk6-105","chinese":"淡水","pinyin":"dàn shuǐ","meaning":"Fresh water","meaningThai":"น้ำจืด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"淡水湖。","pinyin":"Dan shui hu.","meaning":"Freshwater lake.","meaningThai":"ทะเลสาบน้ำจืด"}]},
+{"id":"hsk6-106","chinese":"蛋白质","pinyin":"dàn bái zhì","meaning":"Protein","meaningThai":"โปรตีน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"含蛋白质。","pinyin":"Han dan bai zhi.","meaning":"Contains protein.","meaningThai":"มีโปรตีน"}]},
+{"id":"hsk6-107","chinese":"当选","pinyin":"dāng xuǎn","meaning":"To be elected","meaningThai":"ได้รับเลือก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"当选总统。","pinyin":"Dang xuan zong tong.","meaning":"Elected president.","meaningThai":"ได้รับเลือกเป็นประธานาธิบดี"}]},
+{"id":"hsk6-108","chinese":"当中","pinyin":"dāng zhōng","meaning":"Among; in the middle","meaningThai":"ในหมู่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"人群当中。","pinyin":"Ren qun dang zhong.","meaning":"Among the crowd.","meaningThai":"ในหมู่ฝูงชน"}]},
+{"id":"hsk6-109","chinese":"档桉","pinyin":"dàng àn","meaning":"Archive; file","meaningThai":"แฟ้มเอกสาร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"人事档桉。","pinyin":"Ren shi dang an.","meaning":"Personnel file.","meaningThai":"แฟ้มบุคลากร"}]},
+{"id":"hsk6-110","chinese":"岛屿","pinyin":"dǎo yǔ","meaning":"Island","meaningThai":"เกาะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"美丽岛屿。","pinyin":"Mei li dao yu.","meaning":"Beautiful island.","meaningThai":"เกาะที่สวยงาม"}]},
+{"id":"hsk6-111","chinese":"盗窃","pinyin":"dào qiè","meaning":"To steal; theft","meaningThai":"ขโมย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"盗窃财物。","pinyin":"Dao qie cai wu.","meaning":"Steal property.","meaningThai":"ขโมยทรัพย์สิน"}]},
+{"id":"hsk6-112","chinese":"道德","pinyin":"dào dé","meaning":"Morality; ethics","meaningThai":"ศีลธรรม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"社会道德。","pinyin":"She hui dao de.","meaning":"Social morality.","meaningThai":"ศีลธรรมทางสังคม"}]},
+{"id":"hsk6-113","chinese":"得不偿失","pinyin":"dé bù cháng shī","meaning":"Loss outweighs gain","meaningThai":"ไม่คุ้มค่า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"这样做得不偿失。","pinyin":"Zhe yang zuo de bu chang shi.","meaning":"The loss outweighs the gain.","meaningThai":"ทำแบบนี้ไม่คุ้มค่า"}]},
+{"id":"hsk6-114","chinese":"登记","pinyin":"dēng jì","meaning":"To register","meaningThai":"ลงทะเบียน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"登记结婚。","pinyin":"Deng ji jie hun.","meaning":"Register for marriage.","meaningThai":"จดทะเบียนสมรส"}]},
+{"id":"hsk6-115","chinese":"等待","pinyin":"děng dài","meaning":"To wait","meaningThai":"รอคอย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"耐心等待。","pinyin":"Nai xin deng dai.","meaning":"Wait patiently.","meaningThai":"รอคอยอย่างอดทน"}]},
+{"id":"hsk6-116","chinese":"等候","pinyin":"děng hòu","meaning":"To await","meaningThai":"คอย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"等候通知。","pinyin":"Deng hou tong zhi.","meaning":"Await notification.","meaningThai":"คอยการแจ้งเตือน"}]},
+{"id":"hsk6-117","chinese":"等级","pinyin":"děng jí","meaning":"Grade; rank","meaningThai":"ระดับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"高级等级。","pinyin":"Gao ji deng ji.","meaning":"High grade.","meaningThai":"ระดับสูง"}]},
+{"id":"hsk6-118","chinese":"敌人","pinyin":"dí rén","meaning":"Enemy","meaningThai":"ศัตรู","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"消灭敌人。","pinyin":"Xiao mie di ren.","meaning":"Eliminate the enemy.","meaningThai":"กำจัดศัตรู"}]},
+{"id":"hsk6-119","chinese":"的确","pinyin":"dí què","meaning":"Indeed; truly","meaningThai":"แน่นอน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"的确如此。","pinyin":"Di que ru ci.","meaning":"Indeed it is so.","meaningThai":"แน่นอนว่าเป็นเช่นนั้น"}]},
+{"id":"hsk6-120","chinese":"低谷","pinyin":"dī gǔ","meaning":"Low point; trough","meaningThai":"จุดต่ำสุด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"走出低谷。","pinyin":"Zou chu di gu.","meaning":"Get out of the trough.","meaningThai":"ออกจากจุดต่ำสุด"}]},
+{"id":"hsk6-121","chinese":"地步","pinyin":"dì bù","meaning":"Situation; extent","meaningThai":"ขั้น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"到这个地步。","pinyin":"Dao zhe ge di bu.","meaning":"To this extent.","meaningThai":"ถึงขั้นนี้"}]},
+{"id":"hsk6-122","chinese":"地势","pinyin":"dì shì","meaning":"Terrain; topography","meaningThai":"ภูมิประเทศ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"地势险要。","pinyin":"Di shi xian yao.","meaning":"Dangerous terrain.","meaningThai":"ภูมิประเทศอันตราย"}]},
+{"id":"hsk6-123","chinese":"地位","pinyin":"dì wèi","meaning":"Status; position","meaningThai":"สถานะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"社会地位。","pinyin":"She hui di wei.","meaning":"Social status.","meaningThai":"สถานะทางสังคม"}]},
+{"id":"hsk6-124","chinese":"地震","pinyin":"dì zhèn","meaning":"Earthquake","meaningThai":"แผ่นดินไหว","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"发生地震。","pinyin":"Fa sheng di zhen.","meaning":"Earthquake occurs.","meaningThai":"เกิดแผ่นดินไหว"}]},
+{"id":"hsk6-125","chinese":"地质","pinyin":"dì zhì","meaning":"Geology","meaningThai":"ธรณีวิทยา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"地质勘探。","pinyin":"Di zhi kan tan.","meaning":"Geological exploration.","meaningThai":"สำรวจทางธรณีวิทยา"}]},
+{"id":"hsk6-126","chinese":"点缀","pinyin":"diǎn zhuì","meaning":"To embellish; ornament","meaningThai":"ประดับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"点缀生活。","pinyin":"Dian zhui sheng huo.","meaning":"Embellish life.","meaningThai":"ประดับชีวิต"}]},
+{"id":"hsk6-127","chinese":"典范","pinyin":"diǎn fàn","meaning":"Model; example","meaningThai":"แบบอย่าง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"学习典范。","pinyin":"Xue xi dian fan.","meaning":"Role model.","meaningThai":"แบบอย่างในการเรียนรู้"}]},
+{"id":"hsk6-128","chinese":"典礼","pinyin":"diǎn lǐ","meaning":"Ceremony","meaningThai":"พิธี","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"毕业典礼。","pinyin":"Bi ye dian li.","meaning":"Graduation ceremony.","meaningThai":"พิธีรับปริญญา"}]},
+{"id":"hsk6-129","chinese":"典型","pinyin":"diǎn xíng","meaning":"Typical; classic","meaningThai":"โดยทั่วไป","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"典型案例。","pinyin":"Dian xing an li.","meaning":"Typical case.","meaningThai":"กรณีทั่วไป"}]},
+{"id":"hsk6-130","chinese":"电报","pinyin":"diàn bào","meaning":"Telegram","meaningThai":"โทรเลข","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"发电报。","pinyin":"Fa dian bao.","meaning":"Send a telegram.","meaningThai":"ส่งโทรเลข"}]},
+{"id":"hsk6-131","chinese":"电池","pinyin":"diàn chí","meaning":"Battery","meaningThai":"แบตเตอรี่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"换电池。","pinyin":"Huan dian chi.","meaning":"Change the battery.","meaningThai":"เปลี่ยนแบตเตอรี่"}]},
+{"id":"hsk6-132","chinese":"电路","pinyin":"diàn lù","meaning":"Circuit (electrical)","meaningThai":"วงจรไฟฟ้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"电路设计。","pinyin":"Dian lu she ji.","meaning":"Circuit design.","meaningThai":"ออกแบบวงจรไฟฟ้า"}]},
+{"id":"hsk6-133","chinese":"电器","pinyin":"diàn qì","meaning":"Electrical appliance","meaningThai":"เครื่องใช้ไฟฟ้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"家用电器。","pinyin":"Jia yong dian qi.","meaning":"Household appliances.","meaningThai":"เครื่องใช้ไฟฟ้าในบ้าน"}]},
+{"id":"hsk6-134","chinese":"电台","pinyin":"diàn tái","meaning":"Radio station","meaningThai":"สถานีวิทยุ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"广播电台。","pinyin":"Guang bo dian tai.","meaning":"Broadcasting station.","meaningThai":"สถานีวิทยุกระจายเสียง"}]},
+{"id":"hsk6-135","chinese":"刁难","pinyin":"diāo nàn","meaning":"To be deliberately difficult","meaningThai":"กลั่นแกล้ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"故意刁难。","pinyin":"Gu yi diao nan.","meaning":"Deliberately make things difficult.","meaningThai":"จงใจกลั่นแกล้ง"}]},
+{"id":"hsk6-136","chinese":"调动","pinyin":"diào dòng","meaning":"To transfer; to mobilize","meaningThai":"โยกย้าย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"调动工作。","pinyin":"Diao dong gong zuo.","meaning":"Transfer jobs.","meaningThai":"โยกย้ายงาน"}]},
+{"id":"hsk6-137","chinese":"失眠","pinyin":"shī mián","meaning":"Insomnia","meaningThai":"นอนไม่หลับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"最近失眠。","pinyin":"Zui jin shi mian.","meaning":"Having insomnia lately.","meaningThai":"ช่วงนี้นอนไม่หลับ"}]},
+{"id":"hsk6-138","chinese":"失望","pinyin":"shī wàng","meaning":"Disappointed","meaningThai":"ผิดหวัง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"很失望。","pinyin":"Hen shi wang.","meaning":"Very disappointed.","meaningThai":"ผิดหวังมาก"}]},
+{"id":"hsk6-139","chinese":"实施","pinyin":"shí shī","meaning":"To implement","meaningThai":"ดำเนินการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"实施计划。","pinyin":"Shi shi ji hua.","meaning":"Implement the plan.","meaningThai":"ดำเนินการตามแผน"}]},
+{"id":"hsk6-140","chinese":"实验","pinyin":"shí yàn","meaning":"Experiment","meaningThai":"การทดลอง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"科学实验。","pinyin":"Ke xue shi yan.","meaning":"Scientific experiment.","meaningThai":"การทดลองทางวิทยาศาสตร์"}]},
+{"id":"hsk6-141","chinese":"实用","pinyin":"shí yòng","meaning":"Practical; useful","meaningThai":"ใช้งานได้จริง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"很实用。","pinyin":"Hen shi yong.","meaning":"Very practical.","meaningThai":"ใช้งานได้จริงมาก"}]},
+{"id":"hsk6-142","chinese":"实质","pinyin":"shí zhì","meaning":"Essence; substance","meaningThai":"สาระสำคัญ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"实质问题。","pinyin":"Shi zhi wen ti.","meaning":"Substantive issue.","meaningThai":"ปัญหาสำคัญ"}]},
+{"id":"hsk6-143","chinese":"食品","pinyin":"shí pǐn","meaning":"Food product","meaningThai":"อาหาร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"食品卫生。","pinyin":"Shi pin wei sheng.","meaning":"Food hygiene.","meaningThai":"สุขอนามัยอาหาร"}]},
+{"id":"hsk6-144","chinese":"使命","pinyin":"shǐ mìng","meaning":"Mission","meaningThai":"ภารกิจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"历史使命。","pinyin":"Li shi shi ming.","meaning":"Historical mission.","meaningThai":"ภารกิจทางประวัติศาสตร์"}]},
+{"id":"hsk6-145","chinese":"始终","pinyin":"shǐ zhōng","meaning":"From beginning to end","meaningThai":"ตลอดมา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"始终如一。","pinyin":"Shi zhong ru yi.","meaning":"Consistent throughout.","meaningThai":"สม่ำเสมอตลอดมา"}]},
+{"id":"hsk6-146","chinese":"势力","pinyin":"shì lì","meaning":"Power; influence","meaningThai":"อำนาจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"势力范围。","pinyin":"Shi li fan wei.","meaning":"Sphere of influence.","meaningThai":"ขอบเขตอิทธิพล"}]},
+{"id":"hsk6-147","chinese":"事物","pinyin":"shì wù","meaning":"Thing; object","meaningThai":"สิ่งของ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"具体事物。","pinyin":"Ju ti shi wu.","meaning":"Concrete objects.","meaningThai":"สิ่งของที่เป็นรูปธรรม"}]},
+{"id":"hsk6-148","chinese":"事先","pinyin":"shì xiān","meaning":"In advance","meaningThai":"ล่วงหน้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"事先通知。","pinyin":"Shi xian tong zhi.","meaning":"Notify in advance.","meaningThai":"แจ้งล่วงหน้า"}]},
+{"id":"hsk6-149","chinese":"收获","pinyin":"shōu huò","meaning":"Harvest; gain","meaningThai":"ผลลัพธ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"收获很大。","pinyin":"Shou huo hen da.","meaning":"Great gains.","meaningThai":"ได้ผลลัพธ์มาก"}]},
+{"id":"hsk6-150","chinese":"收入","pinyin":"shōu rù","meaning":"Income; revenue","meaningThai":"รายได้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提高收入。","pinyin":"Ti gao shou ru.","meaning":"Increase income.","meaningThai":"เพิ่มรายได้"}]},
+{"id":"hsk6-151","chinese":"手续","pinyin":"shǒu xù","meaning":"Procedure; formalities","meaningThai":"ขั้นตอน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"办理手续。","pinyin":"Ban li shou xu.","meaning":"Go through formalities.","meaningThai":"ดำเนินการตามขั้นตอน"}]},
+{"id":"hsk6-152","chinese":"受罪","pinyin":"shòu zuì","meaning":"To suffer; to endure hardship","meaningThai":"ทนทุกข์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"真受罪。","pinyin":"Zhen shou zui.","meaning":"Really suffering.","meaningThai":"ทนทุกข์จริงๆ"}]},
+{"id":"hsk6-153","chinese":"蔬菜","pinyin":"shū cài","meaning":"Vegetables","meaningThai":"ผัก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"新鲜蔬菜。","pinyin":"Xin xian shu cai.","meaning":"Fresh vegetables.","meaningThai":"ผักสด"}]},
+{"id":"hsk6-154","chinese":"熟悉","pinyin":"shú xī","meaning":"Familiar with","meaningThai":"คุ้นเคย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"很熟悉。","pinyin":"Hen shu xi.","meaning":"Very familiar.","meaningThai":"คุ้นเคยมาก"}]},
+{"id":"hsk6-155","chinese":"数量","pinyin":"shù liàng","meaning":"Quantity; amount","meaningThai":"ปริมาณ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"数量巨大。","pinyin":"Shu liang ju da.","meaning":"Huge quantity.","meaningThai":"ปริมาณมหาศาล"}]},
+{"id":"hsk6-156","chinese":"衰退","pinyin":"shuāi tuì","meaning":"To decline; to recede","meaningThai":"ถดถอย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"经济衰退。","pinyin":"Jing ji shuai tui.","meaning":"Economic recession.","meaningThai":"เศรษฐกิจถดถอย"}]},
+{"id":"hsk6-157","chinese":"水利","pinyin":"shuǐ lì","meaning":"Water conservancy","meaningThai":"ชลประทาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"水利工程。","pinyin":"Shui li gong cheng.","meaning":"Water conservancy project.","meaningThai":"โครงการชลประทาน"}]},
+{"id":"hsk6-158","chinese":"顺序","pinyin":"shùn xù","meaning":"Order; sequence","meaningThai":"ลำดับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"按顺序。","pinyin":"An shun xu.","meaning":"In order.","meaningThai":"ตามลำดับ"}]},
+{"id":"hsk6-159","chinese":"硕士","pinyin":"shuò shì","meaning":"Master's degree","meaningThai":"ปริญญาโท","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"硕士学位。","pinyin":"Shuo shi xue wei.","meaning":"Master's degree.","meaningThai":"ปริญญาโท"}]},
+{"id":"hsk6-160","chinese":"司法","pinyin":"sī fǎ","meaning":"Judiciary; justice","meaningThai":"ตุลาการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"司法机关。","pinyin":"Si fa ji guan.","meaning":"Judicial organ.","meaningThai":"องค์กรตุลาการ"}]},
+{"id":"hsk6-161","chinese":"思维","pinyin":"sī wéi","meaning":"Thinking; thought","meaningThai":"ความคิด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"思维方式。","pinyin":"Si wei fang shi.","meaning":"Way of thinking.","meaningThai":"รูปแบบความคิด"}]},
+{"id":"hsk6-162","chinese":"素养","pinyin":"sù yǎng","meaning":"Accomplishment; quality","meaningThai":"คุณสมบัติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"文化素养。","pinyin":"Wen hua su yang.","meaning":"Cultural accomplishment.","meaningThai":"คุณสมบัติทางวัฒนธรรม"}]},
+{"id":"hsk6-163","chinese":"损失","pinyin":"sǔn shī","meaning":"Loss; damage","meaningThai":"ความเสียหาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"造成损失。","pinyin":"Zao cheng sun shi.","meaning":"Cause losses.","meaningThai":"ก่อให้เกิดความเสียหาย"}]},
+{"id":"hsk6-164","chinese":"索取","pinyin":"suǒ qǔ","meaning":"To demand; to extort","meaningThai":"เรียกร้อง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"索取回报。","pinyin":"Suo qu hui bao.","meaning":"Demand repayment.","meaningThai":"เรียกร้องผลตอบแทน"}]},
+{"id":"hsk6-165","chinese":"谈话","pinyin":"tán huà","meaning":"Conversation; talk","meaningThai":"สนทนา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"进行谈话。","pinyin":"Jin xing tan hua.","meaning":"Have a conversation.","meaningThai":"สนทนากัน"}]},
+{"id":"hsk6-166","chinese":"探索","pinyin":"tàn suǒ","meaning":"To explore","meaningThai":"สำรวจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"探索宇宙。","pinyin":"Tan suo yu zhou.","meaning":"Explore the universe.","meaningThai":"สำรวจจักรวาล"}]},
+{"id":"hsk6-167","chinese":"探讨","pinyin":"tàn tǎo","meaning":"To discuss; to inquire","meaningThai":"อภิปราย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"深入探讨。","pinyin":"Shen ru tan tao.","meaning":"In-depth discussion.","meaningThai":"อภิปรายอย่างลึกซึ้ง"}]},
+{"id":"hsk6-168","chinese":"特定","pinyin":"tè dìng","meaning":"Specific; particular","meaningThai":"เฉพาะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"特定条件。","pinyin":"Te ding tiao jian.","meaning":"Specific conditions.","meaningThai":"เงื่อนไขเฉพาะ"}]},
+{"id":"hsk6-169","chinese":"特色","pinyin":"tè sè","meaning":"Characteristic; distinctive","meaningThai":"ลักษณะเฉพาะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"地方特色。","pinyin":"Di fang te se.","meaning":"Local characteristics.","meaningThai":"ลักษณะเฉพาะท้องถิ่น"}]},
+{"id":"hsk6-170","chinese":"提倡","pinyin":"tí chàng","meaning":"To advocate; to promote","meaningThai":"สนับสนุน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提倡环保。","pinyin":"Ti chang huan bao.","meaning":"Promote environmental protection.","meaningThai":"สนับสนุนการรักษาสิ่งแวดล้อม"}]},
+{"id":"hsk6-171","chinese":"提出","pinyin":"tí chū","meaning":"To propose; to put forward","meaningThai":"เสนอ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提出建议。","pinyin":"Ti chu jian yi.","meaning":"Propose a suggestion.","meaningThai":"เสนอข้อแนะนำ"}]},
+{"id":"hsk6-172","chinese":"提供","pinyin":"tí gōng","meaning":"To provide; to supply","meaningThai":"จัดหา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提供服务。","pinyin":"Ti gong fu wu.","meaning":"Provide service.","meaningThai":"ให้บริการ"}]},
+{"id":"hsk6-173","chinese":"提交","pinyin":"tí jiāo","meaning":"To submit","meaningThai":"ยื่น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提交报告。","pinyin":"Ti jiao bao gao.","meaning":"Submit a report.","meaningThai":"ยื่นรายงาน"}]},
+{"id":"hsk6-174","chinese":"提醒","pinyin":"tí xǐng","meaning":"To remind","meaningThai":"เตือน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提醒一下。","pinyin":"Ti xing yi xia.","meaning":"Just a reminder.","meaningThai":"เตือนหน่อย"}]},
+{"id":"hsk6-175","chinese":"提议","pinyin":"tí yì","meaning":"To propose; proposal","meaningThai":"ข้อเสนอ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"接受提议。","pinyin":"Jie shou ti yi.","meaning":"Accept the proposal.","meaningThai":"ยอมรับข้อเสนอ"}]},
+{"id":"hsk6-176","chinese":"题材","pinyin":"tí cái","meaning":"Theme; subject matter","meaningThai":"เนื้อหา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"电影题材。","pinyin":"Dian ying ti cai.","meaning":"Movie theme.","meaningThai":"เนื้อหาหนัง"}]},
+{"id":"hsk6-177","chinese":"体会","pinyin":"tǐ huì","meaning":"To realize; experience","meaningThai":"เข้าใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"深刻体会。","pinyin":"Shen ke ti hui.","meaning":"Deep understanding.","meaningThai":"เข้าใจอย่างลึกซึ้ง"}]},
+{"id":"hsk6-178","chinese":"体力","pinyin":"tǐ lì","meaning":"Physical strength","meaningThai":"กำลังกาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"体力劳动。","pinyin":"Ti li lao dong.","meaning":"Physical labor.","meaningThai":"การใช้แรงงาน"}]},
+{"id":"hsk6-179","chinese":"体面","pinyin":"tǐ miàn","meaning":"Dignified; honorable","meaningThai":"มีเกียรติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"体面生活。","pinyin":"Ti mian sheng huo.","meaning":"Dignified life.","meaningThai":"ชีวิตที่มีเกียรติ"}]},
+{"id":"hsk6-180","chinese":"体系","pinyin":"tǐ xì","meaning":"System","meaningThai":"ระบบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"理论体系。","pinyin":"Li lun ti xi.","meaning":"Theoretical system.","meaningThai":"ระบบทฤษฎี"}]},
+{"id":"hsk6-181","chinese":"天才","pinyin":"tiān cái","meaning":"Genius","meaningThai":"อัจฉริยะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"天才儿童。","pinyin":"Tian cai er tong.","meaning":"Gifted child.","meaningThai":"เด็กอัจฉริยะ"}]},
+{"id":"hsk6-182","chinese":"调节","pinyin":"tiáo jié","meaning":"To adjust; to regulate","meaningThai":"ปรับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"调节温度。","pinyin":"Tiao jie wen du.","meaning":"Adjust the temperature.","meaningThai":"ปรับอุณหภูมิ"}]},
+{"id":"hsk6-183","chinese":"调解","pinyin":"tiáo jiě","meaning":"To mediate","meaningThai":"ไกล่เกลี่ย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"调解纠纷。","pinyin":"Tiao jie jiu fen.","meaning":"Mediate a dispute.","meaningThai":"ไกล่เกลี่ยข้อพิพาท"}]},
+{"id":"hsk6-184","chinese":"调皮","pinyin":"tiáo pí","meaning":"Naughty; mischievous","meaningThai":"ซุกซน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"调皮的孩子。","pinyin":"Tiao pi de hai zi.","meaning":"Naughty child.","meaningThai":"เด็กซุกซน"}]},
+{"id":"hsk6-185","chinese":"调整","pinyin":"tiáo zhěng","meaning":"To adjust; to regulate","meaningThai":"ปรับเปลี่ยน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"调整心态。","pinyin":"Tiao zheng xin tai.","meaning":"Adjust one's mindset.","meaningThai":"ปรับเปลี่ยนทัศนคติ"}]},
+{"id":"hsk6-186","chinese":"挑战","pinyin":"tiǎo zhàn","meaning":"Challenge","meaningThai":"ความท้าทาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"接受挑战。","pinyin":"Jie shou tiao zhan.","meaning":"Accept the challenge.","meaningThai":"ยอมรับความท้าทาย"}]},
+{"id":"hsk6-187","chinese":"停顿","pinyin":"tíng dùn","meaning":"To pause; to stop","meaningThai":"หยุด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"停顿一下。","pinyin":"Ting dun yi xia.","meaning":"Pause for a moment.","meaningThai":"หยุดสักครู่"}]},
+{"id":"hsk6-188","chinese":"通报","pinyin":"tōng bào","meaning":"To notify; bulletin","meaningThai":"แจ้ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"通报批评。","pinyin":"Tong bao pi ping.","meaning":"Issue a criticism notice.","meaningThai":"แจ้งการตำหนิ"}]},
+{"id":"hsk6-189","chinese":"通信","pinyin":"tōng xìn","meaning":"Communication; correspondence","meaningThai":"สื่อสาร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"通信技术。","pinyin":"Tong xin ji shu.","meaning":"Communication technology.","meaningThai":"เทคโนโลยีการสื่อสาร"}]},
+{"id":"hsk6-190","chinese":"通行","pinyin":"tōng xíng","meaning":"To pass through;通行","meaningThai":"ผ่าน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"禁止通行。","pinyin":"Jin zhi tong xing.","meaning":"No passage.","meaningThai":"ห้ามผ่าน"}]},
+{"id":"hsk6-191","chinese":"统计","pinyin":"tǒng jì","meaning":"Statistics; to count","meaningThai":"สถิติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"统计数据。","pinyin":"Tong ji shu ju.","meaning":"Statistical data.","meaningThai":"ข้อมูลสถิติ"}]},
+{"id":"hsk6-192","chinese":"统一","pinyin":"tǒng yī","meaning":"Unified; to unite","meaningThai":"เป็นหนึ่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"统一意见。","pinyin":"Tong yi yi jian.","meaning":"Unify opinions.","meaningThai":"รวมความคิดเห็น"}]},
+{"id":"hsk6-193","chinese":"统治","pinyin":"tǒng zhì","meaning":"To rule; to govern","meaningThai":"ปกครอง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"统治阶级。","pinyin":"Tong zhi jie ji.","meaning":"Ruling class.","meaningThai":"ชนชั้นปกครอง"}]},
+{"id":"hsk6-194","chinese":"痛苦","pinyin":"tòng kǔ","meaning":"Pain; suffering","meaningThai":"เจ็บปวด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"非常痛苦。","pinyin":"Fei chang tong ku.","meaning":"Very painful.","meaningThai":"เจ็บปวดมาก"}]},
+{"id":"hsk6-195","chinese":"投资","pinyin":"tóu zī","meaning":"To invest; investment","meaningThai":"ลงทุน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"投资回报。","pinyin":"Tou zi hui bao.","meaning":"Return on investment.","meaningThai":"ผลตอบแทนการลงทุน"}]},
+{"id":"hsk6-196","chinese":"透露","pinyin":"tòu lù","meaning":"To disclose; to leak","meaningThai":"เปิดเผย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"透露消息。","pinyin":"Tou lu xiao xi.","meaning":"Disclose information.","meaningThai":"เปิดเผยข้อมูล"}]},
+{"id":"hsk6-197","chinese":"图案","pinyin":"tú àn","meaning":"Pattern; design","meaningThai":"ลวดลาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"美丽图案。","pinyin":"Mei li tu an.","meaning":"Beautiful pattern.","meaningThai":"ลวดลายสวยงาม"}]},
+{"id":"hsk6-198","chinese":"途径","pinyin":"tú jìng","meaning":"Path; approach","meaningThai":"เส้นทาง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"合法途径。","pinyin":"He fa tu jing.","meaning":"Legal approach.","meaningThai":"เส้นทางที่ถูกกฎหมาย"}]},
+{"id":"hsk6-199","chinese":"土壤","pinyin":"tǔ rǎng","meaning":"Soil","meaningThai":"ดิน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"肥沃土壤。","pinyin":"Fei wo tu rang.","meaning":"Fertile soil.","meaningThai":"ดินอุดมสมบูรณ์"}]},
+{"id":"hsk6-200","chinese":"推动","pinyin":"tuī dòng","meaning":"To promote; to drive","meaningThai":"ผลักดัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"推动发展。","pinyin":"Tui dong fa zhan.","meaning":"Promote development.","meaningThai":"ผลักดันการพัฒนา"}]},
+{"id":"hsk6-201","chinese":"推翻","pinyin":"tuī fān","meaning":"To overthrow","meaningThai":"โค่นล้ม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"推翻政权。","pinyin":"Tui fan zheng quan.","meaning":"Overthrow the regime.","meaningThai":"โค่นล้มระบอบการปกครอง"}]},
+{"id":"hsk6-202","chinese":"推广","pinyin":"tuī guǎng","meaning":"To popularize; to spread","meaningThai":"เผยแพร่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"推广技术。","pinyin":"Tui guang ji shu.","meaning":"Spread technology.","meaningThai":"เผยแพร่เทคโนโลยี"}]},
+{"id":"hsk6-203","chinese":"推进","pinyin":"tuī jìn","meaning":"To advance; to push forward","meaningThai":"ก้าวหน้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"推进改革。","pinyin":"Tui jin gai ge.","meaning":"Advance reforms.","meaningThai":"ผลักดันการปฏิรูป"}]},
+{"id":"hsk6-204","chinese":"脱离","pinyin":"tuō lí","meaning":"To break away from","meaningThai":"แยกตัว","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"脱离危险。","pinyin":"Tuo li wei xian.","meaning":"Out of danger.","meaningThai":"พ้นจากอันตราย"}]},
+{"id":"hsk6-205","chinese":"挖掘","pinyin":"wā jué","meaning":"To excavate; to dig","meaningThai":"ขุด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"挖掘潜力。","pinyin":"Wa jue qian li.","meaning":"Tap potential.","meaningThai":"ขุดศักยภาพ"}]},
+{"id":"hsk6-206","chinese":"外表","pinyin":"wài biǎo","meaning":"Appearance; exterior","meaningThai":"ภายนอก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"外表漂亮。","pinyin":"Wai biao piao liang.","meaning":"Beautiful appearance.","meaningThai":"ภายนอกสวยงาม"}]},
+{"id":"hsk6-207","chinese":"外界","pinyin":"wài jiè","meaning":"External world","meaningThai":"ภายนอก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"外界压力。","pinyin":"Wai jie ya li.","meaning":"External pressure.","meaningThai":"แรงกดดันจากภายนอก"}]},
+{"id":"hsk6-208","chinese":"完善","pinyin":"wán shàn","meaning":"To perfect; complete","meaningThai":"สมบูรณ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"不断完善。","pinyin":"Bu duan wan shan.","meaning":"Continuously improve.","meaningThai":"ปรับปรุงให้สมบูรณ์อย่างต่อเนื่อง"}]},
+{"id":"hsk6-209","chinese":"顽固","pinyin":"wán gù","meaning":"Stubborn; obstinate","meaningThai":"ดื้อรั้น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"顽固不化。","pinyin":"Wan gu bu hua.","meaning":"Incorrigibly stubborn.","meaningThai":"ดื้อรั้นไม่ยอมเปลี่ยน"}]},
+{"id":"hsk6-210","chinese":"顽强","pinyin":"wán qiáng","meaning":"Tenacious; indomitable","meaningThai":"มุ่งมั่น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"顽强拼搏。","pinyin":"Wan qiang pin bo.","meaning":"Struggle tenaciously.","meaningThai":"สู้อย่างมุ่งมั่น"}]},
+{"id":"hsk6-211","chinese":"网络","pinyin":"wǎng luò","meaning":"Network; internet","meaningThai":"เครือข่าย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"网络时代。","pinyin":"Wang luo shi dai.","meaning":"Internet era.","meaningThai":"ยุคเครือข่าย"}]},
+{"id":"hsk6-212","chinese":"妄想","pinyin":"wàng xiǎng","meaning":"Delusion; vain hope","meaningThai":"เพ้อฝัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"妄想症。","pinyin":"Wang xiang zheng.","meaning":"Delusional disorder.","meaningThai":"โรคหลงผิด"}]},
+{"id":"hsk6-213","chinese":"危机","pinyin":"wēi jī","meaning":"Crisis","meaningThai":"วิกฤต","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"经济危机。","pinyin":"Jing ji wei ji.","meaning":"Economic crisis.","meaningThai":"วิกฤตเศรษฐกิจ"}]},
+{"id":"hsk6-214","chinese":"威力","pinyin":"wēi lì","meaning":"Power; might","meaningThai":"พลัง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"巨大威力。","pinyin":"Ju da wei li.","meaning":"Great power.","meaningThai":"พลังมหาศาล"}]},
+{"id":"hsk6-215","chinese":"威胁","pinyin":"wēi xié","meaning":"Threat; to threaten","meaningThai":"คุกคาม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"安全威胁。","pinyin":"An quan wei xie.","meaning":"Security threat.","meaningThai":"ภัยคุกคามความปลอดภัย"}]},
+{"id":"hsk6-216","chinese":"违反","pinyin":"wéi fǎn","meaning":"To violate","meaningThai":"ละเมิด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"违反规定。","pinyin":"Wei fan gui ding.","meaning":"Violate regulations.","meaningThai":"ละเมิดกฎระเบียบ"}]},
+{"id":"hsk6-217","chinese":"维护","pinyin":"wéi hù","meaning":"To maintain; to safeguard","meaningThai":"ปกป้อง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"维护权益。","pinyin":"Wei hu quan yi.","meaning":"Safeguard rights.","meaningThai":"ปกป้องสิทธิประโยชน์"}]},
+{"id":"hsk6-218","chinese":"委托","pinyin":"wěi tuō","meaning":"To entrust; to authorize","meaningThai":"มอบหมาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"委托办理。","pinyin":"Wei tuo ban li.","meaning":"Entrust to handle.","meaningThai":"มอบหมายให้ดำเนินการ"}]},
+{"id":"hsk6-219","chinese":"慰问","pinyin":"wèi wèn","meaning":"To console; to express sympathy","meaningThai":"เยี่ยมเยียน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"慰问灾区。","pinyin":"Wei wen zai qu.","meaning":"Visit disaster areas.","meaningThai":"เยี่ยมเยียนพื้นที่ประสบภัย"}]},
+{"id":"hsk6-220","chinese":"文化","pinyin":"wén huà","meaning":"Culture","meaningThai":"วัฒนธรรม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"文化交流。","pinyin":"Wen hua jiao liu.","meaning":"Cultural exchange.","meaningThai":"การแลกเปลี่ยนทางวัฒนธรรม"}]},
+{"id":"hsk6-221","chinese":"文件","pinyin":"wén jiàn","meaning":"Document; file","meaningThai":"เอกสาร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"重要文件。","pinyin":"Zhong yao wen jian.","meaning":"Important document.","meaningThai":"เอกสารสำคัญ"}]},
+{"id":"hsk6-222","chinese":"文明","pinyin":"wén míng","meaning":"Civilization; civilized","meaningThai":"อารยธรรม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"现代文明。","pinyin":"Xian dai wen ming.","meaning":"Modern civilization.","meaningThai":"อารยธรรมสมัยใหม่"}]},
+{"id":"hsk6-223","chinese":"文献","pinyin":"wén xiàn","meaning":"Literature; document","meaningThai":"เอกสาร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"历史文献。","pinyin":"Li shi wen xian.","meaning":"Historical documents.","meaningThai":"เอกสารประวัติศาสตร์"}]},
+{"id":"hsk6-224","chinese":"稳定","pinyin":"wěn dìng","meaning":"Stable; steady","meaningThai":"มั่นคง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"社会稳定。","pinyin":"She hui wen ding.","meaning":"Social stability.","meaningThai":"สังคมมั่นคง"}]},
+{"id":"hsk6-225","chinese":"污染","pinyin":"wū rǎn","meaning":"Pollution","meaningThai":"มลภาวะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"环境污染。","pinyin":"Huan jing wu ran.","meaning":"Environmental pollution.","meaningThai":"มลภาวะทางสิ่งแวดล้อม"}]},
+{"id":"hsk6-226","chinese":"无耻","pinyin":"wú chǐ","meaning":"Shameless","meaningThai":"ไร้ยางอาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"无耻行为。","pinyin":"Wu chi xing wei.","meaning":"Shameless behavior.","meaningThai":"พฤติกรรมไร้ยางอาย"}]},
+{"id":"hsk6-227","chinese":"无疑","pinyin":"wú yí","meaning":"Undoubtedly; no doubt","meaningThai":"ไม่ต้องสงสัย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"无疑是最好的。","pinyin":"Wu yi shi zui hao de.","meaning":"Undoubtedly the best.","meaningThai":"ไม่ต้องสงสัยว่าดีที่สุด"}]},
+{"id":"hsk6-228","chinese":"武器","pinyin":"wǔ qì","meaning":"Weapon","meaningThai":"อาวุธ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"核武器。","pinyin":"He wu qi.","meaning":"Nuclear weapons.","meaningThai":"อาวุธนิวเคลียร์"}]},
+{"id":"hsk6-229","chinese":"武装","pinyin":"wǔ zhuāng","meaning":"Armed; military equipment","meaningThai":"ติดอาวุธ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"武装力量。","pinyin":"Wu zhuang li liang.","meaning":"Armed forces.","meaningThai":"กองกำลังติดอาวุธ"}]},
+{"id":"hsk6-230","chinese":"舞蹈","pinyin":"wǔ dǎo","meaning":"Dance","meaningThai":"เต้นรำ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"传统舞蹈。","pinyin":"Chuan tong wu dao.","meaning":"Traditional dance.","meaningThai":"การเต้นรำแบบดั้งเดิม"}]},
+{"id":"hsk6-231","chinese":"物质","pinyin":"wù zhì","meaning":"Material; substance","meaningThai":"วัตถุ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"物质生活。","pinyin":"Wu zhi sheng huo.","meaning":"Material life.","meaningThai":"ชีวิตทางวัตถุ"}]},
+{"id":"hsk6-232","chinese":"西部","pinyin":"xī bù","meaning":"Western region","meaningThai":"ภาคตะวันตก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"西部地区。","pinyin":"Xi bu di qu.","meaning":"Western region.","meaningThai":"เขตภาคตะวันตก"}]},
+{"id":"hsk6-233","chinese":"媳妇","pinyin":"xí fù","meaning":"Daughter-in-law; wife","meaningThai":"ลูกสะใภ้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"孝顺媳妇。","pinyin":"Xiao shun xi fu.","meaning":"Filial daughter-in-law.","meaningThai":"ลูกสะใภ้กตัญญู"}]},
+{"id":"hsk6-234","chinese":"袭击","pinyin":"xí jī","meaning":"To attack; raid","meaningThai":"โจมตี","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"恐怖袭击。","pinyin":"Kong bu xi ji.","meaning":"Terrorist attack.","meaningThai":"การโจมตีก่อการร้าย"}]},
+{"id":"hsk6-235","chinese":"喜剧","pinyin":"xǐ jù","meaning":"Comedy","meaningThai":"ตลก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"喜剧电影。","pinyin":"Xi ju dian ying.","meaning":"Comedy movie.","meaningThai":"หนังตลก"}]},
+{"id":"hsk6-236","chinese":"系列","pinyin":"xì liè","meaning":"Series","meaningThai":"ชุด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"系列产品。","pinyin":"Xi lie chan pin.","meaning":"Product series.","meaningThai":"ผลิตภัณฑ์ชุด"}]},
+{"id":"hsk6-237","chinese":"系统","pinyin":"xì tǒng","meaning":"System","meaningThai":"ระบบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"操作系统。","pinyin":"Cao zuo xi tong.","meaning":"Operating system.","meaningThai":"ระบบปฏิบัติการ"}]},
+{"id":"hsk6-238","chinese":"细节","pinyin":"xì jié","meaning":"Detail","meaningThai":"รายละเอียด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"注意细节。","pinyin":"Zhu yi xi jie.","meaning":"Pay attention to details.","meaningThai":"ใส่ใจรายละเอียด"}]},
+{"id":"hsk6-239","chinese":"狭隘","pinyin":"xiá ài","meaning":"Narrow; limited","meaningThai":"แคบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"视野狭隘。","pinyin":"Shi ye xia ai.","meaning":"Narrow perspective.","meaningThai":"มุมมองแคบ"}]},
+{"id":"hsk6-240","chinese":"下达","pinyin":"xià dá","meaning":"To issue; to transmit","meaningThai":"ออกคำสั่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"下达命令。","pinyin":"Xia da ming ling.","meaning":"Issue an order.","meaningThai":"ออกคำสั่ง"}]},
+{"id":"hsk6-241","chinese":"先进","pinyin":"xiān jìn","meaning":"Advanced","meaningThai":"ก้าวหน้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"先进技术。","pinyin":"Xian jin ji shu.","meaning":"Advanced technology.","meaningThai":"เทคโนโลยีที่ก้าวหน้า"}]},
+{"id":"hsk6-242","chinese":"鲜明","pinyin":"xiān míng","meaning":"Vivid; distinct","meaningThai":"ชัดเจน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"鲜明对比。","pinyin":"Xian ming dui bi.","meaning":"Sharp contrast.","meaningThai":"ความแตกต่างที่ชัดเจน"}]},
+{"id":"hsk6-243","chinese":"显示","pinyin":"xiǎn shì","meaning":"To display; to show","meaningThai":"แสดง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"显示结果。","pinyin":"Xian shi jie guo.","meaning":"Display the result.","meaningThai":"แสดงผลลัพธ์"}]},
+{"id":"hsk6-244","chinese":"显著","pinyin":"xiǎn zhù","meaning":"Significant; notable","meaningThai":"เด่นชัด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"显著提高。","pinyin":"Xian zhu ti gao.","meaning":"Significant improvement.","meaningThai":"เพิ่มขึ้นอย่างเด่นชัด"}]},
+{"id":"hsk6-245","chinese":"宪法","pinyin":"xiàn fǎ","meaning":"Constitution","meaningThai":"รัฐธรรมนูญ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"修改宪法。","pinyin":"Xiu gai xian fa.","meaning":"Amend the constitution.","meaningThai":"แก้ไขรัฐธรรมนูญ"}]},
+{"id":"hsk6-246","chinese":"陷入","pinyin":"xiàn rù","meaning":"To fall into; to be trapped","meaningThai":"ตกอยู่ใน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"陷入困境。","pinyin":"Xian ru kun jing.","meaning":"Fall into trouble.","meaningThai":"ตกอยู่ในปัญหา"}]},
+{"id":"hsk6-247","chinese":"现状","pinyin":"xiàn zhuàng","meaning":"Current situation","meaningThai":"สภาพปัจจุบัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"维持现状。","pinyin":"Wei chi xian zhuang.","meaning":"Maintain the status quo.","meaningThai":"รักษาสภาพปัจจุบัน"}]},
+{"id":"hsk6-248","chinese":"限制","pinyin":"xiàn zhì","meaning":"To limit; restriction","meaningThai":"จำกัด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"速度限制。","pinyin":"Su du xian zhi.","meaning":"Speed limit.","meaningThai":"จำกัดความเร็ว"}]},
+{"id":"hsk6-249","chinese":"陷害","pinyin":"xiàn hài","meaning":"To frame; to entrap","meaningThai":"ใส่ร้าย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"被人陷害。","pinyin":"Bei ren xian hai.","meaning":"Framed by someone.","meaningThai":"ถูกใส่ร้าย"}]},
+{"id":"hsk6-250","chinese":"乡镇","pinyin":"xiāng zhèn","meaning":"Village and town","meaningThai":"ตำบล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"乡镇企业。","pinyin":"Xiang zhen qi ye.","meaning":"Township enterprise.","meaningThai":"วิสาหกิจประจำตำบล"}]},
+{"id":"hsk6-251","chinese":"相等","pinyin":"xiāng děng","meaning":"Equal","meaningThai":"เท่ากัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"数量相等。","pinyin":"Shu liang xiang deng.","meaning":"Equal in quantity.","meaningThai":"ปริมาณเท่ากัน"}]},
+{"id":"hsk6-252","chinese":"相对","pinyin":"xiāng duì","meaning":"Relative; opposite","meaningThai":"สัมพันธ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"相对而言。","pinyin":"Xiang dui er yan.","meaning":"Relatively speaking.","meaningThai":"พูดอย่างสัมพันธ์"}]},
+{"id":"hsk6-253","chinese":"相反","pinyin":"xiāng fǎn","meaning":"Opposite; contrary","meaningThai":"ตรงกันข้าม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"方向相反。","pinyin":"Fang xiang xiang fan.","meaning":"Opposite direction.","meaningThai":"ทิศทางตรงกันข้าม"}]},
+{"id":"hsk6-254","chinese":"相关","pinyin":"xiāng guān","meaning":"Related; relevant","meaningThai":"เกี่ยวข้อง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"相关资料。","pinyin":"Xiang guan zi liao.","meaning":"Relevant information.","meaningThai":"ข้อมูลที่เกี่ยวข้อง"}]},
+{"id":"hsk6-255","chinese":"相互","pinyin":"xiāng hù","meaning":"Mutual; each other","meaningThai":"ซึ่งกันและกัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"相互理解。","pinyin":"Xiang hu li jie.","meaning":"Mutual understanding.","meaningThai":"เข้าใจซึ่งกันและกัน"}]},
+{"id":"hsk6-256","chinese":"详细","pinyin":"xiáng xì","meaning":"Detailed","meaningThai":"ละเอียด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"详细说明。","pinyin":"Xiang xi shuo ming.","meaning":"Detailed explanation.","meaningThai":"คำอธิบายโดยละเอียด"}]},
+{"id":"hsk6-257","chinese":"想法","pinyin":"xiǎng fǎ","meaning":"Idea; thought","meaningThai":"ความคิด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"好想法。","pinyin":"Hao xiang fa.","meaning":"Good idea.","meaningThai":"ความคิดดี"}]},
+{"id":"hsk6-258","chinese":"想象","pinyin":"xiǎng xiàng","meaning":"To imagine; imagination","meaningThai":"จินตนาการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"难以想象。","pinyin":"Nan yi xiang xiang.","meaning":"Hard to imagine.","meaningThai":"จินตนาการได้ยาก"}]},
+{"id":"hsk6-259","chinese":"消费","pinyin":"xiāo fèi","meaning":"To consume; consumption","meaningThai":"บริโภค","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"消费水平。","pinyin":"Xiao fei shui ping.","meaning":"Consumption level.","meaningThai":"ระดับการบริโภค"}]},
+{"id":"hsk6-260","chinese":"消灭","pinyin":"xiāo miè","meaning":"To eliminate; to perish","meaningThai":"กำจัด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"消灭敌人。","pinyin":"Xiao mie di ren.","meaning":"Eliminate the enemy.","meaningThai":"กำจัดศัตรู"}]},
+{"id":"hsk6-261","chinese":"消失","pinyin":"xiāo shī","meaning":"To disappear","meaningThai":"หายไป","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"消失不见。","pinyin":"Xiao shi bu jian.","meaning":"Disappear completely.","meaningThai":"หายไปไม่เห็น"}]},
+{"id":"hsk6-262","chinese":"销售","pinyin":"xiāo shòu","meaning":"To sell; sales","meaningThai":"ขาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"销售经理。","pinyin":"Xiao shou jing li.","meaning":"Sales manager.","meaningThai":"ผู้จัดการฝ่ายขาย"}]},
+{"id":"hsk6-263","chinese":"效果","pinyin":"xiào guǒ","meaning":"Effect; result","meaningThai":"ผลลัพธ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"治疗效果。","pinyin":"Zhi liao xiao guo.","meaning":"Treatment effect.","meaningThai":"ผลการรักษา"}]},
+{"id":"hsk6-264","chinese":"效率","pinyin":"xiào lǜ","meaning":"Efficiency","meaningThai":"ประสิทธิภาพ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提高效率。","pinyin":"Ti gao xiao lv.","meaning":"Improve efficiency.","meaningThai":"เพิ่มประสิทธิภาพ"}]},
+{"id":"hsk6-265","chinese":"协调","pinyin":"xié tiáo","meaning":"To coordinate","meaningThai":"ประสาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"协调工作。","pinyin":"Xie tiao gong zuo.","meaning":"Coordinate work.","meaningThai":"ประสานงาน"}]},
+{"id":"hsk6-266","chinese":"协议","pinyin":"xié yì","meaning":"Agreement; protocol","meaningThai":"ข้อตกลง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"达成协议。","pinyin":"Da cheng xie yi.","meaning":"Reach an agreement.","meaningThai":"บรรลุข้อตกลง"}]},
+{"id":"hsk6-267","chinese":"谢绝","pinyin":"xiè jué","meaning":"To politely refuse","meaningThai":"ปฏิเสธ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"谢绝参观。","pinyin":"Xie jue can guan.","meaning":"No visitors.","meaningThai":"ปฏิเสธการเยี่ยมชม"}]},
+{"id":"hsk6-268","chinese":"心灵","pinyin":"xīn líng","meaning":"Heart; soul; mind","meaningThai":"จิตใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"心灵美。","pinyin":"Xin ling mei.","meaning":"Beautiful soul.","meaningThai":"จิตใจงาม"}]},
+{"id":"hsk6-269","chinese":"心情","pinyin":"xīn qíng","meaning":"Mood; feelings","meaningThai":"อารมณ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"心情愉快。","pinyin":"Xin qing yu kuai.","meaning":"Happy mood.","meaningThai":"อารมณ์ดี"}]},
+{"id":"hsk6-270","chinese":"心血","pinyin":"xīn xuè","meaning":"Painstaking effort","meaningThai":"ความทุ่มเท","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"付出心血。","pinyin":"Fu chu xin xue.","meaning":"Devote painstaking efforts.","meaningThai":"ทุ่มเทความพยายาม"}]},
+{"id":"hsk6-271","chinese":"欣赏","pinyin":"xīn shǎng","meaning":"To appreciate; to enjoy","meaningThai":"ชื่นชม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"欣赏风景。","pinyin":"Xin shang feng jing.","meaning":"Enjoy the scenery.","meaningThai":"ชื่นชมทิวทัศน์"}]},
+{"id":"hsk6-272","chinese":"信号","pinyin":"xìn hào","meaning":"Signal","meaningThai":"สัญญาณ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"交通信号。","pinyin":"Jiao tong xin hao.","meaning":"Traffic signal.","meaningThai":"สัญญาณจราจร"}]},
+{"id":"hsk6-273","chinese":"信念","pinyin":"xìn niàn","meaning":"Faith; belief","meaningThai":"ความเชื่อ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"坚定信念。","pinyin":"Jian ding xin nian.","meaning":"Firm belief.","meaningThai":"ความเชื่อที่แน่วแน่"}]},
+{"id":"hsk6-274","chinese":"信息","pinyin":"xìn xī","meaning":"Information","meaningThai":"ข้อมูล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"信息技术。","pinyin":"Xin xi ji shu.","meaning":"Information technology.","meaningThai":"เทคโนโลยีสารสนเทศ"}]},
+{"id":"hsk6-275","chinese":"信心","pinyin":"xìn xīn","meaning":"Confidence","meaningThai":"ความมั่นใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"充满信心。","pinyin":"Chong man xin xin.","meaning":"Full of confidence.","meaningThai":"เต็มไปด้วยความมั่นใจ"}]},
+{"id":"hsk6-276","chinese":"形成","pinyin":"xíng chéng","meaning":"To form; to take shape","meaningThai":"ก่อตัว","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"形成习惯。","pinyin":"Xing cheng xi guan.","meaning":"Form a habit.","meaningThai":"ก่อตัวเป็นนิสัย"}]},
+{"id":"hsk6-277","chinese":"形象","pinyin":"xíng xiàng","meaning":"Image; form","meaningThai":"ภาพลักษณ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"个人形象。","pinyin":"Ge ren xing xiang.","meaning":"Personal image.","meaningThai":"ภาพลักษณ์ส่วนบุคคล"}]},
+{"id":"hsk6-278","chinese":"形势","pinyin":"xíng shì","meaning":"Situation; circumstances","meaningThai":"สถานการณ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"国际形势。","pinyin":"Guo ji xing shi.","meaning":"International situation.","meaningThai":"สถานการณ์ระหว่างประเทศ"}]},
+{"id":"hsk6-279","chinese":"性能","pinyin":"xìng néng","meaning":"Performance (technical)","meaningThai":"สมรรถนะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"产品性能。","pinyin":"Chan pin xing neng.","meaning":"Product performance.","meaningThai":"สมรรถนะของผลิตภัณฑ์"}]},
+{"id":"hsk6-280","chinese":"修订","pinyin":"xiū dìng","meaning":"To revise; to amend","meaningThai":"แก้ไข","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"修订计划。","pinyin":"Xiu ding ji hua.","meaning":"Revise a plan.","meaningThai":"แก้ไขแผน"}]},
+{"id":"hsk6-281","chinese":"修养","pinyin":"xiū yǎng","meaning":"Self-cultivation","meaningThai":"การอบรม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"道德修养。","pinyin":"Dao de xiu yang.","meaning":"Moral cultivation.","meaningThai":"การอบรมทางศีลธรรม"}]},
+{"id":"hsk6-282","chinese":"修改","pinyin":"xiū gǎi","meaning":"To modify; to alter","meaningThai":"แก้ไข","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"修改文件。","pinyin":"Xiu gai wen jian.","meaning":"Modify the document.","meaningThai":"แก้ไขเอกสาร"}]},
+{"id":"hsk6-283","chinese":"虚心","pinyin":"xū xīn","meaning":"Modest; open-minded","meaningThai":"อ่อนน้อม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"虚心学习。","pinyin":"Xu xin xue xi.","meaning":"Learn with an open mind.","meaningThai":"เรียนรู้อย่างอ่อนน้อม"}]},
+{"id":"hsk6-284","chinese":"宣传","pinyin":"xuān chuán","meaning":"To promote; propaganda","meaningThai":"เผยแพร่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"宣传活动。","pinyin":"Xuan chuan huo dong.","meaning":"Promotional activities.","meaningThai":"กิจกรรมเผยแพร่"}]},
+{"id":"hsk6-285","chinese":"选举","pinyin":"xuǎn jǔ","meaning":"To elect; election","meaningThai":"เลือกตั้ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"民主选举。","pinyin":"Min zhu xuan ju.","meaning":"Democratic election.","meaningThai":"การเลือกตั้งตามระบอบประชาธิปไตย"}]},
+{"id":"hsk6-286","chinese":"选手","pinyin":"xuǎn shǒu","meaning":"Contestant; player","meaningThai":"ผู้แข่งขัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"参赛选手。","pinyin":"Can sai xuan shou.","meaning":"Competing contestant.","meaningThai":"ผู้เข้าแข่งขัน"}]},
+{"id":"hsk6-287","chinese":"学历","pinyin":"xué lì","meaning":"Educational background","meaningThai":"วุฒิการศึกษา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"提高学历。","pinyin":"Ti gao xue li.","meaning":"Improve education level.","meaningThai":"เพิ่มวุฒิการศึกษา"}]},
+{"id":"hsk6-288","chinese":"学术","pinyin":"xué shù","meaning":"Academic","meaningThai":"วิชาการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"学术研究。","pinyin":"Xue shu yan jiu.","meaning":"Academic research.","meaningThai":"งานวิจัยเชิงวิชาการ"}]},
+{"id":"hsk6-289","chinese":"循环","pinyin":"xún huán","meaning":"Cycle; circulation","meaningThai":"วงจร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"良性循环。","pinyin":"Liang xing xun huan.","meaning":"Virtuous cycle.","meaningThai":"วงจรที่ดี"}]},
+{"id":"hsk6-290","chinese":"压迫","pinyin":"yā pò","meaning":"To oppress; oppression","meaningThai":"กดขี่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"反对压迫。","pinyin":"Fan dui ya po.","meaning":"Oppose oppression.","meaningThai":"ต่อต้านการกดขี่"}]},
+{"id":"hsk6-291","chinese":"压缩","pinyin":"yā suō","meaning":"To compress; to condense","meaningThai":"บีบอัด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"压缩文件。","pinyin":"Ya suo wen jian.","meaning":"Compressed file.","meaningThai":"ไฟล์บีบอัด"}]},
+{"id":"hsk6-292","chinese":"压抑","pinyin":"yā yì","meaning":"To suppress; depression","meaningThai":"กดดัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"心情压抑。","pinyin":"Xin qing ya yi.","meaning":"Feel depressed.","meaningThai":"รู้สึกกดดัน"}]},
+{"id":"hsk6-293","chinese":"严格","pinyin":"yán gé","meaning":"Strict; rigorous","meaningThai":"เข้มงวด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"严格要求。","pinyin":"Yan ge yao qiu.","meaning":"Strict requirements.","meaningThai":"ข้อกำหนดที่เข้มงวด"}]},
+{"id":"hsk6-294","chinese":"严峻","pinyin":"yán jùn","meaning":"Severe; grim","meaningThai":"รุนแรง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"形势严峻。","pinyin":"Xing shi yan jun.","meaning":"Grim situation.","meaningThai":"สถานการณ์รุนแรง"}]},
+{"id":"hsk6-295","chinese":"延期","pinyin":"yán qī","meaning":"To postpone; to extend","meaningThai":"เลื่อน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"延期举行。","pinyin":"Yan qi ju xing.","meaning":"Postpone the event.","meaningThai":"เลื่อนการจัดงาน"}]},
+{"id":"hsk6-296","chinese":"延伸","pinyin":"yán shēn","meaning":"To extend; to stretch","meaningThai":"ขยาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"不断延伸。","pinyin":"Bu duan yan shen.","meaning":"Continuously extending.","meaningThai":"ขยายอย่างต่อเนื่อง"}]},
+{"id":"hsk6-297","chinese":"沿海","pinyin":"yán hǎi","meaning":"Coastal","meaningThai":"ชายฝั่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"沿海城市。","pinyin":"Yan hai cheng shi.","meaning":"Coastal city.","meaningThai":"เมืองชายฝั่ง"}]},
+{"id":"hsk6-298","chinese":"研究生","pinyin":"yán jiū shēng","meaning":"Graduate student","meaningThai":"นักศึกษาระดับบัณฑิตศึกษา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"攻读研究生。","pinyin":"Gong du yan jiu sheng.","meaning":"Pursue graduate studies.","meaningThai":"เรียนต่อระดับบัณฑิตศึกษา"}]},
+{"id":"hsk6-299","chinese":"验收","pinyin":"yàn shōu","meaning":"To check and accept","meaningThai":"ตรวจรับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"工程验收。","pinyin":"Gong cheng yan shou.","meaning":"Project acceptance.","meaningThai":"ตรวจรับงานก่อสร้าง"}]},
+{"id":"hsk6-300","chinese":"氧气","pinyin":"yǎng qì","meaning":"Oxygen","meaningThai":"ออกซิเจน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"呼吸氧气。","pinyin":"Hu xi yang qi.","meaning":"Breathe oxygen.","meaningThai":"หายใจเอาออกซิเจน"}]},
+{"id":"hsk6-301","chinese":"样品","pinyin":"yàng pǐn","meaning":"Sample (product)","meaningThai":"ตัวอย่างสินค้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"免费样品。","pinyin":"Mian fei yang pin.","meaning":"Free sample.","meaningThai":"ตัวอย่างฟรี"}]},
+{"id":"hsk6-302","chinese":"药物","pinyin":"yào wù","meaning":"Medicine; drug","meaningThai":"ยา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"药物过敏。","pinyin":"Yao wu guo min.","meaning":"Drug allergy.","meaningThai":"แพ้ยา"}]},
+{"id":"hsk6-303","chinese":"业务","pinyin":"yè wù","meaning":"Business; professional work","meaningThai":"ธุรกิจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"业务范围。","pinyin":"Ye wu fan wei.","meaning":"Business scope.","meaningThai":"ขอบเขตธุรกิจ"}]},
+{"id":"hsk6-304","chinese":"业余","pinyin":"yè yú","meaning":"Amateur; spare time","meaningThai":"งานอดิเรก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"业余爱好。","pinyin":"Ye yu ai hao.","meaning":"Hobby.","meaningThai":"งานอดิเรก"}]},
+{"id":"hsk6-305","chinese":"依赖","pinyin":"yī lài","meaning":"To depend on; reliance","meaningThai":"พึ่งพา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"互相依赖。","pinyin":"Hu xiang yi lai.","meaning":"Mutual dependence.","meaningThai":"พึ่งพาซึ่งกันและกัน"}]},
+{"id":"hsk6-306","chinese":"依据","pinyin":"yī jù","meaning":"Basis; according to","meaningThai":"ตาม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"法律依据。","pinyin":"Fa lv yi ju.","meaning":"Legal basis.","meaningThai":"ตามกฎหมาย"}]},
+{"id":"hsk6-307","chinese":"依然","pinyin":"yī rán","meaning":"Still; as before","meaningThai":"ยังคง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"依然如故。","pinyin":"Yi ran ru gu.","meaning":"Still the same as before.","meaningThai":"ยังคงเหมือนเดิม"}]},
+{"id":"hsk6-308","chinese":"医务","pinyin":"yī wù","meaning":"Medical affairs","meaningThai":"การแพทย์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"医务人员。","pinyin":"Yi wu ren yuan.","meaning":"Medical personnel.","meaningThai":"บุคลากรทางการแพทย์"}]},
+{"id":"hsk6-309","chinese":"遗传","pinyin":"yí chuán","meaning":"Heredity; genetic","meaningThai":"พันธุกรรม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"遗传基因。","pinyin":"Yi chuan ji yin.","meaning":"Genetic genes.","meaningThai":"ยีนทางพันธุกรรม"}]},
+{"id":"hsk6-310","chinese":"遗址","pinyin":"yí zhǐ","meaning":"Historic site; ruins","meaningThai":"โบราณสถาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"考古遗址。","pinyin":"Kao gu yi zhi.","meaning":"Archaeological site.","meaningThai":"โบราณสถานทางโบราณคดี"}]},
+{"id":"hsk6-311","chinese":"义务","pinyin":"yì wù","meaning":"Duty; obligation","meaningThai":"หน้าที่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"公民义务。","pinyin":"Gong min yi wu.","meaning":"Civic duty.","meaningThai":"หน้าที่ของพลเมือง"}]},
+{"id":"hsk6-312","chinese":"议论","pinyin":"yì lùn","meaning":"To discuss; comment","meaningThai":"วิพากษ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"议论纷纷。","pinyin":"Yi lun fen fen.","meaning":"All sorts of comments.","meaningThai":"วิพากษ์วิจารณ์กันมาก"}]},
+{"id":"hsk6-313","chinese":"异常","pinyin":"yì cháng","meaning":"Abnormal; unusual","meaningThai":"ผิดปกติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"异常情况。","pinyin":"Yi chang qing kuang.","meaning":"Abnormal situation.","meaningThai":"สถานการณ์ผิดปกติ"}]},
+{"id":"hsk6-314","chinese":"意识","pinyin":"yì shí","meaning":"Consciousness; awareness","meaningThai":"จิตสำนึก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"安全意识。","pinyin":"An quan yi shi.","meaning":"Safety awareness.","meaningThai":"จิตสำนึกด้านความปลอดภัย"}]},
+{"id":"hsk6-315","chinese":"意思","pinyin":"yì sī","meaning":"Meaning; intention","meaningThai":"ความหมาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"什么意思？","pinyin":"Shen me yi si?","meaning":"What does it mean?","meaningThai":"หมายความว่าอะไร"}]},
+{"id":"hsk6-316","chinese":"意图","pinyin":"yì tú","meaning":"Intention; purpose","meaningThai":"ความตั้งใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"真正意图。","pinyin":"Zhen zheng yi tu.","meaning":"True intention.","meaningThai":"ความตั้งใจที่แท้จริง"}]},
+{"id":"hsk6-317","chinese":"意外","pinyin":"yì wài","meaning":"Accident; unexpected","meaningThai":"อุบัติเหตุ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"交通事故。","pinyin":"Jiao tong shi gu.","meaning":"Traffic accident.","meaningThai":"อุบัติเหตุทางจราจร"}]},
+{"id":"hsk6-318","chinese":"意味着","pinyin":"yì wèi zhe","meaning":"To mean; to signify","meaningThai":"หมายถึง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"这意味着什么？","pinyin":"Zhe yi wei zhe shen me?","meaning":"What does this mean?","meaningThai":"นี่หมายถึงอะไร"}]},
+{"id":"hsk6-319","chinese":"意志","pinyin":"yì zhì","meaning":"Will; determination","meaningThai":"ความตั้งใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"坚强意志。","pinyin":"Jian qiang yi zhi.","meaning":"Strong will.","meaningThai":"ความตั้งใจที่แข็งแกร่ง"}]},
+{"id":"hsk6-320","chinese":"阴谋","pinyin":"yīn móu","meaning":"Plot; conspiracy","meaningThai":"แผนร้าย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"政治阴谋。","pinyin":"Zheng zhi yin mou.","meaning":"Political plot.","meaningThai":"แผนร้ายทางการเมือง"}]},
+{"id":"hsk6-321","chinese":"音乐","pinyin":"yīn yuè","meaning":"Music","meaningThai":"ดนตรี","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"喜欢音乐。","pinyin":"Xi huan yin yue.","meaning":"Like music.","meaningThai":"ชอบดนตรี"}]},
+{"id":"hsk6-322","chinese":"因而","pinyin":"yīn ér","meaning":"Therefore; thus","meaningThai":"ดังนั้น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"因而成功。","pinyin":"Yin er cheng gong.","meaning":"Therefore succeed.","meaningThai":"ดังนั้นจึงสำเร็จ"}]},
+{"id":"hsk6-323","chinese":"银行","pinyin":"yín háng","meaning":"Bank","meaningThai":"ธนาคาร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"去银行。","pinyin":"Qu yin hang.","meaning":"Go to the bank.","meaningThai":"ไปธนาคาร"}]},
+{"id":"hsk6-324","chinese":"引进","pinyin":"yǐn jìn","meaning":"To introduce; to import","meaningThai":"นำเข้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"引进技术。","pinyin":"Yin jin ji shu.","meaning":"Introduce technology.","meaningThai":"นำเข้าเทคโนโลยี"}]},
+{"id":"hsk6-325","chinese":"引起","pinyin":"yǐn qǐ","meaning":"To cause; to give rise to","meaningThai":"ก่อให้เกิด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"引起注意。","pinyin":"Yin qi zhu yi.","meaning":"Attract attention.","meaningThai":"ก่อให้เกิดความสนใจ"}]},
+{"id":"hsk6-326","chinese":"盈利","pinyin":"yíng lì","meaning":"Profit; to make profit","meaningThai":"กำไร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"获得盈利。","pinyin":"Huo de ying li.","meaning":"Obtain profit.","meaningThai":"ได้รับกำไร"}]},
+{"id":"hsk6-327","chinese":"影片","pinyin":"yǐng piàn","meaning":"Film; movie","meaningThai":"ภาพยนตร์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"纪录影片。","pinyin":"Ji lu ying pian.","meaning":"Documentary film.","meaningThai":"ภาพยนตร์สารคดี"}]},
+{"id":"hsk6-328","chinese":"拥抱","pinyin":"yǒng bào","meaning":"To embrace; hug","meaningThai":"กอด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"热情拥抱。","pinyin":"Re qing yong bao.","meaning":"Warm embrace.","meaningThai":"กอดอย่างอบอุ่น"}]},
+{"id":"hsk6-329","chinese":"用户","pinyin":"yòng hù","meaning":"User","meaningThai":"ผู้ใช้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"终端用户。","pinyin":"Zhong duan yong hu.","meaning":"End user.","meaningThai":"ผู้ใช้ปลายทาง"}]},
+{"id":"hsk6-330","chinese":"幽默","pinyin":"yōu mò","meaning":"Humor; humorous","meaningThai":"ตลก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"很有幽默感。","pinyin":"Hen you you mo gan.","meaning":"Very humorous.","meaningThai":"มีอารมณ์ขันมาก"}]},
+{"id":"hsk6-331","chinese":"优先","pinyin":"yōu xiān","meaning":"Priority; preference","meaningThai":"ลำดับความสำคัญ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"优先发展。","pinyin":"You xian fa zhan.","meaning":"Priority development.","meaningThai":"การพัฒนาเป็นลำดับแรก"}]},
+{"id":"hsk6-332","chinese":"优秀","pinyin":"yōu xiù","meaning":"Excellent; outstanding","meaningThai":"ยอดเยี่ยม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"优秀员工。","pinyin":"You xiu yuan gong.","meaning":"Outstanding employee.","meaningThai":"พนักงานยอดเยี่ยม"}]},
+{"id":"hsk6-333","chinese":"悠久","pinyin":"yōu jiǔ","meaning":"Longstanding; age-old","meaningThai":"ยาวนาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"悠久历史。","pinyin":"You jiu li shi.","meaning":"Long history.","meaningThai":"ประวัติศาสตร์อันยาวนาน"}]},
+{"id":"hsk6-334","chinese":"游览","pinyin":"yóu lǎn","meaning":"To tour; to sightsee","meaningThai":"ท่องเที่ยว","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"游览名胜。","pinyin":"You lan ming sheng.","meaning":"Visit scenic spots.","meaningThai":"ท่องเที่ยวสถานที่有名"}]},
+{"id":"hsk6-335","chinese":"有利","pinyin":"yǒu lì","meaning":"Favorable; beneficial","meaningThai":"เป็นประโยชน์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"有利条件。","pinyin":"You li tiao jian.","meaning":"Favorable conditions.","meaningThai":"เงื่อนไขที่เป็นประโยชน์"}]},
+{"id":"hsk6-336","chinese":"幼儿园","pinyin":"yòu ér yuán","meaning":"Kindergarten","meaningThai":"โรงเรียนอนุบาล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"送孩子去幼儿园。","pinyin":"Song hai zi qu you er yuan.","meaning":"Send kids to kindergarten.","meaningThai":"ส่งเด็กไปโรงเรียนอนุบาล"}]},
+{"id":"hsk6-337","chinese":"娱乐","pinyin":"yú lè","meaning":"Entertainment","meaningThai":"บันเทิง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"娱乐活动。","pinyin":"Yu le huo dong.","meaning":"Entertainment activities.","meaningThai":"กิจกรรมบันเทิง"}]},
+{"id":"hsk6-338","chinese":"与其","pinyin":"yǔ qí","meaning":"Rather than","meaningThai":"ดีกว่า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"与其等待，不如行动。","pinyin":"Yu qi deng dai, bu ru xing dong.","meaning":"Rather than wait, better to act.","meaningThai":"ดีกว่ารอคอย ลงมือทำดีกว่า"}]},
+{"id":"hsk6-339","chinese":"宇宙","pinyin":"yǔ zhòu","meaning":"Universe; cosmos","meaningThai":"จักรวาล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"探索宇宙。","pinyin":"Tan suo yu zhou.","meaning":"Explore the universe.","meaningThai":"สำรวจจักรวาล"}]},
+{"id":"hsk6-340","chinese":"预测","pinyin":"yù cè","meaning":"To predict; forecast","meaningThai":"ทำนาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"天气预报。","pinyin":"Tian qi yu bao.","meaning":"Weather forecast.","meaningThai":"พยากรณ์อากาศ"}]},
+{"id":"hsk6-341","chinese":"预防","pinyin":"yù fáng","meaning":"To prevent","meaningThai":"ป้องกัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"预防疾病。","pinyin":"Yu fang ji bing.","meaning":"Prevent disease.","meaningThai":"ป้องกันโรค"}]},
+{"id":"hsk6-342","chinese":"元素","pinyin":"yuán sù","meaning":"Element","meaningThai":"ธาตุ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"化学元素。","pinyin":"Hua xue yuan su.","meaning":"Chemical element.","meaningThai":"ธาตุเคมี"}]},
+{"id":"hsk6-343","chinese":"原则","pinyin":"yuán zé","meaning":"Principle","meaningThai":"หลักการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"基本原则。","pinyin":"Ji ben yuan ze.","meaning":"Basic principle.","meaningThai":"หลักการพื้นฐาน"}]},
+{"id":"hsk6-344","chinese":"原子","pinyin":"yuán zǐ","meaning":"Atom","meaningThai":"อะตอม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"原子能。","pinyin":"Yuan zi neng.","meaning":"Atomic energy.","meaningThai":"พลังงานอะตอม"}]},
+{"id":"hsk6-345","chinese":"援助","pinyin":"yuán zhù","meaning":"Aid; assistance","meaningThai":"ช่วยเหลือ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"国际援助。","pinyin":"Guo ji yuan zhu.","meaning":"International aid.","meaningThai":"ความช่วยเหลือระหว่างประเทศ"}]},
+{"id":"hsk6-346","chinese":"愿望","pinyin":"yuàn wàng","meaning":"Wish; desire","meaningThai":"ความปรารถนา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"美好愿望。","pinyin":"Mei hao yuan wang.","meaning":"Beautiful wish.","meaningThai":"ความปรารถนาที่ดี"}]},
+{"id":"hsk6-347","chinese":"约束","pinyin":"yuē shù","meaning":"To restrain; constraint","meaningThai":"จำกัด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"纪律约束。","pinyin":"Ji lv yue shu.","meaning":"Discipline constraint.","meaningThai":"ข้อจำกัดทางวินัย"}]},
+{"id":"hsk6-348","chinese":"灾害","pinyin":"zāi hài","meaning":"Disaster; calamity","meaningThai":"ภัยพิบัติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自然灾害。","pinyin":"Zi ran zai hai.","meaning":"Natural disaster.","meaningThai":"ภัยพิบัติทางธรรมชาติ"}]},
+{"id":"hsk6-349","chinese":"载体","pinyin":"zài tǐ","meaning":"Carrier; vehicle (medium)","meaningThai":"พาหะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"文化载体。","pinyin":"Wen hua zai ti.","meaning":"Cultural carrier.","meaningThai":"พาหะทางวัฒนธรรม"}]},
+{"id":"hsk6-350","chinese":"赞助","pinyin":"zàn zhù","meaning":"To sponsor; sponsorship","meaningThai":"สนับสนุน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"赞助商。","pinyin":"Zan zhu shang.","meaning":"Sponsor.","meaningThai":"ผู้สนับสนุน"}]},
+{"id":"hsk6-351","chinese":"责任","pinyin":"zé rèn","meaning":"Responsibility; duty","meaningThai":"ความรับผิดชอบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"负责任。","pinyin":"Fu ze ren.","meaning":"Take responsibility.","meaningThai":"รับผิดชอบ"}]},
+{"id":"hsk6-352","chinese":"增长","pinyin":"zēng zhǎng","meaning":"To increase; growth","meaningThai":"เติบโต","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"经济增长。","pinyin":"Jing ji zeng zhang.","meaning":"Economic growth.","meaningThai":"การเติบโตทางเศรษฐกิจ"}]},
+{"id":"hsk6-353","chinese":"债务","pinyin":"zhài wù","meaning":"Debt; liability","meaningThai":"หนี้สิน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"偿还债务。","pinyin":"Chang huan zhai wu.","meaning":"Repay debt.","meaningThai":"ชำระหนี้"}]},
+{"id":"hsk6-354","chinese":"展览","pinyin":"zhǎn lǎn","meaning":"Exhibition; to exhibit","meaningThai":"นิทรรศการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"艺术展览。","pinyin":"Yi shu zhan lan.","meaning":"Art exhibition.","meaningThai":"นิทรรศการศิลปะ"}]},
+{"id":"hsk6-355","chinese":"战略","pinyin":"zhàn lüè","meaning":"Strategy","meaningThai":"กลยุทธ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"发展战略。","pinyin":"Fa zhan zhan lve.","meaning":"Development strategy.","meaningThai":"กลยุทธ์การพัฒนา"}]},
+{"id":"hsk6-356","chinese":"战胜","pinyin":"zhàn shèng","meaning":"To defeat; to overcome","meaningThai":"เอาชนะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"战胜困难。","pinyin":"Zhan sheng kun nan.","meaning":"Overcome difficulties.","meaningThai":"เอาชนะอุปสรรค"}]},
+{"id":"hsk6-357","chinese":"战争","pinyin":"zhàn zhēng","meaning":"War; warfare","meaningThai":"สงคราม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"世界大战。","pinyin":"Shi jie da zhan.","meaning":"World war.","meaningThai":"สงครามโลก"}]},
+{"id":"hsk6-358","chinese":"章程","pinyin":"zhāng chéng","meaning":"Charter; regulations","meaningThai":"กฎระเบียบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"公司章程。","pinyin":"Gong si zhang cheng.","meaning":"Company charter.","meaningThai":"กฎระเบียบของบริษัท"}]},
+{"id":"hsk6-359","chinese":"障碍","pinyin":"zhàng ài","meaning":"Obstacle; barrier","meaningThai":"อุปสรรค","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"克服障碍。","pinyin":"Ke fu zhang ai.","meaning":"Overcome obstacles.","meaningThai":"เอาชนะอุปสรรค"}]},
+{"id":"hsk6-360","chinese":"召开","pinyin":"zhào kāi","meaning":"To convene; to hold (meeting)","meaningThai":"จัดประชุม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"召开会议。","pinyin":"Zhao kai hui yi.","meaning":"Convene a meeting.","meaningThai":"จัดประชุม"}]},
+{"id":"hsk6-361","chinese":"哲学","pinyin":"zhé xué","meaning":"Philosophy","meaningThai":"ปรัชญา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"人生哲学。","pinyin":"Ren sheng zhe xue.","meaning":"Life philosophy.","meaningThai":"ปรัชญาชีวิต"}]},
+{"id":"hsk6-362","chinese":"真实","pinyin":"zhēn shí","meaning":"Real; true; authentic","meaningThai":"จริง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"真实情况。","pinyin":"Zhen shi qing kuang.","meaning":"Real situation.","meaningThai":"สถานการณ์จริง"}]},
+{"id":"hsk6-363","chinese":"诊断","pinyin":"zhěn duàn","meaning":"To diagnose; diagnosis","meaningThai":"วินิจฉัย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"医生诊断。","pinyin":"Yi sheng zhen duan.","meaning":"Doctor's diagnosis.","meaningThai":"การวินิจฉัยของแพทย์"}]},
+{"id":"hsk6-364","chinese":"振动","pinyin":"zhèn dòng","meaning":"Vibration","meaningThai":"การสั่น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"机械振动。","pinyin":"Ji xie zhen dong.","meaning":"Mechanical vibration.","meaningThai":"การสั่นทางกล"}]},
+{"id":"hsk6-365","chinese":"征服","pinyin":"zhēng fú","meaning":"To conquer","meaningThai":"พิชิต","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"征服自然。","pinyin":"Zheng fu zi ran.","meaning":"Conquer nature.","meaningThai":"พิชิตธรรมชาติ"}]},
+{"id":"hsk6-366","chinese":"争论","pinyin":"zhēng lùn","meaning":"To argue; debate","meaningThai":"โต้เถียง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"激烈争论。","pinyin":"Ji lie zheng lun.","meaning":"Fierce debate.","meaningThai":"โต้เถียงอย่างดุเดือด"}]},
+{"id":"hsk6-367","chinese":"争取","pinyin":"zhēng qǔ","meaning":"To strive for; to win","meaningThai":"พยายามให้ได้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"争取胜利。","pinyin":"Zheng qu sheng li.","meaning":"Strive for victory.","meaningThai":"พยายามให้ได้ชัยชนะ"}]},
+{"id":"hsk6-368","chinese":"征求","pinyin":"zhēng qiú","meaning":"To solicit; to seek","meaningThai":"ขอ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"征求意见。","pinyin":"Zheng qiu yi jian.","meaning":"Seek opinions.","meaningThai":"ขอความคิดเห็น"}]},
+{"id":"hsk6-369","chinese":"证据","pinyin":"zhèng jù","meaning":"Evidence; proof","meaningThai":"หลักฐาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"确凿证据。","pinyin":"Que zao zheng ju.","meaning":"Conclusive evidence.","meaningThai":"หลักฐานที่แน่ชัด"}]},
+{"id":"hsk6-370","chinese":"证明","pinyin":"zhèng míng","meaning":"To prove; certificate","meaningThai":"พิสูจน์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"事实证明。","pinyin":"Shi shi zheng ming.","meaning":"Facts prove.","meaningThai":"ข้อเท็จจริงพิสูจน์"}]},
+{"id":"hsk6-371","chinese":"证券","pinyin":"zhèng quàn","meaning":"Securities; stock","meaningThai":"หลักทรัพย์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"证券市场。","pinyin":"Zheng quan shi chang.","meaning":"Stock market.","meaningThai":"ตลาดหลักทรัพย์"}]},
+{"id":"hsk6-372","chinese":"政策","pinyin":"zhèng cè","meaning":"Policy","meaningThai":"นโยบาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"经济政策。","pinyin":"Jing ji zheng ce.","meaning":"Economic policy.","meaningThai":"นโยบายเศรษฐกิจ"}]},
+{"id":"hsk6-373","chinese":"政权","pinyin":"zhèng quán","meaning":"Political power; regime","meaningThai":"ระบอบการปกครอง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"夺取政权。","pinyin":"Duo qu zheng quan.","meaning":"Seize political power.","meaningThai":"ยึดอำนาจการปกครอง"}]},
+{"id":"hsk6-374","chinese":"症状","pinyin":"zhèng zhuàng","meaning":"Symptom","meaningThai":"อาการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"早期症状。","pinyin":"Zao qi zheng zhuang.","meaning":"Early symptoms.","meaningThai":"อาการเริ่มแรก"}]},
+{"id":"hsk6-375","chinese":"支部","pinyin":"zhī bù","meaning":"Branch (of an organization)","meaningThai":"สาขา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"党支部。","pinyin":"Dang zhi bu.","meaning":"Party branch.","meaningThai":"สาขาพรรค"}]},
+{"id":"hsk6-376","chinese":"支持","pinyin":"zhī chí","meaning":"To support; backing","meaningThai":"สนับสนุน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"大力支持。","pinyin":"Da li zhi chi.","meaning":"Strong support.","meaningThai":"สนับสนุนอย่างเต็มที่"}]},
+{"id":"hsk6-377","chinese":"支出","pinyin":"zhī chū","meaning":"Expenditure; to pay","meaningThai":"รายจ่าย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"财政支出。","pinyin":"Cai zheng zhi chu.","meaning":"Fiscal expenditure.","meaningThai":"รายจ่ายทางการคลัง"}]},
+{"id":"hsk6-378","chinese":"支配","pinyin":"zhī pèi","meaning":"To dominate; to control","meaningThai":"ครอบงำ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"受支配。","pinyin":"Shou zhi pei.","meaning":"Be dominated.","meaningThai":"ถูกครอบงำ"}]},
+{"id":"hsk6-379","chinese":"知识","pinyin":"zhī shi","meaning":"Knowledge","meaningThai":"ความรู้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"科学知识。","pinyin":"Ke xue zhi shi.","meaning":"Scientific knowledge.","meaningThai":"ความรู้ทางวิทยาศาสตร์"}]},
+{"id":"hsk6-380","chinese":"执行","pinyin":"zhí xíng","meaning":"To execute; to implement","meaningThai":"ปฏิบัติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"严格执行。","pinyin":"Yan ge zhi xing.","meaning":"Strictly implement.","meaningThai":"ปฏิบัติอย่างเคร่งครัด"}]},
+{"id":"hsk6-381","chinese":"指由","pinyin":"zhǐ yóu","meaning":"To point out the reason","meaningThai":"ชี้แจง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"指由原因。","pinyin":"Zhi you yuan yin.","meaning":"Point out the reason.","meaningThai":"ชี้แจงสาเหตุ"}]},
+{"id":"hsk6-382","chinese":"至今","pinyin":"zhì jīn","meaning":"Up to now; so far","meaningThai":"จนถึงปัจจุบัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"至今仍有效。","pinyin":"Zhi jin reng you xiao.","meaning":"Still valid to this day.","meaningThai":"ยังมีผลจนถึงปัจจุบัน"}]},
+{"id":"hsk6-383","chinese":"制度","pinyin":"zhì dù","meaning":"System; institution","meaningThai":"ระบบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"社会制度。","pinyin":"She hui zhi du.","meaning":"Social system.","meaningThai":"ระบบสังคม"}]},
+{"id":"hsk6-384","chinese":"制造","pinyin":"zhì zào","meaning":"To manufacture; to create","meaningThai":"ผลิต","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"中国制造。","pinyin":"Zhong guo zhi zao.","meaning":"Made in China.","meaningThai":"ผลิตในจีน"}]},
+{"id":"hsk6-385","chinese":"治疗","pinyin":"zhì liáo","meaning":"To treat; therapy","meaningThai":"รักษา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"及时治疗。","pinyin":"Ji shi zhi liao.","meaning":"Timely treatment.","meaningThai":"รักษาอย่างทันท่วงที"}]},
+{"id":"hsk6-386","chinese":"秩序","pinyin":"zhì xù","meaning":"Order; sequence","meaningThai":"ลำดับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"维持秩序。","pinyin":"Wei chi zhi xu.","meaning":"Maintain order.","meaningThai":"รักษาความสงบเรียบร้อย"}]},
+{"id":"hsk6-387","chinese":"智慧","pinyin":"zhì huì","meaning":"Wisdom; intelligence","meaningThai":"ปัญญา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"集体智慧。","pinyin":"Ji ti zhi hui.","meaning":"Collective wisdom.","meaningThai":"ปัญญาส่วนรวม"}]},
+{"id":"hsk6-388","chinese":"中介","pinyin":"zhōng jiè","meaning":"Intermediary; agency","meaningThai":"ตัวกลาง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"中介服务。","pinyin":"Zhong jie fu wu.","meaning":"Intermediary service.","meaningThai":"บริการตัวกลาง"}]},
+{"id":"hsk6-389","chinese":"终身","pinyin":"zhōng shēn","meaning":"Lifelong; lifetime","meaningThai":"ตลอดชีวิต","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"终身学习。","pinyin":"Zhong shen xue xi.","meaning":"Lifelong learning.","meaningThai":"เรียนรู้ตลอดชีวิต"}]},
+{"id":"hsk6-390","chinese":"种植","pinyin":"zhòng zhí","meaning":"To plant; to cultivate","meaningThai":"ปลูก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"种植树木。","pinyin":"Zhong zhi shu mu.","meaning":"Plant trees.","meaningThai":"ปลูกต้นไม้"}]},
+{"id":"hsk6-391","chinese":"重大","pinyin":"zhòng dà","meaning":"Significant; major","meaningThai":"สำคัญ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"重大新闻。","pinyin":"Zhong da xin wen.","meaning":"Major news.","meaningThai":"ข่าวสำคัญ"}]},
+{"id":"hsk6-392","chinese":"重量","pinyin":"zhòng liàng","meaning":"Weight","meaningThai":"น้ำหนัก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"减轻重量。","pinyin":"Jian qing zhong liang.","meaning":"Reduce weight.","meaningThai":"ลดน้ำหนัก"}]},
+{"id":"hsk6-393","chinese":"周折","pinyin":"zhōu zhé","meaning":"Twists and turns; setback","meaningThai":"อุปสรรค","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"经历周折。","pinyin":"Jing li zhou zhe.","meaning":"Go through setbacks.","meaningThai":"ผ่านอุปสรรค"}]},
+{"id":"hsk6-394","chinese":"逐渐","pinyin":"zhú jiàn","meaning":"Gradually","meaningThai":"ค่อยๆ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"逐渐改善。","pinyin":"Zhu jian gai shan.","meaning":"Gradually improve.","meaningThai":"ค่อยๆดีขึ้น"}]},
+{"id":"hsk6-395","chinese":"主观","pinyin":"zhǔ guān","meaning":"Subjective","meaningThai":"主观","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"主观原因。","pinyin":"Zhu guan yuan yin.","meaning":"Subjective reason.","meaningThai":"สาเหตุจากตัวบุคคล"}]},
+{"id":"hsk6-396","chinese":"主人","pinyin":"zhǔ rén","meaning":"Host; owner; master","meaningThai":"เจ้าของ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"主人翁。","pinyin":"Zhu ren weng.","meaning":"Master of the house.","meaningThai":"เจ้าของบ้าน"}]},
+{"id":"hsk6-397","chinese":"主题","pinyin":"zhǔ tí","meaning":"Theme; topic","meaningThai":"หัวข้อ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"会议主题。","pinyin":"Hui yi zhu ti.","meaning":"Meeting theme.","meaningThai":"หัวข้อการประชุม"}]},
+{"id":"hsk6-398","chinese":"主要","pinyin":"zhǔ yào","meaning":"Main; major; primary","meaningThai":"หลัก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"主要原因。","pinyin":"Zhu yao yuan yin.","meaning":"Main reason.","meaningThai":"สาเหตุหลัก"}]},
+{"id":"hsk6-399","chinese":"住宅","pinyin":"zhù zhái","meaning":"Residence; dwelling","meaningThai":"ที่อยู่อาศัย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"住宅小区。","pinyin":"Zhu zhai xiao qu.","meaning":"Residential area.","meaningThai":"เขตที่อยู่อาศัย"}]},
+{"id":"hsk6-400","chinese":"助理","pinyin":"zhù lǐ","meaning":"Assistant","meaningThai":"ผู้ช่วย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"总经理助理。","pinyin":"Zong jing li zhu li.","meaning":"General manager assistant.","meaningThai":"ผู้ช่วยผู้จัดการทั่วไป"}]},
+{"id":"hsk6-401","chinese":"注册","pinyin":"zhù cè","meaning":"To register","meaningThai":"ลงทะเบียน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"注册用户。","pinyin":"Zhu ce yong hu.","meaning":"Registered user.","meaningThai":"ผู้ใช้ที่ลงทะเบียน"}]},
+{"id":"hsk6-402","chinese":"专卖","pinyin":"zhuān mài","meaning":"Monopoly; exclusive sales","meaningThai":"专卖","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"专卖店。","pinyin":"Zhuan mai dian.","meaning":"Exclusive store.","meaningThai":"ร้าน专卖"}]},
+{"id":"hsk6-403","chinese":"转变","pinyin":"zhuǎn biàn","meaning":"To change; transformation","meaningThai":"เปลี่ยน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"观念转变。","pinyin":"Guan nian zhuan bian.","meaning":"Change of mindset.","meaningThai":"เปลี่ยนความคิด"}]},
+{"id":"hsk6-404","chinese":"转让","pinyin":"zhuǎn ràng","meaning":"To transfer (ownership)","meaningThai":"โอน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"技术转让。","pinyin":"Ji shu zhuan rang.","meaning":"Technology transfer.","meaningThai":"การโอนเทคโนโลยี"}]},
+{"id":"hsk6-405","chinese":"装饰","pinyin":"zhuāng shì","meaning":"To decorate; decoration","meaningThai":"ตกแต่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"室内装饰。","pinyin":"Shi nei zhuang shi.","meaning":"Interior decoration.","meaningThai":"ตกแต่งภายใน"}]},
+{"id":"hsk6-406","chinese":"追悼","pinyin":"zhuī dào","meaning":"To mourn","meaningThai":"ไว้อาลัย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"追悼会。","pinyin":"Zhui dao hui.","meaning":"Memorial service.","meaningThai":"พิธีไว้อาลัย"}]},
+{"id":"hsk6-407","chinese":"追究","pinyin":"zhuī jiū","meaning":"To investigate; to look into","meaningThai":"สอบสวน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"追究责任。","pinyin":"Zhui jiu ze ren.","meaning":"Investigate responsibility.","meaningThai":"สอบสวนหาความรับผิดชอบ"}]},
+{"id":"hsk6-408","chinese":"资格","pinyin":"zī gé","meaning":"Qualification; seniority","meaningThai":"คุณสมบัติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"具备资格。","pinyin":"Ju bei zi ge.","meaning":"Be qualified.","meaningThai":"มีคุณสมบัติ"}]},
+{"id":"hsk6-409","chinese":"资金","pinyin":"zī jīn","meaning":"Funds; capital","meaningThai":"เงินทุน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"筹集资金。","pinyin":"Chou ji zi jin.","meaning":"Raise funds.","meaningThai":"ระดมทุน"}]},
+{"id":"hsk6-410","chinese":"资料","pinyin":"zī liào","meaning":"Data; material","meaningThai":"ข้อมูล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"参考资料。","pinyin":"Can kao zi liao.","meaning":"Reference materials.","meaningThai":"เอกสารอ้างอิง"}]},
+{"id":"hsk6-411","chinese":"资源","pinyin":"zī yuán","meaning":"Resources","meaningThai":"ทรัพยากร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自然资源。","pinyin":"Zi ran zi yuan.","meaning":"Natural resources.","meaningThai":"ทรัพยากรธรรมชาติ"}]},
+{"id":"hsk6-412","chinese":"姿势","pinyin":"zī shì","meaning":"Posture; gesture","meaningThai":"ท่าทาง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"正确姿势。","pinyin":"Zheng que zi shi.","meaning":"Correct posture.","meaningThai":"ท่าทางที่ถูกต้อง"}]},
+{"id":"hsk6-413","chinese":"自动","pinyin":"zì dòng","meaning":"Automatic; voluntary","meaningThai":"อัตโนมัติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自动门。","pinyin":"Zi dong men.","meaning":"Automatic door.","meaningThai":"ประตูอัตโนมัติ"}]},
+{"id":"hsk6-414","chinese":"自发","pinyin":"zì fā","meaning":"Spontaneous","meaningThai":"โดยธรรมชาติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自发组织。","pinyin":"Zi fa zu zhi.","meaning":"Spontaneous organization.","meaningThai":"การรวมกลุ่มโดยธรรมชาติ"}]},
+{"id":"hsk6-415","chinese":"自豪","pinyin":"zì háo","meaning":"Proud","meaningThai":"ภาคภูมิใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"感到自豪。","pinyin":"Gan dao zi hao.","meaning":"Feel proud.","meaningThai":"รู้สึกภาคภูมิใจ"}]},
+{"id":"hsk6-416","chinese":"自身","pinyin":"zì shēn","meaning":"Self; oneself","meaningThai":"ตนเอง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自身利益。","pinyin":"Zi shen li yi.","meaning":"Self-interest.","meaningThai":"ผลประโยชน์ของตนเอง"}]},
+{"id":"hsk6-417","chinese":"自由","pinyin":"zì yóu","meaning":"Freedom; free","meaningThai":"อิสระ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"言论自由。","pinyin":"Yan lun zi you.","meaning":"Freedom of speech.","meaningThai":"เสรีภาพในการพูด"}]},
+{"id":"hsk6-418","chinese":"自愿","pinyin":"zì yuàn","meaning":"Voluntary","meaningThai":"สมัครใจ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自愿参加。","pinyin":"Zi yuan can jia.","meaning":"Voluntary participation.","meaningThai":"เข้าร่วมโดยสมัครใจ"}]},
+{"id":"hsk6-419","chinese":"综合","pinyin":"zōng hé","meaning":"Comprehensive; integrated","meaningThai":"ครอบคลุม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"综合评价。","pinyin":"Zong he ping jia.","meaning":"Comprehensive evaluation.","meaningThai":"การประเมินที่ครอบคลุม"}]},
+{"id":"hsk6-420","chinese":"总额","pinyin":"zǒng é","meaning":"Total amount; sum","meaningThai":"ยอดรวม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"存款总额。","pinyin":"Cun kuan zong e.","meaning":"Total deposits.","meaningThai":"ยอดเงินฝากรวม"}]},
+{"id":"hsk6-421","chinese":"总理","pinyin":"zǒng lǐ","meaning":"Premier; prime minister","meaningThai":"นายกรัฐมนตรี","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"国务院总理。","pinyin":"Guo wu yuan zong li.","meaning":"State Council Premier.","meaningThai":"นายกรัฐมนตรีแห่งสภาแห่งรัฐ"}]},
+{"id":"hsk6-422","chinese":"总算","pinyin":"zǒng suàn","meaning":"Finally; at last","meaningThai":"ในที่สุด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"总算完成了。","pinyin":"Zong suan wan cheng le.","meaning":"Finally finished.","meaningThai":"ในที่สุดก็เสร็จ"}]},
+{"id":"hsk6-423","chinese":"走廊","pinyin":"zǒu láng","meaning":"Corridor; hallway","meaningThai":"ทางเดิน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"走廊尽头。","pinyin":"Zou lang jin tou.","meaning":"End of the corridor.","meaningThai":"สุดทางเดิน"}]},
+{"id":"hsk6-424","chinese":"租赁","pinyin":"zū lìn","meaning":"To rent; to lease","meaningThai":"เช่า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"租赁合同。","pinyin":"Zu lin he tong.","meaning":"Lease contract.","meaningThai":"สัญญาเช่า"}]},
+{"id":"hsk6-425","chinese":"阻碍","pinyin":"zǔ ài","meaning":"To obstruct; hindrance","meaningThai":"ขัดขวาง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"阻碍交通。","pinyin":"Zu ai jiao tong.","meaning":"Block traffic.","meaningThai":"ขัดขวางการจราจร"}]},
+{"id":"hsk6-426","chinese":"组合","pinyin":"zǔ hé","meaning":"To combine; combination","meaningThai":"รวม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"自由组合。","pinyin":"Zi you zu he.","meaning":"Free combination.","meaningThai":"รวมกันอย่างอิสระ"}]},
+{"id":"hsk6-427","chinese":"组织","pinyin":"zǔ zhī","meaning":"Organization; to organize","meaningThai":"องค์กร","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"组织活动。","pinyin":"Zu zhi huo dong.","meaning":"Organize activities.","meaningThai":"จัดกิจกรรม"}]},
+{"id":"hsk6-428","chinese":"尊敬","pinyin":"zūn jìng","meaning":"To respect; to esteem","meaningThai":"เคารพ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"值得尊敬。","pinyin":"Zhi de zun jing.","meaning":"Worthy of respect.","meaningThai":"สมควรได้รับความเคารพ"}]},
+{"id":"hsk6-429","chinese":"尊重","pinyin":"zūn zhòng","meaning":"To respect; to value","meaningThai":"ให้เกียรติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"互相尊重。","pinyin":"Hu xiang zun zhong.","meaning":"Mutual respect.","meaningThai":"ให้เกียรติซึ่งกันและกัน"}]},
+{"id":"hsk6-430","chinese":"遵守","pinyin":"zūn shǒu","meaning":"To comply with; to observe","meaningThai":"ปฏิบัติตาม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"遵守法律。","pinyin":"Zun shou fa lv.","meaning":"Comply with the law.","meaningThai":"ปฏิบัติตามกฎหมาย"}]},
+{"id":"hsk6-431","chinese":"作品","pinyin":"zuò pǐn","meaning":"Work (of art/literature)","meaningThai":"ผลงาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"艺术作品。","pinyin":"Yi shu zuo pin.","meaning":"Artwork.","meaningThai":"ผลงานศิลปะ"}]},
+{"id":"hsk6-432","chinese":"作战","pinyin":"zuò zhàn","meaning":"To fight; warfare","meaningThai":"ต่อสู้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"英勇作战。","pinyin":"Ying yong zuo zhan.","meaning":"Fight bravely.","meaningThai":"ต่อสู้อย่างกล้าหาญ"}]},
+{"id":"hsk6-433","chinese":"座位","pinyin":"zuò wèi","meaning":"Seat","meaningThai":"ที่นั่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"预订座位。","pinyin":"Yu ding zuo wei.","meaning":"Reserve a seat.","meaningThai":"จองที่นั่ง"}]},
+{"id":"hsk6-434","chinese":"哀悼","pinyin":"āi dào","meaning":"To mourn; condolence","meaningThai":"ไว้อาลัย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"表示哀悼。","pinyin":"Biao shi ai dao.","meaning":"Express condolences.","meaningThai":"แสดงความไว้อาลัย"}]},
+{"id":"hsk6-435","chinese":"安宁","pinyin":"ān níng","meaning":"Peaceful; tranquil","meaningThai":"สงบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"生活安宁。","pinyin":"Sheng huo an ning.","meaning":"Peaceful life.","meaningThai":"ชีวิตที่สงบสุข"}]},
+{"id":"hsk6-436","chinese":"安息","pinyin":"ān xī","meaning":"To rest; to repose","meaningThai":"พักผ่อน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"安息吧。","pinyin":"An xi ba.","meaning":"Rest in peace.","meaningThai":"ขอให้พักผ่อนอย่างสงบ"}]},
+{"id":"hsk6-437","chinese":"案件","pinyin":"àn jiàn","meaning":"Case; legal case","meaningThai":"คดี","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"刑事案件。","pinyin":"Xing shi an jian.","meaning":"Criminal case.","meaningThai":"คดีอาญา"}]},
+{"id":"hsk6-438","chinese":"案例","pinyin":"àn lì","meaning":"Case (example)","meaningThai":"กรณีศึกษา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"教学案例。","pinyin":"Jiao xue an li.","meaning":"Teaching case.","meaningThai":"กรณีศึกษาการสอน"}]},
+{"id":"hsk6-439","chinese":"昂贵","pinyin":"áng guì","meaning":"Expensive; costly","meaningThai":"แพง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"价格昂贵。","pinyin":"Jia ge ang gui.","meaning":"Expensive price.","meaningThai":"ราคาแพง"}]},
+{"id":"hsk6-440","chinese":"奥秘","pinyin":"ào mì","meaning":"Mystery; secret","meaningThai":"ความลับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"宇宙奥秘。","pinyin":"Yu zhou ao mi.","meaning":"Mysteries of the universe.","meaningThai":"ความลับของจักรวาล"}]},
+{"id":"hsk6-441","chinese":"巴结","pinyin":"bā jie","meaning":"To fawn on; to curry favor","meaningThai":"ประจบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"巴结上司。","pinyin":"Ba jie shang si.","meaning":"Fawn on the boss.","meaningThai":"ประจบเจ้านาย"}]},
+{"id":"hsk6-442","chinese":"把戏","pinyin":"bǎ xì","meaning":"Trick; game","meaningThai":"เล่ห์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"耍把戏。","pinyin":"Shua ba xi.","meaning":"Play tricks.","meaningThai":"เล่นเล่ห์"}]},
+{"id":"hsk6-443","chinese":"罢工","pinyin":"bà gōng","meaning":"To strike; strike action","meaningThai":"นัดหยุดงาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"工人罢工。","pinyin":"Gong ren ba gong.","meaning":"Workers strike.","meaningThai":"คนงานนัดหยุดงาน"}]},
+{"id":"hsk6-444","chinese":"罢休","pinyin":"bà xiū","meaning":"To give up; to let it go","meaningThai":"เลิก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"不肯罢休。","pinyin":"Bu ken ba xiu.","meaning":"Refuse to give up.","meaningThai":"ไม่ยอมเลิก"}]},
+{"id":"hsk6-445","chinese":"摆脱","pinyin":"bǎi tuō","meaning":"To break away from","meaningThai":"หลุดพ้น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"摆脱困境。","pinyin":"Bai tuo kun jing.","meaning":"Get out of trouble.","meaningThai":"หลุดพ้นจากปัญหา"}]},
+{"id":"hsk6-446","chinese":"拜访","pinyin":"bài fǎng","meaning":"To visit; to call on","meaningThai":"เยี่ยม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"拜访朋友。","pinyin":"Bai fang peng you.","meaning":"Visit a friend.","meaningThai":"เยี่ยมเพื่อน"}]},
+{"id":"hsk6-447","chinese":"颁布","pinyin":"bān bù","meaning":"To promulgate; to issue","meaningThai":"ประกาศใช้","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"颁布法令。","pinyin":"Ban bu fa ling.","meaning":"Issue a decree.","meaningThai":"ประกาศใช้กฎหมาย"}]},
+{"id":"hsk6-448","chinese":"颁发","pinyin":"bān fā","meaning":"To award; to issue","meaningThai":"มอบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"颁发证书。","pinyin":"Ban fa zheng shu.","meaning":"Issue a certificate.","meaningThai":"มอบใบรับรอง"}]},
+{"id":"hsk6-449","chinese":"办理","pinyin":"bàn lǐ","meaning":"To handle; to transact","meaningThai":"ดำเนินการ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"办理手续。","pinyin":"Ban li shou xu.","meaning":"Go through formalities.","meaningThai":"ดำเนินการตามขั้นตอน"}]},
+{"id":"hsk6-450","chinese":"包裹","pinyin":"bāo guǒ","meaning":"Parcel; package","meaningThai":"พัสดุ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"邮寄包裹。","pinyin":"You ji bao guo.","meaning":"Mail a package.","meaningThai":"ส่งพัสดุทางไปรษณีย์"}]},
+{"id":"hsk6-451","chinese":"包含","pinyin":"bāo hán","meaning":"To contain; to include","meaningThai":"รวมถึง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"包含很多内容。","pinyin":"Bao han hen duo nei rong.","meaning":"Contains a lot of content.","meaningThai":"รวมถึงเนื้อหามากมาย"}]},
+{"id":"hsk6-452","chinese":"包围","pinyin":"bāo wéi","meaning":"To surround; to encircle","meaningThai":"ล้อม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"包围敌人。","pinyin":"Bao wei di ren.","meaning":"Surround the enemy.","meaningThai":"ล้อมศัตรู"}]},
+{"id":"hsk6-453","chinese":"宝贵","pinyin":"bǎo guì","meaning":"Precious; valuable","meaningThai":"มีค่า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"宝贵经验。","pinyin":"Bao gui jing yan.","meaning":"Valuable experience.","meaningThai":"ประสบการณ์อันมีค่า"}]},
+{"id":"hsk6-454","chinese":"保卫","pinyin":"bǎo wèi","meaning":"To defend; to safeguard","meaningThai":"ปกป้อง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"保卫祖国。","pinyin":"Bao wei zu guo.","meaning":"Defend the motherland.","meaningThai":"ปกป้องมาตุภูมิ"}]},
+{"id":"hsk6-455","chinese":"保障","pinyin":"bǎo zhàng","meaning":"To guarantee; safeguard","meaningThai":"รับประกัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"社会保障。","pinyin":"She hui bao zhang.","meaning":"Social security.","meaningThai":"ประกันสังคม"}]},
+{"id":"hsk6-456","chinese":"报酬","pinyin":"bào chou","meaning":"Reward; remuneration","meaningThai":"ค่าตอบแทน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"合理报酬。","pinyin":"He li bao chou.","meaning":"Reasonable remuneration.","meaningThai":"ค่าตอบแทนที่เหมาะสม"}]},
+{"id":"hsk6-457","chinese":"报复","pinyin":"bào fù","meaning":"To retaliate; revenge","meaningThai":"แก้แค้น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"打击报复。","pinyin":"Da ji bao fu.","meaning":"Retaliate.","meaningThai":"ตอบโต้แก้แค้น"}]},
+{"id":"hsk6-458","chinese":"报道","pinyin":"bào dào","meaning":"To report; news report","meaningThai":"รายงาน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"新闻报道。","pinyin":"Xin wen bao dao.","meaning":"News report.","meaningThai":"รายงานข่าว"}]},
+{"id":"hsk6-459","chinese":"暴力","pinyin":"bào lì","meaning":"Violence","meaningThai":"ความรุนแรง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"家庭暴力。","pinyin":"Jia ting bao li.","meaning":"Domestic violence.","meaningThai":"ความรุนแรงในครอบครัว"}]},
+{"id":"hsk6-460","chinese":"暴露","pinyin":"bào lù","meaning":"To expose; to reveal","meaningThai":"เปิดเผย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"暴露问题。","pinyin":"Bao lu wen ti.","meaning":"Expose problems.","meaningThai":"เปิดเผยปัญหา"}]},
+{"id":"hsk6-461","chinese":"卑鄙","pinyin":"bēi bǐ","meaning":"Despicable; mean","meaningThai":"ต่ำช้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"卑鄙手段。","pinyin":"Bei bi shou duan.","meaning":"Despicable means.","meaningThai":"วิธีที่ต่ำช้า"}]},
+{"id":"hsk6-462","chinese":"悲哀","pinyin":"bēi āi","meaning":"Sorrow; grief","meaningThai":"เศร้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"感到悲哀。","pinyin":"Gan dao bei ai.","meaning":"Feel sorrow.","meaningThai":"รู้สึกเศร้า"}]},
+{"id":"hsk6-463","chinese":"悲惨","pinyin":"bēi cǎn","meaning":"Miserable; tragic","meaningThai":"น่าเศร้า","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"悲惨命运。","pinyin":"Bei can ming yun.","meaning":"Tragic fate.","meaningThai":"ชะตากรรมที่น่าเศร้า"}]},
+{"id":"hsk6-464","chinese":"背叛","pinyin":"bèi pàn","meaning":"To betray; betrayal","meaningThai":"ทรยศ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"背叛朋友。","pinyin":"Bei pan peng you.","meaning":"Betray friends.","meaningThai":"ทรยศต่อเพื่อน"}]},
+{"id":"hsk6-465","chinese":"被动","pinyin":"bèi dòng","meaning":"Passive","meaningThai":"เชิงรับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"处于被动。","pinyin":"Chu yu bei dong.","meaning":"Be in a passive position.","meaningThai":"อยู่ในเชิงรับ"}]},
+{"id":"hsk6-466","chinese":"奔波","pinyin":"bēn bō","meaning":"To rush about; to be busy","meaningThai":"วิ่งวุ่น","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"来回奔波。","pinyin":"Lai hui ben bo.","meaning":"Rush back and forth.","meaningThai":"วิ่งวุ่นไปมา"}]},
+{"id":"hsk6-467","chinese":"崩溃","pinyin":"bēng kuì","meaning":"To collapse; to break down","meaningThai":"พังทลาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"精神崩溃。","pinyin":"Jing shen beng kui.","meaning":"Mental breakdown.","meaningThai":"จิตใจพังทลาย"}]},
+{"id":"hsk6-468","chinese":"逼迫","pinyin":"bī pò","meaning":"To force; to compel","meaningThai":"บังคับ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"逼迫就范。","pinyin":"Bi po jiu fan.","meaning":"Force to comply.","meaningThai":"บังคับให้ยอม"}]},
+{"id":"hsk6-469","chinese":"比重","pinyin":"bǐ zhòng","meaning":"Proportion; specific gravity","meaningThai":"สัดส่วน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"人口比重。","pinyin":"Ren kou bi zhong.","meaning":"Population proportion.","meaningThai":"สัดส่วนประชากร"}]},
+{"id":"hsk6-470","chinese":"鄙视","pinyin":"bǐ shì","meaning":"To despise; to look down on","meaningThai":"ดูถูก","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"鄙视行为。","pinyin":"Bi shi xing wei.","meaning":"Despicable behavior.","meaningThai":"พฤติกรรมน่าดูถูก"}]},
+{"id":"hsk6-471","chinese":"边境","pinyin":"biān jìng","meaning":"Border; frontier","meaningThai":"ชายแดน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"边境地区。","pinyin":"Bian jing di qu.","meaning":"Border area.","meaningThai":"เขตชายแดน"}]},
+{"id":"hsk6-472","chinese":"边缘","pinyin":"biān yuán","meaning":"Edge; fringe; marginal","meaningThai":"ขอบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"城市边缘。","pinyin":"Cheng shi bian yuan.","meaning":"City edge.","meaningThai":"ขอบเมือง"}]},
+{"id":"hsk6-473","chinese":"辩论","pinyin":"biàn lùn","meaning":"To debate; argument","meaningThai":"โต้วาที","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"展开辩论。","pinyin":"Zhan kai bian lun.","meaning":"Start a debate.","meaningThai":"เริ่มการโต้วาที"}]},
+{"id":"hsk6-474","chinese":"变革","pinyin":"biàn gé","meaning":"To transform; change","meaningThai":"เปลี่ยนแปลง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"社会变革。","pinyin":"She hui bian ge.","meaning":"Social change.","meaningThai":"การเปลี่ยนแปลงทางสังคม"}]},
+{"id":"hsk6-475","chinese":"变质","pinyin":"biàn zhì","meaning":"To deteriorate; to go bad","meaningThai":"เสื่อม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"食物变质。","pinyin":"Shi wu bian zhi.","meaning":"Food goes bad.","meaningThai":"อาหารเสื่อมคุณภาพ"}]},
+{"id":"hsk6-476","chinese":"标记","pinyin":"biāo jì","meaning":"Mark; sign; symbol","meaningThai":"เครื่องหมาย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"道路标记。","pinyin":"Dao lu biao ji.","meaning":"Road sign.","meaningThai":"เครื่องหมายจราจร"}]},
+{"id":"hsk6-477","chinese":"标志","pinyin":"biāo zhì","meaning":"Symbol; landmark; sign","meaningThai":"สัญลักษณ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"城市标志。","pinyin":"Cheng shi biao zhi.","meaning":"City landmark.","meaningThai":"สัญลักษณ์ของเมือง"}]},
+{"id":"hsk6-478","chinese":"表明","pinyin":"biǎo míng","meaning":"To make clear; to indicate","meaningThai":"แสดง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"表明立场。","pinyin":"Biao ming li chang.","meaning":"State one's position.","meaningThai":"แสดงจุดยืน"}]},
+{"id":"hsk6-479","chinese":"表演","pinyin":"biǎo yǎn","meaning":"To perform; performance","meaningThai":"แสดง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"精彩表演。","pinyin":"Jing cai biao yan.","meaning":"Wonderful performance.","meaningThai":"การแสดงที่ยอดเยี่ยม"}]},
+{"id":"hsk6-480","chinese":"表扬","pinyin":"biǎo yáng","meaning":"To praise; to commend","meaningThai":"ชมเชย","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"受到表扬。","pinyin":"Shou dao biao yang.","meaning":"Receive praise.","meaningThai":"ได้รับการชมเชย"}]},
+{"id":"hsk6-481","chinese":"表彰","pinyin":"biǎo zhāng","meaning":"To honor; to cite","meaningThai":"ยกย่อง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"表彰先进。","pinyin":"Biao zhang xian jin.","meaning":"Honor the advanced.","meaningThai":"ยกย่องผู้มีผลงานดีเด่น"}]},
+{"id":"hsk6-482","chinese":"剥削","pinyin":"bō xuē","meaning":"To exploit; exploitation","meaningThai":"ขูดรีด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"反对剥削。","pinyin":"Fan dui bo xue.","meaning":"Oppose exploitation.","meaningThai":"ต่อต้านการขูดรีด"}]},
+{"id":"hsk6-483","chinese":"波动","pinyin":"bō dòng","meaning":"To fluctuate; fluctuation","meaningThai":"ผันผวน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"价格波动。","pinyin":"Jia ge bo dong.","meaning":"Price fluctuation.","meaningThai":"ราคาผันผวน"}]},
+{"id":"hsk6-484","chinese":"波涛","pinyin":"bō tāo","meaning":"Big waves; surge","meaningThai":"คลื่นใหญ่","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"波涛汹涌。","pinyin":"Bo tao xiong yong.","meaning":"Rough waves.","meaningThai":"คลื่นใหญ่ซัดสาด"}]},
+{"id":"hsk6-485","chinese":"拨款","pinyin":"bō kuǎn","meaning":"To allocate funds","meaningThai":"จัดสรรงบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"政府拨款。","pinyin":"Zheng fu bo kuan.","meaning":"Government funding.","meaningThai":"งบประมาณที่รัฐจัดสรร"}]},
+{"id":"hsk6-486","chinese":"剥削","pinyin":"bō xuē","meaning":"To exploit","meaningThai":"เอารัดเอาเปรียบ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"剥削工人。","pinyin":"Bo xue gong ren.","meaning":"Exploit workers.","meaningThai":"เอารัดเอาเปรียบคนงาน"}]},
+{"id":"hsk6-487","chinese":"播种","pinyin":"bō zhǒng","meaning":"To sow seeds","meaningThai":"หว่านเมล็ด","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"春天播种。","pinyin":"Chun tian bo zhong.","meaning":"Sow in spring.","meaningThai":"หว่านเมล็ดในฤดูใบไม้ผลิ"}]},
+{"id":"hsk6-488","chinese":"反驳","pinyin":"fǎn bó","meaning":"To refute; to rebut","meaningThai":"โต้แย้ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"反驳观点。","pinyin":"Fan bo guan dian.","meaning":"Refute an argument.","meaningThai":"โต้แย้งความคิดเห็น"}]},
+{"id":"hsk6-489","chinese":"反常","pinyin":"fǎn cháng","meaning":"Abnormal; unusual","meaningThai":"ผิดปกติ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"行为反常。","pinyin":"Xing wei fan chang.","meaning":"Abnormal behavior.","meaningThai":"พฤติกรรมผิดปกติ"}]},
+{"id":"hsk6-490","chinese":"反动","pinyin":"fǎn dòng","meaning":"Reactionary","meaningThai":"ปฏิกิริยา","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"反动势力。","pinyin":"Fan dong shi li.","meaning":"Reactionary forces.","meaningThai":"กองกำลังปฏิกิริยา"}]},
+{"id":"hsk6-491","chinese":"反抗","pinyin":"fǎn kàng","meaning":"To resist; to revolt","meaningThai":"ต่อต้าน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"反抗压迫。","pinyin":"Fan kang ya po.","meaning":"Resist oppression.","meaningThai":"ต่อต้านการกดขี่"}]},
+{"id":"hsk6-492","chinese":"反馈","pinyin":"fǎn kuì","meaning":"Feedback","meaningThai":"ข้อเสนอแนะ","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"用户反馈。","pinyin":"Yong hu fan kui.","meaning":"User feedback.","meaningThai":"ข้อเสนอแนะจากผู้ใช้"}]},
+{"id":"hsk6-493","chinese":"繁荣","pinyin":"fán róng","meaning":"Prosperous; booming","meaningThai":"รุ่งเรือง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"经济繁荣。","pinyin":"Jing ji fan rong.","meaning":"Economic prosperity.","meaningThai":"เศรษฐกิจรุ่งเรือง"}]},
+{"id":"hsk6-494","chinese":"繁忙","pinyin":"fán máng","meaning":"Busy; bustling","meaningThai":"ยุ่ง","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"工作繁忙。","pinyin":"Gong zuo fan mang.","meaning":"Busy with work.","meaningThai":"งานยุ่ง"}]},
+{"id":"hsk6-495","chinese":"烦恼","pinyin":"fán nǎo","meaning":"Worried; annoyed","meaningThai":"กังวล","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"不必烦恼。","pinyin":"Bu bi fan nao.","meaning":"No need to worry.","meaningThai":"ไม่ต้องกังวล"}]},
+{"id":"hsk6-496","chinese":"繁殖","pinyin":"fán zhí","meaning":"To breed; to reproduce","meaningThai":"ขยายพันธุ์","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"繁殖后代。","pinyin":"Fan zhi hou dai.","meaning":"Reproduce offspring.","meaningThai":"ขยายพันธุ์รุ่นหลัง"}]},
+{"id":"hsk6-497","chinese":"防护","pinyin":"fáng hù","meaning":"To protect; protection","meaningThai":"ป้องกัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"防护措施。","pinyin":"Fang hu cuo shi.","meaning":"Protective measures.","meaningThai":"มาตรการป้องกัน"}]},
+{"id":"hsk6-498","chinese":"防守","pinyin":"fáng shǒu","meaning":"To defend; to guard","meaningThai":"ป้องกัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"加强防守。","pinyin":"Jia qiang fang shou.","meaning":"Strengthen defense.","meaningThai":"เสริมการป้องกัน"}]},
+{"id":"hsk6-499","chinese":"防御","pinyin":"fáng yù","meaning":"To defend; defense","meaningThai":"ป้องกัน","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"防御系统。","pinyin":"Fang yu xi tong.","meaning":"Defense system.","meaningThai":"ระบบป้องกัน"}]},
+{"id":"hsk6-500","chinese":"访问","pinyin":"fǎng wèn","meaning":"To visit; to access","meaningThai":"เยี่ยม","category":"hsk","subcategory":"hsk6","hskLevel":6,"status":"new","examples":[{"chinese":"正式访问。","pinyin":"Zheng shi fang wen.","meaning":"Official visit.","meaningThai":"การเยี่ยมอย่างเป็นทางการ"}]}
 ];
 
+
+const HEALTH_WORDS = [
+  {
+    "id": "health-001",
+    "chinese": "心脏",
+    "pinyin": "xīn zàng",
+    "meaning": "Heart",
+    "meaningThai": "หัวใจ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "心脏跳动很快。",
+        "pinyin": "Xīn zàng tiào dòng hěn kuài.",
+        "meaning": "The heart beats very fast.",
+        "meaningThai": "หัวใจเต้นเร็วมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-002",
+    "chinese": "肝脏",
+    "pinyin": "gān zàng",
+    "meaning": "Liver",
+    "meaningThai": "ตับ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "肝脏是重要的器官。",
+        "pinyin": "Gān zàng shì zhòng yào de qì guān.",
+        "meaning": "The liver is an important organ.",
+        "meaningThai": "ตับเป็นอวัยวะสำคัญ"
+      }
+    ]
+  },
+  {
+    "id": "health-003",
+    "chinese": "骨骼",
+    "pinyin": "gǔ gé",
+    "meaning": "Skeleton; Bones",
+    "meaningThai": "โครงกระดูก",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "骨骼支撑着身体。",
+        "pinyin": "Gǔ gé zhī chēng zhe shēn tǐ.",
+        "meaning": "The skeleton supports the body.",
+        "meaningThai": "โครงกระดูกค้ำจุนร่างกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-004",
+    "chinese": "肌肉",
+    "pinyin": "jī ròu",
+    "meaning": "Muscle",
+    "meaningThai": "กล้ามเนื้อ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "运动可以增强肌肉。",
+        "pinyin": "Yùn dòng kě yǐ zēng qiáng jī ròu.",
+        "meaning": "Exercise can strengthen muscles.",
+        "meaningThai": "การออกกำลังกายช่วยเสริมสร้างกล้ามเนื้อ"
+      }
+    ]
+  },
+  {
+    "id": "health-005",
+    "chinese": "神经",
+    "pinyin": "shén jīng",
+    "meaning": "Nerve",
+    "meaningThai": "เส้นประสาท",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "神经传递信号。",
+        "pinyin": "Shén jīng chuán dì xìn hào.",
+        "meaning": "Nerves transmit signals.",
+        "meaningThai": "เส้นประสาทส่งสัญญาณ"
+      }
+    ]
+  },
+  {
+    "id": "health-006",
+    "chinese": "血管",
+    "pinyin": "xuè guǎn",
+    "meaning": "Blood vessel",
+    "meaningThai": "หลอดเลือด",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "血管输送血液。",
+        "pinyin": "Xuè guǎn shū sòng xuè yè.",
+        "meaning": "Blood vessels carry blood.",
+        "meaningThai": "หลอดเลือดลำเลียงเลือด"
+      }
+    ]
+  },
+  {
+    "id": "health-007",
+    "chinese": "皮肤",
+    "pinyin": "pí fū",
+    "meaning": "Skin",
+    "meaningThai": "ผิวหนัง",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "皮肤需要保护。",
+        "pinyin": "Pí fū xū yào bǎo hù.",
+        "meaning": "Skin needs protection.",
+        "meaningThai": "ผิวหนังต้องการการปกป้อง"
+      }
+    ]
+  },
+  {
+    "id": "health-008",
+    "chinese": "肠胃",
+    "pinyin": "cháng wèi",
+    "meaning": "Digestive system",
+    "meaningThai": "ระบบทางเดินอาหาร",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "肠胃健康很重要。",
+        "pinyin": "Cháng wèi jiàn kāng hěn zhòng yào.",
+        "meaning": "Digestive health is very important.",
+        "meaningThai": "สุขภาพทางเดินอาหารสำคัญมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-009",
+    "chinese": "大脑",
+    "pinyin": "dà nǎo",
+    "meaning": "Brain",
+    "meaningThai": "สมอง",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大脑控制身体。",
+        "pinyin": "Dà nǎo kòng zhì shēn tǐ.",
+        "meaning": "The brain controls the body.",
+        "meaningThai": "สมองควบคุมร่างกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-010",
+    "chinese": "呼吸",
+    "pinyin": "hū xī",
+    "meaning": "To breathe; Breathing",
+    "meaningThai": "หายใจ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "深呼吸可以放松。",
+        "pinyin": "Shēn hū xī kě yǐ fàng sōng.",
+        "meaning": "Deep breathing can relax you.",
+        "meaningThai": "การหายใจลึกๆ ช่วยผ่อนคลาย"
+      }
+    ]
+  },
+  {
+    "id": "health-011",
+    "chinese": "脉搏",
+    "pinyin": "mài bó",
+    "meaning": "Pulse",
+    "meaningThai": "ชีพจร",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "医生检查脉搏。",
+        "pinyin": "Yī shēng jiǎn chá mài bó.",
+        "meaning": "The doctor checks the pulse.",
+        "meaningThai": "หมอตรวจชีพจร"
+      }
+    ]
+  },
+  {
+    "id": "health-012",
+    "chinese": "体温",
+    "pinyin": "tǐ wēn",
+    "meaning": "Body temperature",
+    "meaningThai": "อุณหภูมิร่างกาย",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "量一下体温。",
+        "pinyin": "Liáng yī xià tǐ wēn.",
+        "meaning": "Take your temperature.",
+        "meaningThai": "วัดอุณหภูมิร่างกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-013",
+    "chinese": "舌头",
+    "pinyin": "shé tou",
+    "meaning": "Tongue",
+    "meaningThai": "ลิ้น",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "伸出舌头。",
+        "pinyin": "Shēn chū shé tou.",
+        "meaning": "Stick out your tongue.",
+        "meaningThai": "แลบลิ้น"
+      }
+    ]
+  },
+  {
+    "id": "health-014",
+    "chinese": "牙齿",
+    "pinyin": "yá chǐ",
+    "meaning": "Teeth",
+    "meaningThai": "ฟัน",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每天刷牙保护牙齿。",
+        "pinyin": "Měi tiān shuā yá bǎo hù yá chǐ.",
+        "meaning": "Brush your teeth every day to protect them.",
+        "meaningThai": "แปรงฟันทุกวันเพื่อปกป้องฟัน"
+      }
+    ]
+  },
+  {
+    "id": "health-015",
+    "chinese": "肩膀",
+    "pinyin": "jiān bǎng",
+    "meaning": "Shoulder",
+    "meaningThai": "ไหล่",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我的肩膀很酸痛。",
+        "pinyin": "Wǒ de jiān bǎng hěn suān tòng.",
+        "meaning": "My shoulders are very sore.",
+        "meaningThai": "ไหล่ของฉันปวดเมื่อยมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-016",
+    "chinese": "咳嗽",
+    "pinyin": "ké sou",
+    "meaning": "To cough",
+    "meaningThai": "ไอ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他一直在咳嗽。",
+        "pinyin": "Tā yī zhí zài ké sou.",
+        "meaning": "He keeps coughing.",
+        "meaningThai": "เขาไอตลอดเวลา"
+      }
+    ]
+  },
+  {
+    "id": "health-017",
+    "chinese": "头痛",
+    "pinyin": "tóu tòng",
+    "meaning": "Headache",
+    "meaningThai": "ปวดหัว",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我头痛得厉害。",
+        "pinyin": "Wǒ tóu tòng dé lì hài.",
+        "meaning": "I have a bad headache.",
+        "meaningThai": "ฉันปวดหัวมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-018",
+    "chinese": "胃痛",
+    "pinyin": "wèi tòng",
+    "meaning": "Stomach ache",
+    "meaningThai": "ปวดท้อง",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "吃了不干净的东西会胃痛。",
+        "pinyin": "Chī le bù gān jìng de dōng xi huì wèi tòng.",
+        "meaning": "Eating unclean things causes stomach aches.",
+        "meaningThai": "กินของไม่สะอาดจะทำให้ปวดท้อง"
+      }
+    ]
+  },
+  {
+    "id": "health-019",
+    "chinese": "发烧",
+    "pinyin": "fā shāo",
+    "meaning": "To have a fever",
+    "meaningThai": "มีไข้",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "孩子发烧了。",
+        "pinyin": "Hái zi fā shāo le.",
+        "meaning": "The child has a fever.",
+        "meaningThai": "เด็กมีไข้"
+      }
+    ]
+  },
+  {
+    "id": "health-020",
+    "chinese": "流感",
+    "pinyin": "liú gǎn",
+    "meaning": "Influenza; Flu",
+    "meaningThai": "ไข้หวัดใหญ่",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每年冬天很多人得流感。",
+        "pinyin": "Měi nián dōng tiān hěn duō rén dé liú gǎn.",
+        "meaning": "Many people get the flu every winter.",
+        "meaningThai": "ทุกฤดูหนาวคนเป็นไข้หวัดใหญ่จำนวนมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-021",
+    "chinese": "过敏",
+    "pinyin": "guò mǐn",
+    "meaning": "Allergy; Allergic",
+    "meaningThai": "แพ้",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我对花粉过敏。",
+        "pinyin": "Wǒ duì huā fěn guò mǐn.",
+        "meaning": "I am allergic to pollen.",
+        "meaningThai": "ฉันแพ้ละอองเกสรดอกไม้"
+      }
+    ]
+  },
+  {
+    "id": "health-022",
+    "chinese": "骨折",
+    "pinyin": "gǔ zhé",
+    "meaning": "Bone fracture",
+    "meaningThai": "กระดูกหัก",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "摔倒了造成骨折。",
+        "pinyin": "Shuāi dǎo le zào chéng gǔ zhé.",
+        "meaning": "A fall caused a bone fracture.",
+        "meaningThai": "ล้มทำให้กระดูกหัก"
+      }
+    ]
+  },
+  {
+    "id": "health-023",
+    "chinese": "高血压",
+    "pinyin": "gāo xuè yā",
+    "meaning": "High blood pressure",
+    "meaningThai": "ความดันโลหิตสูง",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老年人容易患高血压。",
+        "pinyin": "Lǎo nián rén róng yì huàn gāo xuè yā.",
+        "meaning": "Elderly people easily get high blood pressure.",
+        "meaningThai": "ผู้สูงอายุมีแนวโน้มเป็นความดันโลหิตสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-024",
+    "chinese": "糖尿病",
+    "pinyin": "táng niào bìng",
+    "meaning": "Diabetes",
+    "meaningThai": "เบาหวาน",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "糖尿病患者要注意饮食。",
+        "pinyin": "Táng niào bìng huàn zhě yào zhù yì yǐn shí.",
+        "meaning": "Diabetes patients should watch their diet.",
+        "meaningThai": "ผู้ป่วยเบาหวานต้องระวังการกิน"
+      }
+    ]
+  },
+  {
+    "id": "health-025",
+    "chinese": "失眠",
+    "pinyin": "shī mián",
+    "meaning": "Insomnia",
+    "meaningThai": "นอนไม่หลับ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "压力大会导致失眠。",
+        "pinyin": "Yā lì dà huì dǎo zhì shī mián.",
+        "meaning": "High stress can cause insomnia.",
+        "meaningThai": "ความเครียดสูงทำให้นอนไม่หลับ"
+      }
+    ]
+  },
+  {
+    "id": "health-026",
+    "chinese": "发炎",
+    "pinyin": "fā yán",
+    "meaning": "Inflammation",
+    "meaningThai": "อักเสบ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "伤口发炎了。",
+        "pinyin": "Shāng kǒu fā yán le.",
+        "meaning": "The wound is inflamed.",
+        "meaningThai": "แผลอักเสบ"
+      }
+    ]
+  },
+  {
+    "id": "health-027",
+    "chinese": "感染",
+    "pinyin": "gǎn rǎn",
+    "meaning": "Infection",
+    "meaningThai": "ติดเชื้อ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "要注意防止伤口感染。",
+        "pinyin": "Yào zhù yì fáng zhǐ shāng kǒu gǎn rǎn.",
+        "meaning": "Be careful to prevent wound infection.",
+        "meaningThai": "ต้องระวังป้องกันแผลติดเชื้อ"
+      }
+    ]
+  },
+  {
+    "id": "health-028",
+    "chinese": "症状",
+    "pinyin": "zhèng zhuàng",
+    "meaning": "Symptom",
+    "meaningThai": "อาการ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这些症状持续了三天。",
+        "pinyin": "Zhè xiē zhèng zhuàng chí xù le sān tiān.",
+        "meaning": "These symptoms have lasted three days.",
+        "meaningThai": "อาการเหล่านี้เกิดขึ้นสามวันแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "health-029",
+    "chinese": "扭伤",
+    "pinyin": "niǔ shāng",
+    "meaning": "To sprain",
+    "meaningThai": "เคล็ด",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "打球时扭伤了脚踝。",
+        "pinyin": "Dǎ qiú shí niǔ shāng le jiǎo huái.",
+        "meaning": "Sprained my ankle while playing ball.",
+        "meaningThai": "เล่นบอลแล้วข้อเท้าเคล็ด"
+      }
+    ]
+  },
+  {
+    "id": "health-030",
+    "chinese": "癌症",
+    "pinyin": "ái zhèng",
+    "meaning": "Cancer",
+    "meaningThai": "มะเร็ง",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "早发现癌症可以治愈。",
+        "pinyin": "Zǎo fā xiàn ái zhèng kě yǐ zhì yù.",
+        "meaning": "Early detection of cancer can be cured.",
+        "meaningThai": "พบมะเร็งเร็วสามารถรักษาหายได้"
+      }
+    ]
+  },
+  {
+    "id": "health-031",
+    "chinese": "跑步",
+    "pinyin": "pǎo bù",
+    "meaning": "To jog; To run",
+    "meaningThai": "วิ่ง",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每天早上跑步。",
+        "pinyin": "Měi tiān zǎo shàng pǎo bù.",
+        "meaning": "Jog every morning.",
+        "meaningThai": "วิ่งทุกเช้า"
+      }
+    ]
+  },
+  {
+    "id": "health-032",
+    "chinese": "瑜伽",
+    "pinyin": "yú jiā",
+    "meaning": "Yoga",
+    "meaningThai": "โยคะ",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "瑜伽可以放松身心。",
+        "pinyin": "Yú jiā kě yǐ fàng sōng shēn xīn.",
+        "meaning": "Yoga can relax the body and mind.",
+        "meaningThai": "โยคะช่วยผ่อนคลายร่างกายและจิตใจ"
+      }
+    ]
+  },
+  {
+    "id": "health-033",
+    "chinese": "游泳",
+    "pinyin": "yóu yǒng",
+    "meaning": "To swim",
+    "meaningThai": "ว่ายน้ำ",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "夏天我喜欢游泳。",
+        "pinyin": "Xià tiān wǒ xǐ huān yóu yǒng.",
+        "meaning": "I like to swim in summer.",
+        "meaningThai": "ฤดูร้อนฉันชอบว่ายน้ำ"
+      }
+    ]
+  },
+  {
+    "id": "health-034",
+    "chinese": "健身",
+    "pinyin": "jiàn shēn",
+    "meaning": "To work out; Fitness",
+    "meaningThai": "ออกกำลังกาย",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我每周去健身房三次。",
+        "pinyin": "Wǒ měi zhōu qù jiàn shēn fáng sān cì.",
+        "meaning": "I go to the gym three times a week.",
+        "meaningThai": "ฉันไปยิมอาทิตย์ละสามครั้ง"
+      }
+    ]
+  },
+  {
+    "id": "health-035",
+    "chinese": "拉伸",
+    "pinyin": "lā shēn",
+    "meaning": "To stretch",
+    "meaningThai": "ยืดเหยียด",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "运动前要拉伸。",
+        "pinyin": "Yùn dòng qián yào lā shēn.",
+        "meaning": "Stretch before exercise.",
+        "meaningThai": "ต้องยืดเหยียดก่อนออกกำลังกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-036",
+    "chinese": "登山",
+    "pinyin": "dēng shān",
+    "meaning": "Mountain climbing",
+    "meaningThai": "ปีนเขา",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "周末我们去登山。",
+        "pinyin": "Zhōu mò wǒ men qù dēng shān.",
+        "meaning": "We go mountain climbing on weekends.",
+        "meaningThai": "วันหยุดสุดสัปดาห์เราไปปีนเขา"
+      }
+    ]
+  },
+  {
+    "id": "health-037",
+    "chinese": "太极",
+    "pinyin": "tài jí",
+    "meaning": "Tai Chi",
+    "meaningThai": "ไทเก๊ก",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老人喜欢打太极。",
+        "pinyin": "Lǎo rén xǐ huān dǎ tài jí.",
+        "meaning": "Elderly people like to practice Tai Chi.",
+        "meaningThai": "ผู้สูงอายุชอบเล่นไทเก๊ก"
+      }
+    ]
+  },
+  {
+    "id": "health-038",
+    "chinese": "散步",
+    "pinyin": "sàn bù",
+    "meaning": "To take a walk",
+    "meaningThai": "เดินเล่น",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "饭后散步有助消化。",
+        "pinyin": "Fàn hòu sàn bù yǒu zhù xiāo huà.",
+        "meaning": "Walking after meals aids digestion.",
+        "meaningThai": "เดินเล่นหลังกินข้าวช่วยย่อยอาหาร"
+      }
+    ]
+  },
+  {
+    "id": "health-039",
+    "chinese": "骑自行车",
+    "pinyin": "qí zì xíng chē",
+    "meaning": "Ride a bicycle",
+    "meaningThai": "ขี่จักรยาน",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "骑自行车是很好的运动。",
+        "pinyin": "Qí zì xíng chē shì hěn hǎo de yùn dòng.",
+        "meaning": "Riding a bicycle is great exercise.",
+        "meaningThai": "การขี่จักรยานเป็นการออกกำลังกายที่ดี"
+      }
+    ]
+  },
+  {
+    "id": "health-040",
+    "chinese": "拳击",
+    "pinyin": "quán jī",
+    "meaning": "Boxing",
+    "meaningThai": "ชกมวย",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "拳击需要很好的体力。",
+        "pinyin": "Quán jī xū yào hěn hǎo de tǐ lì.",
+        "meaning": "Boxing requires great physical strength.",
+        "meaningThai": "การชกมวยต้องใช้กำลังมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-041",
+    "chinese": "马拉松",
+    "pinyin": "mǎ lā sōng",
+    "meaning": "Marathon",
+    "meaningThai": "มาราธอน",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他参加了马拉松比赛。",
+        "pinyin": "Tā cān jiā le mǎ lā sōng bǐ sài.",
+        "meaning": "He participated in a marathon race.",
+        "meaningThai": "เขาเข้าร่วมการแข่งขันมาราธอน"
+      }
+    ]
+  },
+  {
+    "id": "health-042",
+    "chinese": "哑铃",
+    "pinyin": "yǎ líng",
+    "meaning": "Dumbbell",
+    "meaningThai": "ดัมเบล",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "用哑铃锻炼手臂肌肉。",
+        "pinyin": "Yòng yǎ líng duàn liàn shǒu bì jī ròu.",
+        "meaning": "Use dumbbells to exercise arm muscles.",
+        "meaningThai": "ใช้ดัมเบลบริหารกล้ามเนื้อแขน"
+      }
+    ]
+  },
+  {
+    "id": "health-043",
+    "chinese": "仰卧起坐",
+    "pinyin": "yǎng wò qǐ zuò",
+    "meaning": "Sit-up",
+    "meaningThai": "ซิทอัพ",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每天做五十个仰卧起坐。",
+        "pinyin": "Měi tiān zuò wǔ shí gè yǎng wò qǐ zuò.",
+        "meaning": "Do fifty sit-ups every day.",
+        "meaningThai": "ทำซิทอัพห้าสิบครั้งทุกวัน"
+      }
+    ]
+  },
+  {
+    "id": "health-044",
+    "chinese": "跳绳",
+    "pinyin": "tiào shéng",
+    "meaning": "Jump rope",
+    "meaningThai": "กระโดดเชือก",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "跳绳是很好的有氧运动。",
+        "pinyin": "Tiào shéng shì hěn hǎo de yǒu yǎng yùn dòng.",
+        "meaning": "Jump rope is great aerobic exercise.",
+        "meaningThai": "การกระโดดเชือกเป็นการออกกำลังกายแบบคาร์ดิโอที่ดี"
+      }
+    ]
+  },
+  {
+    "id": "health-045",
+    "chinese": "有氧运动",
+    "pinyin": "yǒu yǎng yùn dòng",
+    "meaning": "Aerobic exercise",
+    "meaningThai": "การออกกำลังกายแบบแอโรบิก",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "有氧运动对心脏好。",
+        "pinyin": "Yǒu yǎng yùn dòng duì xīn zàng hǎo.",
+        "meaning": "Aerobic exercise is good for the heart.",
+        "meaningThai": "การออกกำลังกายแบบแอโรบิกดีต่อหัวใจ"
+      }
+    ]
+  },
+  {
+    "id": "health-046",
+    "chinese": "蛋白质",
+    "pinyin": "dàn bái zhì",
+    "meaning": "Protein",
+    "meaningThai": "โปรตีน",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "鸡蛋含有丰富的蛋白质。",
+        "pinyin": "Jī dàn hán yǒu fēng fù de dàn bái zhì.",
+        "meaning": "Eggs are rich in protein.",
+        "meaningThai": "ไข่มีโปรตีนสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-047",
+    "chinese": "维生素",
+    "pinyin": "wéi shēng sù",
+    "meaning": "Vitamin",
+    "meaningThai": "วิตามิน",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "多吃水果补充维生素。",
+        "pinyin": "Duō chī shuǐ guǒ bǔ chōng wéi shēng sù.",
+        "meaning": "Eat more fruits to supplement vitamins.",
+        "meaningThai": "กินผลไม้เยอะๆ เพื่อเสริมวิตามิน"
+      }
+    ]
+  },
+  {
+    "id": "health-048",
+    "chinese": "矿物质",
+    "pinyin": "kuàng wù zhì",
+    "meaning": "Mineral",
+    "meaningThai": "แร่ธาตุ",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "身体需要各种矿物质。",
+        "pinyin": "Shēn tǐ xū yào gè zhǒng kuàng wù zhì.",
+        "meaning": "The body needs various minerals.",
+        "meaningThai": "ร่างกายต้องการแร่ธาตุต่างๆ"
+      }
+    ]
+  },
+  {
+    "id": "health-049",
+    "chinese": "热量",
+    "pinyin": "rè liàng",
+    "meaning": "Calorie",
+    "meaningThai": "แคลอรี่",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "要注意控制热量摄入。",
+        "pinyin": "Yào zhù yì kòng zhì rè liàng shè rù.",
+        "meaning": "Be careful to control calorie intake.",
+        "meaningThai": "ต้องระวังการรับแคลอรี่"
+      }
+    ]
+  },
+  {
+    "id": "health-050",
+    "chinese": "膳食纤维",
+    "pinyin": "shàn shí xiān wéi",
+    "meaning": "Dietary fiber",
+    "meaningThai": "ใยอาหาร",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "蔬菜含有大量膳食纤维。",
+        "pinyin": "Shū cài hán yǒu dà liàng shàn shí xiān wéi.",
+        "meaning": "Vegetables contain a lot of dietary fiber.",
+        "meaningThai": "ผักมีใยอาหารสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-051",
+    "chinese": "碳水化合物",
+    "pinyin": "tàn shuǐ huà hé wù",
+    "meaning": "Carbohydrate",
+    "meaningThai": "คาร์โบไฮเดรต",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "米饭富含碳水化合物。",
+        "pinyin": "Mǐ fàn fù hán tàn shuǐ huà hé wù.",
+        "meaning": "Rice is rich in carbohydrates.",
+        "meaningThai": "ข้าวมีคาร์โบไฮเดรตสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-052",
+    "chinese": "脂肪",
+    "pinyin": "zhī fáng",
+    "meaning": "Fat",
+    "meaningThai": "ไขมัน",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "要控制脂肪的摄入量。",
+        "pinyin": "Yào kòng zhì zhī fáng de shè rù liàng.",
+        "meaning": "Control your fat intake.",
+        "meaningThai": "ต้องควบคุมปริมาณไขมันที่รับเข้าไป"
+      }
+    ]
+  },
+  {
+    "id": "health-053",
+    "chinese": "有机食品",
+    "pinyin": "yǒu jī shí pǐn",
+    "meaning": "Organic food",
+    "meaningThai": "อาหารออร์แกนิก",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "有机食品更健康。",
+        "pinyin": "Yǒu jī shí pǐn gèng jiàn kāng.",
+        "meaning": "Organic food is healthier.",
+        "meaningThai": "อาหารออร์แกนิกดีต่อสุขภาพมากกว่า"
+      }
+    ]
+  },
+  {
+    "id": "health-054",
+    "chinese": "均衡饮食",
+    "pinyin": "jūn héng yǐn shí",
+    "meaning": "Balanced diet",
+    "meaningThai": "อาหารสมดุล",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "保持均衡饮食很重要。",
+        "pinyin": "Bǎo chí jūn héng yǐn shí hěn zhòng yào.",
+        "meaning": "Maintaining a balanced diet is important.",
+        "meaningThai": "การรักษาอาหารสมดุลเป็นสิ่งสำคัญ"
+      }
+    ]
+  },
+  {
+    "id": "health-055",
+    "chinese": "素食",
+    "pinyin": "sù shí",
+    "meaning": "Vegetarian food",
+    "meaningThai": "อาหารเจ",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "越来越多的人选择素食。",
+        "pinyin": "Yuè lái yuè duō de rén xuǎn zé sù shí.",
+        "meaning": "More and more people choose vegetarian food.",
+        "meaningThai": "คนเลือกกินเจมากขึ้นเรื่อยๆ"
+      }
+    ]
+  },
+  {
+    "id": "health-056",
+    "chinese": "营养",
+    "pinyin": "yíng yǎng",
+    "meaning": "Nutrition",
+    "meaningThai": "โภชนาการ",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个食谱营养丰富。",
+        "pinyin": "Zhè ge shí pǔ yíng yǎng fēng fù.",
+        "meaning": "This recipe is very nutritious.",
+        "meaningThai": "สูตรอาหารนี้มีโภชนาการสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-057",
+    "chinese": "添加剂",
+    "pinyin": "tiān jiā jì",
+    "meaning": "Food additive",
+    "meaningThai": "สารปรุงแต่ง",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "尽量少吃含添加剂的食物。",
+        "pinyin": "Jǐn liàng shǎo chī hán tiān jiā jì de shí wù.",
+        "meaning": "Try to eat less food with additives.",
+        "meaningThai": "พยายามกินอาหารที่มีสารปรุงแต่งน้อย"
+      }
+    ]
+  },
+  {
+    "id": "health-058",
+    "chinese": "胆固醇",
+    "pinyin": "dǎn gù chún",
+    "meaning": "Cholesterol",
+    "meaningThai": "คอเลสเตอรอล",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "高胆固醇对健康不好。",
+        "pinyin": "Gāo dǎn gù chún duì jiàn kāng bù hǎo.",
+        "meaning": "High cholesterol is bad for health.",
+        "meaningThai": "คอเลสเตอรอลสูงไม่ดีต่อสุขภาพ"
+      }
+    ]
+  },
+  {
+    "id": "health-059",
+    "chinese": "减肥",
+    "pinyin": "jiǎn féi",
+    "meaning": "To lose weight",
+    "meaningThai": "ลดน้ำหนัก",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她在减肥，不吃甜食。",
+        "pinyin": "Tā zài jiǎn féi, bù chī tián shí.",
+        "meaning": "She is losing weight and doesn't eat sweets.",
+        "meaningThai": "เธอกำลังลดน้ำหนัก ไม่กินของหวาน"
+      }
+    ]
+  },
+  {
+    "id": "health-060",
+    "chinese": "禁食",
+    "pinyin": "jìn shí",
+    "meaning": "Fasting",
+    "meaningThai": "อดอาหาร",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "间歇性禁食是一种饮食方法。",
+        "pinyin": "Jiàn xiē xìng jìn shí shì yī zhǒng yǐn shí fāng fǎ.",
+        "meaning": "Intermittent fasting is a dietary method.",
+        "meaningThai": "การอดอาหารเป็นช่วงเป็นวิธีควบคุมอาหาร"
+      }
+    ]
+  },
+{
+  "id": "health-061",
+  "chinese": "关节",
+  "pinyin": "guān jié",
+  "meaning": "Joint",
+  "meaningThai": "ข้อต่อ",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "关节痛影响走路。",
+      "pinyin": "Guān jié tòng yǐng xiǎng zǒu lù.",
+      "meaning": "Joint pain affects walking.",
+      "meaningThai": "ปวดข้อต่อส่งผลต่อการเดิน"
+    }
+  ]
+},
+{
+  "id": "health-062",
+  "chinese": "脊椎",
+  "pinyin": "jǐ zhuī",
+  "meaning": "Spine; Vertebra",
+  "meaningThai": "กระดูกสันหลัง",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "脊椎支撑整个身体。",
+      "pinyin": "Jǐ zhuī zhī chēng zhěng gè shēn tǐ.",
+      "meaning": "The spine supports the whole body.",
+      "meaningThai": "กระดูกสันหลังค้ำจุนร่างกายทั้งหมด"
+    }
+  ]
+},
+{
+  "id": "health-063",
+  "chinese": "韧带",
+  "pinyin": "rèn dài",
+  "meaning": "Ligament",
+  "meaningThai": "เอ็น",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "运动员容易拉伤韧带。",
+      "pinyin": "Yùn dòng yuán róng yì lā shāng rèn dài.",
+      "meaning": "Athletes easily pull ligaments.",
+      "meaningThai": "นักกีฬามักมีอาการเอ็นฉีก"
+    }
+  ]
+},
+{
+  "id": "health-064",
+  "chinese": "骨髓",
+  "pinyin": "gǔ suǐ",
+  "meaning": "Bone marrow",
+  "meaningThai": "ไขกระดูก",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "骨髓移植可以治疗白血病。",
+      "pinyin": "Gǔ suǐ yí zhí kě yǐ zhì liáo bái xuè bìng.",
+      "meaning": "Bone marrow transplant can treat leukemia.",
+      "meaningThai": "การปลูกถ่ายไขกระดูกสามารถรักษามะเร็งเม็ดเลือดขาว"
+    }
+  ]
+},
+{
+  "id": "health-065",
+  "chinese": "肺",
+  "pinyin": "fèi",
+  "meaning": "Lung",
+  "meaningThai": "ปอด",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "吸烟对肺不好。",
+      "pinyin": "Xī yān duì fèi bù hǎo.",
+      "meaning": "Smoking is bad for the lungs.",
+      "meaningThai": "การสูบบุหรี่ไม่ดีต่อปอด"
+    }
+  ]
+},
+{
+  "id": "health-066",
+  "chinese": "肾脏",
+  "pinyin": "shèn zàng",
+  "meaning": "Kidney",
+  "meaningThai": "ไต",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "肾脏帮助过滤血液。",
+      "pinyin": "Shèn zàng bāng zhù guò lǜ xuè yè.",
+      "meaning": "Kidneys help filter blood.",
+      "meaningThai": "ไตช่วยกรองเลือด"
+    }
+  ]
+},
+{
+  "id": "health-067",
+  "chinese": "膀胱",
+  "pinyin": "páng guāng",
+  "meaning": "Bladder",
+  "meaningThai": "กระเพาะปัสสาวะ",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "膀胱储存尿液。",
+      "pinyin": "Páng guāng chǔ cún niào yè.",
+      "meaning": "The bladder stores urine.",
+      "meaningThai": "กระเพาะปัสสาวะเก็บปัสสาวะ"
+    }
+  ]
+},
+{
+  "id": "health-068",
+  "chinese": "食道",
+  "pinyin": "shí dào",
+  "meaning": "Esophagus",
+  "meaningThai": "หลอดอาหาร",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "食物经过食道到胃。",
+      "pinyin": "Shí wù jīng guò shí dào dào wèi.",
+      "meaning": "Food passes through the esophagus to the stomach.",
+      "meaningThai": "อาหารผ่านหลอดอาหารไปยังกระเพาะ"
+    }
+  ]
+},
+{
+  "id": "health-069",
+  "chinese": "气管",
+  "pinyin": "qì guǎn",
+  "meaning": "Windpipe; Trachea",
+  "meaningThai": "หลอดลม",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "气管连接喉咙和肺。",
+      "pinyin": "Qì guǎn lián jiē hóu lóng hé fèi.",
+      "meaning": "The trachea connects the throat and lungs.",
+      "meaningThai": "หลอดลมเชื่อมต่อคอและปอด"
+    }
+  ]
+},
+{
+  "id": "health-070",
+  "chinese": "扁桃体",
+  "pinyin": "biǎn táo tǐ",
+  "meaning": "Tonsil",
+  "meaningThai": "ต่อมทอนซิล",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "扁桃体发炎会喉咙痛。",
+      "pinyin": "Biǎn táo tǐ fā yán huì hóu lóng tòng.",
+      "meaning": "Inflamed tonsils cause sore throat.",
+      "meaningThai": "ต่อมทอนซิลอักเสบทำให้เจ็บคอ"
+    }
+  ]
+},
+{
+  "id": "health-071",
+  "chinese": "腹泻",
+  "pinyin": "fù xiè",
+  "meaning": "Diarrhea",
+  "meaningThai": "ท้องเสีย",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "吃了不干净的食物会腹泻。",
+      "pinyin": "Chī le bù gān jìng de shí wù huì fù xiè.",
+      "meaning": "Eating unclean food causes diarrhea.",
+      "meaningThai": "กินอาหารไม่สะอาดทำให้ท้องเสีย"
+    }
+  ]
+},
+{
+  "id": "health-072",
+  "chinese": "呕吐",
+  "pinyin": "ǒu tù",
+  "meaning": "To vomit",
+  "meaningThai": "อาเจียน",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他吃了药就呕吐了。",
+      "pinyin": "Tā chī le yào jiù ǒu tù le.",
+      "meaning": "He vomited after taking the medicine.",
+      "meaningThai": "เขาอาเจียนหลังจากกินยา"
+    }
+  ]
+},
+{
+  "id": "health-073",
+  "chinese": "眩晕",
+  "pinyin": "xuàn yūn",
+  "meaning": "Dizziness",
+  "meaningThai": "วิงเวียน",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "眩晕时不能开车。",
+      "pinyin": "Xuàn yūn shí bù néng kāi chē.",
+      "meaning": "Can't drive when dizzy.",
+      "meaningThai": "เวลาวิงเวียนไม่สามารถขับรถได้"
+    }
+  ]
+},
+{
+  "id": "health-074",
+  "chinese": "皮疹",
+  "pinyin": "pí zhěn",
+  "meaning": "Rash; Skin eruption",
+  "meaningThai": "ผื่น",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "过敏引起皮疹。",
+      "pinyin": "Guò mǐn yǐn qǐ pí zhěn.",
+      "meaning": "Allergies cause rashes.",
+      "meaningThai": "การแพ้ทำให้เกิดผื่น"
+    }
+  ]
+},
+{
+  "id": "health-075",
+  "chinese": "哮喘",
+  "pinyin": "xiào chuǎn",
+  "meaning": "Asthma",
+  "meaningThai": "หอบหืด",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "哮喘患者需要带吸入器。",
+      "pinyin": "Xiào chuǎn huàn zhě xū yào dài xī rù qì.",
+      "meaning": "Asthma patients need to carry an inhaler.",
+      "meaningThai": "ผู้ป่วยหอบหืดต้องพกยาสูดพ่น"
+    }
+  ]
+},
+{
+  "id": "health-076",
+  "chinese": "中风",
+  "pinyin": "zhòng fēng",
+  "meaning": "Stroke",
+  "meaningThai": "โรคหลอดเลือดสมอง",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "老年人中风风险较高。",
+      "pinyin": "Lǎo nián rén zhòng fēng fēng xiǎn jiào gāo.",
+      "meaning": "Elderly people have a higher risk of stroke.",
+      "meaningThai": "ผู้สูงอายุมีความเสี่ยงโรคหลอดเลือดสมองสูง"
+    }
+  ]
+},
+{
+  "id": "health-077",
+  "chinese": "肝炎",
+  "pinyin": "gān yán",
+  "meaning": "Hepatitis",
+  "meaningThai": "ตับอักเสบ",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "接种疫苗可以预防肝炎。",
+      "pinyin": "Jiē zhǒng yì miáo kě yǐ yù fáng gān yán.",
+      "meaning": "Vaccination can prevent hepatitis.",
+      "meaningThai": "การฉีดวัคซีนสามารถป้องกันตับอักเสบได้"
+    }
+  ]
+},
+{
+  "id": "health-078",
+  "chinese": "肺炎",
+  "pinyin": "fèi yán",
+  "meaning": "Pneumonia",
+  "meaningThai": "ปอดบวม",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "肺炎需要及时治疗。",
+      "pinyin": "Fèi yán xū yào jí shí zhì liáo.",
+      "meaning": "Pneumonia requires timely treatment.",
+      "meaningThai": "ปอดบวมต้องรักษาทันเวลา"
+    }
+  ]
+},
+{
+  "id": "health-079",
+  "chinese": "贫血",
+  "pinyin": "pín xuè",
+  "meaning": "Anemia",
+  "meaningThai": "โลหิตจาง",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "贫血的人会感到疲劳。",
+      "pinyin": "Pín xuè de rén huì gǎn dào pí láo.",
+      "meaning": "Anemic people feel tired.",
+      "meaningThai": "คนโลหิตจางจะรู้สึกเหนื่อยล้า"
+    }
+  ]
+},
+{
+  "id": "health-080",
+  "chinese": "传染病",
+  "pinyin": "chuán rǎn bìng",
+  "meaning": "Infectious disease",
+  "meaningThai": "โรคติดต่อ",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "预防传染病要勤洗手。",
+      "pinyin": "Yù fáng chuán rǎn bìng yào qín xǐ shǒu.",
+      "meaning": "Wash hands frequently to prevent infectious diseases.",
+      "meaningThai": "ป้องกันโรคติดต่อต้องล้างมือบ่อยๆ"
+    }
+  ]
+},
+{
+  "id": "health-081",
+  "chinese": "俯卧撑",
+  "pinyin": "fǔ wò chēng",
+  "meaning": "Push-up",
+  "meaningThai": "วิดพื้น",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "每天做五十个俯卧撑。",
+      "pinyin": "Měi tiān zuò wǔ shí gè fǔ wò chēng.",
+      "meaning": "Do fifty push-ups every day.",
+      "meaningThai": "ทำวิดพื้นห้าสิบครั้งทุกวัน"
+    }
+  ]
+},
+{
+  "id": "health-082",
+  "chinese": "深蹲",
+  "pinyin": "shēn dūn",
+  "meaning": "Squat",
+  "meaningThai": "สควอท",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "深蹲锻炼大腿肌肉。",
+      "pinyin": "Shēn dūn duàn liàn dà tuǐ jī ròu.",
+      "meaning": "Squats exercise the thigh muscles.",
+      "meaningThai": "สควอทบริหารกล้ามเนื้อต้นขา"
+    }
+  ]
+},
+{
+  "id": "health-083",
+  "chinese": "引体向上",
+  "pinyin": "yǐn tǐ xiàng shàng",
+  "meaning": "Pull-up",
+  "meaningThai": "ดึงข้อ",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "引体向上需要手臂力量。",
+      "pinyin": "Yǐn tǐ xiàng shàng xū yào shǒu bì lì liàng.",
+      "meaning": "Pull-ups require arm strength.",
+      "meaningThai": "การดึงข้อต้องใช้แรงแขน"
+    }
+  ]
+},
+{
+  "id": "health-084",
+  "chinese": "平板支撑",
+  "pinyin": "píng bǎn zhī chēng",
+  "meaning": "Plank",
+  "meaningThai": "แพลงก์",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "平板支撑锻炼核心肌群。",
+      "pinyin": "Píng bǎn zhī chēng duàn liàn hé xīn jī qún.",
+      "meaning": "The plank exercise strengthens the core.",
+      "meaningThai": "แพลงก์บริหารกล้ามเนื้อแกนกลาง"
+    }
+  ]
+},
+{
+  "id": "health-085",
+  "chinese": "慢跑",
+  "pinyin": "màn pǎo",
+  "meaning": "Jogging",
+  "meaningThai": "วิ่งเหยาะ",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "慢跑是最简单的有氧运动。",
+      "pinyin": "Màn pǎo shì zuì jiǎn dān de yǒu yǎng yùn dòng.",
+      "meaning": "Jogging is the simplest aerobic exercise.",
+      "meaningThai": "วิ่งเหยาะเป็นการออกกำลังกายแบบคาร์ดิโอที่ง่ายที่สุด"
+    }
+  ]
+},
+{
+  "id": "health-086",
+  "chinese": "举重",
+  "pinyin": "jǔ zhòng",
+  "meaning": "Weightlifting",
+  "meaningThai": "ยกน้ำหนัก",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "举重可以增强力量。",
+      "pinyin": "Jǔ zhòng kě yǐ zēng qiáng lì liàng.",
+      "meaning": "Weightlifting can increase strength.",
+      "meaningThai": "การยกน้ำหนักช่วยเพิ่มความแข็งแรง"
+    }
+  ]
+},
+{
+  "id": "health-087",
+  "chinese": "拉伸运动",
+  "pinyin": "lā shēn yùn dòng",
+  "meaning": "Stretching exercise",
+  "meaningThai": "การยืดเหยียด",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "运动前后都要做拉伸运动。",
+      "pinyin": "Yùn dòng qián hòu dōu yào zuò lā shēn yùn dòng.",
+      "meaning": "Do stretching before and after exercise.",
+      "meaningThai": "ต้องยืดเหยียดก่อนและหลังออกกำลังกาย"
+    }
+  ]
+},
+{
+  "id": "health-088",
+  "chinese": "普拉提",
+  "pinyin": "pǔ lā tí",
+  "meaning": "Pilates",
+  "meaningThai": "พิลาทิส",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "普拉提改善身体姿态。",
+      "pinyin": "Pǔ lā tí gǎi shàn shēn tǐ zī tài.",
+      "meaning": "Pilates improves body posture.",
+      "meaningThai": "พิลาทิสช่วยปรับปรุงท่าทางร่างกาย"
+    }
+  ]
+},
+{
+  "id": "health-089",
+  "chinese": "骑行",
+  "pinyin": "qí xíng",
+  "meaning": "Cycling",
+  "meaningThai": "ปั่นจักรยาน",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "骑行是一种绿色出行方式。",
+      "pinyin": "Qí xíng shì yī zhǒng lǜ sè chū xíng fāng shì.",
+      "meaning": "Cycling is a green way to travel.",
+      "meaningThai": "การปั่นจักรยานเป็นวิธีการเดินทางที่เป็นมิตรต่อสิ่งแวดล้อม"
+    }
+  ]
+},
+{
+  "id": "health-090",
+  "chinese": "登山运动",
+  "pinyin": "dēng shān yùn dòng",
+  "meaning": "Mountaineering",
+  "meaningThai": "การปีนเขา",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "登山运动需要很好的体力。",
+      "pinyin": "Dēng shān yùn dòng xū yào hěn hǎo de tǐ lì.",
+      "meaning": "Mountaineering requires great physical strength.",
+      "meaningThai": "การปีนเขาต้องใช้กำลังมาก"
+    }
+  ]
+},
+{
+  "id": "health-091",
+  "chinese": "卡路里",
+  "pinyin": "kǎ lù lǐ",
+  "meaning": "Calorie",
+  "meaningThai": "แคลอรี่",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "每天需要摄入多少卡路里？",
+      "pinyin": "Měi tiān xū yào shè rù duō shao kǎ lù lǐ?",
+      "meaning": "How many calories do we need each day?",
+      "meaningThai": "แต่ละวันต้องรับแคลอรี่เท่าไหร่?"
+    }
+  ]
+},
+{
+  "id": "health-092",
+  "chinese": "抗氧化剂",
+  "pinyin": "kàng yǎng huà jì",
+  "meaning": "Antioxidant",
+  "meaningThai": "สารต้านอนุมูลอิสระ",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蓝莓富含抗氧化剂。",
+      "pinyin": "Lán méi fù hán kàng yǎng huà jì.",
+      "meaning": "Blueberries are rich in antioxidants.",
+      "meaningThai": "บลูเบอร์รี่มีสารต้านอนุมูลอิสระสูง"
+    }
+  ]
+},
+{
+  "id": "health-093",
+  "chinese": "益生菌",
+  "pinyin": "yì shēng jūn",
+  "meaning": "Probiotics",
+  "meaningThai": "โปรไบโอติก",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "酸奶含有益生菌。",
+      "pinyin": "Suān nǎi hán yǒu yì shēng jūn.",
+      "meaning": "Yogurt contains probiotics.",
+      "meaningThai": "โยเกิร์ตมีโปรไบโอติก"
+    }
+  ]
+},
+{
+  "id": "health-094",
+  "chinese": "钠",
+  "pinyin": "nà",
+  "meaning": "Sodium",
+  "meaningThai": "โซเดียม",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "摄入过多钠对心脏不好。",
+      "pinyin": "Shè rù guò duō nà duì xīn zàng bù hǎo.",
+      "meaning": "Too much sodium is bad for the heart.",
+      "meaningThai": "รับโซเดียมมากเกินไปไม่ดีต่อหัวใจ"
+    }
+  ]
+},
+{
+  "id": "health-095",
+  "chinese": "血糖",
+  "pinyin": "xuè táng",
+  "meaning": "Blood sugar",
+  "meaningThai": "น้ำตาลในเลือด",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "糖尿病患者要控制血糖。",
+      "pinyin": "Táng niào bìng huàn zhě yào kòng zhì xuè táng.",
+      "meaning": "Diabetes patients need to control blood sugar.",
+      "meaningThai": "ผู้ป่วยเบาหวานต้องควบคุมน้ำตาลในเลือด"
+    }
+  ]
+},
+{
+  "id": "health-096",
+  "chinese": "维生素D",
+  "pinyin": "wéi shēng sù D",
+  "meaning": "Vitamin D",
+  "meaningThai": "วิตามินดี",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "晒太阳可以帮助身体合成维生素D。",
+      "pinyin": "Shài tài yáng kě yǐ bāng zhù shēn tǐ hé chéng wéi shēng sù D.",
+      "meaning": "Sun exposure helps the body produce vitamin D.",
+      "meaningThai": "การตากแดดช่วยให้ร่างกายสังเคราะห์วิตามินดี"
+    }
+  ]
+},
+{
+  "id": "health-097",
+  "chinese": "矿物质水",
+  "pinyin": "kuàng wù zhì shuǐ",
+  "meaning": "Mineral water",
+  "meaningThai": "น้ำแร่",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "矿物质水含有人体需要的微量元素。",
+      "pinyin": "Kuàng wù zhì shuǐ hán yǒu rén tǐ xū yào de wēi liàng yuán sù.",
+      "meaning": "Mineral water contains trace elements needed by the body.",
+      "meaningThai": "น้ำแร่มีธาตุอาหารที่ร่างกายต้องการ"
+    }
+  ]
+},
+{
+  "id": "health-098",
+  "chinese": "膳食补充剂",
+  "pinyin": "shàn shí bǔ chōng jì",
+  "meaning": "Dietary supplement",
+  "meaningThai": "อาหารเสริม",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "服用膳食补充剂前应咨询医生。",
+      "pinyin": "Fú yòng shàn shí bǔ chōng jì qián yīng zī xún yī shēng.",
+      "meaning": "Consult a doctor before taking dietary supplements.",
+      "meaningThai": "ควรปรึกษาแพทย์ก่อนกินอาหารเสริม"
+    }
+  ]
+},
+{
+  "id": "health-099",
+  "chinese": "水分",
+  "pinyin": "shuǐ fèn",
+  "meaning": "Moisture; Hydration",
+  "meaningThai": "ความชื้น, น้ำ",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "每天要补充足够的水分。",
+      "pinyin": "Měi tiān yào bǔ chōng zú gòu de shuǐ fèn.",
+      "meaning": "Replenish enough water every day.",
+      "meaningThai": "แต่ละวันต้องเติมน้ำให้เพียงพอ"
+    }
+  ]
+},
+{
+  "id": "health-100",
+  "chinese": "代谢",
+  "pinyin": "dài xiè",
+  "meaning": "Metabolism",
+  "meaningThai": "เมตาบอลิซึม",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "运动可以提高新陈代谢。",
+      "pinyin": "Yùn dòng kě yǐ tí gāo xīn chén dài xiè.",
+      "meaning": "Exercise can boost metabolism.",
+      "meaningThai": "การออกกำลังกายช่วยเพิ่มการเผาผลาญ"
+    }
+  ]
+}
+];
+
+const EDUCATION_WORDS = [
+  {
+    "id": "education-001",
+    "chinese": "语文",
+    "pinyin": "yǔ wén",
+    "meaning": "Chinese language (subject)",
+    "meaningThai": "ภาษาจีน (วิชา)",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我最喜欢语文课。",
+        "pinyin": "Wǒ zuì xǐ huān yǔ wén kè.",
+        "meaning": "I like Chinese class the most.",
+        "meaningThai": "ฉันชอบวิชาภาษาจีนมากที่สุด"
+      }
+    ]
+  },
+  {
+    "id": "education-002",
+    "chinese": "数学",
+    "pinyin": "shù xué",
+    "meaning": "Mathematics",
+    "meaningThai": "คณิตศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数学考试很难。",
+        "pinyin": "Shù xué kǎo shì hěn nán.",
+        "meaning": "The math exam is very hard.",
+        "meaningThai": "ข้อสอบคณิตศาสตร์ยากมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-003",
+    "chinese": "历史",
+    "pinyin": "lì shǐ",
+    "meaning": "History",
+    "meaningThai": "ประวัติศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "历史课很有趣。",
+        "pinyin": "Lì shǐ kè hěn yǒu qù.",
+        "meaning": "History class is very interesting.",
+        "meaningThai": "วิชาประวัติศาสตร์น่าสนใจ"
+      }
+    ]
+  },
+  {
+    "id": "education-004",
+    "chinese": "地理",
+    "pinyin": "dì lǐ",
+    "meaning": "Geography",
+    "meaningThai": "ภูมิศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "地理课学习世界各国的位置。",
+        "pinyin": "Dì lǐ kè xué xí shì jiè gè guó de wèi zhì.",
+        "meaning": "Geography class learns the locations of countries.",
+        "meaningThai": "วิชาภูมิศาสตร์เรียนตำแหน่งที่ตั้งของประเทศต่างๆ"
+      }
+    ]
+  },
+  {
+    "id": "education-005",
+    "chinese": "物理",
+    "pinyin": "wù lǐ",
+    "meaning": "Physics",
+    "meaningThai": "ฟิสิกส์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "物理实验很有意思。",
+        "pinyin": "Wù lǐ shí yàn hěn yǒu yì si.",
+        "meaning": "Physics experiments are very interesting.",
+        "meaningThai": "การทดลองฟิสิกส์สนุกมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-006",
+    "chinese": "化学",
+    "pinyin": "huà xué",
+    "meaning": "Chemistry",
+    "meaningThai": "เคมี",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "化学课要做实验。",
+        "pinyin": "Huà xué kè yào zuò shí yàn.",
+        "meaning": "Chemistry class requires experiments.",
+        "meaningThai": "วิชาเคมีต้องทำการทดลอง"
+      }
+    ]
+  },
+  {
+    "id": "education-007",
+    "chinese": "生物",
+    "pinyin": "shēng wù",
+    "meaning": "Biology",
+    "meaningThai": "ชีววิทยา",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我们明天有生物考试。",
+        "pinyin": "Wǒ men míng tiān yǒu shēng wù kǎo shì.",
+        "meaning": "We have a biology exam tomorrow.",
+        "meaningThai": "พรุ่งนี้เราสอบชีววิทยา"
+      }
+    ]
+  },
+  {
+    "id": "education-008",
+    "chinese": "英语",
+    "pinyin": "Yīng yǔ",
+    "meaning": "English language",
+    "meaningThai": "ภาษาอังกฤษ",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她英语说得很好。",
+        "pinyin": "Tā Yīng yǔ shuō dé hěn hǎo.",
+        "meaning": "She speaks English very well.",
+        "meaningThai": "เธอพูดภาษาอังกฤษได้ดีมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-009",
+    "chinese": "音乐",
+    "pinyin": "yīn yuè",
+    "meaning": "Music",
+    "meaningThai": "ดนตรี",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "音乐课学习唱歌。",
+        "pinyin": "Yīn yuè kè xué xí chàng gē.",
+        "meaning": "Music class teaches singing.",
+        "meaningThai": "วิชาดนตรีเรียนร้องเพลง"
+      }
+    ]
+  },
+  {
+    "id": "education-010",
+    "chinese": "美术",
+    "pinyin": "měi shù",
+    "meaning": "Fine arts",
+    "meaningThai": "ศิลปะ",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她的美术作品获奖了。",
+        "pinyin": "Tā de měi shù zuò pǐn huò jiǎng le.",
+        "meaning": "Her art work won an award.",
+        "meaningThai": "ผลงานศิลปะของเธอได้รับรางวัล"
+      }
+    ]
+  },
+  {
+    "id": "education-011",
+    "chinese": "哲学",
+    "pinyin": "zhé xué",
+    "meaning": "Philosophy",
+    "meaningThai": "ปรัชญา",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "哲学课讨论人生的意义。",
+        "pinyin": "Zhé xué kè tǎo lùn rén shēng de yì yì.",
+        "meaning": "Philosophy class discusses the meaning of life.",
+        "meaningThai": "วิชาปรัชญาอภิปรายความหมายของชีวิต"
+      }
+    ]
+  },
+  {
+    "id": "education-012",
+    "chinese": "心理学",
+    "pinyin": "xīn lǐ xué",
+    "meaning": "Psychology",
+    "meaningThai": "จิตวิทยา",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "心理学研究人的行为。",
+        "pinyin": "Xīn lǐ xué yán jiū rén de xíng wéi.",
+        "meaning": "Psychology studies human behavior.",
+        "meaningThai": "จิตวิทยาศึกษาพฤติกรรมของมนุษย์"
+      }
+    ]
+  },
+  {
+    "id": "education-013",
+    "chinese": "经济学",
+    "pinyin": "jīng jì xué",
+    "meaning": "Economics",
+    "meaningThai": "เศรษฐศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在大学学习经济学。",
+        "pinyin": "Tā zài dà xué xué xí jīng jì xué.",
+        "meaning": "He studies economics at university.",
+        "meaningThai": "เขาเรียนเศรษฐศาสตร์ที่มหาวิทยาลัย"
+      }
+    ]
+  },
+  {
+    "id": "education-014",
+    "chinese": "计算机科学",
+    "pinyin": "jì suàn jī kē xué",
+    "meaning": "Computer science",
+    "meaningThai": "วิทยาการคอมพิวเตอร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "计算机科学很热门。",
+        "pinyin": "Jì suàn jī kē xué hěn rè mén.",
+        "meaning": "Computer science is very popular.",
+        "meaningThai": "วิทยาการคอมพิวเตอร์เป็นที่นิยมมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-015",
+    "chinese": "留学",
+    "pinyin": "liú xué",
+    "meaning": "To study abroad",
+    "meaningThai": "เรียนต่อต่างประเทศ",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她想去美国留学。",
+        "pinyin": "Tā xiǎng qù Měi guó liú xué.",
+        "meaning": "She wants to study abroad in the US.",
+        "meaningThai": "เธออยากไปเรียนต่อที่อเมริกา"
+      }
+    ]
+  },
+  {
+    "id": "education-016",
+    "chinese": "背诵",
+    "pinyin": "bèi sòng",
+    "meaning": "To recite",
+    "meaningThai": "ท่องจำ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "学生需要背诵古诗。",
+        "pinyin": "Xué shēng xū yào bèi sòng gǔ shī.",
+        "meaning": "Students need to recite ancient poems.",
+        "meaningThai": "นักเรียนต้องท่องจำบทกวีโบราณ"
+      }
+    ]
+  },
+  {
+    "id": "education-017",
+    "chinese": "理解",
+    "pinyin": "lǐ jiě",
+    "meaning": "To understand",
+    "meaningThai": "เข้าใจ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我理解了这道题。",
+        "pinyin": "Wǒ lǐ jiě le zhè dào tí.",
+        "meaning": "I understand this problem.",
+        "meaningThai": "ฉันเข้าใจโจทย์นี้แล้ว"
+      }
+    ]
+  },
+  {
+    "id": "education-018",
+    "chinese": "预习",
+    "pinyin": "yù xí",
+    "meaning": "To preview (lessons)",
+    "meaningThai": "เตรียมบทเรียน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "上课前要先预习。",
+        "pinyin": "Shàng kè qián yào xiān yù xí.",
+        "meaning": "Preview before class.",
+        "meaningThai": "ต้องเตรียมบทเรียนก่อนเข้าเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-019",
+    "chinese": "复习",
+    "pinyin": "fù xí",
+    "meaning": "To review",
+    "meaningThai": "ทบทวน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "考试前要好好复习。",
+        "pinyin": "Kǎo shì qián yào hǎo hǎo fù xí.",
+        "meaning": "Review well before exams.",
+        "meaningThai": "ต้องทบทวนให้ดีก่อนสอบ"
+      }
+    ]
+  },
+  {
+    "id": "education-020",
+    "chinese": "笔记",
+    "pinyin": "bǐ jì",
+    "meaning": "Notes",
+    "meaningThai": "บันทึก",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "上课认真做笔记。",
+        "pinyin": "Shàng kè rèn zhēn zuò bǐ jì.",
+        "meaning": "Take notes carefully in class.",
+        "meaningThai": "ตั้งใจจดบันทึกในชั้นเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-021",
+    "chinese": "教材",
+    "pinyin": "jiào cái",
+    "meaning": "Teaching materials",
+    "meaningThai": "สื่อการเรียน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老师发了新教材。",
+        "pinyin": "Lǎo shī fā le xīn jiào cái.",
+        "meaning": "The teacher handed out new materials.",
+        "meaningThai": "ครูแจกสื่อการเรียนใหม่"
+      }
+    ]
+  },
+  {
+    "id": "education-022",
+    "chinese": "作业",
+    "pinyin": "zuò yè",
+    "meaning": "Homework",
+    "meaningThai": "การบ้าน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今天的作业很多。",
+        "pinyin": "Jīn tiān de zuò yè hěn duō.",
+        "meaning": "There is a lot of homework today.",
+        "meaningThai": "วันนี้การบ้านเยอะ"
+      }
+    ]
+  },
+  {
+    "id": "education-023",
+    "chinese": "论文",
+    "pinyin": "lùn wén",
+    "meaning": "Thesis; Paper",
+    "meaningThai": "วิทยานิพนธ์",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在写毕业论文。",
+        "pinyin": "Tā zài xiě bì yè lùn wén.",
+        "meaning": "He is writing his graduation thesis.",
+        "meaningThai": "เขากำลังเขียนวิทยานิพนธ์จบ"
+      }
+    ]
+  },
+  {
+    "id": "education-024",
+    "chinese": "图书馆",
+    "pinyin": "tú shū guǎn",
+    "meaning": "Library",
+    "meaningThai": "ห้องสมุด",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "图书馆里很安静。",
+        "pinyin": "Tú shū guǎn lǐ hěn ān jìng.",
+        "meaning": "The library is very quiet.",
+        "meaningThai": "ในห้องสมุดเงียบมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-025",
+    "chinese": "自习",
+    "pinyin": "zì xí",
+    "meaning": "Self-study",
+    "meaningThai": "เรียนด้วยตนเอง",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "晚上我来自习室学习。",
+        "pinyin": "Wǎn shàng wǒ lái zì xí shì xué xí.",
+        "meaning": "I come to the self-study room in the evening.",
+        "meaningThai": "ตอนเย็นฉันมาห้องเรียนด้วยตนเอง"
+      }
+    ]
+  },
+  {
+    "id": "education-026",
+    "chinese": "演讲",
+    "pinyin": "yǎn jiǎng",
+    "meaning": "Speech; Lecture",
+    "meaningThai": "บรรยาย",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他的演讲很精彩。",
+        "pinyin": "Tā de yǎn jiǎng hěn jīng cǎi.",
+        "meaning": "His speech was wonderful.",
+        "meaningThai": "การบรรยายของเขายอดเยี่ยมมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-027",
+    "chinese": "辅导",
+    "pinyin": "fǔ dǎo",
+    "meaning": "To tutor",
+    "meaningThai": "สอนพิเศษ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "周末有数学辅导班。",
+        "pinyin": "Zhōu mò yǒu shù xué fǔ dǎo bān.",
+        "meaning": "There is a math tutoring class on weekends.",
+        "meaningThai": "มีคอร์สสอนพิเศษคณิตศาสตร์วันหยุด"
+      }
+    ]
+  },
+  {
+    "id": "education-028",
+    "chinese": "教科书",
+    "pinyin": "jiào kē shū",
+    "meaning": "Textbook",
+    "meaningThai": "หนังสือเรียน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请打开教科书第十页。",
+        "pinyin": "Qǐng dǎ kāi jiào kē shū dì shí yè.",
+        "meaning": "Please open the textbook to page ten.",
+        "meaningThai": "กรุณาเปิดหนังสือเรียนหน้าที่สิบ"
+      }
+    ]
+  },
+  {
+    "id": "education-029",
+    "chinese": "学术",
+    "pinyin": "xué shù",
+    "meaning": "Academic",
+    "meaningThai": "วิชาการ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在学术方面很有成就。",
+        "pinyin": "Tā zài xué shù fāng miàn hěn yǒu chéng jiù.",
+        "meaning": "He has great achievements in academia.",
+        "meaningThai": "เขามีความสำเร็จด้านวิชาการ"
+      }
+    ]
+  },
+  {
+    "id": "education-030",
+    "chinese": "课程",
+    "pinyin": "kè chéng",
+    "meaning": "Course; Curriculum",
+    "meaningThai": "หลักสูตร",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这学期的课程很丰富。",
+        "pinyin": "Zhè xué qī de kè chéng hěn fēng fù.",
+        "meaning": "This semester's courses are very rich.",
+        "meaningThai": "หลักสูตรเทอมนี้หลากหลาย"
+      }
+    ]
+  },
+  {
+    "id": "education-031",
+    "chinese": "期末考试",
+    "pinyin": "qī mò kǎo shì",
+    "meaning": "Final exam",
+    "meaningThai": "สอบปลายภาค",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "期末考试在下周。",
+        "pinyin": "Qī mò kǎo shì zài xià zhōu.",
+        "meaning": "The final exam is next week.",
+        "meaningThai": "สอบปลายภาคอาทิตย์หน้า"
+      }
+    ]
+  },
+  {
+    "id": "education-032",
+    "chinese": "及格",
+    "pinyin": "jí gé",
+    "meaning": "To pass (an exam)",
+    "meaningThai": "ผ่าน",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "考试六十分及格。",
+        "pinyin": "Kǎo shì liù shí fēn jí gé.",
+        "meaning": "Sixty points passes the exam.",
+        "meaningThai": "สอบได้หกสิบถึงผ่าน"
+      }
+    ]
+  },
+  {
+    "id": "education-033",
+    "chinese": "满分",
+    "pinyin": "mǎn fēn",
+    "meaning": "Perfect score",
+    "meaningThai": "คะแนนเต็ม",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他考了满分。",
+        "pinyin": "Tā kǎo le mǎn fēn.",
+        "meaning": "He got a perfect score.",
+        "meaningThai": "เขาได้คะแนนเต็ม"
+      }
+    ]
+  },
+  {
+    "id": "education-034",
+    "chinese": "成绩单",
+    "pinyin": "chéng jì dān",
+    "meaning": "Report card",
+    "meaningThai": "ใบแสดงผลการเรียน",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "学期末发成绩单。",
+        "pinyin": "Xué qī mò fā chéng jì dān.",
+        "meaning": "Report cards are issued at the end of the semester.",
+        "meaningThai": "สิ้นเทอมแจกใบแสดงผลการเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-035",
+    "chinese": "入学考试",
+    "pinyin": "rù xué kǎo shì",
+    "meaning": "Entrance exam",
+    "meaningThai": "สอบเข้า",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大学入学考试竞争激烈。",
+        "pinyin": "Dà xué rù xué kǎo shì jìng zhēng jī liè.",
+        "meaning": "University entrance exams are highly competitive.",
+        "meaningThai": "การสอบเข้ามหาวิทยาลัยแข่งขันสูง"
+      }
+    ]
+  },
+  {
+    "id": "education-036",
+    "chinese": "选择题",
+    "pinyin": "xuǎn zé tí",
+    "meaning": "Multiple choice question",
+    "meaningThai": "ข้อสอบปรนัย",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "选择题只有四个选项。",
+        "pinyin": "Xuǎn zé tí zhǐ yǒu sì gè xuǎn xiàng.",
+        "meaning": "Multiple choice questions have only four options.",
+        "meaningThai": "ข้อสอบปรนัยมีแค่สี่ตัวเลือก"
+      }
+    ]
+  },
+  {
+    "id": "education-037",
+    "chinese": "填空题",
+    "pinyin": "tián kòng tí",
+    "meaning": "Fill-in-the-blank question",
+    "meaningThai": "ข้อสอบเติมคำ",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "填空题需要填写正确的词。",
+        "pinyin": "Tián kòng tí xū yào tián xiě zhèng què de cí.",
+        "meaning": "Fill-in-the-blank questions need the correct word.",
+        "meaningThai": "ข้อสอบเติมคำต้องใส่คำที่ถูกต้อง"
+      }
+    ]
+  },
+  {
+    "id": "education-038",
+    "chinese": "论文答辩",
+    "pinyin": "lùn wén dá biàn",
+    "meaning": "Thesis defense",
+    "meaningThai": "สอบป้องกันวิทยานิพนธ์",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "论文答辩通过了。",
+        "pinyin": "Lùn wén dá biàn tōng guò le.",
+        "meaning": "The thesis defense was passed.",
+        "meaningThai": "สอบป้องกันวิทยานิพนธ์ผ่าน"
+      }
+    ]
+  },
+  {
+    "id": "education-039",
+    "chinese": "奖学金",
+    "pinyin": "jiǎng xué jīn",
+    "meaning": "Scholarship",
+    "meaningThai": "ทุนการศึกษา",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她获得了全额奖学金。",
+        "pinyin": "Tā huò dé le quán é jiǎng xué jīn.",
+        "meaning": "She received a full scholarship.",
+        "meaningThai": "เธอได้รับทุนการศึกษาเต็มจำนวน"
+      }
+    ]
+  },
+  {
+    "id": "education-040",
+    "chinese": "作弊",
+    "pinyin": "zuò bì",
+    "meaning": "To cheat (on exams)",
+    "meaningThai": "โกง",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "考试不能作弊。",
+        "pinyin": "Kǎo shì bù néng zuò bì.",
+        "meaning": "Cannot cheat on exams.",
+        "meaningThai": "สอบต้องไม่โกง"
+      }
+    ]
+  },
+  {
+    "id": "education-041",
+    "chinese": "报名",
+    "pinyin": "bào míng",
+    "meaning": "To register",
+    "meaningThai": "สมัคร",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "下个月开始报名。",
+        "pinyin": "Xià gè yuè kāi shǐ bào míng.",
+        "meaning": "Registration starts next month.",
+        "meaningThai": "เริ่มสมัครเดือนหน้า"
+      }
+    ]
+  },
+  {
+    "id": "education-042",
+    "chinese": "学位",
+    "pinyin": "xué wèi",
+    "meaning": "Degree; Diploma",
+    "meaningThai": "ปริญญา",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他获得了硕士学位。",
+        "pinyin": "Tā huò dé le shuò shì xué wèi.",
+        "meaning": "He earned a master's degree.",
+        "meaningThai": "เขาได้รับปริญญาโท"
+      }
+    ]
+  },
+  {
+    "id": "education-043",
+    "chinese": "本科",
+    "pinyin": "běn kē",
+    "meaning": "Undergraduate",
+    "meaningThai": "ปริญญาตรี",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "本科四年制。",
+        "pinyin": "Běn kē sì nián zhì.",
+        "meaning": "Undergraduate is a four-year program.",
+        "meaningThai": "ปริญญาตรีสี่ปี"
+      }
+    ]
+  },
+  {
+    "id": "education-044",
+    "chinese": "面试",
+    "pinyin": "miàn shì",
+    "meaning": "Interview",
+    "meaningThai": "สัมภาษณ์",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "明天有入学面试。",
+        "pinyin": "Míng tiān yǒu rù xué miàn shì.",
+        "meaning": "There is an admission interview tomorrow.",
+        "meaningThai": "พรุ่งนี้มีสัมภาษณ์เข้าเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-045",
+    "chinese": "淘汰",
+    "pinyin": "táo tài",
+    "meaning": "To eliminate",
+    "meaningThai": "คัดออก",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "初赛淘汰了一半选手。",
+        "pinyin": "Chū sài táo tài le yī bàn xuǎn shǒu.",
+        "meaning": "The preliminary round eliminated half the contestants.",
+        "meaningThai": "รอบแรกคัดผู้แข่งขันออกครึ่งหนึ่ง"
+      }
+    ]
+  },
+  {
+    "id": "education-046",
+    "chinese": "实验",
+    "pinyin": "shí yàn",
+    "meaning": "Experiment",
+    "meaningThai": "การทดลอง",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "实验室里做化学实验。",
+        "pinyin": "Shí yàn shì lǐ zuò huà xué shí yàn.",
+        "meaning": "Do chemistry experiments in the lab.",
+        "meaningThai": "ทำการทดลองเคมีในห้องแล็บ"
+      }
+    ]
+  },
+  {
+    "id": "education-047",
+    "chinese": "数据",
+    "pinyin": "shù jù",
+    "meaning": "Data",
+    "meaningThai": "ข้อมูล",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "收集数据进行分析。",
+        "pinyin": "Shōu jí shù jù jìn xíng fēn xī.",
+        "meaning": "Collect data for analysis.",
+        "meaningThai": "เก็บข้อมูลเพื่อวิเคราะห์"
+      }
+    ]
+  },
+  {
+    "id": "education-048",
+    "chinese": "分析",
+    "pinyin": "fēn xī",
+    "meaning": "To analyze",
+    "meaningThai": "วิเคราะห์",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "分析结果非常复杂。",
+        "pinyin": "Fēn xī jié guǒ fēi cháng fù zá.",
+        "meaning": "The analysis results are very complex.",
+        "meaningThai": "ผลการวิเคราะห์ซับซ้อนมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-049",
+    "chinese": "结论",
+    "pinyin": "jié lùn",
+    "meaning": "Conclusion",
+    "meaningThai": "ข้อสรุป",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "研究得出了重要结论。",
+        "pinyin": "Yán jiū dé chū le zhòng yào jié lùn.",
+        "meaning": "The research reached an important conclusion.",
+        "meaningThai": "งานวิจัยได้ข้อสรุปสำคัญ"
+      }
+    ]
+  },
+  {
+    "id": "education-050",
+    "chinese": "调查",
+    "pinyin": "diào chá",
+    "meaning": "Survey; Investigation",
+    "meaningThai": "สำรวจ",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "做问卷调查。",
+        "pinyin": "Zuò wèn juàn diào chá.",
+        "meaning": "Conduct a questionnaire survey.",
+        "meaningThai": "ทำแบบสำรวจ"
+      }
+    ]
+  },
+  {
+    "id": "education-051",
+    "chinese": "统计",
+    "pinyin": "tǒng jì",
+    "meaning": "Statistics",
+    "meaningThai": "สถิติ",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "统计数据显示明显变化。",
+        "pinyin": "Tǒng jì shù jù xiǎn shì míng xiǎn biàn huà.",
+        "meaning": "Statistical data shows significant changes.",
+        "meaningThai": "ข้อมูลทางสถิติแสดงการเปลี่ยนแปลงชัดเจน"
+      }
+    ]
+  },
+  {
+    "id": "education-052",
+    "chinese": "学术会议",
+    "pinyin": "xué shù huì yì",
+    "meaning": "Academic conference",
+    "meaningThai": "ประชุมวิชาการ",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他参加了国际学术会议。",
+        "pinyin": "Tā cān jiā le guó jì xué shù huì yì.",
+        "meaning": "He attended an international academic conference.",
+        "meaningThai": "เขาเข้าร่วมประชุมวิชาการนานาชาติ"
+      }
+    ]
+  },
+  {
+    "id": "education-053",
+    "chinese": "期刊",
+    "pinyin": "qī kān",
+    "meaning": "Journal; Periodical",
+    "meaningThai": "วารสาร",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "论文发表在科学期刊上。",
+        "pinyin": "Lùn wén fā biǎo zài kē xué qī kān shàng.",
+        "meaning": "The paper was published in a science journal.",
+        "meaningThai": "บทความตีพิมพ์ในวารสารวิทยาศาสตร์"
+      }
+    ]
+  },
+  {
+    "id": "education-054",
+    "chinese": "引用",
+    "pinyin": "yǐn yòng",
+    "meaning": "To cite",
+    "meaningThai": "อ้างอิง",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "写论文要注明引用来源。",
+        "pinyin": "Xiě lùn wén yào zhù míng yǐn yòng lái yuán.",
+        "meaning": "When writing a paper, cite your sources.",
+        "meaningThai": "เขียนวิทยานิพนธ์ต้องระบุแหล่งอ้างอิง"
+      }
+    ]
+  },
+  {
+    "id": "education-055",
+    "chinese": "假设",
+    "pinyin": "jiǎ shè",
+    "meaning": "Hypothesis",
+    "meaningThai": "สมมติฐาน",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "科学需要验证假设。",
+        "pinyin": "Kē xué xū yào yàn zhèng jiǎ shè.",
+        "meaning": "Science requires testing hypotheses.",
+        "meaningThai": "วิทยาศาสตร์ต้องการการพิสูจน์สมมติฐาน"
+      }
+    ]
+  },
+  {
+    "id": "education-056",
+    "chinese": "验证",
+    "pinyin": "yàn zhèng",
+    "meaning": "To verify",
+    "meaningThai": "พิสูจน์",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "实验结果验证了理论。",
+        "pinyin": "Shí yàn jié guǒ yàn zhèng le lǐ lùn.",
+        "meaning": "Experimental results verified the theory.",
+        "meaningThai": "ผลการทดลองพิสูจน์ทฤษฎี"
+      }
+    ]
+  },
+  {
+    "id": "education-057",
+    "chinese": "方法论",
+    "pinyin": "fāng fǎ lùn",
+    "meaning": "Methodology",
+    "meaningThai": "ระเบียบวิธี",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "研究方法论非常重要。",
+        "pinyin": "Yán jiū fāng fǎ lùn fēi cháng zhòng yào.",
+        "meaning": "Research methodology is very important.",
+        "meaningThai": "ระเบียบวิธีวิจัยสำคัญมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-058",
+    "chinese": "博士",
+    "pinyin": "bó shì",
+    "meaning": "Doctor (PhD)",
+    "meaningThai": "ปริญญาเอก",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他正在读博士。",
+        "pinyin": "Tā zhèng zài dú bó shì.",
+        "meaning": "He is studying for a PhD.",
+        "meaningThai": "เขากำลังเรียนปริญญาเอก"
+      }
+    ]
+  },
+  {
+    "id": "education-059",
+    "chinese": "实验室",
+    "pinyin": "shí yàn shì",
+    "meaning": "Laboratory",
+    "meaningThai": "ห้องทดลอง",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "实验室里设备齐全。",
+        "pinyin": "Shí yàn shì lǐ shè bèi qí quán.",
+        "meaning": "The lab is fully equipped.",
+        "meaningThai": "ห้องทดลองมีอุปกรณ์ครบครัน"
+      }
+    ]
+  },
+  {
+    "id": "education-060",
+    "chinese": "研究经费",
+    "pinyin": "yán jiū jīng fèi",
+    "meaning": "Research funding",
+    "meaningThai": "ทุนวิจัย",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "研究经费需要申请。",
+        "pinyin": "Yán jiū jīng fèi xū yào shēn qǐng.",
+        "meaning": "Research funding needs to be applied for.",
+        "meaningThai": "ทุนวิจัยต้องขอรับการจัดสรร"
+      }
+    ]
+  },
+{
+  "id": "education-061",
+  "chinese": "政治",
+  "pinyin": "zhèng zhì",
+  "meaning": "Politics",
+  "meaningThai": "การเมือง",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "政治课讨论国家大事。",
+      "pinyin": "Zhèng zhì kè tǎo lùn guó jiā dà shì.",
+      "meaning": "Politics class discusses national affairs.",
+      "meaningThai": "วิชาการเมืองอภิปรายเรื่องสำคัญของประเทศ"
+    }
+  ]
+},
+{
+  "id": "education-062",
+  "chinese": "文学",
+  "pinyin": "wén xué",
+  "meaning": "Literature",
+  "meaningThai": "วรรณกรรม",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "文学课要读很多小说。",
+      "pinyin": "Wén xué kè yào dú hěn duō xiǎo shuō.",
+      "meaning": "Literature class requires reading many novels.",
+      "meaningThai": "วิชาวรรณกรรมต้องอ่านนิยายมากมาย"
+    }
+  ]
+},
+{
+  "id": "education-063",
+  "chinese": "工程学",
+  "pinyin": "gōng chéng xué",
+  "meaning": "Engineering",
+  "meaningThai": "วิศวกรรมศาสตร์",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "工程学应用科学知识解决问题。",
+      "pinyin": "Gōng chéng xué yìng yòng kē xué zhī shí jiě jué wèn tí.",
+      "meaning": "Engineering applies scientific knowledge to solve problems.",
+      "meaningThai": "วิศวกรรมศาสตร์ประยุกต์ความรู้วิทยาศาสตร์แก้ปัญหา"
+    }
+  ]
+},
+{
+  "id": "education-064",
+  "chinese": "法律",
+  "pinyin": "fǎ lǜ",
+  "meaning": "Law",
+  "meaningThai": "กฎหมาย",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他在法学院学习法律。",
+      "pinyin": "Tā zài fǎ xué yuàn xué xí fǎ lǜ.",
+      "meaning": "He studies law at the law school.",
+      "meaningThai": "เขาเรียนกฎหมายที่คณะนิติศาสตร์"
+    }
+  ]
+},
+{
+  "id": "education-065",
+  "chinese": "医学",
+  "pinyin": "yī xué",
+  "meaning": "Medicine",
+  "meaningThai": "แพทยศาสตร์",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "医学专业需要学习六年。",
+      "pinyin": "Yī xué zhuān yè xū yào xué xí liù nián.",
+      "meaning": "Medical programs require six years of study.",
+      "meaningThai": "สาขาแพทยศาสตร์ต้องเรียนหกปี"
+    }
+  ]
+},
+{
+  "id": "education-066",
+  "chinese": "商学院",
+  "pinyin": "shāng xué yuàn",
+  "meaning": "Business school",
+  "meaningThai": "คณะบริหารธุรกิจ",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "她在商学院读MBA。",
+      "pinyin": "Tā zài shāng xué yuàn dú MBA.",
+      "meaning": "She is studying MBA at the business school.",
+      "meaningThai": "เธอเรียน MBA ที่คณะบริหารธุรกิจ"
+    }
+  ]
+},
+{
+  "id": "education-067",
+  "chinese": "专业",
+  "pinyin": "zhuān yè",
+  "meaning": "Major; Specialty",
+  "meaningThai": "สาขาวิชาเอก",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "你的大学专业是什么？",
+      "pinyin": "Nǐ de dà xué zhuān yè shì shén me?",
+      "meaning": "What is your college major?",
+      "meaningThai": "สาขาวิชาเอกของคุณคืออะไร?"
+    }
+  ]
+},
+{
+  "id": "education-068",
+  "chinese": "必修课",
+  "pinyin": "bì xiū kè",
+  "meaning": "Required course",
+  "meaningThai": "วิชาบังคับ",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "英语是所有学生的必修课。",
+      "pinyin": "Yīng yǔ shì suǒ yǒu xué shēng de bì xiū kè.",
+      "meaning": "English is a required course for all students.",
+      "meaningThai": "ภาษาอังกฤษเป็นวิชาบังคับของนักเรียนทุกคน"
+    }
+  ]
+},
+{
+  "id": "education-069",
+  "chinese": "选修课",
+  "pinyin": "xuǎn xiū kè",
+  "meaning": "Elective course",
+  "meaningThai": "วิชาเลือก",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这学期我选了三门选修课。",
+      "pinyin": "Zhè xué qī wǒ xuǎn le sān mén xuǎn xiū kè.",
+      "meaning": "I chose three elective courses this semester.",
+      "meaningThai": "เทอมนี้ฉันเลือกวิชาเลือกสามวิชา"
+    }
+  ]
+},
+{
+  "id": "education-070",
+  "chinese": "学分",
+  "pinyin": "xué fēn",
+  "meaning": "Credit (academic)",
+  "meaningThai": "หน่วยกิต",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "毕业需要修满一定学分。",
+      "pinyin": "Bì yè xū yào xiū mǎn yī dìng xué fēn.",
+      "meaning": "Graduation requires completing sufficient credits.",
+      "meaningThai": "จบการศึกษาต้องเก็บหน่วยกิตให้ครบ"
+    }
+  ]
+},
+{
+  "id": "education-071",
+  "chinese": "听写",
+  "pinyin": "tīng xiě",
+  "meaning": "Dictation",
+  "meaningThai": "เขียนตามคำบอก",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "老师每个星期做一次听写。",
+      "pinyin": "Lǎo shī měi gè xīng qī zuò yī cì tīng xiě.",
+      "meaning": "The teacher does dictation once a week.",
+      "meaningThai": "ครูเขียนตามคำบอกอาทิตย์ละครั้ง"
+    }
+  ]
+},
+{
+  "id": "education-072",
+  "chinese": "阅读理解",
+  "pinyin": "yuè dú lǐ jiě",
+  "meaning": "Reading comprehension",
+  "meaningThai": "การอ่านเพื่อความเข้าใจ",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "考试中有阅读理解题。",
+      "pinyin": "Kǎo shì zhōng yǒu yuè dú lǐ jiě tí.",
+      "meaning": "There are reading comprehension questions in the exam.",
+      "meaningThai": "ในข้อสอบมีข้อสอบการอ่านเพื่อความเข้าใจ"
+    }
+  ]
+},
+{
+  "id": "education-073",
+  "chinese": "背诵课文",
+  "pinyin": "bèi sòng kè wén",
+  "meaning": "Recite the text",
+  "meaningThai": "ท่องบทเรียน",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "学生需要背诵课文。",
+      "pinyin": "Xué shēng xū yào bèi sòng kè wén.",
+      "meaning": "Students need to recite the text.",
+      "meaningThai": "นักเรียนต้องท่องบทเรียน"
+    }
+  ]
+},
+{
+  "id": "education-074",
+  "chinese": "笔记法",
+  "pinyin": "bǐ jì fǎ",
+  "meaning": "Note-taking method",
+  "meaningThai": "วิธีการจดบันทึก",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "康奈尔笔记法很有效。",
+      "pinyin": "Kāng nài ěr bǐ jì fǎ hěn yǒu xiào.",
+      "meaning": "The Cornell note-taking method is very effective.",
+      "meaningThai": "วิธีการจดบันทึกแบบคอร์เนลล์มีประสิทธิภาพมาก"
+    }
+  ]
+},
+{
+  "id": "education-075",
+  "chinese": "记忆法",
+  "pinyin": "jì yì fǎ",
+  "meaning": "Memory technique",
+  "meaningThai": "เทคนิคการจำ",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "联想记忆法帮助记单词。",
+      "pinyin": "Lián xiǎng jì yì fǎ bāng zhù jì dān cí.",
+      "meaning": "Association memory technique helps memorize words.",
+      "meaningThai": "เทคนิคการจำแบบเชื่อมโยงช่วยจำคำศัพท์"
+    }
+  ]
+},
+{
+  "id": "education-076",
+  "chinese": "思维导图",
+  "pinyin": "sī wéi dǎo tú",
+  "meaning": "Mind map",
+  "meaningThai": "แผนผังความคิด",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "用思维导图整理知识。",
+      "pinyin": "Yòng sī wéi dǎo tú zhěng lǐ zhī shí.",
+      "meaning": "Use mind maps to organize knowledge.",
+      "meaningThai": "ใช้แผนผังความคิดจัดระเบียบความรู้"
+    }
+  ]
+},
+{
+  "id": "education-077",
+  "chinese": "暑期学校",
+  "pinyin": "shǔ qī xué xiào",
+  "meaning": "Summer school",
+  "meaningThai": "โรงเรียนฤดูร้อน",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "暑假她去参加了暑期学校。",
+      "pinyin": "Shǔ jià tā qù cān jiā le shǔ qī xué xiào.",
+      "meaning": "She attended summer school during break.",
+      "meaningThai": "ช่วงปิดเทอมเธอไปโรงเรียนฤดูร้อน"
+    }
+  ]
+},
+{
+  "id": "education-078",
+  "chinese": "培训班",
+  "pinyin": "péi xùn bān",
+  "meaning": "Training class",
+  "meaningThai": "คอร์สฝึกอบรม",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "周末她上英语培训班。",
+      "pinyin": "Zhōu mò tā shàng Yīng yǔ péi xùn bān.",
+      "meaning": "She attends an English training class on weekends.",
+      "meaningThai": "วันหยุดเธอเรียนคอร์สฝึกอบรมภาษาอังกฤษ"
+    }
+  ]
+},
+{
+  "id": "education-079",
+  "chinese": "口语",
+  "pinyin": "kǒu yǔ",
+  "meaning": "Spoken language",
+  "meaningThai": "ภาษาพูด",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "多练习可以提高口语水平。",
+      "pinyin": "Duō liàn xí kě yǐ tí gāo kǒu yǔ shuǐ píng.",
+      "meaning": "More practice can improve spoken language skills.",
+      "meaningThai": "ฝึกฝนมากๆ สามารถพัฒนาระดับภาษาพูดได้"
+    }
+  ]
+},
+{
+  "id": "education-080",
+  "chinese": "作文",
+  "pinyin": "zuò wén",
+  "meaning": "Composition; Essay",
+  "meaningThai": "เรียงความ",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "下周要交一篇作文。",
+      "pinyin": "Xià zhōu yào jiāo yī piān zuò wén.",
+      "meaning": "Need to submit an essay next week.",
+      "meaningThai": "อาทิตย์หน้าต้องส่งเรียงความ"
+    }
+  ]
+},
+{
+  "id": "education-081",
+  "chinese": "中考",
+  "pinyin": "zhōng kǎo",
+  "meaning": "High school entrance exam",
+  "meaningThai": "สอบเข้ามัธยมปลาย",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "中考成绩决定上哪所高中。",
+      "pinyin": "Zhōng kǎo chéng jì jué dìng shàng nǎ suǒ gāo zhōng.",
+      "meaning": "The exam score determines which high school to attend.",
+      "meaningThai": "ผลสอบเข้ามัธยมปลายกำหนดโรงเรียนที่เรียน"
+    }
+  ]
+},
+{
+  "id": "education-082",
+  "chinese": "高考",
+  "pinyin": "gāo kǎo",
+  "meaning": "College entrance exam",
+  "meaningThai": "สอบเข้ามหาวิทยาลัย",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "高考是中国最重要的考试之一。",
+      "pinyin": "Gāo kǎo shì Zhōng guó zuì zhòng yào de kǎo shì zhī yī.",
+      "meaning": "The college entrance exam is one of China's most important exams.",
+      "meaningThai": "สอบเข้ามหาวิทยาลัยเป็นหนึ่งในการสอบสำคัญที่สุดของจีน"
+    }
+  ]
+},
+{
+  "id": "education-083",
+  "chinese": "模拟考试",
+  "pinyin": "mó nǐ kǎo shì",
+  "meaning": "Mock exam",
+  "meaningThai": "สอบจำลอง",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "下周有一次模拟考试。",
+      "pinyin": "Xià zhōu yǒu yī cì mó nǐ kǎo shì.",
+      "meaning": "There is a mock exam next week.",
+      "meaningThai": "อาทิตย์หน้ามีสอบจำลอง"
+    }
+  ]
+},
+{
+  "id": "education-084",
+  "chinese": "笔试",
+  "pinyin": "bǐ shì",
+  "meaning": "Written exam",
+  "meaningThai": "ข้อสอบข้อเขียน",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "笔试部分有两个小时。",
+      "pinyin": "Bǐ shì bù fèn yǒu liǎng gè xiǎo shí.",
+      "meaning": "The written exam part is two hours.",
+      "meaningThai": "ส่วนข้อสอบข้อเขียนมีสองชั่วโมง"
+    }
+  ]
+},
+{
+  "id": "education-085",
+  "chinese": "口试",
+  "pinyin": "kǒu shì",
+  "meaning": "Oral exam",
+  "meaningThai": "สอบปากเปล่า",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "语言考试包括口试部分。",
+      "pinyin": "Yǔ yán kǎo shì bāo kuò kǒu shì bù fèn.",
+      "meaning": "Language exams include an oral exam section.",
+      "meaningThai": "สอบภาษา включает частьสอบปากเปล่า"
+    }
+  ]
+},
+{
+  "id": "education-086",
+  "chinese": "补考",
+  "pinyin": "bǔ kǎo",
+  "meaning": "Makeup exam",
+  "meaningThai": "สอบแก้",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "不及格的学生可以参加补考。",
+      "pinyin": "Bù jí gé de xué shēng kě yǐ cān jiā bǔ kǎo.",
+      "meaning": "Students who fail can take a makeup exam.",
+      "meaningThai": "นักเรียนที่สอบไม่ผ่านสามารถสอบแก้ได้"
+    }
+  ]
+},
+{
+  "id": "education-087",
+  "chinese": "旷考",
+  "pinyin": "kuàng kǎo",
+  "meaning": "Miss an exam",
+  "meaningThai": "ขาดสอบ",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "旷考会影响成绩。",
+      "pinyin": "Kuàng kǎo huì yǐng xiǎng chéng jì.",
+      "meaning": "Missing an exam will affect the grade.",
+      "meaningThai": "การขาดสอบจะส่งผลต่อคะแนน"
+    }
+  ]
+},
+{
+  "id": "education-088",
+  "chinese": "分数",
+  "pinyin": "fēn shù",
+  "meaning": "Score; Grade",
+  "meaningThai": "คะแนน",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这次考试分数很高。",
+      "pinyin": "Zhè cì kǎo shì fēn shù hěn gāo.",
+      "meaning": "This exam had high scores.",
+      "meaningThai": "คะแนนสอบครั้งนี้สูงมาก"
+    }
+  ]
+},
+{
+  "id": "education-089",
+  "chinese": "排名",
+  "pinyin": "pái míng",
+  "meaning": "Ranking",
+  "meaningThai": "อันดับ",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "她在全班排名第一。",
+      "pinyin": "Tā zài quán bān pái míng dì yī.",
+      "meaning": "She ranks first in the class.",
+      "meaningThai": "เธออยู่อันดับหนึ่งของห้อง"
+    }
+  ]
+},
+{
+  "id": "education-090",
+  "chinese": "毕业典礼",
+  "pinyin": "bì yè diǎn lǐ",
+  "meaning": "Graduation ceremony",
+  "meaningThai": "พิธีรับปริญญา",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "毕业典礼在六月举行。",
+      "pinyin": "Bì yè diǎn lǐ zài liù yuè jǔ xíng.",
+      "meaning": "The graduation ceremony is held in June.",
+      "meaningThai": "พิธีรับปริญญาจัดในเดือนมิถุนายน"
+    }
+  ]
+},
+{
+  "id": "education-091",
+  "chinese": "同行评审",
+  "pinyin": "tóng háng píng shěn",
+  "meaning": "Peer review",
+  "meaningThai": "การทบทวนโดยเพื่อนร่วมวิชาชีพ",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "学术论文需要同行评审。",
+      "pinyin": "Xué shù lùn wén xū yào tóng háng píng shěn.",
+      "meaning": "Academic papers require peer review.",
+      "meaningThai": "บทความวิชาการต้องผ่านการทบทวนโดยผู้ทรงคุณวุฒิ"
+    }
+  ]
+},
+{
+  "id": "education-092",
+  "chinese": "课题",
+  "pinyin": "kè tí",
+  "meaning": "Research topic",
+  "meaningThai": "หัวข้อวิจัย",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个课题很有研究价值。",
+      "pinyin": "Zhè ge kè tí hěn yǒu yán jiū jià zhí.",
+      "meaning": "This research topic has great value.",
+      "meaningThai": "หัวข้อวิจัยนี้มีคุณค่าต่อการวิจัย"
+    }
+  ]
+},
+{
+  "id": "education-093",
+  "chinese": "数据收集",
+  "pinyin": "shù jù shōu jí",
+  "meaning": "Data collection",
+  "meaningThai": "การเก็บข้อมูล",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "数据收集是研究的第一步。",
+      "pinyin": "Shù jù shōu jí shì yán jiū de dì yī bù.",
+      "meaning": "Data collection is the first step of research.",
+      "meaningThai": "การเก็บข้อมูลเป็นขั้นตอนแรกของการวิจัย"
+    }
+  ]
+},
+{
+  "id": "education-094",
+  "chinese": "文献综述",
+  "pinyin": "wén xiàn zōng shù",
+  "meaning": "Literature review",
+  "meaningThai": "การทบทวนวรรณกรรม",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "写论文前要做文献综述。",
+      "pinyin": "Xiě lùn wén qián yào zuò wén xiàn zōng shù.",
+      "meaning": "Do a literature review before writing the paper.",
+      "meaningThai": "ต้องทบทวนวรรณกรรมก่อนเขียนวิทยานิพนธ์"
+    }
+  ]
+},
+{
+  "id": "education-095",
+  "chinese": "实验组",
+  "pinyin": "shí yàn zǔ",
+  "meaning": "Experimental group",
+  "meaningThai": "กลุ่มทดลอง",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "实验组接受新的治疗方法。",
+      "pinyin": "Shí yàn zǔ jiē shòu xīn de zhì liáo fāng fǎ.",
+      "meaning": "The experimental group receives the new treatment.",
+      "meaningThai": "กลุ่มทดลองได้รับการรักษาวิธีใหม่"
+    }
+  ]
+},
+{
+  "id": "education-096",
+  "chinese": "对照组",
+  "pinyin": "duì zhào zǔ",
+  "meaning": "Control group",
+  "meaningThai": "กลุ่มควบคุม",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "对照组不接受治疗。",
+      "pinyin": "Duì zhào zǔ bù jiē shòu zhì liáo.",
+      "meaning": "The control group does not receive treatment.",
+      "meaningThai": "กลุ่มควบคุมไม่ได้รับการรักษา"
+    }
+  ]
+},
+{
+  "id": "education-097",
+  "chinese": "样本量",
+  "pinyin": "yàng běn liàng",
+  "meaning": "Sample size",
+  "meaningThai": "ขนาดตัวอย่าง",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "样本量越大结果越准确。",
+      "pinyin": "Yàng běn liàng yuè dà jié guǒ yuè zhǔn què.",
+      "meaning": "The larger the sample size, the more accurate the results.",
+      "meaningThai": "ขนาดตัวอย่างยิ่งใหญ่ผลลัพธ์ยิ่งแม่นยำ"
+    }
+  ]
+},
+{
+  "id": "education-098",
+  "chinese": "出版",
+  "pinyin": "chū bǎn",
+  "meaning": "To publish",
+  "meaningThai": "ตีพิมพ์",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "她的研究发表在著名期刊上。",
+      "pinyin": "Tā de yán jiū fā biǎo zài zhù míng qī kān shàng.",
+      "meaning": "Her research was published in a famous journal.",
+      "meaningThai": "งานวิจัยของเธอตีพิมพ์ในวารสาร著名"
+    }
+  ]
+},
+{
+  "id": "education-099",
+  "chinese": "科研经费",
+  "pinyin": "kē yán jīng fèi",
+  "meaning": "Research funding",
+  "meaningThai": "ทุนวิจัย",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "申请科研经费需要详细的预算。",
+      "pinyin": "Shēn qǐng kē yán jīng fèi xū yào xiáng xì de yù suàn.",
+      "meaning": "Applying for research funding requires a detailed budget.",
+      "meaningThai": "การขอทุนวิจัยต้องมีงบประมาณโดยละเอียด"
+    }
+  ]
+},
+{
+  "id": "education-100",
+  "chinese": "答辩",
+  "pinyin": "dá biàn",
+  "meaning": "Thesis defense",
+  "meaningThai": "สอบป้องกัน",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "博士论文答辩通过了。",
+      "pinyin": "Bó shì lùn wén dá biàn tōng guò le.",
+      "meaning": "The PhD thesis defense was passed.",
+      "meaningThai": "สอบป้องกันวิทยานิพนธ์ปริญญาเอกผ่าน"
+    }
+  ]
+}
+];
+
+const TECHNOLOGY_WORDS = [
+  {
+    "id": "technology-001",
+    "chinese": "软件",
+    "pinyin": "ruǎn jiàn",
+    "meaning": "Software",
+    "meaningThai": "ซอฟต์แวร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "安装新的软件。",
+        "pinyin": "Ān zhuāng xīn de ruǎn jiàn.",
+        "meaning": "Install new software.",
+        "meaningThai": "ติดตั้งซอฟต์แวร์ใหม่"
+      }
+    ]
+  },
+  {
+    "id": "technology-002",
+    "chinese": "硬件",
+    "pinyin": "yìng jiàn",
+    "meaning": "Hardware",
+    "meaningThai": "ฮาร์ดแวร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电脑硬件升级了。",
+        "pinyin": "Diàn nǎo yìng jiàn shēng jí le.",
+        "meaning": "The computer hardware was upgraded.",
+        "meaningThai": "อัพเกรดฮาร์ดแวร์คอมพิวเตอร์แล้ว"
+      }
+    ]
+  },
+  {
+    "id": "technology-003",
+    "chinese": "编程",
+    "pinyin": "biān chéng",
+    "meaning": "Programming",
+    "meaningThai": "เขียนโปรแกรม",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在学习编程。",
+        "pinyin": "Tā zài xué xí biān chéng.",
+        "meaning": "He is learning programming.",
+        "meaningThai": "เขากำลังเรียนเขียนโปรแกรม"
+      }
+    ]
+  },
+  {
+    "id": "technology-004",
+    "chinese": "代码",
+    "pinyin": "dài mǎ",
+    "meaning": "Code",
+    "meaningThai": "โค้ด",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这段代码有错误。",
+        "pinyin": "Zhè duàn dài mǎ yǒu cuò wù.",
+        "meaning": "This piece of code has errors.",
+        "meaningThai": "โค้ดส่วนนี้มีข้อผิดพลาด"
+      }
+    ]
+  },
+  {
+    "id": "technology-005",
+    "chinese": "服务器",
+    "pinyin": "fú wù qì",
+    "meaning": "Server",
+    "meaningThai": "เซิร์ฟเวอร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "服务器需要维护。",
+        "pinyin": "Fú wù qì xū yào wéi hù.",
+        "meaning": "The server needs maintenance.",
+        "meaningThai": "เซิร์ฟเวอร์ต้องการการบำรุงรักษา"
+      }
+    ]
+  },
+  {
+    "id": "technology-006",
+    "chinese": "数据库",
+    "pinyin": "shù jù kù",
+    "meaning": "Database",
+    "meaningThai": "ฐานข้อมูล",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数据库存储用户信息。",
+        "pinyin": "Shù jù kù chǔ cún yòng hù xìn xī.",
+        "meaning": "The database stores user information.",
+        "meaningThai": "ฐานข้อมูลเก็บข้อมูลผู้ใช้"
+      }
+    ]
+  },
+  {
+    "id": "technology-007",
+    "chinese": "算法",
+    "pinyin": "suàn fǎ",
+    "meaning": "Algorithm",
+    "meaningThai": "อัลกอริทึม",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个算法效率很高。",
+        "pinyin": "Zhè ge suàn fǎ xiào lǜ hěn gāo.",
+        "meaning": "This algorithm is very efficient.",
+        "meaningThai": "อัลกอริทึมนี้มีประสิทธิภาพสูง"
+      }
+    ]
+  },
+  {
+    "id": "technology-008",
+    "chinese": "操作系统",
+    "pinyin": "cāo zuò xì tǒng",
+    "meaning": "Operating system",
+    "meaningThai": "ระบบปฏิบัติการ",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "最新版本的操作系统。",
+        "pinyin": "Zuì xīn bǎn běn de cāo zuò xì tǒng.",
+        "meaning": "The latest version of the operating system.",
+        "meaningThai": "ระบบปฏิบัติการเวอร์ชันล่าสุด"
+      }
+    ]
+  },
+  {
+    "id": "technology-009",
+    "chinese": "浏览器",
+    "pinyin": "liú lǎn qì",
+    "meaning": "Browser",
+    "meaningThai": "เบราว์เซอร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "打开浏览器搜索。",
+        "pinyin": "Dǎ kāi liú lǎn qì sōu suǒ.",
+        "meaning": "Open the browser and search.",
+        "meaningThai": "เปิดเบราว์เซอร์ค้นหา"
+      }
+    ]
+  },
+  {
+    "id": "technology-010",
+    "chinese": "防火墙",
+    "pinyin": "fáng huǒ qiáng",
+    "meaning": "Firewall",
+    "meaningThai": "ไฟร์วอลล์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "防火墙保护网络安全。",
+        "pinyin": "Fáng huǒ qiáng bǎo hù wǎng luò ān quán.",
+        "meaning": "Firewalls protect network security.",
+        "meaningThai": "ไฟร์วอลล์ปกป้องความปลอดภัยเครือข่าย"
+      }
+    ]
+  },
+  {
+    "id": "technology-011",
+    "chinese": "芯片",
+    "pinyin": "xīn piàn",
+    "meaning": "Chip; Microchip",
+    "meaningThai": "ชิป",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "新的芯片性能更强。",
+        "pinyin": "Xīn de xīn piàn xìng néng gèng qiáng.",
+        "meaning": "The new chip has stronger performance.",
+        "meaningThai": "ชิปตัวใหม่มีประสิทธิภาพดีกว่า"
+      }
+    ]
+  },
+  {
+    "id": "technology-012",
+    "chinese": "内存",
+    "pinyin": "nèi cún",
+    "meaning": "Memory (RAM)",
+    "meaningThai": "แรม",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电脑内存不够用了。",
+        "pinyin": "Diàn nǎo nèi cún bù gòu yòng le.",
+        "meaning": "The computer doesn't have enough memory.",
+        "meaningThai": "แรมคอมพิวเตอร์ไม่พอ"
+      }
+    ]
+  },
+  {
+    "id": "technology-013",
+    "chinese": "键盘",
+    "pinyin": "jiàn pán",
+    "meaning": "Keyboard",
+    "meaningThai": "คีย์บอร์ด",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "无线键盘很方便。",
+        "pinyin": "Wú xiàn jiàn pán hěn fāng biàn.",
+        "meaning": "Wireless keyboards are very convenient.",
+        "meaningThai": "คีย์บอร์ดไร้สายสะดวกมาก"
+      }
+    ]
+  },
+  {
+    "id": "technology-014",
+    "chinese": "显示器",
+    "pinyin": "xiǎn shì qì",
+    "meaning": "Monitor; Display",
+    "meaningThai": "จอภาพ",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "显示器的分辨率很高。",
+        "pinyin": "Xiǎn shì qì de fēn biàn lǜ hěn gāo.",
+        "meaning": "The monitor has high resolution.",
+        "meaningThai": "จอภาพมีความละเอียดสูง"
+      }
+    ]
+  },
+  {
+    "id": "technology-015",
+    "chinese": "密码",
+    "pinyin": "mì mǎ",
+    "meaning": "Password",
+    "meaningThai": "รหัสผ่าน",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请设置一个强密码。",
+        "pinyin": "Qǐng shè zhì yī gè qiáng mì mǎ.",
+        "meaning": "Please set a strong password.",
+        "meaningThai": "กรุณาตั้งรหัสผ่านที่รัดกุม"
+      }
+    ]
+  },
+  {
+    "id": "technology-016",
+    "chinese": "网络",
+    "pinyin": "wǎng luò",
+    "meaning": "Network; Internet",
+    "meaningThai": "เครือข่าย",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "网络连接不稳定。",
+        "pinyin": "Wǎng luò lián jiē bù wěn dìng.",
+        "meaning": "The network connection is unstable.",
+        "meaningThai": "การเชื่อมต่อเครือข่ายไม่เสถียร"
+      }
+    ]
+  },
+  {
+    "id": "technology-017",
+    "chinese": "视频通话",
+    "pinyin": "shì pín tōng huà",
+    "meaning": "Video call",
+    "meaningThai": "วิดีโอคอล",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我们用视频通话联系。",
+        "pinyin": "Wǒ men yòng shì pín tōng huà lián xì.",
+        "meaning": "We keep in touch via video calls.",
+        "meaningThai": "เราติดต่อกันผ่านวิดีโอคอล"
+      }
+    ]
+  },
+  {
+    "id": "technology-018",
+    "chinese": "电子邮件",
+    "pinyin": "diàn zǐ yóu jiàn",
+    "meaning": "Email",
+    "meaningThai": "อีเมล",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请发电子邮件给我。",
+        "pinyin": "Qǐng fā diàn zǐ yóu jiàn gěi wǒ.",
+        "meaning": "Please send me an email.",
+        "meaningThai": "กรุณาส่งอีเมลถึงฉัน"
+      }
+    ]
+  },
+  {
+    "id": "technology-019",
+    "chinese": "社交媒体",
+    "pinyin": "shè jiāo méi tǐ",
+    "meaning": "Social media",
+    "meaningThai": "โซเชียลมีเดีย",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "社交媒体改变了沟通方式。",
+        "pinyin": "Shè jiāo méi tǐ gǎi biàn le gōu tōng fāng shì.",
+        "meaning": "Social media changed the way we communicate.",
+        "meaningThai": "โซเชียลมีเดียเปลี่ยนวิธีการสื่อสาร"
+      }
+    ]
+  },
+  {
+    "id": "technology-020",
+    "chinese": "论坛",
+    "pinyin": "lùn tán",
+    "meaning": "Forum",
+    "meaningThai": "เว็บบอร์ด",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "在论坛上讨论问题。",
+        "pinyin": "Zài lùn tán shàng tǎo lùn wèn tí.",
+        "meaning": "Discuss questions on the forum.",
+        "meaningThai": "อภิปรายปัญหาบนเว็บบอร์ด"
+      }
+    ]
+  },
+  {
+    "id": "technology-021",
+    "chinese": "带宽",
+    "pinyin": "dài kuān",
+    "meaning": "Bandwidth",
+    "meaningThai": "แบนด์วิดท์",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "带宽不够导致视频卡顿。",
+        "pinyin": "Dài kuān bù gòu dǎo zhì shì pín kǎ dùn.",
+        "meaning": "Insufficient bandwidth causes video lag.",
+        "meaningThai": "แบนด์วิดท์ไม่พอทำให้วิดีโอสะดุด"
+      }
+    ]
+  },
+  {
+    "id": "technology-022",
+    "chinese": "路由器",
+    "pinyin": "lù yóu qì",
+    "meaning": "Router",
+    "meaningThai": "เราเตอร์",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "路由器信号很强。",
+        "pinyin": "Lù yóu qì xìn hào hěn qiáng.",
+        "meaning": "The router has a strong signal.",
+        "meaningThai": "สัญญาณเราเตอร์แรง"
+      }
+    ]
+  },
+  {
+    "id": "technology-023",
+    "chinese": "病毒",
+    "pinyin": "bìng dú",
+    "meaning": "Computer virus",
+    "meaningThai": "ไวรัสคอมพิวเตอร์",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电脑中毒了需要杀毒。",
+        "pinyin": "Diàn nǎo zhòng dú le xū yào shā dú.",
+        "meaning": "The computer has a virus and needs to be cleaned.",
+        "meaningThai": "คอมพิวเตอร์ติดไวรัสต้องกำจัดไวรัส"
+      }
+    ]
+  },
+  {
+    "id": "technology-024",
+    "chinese": "云存储",
+    "pinyin": "yún chǔ chú",
+    "meaning": "Cloud storage",
+    "meaningThai": "คลาวด์สตอเรจ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "文件存在云存储里。",
+        "pinyin": "Wén jiàn cún zài yún chǔ chú lǐ.",
+        "meaning": "Files are stored in the cloud.",
+        "meaningThai": "ไฟล์เก็บไว้ในคลาวด์สตอเรจ"
+      }
+    ]
+  },
+  {
+    "id": "technology-025",
+    "chinese": "蓝牙",
+    "pinyin": "lán yá",
+    "meaning": "Bluetooth",
+    "meaningThai": "บลูทูธ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "通过蓝牙连接设备。",
+        "pinyin": "Tōng guò lán yá lián jiē shè bèi.",
+        "meaning": "Connect devices via Bluetooth.",
+        "meaningThai": "เชื่อมต่ออุปกรณ์ผ่านบลูทูธ"
+      }
+    ]
+  },
+  {
+    "id": "technology-026",
+    "chinese": "流量",
+    "pinyin": "liú liàng",
+    "meaning": "Data traffic",
+    "meaningThai": "ข้อมูลมือถือ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "手机流量用完了。",
+        "pinyin": "Shǒu jī liú liàng yòng wán le.",
+        "meaning": "The mobile data ran out.",
+        "meaningThai": "ข้อมูลมือถือหมดแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "technology-027",
+    "chinese": "信号",
+    "pinyin": "xìn hào",
+    "meaning": "Signal",
+    "meaningThai": "สัญญาณ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这里信号不好。",
+        "pinyin": "Zhè lǐ xìn hào bù hǎo.",
+        "meaning": "The signal is bad here.",
+        "meaningThai": "ที่นี่สัญญาณไม่ดี"
+      }
+    ]
+  },
+  {
+    "id": "technology-028",
+    "chinese": "加密",
+    "pinyin": "jiā mì",
+    "meaning": "Encryption",
+    "meaningThai": "การเข้ารหัส",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数据需要加密传输。",
+        "pinyin": "Shù jù xū yào jiā mì chuán shū.",
+        "meaning": "Data needs encrypted transmission.",
+        "meaningThai": "ข้อมูลต้องส่งแบบเข้ารหัส"
+      }
+    ]
+  },
+  {
+    "id": "technology-029",
+    "chinese": "光纤",
+    "pinyin": "guāng xiān",
+    "meaning": "Fiber optic",
+    "meaningThai": "ไฟเบอร์ออปติก",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "光纤网络速度更快。",
+        "pinyin": "Guāng xiān wǎng luò sù dù gèng kuài.",
+        "meaning": "Fiber optic networks are faster.",
+        "meaningThai": "เครือข่ายไฟเบอร์ออปติกเร็วกว่า"
+      }
+    ]
+  },
+  {
+    "id": "technology-030",
+    "chinese": "物联网",
+    "pinyin": "wù lián wǎng",
+    "meaning": "Internet of Things",
+    "meaningThai": "อินเทอร์เน็ตของสรรพสิ่ง",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "物联网让家居更智能。",
+        "pinyin": "Wù lián wǎng ràng jiā jū gèng zhì néng.",
+        "meaning": "IoT makes homes smarter.",
+        "meaningThai": "IoT ทำให้บ้านอัจฉริยะมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-031",
+    "chinese": "应用程序",
+    "pinyin": "yìng yòng chéng xù",
+    "meaning": "Application (App)",
+    "meaningThai": "แอปพลิเคชัน",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "手机上下载了新的应用程序。",
+        "pinyin": "Shǒu jī shàng xià zài le xīn de yìng yòng chéng xù.",
+        "meaning": "Downloaded a new app on the phone.",
+        "meaningThai": "ดาวน์โหลดแอปพลิเคชันใหม่บนมือถือ"
+      }
+    ]
+  },
+  {
+    "id": "technology-032",
+    "chinese": "数码相机",
+    "pinyin": "shù mǎ xiàng jī",
+    "meaning": "Digital camera",
+    "meaningThai": "กล้องดิจิทัล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数码相机拍照很方便。",
+        "pinyin": "Shù mǎ xiàng jī pāi zhào hěn fāng biàn.",
+        "meaning": "Digital cameras are convenient for taking photos.",
+        "meaningThai": "กล้องดิจิทัลถ่ายรูปสะดวกมาก"
+      }
+    ]
+  },
+  {
+    "id": "technology-033",
+    "chinese": "在线",
+    "pinyin": "zài xiàn",
+    "meaning": "Online",
+    "meaningThai": "ออนไลน์",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "在线课程越来越流行。",
+        "pinyin": "Zài xiàn kè chéng yuè lái yuè liú xíng.",
+        "meaning": "Online courses are becoming more popular.",
+        "meaningThai": "คอร์สออนไลน์กำลังเป็นที่นิยมมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-034",
+    "chinese": "直播",
+    "pinyin": "zhí bō",
+    "meaning": "Live streaming",
+    "meaningThai": "ไลฟ์สตรีม",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她在做直播带货。",
+        "pinyin": "Tā zài zuò zhí bō dài huò.",
+        "meaning": "She is doing live-streaming sales.",
+        "meaningThai": "เธอกำลังไลฟ์สดขายของ"
+      }
+    ]
+  },
+  {
+    "id": "technology-035",
+    "chinese": "虚拟现实",
+    "pinyin": "xū nǐ xiàn shí",
+    "meaning": "Virtual reality",
+    "meaningThai": "ความเป็นจริงเสมือน",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "虚拟现实技术不断发展。",
+        "pinyin": "Xū nǐ xiàn shí jì shù bù duàn fā zhǎn.",
+        "meaning": "VR technology keeps advancing.",
+        "meaningThai": "เทคโนโลยี VR พัฒนาอย่างต่อเนื่อง"
+      }
+    ]
+  },
+  {
+    "id": "technology-036",
+    "chinese": "增强现实",
+    "pinyin": "zēng qiáng xiàn shí",
+    "meaning": "Augmented reality",
+    "meaningThai": "ความเป็นจริงเสริม",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "手机游戏使用了增强现实技术。",
+        "pinyin": "Shǒu jī yóu xì shǐ yòng le zēng qiáng xiàn shí jì shù.",
+        "meaning": "Mobile games use AR technology.",
+        "meaningThai": "เกมมือถือใช้เทคโนโลยี AR"
+      }
+    ]
+  },
+  {
+    "id": "technology-037",
+    "chinese": "电子支付",
+    "pinyin": "diàn zǐ zhī fù",
+    "meaning": "Electronic payment",
+    "meaningThai": "ชำระเงินอิเล็กทรอนิกส์",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电子支付很方便。",
+        "pinyin": "Diàn zǐ zhī fù hěn fāng biàn.",
+        "meaning": "Electronic payment is very convenient.",
+        "meaningThai": "การชำระเงินอิเล็กทรอนิกส์สะดวกมาก"
+      }
+    ]
+  },
+  {
+    "id": "technology-038",
+    "chinese": "二维码",
+    "pinyin": "èr wéi mǎ",
+    "meaning": "QR code",
+    "meaningThai": "คิวอาร์โค้ด",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "扫二维码加好友。",
+        "pinyin": "Sǎo èr wéi mǎ jiā hǎo yǒu.",
+        "meaning": "Scan the QR code to add a friend.",
+        "meaningThai": "สแกนคิวอาร์โค้ดเพื่อเพิ่มเพื่อน"
+      }
+    ]
+  },
+  {
+    "id": "technology-039",
+    "chinese": "区块链",
+    "pinyin": "qū kuài liàn",
+    "meaning": "Blockchain",
+    "meaningThai": "บล็อกเชน",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "区块链技术用于加密货币。",
+        "pinyin": "Qū kuài liàn jì shù yòng yú jiā mì huò bì.",
+        "meaning": "Blockchain technology is used for cryptocurrency.",
+        "meaningThai": "เทคโนโลยีบล็อกเชนใช้สำหรับสกุลเงินดิจิทัล"
+      }
+    ]
+  },
+  {
+    "id": "technology-040",
+    "chinese": "自媒体",
+    "pinyin": "zì méi tǐ",
+    "meaning": "Self-media; We-media",
+    "meaningThai": "สื่อส่วนตัว",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "很多人通过自媒体赚钱。",
+        "pinyin": "Hěn duō rén tōng guò zì méi tǐ zhuàn qián.",
+        "meaning": "Many people make money through self-media.",
+        "meaningThai": "หลายคนหารายได้ผ่านสื่อส่วนตัว"
+      }
+    ]
+  },
+  {
+    "id": "technology-041",
+    "chinese": "数字营销",
+    "pinyin": "shù zì yíng xiāo",
+    "meaning": "Digital marketing",
+    "meaningThai": "การตลาดดิจิทัล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司重视数字营销策略。",
+        "pinyin": "Gōng sī zhòng shì shù zì yíng xiāo cè lüè.",
+        "meaning": "The company values digital marketing strategies.",
+        "meaningThai": "บริษัทให้ความสำคัญกับกลยุทธ์การตลาดดิจิทัล"
+      }
+    ]
+  },
+  {
+    "id": "technology-042",
+    "chinese": "网络安全",
+    "pinyin": "wǎng luò ān quán",
+    "meaning": "Cybersecurity",
+    "meaningThai": "ความปลอดภัยทางไซเบอร์",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "网络安全越来越重要。",
+        "pinyin": "Wǎng luò ān quán yuè lái yuè zhòng yào.",
+        "meaning": "Cybersecurity is increasingly important.",
+        "meaningThai": "ความปลอดภัยทางไซเบอร์สำคัญมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-043",
+    "chinese": "数据挖掘",
+    "pinyin": "shù jù wā jué",
+    "meaning": "Data mining",
+    "meaningThai": "การทำเหมืองข้อมูล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数据挖掘发现隐藏的模式。",
+        "pinyin": "Shù jù wā jué fā xiàn yǐn cáng de mó shì.",
+        "meaning": "Data mining discovers hidden patterns.",
+        "meaningThai": "การทำเหมืองข้อมูลค้นพบรูปแบบที่ซ่อนอยู่"
+      }
+    ]
+  },
+  {
+    "id": "technology-044",
+    "chinese": "备份",
+    "pinyin": "bèi fèn",
+    "meaning": "Backup",
+    "meaningThai": "สำรองข้อมูล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "重要文件要定期备份。",
+        "pinyin": "Zhòng yào wén jiàn yào dìng qī bèi fèn.",
+        "meaning": "Important files should be backed up regularly.",
+        "meaningThai": "ไฟล์สำคัญต้องสำรองข้อมูลเป็นประจำ"
+      }
+    ]
+  },
+  {
+    "id": "technology-045",
+    "chinese": "界面",
+    "pinyin": "jiè miàn",
+    "meaning": "Interface; UI",
+    "meaningThai": "อินเทอร์เฟซ",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个应用程序界面很友好。",
+        "pinyin": "Zhè ge yìng yòng chéng xù jiè miàn hěn yǒu hǎo.",
+        "meaning": "This app has a user-friendly interface.",
+        "meaningThai": "แอปนี้มีอินเทอร์เฟซที่ใช้งานง่าย"
+      }
+    ]
+  },
+  {
+    "id": "technology-046",
+    "chinese": "人工智能",
+    "pinyin": "rén gōng zhì néng",
+    "meaning": "Artificial Intelligence",
+    "meaningThai": "ปัญญาประดิษฐ์",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "人工智能正在改变世界。",
+        "pinyin": "Rén gōng zhì néng zhèng zài gǎi biàn shì jiè.",
+        "meaning": "AI is changing the world.",
+        "meaningThai": "AI กำลังเปลี่ยนแปลงโลก"
+      }
+    ]
+  },
+  {
+    "id": "technology-047",
+    "chinese": "机器学习",
+    "pinyin": "jī qì xué xí",
+    "meaning": "Machine learning",
+    "meaningThai": "การเรียนรู้ของเครื่อง",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "机器学习是人工智能的一个分支。",
+        "pinyin": "Jī qì xué xí shì rén gōng zhì néng de yī gè fēn zhī.",
+        "meaning": "Machine learning is a branch of AI.",
+        "meaningThai": "Machine Learning เป็นสาขาหนึ่งของ AI"
+      }
+    ]
+  },
+  {
+    "id": "technology-048",
+    "chinese": "深度学习",
+    "pinyin": "shēn dù xué xí",
+    "meaning": "Deep learning",
+    "meaningThai": "การเรียนรู้เชิงลึก",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "深度学习在图像识别中表现优异。",
+        "pinyin": "Shēn dù xué xí zài tú xiàng shí bié zhōng biǎo xiàn yōu yì.",
+        "meaning": "Deep learning performs well in image recognition.",
+        "meaningThai": "การเรียนรู้เชิงลึกมีประสิทธิภาพดีในการจดจำภาพ"
+      }
+    ]
+  },
+  {
+    "id": "technology-049",
+    "chinese": "神经网络",
+    "pinyin": "shén jīng wǎng luò",
+    "meaning": "Neural network",
+    "meaningThai": "โครงข่ายประสาทเทียม",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "神经网络模拟人脑工作方式。",
+        "pinyin": "Shén jīng wǎng luò mó nǐ rén nǎo gōng zuò fāng shì.",
+        "meaning": "Neural networks simulate the way the brain works.",
+        "meaningThai": "โครงข่ายประสาทเทียมเลียนแบบการทำงานของสมอง"
+      }
+    ]
+  },
+  {
+    "id": "technology-050",
+    "chinese": "大数据",
+    "pinyin": "dà shù jù",
+    "meaning": "Big data",
+    "meaningThai": "ข้อมูลขนาดใหญ่",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大数据分析帮助企业决策。",
+        "pinyin": "Dà shù jù fēn xī bāng zhù qǐ yè jué cè.",
+        "meaning": "Big data analysis helps business decisions.",
+        "meaningThai": "การวิเคราะห์ข้อมูลขนาดใหญ่ช่วยตัดสินใจทางธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "technology-051",
+    "chinese": "自动化",
+    "pinyin": "zì dòng huà",
+    "meaning": "Automation",
+    "meaningThai": "อัตโนมัติ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "工厂实现了自动化生产。",
+        "pinyin": "Gōng chǎng shí xiàn le zì dòng huà shēng chǎn.",
+        "meaning": "The factory has achieved automated production.",
+        "meaningThai": "โรงงาน实现了การผลิตแบบอัตโนมัติ"
+      }
+    ]
+  },
+  {
+    "id": "technology-052",
+    "chinese": "机器人",
+    "pinyin": "jī qì rén",
+    "meaning": "Robot",
+    "meaningThai": "หุ่นยนต์",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "机器人可以完成重复性工作。",
+        "pinyin": "Jī qì rén kě yǐ wán chéng chóng fù xìng gōng zuò.",
+        "meaning": "Robots can complete repetitive tasks.",
+        "meaningThai": "หุ่นยนต์สามารถทำงานที่ซ้ำซากได้"
+      }
+    ]
+  },
+  {
+    "id": "technology-053",
+    "chinese": "智能家居",
+    "pinyin": "zhì néng jiā jū",
+    "meaning": "Smart home",
+    "meaningThai": "บ้านอัจฉริยะ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "智能家居让生活更方便。",
+        "pinyin": "Zhì néng jiā jū ràng shēng huó gèng fāng biàn.",
+        "meaning": "Smart homes make life more convenient.",
+        "meaningThai": "บ้านอัจฉริยะทำให้ชีวิตสะดวกมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-054",
+    "chinese": "云计算",
+    "pinyin": "yún jì suàn",
+    "meaning": "Cloud computing",
+    "meaningThai": "คลาวด์คอมพิวติ้ง",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "云计算提供了强大的计算能力。",
+        "pinyin": "Yún jì suàn tí gōng le qiáng dà de jì suàn néng lì.",
+        "meaning": "Cloud computing provides powerful computing capabilities.",
+        "meaningThai": "คลาวด์คอมพิวติ้งให้ความสามารถในการคำนวณที่ทรงพลัง"
+      }
+    ]
+  },
+  {
+    "id": "technology-055",
+    "chinese": "自然语言处理",
+    "pinyin": "zì rán yǔ yán chǔ lǐ",
+    "meaning": "Natural Language Processing",
+    "meaningThai": "การประมวลผลภาษาธรรมชาติ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "自然语言处理用于翻译和聊天机器人。",
+        "pinyin": "Zì rán yǔ yán chǔ lǐ yòng yú fān yì hé liáo tiān jī qì rén.",
+        "meaning": "NLP is used for translation and chatbots.",
+        "meaningThai": "NLP ใช้สำหรับการแปลและแชทบอท"
+      }
+    ]
+  },
+  {
+    "id": "technology-056",
+    "chinese": "计算机视觉",
+    "pinyin": "jì suàn jī shì jué",
+    "meaning": "Computer vision",
+    "meaningThai": "คอมพิวเตอร์วิทัศน์",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "计算机视觉让机器能够看见。",
+        "pinyin": "Jì suàn jī shì jué ràng jī qì néng gòu kàn jiàn.",
+        "meaning": "Computer vision enables machines to see.",
+        "meaningThai": "คอมพิวเตอร์วิทัศน์ทำให้เครื่องจักรมองเห็น"
+      }
+    ]
+  },
+  {
+    "id": "technology-057",
+    "chinese": "语音识别",
+    "pinyin": "yǔ yīn shí bié",
+    "meaning": "Speech recognition",
+    "meaningThai": "การรู้จำเสียง",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "语音识别技术越来越准确。",
+        "pinyin": "Yǔ yīn shí bié jì shù yuè lái yuè zhǔn què.",
+        "meaning": "Speech recognition technology is increasingly accurate.",
+        "meaningThai": "เทคโนโลยีรู้จำเสียงแม่นยำมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-058",
+    "chinese": "推荐算法",
+    "pinyin": "tuī jiàn suàn fǎ",
+    "meaning": "Recommendation algorithm",
+    "meaningThai": "อัลกอริทึมแนะนำ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "推荐算法根据浏览历史推荐内容。",
+        "pinyin": "Tuī jiàn suàn fǎ gēn jù liú lǎn lì shǐ tuī jiàn nèi róng.",
+        "meaning": "Recommendation algorithms suggest content based on browsing history.",
+        "meaningThai": "อัลกอริทึมแนะนำแนะนำเนื้อหาตามประวัติการรับชม"
+      }
+    ]
+  },
+  {
+    "id": "technology-059",
+    "chinese": "聊天机器人",
+    "pinyin": "liáo tiān jī qì rén",
+    "meaning": "Chatbot",
+    "meaningThai": "แชทบอท",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "客服聊天机器人24小时在线。",
+        "pinyin": "Kè fú liáo tiān jī qì rén èr shí sì xiǎo shí zài xiàn.",
+        "meaning": "Customer service chatbots are online 24/7.",
+        "meaningThai": "แชทบอทบริการลูกค้าออนไลน์ตลอด 24 ชม."
+      }
+    ]
+  },
+  {
+    "id": "technology-060",
+    "chinese": "深度学习框架",
+    "pinyin": "shēn dù xué xí kuàng jià",
+    "meaning": "Deep learning framework",
+    "meaningThai": "เฟรมเวิร์กการเรียนรู้เชิงลึก",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "TensorFlow是常用的深度学习框架。",
+        "pinyin": "TensorFlow shì cháng yòng de shēn dù xué xí kuàng jià.",
+        "meaning": "TensorFlow is a commonly used deep learning framework.",
+        "meaningThai": "TensorFlow เป็นเฟรมเวิร์ก深度学习ที่ใช้บ่อย"
+      }
+    ]
+  },
+{
+  "id": "technology-061",
+  "chinese": "编译器",
+  "pinyin": "biān yì qì",
+  "meaning": "Compiler",
+  "meaningThai": "คอมไพเลอร์",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "编译器将源代码转换成机器代码。",
+      "pinyin": "Biān yì qì jiāng yuán dài mǎ zhuǎn huàn chéng jī qì dài mǎ.",
+      "meaning": "A compiler converts source code into machine code.",
+      "meaningThai": "คอมไพเลอร์แปลงซอร์สโค้ดเป็นรหัสเครื่อง"
+    }
+  ]
+},
+{
+  "id": "technology-062",
+  "chinese": "调试",
+  "pinyin": "diào shì",
+  "meaning": "Debugging",
+  "meaningThai": "การดีบัก",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "程序员花很多时间调试代码。",
+      "pinyin": "Chéng xù yuán huā hěn duō shí jiān diào shì dài mǎ.",
+      "meaning": "Programmers spend a lot of time debugging code.",
+      "meaningThai": "โปรแกรมเมอร์ใช้เวลามากในการดีบักโค้ด"
+    }
+  ]
+},
+{
+  "id": "technology-063",
+  "chinese": "部署",
+  "pinyin": "bù shǔ",
+  "meaning": "Deployment",
+  "meaningThai": "การติดตั้งใช้งาน",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "新版本已经部署到服务器。",
+      "pinyin": "Xīn bǎn běn yǐ jīng bù shǔ dào fú wù qì.",
+      "meaning": "The new version has been deployed to the server.",
+      "meaningThai": "เวอร์ชันใหม่ได้ติดตั้งบนเซิร์ฟเวอร์แล้ว"
+    }
+  ]
+},
+{
+  "id": "technology-064",
+  "chinese": "开源",
+  "pinyin": "kāi yuán",
+  "meaning": "Open source",
+  "meaningThai": "โอเพนซอร์ส",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "开源软件可以自由修改。",
+      "pinyin": "Kāi yuán ruǎn jiàn kě yǐ zì yóu xiū gǎi.",
+      "meaning": "Open source software can be freely modified.",
+      "meaningThai": "ซอฟต์แวร์โอเพนซอร์สสามารถแก้ไขได้อย่างอิสระ"
+    }
+  ]
+},
+{
+  "id": "technology-065",
+  "chinese": "版本控制",
+  "pinyin": "bǎn běn kòng zhì",
+  "meaning": "Version control",
+  "meaningThai": "การควบคุมเวอร์ชัน",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "Git是最流行的版本控制系统。",
+      "pinyin": "Git shì zuì liú xíng de bǎn běn kòng zhì xì tǒng.",
+      "meaning": "Git is the most popular version control system.",
+      "meaningThai": "Git เป็นระบบควบคุมเวอร์ชันที่นิยมที่สุด"
+    }
+  ]
+},
+{
+  "id": "technology-066",
+  "chinese": "API",
+  "pinyin": "API",
+  "meaning": "Application Programming Interface",
+  "meaningThai": "API",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "开发者使用API来集成服务。",
+      "pinyin": "Kāi fā zhě shǐ yòng API lái jí chéng fú wù.",
+      "meaning": "Developers use APIs to integrate services.",
+      "meaningThai": "นักพัฒนาใช้ API เพื่อเชื่อมต่อบริการ"
+    }
+  ]
+},
+{
+  "id": "technology-067",
+  "chinese": "框架",
+  "pinyin": "kuàng jià",
+  "meaning": "Framework",
+  "meaningThai": "เฟรมเวิร์ก",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个框架简化了开发流程。",
+      "pinyin": "Zhè ge kuàng jià jiǎn huà le kāi fā liú chéng.",
+      "meaning": "This framework simplifies the development process.",
+      "meaningThai": "เฟรมเวิร์กนี้ทำให้ขั้นตอนการพัฒนาง่ายขึ้น"
+    }
+  ]
+},
+{
+  "id": "technology-068",
+  "chinese": "前端",
+  "pinyin": "qián duān",
+  "meaning": "Frontend",
+  "meaningThai": "ฟร้อนท์เอนด์",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "前端开发涉及用户界面设计。",
+      "pinyin": "Qián duān kāi fā shè jí yòng hù jiè miàn shè jì.",
+      "meaning": "Frontend development involves user interface design.",
+      "meaningThai": "การพัฒนาฟร้อนท์เอนด์เกี่ยวข้องกับการออกแบบอินเทอร์เฟซผู้ใช้"
+    }
+  ]
+},
+{
+  "id": "technology-069",
+  "chinese": "后端",
+  "pinyin": "hòu duān",
+  "meaning": "Backend",
+  "meaningThai": "แบ็คเอนด์",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "后端处理数据和业务逻辑。",
+      "pinyin": "Hòu duān chǔ lǐ shù jù hé yè wù luó jí.",
+      "meaning": "The backend handles data and business logic.",
+      "meaningThai": "แบ็คเอนด์จัดการข้อมูลและตรรกะทางธุรกิจ"
+    }
+  ]
+},
+{
+  "id": "technology-070",
+  "chinese": "测试",
+  "pinyin": "cè shì",
+  "meaning": "Testing",
+  "meaningThai": "การทดสอบ",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "发布前要做充分的测试。",
+      "pinyin": "Fā bù qián yào zuò chōng fèn de cè shì.",
+      "meaning": "Do thorough testing before release.",
+      "meaningThai": "ต้องทดสอบอย่างเพียงพอก่อนปล่อย"
+    }
+  ]
+},
+{
+  "id": "technology-071",
+  "chinese": "短信",
+  "pinyin": "duǎn xìn",
+  "meaning": "Text message",
+  "meaningThai": "ข้อความ",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "发短信告诉我你的地址。",
+      "pinyin": "Fā duǎn xìn gào sù wǒ nǐ de dì zhǐ.",
+      "meaning": "Send me a text message with your address.",
+      "meaningThai": "ส่งข้อความบอกที่อยู่ของคุณมา"
+    }
+  ]
+},
+{
+  "id": "technology-072",
+  "chinese": "群聊",
+  "pinyin": "qún liáo",
+  "meaning": "Group chat",
+  "meaningThai": "แชทกลุ่ม",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "我们在微信上有一个群聊。",
+      "pinyin": "Wǒ men zài Wēi xìn shàng yǒu yī gè qún liáo.",
+      "meaning": "We have a group chat on WeChat.",
+      "meaningThai": "เรามีแชทกลุ่มบน WeChat"
+    }
+  ]
+},
+{
+  "id": "technology-073",
+  "chinese": "表情符号",
+  "pinyin": "biǎo qíng fú hào",
+  "meaning": "Emoji",
+  "meaningThai": "อิโมจิ",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "表情符号让对话更生动。",
+      "pinyin": "Biǎo qíng fú hào ràng duì huà gèng shēng dòng.",
+      "meaning": "Emojis make conversations more lively.",
+      "meaningThai": "อิโมจิทำให้การสนทนามีชีวิตชีวามากขึ้น"
+    }
+  ]
+},
+{
+  "id": "technology-074",
+  "chinese": "视频会议",
+  "pinyin": "shì pín huì yì",
+  "meaning": "Video conference",
+  "meaningThai": "ประชุมทางวิดีโอ",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "远程团队每周开视频会议。",
+      "pinyin": "Yuǎn chéng tuán duì měi zhōu kāi shì pín huì yì.",
+      "meaning": "Remote teams have video conferences every week.",
+      "meaningThai": "ทีม远程มีประชุมทางวิดีโอทุกสัปดาห์"
+    }
+  ]
+},
+{
+  "id": "technology-075",
+  "chinese": "网络电话",
+  "pinyin": "wǎng luò diàn huà",
+  "meaning": "VoIP call",
+  "meaningThai": "โทรศัพท์อินเทอร์เน็ต",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "网络电话可以节省通话费用。",
+      "pinyin": "Wǎng luò diàn huà kě yǐ jié shěng tōng huà fèi yòng.",
+      "meaning": "VoIP calls can save on call costs.",
+      "meaningThai": "โทรศัพท์อินเทอร์เน็ตประหยัดค่าโทร"
+    }
+  ]
+},
+{
+  "id": "technology-076",
+  "chinese": "带宽",
+  "pinyin": "dài kuān",
+  "meaning": "Bandwidth",
+  "meaningThai": "แบนด์วิดท์",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "高清视频需要很大的带宽。",
+      "pinyin": "Gāo qīng shì pín xū yào hěn dà de dài kuān.",
+      "meaning": "HD video requires a lot of bandwidth.",
+      "meaningThai": "วิดีโอความละเอียดสูงต้องใช้แบนด์วิดท์มาก"
+    }
+  ]
+},
+{
+  "id": "technology-077",
+  "chinese": "延迟",
+  "pinyin": "yán chí",
+  "meaning": "Latency",
+  "meaningThai": "เวลาแฝง",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "网络延迟影响在线游戏体验。",
+      "pinyin": "Wǎng luò yán chí yǐng xiǎng zài xiàn yóu xì tǐ yàn.",
+      "meaning": "Network latency affects online gaming experience.",
+      "meaningThai": "เวลาแฝงของเครือข่ายส่งผลต่อประสบการณ์เกมออนไลน์"
+    }
+  ]
+},
+{
+  "id": "technology-078",
+  "chinese": "数据漫游",
+  "pinyin": "shù jù màn yóu",
+  "meaning": "Data roaming",
+  "meaningThai": "โรมมิ่งข้อมูล",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "出国时关闭数据漫游可以省钱。",
+      "pinyin": "Chū guó shí guān bì shù jù màn yóu kě yǐ shěng qián.",
+      "meaning": "Turning off data roaming abroad can save money.",
+      "meaningThai": "ปิดโรมมิ่งข้อมูลเมื่อต่างประเทศประหยัดเงิน"
+    }
+  ]
+},
+{
+  "id": "technology-079",
+  "chinese": "基站",
+  "pinyin": "jī zhàn",
+  "meaning": "Cell tower; Base station",
+  "meaningThai": "สถานีฐาน",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "5G基站覆盖范围更广。",
+      "pinyin": "5G jī zhàn fù gài fàn wéi gèng guǎng.",
+      "meaning": "5G base stations have wider coverage.",
+      "meaningThai": "สถานีฐาน 5G มีพื้นที่ครอบคลุมกว้างขึ้น"
+    }
+  ]
+},
+{
+  "id": "technology-080",
+  "chinese": "卫星通信",
+  "pinyin": "wèi xīng tōng xìn",
+  "meaning": "Satellite communication",
+  "meaningThai": "การสื่อสารผ่านดาวเทียม",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "卫星通信可以在偏远地区使用。",
+      "pinyin": "Wèi xīng tōng xìn kě yǐ zài piān yuǎn dì qū shǐ yòng.",
+      "meaning": "Satellite communication can be used in remote areas.",
+      "meaningThai": "การสื่อสารผ่านดาวเทียมใช้ได้ในพื้นที่ห่างไกล"
+    }
+  ]
+},
+{
+  "id": "technology-081",
+  "chinese": "电子书",
+  "pinyin": "diàn zǐ shū",
+  "meaning": "E-book",
+  "meaningThai": "หนังสืออิเล็กทรอนิกส์",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "电子书很方便携带。",
+      "pinyin": "Diàn zǐ shū hěn fāng biàn xié dài.",
+      "meaning": "E-books are very convenient to carry.",
+      "meaningThai": "หนังสืออิเล็กทรอนิกส์พกพาสะดวก"
+    }
+  ]
+},
+{
+  "id": "technology-082",
+  "chinese": "流媒体",
+  "pinyin": "liú méi tǐ",
+  "meaning": "Streaming media",
+  "meaningThai": "สตรีมมิ่ง",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "流媒体取代了传统电视。",
+      "pinyin": "Liú méi tǐ qǔ dài le chuán tǒng diàn shì.",
+      "meaning": "Streaming media has replaced traditional TV.",
+      "meaningThai": "สตรีมมิ่งเข้ามาแทนที่ทีวีแบบดั้งเดิม"
+    }
+  ]
+},
+{
+  "id": "technology-083",
+  "chinese": "比特",
+  "pinyin": "bǐ tè",
+  "meaning": "Bit",
+  "meaningThai": "บิต",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "比特是计算机数据的最小单位。",
+      "pinyin": "Bǐ tè shì jì suàn jī shù jù de zuì xiǎo dān wèi.",
+      "meaning": "A bit is the smallest unit of computer data.",
+      "meaningThai": "บิตเป็นหน่วยข้อมูลที่เล็กที่สุดของคอมพิวเตอร์"
+    }
+  ]
+},
+{
+  "id": "technology-084",
+  "chinese": "字节",
+  "pinyin": "zì jié",
+  "meaning": "Byte",
+  "meaningThai": "ไบต์",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "一个字节由八个比特组成。",
+      "pinyin": "Yī gè zì jié yóu bā gè bǐ tè zǔ chéng.",
+      "meaning": "A byte consists of eight bits.",
+      "meaningThai": "หนึ่งไบต์ประกอบด้วยแปดบิต"
+    }
+  ]
+},
+{
+  "id": "technology-085",
+  "chinese": "像素",
+  "pinyin": "xiàng sù",
+  "meaning": "Pixel",
+  "meaningThai": "พิกเซล",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "相机像素越高照片越清晰。",
+      "pinyin": "Xiàng jī xiàng sù yuè gāo zhào piàn yuè qīng xī.",
+      "meaning": "Higher camera pixels result in clearer photos.",
+      "meaningThai": "พิกเซลกล้องยิ่งสูงรูปยิ่งชัด"
+    }
+  ]
+},
+{
+  "id": "technology-086",
+  "chinese": "分辨率",
+  "pinyin": "fēn biàn lǜ",
+  "meaning": "Resolution",
+  "meaningThai": "ความละเอียด",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "4K分辨率的画面非常清晰。",
+      "pinyin": "4K fēn biàn lǜ de huà miàn fēi cháng qīng xī.",
+      "meaning": "4K resolution images are very clear.",
+      "meaningThai": "ภาพความละเอียด 4K ชัดเจนมาก"
+    }
+  ]
+},
+{
+  "id": "technology-087",
+  "chinese": "算法推荐",
+  "pinyin": "suàn fǎ tuī jiàn",
+  "meaning": "Algorithmic recommendation",
+  "meaningThai": "การแนะนำด้วยอัลกอริทึม",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "短视频平台使用算法推荐内容。",
+      "pinyin": "Duǎn shì pín píng tái shǐ yòng suàn fǎ tuī jiàn nèi róng.",
+      "meaning": "Short video platforms use algorithms to recommend content.",
+      "meaningThai": "แพลตฟอร์มวิดีโอสั้นใช้อัลกอริทึมแนะนำเนื้อหา"
+    }
+  ]
+},
+{
+  "id": "technology-088",
+  "chinese": "数字签名",
+  "pinyin": "shù zì qiān míng",
+  "meaning": "Digital signature",
+  "meaningThai": "ลายเซ็นดิจิทัล",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "数字签名可以验证文件真实性。",
+      "pinyin": "Shù zì qiān míng kě yǐ yàn zhèng wén jiàn zhēn shí xìng.",
+      "meaning": "Digital signatures verify document authenticity.",
+      "meaningThai": "ลายเซ็นดิจิทัลยืนยันความถูกต้องของเอกสาร"
+    }
+  ]
+},
+{
+  "id": "technology-089",
+  "chinese": "搜索引擎",
+  "pinyin": "sōu suǒ yǐn qíng",
+  "meaning": "Search engine",
+  "meaningThai": "เสิร์ชเอนจิน",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "谷歌是全球最大的搜索引擎。",
+      "pinyin": "Gǔ gē shì quán qiú zuì dà de sōu suǒ yǐn qíng.",
+      "meaning": "Google is the world's largest search engine.",
+      "meaningThai": "Google เป็นเสิร์ชเอนจินที่ใหญ่ที่สุดในโลก"
+    }
+  ]
+},
+{
+  "id": "technology-090",
+  "chinese": "点击量",
+  "pinyin": "diǎn jī liàng",
+  "meaning": "Click count",
+  "meaningThai": "จำนวนคลิก",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个视频的点击量超过一百万。",
+      "pinyin": "Zhè ge shì pín de diǎn jī liàng chāo guò yī bǎi wàn.",
+      "meaning": "This video has over one million clicks.",
+      "meaningThai": "วิดีโอนี้มีจำนวนคลิกเกินหนึ่งล้าน"
+    }
+  ]
+},
+{
+  "id": "technology-091",
+  "chinese": "模型",
+  "pinyin": "mó xíng",
+  "meaning": "Model (AI)",
+  "meaningThai": "โมเดล",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "训练AI模型需要大量数据。",
+      "pinyin": "Xùn liàn AI mó xíng xū yào dà liàng shù jù.",
+      "meaning": "Training an AI model requires large amounts of data.",
+      "meaningThai": "การฝึกสอนโมเดล AI ต้องใช้ข้อมูลจำนวนมาก"
+    }
+  ]
+},
+{
+  "id": "technology-092",
+  "chinese": "训练数据",
+  "pinyin": "xùn liàn shù jù",
+  "meaning": "Training data",
+  "meaningThai": "ข้อมูลฝึกสอน",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "训练数据的质量影响模型性能。",
+      "pinyin": "Xùn liàn shù jù de zhì liàng yǐng xiǎng mó xíng xìng néng.",
+      "meaning": "The quality of training data affects model performance.",
+      "meaningThai": "คุณภาพข้อมูลฝึกสอนส่งผลต่อประสิทธิภาพโมเดล"
+    }
+  ]
+},
+{
+  "id": "technology-093",
+  "chinese": "图像识别",
+  "pinyin": "tú xiàng shí bié",
+  "meaning": "Image recognition",
+  "meaningThai": "การจดจำภาพ",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "图像识别用于人脸解锁。",
+      "pinyin": "Tú xiàng shí bié yòng yú rén liǎn jiě suǒ.",
+      "meaning": "Image recognition is used for face unlock.",
+      "meaningThai": "การจดจำภาพใช้สำหรับปลดล็อกใบหน้า"
+    }
+  ]
+},
+{
+  "id": "technology-094",
+  "chinese": "强化学习",
+  "pinyin": "qiáng huà xué xí",
+  "meaning": "Reinforcement learning",
+  "meaningThai": "การเรียนรู้แบบเสริมกำลัง",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "强化学习让AI通过试错学习。",
+      "pinyin": "Qiáng huà xué xí ràng AI tōng guò shì cuò xué xí.",
+      "meaning": "Reinforcement learning lets AI learn through trial and error.",
+      "meaningThai": "การเรียนรู้แบบเสริมกำลังให้ AI เรียนรู้ผ่านการลองผิดลองถูก"
+    }
+  ]
+},
+{
+  "id": "technology-095",
+  "chinese": "生成式AI",
+  "pinyin": "shēng chéng shì AI",
+  "meaning": "Generative AI",
+  "meaningThai": "AI เชิงสร้างสรรค์",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "生成式AI可以创造文字和图像。",
+      "pinyin": "Shēng chéng shì AI kě yǐ chuàng zào wén zì hé tú xiàng.",
+      "meaning": "Generative AI can create text and images.",
+      "meaningThai": "AI เชิงสร้างสรรค์สามารถสร้างข้อความและภาพ"
+    }
+  ]
+},
+{
+  "id": "technology-096",
+  "chinese": "大语言模型",
+  "pinyin": "dà yǔ yán mó xíng",
+  "meaning": "Large Language Model",
+  "meaningThai": "โมเดลภาษาขนาดใหญ่",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "大语言模型可以理解和生成人类语言。",
+      "pinyin": "Dà yǔ yán mó xíng kě yǐ lǐ jiě hé shēng chéng rén lèi yǔ yán.",
+      "meaning": "Large language models can understand and generate human language.",
+      "meaningThai": "โมเดลภาษาขนาดใหญ่สามารถเข้าใจและสร้างภาษามนุษย์"
+    }
+  ]
+},
+{
+  "id": "technology-097",
+  "chinese": "监督学习",
+  "pinyin": "jiān dū xué xí",
+  "meaning": "Supervised learning",
+  "meaningThai": "การเรียนรู้แบบมีผู้สอน",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "监督学习需要标注好的数据。",
+      "pinyin": "Jiān dū xué xí xū yào biāo zhù hǎo de shù jù.",
+      "meaning": "Supervised learning requires labeled data.",
+      "meaningThai": "การเรียนรู้แบบมีผู้สอนต้องใช้ข้อมูลที่ติดป้ายกำกับ"
+    }
+  ]
+},
+{
+  "id": "technology-098",
+  "chinese": "无监督学习",
+  "pinyin": "wú jiān dū xué xí",
+  "meaning": "Unsupervised learning",
+  "meaningThai": "การเรียนรู้แบบไม่มีผู้สอน",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "无监督学习用于发现数据中的模式。",
+      "pinyin": "Wú jiān dū xué xí yòng yú fā xiàn shù jù zhōng de mó shì.",
+      "meaning": "Unsupervised learning is used to discover patterns in data.",
+      "meaningThai": "การเรียนรู้แบบไม่มีผู้สอนใช้ค้นหารูปแบบในข้อมูล"
+    }
+  ]
+},
+{
+  "id": "technology-099",
+  "chinese": "过拟合",
+  "pinyin": "guò nǐ hé",
+  "meaning": "Overfitting",
+  "meaningThai": "การ overfit",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "过拟合导致模型在新数据上表现差。",
+      "pinyin": "Guò nǐ hé dǎo zhì mó xíng zài xīn shù jù shàng biǎo xiàn chà.",
+      "meaning": "Overfitting causes the model to perform poorly on new data.",
+      "meaningThai": "Overfit ทำให้โมเดลทำงานแย่บนข้อมูลใหม่"
+    }
+  ]
+},
+{
+  "id": "technology-100",
+  "chinese": "特征工程",
+  "pinyin": "tè zhēng gōng chéng",
+  "meaning": "Feature engineering",
+  "meaningThai": "วิศวกรรมคุณลักษณะ",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "特征工程是机器学习的关键步骤。",
+      "pinyin": "Tè zhēng gōng chéng shì jī qì xué xí de guān jiàn bù zhòu.",
+      "meaning": "Feature engineering is a key step in machine learning.",
+      "meaningThai": "วิศวกรรมคุณลักษณะเป็นขั้นตอนสำคัญของการเรียนรู้ของเครื่อง"
+    }
+  ]
+}
+];
+
+const BUSINESS_WORDS = [
+  {
+    "id": "business-001",
+    "chinese": "职业",
+    "pinyin": "zhí yè",
+    "meaning": "Occupation; Career",
+    "meaningThai": "อาชีพ",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "你的职业是什么？",
+        "pinyin": "Nǐ de zhí yè shì shén me?",
+        "meaning": "What is your occupation?",
+        "meaningThai": "คุณประกอบอาชีพอะไร?"
+      }
+    ]
+  },
+  {
+    "id": "business-002",
+    "chinese": "简历",
+    "pinyin": "jiǎn lì",
+    "meaning": "Resume; CV",
+    "meaningThai": "เรซูเม่",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请把你的简历发给我。",
+        "pinyin": "Qǐng bǎ nǐ de jiǎn lì fā gěi wǒ.",
+        "meaning": "Please send me your resume.",
+        "meaningThai": "กรุณาส่งเรซูเม่ของคุณมาให้ฉัน"
+      }
+    ]
+  },
+  {
+    "id": "business-003",
+    "chinese": "面试官",
+    "pinyin": "miàn shì guān",
+    "meaning": "Interviewer",
+    "meaningThai": "ผู้สัมภาษณ์",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "面试官问了很多问题。",
+        "pinyin": "Miàn shì guān wèn le hěn duō wèn tí.",
+        "meaning": "The interviewer asked many questions.",
+        "meaningThai": "ผู้สัมภาษณ์ถามคำถามมากมาย"
+      }
+    ]
+  },
+  {
+    "id": "business-004",
+    "chinese": "晋升",
+    "pinyin": "jìn shēng",
+    "meaning": "Promotion",
+    "meaningThai": "เลื่อนตำแหน่ง",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他获得了晋升机会。",
+        "pinyin": "Tā huò dé le jìn shēng jī huì.",
+        "meaning": "He got a promotion opportunity.",
+        "meaningThai": "เขาได้รับโอกาสเลื่อนตำแหน่ง"
+      }
+    ]
+  },
+  {
+    "id": "business-005",
+    "chinese": "辞职",
+    "pinyin": "cí zhí",
+    "meaning": "To resign",
+    "meaningThai": "ลาออก",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他决定辞职创业。",
+        "pinyin": "Tā jué dìng cí zhí chuàng yè.",
+        "meaning": "He decided to resign and start a business.",
+        "meaningThai": "เขาตัดสินใจลาออกไปเริ่มธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "business-006",
+    "chinese": "招聘",
+    "pinyin": "zhāo pìn",
+    "meaning": "To recruit",
+    "meaningThai": "รับสมัครงาน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司正在招聘新员工。",
+        "pinyin": "Gōng sī zhèng zài zhāo pìn xīn yuán gōng.",
+        "meaning": "The company is recruiting new employees.",
+        "meaningThai": "บริษัทกำลังรับสมัครพนักงานใหม่"
+      }
+    ]
+  },
+  {
+    "id": "business-007",
+    "chinese": "薪水",
+    "pinyin": "xīn shuǐ",
+    "meaning": "Salary",
+    "meaningThai": "เงินเดือน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这份工作的薪水不错。",
+        "pinyin": "Zhè fèn gōng zuò de xīn shuǐ bù cuò.",
+        "meaning": "This job has a good salary.",
+        "meaningThai": "งานนี้เงินเดือนดี"
+      }
+    ]
+  },
+  {
+    "id": "business-008",
+    "chinese": "福利",
+    "pinyin": "fú lì",
+    "meaning": "Benefits; Welfare",
+    "meaningThai": "สวัสดิการ",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司的福利很好。",
+        "pinyin": "Gōng sī de fú lì hěn hǎo.",
+        "meaning": "The company has good benefits.",
+        "meaningThai": "บริษัทมีสวัสดิการดี"
+      }
+    ]
+  },
+  {
+    "id": "business-009",
+    "chinese": "加班",
+    "pinyin": "jiā bān",
+    "meaning": "Overtime work",
+    "meaningThai": "ทำงานล่วงเวลา",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今天要加班到很晚。",
+        "pinyin": "Jīn tiān yào jiā bān dào hěn wǎn.",
+        "meaning": "Need to work overtime until very late today.",
+        "meaningThai": "วันนี้ต้องทำงานล่วงเวลาจนดึก"
+      }
+    ]
+  },
+  {
+    "id": "business-010",
+    "chinese": "退休",
+    "pinyin": "tuì xiū",
+    "meaning": "To retire",
+    "meaningThai": "เกษียณ",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他明年退休。",
+        "pinyin": "Tā míng nián tuì xiū.",
+        "meaning": "He will retire next year.",
+        "meaningThai": "เขาเกษียณปีหน้า"
+      }
+    ]
+  },
+  {
+    "id": "business-011",
+    "chinese": "实习",
+    "pinyin": "shí xí",
+    "meaning": "Internship",
+    "meaningThai": "ฝึกงาน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "暑假她在公司实习。",
+        "pinyin": "Shǔ jià tā zài gōng sī shí xí.",
+        "meaning": "She is interning at a company during summer break.",
+        "meaningThai": "ช่วงปิดเทอมฤดูร้อนเธอฝึกงานที่บริษัท"
+      }
+    ]
+  },
+  {
+    "id": "business-012",
+    "chinese": "猎头",
+    "pinyin": "liè tóu",
+    "meaning": "Headhunter",
+    "meaningThai": "นายหน้าหางาน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "猎头公司推荐了这个职位。",
+        "pinyin": "Liè tóu gōng sī tuī jiàn le zhè ge zhí wèi.",
+        "meaning": "The headhunter company recommended this position.",
+        "meaningThai": "บริษัทนายหน้าหางานแนะนำตำแหน่งนี้"
+      }
+    ]
+  },
+  {
+    "id": "business-013",
+    "chinese": "全职",
+    "pinyin": "quán zhí",
+    "meaning": "Full-time",
+    "meaningThai": "เต็มเวลา",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这是一份全职工作。",
+        "pinyin": "Zhè shì yī fèn quán zhí gōng zuò.",
+        "meaning": "This is a full-time job.",
+        "meaningThai": "นี่คืองานเต็มเวลา"
+      }
+    ]
+  },
+  {
+    "id": "business-014",
+    "chinese": "兼职",
+    "pinyin": "jiān zhí",
+    "meaning": "Part-time",
+    "meaningThai": "พาร์ทไทม์",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在做兼职工作。",
+        "pinyin": "Tā zài zuò jiān zhí gōng zuò.",
+        "meaning": "He is doing part-time work.",
+        "meaningThai": "เขาทำงานพาร์ทไทม์"
+      }
+    ]
+  },
+  {
+    "id": "business-015",
+    "chinese": "行业",
+    "pinyin": "háng yè",
+    "meaning": "Industry",
+    "meaningThai": "อุตสาหกรรม",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个行业发展很快。",
+        "pinyin": "Zhè ge háng yè fā zhǎn hěn kuài.",
+        "meaning": "This industry is developing rapidly.",
+        "meaningThai": "อุตสาหกรรมนี้พัฒนารวดเร็ว"
+      }
+    ]
+  },
+  {
+    "id": "business-016",
+    "chinese": "投资",
+    "pinyin": "tóu zī",
+    "meaning": "To invest; Investment",
+    "meaningThai": "ลงทุน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他投资了股票市场。",
+        "pinyin": "Tā tóu zī le gǔ piào shì chǎng.",
+        "meaning": "He invested in the stock market.",
+        "meaningThai": "เขาลงทุนในตลาดหุ้น"
+      }
+    ]
+  },
+  {
+    "id": "business-017",
+    "chinese": "股票",
+    "pinyin": "gǔ piào",
+    "meaning": "Stock; Share",
+    "meaningThai": "หุ้น",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "股票价格波动很大。",
+        "pinyin": "Gǔ piào jià gé bō dòng hěn dà.",
+        "meaning": "Stock prices fluctuate greatly.",
+        "meaningThai": "ราคาหุ้นผันผวนมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-018",
+    "chinese": "基金",
+    "pinyin": "jī jīn",
+    "meaning": "Fund",
+    "meaningThai": "กองทุน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "买基金是一种投资方式。",
+        "pinyin": "Mǎi jī jīn shì yī zhǒng tóu zī fāng shì.",
+        "meaning": "Buying funds is a way of investing.",
+        "meaningThai": "ซื้อกองทุนเป็นวิธีการลงทุนอย่างหนึ่ง"
+      }
+    ]
+  },
+  {
+    "id": "business-019",
+    "chinese": "保险",
+    "pinyin": "bǎo xiǎn",
+    "meaning": "Insurance",
+    "meaningThai": "ประกัน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我买了健康保险。",
+        "pinyin": "Wǒ mǎi le jiàn kāng bǎo xiǎn.",
+        "meaning": "I bought health insurance.",
+        "meaningThai": "ฉันซื้อประกันสุขภาพ"
+      }
+    ]
+  },
+  {
+    "id": "business-020",
+    "chinese": "通货膨胀",
+    "pinyin": "tōng huò péng zhàng",
+    "meaning": "Inflation",
+    "meaningThai": "เงินเฟ้อ",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "通货膨胀影响物价。",
+        "pinyin": "Tōng huò péng zhàng yǐng xiǎng wù jià.",
+        "meaning": "Inflation affects prices.",
+        "meaningThai": "เงินเฟ้อส่งผลต่อราคาสินค้า"
+      }
+    ]
+  },
+  {
+    "id": "business-021",
+    "chinese": "利率",
+    "pinyin": "lì lǜ",
+    "meaning": "Interest rate",
+    "meaningThai": "อัตราดอกเบี้ย",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "银行贷款利率下调了。",
+        "pinyin": "Yín háng dài kuǎn lì lǜ xià tiáo le.",
+        "meaning": "Bank loan interest rates have been lowered.",
+        "meaningThai": "อัตราดอกเบี้ยเงินกู้ธนาคารลดลง"
+      }
+    ]
+  },
+  {
+    "id": "business-022",
+    "chinese": "贷款",
+    "pinyin": "dài kuǎn",
+    "meaning": "Loan",
+    "meaningThai": "เงินกู้",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "需要向银行贷款买房。",
+        "pinyin": "Xū yào xiàng yín háng dài kuǎn mǎi fáng.",
+        "meaning": "Need a bank loan to buy a house.",
+        "meaningThai": "ต้องกู้เงินธนาคารซื้อบ้าน"
+      }
+    ]
+  },
+  {
+    "id": "business-023",
+    "chinese": "预算",
+    "pinyin": "yù suàn",
+    "meaning": "Budget",
+    "meaningThai": "งบประมาณ",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今年的预算已经批准了。",
+        "pinyin": "Jīn nián de yù suàn yǐ jīng pī zhǔn le.",
+        "meaning": "This year's budget has been approved.",
+        "meaningThai": "งบประมาณปีนี้ได้รับการอนุมัติแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "business-024",
+    "chinese": "税务",
+    "pinyin": "shuì wù",
+    "meaning": "Taxation",
+    "meaningThai": "ภาษี",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "企业需要申报税务。",
+        "pinyin": "Qǐ yè xū yào shēn bào shuì wù.",
+        "meaning": "Businesses need to file taxes.",
+        "meaningThai": "องค์กรต้องยื่นแบบภาษี"
+      }
+    ]
+  },
+  {
+    "id": "business-025",
+    "chinese": "资产",
+    "pinyin": "zī chǎn",
+    "meaning": "Assets",
+    "meaningThai": "ทรัพย์สิน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司资产总额超过一亿。",
+        "pinyin": "Gōng sī zī chǎn zǒng é chāo guò yī yì.",
+        "meaning": "The company's total assets exceed 100 million.",
+        "meaningThai": "รวมทรัพย์สินของบริษัทเกินหนึ่งร้อยล้าน"
+      }
+    ]
+  },
+  {
+    "id": "business-026",
+    "chinese": "负债",
+    "pinyin": "fù zhài",
+    "meaning": "Liabilities; Debt",
+    "meaningThai": "หนี้สิน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司负债率很低。",
+        "pinyin": "Gōng sī fù zhài lǜ hěn dī.",
+        "meaning": "The company's debt ratio is very low.",
+        "meaningThai": "อัตราหนี้สินของบริษัทต่ำมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-027",
+    "chinese": "利润",
+    "pinyin": "lì rùn",
+    "meaning": "Profit",
+    "meaningThai": "กำไร",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今年公司的利润增长了。",
+        "pinyin": "Jīn nián gōng sī de lì rùn zēng zhǎng le.",
+        "meaning": "This year the company's profit grew.",
+        "meaningThai": "ปีนี้กำไรของบริษัทเพิ่มขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "business-028",
+    "chinese": "亏损",
+    "pinyin": "kuī sǔn",
+    "meaning": "Loss; Deficit",
+    "meaningThai": "ขาดทุน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司去年亏损严重。",
+        "pinyin": "Gōng sī qù nián kuī sǔn yán zhòng.",
+        "meaning": "The company suffered severe losses last year.",
+        "meaningThai": "ปีที่แล้วบริษัทขาดทุนอย่างหนัก"
+      }
+    ]
+  },
+  {
+    "id": "business-029",
+    "chinese": "股份",
+    "pinyin": "gǔ fèn",
+    "meaning": "Shares; Equity",
+    "meaningThai": "หุ้นส่วน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他拥有公司百分之十的股份。",
+        "pinyin": "Tā yōng yǒu gōng sī bǎi fēn zhī shí de gǔ fèn.",
+        "meaning": "He owns 10% of the company's shares.",
+        "meaningThai": "เขาถือหุ้นร้อยละสิบของบริษัท"
+      }
+    ]
+  },
+  {
+    "id": "business-030",
+    "chinese": "破产",
+    "pinyin": "pò chǎn",
+    "meaning": "Bankruptcy",
+    "meaningThai": "ล้มละลาย",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司面临破产风险。",
+        "pinyin": "Gōng sī miàn lín pò chǎn fēng xiǎn.",
+        "meaning": "The company faces bankruptcy risk.",
+        "meaningThai": "บริษัท面临ความเสี่ยงล้มละลาย"
+      }
+    ]
+  },
+  {
+    "id": "business-031",
+    "chinese": "会议室",
+    "pinyin": "huì yì shì",
+    "meaning": "Meeting room",
+    "meaningThai": "ห้องประชุม",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "会议室已经准备好了。",
+        "pinyin": "Huì yì shì yǐ jīng zhǔn bèi hǎo le.",
+        "meaning": "The meeting room is ready.",
+        "meaningThai": "ห้องประชุมพร้อมแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "business-032",
+    "chinese": "文件",
+    "pinyin": "wén jiàn",
+    "meaning": "Document; File",
+    "meaningThai": "เอกสาร",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请把文件打印出来。",
+        "pinyin": "Qǐng bǎ wén jiàn dǎ yìn chū lái.",
+        "meaning": "Please print out the document.",
+        "meaningThai": "กรุณาพิมพ์เอกสาร"
+      }
+    ]
+  },
+  {
+    "id": "business-033",
+    "chinese": "打印机",
+    "pinyin": "dǎ yìn jī",
+    "meaning": "Printer",
+    "meaningThai": "เครื่องพิมพ์",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "打印机没有墨了。",
+        "pinyin": "Dǎ yìn jī méi yǒu mò le.",
+        "meaning": "The printer is out of ink.",
+        "meaningThai": "เครื่องพิมพ์หมึกหมด"
+      }
+    ]
+  },
+  {
+    "id": "business-034",
+    "chinese": "复印",
+    "pinyin": "fù yìn",
+    "meaning": "To photocopy",
+    "meaningThai": "ถ่ายเอกสาร",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请复印这份合同。",
+        "pinyin": "Qǐng fù yìn zhè fèn hé tong.",
+        "meaning": "Please photocopy this contract.",
+        "meaningThai": "กรุณาถ่ายเอกสารสัญญานี้"
+      }
+    ]
+  },
+  {
+    "id": "business-035",
+    "chinese": "职员",
+    "pinyin": "zhí yuán",
+    "meaning": "Employee; Staff",
+    "meaningThai": "พนักงาน",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司有五百名职员。",
+        "pinyin": "Gōng sī yǒu wǔ bǎi míng zhí yuán.",
+        "meaning": "The company has 500 employees.",
+        "meaningThai": "บริษัทมีพนักงานห้าร้อยคน"
+      }
+    ]
+  },
+  {
+    "id": "business-036",
+    "chinese": "办公桌",
+    "pinyin": "bàn gōng zhuō",
+    "meaning": "Desk",
+    "meaningThai": "โต๊ะทำงาน",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "办公桌上堆满了文件。",
+        "pinyin": "Bàn gōng zhuō shàng duī mǎn le wén jiàn.",
+        "meaning": "The desk is piled with documents.",
+        "meaningThai": "โต๊ะทำงานเต็มไปด้วยเอกสาร"
+      }
+    ]
+  },
+  {
+    "id": "business-037",
+    "chinese": "考勤",
+    "pinyin": "kǎo qín",
+    "meaning": "Attendance",
+    "meaningThai": "การลงเวลา",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司用指纹考勤。",
+        "pinyin": "Gōng sī yòng zhǐ wén kǎo qín.",
+        "meaning": "The company uses fingerprint attendance.",
+        "meaningThai": "บริษัทใช้ลายนิ้วมือลงเวลา"
+      }
+    ]
+  },
+  {
+    "id": "business-038",
+    "chinese": "名片",
+    "pinyin": "míng piàn",
+    "meaning": "Business card",
+    "meaningThai": "นามบัตร",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "交换名片是商务礼仪。",
+        "pinyin": "Jiāo huàn míng piàn shì shāng wù lǐ yí.",
+        "meaning": "Exchanging business cards is business etiquette.",
+        "meaningThai": "การแลกนามบัตรเป็นมารยาททางธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "business-039",
+    "chinese": "项目",
+    "pinyin": "xiàng mù",
+    "meaning": "Project",
+    "meaningThai": "โครงการ",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个项目需要三个月完成。",
+        "pinyin": "Zhè ge xiàng mù xū yào sān gè yuè wán chéng.",
+        "meaning": "This project needs three months to complete.",
+        "meaningThai": "โครงการนี้ต้องใช้เวลาสามเดือน"
+      }
+    ]
+  },
+  {
+    "id": "business-040",
+    "chinese": "截止日期",
+    "pinyin": "jié zhǐ rì qī",
+    "meaning": "Deadline",
+    "meaningThai": "วันกำหนดส่ง",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "截止日期是下周五。",
+        "pinyin": "Jié zhǐ rì qī shì xià zhōu wǔ.",
+        "meaning": "The deadline is next Friday.",
+        "meaningThai": "วันกำหนดส่งคือวันศุกร์หน้า"
+      }
+    ]
+  },
+  {
+    "id": "business-041",
+    "chinese": "备忘录",
+    "pinyin": "bèi wàng lù",
+    "meaning": "Memo; Memorandum",
+    "meaningThai": "บันทึกช่วยจำ",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "发一份备忘录给所有员工。",
+        "pinyin": "Fā yī fèn bèi wàng lù gěi suǒ yǒu yuán gōng.",
+        "meaning": "Send a memo to all employees.",
+        "meaningThai": "ส่งบันทึกช่วยจำถึงพนักงานทุกคน"
+      }
+    ]
+  },
+  {
+    "id": "business-042",
+    "chinese": "日程",
+    "pinyin": "rì chéng",
+    "meaning": "Schedule; Itinerary",
+    "meaningThai": "ตารางเวลา",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今天的日程安排很满。",
+        "pinyin": "Jīn tiān de rì chéng ān pái hěn mǎn.",
+        "meaning": "Today's schedule is very full.",
+        "meaningThai": "ตารางวันนี้แน่นมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-043",
+    "chinese": "供应商",
+    "pinyin": "gōng yìng shāng",
+    "meaning": "Supplier",
+    "meaningThai": "ผู้จัดหา",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我们正在寻找新供应商。",
+        "pinyin": "Wǒ men zhèng zài xún zhǎo xīn gōng yìng shāng.",
+        "meaning": "We are looking for new suppliers.",
+        "meaningThai": "เรากำลังหาผู้จัดหารายใหม่"
+      }
+    ]
+  },
+  {
+    "id": "business-044",
+    "chinese": "客户",
+    "pinyin": "kè hù",
+    "meaning": "Client; Customer",
+    "meaningThai": "ลูกค้า",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "客户对我们的服务很满意。",
+        "pinyin": "Kè hù duì wǒ men de fú wù hěn mǎn yì.",
+        "meaning": "Clients are very satisfied with our service.",
+        "meaningThai": "ลูกค้าพอใจกับการบริการของเรามาก"
+      }
+    ]
+  },
+  {
+    "id": "business-045",
+    "chinese": "总部",
+    "pinyin": "zǒng bù",
+    "meaning": "Headquarters",
+    "meaningThai": "สำนักงานใหญ่",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司总部在北京。",
+        "pinyin": "Gōng sī zǒng bù zài Běi jīng.",
+        "meaning": "The company headquarters is in Beijing.",
+        "meaningThai": "สำนักงานใหญ่อยู่ที่ปักกิ่ง"
+      }
+    ]
+  },
+  {
+    "id": "business-046",
+    "chinese": "品牌",
+    "pinyin": "pǐn pái",
+    "meaning": "Brand",
+    "meaningThai": "แบรนด์",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个品牌很有名。",
+        "pinyin": "Zhè ge pǐn pái hěn yǒu míng.",
+        "meaning": "This brand is very famous.",
+        "meaningThai": "แบรนด์นี้มีชื่อเสียงมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-047",
+    "chinese": "广告",
+    "pinyin": "guǎng gào",
+    "meaning": "Advertisement",
+    "meaningThai": "โฆษณา",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "广告在电视上播放。",
+        "pinyin": "Guǎng gào zài diàn shì shàng bō fàng.",
+        "meaning": "The ad is playing on TV.",
+        "meaningThai": "โฆษณาออกอากาศทางทีวี"
+      }
+    ]
+  },
+  {
+    "id": "business-048",
+    "chinese": "营销",
+    "pinyin": "yíng xiāo",
+    "meaning": "Marketing",
+    "meaningThai": "การตลาด",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "营销策略决定销售业绩。",
+        "pinyin": "Yíng xiāo cè lüè jué dìng xiāo shòu yè jì.",
+        "meaning": "Marketing strategy determines sales performance.",
+        "meaningThai": "กลยุทธ์การตลาดกำหนดผลการขาย"
+      }
+    ]
+  },
+  {
+    "id": "business-049",
+    "chinese": "促销",
+    "pinyin": "cù xiāo",
+    "meaning": "Promotion; Sales event",
+    "meaningThai": "ส่งเสริมการขาย",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "商场正在进行促销活动。",
+        "pinyin": "Shāng chǎng zhèng zài jìn xíng cù xiāo huó dòng.",
+        "meaning": "The mall is having a promotion event.",
+        "meaningThai": "ห้างสรรพสินค้ากำลังมีกิจกรรมส่งเสริมการขาย"
+      }
+    ]
+  },
+  {
+    "id": "business-050",
+    "chinese": "零售",
+    "pinyin": "líng shòu",
+    "meaning": "Retail",
+    "meaningThai": "ค้าปลีก",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "零售业受到电商冲击。",
+        "pinyin": "Líng shòu yè shòu dào diàn shāng chōng jī.",
+        "meaning": "The retail industry is impacted by e-commerce.",
+        "meaningThai": "ธุรกิจค้าปลีกได้รับผลกระทบจากอีคอมเมิร์ซ"
+      }
+    ]
+  },
+  {
+    "id": "business-051",
+    "chinese": "批发",
+    "pinyin": "pī fā",
+    "meaning": "Wholesale",
+    "meaningThai": "ค้าส่ง",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "批发价格更优惠。",
+        "pinyin": "Pī fā jià gé gèng yōu huì.",
+        "meaning": "Wholesale prices are more favorable.",
+        "meaningThai": "ราคาส่งถูกกว่า"
+      }
+    ]
+  },
+  {
+    "id": "business-052",
+    "chinese": "出口",
+    "pinyin": "chū kǒu",
+    "meaning": "Export",
+    "meaningThai": "ส่งออก",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "该公司主要出口电子产品。",
+        "pinyin": "Gāi gōng sī zhǔ yào chū kǒu diàn zǐ chǎn pǐn.",
+        "meaning": "The company mainly exports electronic products.",
+        "meaningThai": "บริษัทนี้ส่งออกสินค้าอิเล็กทรอนิกส์เป็นหลัก"
+      }
+    ]
+  },
+  {
+    "id": "business-053",
+    "chinese": "进口",
+    "pinyin": "jìn kǒu",
+    "meaning": "Import",
+    "meaningThai": "นำเข้า",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "进口商品价格较高。",
+        "pinyin": "Jìn kǒu shāng pǐn jià gé jiào gāo.",
+        "meaning": "Imported goods have higher prices.",
+        "meaningThai": "สินค้านำเข้าราคาสูงกว่า"
+      }
+    ]
+  },
+  {
+    "id": "business-054",
+    "chinese": "竞争",
+    "pinyin": "jìng zhēng",
+    "meaning": "Competition",
+    "meaningThai": "การแข่งขัน",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "市场竞争非常激烈。",
+        "pinyin": "Shì chǎng jìng zhēng fēi cháng jī liè.",
+        "meaning": "Market competition is very intense.",
+        "meaningThai": "การแข่งขันในตลาดรุนแรงมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-055",
+    "chinese": "垄断",
+    "pinyin": "lǒng duàn",
+    "meaning": "Monopoly",
+    "meaningThai": "ผูกขาด",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "反垄断法保护市场竞争。",
+        "pinyin": "Fǎn lǒng duàn fǎ bǎo hù shì chǎng jìng zhēng.",
+        "meaning": "Anti-monopoly laws protect market competition.",
+        "meaningThai": "กฎหมายป้องกันการผูกขาดปกป้องการแข่งขันในตลาด"
+      }
+    ]
+  },
+  {
+    "id": "business-056",
+    "chinese": "市场份额",
+    "pinyin": "shì chǎng fèn é",
+    "meaning": "Market share",
+    "meaningThai": "ส่วนแบ่งตลาด",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司市场份额持续增长。",
+        "pinyin": "Gōng sī shì chǎng fèn é chí xù zēng zhǎng.",
+        "meaning": "The company's market share continues to grow.",
+        "meaningThai": "ส่วนแบ่งตลาดของบริษัทเติบโตอย่างต่อเนื่อง"
+      }
+    ]
+  },
+  {
+    "id": "business-057",
+    "chinese": "电子商务",
+    "pinyin": "diàn zǐ shāng wù",
+    "meaning": "E-commerce",
+    "meaningThai": "พาณิชย์อิเล็กทรอนิกส์",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电子商务改变了购物方式。",
+        "pinyin": "Diàn zǐ shāng wù gǎi biàn le gòu wù fāng shì.",
+        "meaning": "E-commerce has changed the way we shop.",
+        "meaningThai": "พาณิชย์อิเล็กทรอนิกส์เปลี่ยนวิธีการช้อปปิ้ง"
+      }
+    ]
+  },
+  {
+    "id": "business-058",
+    "chinese": "创业",
+    "pinyin": "chuàng yè",
+    "meaning": "To start a business",
+    "meaningThai": "เริ่มธุรกิจ",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "年轻人创业需要勇气。",
+        "pinyin": "Nián qīng rén chuàng yè xū yào yǒng qì.",
+        "meaning": "Young people need courage to start a business.",
+        "meaningThai": "คนรุ่นใหม่ต้องกล้าที่จะเริ่มธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "business-059",
+    "chinese": "风险投资",
+    "pinyin": "fēng xiǎn tóu zī",
+    "meaning": "Venture capital",
+    "meaningThai": "เงินร่วมลงทุน",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "初创公司获得了风险投资。",
+        "pinyin": "Chū chuàng gōng sī huò dé le fēng xiǎn tóu zī.",
+        "meaning": "The startup received venture capital.",
+        "meaningThai": "สตาร์ทอัพได้รับเงินร่วมลงทุน"
+      }
+    ]
+  },
+  {
+    "id": "business-060",
+    "chinese": "上市",
+    "pinyin": "shàng shì",
+    "meaning": "To go public (IPO)",
+    "meaningThai": "เข้าตลาดหลักทรัพย์",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司计划明年上市。",
+        "pinyin": "Gōng sī jì huà míng nián shàng shì.",
+        "meaning": "The company plans to go public next year.",
+        "meaningThai": "บริษัทวางแผนเข้าตลาดหลักทรัพย์ปีหน้า"
+      }
+    ]
+  },
+{
+  "id": "business-061",
+  "chinese": "跳槽",
+  "pinyin": "tiào cáo",
+  "meaning": "Job hopping",
+  "meaningThai": "เปลี่ยนงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他每年都跳槽。",
+      "pinyin": "Tā měi nián dōu tiào cáo.",
+      "meaning": "He changes jobs every year.",
+      "meaningThai": "เขาเปลี่ยนงานทุกปี"
+    }
+  ]
+},
+{
+  "id": "business-062",
+  "chinese": "履历",
+  "pinyin": "lǚ lì",
+  "meaning": "Work experience; CV",
+  "meaningThai": "ประวัติการทำงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他的履历非常丰富。",
+      "pinyin": "Tā de lǚ lì fēi cháng fēng fù.",
+      "meaning": "His work experience is very rich.",
+      "meaningThai": "ประวัติการทำงานของเขาหลากหลายมาก"
+    }
+  ]
+},
+{
+  "id": "business-063",
+  "chinese": "实习期",
+  "pinyin": "shí xí qī",
+  "meaning": "Probation period",
+  "meaningThai": "ระยะเวลาทดลองงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "实习期为三个月。",
+      "pinyin": "Shí xí qī wéi sān gè yuè.",
+      "meaning": "The probation period is three months.",
+      "meaningThai": "ระยะเวลาทดลองงานสามเดือน"
+    }
+  ]
+},
+{
+  "id": "business-064",
+  "chinese": "白领",
+  "pinyin": "bái lǐng",
+  "meaning": "White-collar worker",
+  "meaningThai": "พนักงานออฟฟิศ",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "很多白领在写字楼工作。",
+      "pinyin": "Hěn duō bái lǐng zài xiě zì lóu gōng zuò.",
+      "meaning": "Many white-collar workers work in office buildings.",
+      "meaningThai": "พนักงานออฟฟิศหลายคนทำงานในตึกสำนักงาน"
+    }
+  ]
+},
+{
+  "id": "business-065",
+  "chinese": "蓝领",
+  "pinyin": "lán lǐng",
+  "meaning": "Blue-collar worker",
+  "meaningThai": "พนักงานใช้แรงงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蓝领工人对经济发展很重要。",
+      "pinyin": "Lán lǐng gōng rén duì jīng jì fā zhǎn hěn zhòng yào.",
+      "meaning": "Blue-collar workers are important for economic development.",
+      "meaningThai": "พนักงานใช้แรงงานสำคัญต่อการพัฒนาเศรษฐกิจ"
+    }
+  ]
+},
+{
+  "id": "business-066",
+  "chinese": "轮班",
+  "pinyin": "lún bān",
+  "meaning": "Shift work",
+  "meaningThai": "กะทำงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "医院护士需要轮班工作。",
+      "pinyin": "Yī yuàn hù shi xū yào lún bān gōng zuò.",
+      "meaning": "Hospital nurses need to work in shifts.",
+      "meaningThai": "พยาบาลต้องทำงานเป็นกะ"
+    }
+  ]
+},
+{
+  "id": "business-067",
+  "chinese": "失业率",
+  "pinyin": "shī yè lǜ",
+  "meaning": "Unemployment rate",
+  "meaningThai": "อัตราการว่างงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "经济危机导致失业率上升。",
+      "pinyin": "Jīng jì wēi jī dǎo zhì shī yè lǜ shàng shēng.",
+      "meaning": "The economic crisis caused unemployment to rise.",
+      "meaningThai": "วิกฤตเศรษฐกิจทำให้อัตราการว่างงานเพิ่มขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-068",
+  "chinese": "劳动合同",
+  "pinyin": "láo dòng hé tóng",
+  "meaning": "Labor contract",
+  "meaningThai": "สัญญาจ้างงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "签订劳动合同保障权益。",
+      "pinyin": "Qiān dìng láo dòng hé tóng bǎo zhàng quán yì.",
+      "meaning": "Signing a labor contract protects rights.",
+      "meaningThai": "เซ็นสัญญาจ้างงานคุ้มครองสิทธิประโยชน์"
+    }
+  ]
+},
+{
+  "id": "business-069",
+  "chinese": "自由职业",
+  "pinyin": "zì yóu zhí yè",
+  "meaning": "Freelance",
+  "meaningThai": "ฟรีแลนซ์",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "越来越多的人选择自由职业。",
+      "pinyin": "Yuè lái yuè duō de rén xuǎn zé zì yóu zhí yè.",
+      "meaning": "More and more people choose freelancing.",
+      "meaningThai": "คนเลือกทำงานฟรีแลนซ์มากขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-070",
+  "chinese": "猎头公司",
+  "pinyin": "liè tóu gōng sī",
+  "meaning": "Headhunting firm",
+  "meaningThai": "บริษัทจัดหางาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "猎头公司帮他找到了新工作。",
+      "pinyin": "Liè tóu gōng sī bāng tā zhǎo dào le xīn gōng zuò.",
+      "meaning": "The headhunting firm helped him find a new job.",
+      "meaningThai": "บริษัทจัดหางานช่วยเขาหางานใหม่"
+    }
+  ]
+},
+{
+  "id": "business-071",
+  "chinese": "汇率",
+  "pinyin": "huì lǜ",
+  "meaning": "Exchange rate",
+  "meaningThai": "อัตราแลกเปลี่ยน",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "人民币兑美元汇率上升了。",
+      "pinyin": "Rén mín bì duì Měi yuán huì lǜ shàng shēng le.",
+      "meaning": "The RMB to USD exchange rate has risen.",
+      "meaningThai": "อัตราแลกเปลี่ยนหยวนต่อดอลลาร์เพิ่มขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-072",
+  "chinese": "基金定投",
+  "pinyin": "jī jīn dìng tóu",
+  "meaning": "Dollar-cost averaging",
+  "meaningThai": "การลงทุนแบบ DCA",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "基金定投适合长期投资。",
+      "pinyin": "Jī jīn dìng tóu shì hé cháng qī tóu zī.",
+      "meaning": "DCA investing is suitable for long-term investment.",
+      "meaningThai": "การลงทุนแบบ DCA เหมาะสำหรับการลงทุนระยะยาว"
+    }
+  ]
+},
+{
+  "id": "business-073",
+  "chinese": "市盈率",
+  "pinyin": "shì yíng lǜ",
+  "meaning": "P/E ratio",
+  "meaningThai": "อัตราส่วนราคาต่อกำไร",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "市盈率反映股票估值水平。",
+      "pinyin": "Shì yíng lǜ fǎn yìng gǔ piào gū zhí shuǐ píng.",
+      "meaning": "The P/E ratio reflects stock valuation levels.",
+      "meaningThai": "อัตราส่วนราคาต่อกำไรสะท้อนระดับมูลค่าหุ้น"
+    }
+  ]
+},
+{
+  "id": "business-074",
+  "chinese": "国库券",
+  "pinyin": "guó kù quàn",
+  "meaning": "Treasury bond",
+  "meaningThai": "พันธบัตรรัฐบาล",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "国库券是安全的投资方式。",
+      "pinyin": "Guó kù quàn shì ān quán de tóu zī fāng shì.",
+      "meaning": "Treasury bonds are a safe investment.",
+      "meaningThai": "พันธบัตรรัฐบาลเป็นการลงทุนที่ปลอดภัย"
+    }
+  ]
+},
+{
+  "id": "business-075",
+  "chinese": "散户",
+  "pinyin": "sǎn hù",
+  "meaning": "Retail investor",
+  "meaningThai": "นักลงทุนรายย่อย",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "散户在股市中占很大比例。",
+      "pinyin": "Sǎn hù zài gǔ shì zhōng zhàn hěn dà bǐ lì.",
+      "meaning": "Retail investors make up a large proportion of the stock market.",
+      "meaningThai": "นักลงทุนรายย่อยมีสัดส่วนมากในตลาดหุ้น"
+    }
+  ]
+},
+{
+  "id": "business-076",
+  "chinese": "做空",
+  "pinyin": "zuò kōng",
+  "meaning": "Short selling",
+  "meaningThai": "ขายชอร์ต",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "做空是一种高风险投资策略。",
+      "pinyin": "Zuò kōng shì yī zhǒng gāo fēng xiǎn tóu zī cè lüè.",
+      "meaning": "Short selling is a high-risk investment strategy.",
+      "meaningThai": "การขายชอร์ตเป็นกลยุทธ์การลงทุนความเสี่ยงสูง"
+    }
+  ]
+},
+{
+  "id": "business-077",
+  "chinese": "融资",
+  "pinyin": "róng zī",
+  "meaning": "Financing",
+  "meaningThai": "การระดมทุน",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "初创公司需要融资来发展。",
+      "pinyin": "Chū chuàng gōng sī xū yào róng zī lái fā zhǎn.",
+      "meaning": "Startups need financing to grow.",
+      "meaningThai": "สตาร์ทอัพ需要การระดมทุนเพื่อเติบโต"
+    }
+  ]
+},
+{
+  "id": "business-078",
+  "chinese": "债务",
+  "pinyin": "zhài wù",
+  "meaning": "Debt",
+  "meaningThai": "หนี้",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司债务过高会增加风险。",
+      "pinyin": "Gōng sī zhài wù guò gāo huì zēng jiā fēng xiǎn.",
+      "meaning": "Excessive corporate debt increases risk.",
+      "meaningThai": "หนี้บริษัทสูงเกินไปเพิ่มความเสี่ยง"
+    }
+  ]
+},
+{
+  "id": "business-079",
+  "chinese": "货币政策",
+  "pinyin": "huò bì zhèng cè",
+  "meaning": "Monetary policy",
+  "meaningThai": "นโยบายการเงิน",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "中央银行调整货币政策。",
+      "pinyin": "Zhōng yāng yín háng tiáo zhěng huò bì zhèng cè.",
+      "meaning": "The central bank adjusts monetary policy.",
+      "meaningThai": "ธนาคารกลางปรับนโยบายการเงิน"
+    }
+  ]
+},
+{
+  "id": "business-080",
+  "chinese": "经济衰退",
+  "pinyin": "jīng jì shuāi tuì",
+  "meaning": "Economic recession",
+  "meaningThai": "ภาวะเศรษฐกิจถดถอย",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "经济衰退期间失业率上升。",
+      "pinyin": "Jīng jì shuāi tuì qī jiān shī yè lǜ shàng shēng.",
+      "meaning": "Unemployment rises during an economic recession.",
+      "meaningThai": "ช่วงเศรษฐกิจถดถอยอัตราการว่างงานเพิ่มขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-081",
+  "chinese": "办公用品",
+  "pinyin": "bàn gōng yòng pǐn",
+  "meaning": "Office supplies",
+  "meaningThai": "อุปกรณ์สำนักงาน",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "需要采购办公用品。",
+      "pinyin": "Xū yào cǎi gòu bàn gōng yòng pǐn.",
+      "meaning": "Need to purchase office supplies.",
+      "meaningThai": "ต้องจัดซื้ออุปกรณ์สำนักงาน"
+    }
+  ]
+},
+{
+  "id": "business-082",
+  "chinese": "公文包",
+  "pinyin": "gōng wén bāo",
+  "meaning": "Briefcase",
+  "meaningThai": "กระเป๋าเอกสาร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他提着公文包去上班。",
+      "pinyin": "Tā tí zhe gōng wén bāo qù shàng bān.",
+      "meaning": "He carries a briefcase to work.",
+      "meaningThai": "เขาถือกระเป๋าเอกสารไปทำงาน"
+    }
+  ]
+},
+{
+  "id": "business-083",
+  "chinese": "碎纸机",
+  "pinyin": "suì zhǐ jī",
+  "meaning": "Paper shredder",
+  "meaningThai": "เครื่องทำลายเอกสาร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "机密文件要用碎纸机处理。",
+      "pinyin": "Jī mì wén jiàn yào yòng suì zhǐ jī chǔ lǐ.",
+      "meaning": "Confidential documents should be shredded.",
+      "meaningThai": "เอกสารลับต้องใช้เครื่องทำลายเอกสาร"
+    }
+  ]
+},
+{
+  "id": "business-084",
+  "chinese": "投影仪",
+  "pinyin": "tóu yǐng yí",
+  "meaning": "Projector",
+  "meaningThai": "เครื่องฉายภาพ",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "会议需要使用投影仪。",
+      "pinyin": "Huì yì xū yào shǐ yòng tóu yǐng yí.",
+      "meaning": "The meeting needs a projector.",
+      "meaningThai": "การประชุมต้องใช้เครื่องฉายภาพ"
+    }
+  ]
+},
+{
+  "id": "business-085",
+  "chinese": "公司文化",
+  "pinyin": "gōng sī wén huà",
+  "meaning": "Company culture",
+  "meaningThai": "วัฒนธรรมองค์กร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司文化影响员工满意度。",
+      "pinyin": "Gōng sī wén huà yǐng xiǎng yuán gōng mǎn yì dù.",
+      "meaning": "Company culture affects employee satisfaction.",
+      "meaningThai": "วัฒนธรรมองค์กรส่งผลต่อความพึงพอใจของพนักงาน"
+    }
+  ]
+},
+{
+  "id": "business-086",
+  "chinese": "集体活动",
+  "pinyin": "jí tǐ huó dòng",
+  "meaning": "Team building",
+  "meaningThai": "กิจกรรมกลุ่ม",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司每季度都有集体活动。",
+      "pinyin": "Gōng sī měi jì dù dōu yǒu jí tǐ huó dòng.",
+      "meaning": "The company has team building every quarter.",
+      "meaningThai": "บริษัทมีกิจกรรมกลุ่มทุกไตรมาส"
+    }
+  ]
+},
+{
+  "id": "business-087",
+  "chinese": "业绩",
+  "pinyin": "yè jì",
+  "meaning": "Performance",
+  "meaningThai": "ผลงาน",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "今年业绩比去年好。",
+      "pinyin": "Jīn nián yè jì bǐ qù nián hǎo.",
+      "meaning": "This year's performance is better than last year.",
+      "meaningThai": "ปีนี้ผลงานดีกว่าปีที่แล้ว"
+    }
+  ]
+},
+{
+  "id": "business-088",
+  "chinese": "评估",
+  "pinyin": "píng gū",
+  "meaning": "Evaluation; Assessment",
+  "meaningThai": "ประเมินผล",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司每年做一次绩效评估。",
+      "pinyin": "Gōng sī měi nián zuò yī cì jì xiào píng gū.",
+      "meaning": "The company does a performance evaluation every year.",
+      "meaningThai": "บริษัทประเมินผลการปฏิบัติงานปีละครั้ง"
+    }
+  ]
+},
+{
+  "id": "business-089",
+  "chinese": "通知",
+  "pinyin": "tōng zhī",
+  "meaning": "Notice; Announcement",
+  "meaningThai": "ประกาศ",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司发了一则通知。",
+      "pinyin": "Gōng sī fā le yī zé tōng zhī.",
+      "meaning": "The company issued a notice.",
+      "meaningThai": "บริษัทออกประกาศ"
+    }
+  ]
+},
+{
+  "id": "business-090",
+  "chinese": "值班",
+  "pinyin": "zhí bān",
+  "meaning": "On duty",
+  "meaningThai": "เข้าเวร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "今晚谁值班？",
+      "pinyin": "Jīn wǎn shuí zhí bān?",
+      "meaning": "Who is on duty tonight?",
+      "meaningThai": "คืนนี้ใครเข้าเวร?"
+    }
+  ]
+},
+{
+  "id": "business-091",
+  "chinese": "品牌形象",
+  "pinyin": "pǐn pái xíng xiàng",
+  "meaning": "Brand image",
+  "meaningThai": "ภาพลักษณ์แบรนด์",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "品牌形象影响消费者选择。",
+      "pinyin": "Pǐn pái xíng xiàng yǐng xiǎng xiāo fèi zhě xuǎn zé.",
+      "meaning": "Brand image affects consumer choices.",
+      "meaningThai": "ภาพลักษณ์แบรนด์ส่งผลต่อการเลือกของผู้บริโภค"
+    }
+  ]
+},
+{
+  "id": "business-092",
+  "chinese": "市场调研",
+  "pinyin": "shì chǎng diào yán",
+  "meaning": "Market research",
+  "meaningThai": "วิจัยตลาด",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "新产品需要先做市场调研。",
+      "pinyin": "Xīn chǎn pǐn xū yào xiān zuò shì chǎng diào yán.",
+      "meaning": "New products need market research first.",
+      "meaningThai": "สินค้าใหม่ต้องทำวิจัยตลาดก่อน"
+    }
+  ]
+},
+{
+  "id": "business-093",
+  "chinese": "目标客户",
+  "pinyin": "mù biāo kè hù",
+  "meaning": "Target customer",
+  "meaningThai": "กลุ่มลูกค้าเป้าหมาย",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "确定目标客户是营销的第一步。",
+      "pinyin": "Què dìng mù biāo kè hù shì yíng xiāo de dì yī bù.",
+      "meaning": "Identifying target customers is the first step in marketing.",
+      "meaningThai": "กำหนดกลุ่มลูกค้าเป้าหมายเป็นขั้นตอนแรกของการตลาด"
+    }
+  ]
+},
+{
+  "id": "business-094",
+  "chinese": "定价策略",
+  "pinyin": "dìng jià cè lüè",
+  "meaning": "Pricing strategy",
+  "meaningThai": "กลยุทธ์การกำหนดราคา",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "合理的定价策略可以提高销量。",
+      "pinyin": "Hé lǐ de dìng jià cè lüè kě yǐ tí gāo xiāo liàng.",
+      "meaning": "A reasonable pricing strategy can increase sales.",
+      "meaningThai": "กลยุทธ์การกำหนดราคาที่เหมาะสมเพิ่มยอดขาย"
+    }
+  ]
+},
+{
+  "id": "business-095",
+  "chinese": "供应链",
+  "pinyin": "gōng yìng liàn",
+  "meaning": "Supply chain",
+  "meaningThai": "ห่วงโซ่อุปทาน",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "供应链管理对制造业很重要。",
+      "pinyin": "Gōng yìng liàn guǎn lǐ duì zhì zào yè hěn zhòng yào.",
+      "meaning": "Supply chain management is important for manufacturing.",
+      "meaningThai": "การจัดการห่วงโซ่อุปทานสำคัญต่ออุตสาหกรรมการผลิต"
+    }
+  ]
+},
+{
+  "id": "business-096",
+  "chinese": "跨国公司",
+  "pinyin": "kuà guó gōng sī",
+  "meaning": "Multinational corporation",
+  "meaningThai": "บริษัทข้ามชาติ",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "跨国公司在全球开展业务。",
+      "pinyin": "Kuà guó gōng sī zài quán qiú kāi zhǎn yè wù.",
+      "meaning": "Multinational corporations operate globally.",
+      "meaningThai": "บริษัทข้ามชาติดำเนินธุรกิจทั่วโลก"
+    }
+  ]
+},
+{
+  "id": "business-097",
+  "chinese": "外包",
+  "pinyin": "wài bāo",
+  "meaning": "Outsourcing",
+  "meaningThai": "การจ้างภายนอก",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司将客服业务外包。",
+      "pinyin": "Gōng sī jiāng kè fú yè wù wài bāo.",
+      "meaning": "The company outsources customer service.",
+      "meaningThai": "บริษัทจ้างบริษัทภายนอกดูแลบริการลูกค้า"
+    }
+  ]
+},
+{
+  "id": "business-098",
+  "chinese": "经销商",
+  "pinyin": "jīng xiāo shāng",
+  "meaning": "Distributor",
+  "meaningThai": "ตัวแทนจำหน่าย",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "我们正在寻找本地区经销商。",
+      "pinyin": "Wǒ men zhèng zài xún zhǎo běn dì qū jīng xiāo shāng.",
+      "meaning": "We are looking for regional distributors.",
+      "meaningThai": "เรากำลังหาตัวแทนจำหน่ายในภูมิภาค"
+    }
+  ]
+},
+{
+  "id": "business-099",
+  "chinese": "合同",
+  "pinyin": "hé tong",
+  "meaning": "Contract",
+  "meaningThai": "สัญญา",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "双方签署了合作协议。",
+      "pinyin": "Shuāng fāng qiān shǔ le hé zuò xié yì.",
+      "meaning": "Both parties signed a cooperation agreement.",
+      "meaningThai": "ทั้งสองฝ่ายเซ็นสัญญาความร่วมมือ"
+    }
+  ]
+},
+{
+  "id": "business-100",
+  "chinese": "谈判",
+  "pinyin": "tán pàn",
+  "meaning": "Negotiation",
+  "meaningThai": "การเจรจาต่อรอง",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "商务谈判需要技巧。",
+      "pinyin": "Shāng wù tán pàn xū yào jì qiǎo.",
+      "meaning": "Business negotiations require skill.",
+      "meaningThai": "การเจรจาต่อรองทางธุรกิจต้องใช้ทักษะ"
+    }
+  ]
+}
+];
+
+const NATURE_WORDS = [
+  {
+    "id": "nature-001",
+    "chinese": "大象",
+    "pinyin": "dà xiàng",
+    "meaning": "Elephant",
+    "meaningThai": "ช้าง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大象是最大的陆地动物。",
+        "pinyin": "Dà xiàng shì zuì dà de lù dì dòng wù.",
+        "meaning": "Elephants are the largest land animals.",
+        "meaningThai": "ช้างเป็นสัตว์บกที่ใหญ่ที่สุด"
+      }
+    ]
+  },
+  {
+    "id": "nature-002",
+    "chinese": "老虎",
+    "pinyin": "lǎo hǔ",
+    "meaning": "Tiger",
+    "meaningThai": "เสือ",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老虎是猫科动物。",
+        "pinyin": "Lǎo hǔ shì māo kē dòng wù.",
+        "meaning": "Tigers are felines.",
+        "meaningThai": "เสือเป็นสัตว์ตระกูลแมว"
+      }
+    ]
+  },
+  {
+    "id": "nature-003",
+    "chinese": "猴子",
+    "pinyin": "hóu zi",
+    "meaning": "Monkey",
+    "meaningThai": "ลิง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "猴子很聪明。",
+        "pinyin": "Hóu zi hěn cōng míng.",
+        "meaning": "Monkeys are very smart.",
+        "meaningThai": "ลิงฉลาดมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-004",
+    "chinese": "蛇",
+    "pinyin": "shé",
+    "meaning": "Snake",
+    "meaningThai": "งู",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "蛇没有脚。",
+        "pinyin": "Shé méi yǒu jiǎo.",
+        "meaning": "Snakes don't have feet.",
+        "meaningThai": "งูไม่มีขา"
+      }
+    ]
+  },
+  {
+    "id": "nature-005",
+    "chinese": "兔子",
+    "pinyin": "tù zi",
+    "meaning": "Rabbit",
+    "meaningThai": "กระต่าย",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "兔子喜欢吃胡萝卜。",
+        "pinyin": "Tù zi xǐ huān chī hú luó bo.",
+        "meaning": "Rabbits like to eat carrots.",
+        "meaningThai": "กระต่ายชอบกินแครอท"
+      }
+    ]
+  },
+  {
+    "id": "nature-006",
+    "chinese": "蝴蝶",
+    "pinyin": "hú dié",
+    "meaning": "Butterfly",
+    "meaningThai": "ผีเสื้อ",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "蝴蝶在花园里飞舞。",
+        "pinyin": "Hú dié zài huā yuán lǐ fēi wǔ.",
+        "meaning": "Butterflies flutter in the garden.",
+        "meaningThai": "ผีเสื้อบินเล่นในสวน"
+      }
+    ]
+  },
+  {
+    "id": "nature-007",
+    "chinese": "熊猫",
+    "pinyin": "xióng māo",
+    "meaning": "Panda",
+    "meaningThai": "แพนด้า",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "熊猫是中国的国宝。",
+        "pinyin": "Xióng māo shì Zhōng guó de guó bǎo.",
+        "meaning": "Pandas are China's national treasure.",
+        "meaningThai": "แพนด้าเป็นสมบัติประจำชาติของจีน"
+      }
+    ]
+  },
+  {
+    "id": "nature-008",
+    "chinese": "海豚",
+    "pinyin": "hǎi tún",
+    "meaning": "Dolphin",
+    "meaningThai": "โลมา",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "海豚非常聪明友善。",
+        "pinyin": "Hǎi tún fēi cháng cōng míng yǒu shàn.",
+        "meaning": "Dolphins are very smart and friendly.",
+        "meaningThai": "โลมาฉลาดและเป็นมิตรมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-009",
+    "chinese": "狮子",
+    "pinyin": "shī zi",
+    "meaning": "Lion",
+    "meaningThai": "สิงโต",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "狮子被称为百兽之王。",
+        "pinyin": "Shī zi bèi chēng wéi bǎi shòu zhī wáng.",
+        "meaning": "Lions are called the king of beasts.",
+        "meaningThai": "สิงโตถูกเรียกว่าจ้าวแห่งสัตว์ทั้งปวง"
+      }
+    ]
+  },
+  {
+    "id": "nature-010",
+    "chinese": "鸟",
+    "pinyin": "niǎo",
+    "meaning": "Bird",
+    "meaningThai": "นก",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "鸟在树上唱歌。",
+        "pinyin": "Niǎo zài shù shàng chàng gē.",
+        "meaning": "Birds sing in the trees.",
+        "meaningThai": "นกร้องเพลงบนต้นไม้"
+      }
+    ]
+  },
+  {
+    "id": "nature-011",
+    "chinese": "昆虫",
+    "pinyin": "kūn chóng",
+    "meaning": "Insect",
+    "meaningThai": "แมลง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "昆虫的种类非常多。",
+        "pinyin": "Kūn chóng de zhǒng lèi fēi cháng duō.",
+        "meaning": "There are many kinds of insects.",
+        "meaningThai": "แมลงมีหลายชนิดมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-012",
+    "chinese": "狼",
+    "pinyin": "láng",
+    "meaning": "Wolf",
+    "meaningThai": "หมาป่า",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "狼是群居动物。",
+        "pinyin": "Láng shì qún jū dòng wù.",
+        "meaning": "Wolves are pack animals.",
+        "meaningThai": "หมาป่าเป็นสัตว์ที่อยู่รวมกันเป็นฝูง"
+      }
+    ]
+  },
+  {
+    "id": "nature-013",
+    "chinese": "鲸鱼",
+    "pinyin": "jīng yú",
+    "meaning": "Whale",
+    "meaningThai": "วาฬ",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "鲸鱼是海洋中最大的动物。",
+        "pinyin": "Jīng yú shì hǎi yáng zhōng zuì dà de dòng wù.",
+        "meaning": "Whales are the largest animals in the ocean.",
+        "meaningThai": "วาฬเป็นสัตว์ที่ใหญ่ที่สุดในทะเล"
+      }
+    ]
+  },
+  {
+    "id": "nature-014",
+    "chinese": "鹿",
+    "pinyin": "lù",
+    "meaning": "Deer",
+    "meaningThai": "กวาง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "森林里有很多鹿。",
+        "pinyin": "Sēn lín lǐ yǒu hěn duō lù.",
+        "meaning": "There are many deer in the forest.",
+        "meaningThai": "ในป่ามีกวางมากมาย"
+      }
+    ]
+  },
+  {
+    "id": "nature-015",
+    "chinese": "老鹰",
+    "pinyin": "lǎo yīng",
+    "meaning": "Eagle",
+    "meaningThai": "อินทรี",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老鹰在天空中飞翔。",
+        "pinyin": "Lǎo yīng zài tiān kōng zhōng fēi xiáng.",
+        "meaning": "Eagles soar in the sky.",
+        "meaningThai": "อินทรีบินโผบินบนท้องฟ้า"
+      }
+    ]
+  },
+  {
+    "id": "nature-016",
+    "chinese": "松树",
+    "pinyin": "sōng shù",
+    "meaning": "Pine tree",
+    "meaningThai": "ต้นสน",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "松树四季常绿。",
+        "pinyin": "Sōng shù sì jì cháng lǜ.",
+        "meaning": "Pine trees are evergreen all year round.",
+        "meaningThai": "ต้นสนเขียวตลอดทั้งปี"
+      }
+    ]
+  },
+  {
+    "id": "nature-017",
+    "chinese": "玫瑰",
+    "pinyin": "méi guī",
+    "meaning": "Rose",
+    "meaningThai": "กุหลาบ",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "玫瑰象征爱情。",
+        "pinyin": "Méi guī xiàng zhēng ài qíng.",
+        "meaning": "Roses symbolize love.",
+        "meaningThai": "กุหลาบเป็นสัญลักษณ์ของความรัก"
+      }
+    ]
+  },
+  {
+    "id": "nature-018",
+    "chinese": "竹子",
+    "pinyin": "zhú zi",
+    "meaning": "Bamboo",
+    "meaningThai": "ไม้ไผ่",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "熊猫喜欢吃竹子。",
+        "pinyin": "Xióng māo xǐ huān chī zhú zi.",
+        "meaning": "Pandas like to eat bamboo.",
+        "meaningThai": "แพนด้าชอบกินไม้ไผ่"
+      }
+    ]
+  },
+  {
+    "id": "nature-019",
+    "chinese": "荷花",
+    "pinyin": "hé huā",
+    "meaning": "Lotus",
+    "meaningThai": "ดอกบัว",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "荷花出淤泥而不染。",
+        "pinyin": "Hé huā chū yū ní ér bù rǎn.",
+        "meaning": "The lotus rises from mud unsullied.",
+        "meaningThai": "ดอกบัวเกิดจากโคลนแต่ไม่เปื้อน"
+      }
+    ]
+  },
+  {
+    "id": "nature-020",
+    "chinese": "柳树",
+    "pinyin": "liǔ shù",
+    "meaning": "Willow tree",
+    "meaningThai": "ต้นหลิว",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "柳树的枝条垂在水面上。",
+        "pinyin": "Liǔ shù de zhī tiáo chuí zài shuǐ miàn shàng.",
+        "meaning": "Willow branches hang over the water.",
+        "meaningThai": "กิ่งหลิวทอดลงเหนือผิวน้ำ"
+      }
+    ]
+  },
+  {
+    "id": "nature-021",
+    "chinese": "蘑菇",
+    "pinyin": "mó gu",
+    "meaning": "Mushroom",
+    "meaningThai": "เห็ด",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "雨后森林里长出了蘑菇。",
+        "pinyin": "Yǔ hòu sēn lín lǐ zhǎng chū le mó gu.",
+        "meaning": "Mushrooms grew in the forest after the rain.",
+        "meaningThai": "หลังฝนตกเห็ดงอกในป่า"
+      }
+    ]
+  },
+  {
+    "id": "nature-022",
+    "chinese": "树叶",
+    "pinyin": "shù yè",
+    "meaning": "Tree leaf",
+    "meaningThai": "ใบไม้",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "秋天树叶变黄了。",
+        "pinyin": "Qiū tiān shù yè biàn huáng le.",
+        "meaning": "Leaves turn yellow in autumn.",
+        "meaningThai": "ใบไม้เปลี่ยนเป็นสีเหลืองในฤดูใบไม้ร่วง"
+      }
+    ]
+  },
+  {
+    "id": "nature-023",
+    "chinese": "种子",
+    "pinyin": "zhǒng zi",
+    "meaning": "Seed",
+    "meaningThai": "เมล็ด",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "春天播种种子。",
+        "pinyin": "Chūn tiān bō zhǒng zhǒng zi.",
+        "meaning": "Sow seeds in spring.",
+        "meaningThai": "หว่านเมล็ดในฤดูใบไม้ผลิ"
+      }
+    ]
+  },
+  {
+    "id": "nature-024",
+    "chinese": "果实",
+    "pinyin": "guǒ shí",
+    "meaning": "Fruit (botanical)",
+    "meaningThai": "ผล",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "树上结满了果实。",
+        "pinyin": "Shù shàng jié mǎn le guǒ shí.",
+        "meaning": "The tree is full of fruit.",
+        "meaningThai": "ต้นไม้เต็มไปด้วยผล"
+      }
+    ]
+  },
+  {
+    "id": "nature-025",
+    "chinese": "杂草",
+    "pinyin": "zá cǎo",
+    "meaning": "Weed",
+    "meaningThai": "วัชพืช",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "花园里长满杂草。",
+        "pinyin": "Huā yuán lǐ zhǎng mǎn zá cǎo.",
+        "meaning": "The garden is overgrown with weeds.",
+        "meaningThai": "สวนเต็มไปด้วยวัชพืช"
+      }
+    ]
+  },
+  {
+    "id": "nature-026",
+    "chinese": "兰花",
+    "pinyin": "lán huā",
+    "meaning": "Orchid",
+    "meaningThai": "กล้วยไม้",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "兰花很优雅。",
+        "pinyin": "Lán huā hěn yōu yǎ.",
+        "meaning": "Orchids are very elegant.",
+        "meaningThai": "กล้วยไม้สง่างามมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-027",
+    "chinese": "仙人掌",
+    "pinyin": "xiān rén zhǎng",
+    "meaning": "Cactus",
+    "meaningThai": "กระบองเพชร",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "仙人掌耐旱。",
+        "pinyin": "Xiān rén zhǎng nài hàn.",
+        "meaning": "Cacti are drought-tolerant.",
+        "meaningThai": "กระบองเพชรทนแล้ง"
+      }
+    ]
+  },
+  {
+    "id": "nature-028",
+    "chinese": "葡萄",
+    "pinyin": "pú tao",
+    "meaning": "Grape",
+    "meaningThai": "องุ่น",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "葡萄可以酿酒。",
+        "pinyin": "Pú tao kě yǐ niàng jiǔ.",
+        "meaning": "Grapes can be made into wine.",
+        "meaningThai": "องุ่นใช้ทำไวน์ได้"
+      }
+    ]
+  },
+  {
+    "id": "nature-029",
+    "chinese": "薰衣草",
+    "pinyin": "xūn yī cǎo",
+    "meaning": "Lavender",
+    "meaningThai": "ลาเวนเดอร์",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "薰衣草的香味很放松。",
+        "pinyin": "Xūn yī cǎo de xiāng wèi hěn fàng sōng.",
+        "meaning": "The scent of lavender is very relaxing.",
+        "meaningThai": "กลิ่นลาเวนเดอร์ผ่อนคลายมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-030",
+    "chinese": "小麦",
+    "pinyin": "xiǎo mài",
+    "meaning": "Wheat",
+    "meaningThai": "ข้าวสาลี",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "小麦是主要的粮食作物。",
+        "pinyin": "Xiǎo mài shì zhǔ yào de liáng shi zuò wù.",
+        "meaning": "Wheat is a major grain crop.",
+        "meaningThai": "ข้าวสาลีเป็นพืชอาหารหลัก"
+      }
+    ]
+  },
+  {
+    "id": "nature-031",
+    "chinese": "沙漠",
+    "pinyin": "shā mò",
+    "meaning": "Desert",
+    "meaningThai": "ทะเลทราย",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "沙漠里非常干燥。",
+        "pinyin": "Shā mò lǐ fēi cháng gān zào.",
+        "meaning": "The desert is very dry.",
+        "meaningThai": "ในทะเลทรายแห้งแล้งมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-032",
+    "chinese": "海洋",
+    "pinyin": "hǎi yáng",
+    "meaning": "Ocean",
+    "meaningThai": "มหาสมุทร",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "海洋覆盖了地球的大部分面积。",
+        "pinyin": "Hǎi yáng fù gài le dì qiú de dà bù fèn miàn jī.",
+        "meaning": "The ocean covers most of the Earth's surface.",
+        "meaningThai": "มหาสมุทรปกคลุมพื้นที่ส่วนใหญ่ของโลก"
+      }
+    ]
+  },
+  {
+    "id": "nature-033",
+    "chinese": "瀑布",
+    "pinyin": "pù bù",
+    "meaning": "Waterfall",
+    "meaningThai": "น้ำตก",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个瀑布非常壮观。",
+        "pinyin": "Zhè ge pù bù fēi cháng zhuàng guān.",
+        "meaning": "This waterfall is spectacular.",
+        "meaningThai": "น้ำตกนี้ยิ่งใหญ่มาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-034",
+    "chinese": "岛屿",
+    "pinyin": "dǎo yǔ",
+    "meaning": "Island",
+    "meaningThai": "เกาะ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个岛屿风景优美。",
+        "pinyin": "Zhè ge dǎo yǔ fēng jǐng yōu měi.",
+        "meaning": "This island has beautiful scenery.",
+        "meaningThai": "เกาะนี้มีทัศนียภาพสวยงาม"
+      }
+    ]
+  },
+  {
+    "id": "nature-035",
+    "chinese": "草原",
+    "pinyin": "cǎo yuán",
+    "meaning": "Grassland; Prairie",
+    "meaningThai": "ทุ่งหญ้า",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "草原上有很多牛羊。",
+        "pinyin": "Cǎo yuán shàng yǒu hěn duō niú yáng.",
+        "meaning": "There are many cattle and sheep on the grassland.",
+        "meaningThai": "บนทุ่งหญ้ามีวัวและแกะมากมาย"
+      }
+    ]
+  },
+  {
+    "id": "nature-036",
+    "chinese": "平原",
+    "pinyin": "píng yuán",
+    "meaning": "Plain",
+    "meaningThai": "ที่ราบ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "平原适合农业发展。",
+        "pinyin": "Píng yuán shì hé nóng yè fā zhǎn.",
+        "meaning": "Plains are suitable for agricultural development.",
+        "meaningThai": "ที่ราบเหมาะกับการพัฒนาเกษตรกรรม"
+      }
+    ]
+  },
+  {
+    "id": "nature-037",
+    "chinese": "洞穴",
+    "pinyin": "dòng xué",
+    "meaning": "Cave",
+    "meaningThai": "ถ้ำ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "洞穴里很黑暗。",
+        "pinyin": "Dòng xué lǐ hěn hēi àn.",
+        "meaning": "It's very dark inside the cave.",
+        "meaningThai": "ในถ้ำมืดมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-038",
+    "chinese": "山谷",
+    "pinyin": "shān gǔ",
+    "meaning": "Valley",
+    "meaningThai": "หุบเขา",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "山谷里有一条小河。",
+        "pinyin": "Shān gǔ lǐ yǒu yī tiáo xiǎo hé.",
+        "meaning": "There is a small river in the valley.",
+        "meaningThai": "ในหุบเขามีแม่น้ำสายเล็ก"
+      }
+    ]
+  },
+  {
+    "id": "nature-039",
+    "chinese": "火山",
+    "pinyin": "huǒ shān",
+    "meaning": "Volcano",
+    "meaningThai": "ภูเขาไฟ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "火山喷发很危险。",
+        "pinyin": "Huǒ shān pēn fā hěn wēi xiǎn.",
+        "meaning": "Volcanic eruptions are very dangerous.",
+        "meaningThai": "ภูเขาไฟระเบิดอันตรายมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-040",
+    "chinese": "冰川",
+    "pinyin": "bīng chuān",
+    "meaning": "Glacier",
+    "meaningThai": "ธารน้ำแข็ง",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "全球变暖导致冰川融化。",
+        "pinyin": "Quán qiú biàn nuǎn dǎo zhì bīng chuān róng huà.",
+        "meaning": "Global warming causes glaciers to melt.",
+        "meaningThai": "โลกร้อนทำให้ธารน้ำแข็งละลาย"
+      }
+    ]
+  },
+  {
+    "id": "nature-041",
+    "chinese": "污染",
+    "pinyin": "wū rǎn",
+    "meaning": "Pollution",
+    "meaningThai": "มลพิษ",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "空气污染影响健康。",
+        "pinyin": "Kōng qì wū rǎn yǐng xiǎng jiàn kāng.",
+        "meaning": "Air pollution affects health.",
+        "meaningThai": "มลพิษทางอากาศส่งผลต่อสุขภาพ"
+      }
+    ]
+  },
+  {
+    "id": "nature-042",
+    "chinese": "回收",
+    "pinyin": "huí shōu",
+    "meaning": "To recycle",
+    "meaningThai": "รีไซเคิล",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请把垃圾分类回收。",
+        "pinyin": "Qǐng bǎ lā jī fēn lèi huí shōu.",
+        "meaning": "Please sort trash for recycling.",
+        "meaningThai": "กรุณาแยกขยะเพื่อรีไซเคิล"
+      }
+    ]
+  },
+  {
+    "id": "nature-043",
+    "chinese": "碳排放",
+    "pinyin": "tàn pái fàng",
+    "meaning": "Carbon emissions",
+    "meaningThai": "การปล่อยคาร์บอน",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "减少碳排放保护环境。",
+        "pinyin": "Jiǎn shǎo tàn pái fàng bǎo hù huán jìng.",
+        "meaning": "Reduce carbon emissions to protect the environment.",
+        "meaningThai": "ลดการปล่อยคาร์บอนเพื่อปกป้องสิ่งแวดล้อม"
+      }
+    ]
+  },
+  {
+    "id": "nature-044",
+    "chinese": "可持续发展",
+    "pinyin": "kě chí xù fā zhǎn",
+    "meaning": "Sustainable development",
+    "meaningThai": "การพัฒนาที่ยั่งยืน",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "可持续发展是未来的方向。",
+        "pinyin": "Kě chí xù fā zhǎn shì wèi lái de fāng xiàng.",
+        "meaning": "Sustainable development is the future direction.",
+        "meaningThai": "การพัฒนาที่ยั่งยืนคือทิศทางของอนาคต"
+      }
+    ]
+  },
+  {
+    "id": "nature-045",
+    "chinese": "生态系统",
+    "pinyin": "shēng tài xì tǒng",
+    "meaning": "Ecosystem",
+    "meaningThai": "ระบบนิเวศ",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "保护生态系统的平衡。",
+        "pinyin": "Bǎo hù shēng tài xì tǒng de píng héng.",
+        "meaning": "Protect the balance of the ecosystem.",
+        "meaningThai": "รักษาสมดุลของระบบนิเวศ"
+      }
+    ]
+  },
+  {
+    "id": "nature-046",
+    "chinese": "太阳能",
+    "pinyin": "tài yáng néng",
+    "meaning": "Solar energy",
+    "meaningThai": "พลังงานแสงอาทิตย์",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "太阳能是一种清洁能源。",
+        "pinyin": "Tài yáng néng shì yī zhǒng qīng jié néng yuán.",
+        "meaning": "Solar energy is a clean energy source.",
+        "meaningThai": "พลังงานแสงอาทิตย์เป็นพลังงานสะอาด"
+      }
+    ]
+  },
+  {
+    "id": "nature-047",
+    "chinese": "垃圾分类",
+    "pinyin": "lā jī fēn lèi",
+    "meaning": "Waste sorting",
+    "meaningThai": "การแยกขยะ",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "垃圾分类从每个人做起。",
+        "pinyin": "Lā jī fēn lèi cóng měi gè rén zuò qǐ.",
+        "meaning": "Waste sorting starts with everyone.",
+        "meaningThai": "การแยกขยะเริ่มจากทุกคน"
+      }
+    ]
+  },
+  {
+    "id": "nature-048",
+    "chinese": "温室效应",
+    "pinyin": "wēn shì xiào yìng",
+    "meaning": "Greenhouse effect",
+    "meaningThai": "ปรากฏการณ์เรือนกระจก",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "温室效应导致全球变暖。",
+        "pinyin": "Wēn shì xiào yìng dǎo zhì quán qiú biàn nuǎn.",
+        "meaning": "The greenhouse effect causes global warming.",
+        "meaningThai": "ปรากฏการณ์เรือนกระจกทำให้โลกร้อน"
+      }
+    ]
+  },
+  {
+    "id": "nature-049",
+    "chinese": "环保",
+    "pinyin": "huán bǎo",
+    "meaning": "Environmental protection",
+    "meaningThai": "การรักษาสิ่งแวดล้อม",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "环保意识越来越强。",
+        "pinyin": "Huán bǎo yì shí yuè lái yuè qiáng.",
+        "meaning": "Environmental awareness is growing.",
+        "meaningThai": "จิตสำนึกด้านสิ่งแวดล้อมเพิ่มขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "nature-050",
+    "chinese": "再生能源",
+    "pinyin": "zài shēng néng yuán",
+    "meaning": "Renewable energy",
+    "meaningThai": "พลังงานหมุนเวียน",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "发展再生能源减少污染。",
+        "pinyin": "Fā zhǎn zài shēng néng yuán jiǎn shǎo wū rǎn.",
+        "meaning": "Develop renewable energy to reduce pollution.",
+        "meaningThai": "พัฒนาพลังงานหมุนเวียนลดมลพิษ"
+      }
+    ]
+  },
+{
+  "id": "nature-051",
+  "chinese": "孔雀",
+  "pinyin": "kǒng què",
+  "meaning": "Peacock",
+  "meaningThai": "นกยูง",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "孔雀开屏很美丽。",
+      "pinyin": "Kǒng què kāi píng hěn měi lì.",
+      "meaning": "Peacocks spreading their tails are beautiful.",
+      "meaningThai": "นกยูงกางหางสวยงามมาก"
+    }
+  ]
+},
+{
+  "id": "nature-052",
+  "chinese": "天鹅",
+  "pinyin": "tiān é",
+  "meaning": "Swan",
+  "meaningThai": "หงส์",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "天鹅在湖中游动。",
+      "pinyin": "Tiān é zài hú zhōng yóu dòng.",
+      "meaning": "Swans swim in the lake.",
+      "meaningThai": "หงส์ว่ายน้ำในทะเลสาบ"
+    }
+  ]
+},
+{
+  "id": "nature-053",
+  "chinese": "蝙蝠",
+  "pinyin": "biān fú",
+  "meaning": "Bat",
+  "meaningThai": "ค้างคาว",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蝙蝠在夜间活动。",
+      "pinyin": "Biān fú zài yè jiān huó dòng.",
+      "meaning": "Bats are active at night.",
+      "meaningThai": "ค้างคาวออกหากินในเวลากลางคืน"
+    }
+  ]
+},
+{
+  "id": "nature-054",
+  "chinese": "企鹅",
+  "pinyin": "qǐ é",
+  "meaning": "Penguin",
+  "meaningThai": "เพนกวิน",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "企鹅生活在南极。",
+      "pinyin": "Qǐ é shēng huó zài nán jí.",
+      "meaning": "Penguins live in Antarctica.",
+      "meaningThai": "เพนกวินอาศัยอยู่ที่ขั้วโลกใต้"
+    }
+  ]
+},
+{
+  "id": "nature-055",
+  "chinese": "狐狸",
+  "pinyin": "hú li",
+  "meaning": "Fox",
+  "meaningThai": "หมาจิ้งจอก",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "狐狸被认为很聪明。",
+      "pinyin": "Hú li bèi rèn wéi hěn cōng míng.",
+      "meaning": "Foxes are considered clever.",
+      "meaningThai": "หมาจิ้งจอก被认为ฉลาดมาก"
+    }
+  ]
+},
+{
+  "id": "nature-056",
+  "chinese": "松鼠",
+  "pinyin": "sōng shǔ",
+  "meaning": "Squirrel",
+  "meaningThai": "กระรอก",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "松鼠喜欢吃坚果。",
+      "pinyin": "Sōng shǔ xǐ huān chī jiān guǒ.",
+      "meaning": "Squirrels like to eat nuts.",
+      "meaningThai": "กระรอกชอบกินถั่ว"
+    }
+  ]
+},
+{
+  "id": "nature-057",
+  "chinese": "青蛙",
+  "pinyin": "qīng wā",
+  "meaning": "Frog",
+  "meaningThai": "กบ",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "青蛙吃害虫。",
+      "pinyin": "Qīng wā chī hài chóng.",
+      "meaning": "Frogs eat pests.",
+      "meaningThai": "กบกินแมลงศัตรูพืช"
+    }
+  ]
+},
+{
+  "id": "nature-058",
+  "chinese": "乌龟",
+  "pinyin": "wū guī",
+  "meaning": "Turtle; Tortoise",
+  "meaningThai": "เต่า",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "乌龟的寿命很长。",
+      "pinyin": "Wū guī de shòu mìng hěn cháng.",
+      "meaning": "Turtles have long lifespans.",
+      "meaningThai": "เต่ามีอายุยืนยาว"
+    }
+  ]
+},
+{
+  "id": "nature-059",
+  "chinese": "蜘蛛",
+  "pinyin": "zhī zhū",
+  "meaning": "Spider",
+  "meaningThai": "แมงมุม",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蜘蛛在墙角织网。",
+      "pinyin": "Zhī zhū zài qiáng jiǎo zhī wǎng.",
+      "meaning": "Spiders weave webs in corners.",
+      "meaningThai": "แมงมุมชักใยตามมุมกำแพง"
+    }
+  ]
+},
+{
+  "id": "nature-060",
+  "chinese": "蜜蜂",
+  "pinyin": "mì fēng",
+  "meaning": "Honeybee",
+  "meaningThai": "ผึ้ง",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蜜蜂采蜜传播花粉。",
+      "pinyin": "Mì fēng cǎi mì chuán bō huā fěn.",
+      "meaning": "Bees collect nectar and spread pollen.",
+      "meaningThai": "ผึ้งเก็บน้ำหวานและผสมเกสร"
+    }
+  ]
+},
+{
+  "id": "nature-061",
+  "chinese": "袋鼠",
+  "pinyin": "dài shǔ",
+  "meaning": "Kangaroo",
+  "meaningThai": "จิงโจ้",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "袋鼠生活在澳大利亚。",
+      "pinyin": "Dài shǔ shēng huó zài Ào dà lì yà.",
+      "meaning": "Kangaroos live in Australia.",
+      "meaningThai": "จิงโจ้生活在ออสเตรเลีย"
+    }
+  ]
+},
+{
+  "id": "nature-062",
+  "chinese": "仓鼠",
+  "pinyin": "cāng shǔ",
+  "meaning": "Hamster",
+  "meaningThai": "หนูแฮมสเตอร์",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "很多孩子养仓鼠当宠物。",
+      "pinyin": "Hěn duō hái zi yǎng cāng shǔ dāng chǒng wù.",
+      "meaning": "Many kids keep hamsters as pets.",
+      "meaningThai": "เด็กหลายคนเลี้ยงหนูแฮมสเตอร์เป็นสัตว์เลี้ยง"
+    }
+  ]
+},
+{
+  "id": "nature-063",
+  "chinese": "黄牛",
+  "pinyin": "huáng niú",
+  "meaning": "Cattle; Ox",
+  "meaningThai": "วัว",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "农民用黄牛耕地。",
+      "pinyin": "Nóng mín yòng huáng niú gēng dì.",
+      "meaning": "Farmers use oxen to plow fields.",
+      "meaningThai": "ชาวนาใช้วัวไถนา"
+    }
+  ]
+},
+{
+  "id": "nature-064",
+  "chinese": "鲨鱼",
+  "pinyin": "shā yú",
+  "meaning": "Shark",
+  "meaningThai": "ฉลาม",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "鲨鱼是海洋的顶级掠食者。",
+      "pinyin": "Shā yú shì hǎi yáng de dǐng jí lüè shí zhě.",
+      "meaning": "Sharks are top predators in the ocean.",
+      "meaningThai": "ฉลามเป็นผู้ล่าอันดับสูงสุดในทะเล"
+    }
+  ]
+},
+{
+  "id": "nature-065",
+  "chinese": "燕子",
+  "pinyin": "yàn zi",
+  "meaning": "Swallow (bird)",
+  "meaningThai": "นกนางแอ่น",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "春天燕子飞回来了。",
+      "pinyin": "Chūn tiān yàn zi fēi huí lái le.",
+      "meaning": "Swallows fly back in spring.",
+      "meaningThai": "ฤดูใบไม้ผลินกนางแอ่นบินกลับมา"
+    }
+  ]
+},
+{
+  "id": "nature-066",
+  "chinese": "芦苇",
+  "pinyin": "lú wěi",
+  "meaning": "Reed",
+  "meaningThai": "ต้นกก",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "芦苇生长在河边。",
+      "pinyin": "Lú wěi shēng zhǎng zài hé biān.",
+      "meaning": "Reeds grow by the river.",
+      "meaningThai": "ต้นกกขึ้นริมแม่น้ำ"
+    }
+  ]
+},
+{
+  "id": "nature-067",
+  "chinese": "苔藓",
+  "pinyin": "tái xiǎn",
+  "meaning": "Moss",
+  "meaningThai": "มอส",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "石头上长满了苔藓。",
+      "pinyin": "Shí tou shàng zhǎng mǎn le tái xiǎn.",
+      "meaning": "The rocks are covered with moss.",
+      "meaningThai": "หินเต็มไปด้วยมอส"
+    }
+  ]
+},
+{
+  "id": "nature-068",
+  "chinese": "松果",
+  "pinyin": "sōng guǒ",
+  "meaning": "Pine cone",
+  "meaningThai": "ลูกสน",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "松鼠收集松果。",
+      "pinyin": "Sōng shǔ shōu jí sōng guǒ.",
+      "meaning": "Squirrels collect pine cones.",
+      "meaningThai": "กระรอกเก็บลูกสน"
+    }
+  ]
+},
+{
+  "id": "nature-069",
+  "chinese": "橄榄",
+  "pinyin": "gǎn lǎn",
+  "meaning": "Olive",
+  "meaningThai": "มะกอก",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "橄榄可以榨油。",
+      "pinyin": "Gǎn lǎn kě yǐ zhà yóu.",
+      "meaning": "Olives can be pressed for oil.",
+      "meaningThai": "มะกอกใช้สกัดน้ำมันได้"
+    }
+  ]
+},
+{
+  "id": "nature-070",
+  "chinese": "枫叶",
+  "pinyin": "fēng yè",
+  "meaning": "Maple leaf",
+  "meaningThai": "ใบเมเปิล",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "秋天枫叶变红了。",
+      "pinyin": "Qiū tiān fēng yè biàn hóng le.",
+      "meaning": "Maple leaves turn red in autumn.",
+      "meaningThai": "ใบเมเปิลเปลี่ยนเป็นสีแดงในฤดูใบไม้ร่วง"
+    }
+  ]
+},
+{
+  "id": "nature-071",
+  "chinese": "向日葵",
+  "pinyin": "xiàng rì kuí",
+  "meaning": "Sunflower",
+  "meaningThai": "ดอกทานตะวัน",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "向日葵向着太阳生长。",
+      "pinyin": "Xiàng rì kuí xiàng zhe tài yáng shēng zhǎng.",
+      "meaning": "Sunflowers grow facing the sun.",
+      "meaningThai": "ดอกทานตะวันหันตามดวงอาทิตย์"
+    }
+  ]
+},
+{
+  "id": "nature-072",
+  "chinese": "橡树",
+  "pinyin": "xiàng shù",
+  "meaning": "Oak tree",
+  "meaningThai": "ต้นโอ๊ก",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "橡树的寿命可以很长。",
+      "pinyin": "Xiàng shù de shòu mìng kě yǐ hěn cháng.",
+      "meaning": "Oak trees can live for a long time.",
+      "meaningThai": "ต้นโอ๊กมีอายุยืนยาว"
+    }
+  ]
+},
+{
+  "id": "nature-073",
+  "chinese": "椰子树",
+  "pinyin": "yē zi shù",
+  "meaning": "Coconut tree",
+  "meaningThai": "ต้นมะพร้าว",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "椰子树生长在热带地区。",
+      "pinyin": "Yē zi shù shēng zhǎng zài rè dài dì qū.",
+      "meaning": "Coconut trees grow in tropical regions.",
+      "meaningThai": "ต้นมะพร้าวขึ้นในเขตร้อน"
+    }
+  ]
+},
+{
+  "id": "nature-074",
+  "chinese": "苔藓植物",
+  "pinyin": "tái xiǎn zhí wù",
+  "meaning": "Bryophyte",
+  "meaningThai": "พืชไร้ท่อลำเลียง",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "苔藓植物喜欢潮湿的环境。",
+      "pinyin": "Tái xiǎn zhí wù xǐ huān cháo shī de huán jìng.",
+      "meaning": "Bryophytes like moist environments.",
+      "meaningThai": "พืชไร้ท่อลำเลียงชอบสภาพแวดล้อมชื้น"
+    }
+  ]
+},
+{
+  "id": "nature-075",
+  "chinese": "花瓣",
+  "pinyin": "huā bàn",
+  "meaning": "Petal",
+  "meaningThai": "กลีบดอกไม้",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "玫瑰的花瓣很柔软。",
+      "pinyin": "Méi guī de huā bàn hěn róu ruǎn.",
+      "meaning": "Rose petals are very soft.",
+      "meaningThai": "กลีบกุหลาบนุ่มมาก"
+    }
+  ]
+},
+{
+  "id": "nature-076",
+  "chinese": "丛林",
+  "pinyin": "cóng lín",
+  "meaning": "Jungle",
+  "meaningThai": "ป่าดิบ",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "丛林里有很多野生动物。",
+      "pinyin": "Cóng lín lǐ yǒu hěn duō yě shēng dòng wù.",
+      "meaning": "There are many wild animals in the jungle.",
+      "meaningThai": "ในป่าดิบมีสัตว์ป่ามากมาย"
+    }
+  ]
+},
+{
+  "id": "nature-077",
+  "chinese": "常青树",
+  "pinyin": "cháng qīng shù",
+  "meaning": "Evergreen tree",
+  "meaningThai": "ต้นไม้ไม่ผลัดใบ",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "松树是常青树。",
+      "pinyin": "Sōng shù shì cháng qīng shù.",
+      "meaning": "Pine trees are evergreens.",
+      "meaningThai": "ต้นสนเป็นต้นไม้ไม่ผลัดใบ"
+    }
+  ]
+},
+{
+  "id": "nature-078",
+  "chinese": "落叶",
+  "pinyin": "luò yè",
+  "meaning": "Fallen leaves",
+  "meaningThai": "ใบไม้ร่วง",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "秋天满地落叶。",
+      "pinyin": "Qiū tiān mǎn dì luò yè.",
+      "meaning": "The ground is covered with fallen leaves in autumn.",
+      "meaningThai": "ฤดูใบไม้ร่วงพื้นเต็มไปด้วยใบไม้ร่วง"
+    }
+  ]
+},
+{
+  "id": "nature-079",
+  "chinese": "热带雨林",
+  "pinyin": "rè dài yǔ lín",
+  "meaning": "Rainforest",
+  "meaningThai": "ป่าฝนเขตร้อน",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "热带雨林是地球的肺。",
+      "pinyin": "Rè dài yǔ lín shì dì qiú de fèi.",
+      "meaning": "Rainforests are the lungs of the earth.",
+      "meaningThai": "ป่าฝนเขตร้อนคือปอดของโลก"
+    }
+  ]
+},
+{
+  "id": "nature-080",
+  "chinese": "树苗",
+  "pinyin": "shù miáo",
+  "meaning": "Sapling",
+  "meaningThai": "ต้นกล้า",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "春天种下树苗。",
+      "pinyin": "Chūn tiān zhǒng xià shù miáo.",
+      "meaning": "Plant saplings in spring.",
+      "meaningThai": "ปลูกต้นกล้าในฤดูใบไม้ผลิ"
+    }
+  ]
+},
+{
+  "id": "nature-081",
+  "chinese": "海峡",
+  "pinyin": "hǎi xiá",
+  "meaning": "Strait",
+  "meaningThai": "ช่องแคบ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "台湾海峡连接中国和台湾。",
+      "pinyin": "Tái wān hǎi xiá lián jiē Zhōng guó hé Tái wān.",
+      "meaning": "The Taiwan Strait connects China and Taiwan.",
+      "meaningThai": "ช่องแคบไต้หวันเชื่อมจีนและไต้หวัน"
+    }
+  ]
+},
+{
+  "id": "nature-082",
+  "chinese": "河流",
+  "pinyin": "hé liú",
+  "meaning": "River",
+  "meaningThai": "แม่น้ำ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "长江是中国最长的河流。",
+      "pinyin": "Cháng jiāng shì Zhōng guó zuì cháng de hé liú.",
+      "meaning": "The Yangtze River is China's longest river.",
+      "meaningThai": "แม่น้ำแยงซีเป็นแม่น้ำที่ยาวที่สุดของจีน"
+    }
+  ]
+},
+{
+  "id": "nature-083",
+  "chinese": "湖泊",
+  "pinyin": "hú pō",
+  "meaning": "Lake",
+  "meaningThai": "ทะเลสาบ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个湖泊很清澈。",
+      "pinyin": "Zhè ge hú pō hěn qīng chè.",
+      "meaning": "This lake is very clear.",
+      "meaningThai": "ทะเลสาบนี้ใสสะอาด"
+    }
+  ]
+},
+{
+  "id": "nature-084",
+  "chinese": "半岛",
+  "pinyin": "bàn dǎo",
+  "meaning": "Peninsula",
+  "meaningThai": "คาบสมุทร",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "朝鲜半岛位于东亚。",
+      "pinyin": "Cháo xiǎn bàn dǎo wèi yú Dōng Yà.",
+      "meaning": "The Korean Peninsula is in East Asia.",
+      "meaningThai": "คาบสมุทรเกาหลีตั้งอยู่ในเอเชียตะวันออก"
+    }
+  ]
+},
+{
+  "id": "nature-085",
+  "chinese": "悬崖",
+  "pinyin": "xuán yá",
+  "meaning": "Cliff",
+  "meaningThai": "หน้าผา",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "悬崖高达数百米。",
+      "pinyin": "Xuán yá gāo dá shù bǎi mǐ.",
+      "meaning": "The cliff is hundreds of meters high.",
+      "meaningThai": "หน้าผาสูงหลายร้อยเมตร"
+    }
+  ]
+},
+{
+  "id": "nature-086",
+  "chinese": "三角洲",
+  "pinyin": "sān jiǎo zhōu",
+  "meaning": "Delta",
+  "meaningThai": "สามเหลี่ยมปากแม่น้ำ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "珠江三角洲经济发达。",
+      "pinyin": "Zhū jiāng sān jiǎo zhōu jīng jì fā dá.",
+      "meaning": "The Pearl River Delta has a developed economy.",
+      "meaningThai": "สามเหลี่ยมปากแม่น้ำไข่มุกมีเศรษฐกิจพัฒนา"
+    }
+  ]
+},
+{
+  "id": "nature-087",
+  "chinese": "湿地",
+  "pinyin": "shī dì",
+  "meaning": "Wetland",
+  "meaningThai": "พื้นที่ชุ่มน้ำ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "湿地是重要的生态系统。",
+      "pinyin": "Shī dì shì zhòng yào de shēng tài xì tǒng.",
+      "meaning": "Wetlands are important ecosystems.",
+      "meaningThai": "พื้นที่ชุ่มน้ำเป็นระบบนิเวศสำคัญ"
+    }
+  ]
+},
+{
+  "id": "nature-088",
+  "chinese": "绿洲",
+  "pinyin": "lǜ zhōu",
+  "meaning": "Oasis",
+  "meaningThai": "โอเอซิส",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "沙漠中偶尔有绿洲。",
+      "pinyin": "Shā mò zhōng ǒu ěr yǒu lǜ zhōu.",
+      "meaning": "There are occasional oases in the desert.",
+      "meaningThai": "ในทะเลทรายมีโอเอซิสเป็นครั้งคราว"
+    }
+  ]
+},
+{
+  "id": "nature-089",
+  "chinese": "山丘",
+  "pinyin": "shān qiū",
+  "meaning": "Hill",
+  "meaningThai": "เนินเขา",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "山丘上种满了果树。",
+      "pinyin": "Shān qiū shàng zhòng mǎn le guǒ shù.",
+      "meaning": "The hill is planted with fruit trees.",
+      "meaningThai": "บนเนินเขาปลูกต้นผลไม้เต็มไปหมด"
+    }
+  ]
+},
+{
+  "id": "nature-090",
+  "chinese": "峡谷",
+  "pinyin": "xiá gǔ",
+  "meaning": "Canyon; Gorge",
+  "meaningThai": "หุบผา",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "科罗拉多大峡谷很壮观。",
+      "pinyin": "Kē luó lā duō dà xiá gǔ hěn zhuàng guān.",
+      "meaning": "The Grand Canyon is spectacular.",
+      "meaningThai": "แกรนด์แคนยอนยิ่งใหญ่ตระการตา"
+    }
+  ]
+},
+{
+  "id": "nature-091",
+  "chinese": "大气层",
+  "pinyin": "dà qì céng",
+  "meaning": "Atmosphere",
+  "meaningThai": "ชั้นบรรยากาศ",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "大气层保护地球上的生命。",
+      "pinyin": "Dà qì céng bǎo hù dì qiú shàng de shēng mìng.",
+      "meaning": "The atmosphere protects life on Earth.",
+      "meaningThai": "ชั้นบรรยากาศ保护สิ่งมีชีวิตบนโลก"
+    }
+  ]
+},
+{
+  "id": "nature-092",
+  "chinese": "臭氧层",
+  "pinyin": "chòu yǎng céng",
+  "meaning": "Ozone layer",
+  "meaningThai": "ชั้นโอโซน",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "臭氧层阻挡紫外线。",
+      "pinyin": "Chòu yǎng céng zǔ dǎng zǐ wài xiàn.",
+      "meaning": "The ozone layer blocks UV rays.",
+      "meaningThai": "ชั้นโอโซนกรองรังสีอัลตราไวโอเลต"
+    }
+  ]
+},
+{
+  "id": "nature-093",
+  "chinese": "生物多样性",
+  "pinyin": "shēng wù duō yàng xìng",
+  "meaning": "Biodiversity",
+  "meaningThai": "ความหลากหลายทางชีวภาพ",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "保护生物多样性很重要。",
+      "pinyin": "Bǎo hù shēng wù duō yàng xìng hěn zhòng yào.",
+      "meaning": "Protecting biodiversity is very important.",
+      "meaningThai": "การ保护ความหลากหลายทางชีวภาพสำคัญมาก"
+    }
+  ]
+},
+{
+  "id": "nature-094",
+  "chinese": "碳达峰",
+  "pinyin": "tàn dá fēng",
+  "meaning": "Carbon peak",
+  "meaningThai": "การปล่อยคาร์บอนสูงสุด",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "中国承诺在2030年前实现碳达峰。",
+      "pinyin": "Zhōng guó chéng nuò zài 2030 nián qián shí xiàn tàn dá fēng.",
+      "meaning": "China pledged to achieve carbon peak by 2030.",
+      "meaningThai": "จีนให้คำมั่นปล่อยคาร์บอนสูงสุดภายในปี 2030"
+    }
+  ]
+},
+{
+  "id": "nature-095",
+  "chinese": "碳中和",
+  "pinyin": "tàn zhōng hé",
+  "meaning": "Carbon neutrality",
+  "meaningThai": "ความเป็นกลางทางคาร์บอน",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "许多国家计划在2050年前实现碳中和。",
+      "pinyin": "Xǔ duō guó jiā jì huà zài 2050 nián qián shí xiàn tàn zhōng hé.",
+      "meaning": "Many countries plan to achieve carbon neutrality by 2050.",
+      "meaningThai": "หลายประเทศวางแผนเป็นกลางทางคาร์บอนภายในปี 2050"
+    }
+  ]
+},
+{
+  "id": "nature-096",
+  "chinese": "自然保护区",
+  "pinyin": "zì rán bǎo hù qū",
+  "meaning": "Nature reserve",
+  "meaningThai": "เขตอนุรักษ์ธรรมชาติ",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "自然保护区禁止开发。",
+      "pinyin": "Zì rán bǎo hù qū jìn zhǐ kāi fā.",
+      "meaning": "Development is prohibited in nature reserves.",
+      "meaningThai": "เขตอนุรักษ์ธรรมชาติห้ามพัฒนา"
+    }
+  ]
+},
+{
+  "id": "nature-097",
+  "chinese": "噪音污染",
+  "pinyin": "zào yīn wū rǎn",
+  "meaning": "Noise pollution",
+  "meaningThai": "มลพิษทางเสียง",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "城市噪音污染影响健康。",
+      "pinyin": "Chéng shì zào yīn wū rǎn yǐng xiǎng jiàn kāng.",
+      "meaning": "Urban noise pollution affects health.",
+      "meaningThai": "มลพิษทางเสียงในเมืองส่งผลต่อสุขภาพ"
+    }
+  ]
+},
+{
+  "id": "nature-098",
+  "chinese": "水土流失",
+  "pinyin": "shuǐ tǔ liú shī",
+  "meaning": "Soil erosion",
+  "meaningThai": "การสูญเสียหน้าดิน",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "植被可以防止水土流失。",
+      "pinyin": "Zhí bèi kě yǐ fáng zhǐ shuǐ tǔ liú shī.",
+      "meaning": "Vegetation can prevent soil erosion.",
+      "meaningThai": "พืชปกคลุมป้องกันการสูญเสียหน้าดิน"
+    }
+  ]
+},
+{
+  "id": "nature-099",
+  "chinese": "植树造林",
+  "pinyin": "zhí shù zào lín",
+  "meaning": "Afforestation",
+  "meaningThai": "การปลูกป่า",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "植树造林可以改善环境。",
+      "pinyin": "Zhí shù zào lín kě yǐ gǎi shàn huán jìng.",
+      "meaning": "Afforestation can improve the environment.",
+      "meaningThai": "การปลูกป่าสามารถปรับปรุงสิ่งแวดล้อม"
+    }
+  ]
+},
+{
+  "id": "nature-100",
+  "chinese": "物种灭绝",
+  "pinyin": "wù zhǒng miè jué",
+  "meaning": "Species extinction",
+  "meaningThai": "การสูญพันธุ์ของ物种",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "人类活动加速了物种灭绝。",
+      "pinyin": "Rén lèi huó dòng jiā sù le wù zhǒng miè jué.",
+      "meaning": "Human activities accelerate species extinction.",
+      "meaningThai": "กิจกรรมของมนุษย์เร่งการสูญพันธุ์ของสิ่งมีชีวิต"
+    }
+  ]
+}
+];
 // Build VOCABULARY from HSK word lists
-export const VOCABULARY = [...HSK1_WORDS, ...HSK2_WORDS, ...HSK3_WORDS, ...HSK4_WORDS, ...HSK5_WORDS, ...HSK6_WORDS, ...GREETINGS_WORDS, ...FOOD_WORDS, ...SHOPPING_WORDS, ...TRAVEL_WORDS, ...WEATHER_WORDS, ...TIME_WORDS, ...FAMILY_WORDS, ...COLORS_WORDS, ...NUMBERS_WORDS];
+export const VOCABULARY = [...HSK1_WORDS, ...HSK2_WORDS, ...HSK3_WORDS, ...HSK4_WORDS, ...HSK5_WORDS, ...HSK6_WORDS, ...GREETINGS_WORDS, ...FOOD_WORDS, ...SHOPPING_WORDS, ...TRAVEL_WORDS, ...WEATHER_WORDS, ...TIME_WORDS, ...FAMILY_WORDS, ...COLORS_WORDS, ...NUMBERS_WORDS, ...HEALTH_WORDS, ...EDUCATION_WORDS, ...TECHNOLOGY_WORDS, ...BUSINESS_WORDS, ...NATURE_WORDS];
 
 // Helper: get word by ID
 export function getWordById(id) {
