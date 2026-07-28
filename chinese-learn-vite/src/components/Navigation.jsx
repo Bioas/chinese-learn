@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
-import LanguageToggle from './LanguageToggle';
 import Icon from './Icon';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
+import Login from '../pages/Login';
 import useTranslation from '../hooks/useTranslation';
 
 export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
   const { t } = useTranslation();
   const { state, setTheme, setLanguage } = useApp();
+  const { user, logout } = useAuth();
   const location = useLocation();
+  const [showLogin, setShowLogin] = useState(false);
 
   const NAV_ITEMS = [
     { path: '/', label: t('nav.dashboard'), icon: 'dashboard' },
@@ -103,6 +105,34 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                 {state.language === 'en' ? 'TH' : 'EN'}
               </span>
             </button>
+            {/* Login / User avatar — mobile */}
+            {user ? (
+              <div className="flex items-center gap-1.5 mr-0.5">
+                <div
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0"
+                  style={{ background: 'var(--accent-gradient)' }}
+                >
+                  {user.email?.charAt(0).toUpperCase() || '?'}
+                </div>
+                <div className="flex flex-col items-start max-w-[80px]">
+                  <p className="text-[9px] font-medium text-primary leading-tight truncate w-full">{user.email}</p>
+                  <p className="text-[7px] text-green-500/80 leading-tight">● Sync</p>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowLogin(true)}
+                className="w-10 h-10 rounded-xl hover:bg-card-hover/50 hover:scale-110 active:scale-90 transition-all duration-200 flex items-center justify-center"
+                style={{ color: 'var(--accent-from)' }}
+                aria-label={t('auth.login')}
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                  <polyline points="10 17 15 12 10 7" />
+                  <line x1="15" y1="12" x2="3" y2="12" />
+                </svg>
+              </button>
+            )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-10 h-10 rounded-xl hover:bg-card-hover/50 transition-all duration-300 flex items-center justify-center relative"
@@ -157,12 +187,40 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
               </Link>
             ))}
           </div>
+          {/* Mobile logout — only when logged in */}
+          {user && (
+            <div
+              className={`pt-1.5 pb-1 ${
+                mobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+              }`}
+              style={{ transition: 'all 0.3s ease-out', transitionDelay: mobileMenuOpen ? `${NAV_ITEMS.length * 60 + 30}ms` : '0ms' }}
+            >
+              <button
+                onClick={() => { logout(); setMobileMenuOpen(false); }}
+                className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 w-full hover:bg-red-500/5 active:scale-[0.97]"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'color-mix(in srgb, var(--text-muted) 80%, red)' }}>
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+                <span className="text-sm font-medium" style={{ color: 'color-mix(in srgb, var(--text-muted) 80%, red)' }}>
+                  {t('auth.logout')}
+                </span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Desktop sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-64 flex-col bg-white/70 dark:[background:color-mix(in_srgb,var(--bg-secondary)_80%,transparent)] backdrop-blur-md border-r border-slate-200 dark:[border-color:var(--border-color)] z-50">
-        <div className="p-6 border-b border-slate-200 dark:[border-color:var(--border-color)]">
+      {/* Desktop sidebar — parchment/ink aesthetic */}
+      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-64 flex-col backdrop-blur-md border-r z-50"
+        style={{
+          background: 'var(--bg-sidebar)',
+          borderRight: '1px solid var(--border-color)',
+        }}
+      >
+        <div className="p-6 border-b" style={{ borderColor: 'var(--border-color)' }}>
           <Link to="/" className="flex items-start gap-2.5 group">
             <span className="font-bold gradient-text text-4xl leading-none shrink-0 mt-1 group-hover:tracking-[0.08em] transition-all duration-300 ease-out">上山</span>
             <div>
@@ -192,25 +250,103 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
           ))}
         </nav>
 
-        <div className="p-4 border-t border-slate-200 dark:[border-color:var(--border-color)] space-y-2">
-          <div className="glass-card p-3 space-y-2.5">
-            <p className="text-[10px] font-semibold tracking-wider uppercase text-muted text-center">{t('sidebar.interface')}</p>
-            <div className="flex items-center gap-2.5">
-              <div className="flex-1 min-w-0">
-                <ThemeToggle />
-              </div>
-              <div className="flex-1 min-w-0">
-                <LanguageToggle />
+        <div className="p-3 pt-2.5 border-t" style={{ borderColor: 'var(--border-color)' }}>
+          <div
+            className="rounded-xl overflow-hidden transition-all duration-300"
+            style={{
+              background: 'color-mix(in srgb, var(--bg-card) 70%, transparent)',
+              border: '1px solid var(--border-color)',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+            }}
+          >
+            {/* Top row: login (left) + theme/lang icons (right) */}
+            <div className="px-3 pt-2.5 pb-2">
+              {user ? (
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-white text-[9px] font-bold shrink-0"
+                      style={{ background: 'var(--accent-gradient)' }}
+                    >
+                      {user.email?.charAt(0).toUpperCase() || '?'}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-medium text-primary truncate">{user.email}</p>
+                      <p className="text-[7px] text-green-500/80">● Sync</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={logout}
+                      className="text-[9px] font-medium transition-all duration-200 px-2 py-1 rounded-md hover:bg-red-500/10 active:scale-95"
+                      style={{ color: 'color-mix(in srgb, var(--text-muted) 80%, red)' }}
+                    >
+                      {t('auth.logout')}
+                    </button>
+                    <div className="flex items-center gap-0.5 ml-1">
+                      <div className="relative flex items-center justify-center w-7 h-7 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all duration-200 cursor-pointer"
+                        onClick={() => setTheme(state.theme === 'dark' ? 'light' : 'dark')}
+                        title={state.theme === 'dark' ? t('theme.lightMode') : t('theme.darkMode')}
+                      >
+                        <svg key={state.theme} className="w-3.5 h-3.5" style={{ color: 'var(--text-muted)', animation: 'iconSpinIn 0.35s ease-out', transformOrigin: 'center' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                          {state.theme === 'dark' ? (
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                          ) : (
+                            <><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></>
+                          )}
+                        </svg>
+                      </div>
+                      <button onClick={() => setLanguage(state.language === 'en' ? 'th' : 'en')} className="relative flex items-center justify-center w-7 h-7 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all duration-200 font-bold text-[11px]" style={{ color: 'var(--accent-from)' }} title={state.language === 'en' ? 'TH' : 'EN'}>
+                        <span key={state.language} style={{ display: 'inline-block', animation: 'iconSpinIn 0.35s ease-out' }}>{state.language === 'en' ? 'TH' : 'EN'}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between gap-2">
+                  <button onClick={() => setShowLogin(true)} className="group flex-1 flex items-center gap-2.5 px-3 py-[6px] rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.97]" style={{ background: 'color-mix(in srgb, var(--bg-card-hover) 50%, transparent)', border: '1px solid var(--border-color)', boxShadow: '0 1px 2px rgba(0,0,0,0.03)' }}>
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[9px] transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg shrink-0" style={{ background: 'var(--accent-gradient)', boxShadow: '0 0 8px var(--accent-glow)' }}><Icon name="user" /></div>
+                    <span className="flex-1 text-[11px] font-semibold text-left" style={{ color: 'var(--text-primary)' }}>{t('auth.login')}</span>
+                    <svg className="w-3.5 h-3.5 transition-all duration-300 group-hover:translate-x-0.5" style={{ color: 'var(--text-muted)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+                  </button>
+                  <div className="flex items-center gap-0.5">
+                    <div className="relative flex items-center justify-center w-7 h-7 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all duration-200 cursor-pointer"
+                      onClick={() => setTheme(state.theme === 'dark' ? 'light' : 'dark')}
+                      title={state.theme === 'dark' ? t('theme.lightMode') : t('theme.darkMode')}
+                    >
+                      <svg key={state.theme} className="w-3.5 h-3.5" style={{ color: 'var(--text-muted)', animation: 'iconSpinIn 0.35s ease-out', transformOrigin: 'center' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        {state.theme === 'dark' ? (
+                          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        ) : (
+                          <><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></>
+                        )}
+                      </svg>
+                    </div>
+                    <button onClick={() => setLanguage(state.language === 'en' ? 'th' : 'en')} className="relative flex items-center justify-center w-7 h-7 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all duration-200 font-bold text-[11px]" style={{ color: 'var(--accent-from)' }} title={state.language === 'en' ? 'TH' : 'EN'}>
+                      <span key={state.language} style={{ display: 'inline-block', animation: 'iconSpinIn 0.35s ease-out' }}>{state.language === 'en' ? 'TH' : 'EN'}</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Decorative divider */}
+            <div className="mx-3" style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--border-color) 20%, var(--border-color) 80%, transparent)' }} />
+
+            {/* Encouragement — 3 lines */}
+            <div className="px-3 pb-3 pt-2.5">
+              <div className="flex flex-col items-center justify-center gap-0.5 text-center">
+                <span className="text-[12px] text-muted/50 tracking-wide">{t('sidebar.studyDaily')}</span>
+                <span className="text-[15px] font-bold gradient-text leading-tight">{t('sidebar.encouragement')}</span>
+                <span className="text-[11px] text-muted/50">{t('sidebar.keepGoing')}</span>
               </div>
             </div>
           </div>
-          <div className="glass-card p-4 text-center">
-            <p className="text-xs text-muted mb-1">{t('sidebar.studyDaily')}</p>
-            <p className="text-lg font-bold gradient-text">{t('sidebar.encouragement')}</p>
-            <p className="text-[10px] text-muted mt-1">{t('sidebar.keepGoing')}</p>
-          </div>
         </div>
       </aside>
+
+      {/* Login modal */}
+      {showLogin && <Login onClose={() => setShowLogin(false)} />}
     </>
   );
 }

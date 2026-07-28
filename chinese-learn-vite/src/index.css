@@ -17,10 +17,11 @@
     --accent-to: #e11d48;
     --accent-gradient: linear-gradient(135deg, #f97316, #e11d48);
     --accent-glow: rgba(249, 115, 22, 0.15);
+    --bg-sidebar: color-mix(in srgb, white 70%, transparent);
   }
 
   .dark {
-    /* 🌙 Dark Mode — Warm Ember */
+    /* 🌙 Dark Mode — Warm Ember / Ink Stone */
     --bg-primary: #141210;
     --bg-secondary: #1c1917;
     --bg-card: #24211d;
@@ -33,6 +34,7 @@
     --accent-to: #d97706;
     --accent-gradient: linear-gradient(135deg, #f97316, #d97706);
     --accent-glow: rgba(249, 115, 22, 0.2);
+    --bg-sidebar: linear-gradient(180deg, #1c1917 0%, #151310 100%);
   }
 
   * {

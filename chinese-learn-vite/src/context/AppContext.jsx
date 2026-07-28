@@ -128,8 +128,8 @@ export function AppProvider({ children }) {
 
   const isFirstRender = useRef(true);
 
+  // Save to localStorage on every state change (skip initial hydration)
   useEffect(() => {
-    // Skip saving on first render (hydration)
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
