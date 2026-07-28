@@ -18,7 +18,7 @@ const initialState = {
   learningHistory: {},
   wordStatuses: {},
   lastStudyDate: null,
-  theme: typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark',
+  theme: 'light',
   language: 'en',
 };
 

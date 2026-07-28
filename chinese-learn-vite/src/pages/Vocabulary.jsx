@@ -440,12 +440,13 @@ export default function Vocabulary() {
 
       {popupWord && createPortal(
         <>
-          <div className="fixed bg-black/40 backdrop-blur-lg" style={{top: '-100px', left: '-100px', right: '-100px', bottom: '-100px', zIndex: 100, willChange: 'transform'}} onClick={() => setPopupWord(null)} />
+          <div className="fixed bg-black/40 backdrop-blur-lg popup-overlay-enter" style={{top: '-100px', left: '-100px', right: '-100px', bottom: '-100px', zIndex: 100, willChange: 'transform'}} onClick={() => setPopupWord(null)} />
           <div
             className="fixed inset-0 z-[110] flex items-center justify-center p-4 pointer-events-none"
           >
           <div
-            className="relative w-full max-w-2xl max-h-[90vh] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto"
+            key={popupWord.id}
+            className="relative w-full max-w-2xl max-h-[90vh] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
             style={{
               background: 'linear-gradient(160deg, color-mix(in srgb, var(--bg-card) 95%, var(--accent-from)), var(--bg-primary) 80%)',
               boxShadow: '0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px var(--border-color), inset 0 1px 0 rgba(255,255,255,0.06)',
