@@ -7,7 +7,7 @@ import Login from '../pages/Login';
 import useTranslation from '../hooks/useTranslation';
 
 const SYNC_STYLES = {
-  idle:    { dot: 'text-slate-400',         label: 'auth.syncIdle',    pulse: false },
+  idle:    { dot: 'text-green-500',         label: 'auth.syncIdle',    pulse: false },
   saving:  { dot: 'text-amber-400',         label: 'auth.syncSaving',  pulse: true  },
   saved:   { dot: 'text-green-500',         label: 'auth.syncSaved',   pulse: false },
   offline: { dot: 'text-slate-500',         label: 'auth.syncOffline', pulse: false },
@@ -16,9 +16,11 @@ const SYNC_STYLES = {
 
 // Hex colors used by the avatar status dot + popover indicator
 const SYNC_DOT_COLORS = {
-  idle:    '#a89488',  // warm slate (matches --text-muted in light mode)
+  idle:    '#22c55e',  // green-500 — "Ready / Synced" reads as healthy
   saving:  '#fbbf24',  // amber-400
-  saved:   '#22c55e',  // green-500
+  saved:   '#22c55e',  // green-500 — same as idle, so the 2.5s post-save flash
+                        //   becomes a subtle "Saved" label change rather than a
+                        //   colour jump that distracts the user
   offline: '#6b6358',  // darker slate
   error:   '#ef4444',  // red-500
 };
@@ -185,27 +187,35 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
       />
 
       {/* Mobile header */}
-      <div ref={userMenuMobileRef} className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 dark:[background:color-mix(in_srgb,var(--bg-secondary)_95%,transparent)] backdrop-blur-md border-b border-slate-200 dark:[border-color:var(--border-color)] px-4 py-3 relative">
-        <div className="flex items-center justify-between">
+      <div ref={userMenuMobileRef} className="lg:hidden sticky top-0 z-50 backdrop-blur-md" style={{ background: 'var(--bg-sidebar)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="flex items-center justify-between gap-2 px-4 py-2.5">
+          {/* Brand — original logo + name + subtitle */}
           <Link to="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
             <Icon name="messageDetail" className="text-accent text-2xl" />
             <span className="font-bold text-xl gradient-text">{t('app.name')}</span>
             <span className="text-[10px] text-secondary ml-auto">{t('app.brandSub')}</span>
           </Link>
-          <div className="flex items-center gap-1">
+
+          {/* Right cluster: glass pill grouping all actions */}
+          <div
+            className="flex items-center p-1 gap-0.5 rounded-full"
+            style={{
+              background: 'color-mix(in srgb, var(--bg-card) 70%, transparent)',
+              border: '1px solid color-mix(in srgb, var(--border-color) 55%, transparent)',
+              boxShadow: '0 1px 6px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.06)',
+              backdropFilter: 'blur(8px)',
+            }}
+          >
             {/* Theme icon button */}
             <button
               onClick={() => setTheme(state.theme === 'dark' ? 'light' : 'dark')}
-              className="w-8 h-8 rounded-lg hover:bg-card-hover/50 hover:scale-110 active:scale-90 transition-all duration-200 flex items-center justify-center"
+              className="w-8 h-8 rounded-full hover:bg-black/[0.06] dark:hover:bg-white/[0.08] active:scale-90 transition-all duration-200 flex items-center justify-center text-secondary"
               aria-label={state.theme === 'dark' ? t('theme.lightMode') : t('theme.darkMode')}
             >
               <svg
                 key={state.theme}
-                className="w-4 h-4"
-                style={{
-                  animation: 'iconSpinIn 0.35s ease-out',
-                  transformOrigin: 'center',
-                }}
+                className="w-3.5 h-3.5"
+                style={{ animation: 'iconSpinIn 0.35s ease-out', transformOrigin: 'center' }}
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -232,20 +242,20 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
             {/* Language icon button */}
             <button
               onClick={() => setLanguage(state.language === 'en' ? 'th' : 'en')}
-              className="w-10 h-10 rounded-xl hover:bg-card-hover/50 hover:scale-110 active:scale-90 transition-all duration-200 flex items-center justify-center font-bold text-sm"
+              className="w-8 h-8 rounded-full hover:bg-black/[0.06] dark:hover:bg-white/[0.08] active:scale-90 transition-all duration-200 flex items-center justify-center font-bold text-[10px]"
               style={{ color: 'var(--accent-from)' }}
               aria-label="Toggle language"
             >
               <span
                 key={state.language}
-                style={{
-                  display: 'inline-block',
-                  animation: 'iconSpinIn 0.35s ease-out',
-                }}
+                style={{ display: 'inline-block', animation: 'iconSpinIn 0.35s ease-out' }}
               >
                 {state.language === 'en' ? 'TH' : 'EN'}
               </span>
             </button>
+
+            {/* Subtle divider between settings and user actions */}
+            <div className="w-px h-4 mx-0.5 opacity-50" style={{ background: 'var(--border-color)' }} aria-hidden />
             {/* Login / User avatar — mobile */}
             {user ? (
               <button
@@ -256,20 +266,20 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                 aria-haspopup="menu"
               >
                 <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[11px] font-bold shrink-0 transition-all duration-200 group-hover:scale-110"
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0 transition-all duration-200 group-hover:scale-110"
                   style={{
                     background: 'var(--accent-gradient)',
-                    boxShadow: '0 0 0 1.5px var(--bg-primary), 0 2px 8px var(--accent-glow)',
+                    boxShadow: '0 0 0 1.5px color-mix(in srgb, var(--bg-card) 80%, transparent), 0 2px 6px var(--accent-glow)',
                   }}
                 >
                   {userInitial}
                 </div>
                 {/* Status dot in corner */}
                 <span
-                  className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 ${syncStyle.pulse ? 'status-dot-pulse' : ''}`}
+                  className={`absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full border ${syncStyle.pulse ? 'status-dot-pulse' : ''}`}
                   style={{
                     backgroundColor: syncDotColor,
-                    borderColor: 'var(--bg-primary)',
+                    borderColor: 'var(--bg-card)',
                   }}
                   title={syncLabel}
                 />
@@ -277,11 +287,11 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
             ) : (
               <button
                 onClick={() => setShowLogin(true)}
-                className="w-10 h-10 rounded-xl hover:bg-card-hover/50 hover:scale-110 active:scale-90 transition-all duration-200 flex items-center justify-center"
+                className="w-8 h-8 rounded-full hover:bg-black/[0.06] dark:hover:bg-white/[0.08] active:scale-90 transition-all duration-200 flex items-center justify-center"
                 style={{ color: 'var(--accent-from)' }}
                 aria-label={t('auth.login')}
               >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
                   <polyline points="10 17 15 12 10 7" />
                   <line x1="15" y1="12" x2="3" y2="12" />
@@ -290,21 +300,21 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
             )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 rounded-xl hover:bg-card-hover/50 transition-all duration-300 flex items-center justify-center relative"
+              className="w-8 h-8 rounded-full hover:bg-black/[0.06] dark:hover:bg-white/[0.08] active:scale-90 transition-all duration-300 flex items-center justify-center relative text-secondary"
               aria-label={t('nav.toggleMenu')}
             >
               <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-out ${
                 mobileMenuOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
               }`}>
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </div>
               <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ease-out ${
                 mobileMenuOpen ? 'scale-100 opacity-100 rotate-0' : 'scale-0 opacity-0 rotate-90'
               }`}>
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
             </button>

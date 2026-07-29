@@ -15,13 +15,13 @@ function estimateStrokeCount(char) {
   return 5;
 }
 
-const CHAR_SIZE = 80; // Each character gets 80x80px
+const CHAR_SIZE = 80; // Each multi-char character defaults to 80x80px (override via charSize prop)
 
 function getCSSVar(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
-export default function StrokeOrder({ character, size = 120 }) {
+export default function StrokeOrder({ character, size = 120, charSize = CHAR_SIZE }) {
   const { t } = useTranslation();
   const containerRef = useRef(null);
   const [writers, setWriters] = useState([]);
@@ -31,9 +31,9 @@ export default function StrokeOrder({ character, size = 120 }) {
   const chars = character ? character.split('') : [];
   const isMultiChar = chars.length > 1;
 
-  // Total width for multi-char: each char gets CHAR_SIZE + gap
+  // Total width for multi-char: each char gets charSize + gap
   const totalWidth = isMultiChar
-    ? chars.length * CHAR_SIZE + (chars.length - 1) * 8
+    ? chars.length * charSize + (chars.length - 1) * 8
     : size;
 
   useEffect(() => {
@@ -54,8 +54,8 @@ export default function StrokeOrder({ character, size = 120 }) {
       writersArr = chars.map((ch, i) => {
         const wrapper = document.createElement('div');
         wrapper.className = 'inline-flex flex-col items-center';
-        wrapper.style.width = `${isMultiChar ? CHAR_SIZE : size}px`;
-        wrapper.style.height = `${isMultiChar ? CHAR_SIZE + 20 : size}px`;
+        wrapper.style.width = `${isMultiChar ? charSize : size}px`;
+        wrapper.style.height = `${isMultiChar ? charSize + 20 : size}px`;
 
         if (isMultiChar) {
           wrapper.style.marginRight = i < chars.length - 1 ? '8px' : '0';
@@ -71,8 +71,8 @@ export default function StrokeOrder({ character, size = 120 }) {
         const outlineColor = getCSSVar('--border-color') || '#334155';
 
         const writer = HanziWriter.create(wrapper, ch, {
-          width: isMultiChar ? CHAR_SIZE : size,
-          height: isMultiChar ? CHAR_SIZE : size,
+          width: isMultiChar ? charSize : size,
+          height: isMultiChar ? charSize : size,
           padding: 5,
           strokeColor,
           radicalColor,

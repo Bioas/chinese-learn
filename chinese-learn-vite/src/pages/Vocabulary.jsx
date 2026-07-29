@@ -63,7 +63,17 @@ export default function Vocabulary() {
   const [showSaved, setShowSaved] = useState(false);
   const [popupWord, setPopupWord] = useState(null);
   const [page, setPage] = useState(1);
-  const ITEMS_PER_PAGE = 60;
+  // Responsive pagination: 20 cards on mobile (< 768px), 60 cards on desktop
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    const handler = (e) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+  const ITEMS_PER_PAGE = isMobile ? 20 : 60;
 
   useEffect(() => {
     if (!popupWord) return;
@@ -77,7 +87,7 @@ export default function Vocabulary() {
     };
   }, [popupWord]);
 
-  useEffect(() => { setPage(1); }, [selectedSubcategories, selectedStatuses, showSaved]);
+  useEffect(() => { setPage(1); }, [selectedSubcategories, selectedStatuses, showSaved, isMobile]);
 
   const currentCategory = useMemo(
     () => CATEGORIES.find(c => c.id === selectedCategory),
@@ -108,14 +118,25 @@ export default function Vocabulary() {
       });
     }
 
+    // Deduplicate by Chinese text — the vocabulary has the same `chinese`
+    // word across multiple HSK levels with different IDs (e.g. 可能 as hsk2-054,
+    // hsk3-109, hsk4-069). Without this, the grid would show the same card
+    // multiple times for one logical word.
+    const seenVocabChinese = new Set();
+    words = words.filter(w => {
+      if (seenVocabChinese.has(w.chinese)) return false;
+      seenVocabChinese.add(w.chinese);
+      return true;
+    });
+
     return words;
   }, [showSaved, selectedSubcategories, selectedStatuses, currentCategory, state.wordStatuses, state.savedWordIds]);
 
-  const totalPages = useMemo(() => Math.max(1, Math.ceil(filteredWords.length / ITEMS_PER_PAGE)), [filteredWords]);
+  const totalPages = useMemo(() => Math.max(1, Math.ceil(filteredWords.length / ITEMS_PER_PAGE)), [filteredWords, ITEMS_PER_PAGE]);
   const paginatedWords = useMemo(() => {
     const start = (page - 1) * ITEMS_PER_PAGE;
     return filteredWords.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredWords, page]);
+  }, [filteredWords, page, ITEMS_PER_PAGE]);
 
   const toggleSubcategory = (subId) => {
     setSelectedSubcategories(prev =>
@@ -297,11 +318,6 @@ export default function Vocabulary() {
                       <Icon name={getSubcategoryIcon(word.subcategory)} className="text-[9px] mr-1" />
                       {word.subcategory}
                     </span>
-                    <div className="flex items-center gap-1">
-                      {s === 'mastered' && <span className="w-1.5 h-1.5 rounded-full bg-green-400" />}
-                      {s === 'learning' && <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />}
-                      {s === 'reviewing' && <span className="w-1.5 h-1.5 rounded-full bg-red-400" />}
-                    </div>
                   </div>
 
                   {/* character */}
@@ -330,7 +346,7 @@ export default function Vocabulary() {
                       }}
                       className={`flex-1 text-[10px] py-1.5 rounded-md font-medium transition-all duration-200 ${
                         s === 'mastered'
-                          ? 'bg-green-500/20 text-green-300 ring-1 ring-green-500/30 shadow-sm shadow-green-500/10'
+                          ? 'bg-green-100 text-green-800 ring-1 ring-green-400 shadow-sm shadow-green-500/20 dark:bg-green-500/20 dark:text-green-300 dark:ring-green-500/30 dark:shadow-green-500/10'
                           : 'bg-white/[0.03] text-muted hover:bg-green-500/10 hover:text-green-400 hover:ring-1 hover:ring-green-500/20'
                       }`}
                     >
@@ -343,7 +359,7 @@ export default function Vocabulary() {
                       }}
                       className={`flex-1 text-[10px] py-1.5 rounded-md font-medium transition-all duration-200 ${
                         s === 'learning'
-                          ? 'bg-yellow-500/20 text-yellow-300 ring-1 ring-yellow-500/30 shadow-sm shadow-yellow-500/10'
+                          ? 'bg-yellow-100 text-yellow-800 ring-1 ring-yellow-400 shadow-sm shadow-yellow-500/20 dark:bg-yellow-500/20 dark:text-yellow-300 dark:ring-yellow-500/30 dark:shadow-yellow-500/10'
                           : 'bg-white/[0.03] text-muted hover:bg-yellow-500/10 hover:text-yellow-400 hover:ring-1 hover:ring-yellow-500/20'
                       }`}
                     >
@@ -356,7 +372,7 @@ export default function Vocabulary() {
                       }}
                       className={`flex-1 text-[10px] py-1.5 rounded-md font-medium transition-all duration-200 ${
                         s === 'reviewing'
-                          ? 'bg-red-500/20 text-red-300 ring-1 ring-red-500/30 shadow-sm shadow-red-500/10'
+                          ? 'bg-red-100 text-red-800 ring-1 ring-red-400 shadow-sm shadow-red-500/20 dark:bg-red-500/20 dark:text-red-300 dark:ring-red-500/30 dark:shadow-red-500/10'
                           : 'bg-white/[0.03] text-muted hover:bg-red-500/10 hover:text-red-400 hover:ring-1 hover:ring-red-500/20'
                       }`}
                     >
@@ -448,7 +464,7 @@ export default function Vocabulary() {
             </div>
 
             {/* Mobile: compact slider */}
-            <div className="flex sm:hidden items-center gap-2 px-3 py-2.5">
+            <div className="flex sm:hidden items-center justify-center gap-2.5 px-3 py-2.5">
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={!canGoPrev}
@@ -458,7 +474,7 @@ export default function Vocabulary() {
                 <Icon name="chevronLeft" className="text-lg" />
               </button>
 
-              <div className="flex-1 flex flex-col items-center gap-1.5 min-w-0">
+              <div className="flex flex-col items-center gap-1.5 min-w-0">
                 <div className="flex items-baseline gap-1">
                   <span className="text-base font-bold tabular-nums" style={{ color: 'var(--accent-from)' }}>{page}</span>
                   <span className="text-xs text-muted/60 mx-0.5">/</span>
@@ -501,7 +517,7 @@ export default function Vocabulary() {
           >
           <div
             key={popupWord.id}
-            className="relative w-full max-w-2xl max-h-[90vh] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
+            className="relative w-full max-w-2xl max-h-[min(85vh,720px)] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
             style={{
               background: 'linear-gradient(160deg, color-mix(in srgb, var(--bg-card) 95%, var(--accent-from)), var(--bg-primary) 80%)',
               boxShadow: '0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px var(--border-color), inset 0 1px 0 rgba(255,255,255,0.06)',
@@ -520,14 +536,14 @@ export default function Vocabulary() {
               <Icon name="xmark" className="text-lg" />
             </button>
 
-            <div className="flex-1 min-h-0 overflow-y-auto">
+            <div className="flex-1 min-h-0 overflow-y-auto scroll-smooth">
             {/* hero: character centered */}
             <div className="px-8 pt-10 pb-6 text-center">
               <div className="relative inline-flex items-center justify-center">
                 <span
-                  className="font-bold tracking-wide"
+                  className="font-bold tracking-wide whitespace-nowrap"
                   style={{
-                    fontSize: '4rem',
+                    fontSize: 'clamp(2rem, 8vw, 4rem)',
                     lineHeight: 1.1,
                     color: 'var(--text-primary)',
                     textShadow: '0 0 50px var(--accent-glow)',
@@ -540,11 +556,11 @@ export default function Vocabulary() {
                 </div>
               </div>
               {state.showPinyin && (
-                <p className="text-sm text-secondary/80 italic tracking-wide mt-2">
+                <p className="text-[11px] sm:text-sm text-secondary/80 italic tracking-wide mt-2 whitespace-nowrap">
                   {popupWord.pinyin}
                 </p>
               )}
-              <p className="text-base text-primary/90 mt-2 font-medium">
+              <p className="text-xs sm:text-base text-primary/90 mt-2 font-medium whitespace-nowrap">
                 {meaning(popupWord)}
               </p>
               <div className="flex items-center justify-center gap-2 mt-3">
@@ -556,7 +572,7 @@ export default function Vocabulary() {
 
             {/* body: stroke order + examples */}
             <div className="p-6 sm:p-8">
-              <div className="flex flex-col lg:flex-row gap-8">
+              <div className={`flex gap-8 ${popupWord.chinese.length > 4 ? 'flex-col' : 'flex-col lg:flex-row'}`}>
                 <div className="flex-shrink-0 flex flex-col items-center">
                   <div
                     className="rounded-xl p-4"
@@ -565,7 +581,7 @@ export default function Vocabulary() {
                       border: '1px solid var(--border-color)',
                     }}
                   >
-                    <StrokeOrder character={popupWord.chinese} size={140} />
+                    <StrokeOrder character={popupWord.chinese} size={96} charSize={56} />
                   </div>
                   <p className="text-[11px] text-muted mt-2 flex items-center gap-1">
                     <Icon name="arrow-pointer" className="text-xs" />
@@ -598,6 +614,12 @@ export default function Vocabulary() {
                             <p className="text-xs text-muted mt-1 leading-relaxed">{meaning(ex)}</p>
                           )}
                         </div>
+                        <SpeakButton
+                          text={ex.chinese}
+                          variant="icon"
+                          size="sm"
+                          className="mt-0.5 flex-shrink-0"
+                        />
                       </div>
                     </div>
                   ))}

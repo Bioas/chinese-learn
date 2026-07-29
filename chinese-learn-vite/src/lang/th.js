@@ -190,13 +190,17 @@ const th = {
   'wordmap.subtitle': 'สำรวจความเชื่อมโยงของคำศัพท์ผ่านตัวอักษรร่วม',
   'wordmap.searchPlaceholder': 'ค้นหาคำศัพท์เพื่อดูความเชื่อมโยง...',
   'wordmap.allCategories': 'ทุกหมวดหมู่',
-  'wordmap.wordCount': 'แสดง {shown} คำ (จาก {n} คำที่ตรงกัน)',
+  'wordmap.wordCount': 'แสดง {shown}/{n} คำ · หน้า {page}/{total}',
+  'wordmap.pagination.prev': 'ก่อนหน้า',
+  'wordmap.pagination.next': 'ถัดไป',
+  'wordmap.pagination.info': 'หน้า {page}/{total} · {n} คำต่อหน้า',
   'wordmap.noMatches': 'ไม่พบคำศัพท์ที่ตรงกับเงื่อนไข',
   'wordmap.adjustFilters': 'ลองปรับการค้นหาหรือหมวดหมู่ที่เลือก',
   'wordmap.shared': 'ร่วม',
   'wordmap.connectedBy': 'เชื่อมโยงผ่าน',
   'wordmap.words': 'คำ',
   'wordmap.save': 'บันทึก',
+  'wordmap.unsave': 'เลิกบันทึก',
   'wordmap.example': 'ตัวอย่างประโยค:',
 
   // Auth

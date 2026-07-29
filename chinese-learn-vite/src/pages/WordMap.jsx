@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useApp } from '../context/AppContext';
 import SpeakButton from '../components/SpeakButton';
@@ -29,6 +29,22 @@ export default function WordMap() {
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [popupWord, setPopupWord] = useState(null);
 
+  // Pagination state (50 cards per page, mirror Vocabulary page)
+  // Responsive pagination: 10 cards on mobile (< 768px), 50 cards on desktop
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    const handler = (e) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+  const [page, setPage] = useState(1);
+  const ITEMS_PER_PAGE = isMobile ? 10 : 50;
+  // Reset to page 1 when filter inputs or breakpoint change
+  useEffect(() => { setPage(1); }, [selectedCategory, selectedSubcategories, searchTerm, isMobile]);
+
   const currentCategory = useMemo(
     () => CATEGORIES.find(c => c.id === selectedCategory),
     [selectedCategory]
@@ -40,7 +56,32 @@ export default function WordMap() {
     selectedSubcategories,
   });
 
+  // Pagination computed values
+  const totalPages = useMemo(() => Math.max(1, Math.ceil(clusters.length / ITEMS_PER_PAGE)), [clusters, ITEMS_PER_PAGE]);
+  const paginatedClusters = useMemo(() => {
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    return clusters.slice(start, start + ITEMS_PER_PAGE);
+  }, [clusters, page, ITEMS_PER_PAGE]);
+
   const closePopup = useCallback(() => setPopupWord(null), []);
+
+  // Mobile filter horizontal-scroll tracking for edge fade hints
+  const filterScrollRef = useRef(null);
+  const [filterScrolled, setFilterScrolled] = useState({ left: false, right: false });
+  const updateFilterScroll = useCallback(() => {
+    const el = filterScrollRef.current;
+    if (!el) return;
+    setFilterScrolled({
+      left: el.scrollLeft > 8,
+      right: el.scrollLeft + el.clientWidth < el.scrollWidth - 8,
+    });
+  }, []);
+  useEffect(() => {
+    updateFilterScroll();
+    const handleResize = () => updateFilterScroll();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [updateFilterScroll]);
 
   // Escape to close popup
   React.useEffect(() => {
@@ -90,23 +131,43 @@ export default function WordMap() {
           )}
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mb-2">
-          <button
-            onClick={() => { setSelectedCategory('all'); setSelectedSubcategories([]); }}
-            className={`chip text-xs ${selectedCategory === 'all' && selectedSubcategories.length === 0 && !searchTerm ? 'active' : ''}`}
+        <div className="relative min-w-0 mb-2">
+          {/* Mobile: horizontal scroll with snap + fade hints / Desktop (md+): flex-wrap fallback so all 9 chips fit comfortably */}
+          <div
+            ref={filterScrollRef}
+            onScroll={updateFilterScroll}
+            className="flex gap-1.5 overflow-x-auto scrollbar-none snap-x snap-proximity md:flex-wrap md:overflow-visible"
           >
-            {t('wordmap.allCategories')}
-          </button>
-          {CATEGORIES.map(cat => (
             <button
-              key={cat.id}
-              onClick={() => { setSelectedCategory(cat.id); setSelectedSubcategories([]); }}
-              className={`chip text-xs ${selectedCategory === cat.id && selectedSubcategories.length === 0 ? 'active' : ''}`}
+              onClick={() => { setSelectedCategory('all'); setSelectedSubcategories([]); }}
+              className={`chip text-xs snap-start shrink-0 ${selectedCategory === 'all' && selectedSubcategories.length === 0 && !searchTerm ? 'active' : ''}`}
             >
-              <Icon name={cat.icon} className="text-[10px] mr-1" />
-              {state.language === 'th' ? cat.nameThai : cat.name}
+              {t('wordmap.allCategories')}
             </button>
-          ))}
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => { setSelectedCategory(cat.id); setSelectedSubcategories([]); }}
+                className={`chip text-xs snap-start shrink-0 ${selectedCategory === cat.id && selectedSubcategories.length === 0 ? 'active' : ''}`}
+              >
+                <Icon name={cat.icon} className="text-[10px] mr-1" />
+                {state.language === 'th' ? cat.nameThai : cat.name}
+              </button>
+            ))}
+          </div>
+          {/* Edge fade hints — only show mid-scroll on mobile to imply more content */}
+          <div
+            className={`absolute left-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-r from-[var(--bg-primary)] to-transparent transition-opacity duration-200 md:hidden ${
+              filterScrolled.left ? 'opacity-100' : 'opacity-0'
+            }`}
+            aria-hidden
+          />
+          <div
+            className={`absolute right-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-l from-[var(--bg-primary)] to-transparent transition-opacity duration-200 md:hidden ${
+              filterScrolled.right ? 'opacity-100' : 'opacity-0'
+            }`}
+            aria-hidden
+          />
         </div>
 
         {selectedCategory !== 'all' && currentCategory && (
@@ -128,7 +189,7 @@ export default function WordMap() {
 
         <div className="mt-3 text-[10px] text-muted tracking-wider text-right">
           {totalCount > 0
-            ? t('wordmap.wordCount', { n: totalCount, shown: clusters.length })
+            ? t('wordmap.wordCount', { n: totalCount, shown: paginatedClusters.length, page, total: totalPages })
             : t('wordmap.noMatches')}
         </div>
       </div>
@@ -142,104 +203,299 @@ export default function WordMap() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-fade-in relative z-10">
-          {clusters.map(({ word, clusters: wordClusters }) => {
+          {paginatedClusters.map(({ word, clusters: wordClusters }) => {
             const catColor = getCatColor(word.category);
             return (
-              <div
+              // Editorial card enriched — calm magazine layout + vocab-style accent stripe / subcategory eyebrow / prominent bookmark
+              <article
                 key={word.id}
-                className="glass-card glass-card-hover overflow-hidden flex flex-col group"
+                onClick={() => setPopupWord(word)}
+                className="relative rounded-xl flex flex-col group/card transition-all duration-300 overflow-hidden cursor-pointer"
+                style={{
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-color)',
+                  boxShadow: '0 1px 0 rgba(255,255,255,0.025) inset, 0 2px 10px rgba(0,0,0,0.025)',
+                }}
               >
-                {/* Colored stripe */}
-                <div className="h-0.5 w-full flex-shrink-0" style={{ background: `linear-gradient(90deg, ${catColor}, color-mix(in srgb, ${catColor} 40%, transparent))` }} />
+                {/* Top accent stripe — same pattern as Vocabulary card (h-0.5 + 90deg catColor → 40% mix) */}
+                <div
+                  className="h-0.5 w-full flex-shrink-0"
+                  style={{ background: `linear-gradient(90deg, ${catColor}, color-mix(in srgb, ${catColor} 40%, transparent))` }}
+                  aria-hidden
+                />
 
-                <div className="p-4 flex flex-col gap-4 flex-1">
-                  {/* Word header */}
-                  <div className="flex items-start justify-between">
-                    <button
-                      onClick={() => setPopupWord(word)}
-                      className="text-left group/word"
-                    >
-                      <span
-                        className="font-bold tracking-wide transition-all duration-200 group-hover/word:scale-105 inline-block"
-                        style={{ fontSize: '1.5rem', lineHeight: 1.2, color: 'var(--text-primary)' }}
-                      >
-                        {word.chinese}
-                      </span>
-                      {state.showPinyin && (
-                        <p className="text-xs text-secondary/70 italic mt-0.5">{word.pinyin}</p>
-                      )}
-                      <p className="text-sm text-primary/80 mt-0.5 font-medium">{meaning(word)}</p>
-                    </button>
+                {/* Top bar: subcategory eyebrow LEFT + Issue № + bookmark RIGHT */}
+                <div className="flex items-center justify-between px-5 pt-4">
+                  {/* Subcategory eyebrow — vocab-style identity (icon + caps tracked label in catColor) */}
+                  <span
+                    className="text-[9px] uppercase tracking-[0.2em] font-bold flex items-center gap-1.5"
+                    style={{ color: catColor }}
+                  >
+                    <Icon name={getSubcategoryIcon(word.subcategory)} className="text-[9px] opacity-80" />
+                    {word.subcategory}
+                  </span>
 
-                    {/* Save button */}
+                  <div className="flex items-center gap-1.5">
+                    {/* Bookmark — now matches Vocabulary card prominence: scale on hover, bg-tint when saved, hidden until group-hover on desktop */}
                     <button
-                      onClick={() => toggleSavedWord(word.id)}
-                      className={`shrink-0 w-7 h-7 flex items-center justify-center rounded-lg transition-all duration-200 hover:scale-110 ${
-                        state.savedWordIds.includes(word.id) ? 'opacity-100' : 'opacity-50 md:opacity-0 md:group-hover:opacity-100'
+                      onClick={(e) => { e.stopPropagation(); toggleSavedWord(word.id); }}
+                      className={`w-7 h-7 flex items-center justify-center rounded-lg transition-all duration-200 hover:scale-110 ${
+                        state.savedWordIds.includes(word.id) ? '' : 'opacity-60 md:opacity-0 md:group-hover/card:opacity-80'
                       }`}
                       style={{
-                        background: state.savedWordIds.includes(word.id) ? 'color-mix(in srgb, var(--accent-from) 15%, transparent)' : 'transparent',
+                        background: state.savedWordIds.includes(word.id) ? `color-mix(in srgb, ${catColor} 15%, transparent)` : 'transparent',
                       }}
+                      title={state.savedWordIds.includes(word.id) ? t('wordmap.unsave') : t('wordmap.save')}
+                      aria-label={state.savedWordIds.includes(word.id) ? t('wordmap.unsave') : t('wordmap.save')}
                     >
                       <Icon
                         name="bookmark"
-                        className="text-sm"
-                        style={{ color: state.savedWordIds.includes(word.id) ? 'var(--accent-from)' : 'var(--text-muted)' }}
+                        className="text-[14px] transition-all duration-200"
+                        style={{
+                          color: state.savedWordIds.includes(word.id) ? catColor : 'var(--text-muted)',
+                          fill: state.savedWordIds.includes(word.id) ? catColor : 'transparent',
+                        }}
                       />
                     </button>
                   </div>
+                </div>
 
-                  {/* Category badge */}
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] px-2 py-0.5 rounded-full font-medium" style={{ background: `color-mix(in srgb, ${catColor} 15%, transparent)`, color: catColor }}>
-                      <Icon name={getSubcategoryIcon(word.subcategory)} className="text-[8px] mr-1" />
-                      {word.hskLevel > 0 ? `HSK ${word.hskLevel}` : word.subcategory}
+                {/* Hero — character on whitespace, serif weight for editorial gravitas */}
+                <button
+                  onClick={() => setPopupWord(word)}
+                  className="block w-full px-5 pt-1 pb-2 group/word focus:outline-none"
+                >
+                  <span
+                    className="block text-center font-bold transition-colors duration-300 group-hover/word:text-[var(--accent-from)]"
+                    style={{
+                      fontSize: '3.25rem',
+                      lineHeight: 1.05,
+                      color: 'var(--text-primary)',
+                      fontFamily: "'Noto Sans SC', serif",
+                    }}
+                  >
+                    {word.chinese}
+                  </span>
+                </button>
+
+                {/* Bilingual metadata — editorial label-prefix pattern */}
+                <div className="px-5 pt-3 pb-5 space-y-1.5">
+                  {state.showPinyin && (
+                    <p className="flex items-baseline gap-2.5">
+                      <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-muted/70 shrink-0" style={{ minWidth: '54px' }}>
+                        Pinyin
+                      </span>
+                      <span className="text-[12px] italic tracking-[0.04em] text-secondary/85 leading-snug">
+                        {word.pinyin}
+                      </span>
+                    </p>
+                  )}
+                  <p className="flex items-baseline gap-2.5">
+                    <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-muted/70 shrink-0" style={{ minWidth: '54px' }}>
+                      {state.language === 'th' ? 'แปลว่า' : 'Meaning'}
                     </span>
-                  </div>
+                    <span className="text-[12.5px] text-primary/90 leading-snug">
+                      {meaning(word)}
+                    </span>
+                  </p>
+                </div>
 
-                  {/* Connected words grouped by shared character */}
-                  {wordClusters.length > 0 ? (
-                    <div className="space-y-3 flex-1">
-                      <p className="text-[10px] font-semibold tracking-wider uppercase text-muted">
-                        {t('wordmap.connectedBy')}
-                      </p>
+                {/* Hairline */}
+                <div className="mx-5 border-t" style={{ borderColor: 'var(--border-color)' }} />
+
+                {/* Connections — editorial column with leader lines */}
+                {wordClusters.length > 0 ? (
+                  <div className="px-5 pt-4 pb-5 flex-1">
+                    <p className="text-[9px] uppercase tracking-[0.2em] font-semibold text-muted/70 mb-3">
+                      {t('wordmap.connectedBy')}
+                    </p>
+                    <div className="space-y-2">
                       {wordClusters.map(({ char, related }) => (
-                        <div key={char}>
-                          <p className="text-[11px] text-secondary mb-1.5 flex items-center gap-1.5">
-                            <span className="font-bold text-sm" style={{ fontFamily: "'Noto Sans SC', serif", color: 'var(--text-primary)' }}>{char}</span>
-                            <span className="text-muted">·</span>
-                            <span className="text-muted">{related.length} {t('wordmap.words')}</span>
-                          </p>
-                          <div className="flex flex-wrap gap-1">
-                            {related.slice(0, 3).map(v => (
-                              <button
-                                key={v.id}
-                                onClick={() => setPopupWord(v)}
-                                className="chip text-[11px] flex items-center gap-1 py-1 px-2"
-                                title={`${v.chinese} - ${meaning(v)}`}
-                              >
-                                <span className="font-medium">{v.chinese}</span>
-                                <span className="text-[9px] text-muted">({v.pinyin})</span>
-                              </button>
+                        <div key={char} className="flex items-baseline gap-2">
+                          {/* Shared char — serif, accent colour */}
+                          <span
+                            className="font-bold leading-tight"
+                            style={{
+                              color: catColor,
+                              fontFamily: "'Noto Sans SC', serif",
+                              fontSize: '1.15rem',
+                            }}
+                          >
+                            {char}
+                          </span>
+                          <span className="text-[10px] text-muted/60 font-mono tabular-nums">
+                            ·{related.length}
+                          </span>
+                          {/* Hairline leader (TOC pattern) */}
+                          <span
+                            className="grow self-center mx-1"
+                            style={{
+                              borderBottom: '1px dotted var(--border-color)',
+                              height: '1px',
+                            }}
+                            aria-hidden
+                          />
+                          {/* Inline list of related words */}
+                          <span className="text-[11.5px] text-primary/85 leading-snug">
+                            {related.slice(0, 3).map((v, i) => (
+                              <React.Fragment key={v.id}>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); setPopupWord(v); }}
+                                  className="hover:text-[var(--accent-from)] transition-colors duration-150 focus:outline-none"
+                                  title={`${v.chinese} — ${meaning(v)}`}
+                                >
+                                  {v.chinese}
+                                </button>
+                                {i < Math.min(2, related.length - 1) && (
+                                  <span className="text-muted/40 mx-1.5">·</span>
+                                )}
+                              </React.Fragment>
                             ))}
                             {related.length > 3 && (
-                              <span className="text-[10px] text-muted self-center">+{related.length - 3} more</span>
+                              <span className="text-muted/60 text-[10px] ml-1.5 font-mono">
+                                +{related.length - 3}
+                              </span>
                             )}
-                          </div>
+                          </span>
                         </div>
                       ))}
                     </div>
-                  ) : (
-                    <div className="flex-1 flex items-center justify-center">
-                      <p className="text-[11px] text-muted/50 italic">{t('wordmap.noConnections')}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
+                  </div>
+                ) : (
+                  <div className="flex-1 flex items-center justify-center px-5 py-6">
+                    <p className="text-[11px] text-muted/50 italic">{t('wordmap.noConnections')}</p>
+                  </div>
+                )}
+
+              </article>
             );
           })}
         </div>
       )}
+
+      {/* Pagination UI (mirror Vocabulary.jsx pattern, 50 cards per page) */}
+      {totalPages > 1 && (() => {
+        const getPageNumbers = () => {
+          if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
+          const pages = [1];
+          let start = Math.max(2, page - 2);
+          let end = Math.min(totalPages - 1, page + 2);
+          if (end - start < 4) {
+            if (page < totalPages / 2) end = Math.min(totalPages - 1, start + 4);
+            else start = Math.max(2, end - 4);
+          }
+          if (start > 2) pages.push('...');
+          for (let i = start; i <= end; i++) pages.push(i);
+          if (end < totalPages - 1) pages.push('...');
+          pages.push(totalPages);
+          return pages;
+        };
+        const pageNumbers = getPageNumbers();
+        const canGoPrev = page > 1;
+        const canGoNext = page < totalPages;
+        return (
+          <div className="glass-card animate-fade-in mt-6 relative z-10 overflow-hidden">
+            {/* Desktop: full pagination */}
+            <div className="hidden sm:flex items-center justify-between px-3 py-2.5 gap-2">
+              <button
+                onClick={() => setPage(p => Math.max(1, p - 1))}
+                disabled={!canGoPrev}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 disabled:opacity-20 disabled:cursor-default hover:bg-card-hover/50 active:scale-95"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Icon name="chevronLeft" className="text-sm" />
+                <span className="hidden md:inline">{t('wordmap.pagination.prev')}</span>
+              </button>
+
+              <div className="flex items-center gap-0.5">
+                {pageNumbers.map((p, i) =>
+                  p === '...' ? (
+                    <span key={`e-${i}`} className="w-6 h-7 flex items-center justify-center text-xs text-muted select-none tracking-wider">…</span>
+                  ) : (
+                    <button
+                      key={p}
+                      onClick={() => setPage(p)}
+                      className="w-7 h-7 rounded-lg text-xs font-medium transition-all duration-200 hover:scale-105 active:scale-90"
+                      style={{
+                        background: p === page ? 'var(--accent-gradient)' : 'transparent',
+                        color: p === page ? '#fff' : 'var(--text-secondary)',
+                        border: p === page ? 'none' : '1px solid var(--border-color)',
+                      }}
+                      onMouseEnter={(e) => {
+                        if (p !== page) {
+                          e.currentTarget.style.borderColor = 'color-mix(in srgb, var(--accent-from) 35%, transparent)';
+                          e.currentTarget.style.background = 'color-mix(in srgb, var(--accent-from) 6%, transparent)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (p !== page) {
+                          e.currentTarget.style.borderColor = 'var(--border-color)';
+                          e.currentTarget.style.background = 'transparent';
+                        }
+                      }}
+                    >
+                      {p}
+                    </button>
+                  )
+                )}
+              </div>
+
+              <button
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                disabled={!canGoNext}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 disabled:opacity-20 disabled:cursor-default hover:bg-card-hover/50 active:scale-95"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <span className="hidden md:inline">{t('wordmap.pagination.next')}</span>
+                <Icon name="chevronRight" className="text-sm" />
+              </button>
+            </div>
+
+            {/* Mobile: compact slider */}
+            <div className="flex sm:hidden items-center justify-center gap-2.5 px-3 py-2.5">
+              <button
+                onClick={() => setPage(p => Math.max(1, p - 1))}
+                disabled={!canGoPrev}
+                className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 disabled:opacity-20 disabled:cursor-default hover:bg-card-hover/50 active:scale-90"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Icon name="chevronLeft" className="text-lg" />
+              </button>
+
+              <div className="flex flex-col items-center gap-1.5 min-w-0">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-base font-bold tabular-nums" style={{ color: 'var(--accent-from)' }}>{page}</span>
+                  <span className="text-xs text-muted/60 mx-0.5">/</span>
+                  <span className="text-xs text-muted tabular-nums">{totalPages}</span>
+                </div>
+                <div className="w-full max-w-[100px] h-1 rounded-full overflow-hidden" style={{ background: 'var(--border-color)' }}>
+                  <div
+                    className="h-full rounded-full transition-all duration-300 ease-out"
+                    style={{
+                      width: `${(page / totalPages) * 100}%`,
+                      background: 'var(--accent-gradient)',
+                    }}
+                  />
+                </div>
+              </div>
+
+              <button
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                disabled={!canGoNext}
+                className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 disabled:opacity-20 disabled:cursor-default hover:bg-card-hover/50 active:scale-90"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Icon name="chevronRight" className="text-lg" />
+              </button>
+            </div>
+
+            {/* Info bar */}
+            <div className="px-3 pb-2 text-center text-[10px] text-muted/60 tracking-wider">
+              {t('wordmap.pagination.info', { page, total: totalPages, n: ITEMS_PER_PAGE })}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Word Detail Popup */}
       {popupWord && createPortal(
@@ -252,7 +508,7 @@ export default function WordMap() {
           <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 pointer-events-none">
             <div
               key={popupWord.id}
-              className="relative w-full max-w-lg max-h-[90vh] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
+              className="relative w-full max-w-lg max-h-[min(80vh,560px)] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
               style={{
                 background: 'linear-gradient(160deg, color-mix(in srgb, var(--bg-card) 95%, var(--accent-from)), var(--bg-primary) 80%)',
                 boxShadow: '0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px var(--border-color), inset 0 1px 0 rgba(255,255,255,0.06)',
@@ -269,7 +525,7 @@ export default function WordMap() {
                 <Icon name="xmark" className="text-lg" />
               </button>
 
-              <div className="flex-1 min-h-0 overflow-y-auto p-6 sm:p-8">
+              <div className="flex-1 min-h-0 overflow-y-auto scroll-smooth p-6 sm:p-8">
                 <div className="text-center mb-6">
                   <div className="relative inline-flex items-center justify-center">
                     <span className="font-bold tracking-wide"

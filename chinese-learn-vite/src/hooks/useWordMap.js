@@ -30,6 +30,17 @@ export default function useWordMap({ searchTerm, selectedCategory, selectedSubca
       words = words.filter(w => selectedSubcategories.includes(w.subcategory));
     }
 
+    // Deduplicate by Chinese text — the vocabulary contains the same `chinese`
+    // word across multiple HSK levels with different IDs (e.g. 可爱 as hsk3-108
+    // AND hsk4-058). Without this, charIndex would store each ID separately
+    // and WordMap cards would show the same related word chip multiple times.
+    const seenWords = new Set();
+    words = words.filter(w => {
+      if (seenWords.has(w.chinese)) return false;
+      seenWords.add(w.chinese);
+      return true;
+    });
+
     const totalCount = words.length;
 
     // Build character index from ALL filtered words (not just display words)
@@ -51,7 +62,9 @@ export default function useWordMap({ searchTerm, selectedCategory, selectedSubca
         if (!ch.match(/[\u4e00-\u9fff]/) || seenChars.has(ch)) continue;
         seenChars.add(ch);
         const siblings = charIndex[ch] || [];
-        const related = siblings.filter(v => v.id !== word.id);
+        // Compare by `chinese` (the visible canonical label) rather than `id`,
+        // because duplicates have different IDs but identical Chinese text.
+        const related = siblings.filter(v => v.chinese !== word.chinese);
         if (related.length > 0) {
           clusters.push({ char: ch, related });
         }
@@ -63,8 +76,8 @@ export default function useWordMap({ searchTerm, selectedCategory, selectedSubca
     const connectedOnly = allClusters.filter(c => c.clusters.length > 0);
     const totalConnected = connectedOnly.length;
 
-    // Limit to max 50 connected words to keep the page responsive
-    const clusters = connectedOnly.length > 50 ? connectedOnly.slice(0, 50) : connectedOnly;
+    // Return ALL connected words — WordMap page handles pagination (50/page)
+    const clusters = connectedOnly;
 
     return { clusters, totalCount: totalConnected };
   }, [searchTerm, selectedCategory, selectedSubcategories]);

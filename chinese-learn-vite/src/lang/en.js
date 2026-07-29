@@ -191,13 +191,17 @@ const en = {
   'wordmap.subtitle': 'Explore vocabulary connections through shared characters',
   'wordmap.searchPlaceholder': 'Search words to explore connections...',
   'wordmap.allCategories': 'All Categories',
-  'wordmap.wordCount': '{shown} words shown (of {n} matching)',
+  'wordmap.wordCount': 'Showing {shown}/{n} \u00b7 Page {page}/{total}',
+  'wordmap.pagination.prev': 'Prev',
+  'wordmap.pagination.next': 'Next',
+  'wordmap.pagination.info': 'Page {page} of {total} \u00b7 {n} words per page',
   'wordmap.noMatches': 'No words match your filters.',
   'wordmap.adjustFilters': 'Try adjusting your search or category filters',
   'wordmap.shared': 'Shared',
   'wordmap.connectedBy': 'Connected by',
   'wordmap.words': 'words',
   'wordmap.save': 'Save',
+  'wordmap.unsave': 'Unsave',
   'wordmap.example': 'Example Sentence:',
 
   // Auth

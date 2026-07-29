@@ -19,21 +19,32 @@ export default function Search() {
     if (!query.trim()) return [];
 
     const q = query.toLowerCase().trim();
-    return VOCABULARY.filter(word => {
+    const matched = VOCABULARY.filter(word => {
       switch (searchMode) {
         case 'chinese':
-          return word.chinese.includes(q);
+          return (word.chinese || '').includes(q);
         case 'pinyin':
-          return word.pinyin.toLowerCase().includes(q);
+          return (word.pinyin || '').toLowerCase().includes(q);
         case 'meaning':
-          return word.meaning.toLowerCase().includes(q) ||
-                 (word.meaningThai && word.meaningThai.toLowerCase().includes(q));
+          return (word.meaning || '').toLowerCase().includes(q) ||
+                 ((word.meaningThai || '').toLowerCase().includes(q));
         default:
-          return word.chinese.includes(q) ||
-                 word.pinyin.toLowerCase().includes(q) ||
-                 word.meaning.toLowerCase().includes(q) ||
-                 (word.meaningThai && word.meaningThai.toLowerCase().includes(q));
+          return (word.chinese || '').includes(q) ||
+                 (word.pinyin || '').toLowerCase().includes(q) ||
+                 (word.meaning || '').toLowerCase().includes(q) ||
+                 ((word.meaningThai || '').toLowerCase().includes(q));
       }
+    });
+
+    // Deduplicate by Chinese text — the vocabulary contains the same `chinese`
+    // word across multiple HSK levels with different IDs (e.g. 可能 as hsk2-054,
+    // hsk3-109, hsk4-069). Without this, searching for such a word returns
+    // multiple identical result cards.
+    const seenSearchChinese = new Set();
+    return matched.filter(w => {
+      if (seenSearchChinese.has(w.chinese)) return false;
+      seenSearchChinese.add(w.chinese);
+      return true;
     });
   }, [query, searchMode]);
 
@@ -139,7 +150,7 @@ export default function Search() {
                   <div className="flex items-center gap-2 text-sm">
                     <span className="text-primary">{meaning(word)}</span>
                   </div>
-                  {word.examples[0] && (
+                  {word.examples?.[0] && (
                     <p className="text-xs text-muted mt-1">
                       {word.examples[0].chinese}{meaning(word.examples[0], false) && ` - ${meaning(word.examples[0], false)}`}
                     </p>
