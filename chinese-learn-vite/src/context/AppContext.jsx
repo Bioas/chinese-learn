@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer, useCallback, useEffect, u
 import { VOCABULARY } from '../data/vocabulary';
 import { supabase, isSupabaseReady } from '../lib/supabase';
 import { useAuth } from './AuthContext';
+import { isDemoMode } from './AuthContext';
 
 const initialState = {
   vocabulary: VOCABULARY,
@@ -203,8 +204,10 @@ function pickPortable(state) {
 
 const AppContext = createContext(null);
 
-// Single source of truth for pushing the current portable state to Supabase
-async function pushToCloud(userId, portable, setSyncStatus) {
+// Single source of truth for pushing the current portable state to Supabase.
+// Takes setters as an options object (instead of positional) so future params
+// can be added without breaking call sites.
+async function pushToCloud(userId, portable, { setSyncStatus, setLastSyncError }) {
   try {
     const { error } = await supabase.from('user_progress').upsert(
       {
@@ -216,9 +219,11 @@ async function pushToCloud(userId, portable, setSyncStatus) {
     );
     if (error) {
       console.warn('Supabase sync error:', error.message);
+      setLastSyncError?.(error.message || 'Supabase rejected the row');
       setSyncStatus('error');
       return false;
     }
+    setLastSyncError?.(null);
     setSyncStatus('saved');
     setTimeout(() => {
       setSyncStatus((s) => (s === 'saved' ? 'idle' : s));
@@ -226,6 +231,7 @@ async function pushToCloud(userId, portable, setSyncStatus) {
     return true;
   } catch (err) {
     console.warn('Cloud sync failed (offline?):', err.message);
+    setLastSyncError?.(err?.message || 'Network unreachable');
     setSyncStatus('offline');
     return false;
   }
@@ -255,9 +261,16 @@ export function AppProvider({ children }) {
   const skipNextSync = useRef(false);
 
   // Sync status surfaced to UI: 'idle' | 'saving' | 'saved' | 'offline' | 'error'
+  // Initial state honors the demo-mode flag so local dev starts at 'idle'
+  // and gets the simulated cycle on first state change.
   const [syncStatus, setSyncStatus] = useState(() =>
-    isSupabaseReady() ? 'idle' : 'offline'
+    isSupabaseReady() || isDemoMode ? 'idle' : 'offline'
   );
+
+  // Most recent sync-failure message, surfaced via tooltip on the inline
+  // status label so users can self-diagnose why the indicator shows
+  // 'Offline' or 'Error' instead of guessing.
+  const [lastSyncError, setLastSyncError] = useState(null);
 
   // Keep a ref of latest state so realtime callbacks read fresh values
   const stateRef = useRef(state);
@@ -278,10 +291,35 @@ export function AppProvider({ children }) {
 
   // ---- Cloud sync: push to Supabase (debounced) ----------------------------
   useEffect(() => {
-    if (!user || !isSupabaseReady()) {
+    if (!user) {
       setSyncStatus('offline');
+      setLastSyncError(null);            // logged out by definition, not an error
       return;
     }
+
+    if (!isSupabaseReady()) {
+      if (isDemoMode) {
+        // Demo mode: simulate the full saving → saved → idle cycle locally so
+        // visual feedback matches what a user with real Supabase would see.
+        // Reuses the existing debounce ref so rapid state changes don't pile up
+        // overlapping timeouts.
+        setSyncStatus('saving');
+        setLastSyncError(null);
+        if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+        syncTimeoutRef.current = setTimeout(() => {
+          setSyncStatus('saved');
+          setTimeout(() => {
+            setSyncStatus((s) => (s === 'saved' ? 'idle' : s));
+          }, 2500);
+        }, 600); // 600ms feels snappy without being instant
+      } else {
+        // Real Supabase env but the JS client failed to init (bad URL, etc.).
+        setSyncStatus('offline');
+        setLastSyncError('Supabase credentials missing — set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY');
+      }
+      return;
+    }
+
     if (!isCloudLoaded.current) return; // wait until we've pulled first
     if (isFirstRender.current) return;
 
@@ -291,10 +329,11 @@ export function AppProvider({ children }) {
     }
 
     setSyncStatus('saving');
+    setLastSyncError(null);
     if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
 
     syncTimeoutRef.current = setTimeout(() => {
-      pushToCloud(user.id, pickPortable(state), setSyncStatus);
+      pushToCloud(user.id, pickPortable(state), { setSyncStatus, setLastSyncError });
     }, 3000);
 
     return () => {
@@ -330,6 +369,8 @@ export function AppProvider({ children }) {
         if (cancelled) return;
         if (error && error.code !== 'PGRST116') {
           console.warn('Supabase load error:', error.message);
+          setLastSyncError(error.message || 'Could not load your progress from the cloud');
+          setSyncStatus('error');
         }
         isCloudLoaded.current = true;
         if (data?.data) {
@@ -339,15 +380,17 @@ export function AppProvider({ children }) {
           // progress needs to be uploaded on first sync, otherwise it lives
           // only on this device forever. Push it now so the cloud row exists.
           setSyncStatus('saving');
+          setLastSyncError(null);
           setTimeout(() => {
             if (cancelled) return;
-            pushToCloud(user.id, pickPortable(stateRef.current), setSyncStatus);
+            pushToCloud(user.id, pickPortable(stateRef.current), { setSyncStatus, setLastSyncError });
           }, 400);
         }
       })
       .catch((err) => {
         if (cancelled) return;
         console.warn('Supabase load failed (offline?):', err.message);
+        setLastSyncError(err?.message || 'Network unreachable');
         // Still mark as loaded so we can push fresh local edits later
         isCloudLoaded.current = true;
         setSyncStatus('offline');
@@ -366,6 +409,9 @@ export function AppProvider({ children }) {
         },
         (payload) => {
           if (cancelled) return;
+          // Any UPDATE event arriving from the server means we successfully
+          // received data — clear any previous error so the tooltip reverts.
+          setLastSyncError(null);
           applyRemote(payload.new?.data);
         }
       )
@@ -417,10 +463,11 @@ export function AppProvider({ children }) {
     }
   }, [state.theme]);
 
-  // Manual "sync now" trigger so UI can force a push (e.g. on logout)
+  // Manual "sync now" trigger so UI can force a push (e.g. on logout, or
+  // the user clicking "Retry" in the popover when they see an error).
   const syncNow = useCallback(async () => {
     if (!user || !isSupabaseReady()) return false;
-    return pushToCloud(user.id, pickPortable(stateRef.current), setSyncStatus);
+    return pushToCloud(user.id, pickPortable(stateRef.current), { setSyncStatus, setLastSyncError });
   }, [user, setSyncStatus]);
 
   return (
@@ -428,7 +475,7 @@ export function AppProvider({ children }) {
       state, dispatch,
       studyWord, togglePinned, togglePinyin, updateWordStatus, toggleSavedWord,
       setTheme, setLanguage,
-      syncStatus, syncNow,
+      syncStatus, lastSyncError, syncNow,
     }}>
       {children}
     </AppContext.Provider>

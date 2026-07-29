@@ -204,6 +204,8 @@ const en = {
   'auth.login': 'Sign In',
   'auth.register': 'Create Account',
   'auth.logout': 'Sign Out',
+  'auth.userMenu': 'User menu',
+  'auth.signedIn': 'Signed in as',
   'auth.welcomeBack': 'Welcome Back',
   'auth.createAccount': 'Create Account',
   'auth.loginHint': 'Sign in to sync your progress across devices',

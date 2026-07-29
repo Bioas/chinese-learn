@@ -807,6 +807,40 @@
   border-radius: 0 0 4px 0;
 }
 
+/* ===== Auth Modal — password strength meter reveal ===== */
+@keyframes strengthIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-strength-in { animation: strengthIn 0.25s ease-out; }  /* ===== Auth Modal — alert/error/success slide-in ===== */
+@keyframes alertIn {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-alert-in { animation: alertIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  /* ===== User menu popover (dropdown from navbar avatar) ===== */
+  @keyframes menuPopIn {
+    from { opacity: 0; transform: scale(0.94) translateY(6px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .menu-pop-in { animation: menuPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: bottom left;
+  }
+  /* Mobile opens downward — flip origin */
+  .menu-pop-in-down { animation: menuPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: top left;
+  }
+
+  /* Avatar sync-status corner dot */
+  @keyframes statusPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.3); opacity: 0.85; }
+  }
+  .status-dot-pulse {
+    animation: statusPulse 1.6s ease-in-out infinite;
+  }
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--text-muted) var(--bg-secondary);

@@ -203,6 +203,8 @@ const th = {
   'auth.login': 'เข้าสู่ระบบ',
   'auth.register': 'สมัครสมาชิก',
   'auth.logout': 'ออกจากระบบ',
+  'auth.userMenu': 'เมนูผู้ใช้',
+  'auth.signedIn': 'เข้าสู่ระบบเป็น',
   'auth.welcomeBack': 'ยินดีต้อนรับกลับ',
   'auth.createAccount': 'สร้างบัญชี',
   'auth.loginHint': 'เข้าสู่ระบบเพื่อซิงค์ความคืบหน้าข้ามอุปกรณ์',
