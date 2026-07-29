@@ -6,12 +6,23 @@ import { useAuth } from '../context/AuthContext';
 import Login from '../pages/Login';
 import useTranslation from '../hooks/useTranslation';
 
+const SYNC_STYLES = {
+  idle:    { dot: 'text-slate-400',         label: 'auth.syncIdle',    pulse: false },
+  saving:  { dot: 'text-amber-400',         label: 'auth.syncSaving',  pulse: true  },
+  saved:   { dot: 'text-green-500',         label: 'auth.syncSaved',   pulse: false },
+  offline: { dot: 'text-slate-500',         label: 'auth.syncOffline', pulse: false },
+  error:   { dot: 'text-red-500',           label: 'auth.syncError',   pulse: true  },
+};
+
 export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
   const { t } = useTranslation();
-  const { state, setTheme, setLanguage } = useApp();
+  const { state, setTheme, setLanguage, syncStatus } = useApp();
   const { user, logout } = useAuth();
   const location = useLocation();
   const [showLogin, setShowLogin] = useState(false);
+
+  const syncStyle = SYNC_STYLES[syncStatus] || SYNC_STYLES.idle;
+  const syncLabel = user ? t(syncStyle.label) : t('auth.syncOffline');
 
   const NAV_ITEMS = [
     { path: '/', label: t('nav.dashboard'), icon: 'dashboard' },
@@ -116,7 +127,15 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                 </div>
                 <div className="flex flex-col items-start max-w-[80px]">
                   <p className="text-[9px] font-medium text-primary leading-tight truncate w-full">{user.email}</p>
-                  <p className="text-[7px] text-green-500/80 leading-tight">● Sync</p>
+                  <p
+                    className={`text-[7px] leading-tight flex items-center gap-1 ${syncStyle.dot}`}
+                    title={syncLabel}
+                  >
+                    <span
+                      className={`inline-block w-1.5 h-1.5 rounded-full bg-current ${syncStyle.pulse ? 'animate-pulse' : ''}`}
+                    />
+                    <span className="truncate max-w-[64px]">{syncLabel}</span>
+                  </p>
                 </div>
               </div>
             ) : (
@@ -272,7 +291,15 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
                     </div>
                     <div className="min-w-0">
                       <p className="text-[10px] font-medium text-primary truncate">{user.email}</p>
-                      <p className="text-[7px] text-green-500/80">● Sync</p>
+                      <p
+                        className={`text-[7px] flex items-center gap-1 ${syncStyle.dot}`}
+                        title={syncLabel}
+                      >
+                        <span
+                          className={`inline-block w-1.5 h-1.5 rounded-full bg-current ${syncStyle.pulse ? 'animate-pulse' : ''}`}
+                        />
+                        <span className="truncate max-w-[90px]">{syncLabel}</span>
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1">

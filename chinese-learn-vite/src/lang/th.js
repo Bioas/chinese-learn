@@ -221,6 +221,10 @@ const th = {
   'auth.syncSuccess': 'ซิงค์ความคืบหน้าไปยังคลาวด์แล้ว!',
   'auth.syncError': 'ไม่สามารถซิงค์ความคืบหน้าได้',
   'auth.loggedInAs': 'เข้าสู่ระบบด้วย {email}',
+  'auth.syncIdle': 'พร้อม',
+  'auth.syncSaving': 'กำลังซิงค์…',
+  'auth.syncSaved': 'ซิงค์แล้ว',
+  'auth.syncOffline': 'ออฟไลน์',
 
   // Greeting
   'greeting.morning': '早上好! สวัสดีตอนเช้า!',

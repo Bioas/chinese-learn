@@ -222,6 +222,10 @@ const en = {
   'auth.syncSuccess': 'Progress synced to cloud!',
   'auth.syncError': 'Failed to sync progress',
   'auth.loggedInAs': 'Signed in as {email}',
+  'auth.syncIdle': 'Idle',
+  'auth.syncSaving': 'Syncing…',
+  'auth.syncSaved': 'Synced',
+  'auth.syncOffline': 'Offline',
 
   // Greeting
   'greeting.morning': '早上好! Good Morning!',

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useCallback, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useReducer, useCallback, useEffect, useRef, useState } from 'react';
 import { VOCABULARY } from '../data/vocabulary';
 import { supabase, isSupabaseReady } from '../lib/supabase';
 import { useAuth } from './AuthContext';
@@ -23,6 +23,15 @@ const initialState = {
   theme: 'light',
   language: 'en',
 };
+
+// Order of status "advancement" we use when merging two devices' progress
+const STATUS_RANK = { new: 0, learning: 1, reviewing: 2, mastered: 3 };
+
+function pickStrongerStatus(a, b) {
+  const ra = STATUS_RANK[a] ?? 0;
+  const rb = STATUS_RANK[b] ?? 0;
+  return ra >= rb ? a : b;
+}
 
 function appReducer(state, action) {
   switch (action.type) {
@@ -114,7 +123,113 @@ function appReducer(state, action) {
   }
 }
 
+/**
+ * Deep-merge local + remote progress so neither device's work is lost.
+ * Strategy:
+ *   - arrays of IDs (savedWordIds, pinnedSubcategories): union + dedupe
+ *   - learningHistory (date → count): take the MAX count per date so we keep
+ *     the best record across devices
+ *   - wordStatuses (wordId → status): keep the "more advanced" status
+ *   - scalar fields (streak: max; lastStudyDate: most recent)
+ *   - studiedToday: recomputed from the merged learningHistory[today] so
+ *     studying on both devices adds up rather than being capped at one
+ *   - everything else (theme, language, showPinyin): remote wins (it's the
+ *     view preference of the device they last used)
+ */
+function mergeProgress(local, remote) {
+  if (!remote) return local;
+  if (!local) return remote;
+
+  const merged = { ...local, ...remote };
+
+  // Arrays: union
+  merged.savedWordIds = Array.from(
+    new Set([...(local.savedWordIds || []), ...(remote.savedWordIds || [])])
+  );
+  merged.pinnedSubcategories = Array.from(
+    new Set([...(local.pinnedSubcategories || []), ...(remote.pinnedSubcategories || [])])
+  );
+
+  // learningHistory: take max per day
+  const history = { ...(local.learningHistory || {}) };
+  for (const [date, count] of Object.entries(remote.learningHistory || {})) {
+    history[date] = Math.max(history[date] || 0, count || 0);
+  }
+  merged.learningHistory = history;
+
+  // wordStatuses: keep the stronger status for each word
+  const statuses = { ...(local.wordStatuses || {}) };
+  for (const [wordId, status] of Object.entries(remote.wordStatuses || {})) {
+    statuses[wordId] = pickStrongerStatus(statuses[wordId], status);
+  }
+  merged.wordStatuses = statuses;
+
+  // Scalar fields
+  merged.streak = Math.max(local.streak || 0, remote.streak || 0);
+
+  // studiedToday: derive from merged learningHistory so multi-device adds up
+  const today = new Date().toISOString().split('T')[0];
+  merged.studiedToday = history[today] || 0;
+
+  // lastStudyDate: pick the most recent
+  if ((remote.lastStudyDate || '') > (local.lastStudyDate || '')) {
+    merged.lastStudyDate = remote.lastStudyDate;
+  }
+
+  return merged;
+}
+
+// Drop non-portable fields before sending to / receiving from the cloud
+const PORTABLE_KEYS = [
+  'studiedToday',
+  'streak',
+  'pinnedSubcategories',
+  'showPinyin',
+  'savedWordIds',
+  'learningHistory',
+  'wordStatuses',
+  'lastStudyDate',
+  'theme',
+  'language',
+];
+
+function pickPortable(state) {
+  const portable = {};
+  for (const key of PORTABLE_KEYS) {
+    if (state[key] !== undefined) portable[key] = state[key];
+  }
+  return portable;
+}
+
 const AppContext = createContext(null);
+
+// Single source of truth for pushing the current portable state to Supabase
+async function pushToCloud(userId, portable, setSyncStatus) {
+  try {
+    const { error } = await supabase.from('user_progress').upsert(
+      {
+        user_id: userId,
+        data: portable,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'user_id' }
+    );
+    if (error) {
+      console.warn('Supabase sync error:', error.message);
+      setSyncStatus('error');
+      return false;
+    }
+    setSyncStatus('saved');
+    setTimeout(() => {
+      setSyncStatus((s) => (s === 'saved' ? 'idle' : s));
+    }, 2500);
+    return true;
+  } catch (err) {
+    console.warn('Cloud sync failed (offline?):', err.message);
+    setSyncStatus('offline');
+    return false;
+  }
+}
 
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(appReducer, initialState, (initial) => {
@@ -131,6 +246,24 @@ export function AppProvider({ children }) {
   const { user } = useAuth();
   const isFirstRender = useRef(true);
   const syncTimeoutRef = useRef(null);
+  // Until we have loaded from the cloud we MUST NOT push to it, otherwise a
+  // slow network would let the user's empty local state clobber their cloud
+  // data the moment they log in.
+  const isCloudLoaded = useRef(false);
+  // Suppress the next save after applying a pull-from-cloud, otherwise the
+  // sync effect would immediately echo it straight back to the server.
+  const skipNextSync = useRef(false);
+
+  // Sync status surfaced to UI: 'idle' | 'saving' | 'saved' | 'offline' | 'error'
+  const [syncStatus, setSyncStatus] = useState(() =>
+    isSupabaseReady() ? 'idle' : 'offline'
+  );
+
+  // Keep a ref of latest state so realtime callbacks read fresh values
+  const stateRef = useRef(state);
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
 
   // Save to localStorage on every state change (skip initial hydration)
   useEffect(() => {
@@ -138,60 +271,112 @@ export function AppProvider({ children }) {
       isFirstRender.current = false;
       return;
     }
-    const { vocabulary, flashcardWords, quizWords, ...savable } = state;
-    localStorage.setItem('chinese-learn-state', JSON.stringify(savable));
+    try {
+      localStorage.setItem('chinese-learn-state', JSON.stringify(state));
+    } catch {}
   }, [state]);
 
-  // Cloud sync: save to Supabase when state changes (debounced)
+  // ---- Cloud sync: push to Supabase (debounced) ----------------------------
   useEffect(() => {
-    if (!user || !isSupabaseReady() || isFirstRender.current) return;
+    if (!user || !isSupabaseReady()) {
+      setSyncStatus('offline');
+      return;
+    }
+    if (!isCloudLoaded.current) return; // wait until we've pulled first
+    if (isFirstRender.current) return;
 
+    if (skipNextSync.current) {
+      skipNextSync.current = false;
+      return;
+    }
+
+    setSyncStatus('saving');
     if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
 
-    syncTimeoutRef.current = setTimeout(async () => {
-      const { vocabulary: _, flashcardWords: __, quizWords: ___, ...syncable } = state;
-      try {
-        const { error } = await supabase.from('user_progress').upsert(
-          {
-            user_id: user.id,
-            data: syncable,
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: 'user_id' }
-        );
-        if (error) console.warn('Supabase sync error:', error.message);
-      } catch (err) {
-        // Silently fail — offline is fine, local state persists
-        console.warn('Cloud sync failed (offline?):', err.message);
-      }
-    }, 3000); // Debounce 3s after last state change
+    syncTimeoutRef.current = setTimeout(() => {
+      pushToCloud(user.id, pickPortable(state), setSyncStatus);
+    }, 3000);
 
     return () => {
       if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
     };
-  }, [user, state]);
+  }, [user, state, setSyncStatus]);
 
-  // Load from Supabase when user logs in, merging with local state
+  // ---- Cloud sync: pull from Supabase + subscribe to realtime --------------
   useEffect(() => {
-    if (!user || !isSupabaseReady()) return;
+    if (!user || !isSupabaseReady()) {
+      isCloudLoaded.current = false;
+      return;
+    }
 
+    let cancelled = false;
+
+    const applyRemote = (remote) => {
+      if (cancelled) return;
+      // Always merge against the freshest in-memory state, not the closure
+      // capture — otherwise a previous LOAD_STATE could be overwritten.
+      const merged = mergeProgress(pickPortable(stateRef.current), remote || {});
+      skipNextSync.current = true; // do NOT echo this back to the server
+      dispatch({ type: 'LOAD_STATE', state: merged });
+    };
+
+    // Initial pull
     supabase
       .from('user_progress')
       .select('data')
       .eq('user_id', user.id)
-      .single()
+      .maybeSingle()
       .then(({ data, error }) => {
+        if (cancelled) return;
         if (error && error.code !== 'PGRST116') {
-          // PGRST116 = no rows found (new user) — ignore
           console.warn('Supabase load error:', error.message);
-          return;
         }
+        isCloudLoaded.current = true;
         if (data?.data) {
-          // Merge: remote data takes priority over localStorage
-          const merged = { ...state, ...data.data };
-          dispatch({ type: 'LOAD_STATE', state: merged });
+          applyRemote(data.data);
+        } else {
+          // NEW USER (or first cloud row): no remote data. Their localStorage
+          // progress needs to be uploaded on first sync, otherwise it lives
+          // only on this device forever. Push it now so the cloud row exists.
+          setSyncStatus('saving');
+          setTimeout(() => {
+            if (cancelled) return;
+            pushToCloud(user.id, pickPortable(stateRef.current), setSyncStatus);
+          }, 400);
         }
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.warn('Supabase load failed (offline?):', err.message);
+        // Still mark as loaded so we can push fresh local edits later
+        isCloudLoaded.current = true;
+        setSyncStatus('offline');
       });
+
+    // Realtime subscription so other devices' edits propagate live
+    const channel = supabase
+      .channel(`user_progress:${user.id}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'user_progress',
+          filter: `user_id=eq.${user.id}`,
+        },
+        (payload) => {
+          if (cancelled) return;
+          applyRemote(payload.new?.data);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      cancelled = true;
+      isCloudLoaded.current = false;
+      supabase.removeChannel(channel);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const studyWord = useCallback((wordId) => {
@@ -232,8 +417,19 @@ export function AppProvider({ children }) {
     }
   }, [state.theme]);
 
+  // Manual "sync now" trigger so UI can force a push (e.g. on logout)
+  const syncNow = useCallback(async () => {
+    if (!user || !isSupabaseReady()) return false;
+    return pushToCloud(user.id, pickPortable(stateRef.current), setSyncStatus);
+  }, [user, setSyncStatus]);
+
   return (
-    <AppContext.Provider value={{ state, dispatch, studyWord, togglePinned, togglePinyin, updateWordStatus, toggleSavedWord, setTheme, setLanguage }}>
+    <AppContext.Provider value={{
+      state, dispatch,
+      studyWord, togglePinned, togglePinyin, updateWordStatus, toggleSavedWord,
+      setTheme, setLanguage,
+      syncStatus, syncNow,
+    }}>
       {children}
     </AppContext.Provider>
   );
