@@ -33,6 +33,3 @@ npm-debug.log*
 
 # Vite optimized deps cache (regenerated on every build)
 .vite/
-
-# Legacy / work-in-progress project directory (not part of this repo yet)
-chinese-learn/
