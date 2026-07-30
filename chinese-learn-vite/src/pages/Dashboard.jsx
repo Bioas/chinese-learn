@@ -1,17 +1,36 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useApp } from '../context/AppContext';
 import ContributionCalendar from '../components/ContributionCalendar';
 import SpeakButton from '../components/SpeakButton';
 import Icon from '../components/Icon';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
-import { VOCABULARY } from '../data/vocabulary';
+import { VOCABULARY, CATEGORIES } from '../data/vocabulary';
 
 const DASHBOARD_INK_CHARS = ['学', '习', '进', '步', '成', '功', '日', '积', '月', '累'];
 
+// Fisher–Yates shuffle — pure, returns new array; re-randomizes Quick Study cards.
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Localized subcategory label e.g. "HSK 1" (en) / "HSK 1" (th). Returns '' if not found.
+function getSubcategoryLabel(word, language) {
+  const cat = CATEGORIES.find(c => c.id === word.category);
+  if (!cat) return '';
+  const sub = cat.subcategories.find(s => s.id === word.subcategory);
+  if (!sub) return '';
+  return language === 'th' ? sub.nameThai : sub.name;
+}
+
 export default function Dashboard() {
   const { t, meaning } = useTranslation();
-  const { state, studyWord } = useApp();
+  const { state, dispatch } = useApp();
 
   const totalWords = VOCABULARY.length;
   const masteredWords = useMemo(
@@ -31,7 +50,17 @@ export default function Dashboard() {
     [masteredWords, reviewingWords, learningWords]
   );
 
-  const recentWords = useMemo(() => VOCABULARY.slice(0, 6), []);
+  // Quick Study: dedupe + random-pick 6 vocab cards, re-shuffles when user clicks the Shuffle button.
+  const [studyShuffleKey, setStudyShuffleKey] = useState(0);
+  const recentWords = useMemo(() => {
+    const seen = new Set();
+    const deduped = VOCABULARY.filter(w => {
+      if (seen.has(w.chinese)) return false;
+      seen.add(w.chinese);
+      return true;
+    });
+    return shuffleArray(deduped).slice(0, 6);
+  }, [studyShuffleKey]);
 
   const greeting = () => {
     const hour = new Date().getHours();
@@ -135,24 +164,74 @@ export default function Dashboard() {
       </div>
 
       <div className="glass-card p-5 animate-slide-up relative z-10">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 gap-2">
           <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="star" className="text-amber-400" /> {t('dash.quickStudy')}</h3>
-          <span className="text-xs text-secondary">{t('dash.newWordsToTry')}</span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-secondary">{t('dash.newWordsToTry')}</span>
+            <button
+              onClick={() => setStudyShuffleKey(k => k + 1)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
+              title={state.language === 'th' ? 'สุ่มคำใหม่' : 'Reshuffle'}
+            >
+              <Icon name="shuffle" className="text-sm" />
+              <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
+            </button>
+          </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {recentWords.map(word => (
-            <div key={word.id} className="relative group">
-              <button
-                onClick={() => studyWord(word.id)}
-                className="glass-card p-4 text-center hover:bg-card-hover transition-all cursor-pointer border border-transparent hover:border-blue-500/20 w-full"
-              >
-                <p className="text-2xl font-medium text-primary mb-1">{word.chinese}</p>
+          {recentWords.map(word => {
+            const s = state.wordStatuses[word.id] || 'new';
+            return (
+              <div key={word.id} className="glass-card p-4 hover:bg-card-hover transition-all border border-transparent hover:border-blue-500/20 flex flex-col gap-2 text-left">
+                {/* Top: Chinese char + SpeakButton on the right */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-2xl font-medium text-primary">{word.chinese}</span>
+                  <SpeakButton text={word.chinese} variant="icon" size="sm" />
+                </div>
                 <p className="text-xs text-secondary">{word.pinyin}</p>
-                <p className="text-xs text-muted mt-1 mb-3">{meaning(word)}</p>
-                <SpeakButton text={word.chinese} variant="wide" />
-              </button>
-            </div>
-          ))}
+                <p className="text-xs text-muted flex items-baseline gap-2">
+                  <span className="flex-1 min-w-0">{meaning(word)}</span>
+                  <span className="text-[9px] uppercase tracking-wider font-semibold text-muted/55 shrink-0">
+                    {getSubcategoryLabel(word, state.language)}
+                  </span>
+                </p>
+                {/* 3 status buttons — toggle (set or unset back to 'new') */}
+                <div className="flex gap-1 mt-auto pt-2 border-t border-white/[0.04]">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); dispatch({ type: 'UPDATE_WORD_STATUS', wordId: word.id, status: s === 'mastered' ? 'new' : 'mastered' }); }}
+                    className={`flex-1 text-[10px] py-1.5 rounded-md font-medium transition-all duration-200 ${
+                      s === 'mastered'
+                        ? 'bg-green-100 text-green-800 ring-1 ring-green-400 dark:bg-green-500/20 dark:text-green-300 dark:ring-green-500/30'
+                        : 'bg-white/[0.03] text-muted hover:bg-green-500/10 hover:text-green-400 hover:ring-1 hover:ring-green-500/20'
+                    }`}
+                  >
+                    {state.language === 'th' ? 'จำได้' : 'Got it'}
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); dispatch({ type: 'UPDATE_WORD_STATUS', wordId: word.id, status: s === 'learning' ? 'new' : 'learning' }); }}
+                    className={`flex-1 text-[10px] py-1.5 rounded-md font-medium transition-all duration-200 ${
+                      s === 'learning'
+                        ? 'bg-yellow-100 text-yellow-800 ring-1 ring-yellow-400 dark:bg-yellow-500/20 dark:text-yellow-300 dark:ring-yellow-500/30'
+                        : 'bg-white/[0.03] text-muted hover:bg-yellow-500/10 hover:text-yellow-400 hover:ring-1 hover:ring-yellow-500/20'
+                    }`}
+                  >
+                    {state.language === 'th' ? 'กำลังเรียน' : 'Learning'}
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); dispatch({ type: 'UPDATE_WORD_STATUS', wordId: word.id, status: s === 'reviewing' ? 'new' : 'reviewing' }); }}
+                    className={`flex-1 text-[10px] py-1.5 rounded-md font-medium transition-all duration-200 ${
+                      s === 'reviewing'
+                        ? 'bg-red-100 text-red-800 ring-1 ring-red-400 dark:bg-red-500/20 dark:text-red-300 dark:ring-red-500/30'
+                        : 'bg-white/[0.03] text-muted hover:bg-red-500/10 hover:text-red-400 hover:ring-1 hover:ring-red-500/20'
+                    }`}
+                  >
+                    {state.language === 'th' ? 'ทบทวน' : 'Review'}
+                  </button>
+                </div>
+
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -54,6 +54,16 @@ function ScrollFadeRow({ children, className = '' }) {
   );
 }
 
+// Fisher–Yates shuffle — pure, returns new array; used to randomize vocab order per category/filter change.
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function Vocabulary() {
   const { t, meaning } = useTranslation();
   const { state, dispatch, togglePinned, studyWord, toggleSavedWord } = useApp();
@@ -63,6 +73,8 @@ export default function Vocabulary() {
   const [showSaved, setShowSaved] = useState(false);
   const [popupWord, setPopupWord] = useState(null);
   const [page, setPage] = useState(1);
+  // Bump this counter to force the filtered-words memo to re-shuffle on demand (manual reshuffle button).
+  const [shuffleKey, setShuffleKey] = useState(0);
   // Responsive pagination: 20 cards on mobile (< 768px), 60 cards on desktop
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
@@ -94,30 +106,18 @@ export default function Vocabulary() {
     [selectedCategory]
   );
 
-  const filteredWords = useMemo(() => {
+  // Layer 1: filter by *intent only* (category + subcategory + dedupe) — no state-driven filters here
+  // so bookmark/status toggles won't re-shuffle the deck below.
+  const intentWords = useMemo(() => {
     let words = VOCABULARY;
-
-    if (showSaved) {
-      words = words.filter(w => state.savedWordIds.includes(w.id));
-    }
-
     if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
       // No subcategory selected → show ALL words from the current category
       const subIds = currentCategory.subcategories.map(s => s.id);
       words = words.filter(w => subIds.includes(w.subcategory));
     }
-
     if (selectedSubcategories.length > 0) {
       words = words.filter(w => selectedSubcategories.includes(w.subcategory));
     }
-
-    if (selectedStatuses.length > 0) {
-      words = words.filter(w => {
-        const status = state.wordStatuses[w.id] || 'new';
-        return selectedStatuses.includes(status);
-      });
-    }
-
     // Deduplicate by Chinese text — the vocabulary has the same `chinese`
     // word across multiple HSK levels with different IDs (e.g. 可能 as hsk2-054,
     // hsk3-109, hsk4-069). Without this, the grid would show the same card
@@ -128,9 +128,29 @@ export default function Vocabulary() {
       seenVocabChinese.add(w.chinese);
       return true;
     });
-
     return words;
-  }, [showSaved, selectedSubcategories, selectedStatuses, currentCategory, state.wordStatuses, state.savedWordIds]);
+  }, [showSaved, selectedSubcategories, currentCategory]);
+
+  // Layer 2: shuffle — re-shuffles ONLY when filter-intent (category/subcategory/showSaved flag) changes,
+  // or when user explicitly clicks the Shuffle button. Bookmark + status toggles do NOT re-shuffle.
+  const shuffledIntent = useMemo(() => {
+    return shuffleArray(intentWords);
+  }, [intentWords, shuffleKey]);
+
+  // Layer 3: apply state-dependent filters ON TOP of the stable shuffled order (showSaved + status).
+  const filteredWords = useMemo(() => {
+    let words = shuffledIntent;
+    if (showSaved) {
+      words = words.filter(w => state.savedWordIds.includes(w.id));
+    }
+    if (selectedStatuses.length > 0) {
+      words = words.filter(w => {
+        const status = state.wordStatuses[w.id] || 'new';
+        return selectedStatuses.includes(status);
+      });
+    }
+    return words;
+  }, [shuffledIntent, showSaved, selectedStatuses, state.wordStatuses, state.savedWordIds]);
 
   const totalPages = useMemo(() => Math.max(1, Math.ceil(filteredWords.length / ITEMS_PER_PAGE)), [filteredWords, ITEMS_PER_PAGE]);
   const paginatedWords = useMemo(() => {
@@ -257,6 +277,15 @@ export default function Vocabulary() {
               </button>
             ))}
           </ScrollFadeRow>
+          {/* Reshuffle button — re-randomizes order of currently-filtered vocab */}
+          <button
+            onClick={() => setShuffleKey(k => k + 1)}
+            className="ml-auto flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
+            title={state.language === 'th' ? 'สุ่มลำดับคำศัพท์ใหม่' : 'Reshuffle order'}
+          >
+            <Icon name="shuffle" className="text-sm" />
+            <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
+          </button>
         </div>
         <span className="absolute top-4 right-4 text-[10px] text-muted tracking-wider">
           {t('vocab.wordCount', { n: filteredWords.length })}
@@ -572,7 +601,7 @@ export default function Vocabulary() {
 
             {/* body: stroke order + examples */}
             <div className="p-6 sm:p-8">
-              <div className={`flex gap-8 ${popupWord.chinese.length > 4 ? 'flex-col' : 'flex-col lg:flex-row'}`}>
+              <div className={`flex gap-8 ${popupWord.chinese.length >= 4 ? 'flex-col' : 'flex-col lg:flex-row'}`}>
                 <div className="flex-shrink-0 flex flex-col items-center">
                   <div
                     className="rounded-xl p-4"

@@ -185,6 +185,55 @@
     color: #fbbf24;
   }
 
+  /* ── ConversationPopup dialogue line card ──
+     Speaker-tinted theming driven entirely by CSS variables set on the
+     element (--sp-bg / --sp-border / --sp-bar / --sp-text / --sp-bar-30
+     / --sp-bar-25 / --sp-bar-50). Active state toggles via .conv-line--active
+     so React only flips a class instead of recomputing inline color-mix
+     expressions on every change.
+
+     `content-visibility: auto` lets the browser skip paint/layout work
+     for off-screen cards during scroll — eliminates the per-frame repaint
+     cost that was causing visible scroll jank. */
+  .conv-line {
+    position: relative;
+    border-radius: 0.75rem;
+    padding: 12px 16px 12px 16px;
+    background: var(--sp-bg);
+    border: 1px solid var(--sp-border);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+    content-visibility: auto;
+    /* `auto 100px` lets the browser use the actual rendered size of any
+       previously-painted instance for layout reservation, falling back to
+       100px for never-painted ones — eliminates scroll-snap jolt when a
+       card slightly exceeds the static placeholder. */
+    contain-intrinsic-size: auto 100px;
+  }
+  .conv-line--active {
+    border-color: var(--sp-bar);
+    box-shadow: 0 0 0 2px var(--sp-bar-30), 0 4px 14px var(--sp-bar-25);
+  }
+  .conv-line-bar {
+    background: var(--sp-bar);
+  }
+  .conv-line-role {
+    color: var(--sp-text);
+  }
+  .conv-line-btn {
+    border: 1px solid var(--sp-bar-50);
+    color: var(--sp-text);
+    background: transparent;
+  }
+  .conv-line-btn:hover {
+    background: var(--sp-bar);
+    color: white;
+    border-color: var(--sp-bar);
+  }
+  .conv-line--active .conv-line-btn {
+    background: var(--sp-bar);
+    color: white;
+    border-color: var(--sp-bar);
+  }
 
 }
 
@@ -335,8 +384,8 @@
   }
 
   @keyframes popupOverlayIn {
-    0% { opacity: 0; backdrop-filter: blur(0px); }
-    100% { opacity: 1; backdrop-filter: blur(16px); }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
   .popup-overlay-enter {
     animation: popupOverlayIn 0.35s ease-out forwards;

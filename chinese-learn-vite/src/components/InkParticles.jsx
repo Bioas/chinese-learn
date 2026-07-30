@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-export default function InkParticles({ chars = [] }) {
+export default function InkParticles({ chars = [], paused = false }) {
   const particles = useMemo(() =>
     chars.map((char, i) => ({
       char,
@@ -27,6 +27,10 @@ export default function InkParticles({ chars = [] }) {
             animationDelay: p.delay,
             animationDuration: p.duration,
             fontSize: p.fontSize,
+            // Freeze the floating animations so pages that open cost-heavy
+            // modals (e.g.ConversationPopup with backdrop-blur) don't pay a
+            // per-frame re-blur cost on the underlying animated background.
+            animationPlayState: paused ? 'paused' : 'running',
           }}
         >
           {p.char}

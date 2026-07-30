@@ -508,7 +508,7 @@ export default function WordMap() {
           <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 pointer-events-none">
             <div
               key={popupWord.id}
-              className="relative w-full max-w-lg max-h-[min(80vh,560px)] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
+              className="relative w-full max-w-xl max-h-[min(82vh,620px)] rounded-2xl border border-white/[0.06] overflow-hidden flex flex-col pointer-events-auto popup-enter"
               style={{
                 background: 'linear-gradient(160deg, color-mix(in srgb, var(--bg-card) 95%, var(--accent-from)), var(--bg-primary) 80%)',
                 boxShadow: '0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px var(--border-color), inset 0 1px 0 rgba(255,255,255,0.06)',
@@ -525,11 +525,11 @@ export default function WordMap() {
                 <Icon name="xmark" className="text-lg" />
               </button>
 
-              <div className="flex-1 min-h-0 overflow-y-auto scroll-smooth p-6 sm:p-8">
+              <div className="flex-1 min-h-0 overflow-y-auto scroll-smooth p-7 sm:p-10">
                 <div className="text-center mb-6">
                   <div className="relative inline-flex items-center justify-center">
                     <span className="font-bold tracking-wide"
-                      style={{ fontSize: '3.5rem', lineHeight: 1.1, color: 'var(--text-primary)', textShadow: '0 0 40px var(--accent-glow)' }}
+                      style={{ fontSize: '4rem', lineHeight: 1.05, color: 'var(--text-primary)', textShadow: '0 0 40px var(--accent-glow)' }}
                     >
                       {popupWord.chinese}
                     </span>
@@ -572,7 +572,7 @@ export default function WordMap() {
                     <div key={ch} className="mb-4">
                       <p className="text-[11px] font-semibold tracking-wider uppercase text-muted mb-2 flex items-center gap-2">
                         <span className="w-4 h-px" style={{ background: 'var(--accent-from)' }} />
-                        {t('wordmap.shared')} <span className="text-lg font-normal text-primary" style={{ fontFamily: "'Noto Sans SC', serif" }}>{ch}</span>
+                        {t('wordmap.shared')} <span className="text-2xl font-bold text-primary" style={{ fontFamily: "'Noto Sans SC', serif", lineHeight: 1 }}>{ch}</span>
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {related.map(v => (

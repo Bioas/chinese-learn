@@ -11,6 +11,7 @@ const th = {
   'nav.quiz': 'แบบทดสอบ',
   'nav.search': 'ค้นหา',
   'nav.wordmap': 'แผนที่คำศัพท์',
+  'nav.conversation': 'บทสนทนา',
   'nav.toggleMenu': 'เปิด/ปิดเมนู',
 
   // Sidebar
@@ -202,6 +203,23 @@ const th = {
   'wordmap.save': 'บันทึก',
   'wordmap.unsave': 'เลิกบันทึก',
   'wordmap.example': 'ตัวอย่างประโยค:',
+
+  // Conversations
+  'conv.title': 'บทสนทนา',
+  'conv.subtitle': 'อ่านและฟังบทสนทนาจีนตามสถานการณ์จริง',
+  'conv.searchPlaceholder': 'ค้นหาบทสนทนา...',
+  'conv.allCategories': 'ทั้งหมด',
+  'conv.lineCount': '{n} บรรทัด',
+  'conv.speakers': '{n} ผู้พูด',
+  'conv.setting': 'สถานการณ์:',
+  'conv.playAll': 'ฟังทั้งบทสนทนา',
+  'conv.stopPlay': 'หยุด',
+  'conv.culturalNote': 'โน้ตวัฒนธรรม',
+  'conv.noResults': 'ไม่พบบทสนทนาที่ตรงกับเงื่อนไข',
+  'conv.adjustFilters': 'ลองค้นหาหรือหมวดหมู่อื่น',
+  'conv.pagination.prev': 'ก่อนหน้า',
+  'conv.pagination.next': 'ถัดไป',
+  'conv.pagination.info': 'หน้า {page} จาก {total} · {n} บทต่อหน้า',
 
   // Auth
   'auth.login': 'เข้าสู่ระบบ',

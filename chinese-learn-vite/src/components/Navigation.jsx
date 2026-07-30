@@ -81,10 +81,11 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
   const NAV_ITEMS = [
     { path: '/', label: t('nav.dashboard'), icon: 'dashboard' },
     { path: '/vocabulary', label: t('nav.vocabulary'), icon: 'vocabulary' },
+    { path: '/wordmap', label: t('nav.wordmap'), icon: 'wordmap' },
+    { path: '/conversations', label: t('nav.conversation'), icon: 'messageDetail' },
     { path: '/flashcards', label: t('nav.flashcards'), icon: 'flashcards' },
     { path: '/quiz', label: t('nav.quiz'), icon: 'quiz' },
     { path: '/search', label: t('nav.search'), icon: 'search' },
-    { path: '/wordmap', label: t('nav.wordmap'), icon: 'wordmap' },
   ];
 
   const isActive = (path) => {

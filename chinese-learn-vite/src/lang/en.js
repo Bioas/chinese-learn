@@ -11,6 +11,7 @@ const en = {
   'nav.quiz': 'Quiz',
   'nav.search': 'Search',
   'nav.wordmap': 'Word Map',
+  'nav.conversation': 'Conversations',
   'nav.toggleMenu': 'Toggle menu',
 
   // Sidebar
@@ -203,6 +204,23 @@ const en = {
   'wordmap.save': 'Save',
   'wordmap.unsave': 'Unsave',
   'wordmap.example': 'Example Sentence:',
+
+  // Conversations
+  'conv.title': 'Conversations',
+  'conv.subtitle': 'Read and listen to real Chinese dialogues by scenario',
+  'conv.searchPlaceholder': 'Search dialogues...',
+  'conv.allCategories': 'All',
+  'conv.lineCount': '{n} lines',
+  'conv.speakers': '{n} speakers',
+  'conv.setting': 'Setting:',
+  'conv.playAll': 'Play conversation',
+  'conv.stopPlay': 'Stop',
+  'conv.culturalNote': 'Cultural note',
+  'conv.noResults': 'No conversations match your filters.',
+  'conv.adjustFilters': 'Try a different search or category',
+  'conv.pagination.prev': 'Prev',
+  'conv.pagination.next': 'Next',
+  'conv.pagination.info': 'Page {page} of {total} · {n} per page',
 
   // Auth
   'auth.login': 'Sign In',
