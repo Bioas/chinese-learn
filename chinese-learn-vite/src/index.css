@@ -747,7 +747,7 @@
   background: color-mix(in srgb, var(--accent-from) 5%, transparent);
 }
 
-/* Ink chip for category filter */
+/* Ink chip for category filter — used in Flashcards & Quiz */
 .ink-chip {
   padding: 6px 14px;
   border-radius: 8px;
@@ -760,19 +760,16 @@
   color: var(--text-secondary);
   user-select: none;
 }
-
 .ink-chip:hover {
   border-color: color-mix(in srgb, var(--accent-from) 30%, transparent);
   background: color-mix(in srgb, var(--accent-from) 6%, transparent);
   color: var(--text-primary);
 }
-
 .ink-chip.active {
   background: var(--accent-gradient);
   border-color: transparent;
   color: white;
 }
-
 .ink-chip.pinned {
   background: color-mix(in srgb, #b91c1c 10%, transparent);
   border-color: color-mix(in srgb, #b91c1c 25%, transparent);
@@ -831,7 +828,7 @@
   opacity: 0;
 }
 
-/* Decorative corner flourish */
+/* Decorative corner flourish — used in Flashcards & Quiz */
 .flash-corner {
   position: absolute;
   width: 24px;
@@ -839,7 +836,6 @@
   border-color: color-mix(in srgb, var(--accent-from) 15%, transparent);
   pointer-events: none;
 }
-
 .flash-corner.tl {
   top: 8px;
   left: 8px;
@@ -847,7 +843,6 @@
   border-left: 1px solid;
   border-radius: 4px 0 0 0;
 }
-
 .flash-corner.br {
   bottom: 8px;
   right: 8px;
@@ -857,6 +852,7 @@
 }
 
 /* ===== Auth Modal — password strength meter reveal ===== */
+
 @keyframes strengthIn {
   from { opacity: 0; transform: translateY(-4px); }
   to   { opacity: 1; transform: translateY(0); }

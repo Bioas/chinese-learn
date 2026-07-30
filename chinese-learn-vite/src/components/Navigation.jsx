@@ -85,7 +85,6 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
     { path: '/conversations', label: t('nav.conversation'), icon: 'messageDetail' },
     { path: '/flashcards', label: t('nav.flashcards'), icon: 'flashcards' },
     { path: '/quiz', label: t('nav.quiz'), icon: 'quiz' },
-    { path: '/search', label: t('nav.search'), icon: 'search' },
   ];
 
   const isActive = (path) => {

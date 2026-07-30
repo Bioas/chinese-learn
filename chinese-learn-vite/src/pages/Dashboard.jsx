@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import ContributionCalendar from '../components/ContributionCalendar';
 import SpeakButton from '../components/SpeakButton';
@@ -6,6 +7,7 @@ import Icon from '../components/Icon';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
 import { VOCABULARY, CATEGORIES } from '../data/vocabulary';
+import { CONVERSATIONS } from '../data/conversations';
 
 const DASHBOARD_INK_CHARS = ['学', '习', '进', '步', '成', '功', '日', '积', '月', '累'];
 
@@ -29,6 +31,7 @@ function getSubcategoryLabel(word, language) {
 }
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const { t, meaning } = useTranslation();
   const { state, dispatch } = useApp();
 
@@ -61,6 +64,12 @@ export default function Dashboard() {
     });
     return shuffleArray(deduped).slice(0, 6);
   }, [studyShuffleKey]);
+
+  // Quick Conversations: random-pick 3 conversation cards
+  const [convShuffleKey, setConvShuffleKey] = useState(0);
+  const recentConvs = useMemo(() => {
+    return shuffleArray(CONVERSATIONS).slice(0, 3);
+  }, [convShuffleKey]);
 
   const greeting = () => {
     const hour = new Date().getHours();
@@ -229,6 +238,50 @@ export default function Dashboard() {
                   </button>
                 </div>
 
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Quick Conversations */}
+      <div className="glass-card p-5 animate-slide-up relative z-10">
+        <div className="flex items-center justify-between mb-4 gap-2">
+          <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="messageDetail" className="text-amber-400" /> {t('dash.quickConv')}</h3>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-secondary">{t('dash.convToTry')}</span>
+            <button
+              onClick={() => setConvShuffleKey(k => k + 1)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
+              title={state.language === 'th' ? 'สุ่มบทสนทนาใหม่' : 'Reshuffle'}
+            >
+              <Icon name="shuffle" className="text-sm" />
+              <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
+            </button>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {recentConvs.map(conv => {
+            const catColor = conv.category === 'hsk' ? '#f97316' : conv.category === 'daily' ? '#e11d48' : conv.category === 'health' ? '#f43f5e' : conv.category === 'education' ? '#8b5cf6' : conv.category === 'technology' ? '#06b6d4' : conv.category === 'business' ? '#eab308' : conv.category === 'nature' ? '#22c55e' : '#a89488';
+            return (
+              <div
+                key={conv.id}
+                className="relative rounded-xl flex flex-col transition-all duration-300 overflow-hidden cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-color)',
+                }}
+                onClick={() => navigate('/conversations')}
+              >
+                <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, ${catColor}, transparent)` }} />
+                <div className="p-3.5">
+                  <p className="text-xs font-semibold text-primary leading-snug">
+                    {state.language === 'th' ? conv.titleThai : conv.title}
+                  </p>
+                  <p className="text-[10px] text-muted/70 mt-1.5 line-clamp-2 leading-snug">
+                    {state.language === 'th' ? conv.settingThai : conv.setting}
+                  </p>
+                </div>
               </div>
             );
           })}

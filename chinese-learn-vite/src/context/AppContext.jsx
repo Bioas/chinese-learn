@@ -18,6 +18,8 @@ const initialState = {
   quizWrong: 0,
   searchQuery: '',
   savedWordIds: [],
+  savedConvIds: [],
+  convStatuses: {},
   learningHistory: {},
   wordStatuses: {},
   lastStudyDate: null,
@@ -117,6 +119,17 @@ function appReducer(state, action) {
         ...state,
         wordStatuses: { ...state.wordStatuses, [action.wordId]: action.status },
       };
+    case 'TOGGLE_SAVED_CONV': {
+      const saved = state.savedConvIds.includes(action.convId)
+        ? state.savedConvIds.filter(id => id !== action.convId)
+        : [...state.savedConvIds, action.convId];
+      return { ...state, savedConvIds: saved };
+    }
+    case 'UPDATE_CONV_STATUS':
+      return {
+        ...state,
+        convStatuses: { ...state.convStatuses, [action.convId]: action.status },
+      };
     case 'LOAD_STATE':
       return { ...state, ...action.state };
     default:
@@ -147,6 +160,9 @@ function mergeProgress(local, remote) {
   merged.savedWordIds = Array.from(
     new Set([...(local.savedWordIds || []), ...(remote.savedWordIds || [])])
   );
+  merged.savedConvIds = Array.from(
+    new Set([...(local.savedConvIds || []), ...(remote.savedConvIds || [])])
+  );
   merged.pinnedSubcategories = Array.from(
     new Set([...(local.pinnedSubcategories || []), ...(remote.pinnedSubcategories || [])])
   );
@@ -164,6 +180,12 @@ function mergeProgress(local, remote) {
     statuses[wordId] = pickStrongerStatus(statuses[wordId], status);
   }
   merged.wordStatuses = statuses;
+  // convStatuses: keep the more advanced status
+  const convSt = { ...(local.convStatuses || {}) };
+  for (const [convId, status] of Object.entries(remote.convStatuses || {})) {
+    convSt[convId] = pickStrongerStatus(convSt[convId], status);
+  }
+  merged.convStatuses = convSt;
 
   // Scalar fields
   merged.streak = Math.max(local.streak || 0, remote.streak || 0);
@@ -187,6 +209,8 @@ const PORTABLE_KEYS = [
   'pinnedSubcategories',
   'showPinyin',
   'savedWordIds',
+  'savedConvIds',
+  'convStatuses',
   'learningHistory',
   'wordStatuses',
   'lastStudyDate',
@@ -445,6 +469,14 @@ export function AppProvider({ children }) {
     dispatch({ type: 'TOGGLE_SAVED_WORD', wordId });
   }, []);
 
+  const toggleSavedConv = useCallback((convId) => {
+    dispatch({ type: 'TOGGLE_SAVED_CONV', convId });
+  }, []);
+
+  const updateConvStatus = useCallback((convId, status) => {
+    dispatch({ type: 'UPDATE_CONV_STATUS', convId, status });
+  }, []);
+
   const setTheme = useCallback((theme) => {
     dispatch({ type: 'SET_THEME', theme });
   }, []);
@@ -474,6 +506,7 @@ export function AppProvider({ children }) {
     <AppContext.Provider value={{
       state, dispatch,
       studyWord, togglePinned, togglePinyin, updateWordStatus, toggleSavedWord,
+      toggleSavedConv, updateConvStatus,
       setTheme, setLanguage,
       syncStatus, lastSyncError, syncNow,
     }}>
