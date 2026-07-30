@@ -20,36 +20,10 @@ function getCatColor(catId) {
   return CATEGORY_COLORS[catId] || '#a89488';
 }
 
-function getCatAccent(catId) {
-  // CSS variable reference for accent when category matches theme
-  if (catId === 'hsk') return 'var(--accent-from)';
-  return CATEGORY_COLORS[catId] || '#a89488';
-}
-
-// Speaker badge colour — A = accent-from (CSS var), B = amber.
-// Hoisted to module-level constant so React.memo'd LineCards see a stable
-// reference and the color-mix expressions are evaluated by the browser
-// once (via the --sp-* CSS variables) instead of being re-built in JS on
-// every render.
-const SPEAKER_STYLES = {
-  A: {
-    bg: 'color-mix(in srgb, var(--accent-from) 14%, transparent)',
-    text: 'var(--accent-from)',
-    border: 'color-mix(in srgb, var(--accent-from) 28%, transparent)',
-    bar: 'var(--accent-from)',
-    barAlpha30: 'color-mix(in srgb, var(--accent-from) 30%, transparent)',
-    barAlpha25: 'color-mix(in srgb, var(--accent-from) 25%, transparent)',
-    barAlpha50: 'color-mix(in srgb, var(--accent-from) 50%, transparent)',
-  },
-  B: {
-    bg: 'color-mix(in srgb, #f59e0b 14%, transparent)',
-    text: '#f59e0b',
-    border: 'color-mix(in srgb, #f59e0b 28%, transparent)',
-    bar: '#f59e0b',
-    barAlpha30: 'color-mix(in srgb, #f59e0b 30%, transparent)',
-    barAlpha25: 'color-mix(in srgb, #f59e0b 25%, transparent)',
-    barAlpha50: 'color-mix(in srgb, #f59e0b 50%, transparent)',
-  },
+// Speaker palette — A: accent (orange), B: amber
+const SPEAKER_COLORS = {
+  A: { primary: 'var(--accent-from)', secondary: '#f59e0b' },
+  B: { primary: '#f59e0b', secondary: 'var(--accent-from)' },
 };
 
 /* ── Reusable scrollable chip row with fade hints ── */
@@ -159,9 +133,6 @@ export default function Conversations() {
     };
   }, [popupConv, closePopup]);
 
-  // Unique speakers count helper
-  const countUniqueSpeakers = (conv) => new Set(conv.lines.map(l => l.role)).size;
-
   // Pagination pages render
   const getPageNumbers = () => {
     if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -257,45 +228,42 @@ export default function Conversations() {
                   animation: 'slide-up 0.4s ease-out backwards',
                 }}
               >
+                {/* Accent stripe */}
                 <div
                   className="h-0.5 w-full flex-shrink-0"
                   style={{ background: `linear-gradient(90deg, ${catColor}, color-mix(in srgb, ${catColor} 40%, transparent))` }}
                   aria-hidden
                 />
-                <div className="flex items-center justify-between px-5 pt-4">
+
+                {/* Category badge */}
+                <div className="px-5 pt-4 pb-0">
                   <span
-                    className="text-[9px] uppercase tracking-[0.2em] font-bold flex items-center gap-1.5"
-                    style={{ color: catColor }}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase"
+                    style={{ background: `color-mix(in srgb, ${catColor} 12%, transparent)`, color: catColor }}
                   >
-                    <Icon name={getSubcategoryIcon(conv.subcategory)} className="text-[9px] opacity-80" />
-                    {conv.subcategory}
+                    <Icon name={getSubcategoryIcon(conv.subcategory)} className="text-[9px]" />
+                    {lang === 'th' ? conv.subcategory : conv.subcategory}
                   </span>
-                  {conv.hskLevel > 0 && (
-                    <span className="text-[10px] font-mono tabular-nums text-muted">
-                      HSK {conv.hskLevel}
-                    </span>
-                  )}
                 </div>
+
+                {/* Title — primary language first, secondary as smaller subtitle */}
                 <button
                   onClick={() => setPopupConv(conv)}
-                  className="block w-full px-5 pt-2 pb-2 group/word focus:outline-none"
+                  className="block w-full px-5 pt-2.5 pb-3 group/word focus:outline-none"
                 >
-                  <p className="text-center font-bold text-primary transition-colors duration-300 group-hover/word:text-[var(--accent-from)] leading-tight" style={{ fontSize: '1.25rem' }}>
-                    {conv.title}
+                  <p className="font-semibold text-primary leading-snug" style={{ fontSize: '1.1rem' }}>
+                    {lang === 'th' ? conv.titleThai : conv.title}
                   </p>
-                  <p className="text-center text-xs text-secondary mt-1">
-                    {conv.titleThai}
+                  <p className="text-xs text-secondary/80 mt-0.5">
+                    {lang === 'th' ? conv.title : conv.titleThai}
                   </p>
                 </button>
-                <div className="px-5 pb-2 mt-auto">
-                  <p className="text-[11px] text-muted/70 italic leading-snug line-clamp-2">
+
+                {/* Setting */}
+                <div className="px-5 pb-4 mt-auto">
+                  <p className="text-[11px] text-muted/60 leading-snug line-clamp-2">
                     {t('conv.setting')} {lang === 'th' ? conv.settingThai : conv.setting}
                   </p>
-                  <div className="flex items-center gap-3 mt-2 text-[10px] text-muted/70 font-mono tracking-wider">
-                    <span>{t('conv.lineCount', { n: conv.lines.length })}</span>
-                    <span>·</span>
-                    <span>{t('conv.speakers', { n: countUniqueSpeakers(conv) })}</span>
-                  </div>
                 </div>
               </article>
             );
@@ -409,36 +377,45 @@ export default function Conversations() {
 }
 
 /* ────────────────────────────────────────────────────────────────── */
-/* LineCard — single dialogue line, memoised so parent state changes
-   (activeLine, isPlayingAll) only re-render the affected line, not all
-   siblings. Theming is CSS-variable driven so toggling "active" is just
-   a class change — the browser caches the color-mix expressions. */
+/* LineCard — single dialogue line, memoised */
 /* ────────────────────────────────────────────────────────────────── */
-const LineCard = React.memo(function LineCard({ line, idx, isActive, onPlay, stopTitle, playTitle, stopAria, playAria, lineMeaning }) {
-  const sp = SPEAKER_STYLES[line.role];
+const LineCard = React.memo(function LineCard({ line, idx, isActive, onPlay, lineMeaning }) {
+  const speakerColor = SPEAKER_COLORS[line.role]?.primary || 'var(--text-secondary)';
   return (
     <div
-      className={`conv-line ${isActive ? 'conv-line--active' : ''}`}
+      className={`relative rounded-xl border transition-all duration-200 ${
+        isActive ? 'ring-2 ring-offset-1' : ''
+      }`}
       style={{
-        '--sp-bg': sp.bg,
-        '--sp-border': sp.border,
-        '--sp-bar': sp.bar,
-        '--sp-text': sp.text,
-        '--sp-bar-30': sp.barAlpha30,
-        '--sp-bar-25': sp.barAlpha25,
-        '--sp-bar-50': sp.barAlpha50,
+        padding: '14px 16px',
+        background: isActive
+          ? `color-mix(in srgb, ${speakerColor} 8%, var(--bg-card))`
+          : 'var(--bg-card)',
+        borderColor: isActive
+          ? `color-mix(in srgb, ${speakerColor} 40%, transparent)`
+          : 'color-mix(in srgb, var(--text-muted) 15%, transparent)',
+        '--tw-ring-color': isActive
+          ? `color-mix(in srgb, ${speakerColor} 50%, transparent)`
+          : 'transparent',
       }}
     >
-      <div className="conv-line-bar absolute left-0 top-2 bottom-2 w-[3px] rounded-r-full" aria-hidden />
-      <div className="flex items-baseline justify-between gap-2 mb-1.5">
-        <span className="conv-line-role text-[10px] font-mono font-bold tracking-wider">
+      <div className="flex items-center justify-between gap-2 mb-2">
+        <span
+          className="inline-flex items-center justify-center w-6 h-6 rounded-full text-[10px] font-bold text-white"
+          style={{ background: speakerColor }}
+        >
           {line.role}
         </span>
         <button
           onClick={() => onPlay(idx)}
-          className="conv-line-btn shrink-0 w-6 h-6 rounded-full inline-flex items-center justify-center transition-all duration-200"
-          title={isActive ? stopTitle : playTitle}
-          aria-label={isActive ? stopAria : playAria}
+          className="shrink-0 w-7 h-7 rounded-full inline-flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90"
+          style={{
+            background: isActive
+              ? `color-mix(in srgb, ${speakerColor} 15%, transparent)`
+              : 'transparent',
+            color: isActive ? speakerColor : 'var(--text-muted)',
+            border: `1px solid ${isActive ? `color-mix(in srgb, ${speakerColor} 40%, transparent)` : 'var(--border-color)'}`,
+          }}
         >
           {isActive ? (
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg>
@@ -447,13 +424,13 @@ const LineCard = React.memo(function LineCard({ line, idx, isActive, onPlay, sto
           )}
         </button>
       </div>
-      <p className="text-[15px] leading-relaxed text-primary font-medium">
+      <p className="text-base leading-relaxed text-primary font-medium">
         {line.chinese}
       </p>
-      <p className="text-[11px] text-secondary/80 italic mt-1 leading-snug">
+      <p className="text-xs text-secondary/80 italic mt-1 leading-snug">
         {line.pinyin}
       </p>
-      <p className="text-[11px] text-muted/80 mt-1 leading-snug">
+      <p className="text-xs text-muted/70 mt-1 leading-snug">
         {lineMeaning}
       </p>
     </div>
@@ -461,17 +438,15 @@ const LineCard = React.memo(function LineCard({ line, idx, isActive, onPlay, sto
 });
 
 /* ────────────────────────────────────────────────────────────────── */
-/* ConversationPopup — hero header + sequential play-all + speaker-tinted dialogue lines + cultural note */
+/* ConversationPopup — simplified: clean header + dialogue lines + cultural note */
 /* ────────────────────────────────────────────────────────────────── */
 function ConversationPopup({ conv, onClose }) {
   const { t, meaning, lang } = useTranslation();
   const catColor = getCatColor(conv.category);
 
-  const [activeLine, setActiveLine] = useState(-1); // -1 = idle, 0..N = currently playing
+  const [activeLine, setActiveLine] = useState(-1);
   const [isPlayingAll, setIsPlayingAll] = useState(false);
   const cancelRef = useRef(false);
-  // Mirror isPlayingAll into a ref so callbacks that depend on it can stay
-  // referentially stable (keeps React.memo on LineCards effective).
   const isPlayingAllRef = useRef(false);
   useEffect(() => { isPlayingAllRef.current = isPlayingAll; }, [isPlayingAll]);
 
@@ -482,7 +457,6 @@ function ConversationPopup({ conv, onClose }) {
     setIsPlayingAll(false);
   }, []);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       cancelRef.current = true;
@@ -490,8 +464,6 @@ function ConversationPopup({ conv, onClose }) {
     };
   }, []);
 
-  // Play one line with chained onend → next line. Uses browser-default
-  // speechSynthesis (same approach as the rest of the app via useSpeech).
   const playLine = useCallback((index, onDone) => {
     if (cancelRef.current) return;
     const line = conv.lines[index];
@@ -505,16 +477,6 @@ function ConversationPopup({ conv, onClose }) {
     utterance.lang = 'zh-CN';
     utterance.rate = 0.9;
 
-    // Force a Chinese neural voice BY NAME first so single-character /
-    // very short phrases also get Chinese prosody (Edge heuristic does
-    // not reliably pick Xiaoxiao/Yunyang for short input, and the legacy
-    // Microsoft Huihui voice falls back to non-Chinese behaviour when
-    // assigned via lang-only).
-    //
-    // Tier 1 — Microsoft Neural (Edge/Chrome Windows) + macOS Chinese voices
-    // Tier 2 — Exact zh-CN match (most reliable on Windows hybrid packs)
-    // Tier 3 — Any zh-prefix voice (zh-Hans, zh-Hant, zh-TW, cmn…)
-    // Tier 4 — No assignment (browser's lang='zh-CN' heuristic = baseline)
     const voices = window.speechSynthesis.getVoices() || [];
     const NEURAL_NAMES = /xiaoxiao|xiaoyu|xiaorui|xiaomo|xiaoshuang|yunyang|yunxi|yunjian|yunze|tingting|sin.?ji|mei.?jia/i;
     const lc = (s) => (s || '').toLowerCase();
@@ -550,12 +512,8 @@ function ConversationPopup({ conv, onClose }) {
     run(0);
   }, [conv.lines, playLine]);
 
-  // Per-line speaker might toggle between single-line read & interrupt-all.
-  // Reads isPlayingAll indirectly via the ref so this callback's reference
-  // stays stable across the playAll ↔ idle transitions (otherwise every
-  // LineCard would be memo-invalidated every time the global state flipped).
   const handleLinePlay = useCallback((index) => {
-    if (isPlayingAllRef.current) stop(); // cancel global play
+    if (isPlayingAllRef.current) stop();
     cancelRef.current = false;
     setIsPlayingAll(false);
     playLine(index, () => setActiveLine(-1));
@@ -565,8 +523,8 @@ function ConversationPopup({ conv, onClose }) {
     <>
       <div
         className="fixed bg-black/60 popup-overlay-enter"
-        style={{ top: '-100px', left: '-100px', right: '-100px', bottom: '-100px', zIndex: 100, willChange: 'transform' }}
-        onClick={stop}
+        style={{ top: '-100px', left: '-100px', right: '-100px', bottom: '-100px', zIndex: 100 }}
+        onClick={onClose}
       />
       <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 pointer-events-none">
         <div
@@ -578,45 +536,49 @@ function ConversationPopup({ conv, onClose }) {
           }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="absolute top-0 left-0 w-16 h-16 pointer-events-none" style={{ background: `linear-gradient(135deg, ${catColor} 0%, transparent 60%)`, opacity: 0.15, borderRadius: '16px 0 0 0' }} />
-          <div className="absolute bottom-0 right-0 w-16 h-16 pointer-events-none" style={{ background: `linear-gradient(315deg, ${catColor} 0%, transparent 60%)`, opacity: 0.15, borderRadius: '0 0 16px 0' }} />
-
+          {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-5 z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors text-muted hover:text-primary"
+            className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors text-muted hover:text-primary"
           >
             <Icon name="xmark" className="text-lg" />
           </button>
 
           <div className="flex-1 min-h-0 overflow-y-auto">
-            {/* Hero header */}
-            <div className="px-8 pt-10 pb-5 text-center">
-              <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-2" style={{ color: catColor }}>
-                {conv.subcategory}
-              </p>
-              <h2 className="font-bold text-primary" style={{ fontSize: '1.5rem', lineHeight: 1.1 }}>
-                {conv.title}
-              </h2>
-              <p className="text-sm text-secondary mt-1.5">{conv.titleThai}</p>
-              {conv.hskLevel > 0 && (
-                <span className="inline-block text-[10px] font-mono mt-2 px-2.5 py-0.5 rounded-full" style={{ background: `color-mix(in srgb, ${catColor} 15%, transparent)`, color: catColor }}>
-                  HSK {conv.hskLevel}
+            {/* Clean header — centered */}
+            <div className="px-6 sm:px-8 pt-8 pb-4 text-center">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase"
+                  style={{ background: `color-mix(in srgb, ${catColor} 12%, transparent)`, color: catColor }}
+                >
+                  <Icon name={getSubcategoryIcon(conv.subcategory)} className="text-[9px]" />
+                  {conv.subcategory}
                 </span>
-              )}
-              <p className="text-[11px] text-muted/80 mt-3 italic">
-                {t('conv.setting')} {lang === 'th' ? conv.settingThai : conv.setting}
+                {conv.hskLevel > 0 && (
+                  <span className="text-[10px] text-muted/60 font-mono">HSK {conv.hskLevel}</span>
+                )}
+              </div>
+              <h2 className="font-bold text-primary leading-snug" style={{ fontSize: '1.35rem' }}>
+                {lang === 'th' ? conv.titleThai : conv.title}
+              </h2>
+              <p className="text-sm text-secondary/80 mt-0.5">
+                {lang === 'th' ? conv.title : conv.titleThai}
+              </p>
+              <p className="text-[11px] text-muted/60 mt-2 italic">
+                {lang === 'th' ? conv.settingThai : conv.setting}
               </p>
 
               {/* Play-all button */}
               <button
                 onClick={isPlayingAll ? stop : playAll}
-                className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full text-[12px] font-medium transition-all duration-200 active:scale-95"
+                className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12px] font-medium transition-all duration-200 active:scale-95"
                 style={{
                   background: isPlayingAll
-                    ? 'color-mix(in srgb, #ef4444 18%, transparent)'
-                    : `color-mix(in srgb, ${catColor} 18%, transparent)`,
+                    ? 'color-mix(in srgb, #ef4444 14%, transparent)'
+                    : `color-mix(in srgb, ${catColor} 14%, transparent)`,
                   color: isPlayingAll ? '#ef4444' : catColor,
-                  border: `1px solid ${isPlayingAll ? 'color-mix(in srgb, #ef4444 35%, transparent)' : `color-mix(in srgb, ${catColor} 35%, transparent)`}`,
+                  border: `1px solid ${isPlayingAll ? 'color-mix(in srgb, #ef4444 30%, transparent)' : `color-mix(in srgb, ${catColor} 30%, transparent)`}`,
                 }}
               >
                 {isPlayingAll ? (
@@ -634,7 +596,7 @@ function ConversationPopup({ conv, onClose }) {
             </div>
 
             {/* Dialogue lines */}
-            <div className="px-6 sm:px-8 pb-6 space-y-2.5">
+            <div className="px-6 sm:px-8 pb-6 space-y-3">
               {conv.lines.map((line, idx) => (
                 <LineCard
                   key={idx}
@@ -642,10 +604,6 @@ function ConversationPopup({ conv, onClose }) {
                   idx={idx}
                   isActive={activeLine === idx}
                   onPlay={handleLinePlay}
-                  stopTitle={t('speak.stop')}
-                  playTitle={t('speak.listenPronunciation')}
-                  stopAria={t('speak.stopSpeaking')}
-                  playAria={t('speak.speakText')}
                   lineMeaning={meaning(line)}
                 />
               ))}
@@ -654,22 +612,17 @@ function ConversationPopup({ conv, onClose }) {
             {/* Cultural note */}
             {conv.culturalNote && (
               <div className="px-6 sm:px-8 pb-8">
-                <details
-                  className="rounded-xl overflow-hidden group"
-                  style={{
-                    background: 'color-mix(in srgb, var(--bg-card) 50%, transparent)',
-                    border: '1px solid var(--border-color)',
-                  }}
-                >
-                  <summary
-                    className="cursor-pointer px-4 py-2.5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted hover:text-primary transition-colors select-none"
-                  >
+                <details className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border-color)' }}>
+                  <summary className="cursor-pointer px-4 py-2.5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted hover:text-primary transition-colors select-none">
                     <Icon name="chevronDown" className="text-[10px] transition-transform duration-200 group-open:rotate-180" />
                     <span>{t('conv.culturalNote')}</span>
                   </summary>
-                  <div className="px-4 pb-4 pt-1 space-y-2 text-[12px] leading-relaxed text-secondary/90">
-                    <p>{conv.culturalNote.en}</p>
-                    <p className="text-muted/80">{conv.culturalNote.th}</p>
+                  <div className="px-4 pb-4 pt-1 text-[12px] leading-relaxed" style={{ color: lang === 'th' ? 'var(--text-secondary)' : 'var(--text-secondary)' }}>
+                    {lang === 'th' ? (
+                      <p>{conv.culturalNote.th}</p>
+                    ) : (
+                      <p>{conv.culturalNote.en}</p>
+                    )}
                   </div>
                 </details>
               </div>
