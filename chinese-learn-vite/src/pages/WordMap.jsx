@@ -6,7 +6,8 @@ import Icon from '../components/Icon';
 import InkParticles from '../components/InkParticles';
 import useTranslation from '../hooks/useTranslation';
 import useWordMap from '../hooks/useWordMap';
-import { CATEGORIES, VOCABULARY, getSubcategoryIcon } from '../data/vocabulary';
+import { VOCABULARY } from '../data/vocabulary';
+import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
 
 const WORDMAP_INK_CHARS = ['網', '絡', '連', '繫', '字', '詞', '關', '聯', '圖', '譜'];
 

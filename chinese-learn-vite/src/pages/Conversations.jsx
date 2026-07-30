@@ -5,7 +5,8 @@ import Icon from '../components/Icon';
 import InkParticles from '../components/InkParticles';
 import useTranslation from '../hooks/useTranslation';
 import { CONVERSATIONS } from '../data/conversations';
-import { VOCABULARY, CATEGORIES, getSubcategoryIcon } from '../data/vocabulary';
+import { VOCABULARY } from '../data/vocabulary';
+import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
 
 const CONV_INK_CHARS = ['對', '話', '聊', '天', '語', '音', '句', '詞', '場', '景'];
 

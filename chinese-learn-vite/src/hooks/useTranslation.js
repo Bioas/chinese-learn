@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import en from '../lang/en';
 import th from '../lang/th';
 import { useApp } from '../context/AppContext';
@@ -9,7 +10,7 @@ export default function useTranslation() {
   const lang = state.language || 'en';
   const dict = translations[lang] || en;
 
-  const t = (key, params = {}) => {
+  const t = useCallback((key, params = {}) => {
     let text = dict[key];
     if (text === undefined) {
       text = en[key] || key;
@@ -20,13 +21,13 @@ export default function useTranslation() {
       }
     }
     return text;
-  };
+  }, [dict]);
 
-  const meaning = (word, fallback = true) => {
+  const meaning = useCallback((word, fallback = true) => {
     if (!word) return '';
     if (lang === 'th') return word.meaningThai || (fallback ? word.meaning : '');
     return word.meaning || '';
-  };
+  }, [lang]);
 
   return { t, meaning, lang };
 }

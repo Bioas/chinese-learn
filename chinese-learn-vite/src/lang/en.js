@@ -253,6 +253,7 @@ const en = {
   'greeting.morning': '早上好! Good Morning!',
   'greeting.afternoon': '下午好! Good Afternoon!',
   'greeting.evening': '晚上好! Good Evening!',
+
 };
 
 export default en;

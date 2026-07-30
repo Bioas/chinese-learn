@@ -4,7 +4,8 @@ import SpeakButton from '../components/SpeakButton';
 import Icon from '../components/Icon';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
-import { CATEGORIES, VOCABULARY, getSubcategoryIcon } from '../data/vocabulary';
+import { VOCABULARY } from '../data/vocabulary';
+import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
 
 const QUIZ_INK_CHARS = ['問', '答', '考', '試', '学', '習', '知', '解', '思', '得'];
 

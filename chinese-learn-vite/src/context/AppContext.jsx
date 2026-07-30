@@ -1,11 +1,9 @@
 import React, { createContext, useContext, useReducer, useCallback, useEffect, useRef, useState } from 'react';
-import { VOCABULARY } from '../data/vocabulary';
 import { supabase, isSupabaseReady } from '../lib/supabase';
 import { useAuth } from './AuthContext';
 import { isDemoMode } from './AuthContext';
 
 const initialState = {
-  vocabulary: VOCABULARY,
   studiedToday: 0,
   streak: 0,
   pinnedSubcategories: [],

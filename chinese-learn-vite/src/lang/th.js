@@ -252,6 +252,7 @@ const th = {
   'greeting.morning': '早上好! สวัสดีตอนเช้า!',
   'greeting.afternoon': '下午好! สวัสดีตอนบ่าย!',
   'greeting.evening': '晚上好! สวัสดีตอนเย็น!',
+
 };
 
 export default th;

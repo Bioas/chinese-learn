@@ -5,7 +5,8 @@ import Icon from '../components/Icon';
 import StrokeOrder from '../components/StrokeOrder';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
-import { CATEGORIES, VOCABULARY, getSubcategoryIcon } from '../data/vocabulary';
+import { VOCABULARY } from '../data/vocabulary';
+import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
 
 const FLASHCARD_INK_CHARS = ['學', '書', '墨', '筆', '紙', '硯', '畫', '文', '字', '詞'];
 

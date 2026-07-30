@@ -6,7 +6,8 @@ import SpeakButton from '../components/SpeakButton';
 import Icon from '../components/Icon';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
-import { VOCABULARY, CATEGORIES } from '../data/vocabulary';
+import { VOCABULARY } from '../data/vocabulary';
+import { CATEGORIES } from '../data/categories';
 import { CONVERSATIONS } from '../data/conversations';
 
 const DASHBOARD_INK_CHARS = ['学', '习', '进', '步', '成', '功', '日', '积', '月', '累'];

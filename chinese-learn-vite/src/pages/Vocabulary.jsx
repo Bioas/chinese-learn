@@ -6,7 +6,8 @@ import Icon from '../components/Icon';
 import StrokeOrder from '../components/StrokeOrder';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
-import { CATEGORIES, VOCABULARY, getSubcategoryIcon } from '../data/vocabulary';
+import { VOCABULARY } from '../data/vocabulary';
+import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
 
 const VOCAB_INK_CHARS = ['詞', '字', '典', '学', '習', '句', '文', '義', '读', '書'];
 
