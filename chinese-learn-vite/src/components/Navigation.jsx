@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from './Icon';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
-import Login from '../pages/Login';
 import useTranslation from '../hooks/useTranslation';
+
+const Login = lazy(() => import('../pages/Login'));
 
 const SYNC_STYLES = {
   idle:    { dot: 'text-green-500',         label: 'auth.syncIdle',    pulse: false },
@@ -529,7 +530,11 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
       </aside>
 
       {/* Login modal */}
-      {showLogin && <Login onClose={() => setShowLogin(false)} />}
+      {showLogin && (
+        <Suspense fallback={null}>
+          <Login onClose={() => setShowLogin(false)} />
+        </Suspense>
+      )}
     </>
   );
 }

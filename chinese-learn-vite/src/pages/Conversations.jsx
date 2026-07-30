@@ -218,19 +218,6 @@ export default function Conversations() {
 
   const closePopup = useCallback(() => setPopupConv(null), []);
 
-  // Escape to close popup
-  useEffect(() => {
-    if (!popupConv) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    const onKey = (e) => { if (e.key === 'Escape') closePopup(); };
-    window.addEventListener('keydown', onKey);
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [popupConv, closePopup]);
-
   const getPageNumbers = () => {
     if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
     const pages = [1];
@@ -525,6 +512,7 @@ const LineCard = React.memo(function LineCard({
 
   return (
     <div
+      data-line-idx={idx}
       className={`relative rounded-xl border transition-all duration-200 ${
         isActive ? 'ring-2 ring-offset-1' : ''
       } ${isRoleHidden && !isRevealed ? 'select-none' : ''}`}
@@ -613,7 +601,7 @@ const LineCard = React.memo(function LineCard({
 /* ────────────────────────────────────────────────────────────────── */
 /* ConversationPopup                                                  */
 /* ────────────────────────────────────────────────────────────────── */
-function ConversationPopup({ conv, onClose }) {
+export function ConversationPopup({ conv, onClose }) {
   const { t, meaning, lang } = useTranslation();
   const { state, toggleSavedConv, updateConvStatus } = useApp();
   const catColor = getCatColor(conv.category);
@@ -762,12 +750,42 @@ function ConversationPopup({ conv, onClose }) {
     }
   }, [rolePlayHidden]);
 
+  // Lock body scroll + Escape key (self-contained for reuse from any page)
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [onClose]);
+
   // Mark as in_progress when popup opens (unless already completed)
   useEffect(() => {
     if (convStatus === 'new') {
       updateConvStatus(conv.id, 'in_progress');
     }
   }, [conv.id, convStatus, updateConvStatus]);
+
+  const scrollContainerRef = useRef(null);
+
+  // Auto-scroll to the active line during play-all (with offset)
+  useEffect(() => {
+    if (!isPlayingAll || activeLine < 0) return;
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const lineEl = el.querySelector(`[data-line-idx="${activeLine}"]`);
+    if (!lineEl) return;
+    const lineRect = lineEl.getBoundingClientRect();
+    const containerRect = el.getBoundingClientRect();
+    const lineTop = lineRect.top - containerRect.top + el.scrollTop;
+    el.scrollTo({
+      top: Math.max(0, lineTop - el.clientHeight * 0.25),
+      behavior: 'smooth',
+    });
+  }, [activeLine, isPlayingAll]);
 
   return createPortal(
     <>
@@ -794,7 +812,7 @@ function ConversationPopup({ conv, onClose }) {
             <Icon name="xmark" className="text-lg" />
           </button>
 
-          <div className="flex-1 min-h-0 overflow-y-auto">
+          <div ref={scrollContainerRef} className="flex-1 min-h-0 overflow-y-auto">
             {/* Header */}
             <div className="px-6 sm:px-8 pt-8 pb-4 text-center">
               {/* Top row: subcategory, HSK, bookmark */}

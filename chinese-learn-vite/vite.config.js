@@ -10,7 +10,6 @@ export default defineConfig({
           // Heavy vendor libraries → separate chunk so they cache independently
           if (id.includes('hanzi-writer')) return 'vendor-hanzi';
           if (id.includes('supabase')) return 'vendor-supabase';
-          if (id.includes('boxicons')) return 'vendor-icons';
           if (id.includes('node_modules/react')) return 'vendor-react';
           if (id.includes('node_modules/react-dom')) return 'vendor-react';
           if (id.includes('node_modules/react-router')) return 'vendor-react';

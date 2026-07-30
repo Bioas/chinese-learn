@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useMemo, useState, useCallback } from 'react';
 import { useApp } from '../context/AppContext';
+import { ConversationPopup } from './Conversations';
 import ContributionCalendar from '../components/ContributionCalendar';
 import SpeakButton from '../components/SpeakButton';
 import Icon from '../components/Icon';
@@ -31,9 +31,11 @@ function getSubcategoryLabel(word, language) {
 }
 
 export default function Dashboard() {
-  const navigate = useNavigate();
   const { t, meaning } = useTranslation();
   const { state, dispatch } = useApp();
+
+  const [popupConv, setPopupConv] = useState(null);
+  const closePopup = useCallback(() => setPopupConv(null), []);
 
   const totalWords = VOCABULARY.length;
   const masteredWords = useMemo(
@@ -191,7 +193,7 @@ export default function Dashboard() {
           {recentWords.map(word => {
             const s = state.wordStatuses[word.id] || 'new';
             return (
-              <div key={word.id} className="glass-card p-4 hover:bg-card-hover transition-all border border-transparent hover:border-blue-500/20 flex flex-col gap-2 text-left">
+              <div key={word.id} className="glass-card p-4 hover:bg-card-hover transition-all border flex flex-col gap-2 text-left" style={{ borderColor: 'var(--border-color)' }}>
                 {/* Top: Chinese char + SpeakButton on the right */}
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-2xl font-medium text-primary">{word.chinese}</span>
@@ -271,7 +273,7 @@ export default function Dashboard() {
                   background: 'var(--bg-card)',
                   border: '1px solid var(--border-color)',
                 }}
-                onClick={() => navigate('/conversations')}
+                onClick={() => setPopupConv(conv)}
               >
                 <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, ${catColor}, transparent)` }} />
                 <div className="p-3.5">
@@ -287,6 +289,11 @@ export default function Dashboard() {
           })}
         </div>
       </div>
+
+      {/* Conversation Popup */}
+      {popupConv && (
+        <ConversationPopup conv={popupConv} onClose={closePopup} />
+      )}
     </div>
   );
 }
