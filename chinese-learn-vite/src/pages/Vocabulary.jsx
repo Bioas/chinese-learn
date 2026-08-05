@@ -756,11 +756,13 @@ export default function Vocabulary() {
                   <SpeakButton text={popupWord.chinese} variant="icon" size="md" />
                 </div>
               </div>
-              {state.showPinyin && (
-                <p className="text-[11px] sm:text-sm text-secondary/80 italic tracking-wide mt-2 whitespace-nowrap">
-                  {popupWord.pinyin}
-                </p>
-              )}
+              {/* Pinyin is always shown in the dictionary popup — the showPinyin
+                  toggle is a test-mode preference for Flashcards/Quiz only and
+                  has no visible control on this page, so hiding it here would
+                  leave users with no way to turn it back on. */}
+              <p className="text-[11px] sm:text-sm text-secondary/80 italic tracking-wide mt-2 whitespace-nowrap">
+                {popupWord.pinyin}
+              </p>
               <p className="text-xs sm:text-base text-primary/90 mt-2 font-medium whitespace-nowrap">
                 {meaning(popupWord)}
               </p>
@@ -861,9 +863,7 @@ export default function Vocabulary() {
                         <span className="text-[10px] font-mono text-muted mt-1 w-4 flex-shrink-0">{i + 1}.</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-[15px] leading-relaxed text-primary">{ex.chinese}</p>
-                          {state.showPinyin && (
-                            <p className="text-xs text-secondary/70 italic mt-0.5">{ex.pinyin}</p>
-                          )}
+                          <p className="text-xs text-secondary/70 italic mt-0.5">{ex.pinyin}</p>
                           {meaning(ex) && (
                             <p className="text-xs text-muted mt-1 leading-relaxed">{meaning(ex)}</p>
                           )}
