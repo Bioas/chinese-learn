@@ -1,0 +1,1903 @@
+const NATURE_WORDS = [
+  {
+    "id": "nature-001",
+    "chinese": "大象",
+    "pinyin": "dà xiàng",
+    "meaning": "Elephant",
+    "meaningThai": "ช้าง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大象是最大的陆地动物。",
+        "pinyin": "Dà xiàng shì zuì dà de lù dì dòng wù.",
+        "meaning": "Elephants are the largest land animals.",
+        "meaningThai": "ช้างเป็นสัตว์บกที่ใหญ่ที่สุด"
+      }
+    ]
+  },
+  {
+    "id": "nature-002",
+    "chinese": "老虎",
+    "pinyin": "lǎo hǔ",
+    "meaning": "Tiger",
+    "meaningThai": "เสือ",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老虎是猫科动物。",
+        "pinyin": "Lǎo hǔ shì māo kē dòng wù.",
+        "meaning": "Tigers are felines.",
+        "meaningThai": "เสือเป็นสัตว์ตระกูลแมว"
+      }
+    ]
+  },
+  {
+    "id": "nature-003",
+    "chinese": "猴子",
+    "pinyin": "hóu zi",
+    "meaning": "Monkey",
+    "meaningThai": "ลิง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "猴子很聪明。",
+        "pinyin": "Hóu zi hěn cōng míng.",
+        "meaning": "Monkeys are very smart.",
+        "meaningThai": "ลิงฉลาดมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-004",
+    "chinese": "蛇",
+    "pinyin": "shé",
+    "meaning": "Snake",
+    "meaningThai": "งู",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "蛇没有脚。",
+        "pinyin": "Shé méi yǒu jiǎo.",
+        "meaning": "Snakes don't have feet.",
+        "meaningThai": "งูไม่มีขา"
+      }
+    ]
+  },
+  {
+    "id": "nature-005",
+    "chinese": "兔子",
+    "pinyin": "tù zi",
+    "meaning": "Rabbit",
+    "meaningThai": "กระต่าย",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "兔子喜欢吃胡萝卜。",
+        "pinyin": "Tù zi xǐ huān chī hú luó bo.",
+        "meaning": "Rabbits like to eat carrots.",
+        "meaningThai": "กระต่ายชอบกินแครอท"
+      }
+    ]
+  },
+  {
+    "id": "nature-006",
+    "chinese": "蝴蝶",
+    "pinyin": "hú dié",
+    "meaning": "Butterfly",
+    "meaningThai": "ผีเสื้อ",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "蝴蝶在花园里飞舞。",
+        "pinyin": "Hú dié zài huā yuán lǐ fēi wǔ.",
+        "meaning": "Butterflies flutter in the garden.",
+        "meaningThai": "ผีเสื้อบินเล่นในสวน"
+      }
+    ]
+  },
+  {
+    "id": "nature-007",
+    "chinese": "熊猫",
+    "pinyin": "xióng māo",
+    "meaning": "Panda",
+    "meaningThai": "แพนด้า",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "熊猫是中国的国宝。",
+        "pinyin": "Xióng māo shì Zhōng guó de guó bǎo.",
+        "meaning": "Pandas are China's national treasure.",
+        "meaningThai": "แพนด้าเป็นสมบัติประจำชาติของจีน"
+      }
+    ]
+  },
+  {
+    "id": "nature-008",
+    "chinese": "海豚",
+    "pinyin": "hǎi tún",
+    "meaning": "Dolphin",
+    "meaningThai": "โลมา",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "海豚非常聪明友善。",
+        "pinyin": "Hǎi tún fēi cháng cōng míng yǒu shàn.",
+        "meaning": "Dolphins are very smart and friendly.",
+        "meaningThai": "โลมาฉลาดและเป็นมิตรมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-009",
+    "chinese": "狮子",
+    "pinyin": "shī zi",
+    "meaning": "Lion",
+    "meaningThai": "สิงโต",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "狮子被称为百兽之王。",
+        "pinyin": "Shī zi bèi chēng wéi bǎi shòu zhī wáng.",
+        "meaning": "Lions are called the king of beasts.",
+        "meaningThai": "สิงโตถูกเรียกว่าจ้าวแห่งสัตว์ทั้งปวง"
+      }
+    ]
+  },
+  {
+    "id": "nature-010",
+    "chinese": "鸟",
+    "pinyin": "niǎo",
+    "meaning": "Bird",
+    "meaningThai": "นก",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "鸟在树上唱歌。",
+        "pinyin": "Niǎo zài shù shàng chàng gē.",
+        "meaning": "Birds sing in the trees.",
+        "meaningThai": "นกร้องเพลงบนต้นไม้"
+      }
+    ]
+  },
+  {
+    "id": "nature-011",
+    "chinese": "昆虫",
+    "pinyin": "kūn chóng",
+    "meaning": "Insect",
+    "meaningThai": "แมลง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "昆虫的种类非常多。",
+        "pinyin": "Kūn chóng de zhǒng lèi fēi cháng duō.",
+        "meaning": "There are many kinds of insects.",
+        "meaningThai": "แมลงมีหลายชนิดมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-012",
+    "chinese": "狼",
+    "pinyin": "láng",
+    "meaning": "Wolf",
+    "meaningThai": "หมาป่า",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "狼是群居动物。",
+        "pinyin": "Láng shì qún jū dòng wù.",
+        "meaning": "Wolves are pack animals.",
+        "meaningThai": "หมาป่าเป็นสัตว์ที่อยู่รวมกันเป็นฝูง"
+      }
+    ]
+  },
+  {
+    "id": "nature-013",
+    "chinese": "鲸鱼",
+    "pinyin": "jīng yú",
+    "meaning": "Whale",
+    "meaningThai": "วาฬ",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "鲸鱼是海洋中最大的动物。",
+        "pinyin": "Jīng yú shì hǎi yáng zhōng zuì dà de dòng wù.",
+        "meaning": "Whales are the largest animals in the ocean.",
+        "meaningThai": "วาฬเป็นสัตว์ที่ใหญ่ที่สุดในทะเล"
+      }
+    ]
+  },
+  {
+    "id": "nature-014",
+    "chinese": "鹿",
+    "pinyin": "lù",
+    "meaning": "Deer",
+    "meaningThai": "กวาง",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "森林里有很多鹿。",
+        "pinyin": "Sēn lín lǐ yǒu hěn duō lù.",
+        "meaning": "There are many deer in the forest.",
+        "meaningThai": "ในป่ามีกวางมากมาย"
+      }
+    ]
+  },
+  {
+    "id": "nature-015",
+    "chinese": "老鹰",
+    "pinyin": "lǎo yīng",
+    "meaning": "Eagle",
+    "meaningThai": "อินทรี",
+    "category": "nature",
+    "subcategory": "animals",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老鹰在天空中飞翔。",
+        "pinyin": "Lǎo yīng zài tiān kōng zhōng fēi xiáng.",
+        "meaning": "Eagles soar in the sky.",
+        "meaningThai": "อินทรีบินโผบินบนท้องฟ้า"
+      }
+    ]
+  },
+  {
+    "id": "nature-016",
+    "chinese": "松树",
+    "pinyin": "sōng shù",
+    "meaning": "Pine tree",
+    "meaningThai": "ต้นสน",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "松树四季常绿。",
+        "pinyin": "Sōng shù sì jì cháng lǜ.",
+        "meaning": "Pine trees are evergreen all year round.",
+        "meaningThai": "ต้นสนเขียวตลอดทั้งปี"
+      }
+    ]
+  },
+  {
+    "id": "nature-017",
+    "chinese": "玫瑰",
+    "pinyin": "méi guī",
+    "meaning": "Rose",
+    "meaningThai": "กุหลาบ",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "玫瑰象征爱情。",
+        "pinyin": "Méi guī xiàng zhēng ài qíng.",
+        "meaning": "Roses symbolize love.",
+        "meaningThai": "กุหลาบเป็นสัญลักษณ์ของความรัก"
+      }
+    ]
+  },
+  {
+    "id": "nature-018",
+    "chinese": "竹子",
+    "pinyin": "zhú zi",
+    "meaning": "Bamboo",
+    "meaningThai": "ไม้ไผ่",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "熊猫喜欢吃竹子。",
+        "pinyin": "Xióng māo xǐ huān chī zhú zi.",
+        "meaning": "Pandas like to eat bamboo.",
+        "meaningThai": "แพนด้าชอบกินไม้ไผ่"
+      }
+    ]
+  },
+  {
+    "id": "nature-019",
+    "chinese": "荷花",
+    "pinyin": "hé huā",
+    "meaning": "Lotus",
+    "meaningThai": "ดอกบัว",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "荷花出淤泥而不染。",
+        "pinyin": "Hé huā chū yū ní ér bù rǎn.",
+        "meaning": "The lotus rises from mud unsullied.",
+        "meaningThai": "ดอกบัวเกิดจากโคลนแต่ไม่เปื้อน"
+      }
+    ]
+  },
+  {
+    "id": "nature-020",
+    "chinese": "柳树",
+    "pinyin": "liǔ shù",
+    "meaning": "Willow tree",
+    "meaningThai": "ต้นหลิว",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "柳树的枝条垂在水面上。",
+        "pinyin": "Liǔ shù de zhī tiáo chuí zài shuǐ miàn shàng.",
+        "meaning": "Willow branches hang over the water.",
+        "meaningThai": "กิ่งหลิวทอดลงเหนือผิวน้ำ"
+      }
+    ]
+  },
+  {
+    "id": "nature-021",
+    "chinese": "蘑菇",
+    "pinyin": "mó gu",
+    "meaning": "Mushroom",
+    "meaningThai": "เห็ด",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "雨后森林里长出了蘑菇。",
+        "pinyin": "Yǔ hòu sēn lín lǐ zhǎng chū le mó gu.",
+        "meaning": "Mushrooms grew in the forest after the rain.",
+        "meaningThai": "หลังฝนตกเห็ดงอกในป่า"
+      }
+    ]
+  },
+  {
+    "id": "nature-022",
+    "chinese": "树叶",
+    "pinyin": "shù yè",
+    "meaning": "Tree leaf",
+    "meaningThai": "ใบไม้",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "秋天树叶变黄了。",
+        "pinyin": "Qiū tiān shù yè biàn huáng le.",
+        "meaning": "Leaves turn yellow in autumn.",
+        "meaningThai": "ใบไม้เปลี่ยนเป็นสีเหลืองในฤดูใบไม้ร่วง"
+      }
+    ]
+  },
+  {
+    "id": "nature-023",
+    "chinese": "种子",
+    "pinyin": "zhǒng zi",
+    "meaning": "Seed",
+    "meaningThai": "เมล็ด",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "春天播种种子。",
+        "pinyin": "Chūn tiān bō zhǒng zhǒng zi.",
+        "meaning": "Sow seeds in spring.",
+        "meaningThai": "หว่านเมล็ดในฤดูใบไม้ผลิ"
+      }
+    ]
+  },
+  {
+    "id": "nature-024",
+    "chinese": "果实",
+    "pinyin": "guǒ shí",
+    "meaning": "Fruit (botanical)",
+    "meaningThai": "ผล",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "树上结满了果实。",
+        "pinyin": "Shù shàng jié mǎn le guǒ shí.",
+        "meaning": "The tree is full of fruit.",
+        "meaningThai": "ต้นไม้เต็มไปด้วยผล"
+      }
+    ]
+  },
+  {
+    "id": "nature-025",
+    "chinese": "杂草",
+    "pinyin": "zá cǎo",
+    "meaning": "Weed",
+    "meaningThai": "วัชพืช",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "花园里长满杂草。",
+        "pinyin": "Huā yuán lǐ zhǎng mǎn zá cǎo.",
+        "meaning": "The garden is overgrown with weeds.",
+        "meaningThai": "สวนเต็มไปด้วยวัชพืช"
+      }
+    ]
+  },
+  {
+    "id": "nature-026",
+    "chinese": "兰花",
+    "pinyin": "lán huā",
+    "meaning": "Orchid",
+    "meaningThai": "กล้วยไม้",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "兰花很优雅。",
+        "pinyin": "Lán huā hěn yōu yǎ.",
+        "meaning": "Orchids are very elegant.",
+        "meaningThai": "กล้วยไม้สง่างามมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-027",
+    "chinese": "仙人掌",
+    "pinyin": "xiān rén zhǎng",
+    "meaning": "Cactus",
+    "meaningThai": "กระบองเพชร",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "仙人掌耐旱。",
+        "pinyin": "Xiān rén zhǎng nài hàn.",
+        "meaning": "Cacti are drought-tolerant.",
+        "meaningThai": "กระบองเพชรทนแล้ง"
+      }
+    ]
+  },
+  {
+    "id": "nature-028",
+    "chinese": "葡萄",
+    "pinyin": "pú tao",
+    "meaning": "Grape",
+    "meaningThai": "องุ่น",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "葡萄可以酿酒。",
+        "pinyin": "Pú tao kě yǐ niàng jiǔ.",
+        "meaning": "Grapes can be made into wine.",
+        "meaningThai": "องุ่นใช้ทำไวน์ได้"
+      }
+    ]
+  },
+  {
+    "id": "nature-029",
+    "chinese": "薰衣草",
+    "pinyin": "xūn yī cǎo",
+    "meaning": "Lavender",
+    "meaningThai": "ลาเวนเดอร์",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "薰衣草的香味很放松。",
+        "pinyin": "Xūn yī cǎo de xiāng wèi hěn fàng sōng.",
+        "meaning": "The scent of lavender is very relaxing.",
+        "meaningThai": "กลิ่นลาเวนเดอร์ผ่อนคลายมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-030",
+    "chinese": "小麦",
+    "pinyin": "xiǎo mài",
+    "meaning": "Wheat",
+    "meaningThai": "ข้าวสาลี",
+    "category": "nature",
+    "subcategory": "plants",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "小麦是主要的粮食作物。",
+        "pinyin": "Xiǎo mài shì zhǔ yào de liáng shi zuò wù.",
+        "meaning": "Wheat is a major grain crop.",
+        "meaningThai": "ข้าวสาลีเป็นพืชอาหารหลัก"
+      }
+    ]
+  },
+  {
+    "id": "nature-031",
+    "chinese": "沙漠",
+    "pinyin": "shā mò",
+    "meaning": "Desert",
+    "meaningThai": "ทะเลทราย",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "沙漠里非常干燥。",
+        "pinyin": "Shā mò lǐ fēi cháng gān zào.",
+        "meaning": "The desert is very dry.",
+        "meaningThai": "ในทะเลทรายแห้งแล้งมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-032",
+    "chinese": "海洋",
+    "pinyin": "hǎi yáng",
+    "meaning": "Ocean",
+    "meaningThai": "มหาสมุทร",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "海洋覆盖了地球的大部分面积。",
+        "pinyin": "Hǎi yáng fù gài le dì qiú de dà bù fèn miàn jī.",
+        "meaning": "The ocean covers most of the Earth's surface.",
+        "meaningThai": "มหาสมุทรปกคลุมพื้นที่ส่วนใหญ่ของโลก"
+      }
+    ]
+  },
+  {
+    "id": "nature-033",
+    "chinese": "瀑布",
+    "pinyin": "pù bù",
+    "meaning": "Waterfall",
+    "meaningThai": "น้ำตก",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个瀑布非常壮观。",
+        "pinyin": "Zhè ge pù bù fēi cháng zhuàng guān.",
+        "meaning": "This waterfall is spectacular.",
+        "meaningThai": "น้ำตกนี้ยิ่งใหญ่มาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-034",
+    "chinese": "岛屿",
+    "pinyin": "dǎo yǔ",
+    "meaning": "Island",
+    "meaningThai": "เกาะ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个岛屿风景优美。",
+        "pinyin": "Zhè ge dǎo yǔ fēng jǐng yōu měi.",
+        "meaning": "This island has beautiful scenery.",
+        "meaningThai": "เกาะนี้มีทัศนียภาพสวยงาม"
+      }
+    ]
+  },
+  {
+    "id": "nature-035",
+    "chinese": "草原",
+    "pinyin": "cǎo yuán",
+    "meaning": "Grassland; Prairie",
+    "meaningThai": "ทุ่งหญ้า",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "草原上有很多牛羊。",
+        "pinyin": "Cǎo yuán shàng yǒu hěn duō niú yáng.",
+        "meaning": "There are many cattle and sheep on the grassland.",
+        "meaningThai": "บนทุ่งหญ้ามีวัวและแกะมากมาย"
+      }
+    ]
+  },
+  {
+    "id": "nature-036",
+    "chinese": "平原",
+    "pinyin": "píng yuán",
+    "meaning": "Plain",
+    "meaningThai": "ที่ราบ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "平原适合农业发展。",
+        "pinyin": "Píng yuán shì hé nóng yè fā zhǎn.",
+        "meaning": "Plains are suitable for agricultural development.",
+        "meaningThai": "ที่ราบเหมาะกับการพัฒนาเกษตรกรรม"
+      }
+    ]
+  },
+  {
+    "id": "nature-037",
+    "chinese": "洞穴",
+    "pinyin": "dòng xué",
+    "meaning": "Cave",
+    "meaningThai": "ถ้ำ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "洞穴里很黑暗。",
+        "pinyin": "Dòng xué lǐ hěn hēi àn.",
+        "meaning": "It's very dark inside the cave.",
+        "meaningThai": "ในถ้ำมืดมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-038",
+    "chinese": "山谷",
+    "pinyin": "shān gǔ",
+    "meaning": "Valley",
+    "meaningThai": "หุบเขา",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "山谷里有一条小河。",
+        "pinyin": "Shān gǔ lǐ yǒu yī tiáo xiǎo hé.",
+        "meaning": "There is a small river in the valley.",
+        "meaningThai": "ในหุบเขามีแม่น้ำสายเล็ก"
+      }
+    ]
+  },
+  {
+    "id": "nature-039",
+    "chinese": "火山",
+    "pinyin": "huǒ shān",
+    "meaning": "Volcano",
+    "meaningThai": "ภูเขาไฟ",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "火山喷发很危险。",
+        "pinyin": "Huǒ shān pēn fā hěn wēi xiǎn.",
+        "meaning": "Volcanic eruptions are very dangerous.",
+        "meaningThai": "ภูเขาไฟระเบิดอันตรายมาก"
+      }
+    ]
+  },
+  {
+    "id": "nature-040",
+    "chinese": "冰川",
+    "pinyin": "bīng chuān",
+    "meaning": "Glacier",
+    "meaningThai": "ธารน้ำแข็ง",
+    "category": "nature",
+    "subcategory": "geography",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "全球变暖导致冰川融化。",
+        "pinyin": "Quán qiú biàn nuǎn dǎo zhì bīng chuān róng huà.",
+        "meaning": "Global warming causes glaciers to melt.",
+        "meaningThai": "โลกร้อนทำให้ธารน้ำแข็งละลาย"
+      }
+    ]
+  },
+  {
+    "id": "nature-041",
+    "chinese": "污染",
+    "pinyin": "wū rǎn",
+    "meaning": "Pollution",
+    "meaningThai": "มลพิษ",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "空气污染影响健康。",
+        "pinyin": "Kōng qì wū rǎn yǐng xiǎng jiàn kāng.",
+        "meaning": "Air pollution affects health.",
+        "meaningThai": "มลพิษทางอากาศส่งผลต่อสุขภาพ"
+      }
+    ]
+  },
+  {
+    "id": "nature-042",
+    "chinese": "回收",
+    "pinyin": "huí shōu",
+    "meaning": "To recycle",
+    "meaningThai": "รีไซเคิล",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请把垃圾分类回收。",
+        "pinyin": "Qǐng bǎ lā jī fēn lèi huí shōu.",
+        "meaning": "Please sort trash for recycling.",
+        "meaningThai": "กรุณาแยกขยะเพื่อรีไซเคิล"
+      }
+    ]
+  },
+  {
+    "id": "nature-043",
+    "chinese": "碳排放",
+    "pinyin": "tàn pái fàng",
+    "meaning": "Carbon emissions",
+    "meaningThai": "การปล่อยคาร์บอน",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "减少碳排放保护环境。",
+        "pinyin": "Jiǎn shǎo tàn pái fàng bǎo hù huán jìng.",
+        "meaning": "Reduce carbon emissions to protect the environment.",
+        "meaningThai": "ลดการปล่อยคาร์บอนเพื่อปกป้องสิ่งแวดล้อม"
+      }
+    ]
+  },
+  {
+    "id": "nature-044",
+    "chinese": "可持续发展",
+    "pinyin": "kě chí xù fā zhǎn",
+    "meaning": "Sustainable development",
+    "meaningThai": "การพัฒนาที่ยั่งยืน",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "可持续发展是未来的方向。",
+        "pinyin": "Kě chí xù fā zhǎn shì wèi lái de fāng xiàng.",
+        "meaning": "Sustainable development is the future direction.",
+        "meaningThai": "การพัฒนาที่ยั่งยืนคือทิศทางของอนาคต"
+      }
+    ]
+  },
+  {
+    "id": "nature-045",
+    "chinese": "生态系统",
+    "pinyin": "shēng tài xì tǒng",
+    "meaning": "Ecosystem",
+    "meaningThai": "ระบบนิเวศ",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "保护生态系统的平衡。",
+        "pinyin": "Bǎo hù shēng tài xì tǒng de píng héng.",
+        "meaning": "Protect the balance of the ecosystem.",
+        "meaningThai": "รักษาสมดุลของระบบนิเวศ"
+      }
+    ]
+  },
+  {
+    "id": "nature-046",
+    "chinese": "太阳能",
+    "pinyin": "tài yáng néng",
+    "meaning": "Solar energy",
+    "meaningThai": "พลังงานแสงอาทิตย์",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "太阳能是一种清洁能源。",
+        "pinyin": "Tài yáng néng shì yī zhǒng qīng jié néng yuán.",
+        "meaning": "Solar energy is a clean energy source.",
+        "meaningThai": "พลังงานแสงอาทิตย์เป็นพลังงานสะอาด"
+      }
+    ]
+  },
+  {
+    "id": "nature-047",
+    "chinese": "垃圾分类",
+    "pinyin": "lā jī fēn lèi",
+    "meaning": "Waste sorting",
+    "meaningThai": "การแยกขยะ",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "垃圾分类从每个人做起。",
+        "pinyin": "Lā jī fēn lèi cóng měi gè rén zuò qǐ.",
+        "meaning": "Waste sorting starts with everyone.",
+        "meaningThai": "การแยกขยะเริ่มจากทุกคน"
+      }
+    ]
+  },
+  {
+    "id": "nature-048",
+    "chinese": "温室效应",
+    "pinyin": "wēn shì xiào yìng",
+    "meaning": "Greenhouse effect",
+    "meaningThai": "ปรากฏการณ์เรือนกระจก",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "温室效应导致全球变暖。",
+        "pinyin": "Wēn shì xiào yìng dǎo zhì quán qiú biàn nuǎn.",
+        "meaning": "The greenhouse effect causes global warming.",
+        "meaningThai": "ปรากฏการณ์เรือนกระจกทำให้โลกร้อน"
+      }
+    ]
+  },
+  {
+    "id": "nature-049",
+    "chinese": "环保",
+    "pinyin": "huán bǎo",
+    "meaning": "Environmental protection",
+    "meaningThai": "การรักษาสิ่งแวดล้อม",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "环保意识越来越强。",
+        "pinyin": "Huán bǎo yì shí yuè lái yuè qiáng.",
+        "meaning": "Environmental awareness is growing.",
+        "meaningThai": "จิตสำนึกด้านสิ่งแวดล้อมเพิ่มขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "nature-050",
+    "chinese": "再生能源",
+    "pinyin": "zài shēng néng yuán",
+    "meaning": "Renewable energy",
+    "meaningThai": "พลังงานหมุนเวียน",
+    "category": "nature",
+    "subcategory": "environment",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "发展再生能源减少污染。",
+        "pinyin": "Fā zhǎn zài shēng néng yuán jiǎn shǎo wū rǎn.",
+        "meaning": "Develop renewable energy to reduce pollution.",
+        "meaningThai": "พัฒนาพลังงานหมุนเวียนลดมลพิษ"
+      }
+    ]
+  },
+{
+  "id": "nature-051",
+  "chinese": "孔雀",
+  "pinyin": "kǒng què",
+  "meaning": "Peacock",
+  "meaningThai": "นกยูง",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "孔雀开屏很美丽。",
+      "pinyin": "Kǒng què kāi píng hěn měi lì.",
+      "meaning": "Peacocks spreading their tails are beautiful.",
+      "meaningThai": "นกยูงกางหางสวยงามมาก"
+    }
+  ]
+},
+{
+  "id": "nature-052",
+  "chinese": "天鹅",
+  "pinyin": "tiān é",
+  "meaning": "Swan",
+  "meaningThai": "หงส์",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "天鹅在湖中游动。",
+      "pinyin": "Tiān é zài hú zhōng yóu dòng.",
+      "meaning": "Swans swim in the lake.",
+      "meaningThai": "หงส์ว่ายน้ำในทะเลสาบ"
+    }
+  ]
+},
+{
+  "id": "nature-053",
+  "chinese": "蝙蝠",
+  "pinyin": "biān fú",
+  "meaning": "Bat",
+  "meaningThai": "ค้างคาว",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蝙蝠在夜间活动。",
+      "pinyin": "Biān fú zài yè jiān huó dòng.",
+      "meaning": "Bats are active at night.",
+      "meaningThai": "ค้างคาวออกหากินในเวลากลางคืน"
+    }
+  ]
+},
+{
+  "id": "nature-054",
+  "chinese": "企鹅",
+  "pinyin": "qǐ é",
+  "meaning": "Penguin",
+  "meaningThai": "เพนกวิน",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "企鹅生活在南极。",
+      "pinyin": "Qǐ é shēng huó zài nán jí.",
+      "meaning": "Penguins live in Antarctica.",
+      "meaningThai": "เพนกวินอาศัยอยู่ที่ขั้วโลกใต้"
+    }
+  ]
+},
+{
+  "id": "nature-055",
+  "chinese": "狐狸",
+  "pinyin": "hú li",
+  "meaning": "Fox",
+  "meaningThai": "หมาจิ้งจอก",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "狐狸被认为很聪明。",
+      "pinyin": "Hú li bèi rèn wéi hěn cōng míng.",
+      "meaning": "Foxes are considered clever.",
+      "meaningThai": "หมาจิ้งจอก被认为ฉลาดมาก"
+    }
+  ]
+},
+{
+  "id": "nature-056",
+  "chinese": "松鼠",
+  "pinyin": "sōng shǔ",
+  "meaning": "Squirrel",
+  "meaningThai": "กระรอก",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "松鼠喜欢吃坚果。",
+      "pinyin": "Sōng shǔ xǐ huān chī jiān guǒ.",
+      "meaning": "Squirrels like to eat nuts.",
+      "meaningThai": "กระรอกชอบกินถั่ว"
+    }
+  ]
+},
+{
+  "id": "nature-057",
+  "chinese": "青蛙",
+  "pinyin": "qīng wā",
+  "meaning": "Frog",
+  "meaningThai": "กบ",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "青蛙吃害虫。",
+      "pinyin": "Qīng wā chī hài chóng.",
+      "meaning": "Frogs eat pests.",
+      "meaningThai": "กบกินแมลงศัตรูพืช"
+    }
+  ]
+},
+{
+  "id": "nature-058",
+  "chinese": "乌龟",
+  "pinyin": "wū guī",
+  "meaning": "Turtle; Tortoise",
+  "meaningThai": "เต่า",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "乌龟的寿命很长。",
+      "pinyin": "Wū guī de shòu mìng hěn cháng.",
+      "meaning": "Turtles have long lifespans.",
+      "meaningThai": "เต่ามีอายุยืนยาว"
+    }
+  ]
+},
+{
+  "id": "nature-059",
+  "chinese": "蜘蛛",
+  "pinyin": "zhī zhū",
+  "meaning": "Spider",
+  "meaningThai": "แมงมุม",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蜘蛛在墙角织网。",
+      "pinyin": "Zhī zhū zài qiáng jiǎo zhī wǎng.",
+      "meaning": "Spiders weave webs in corners.",
+      "meaningThai": "แมงมุมชักใยตามมุมกำแพง"
+    }
+  ]
+},
+{
+  "id": "nature-060",
+  "chinese": "蜜蜂",
+  "pinyin": "mì fēng",
+  "meaning": "Honeybee",
+  "meaningThai": "ผึ้ง",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蜜蜂采蜜传播花粉。",
+      "pinyin": "Mì fēng cǎi mì chuán bō huā fěn.",
+      "meaning": "Bees collect nectar and spread pollen.",
+      "meaningThai": "ผึ้งเก็บน้ำหวานและผสมเกสร"
+    }
+  ]
+},
+{
+  "id": "nature-061",
+  "chinese": "袋鼠",
+  "pinyin": "dài shǔ",
+  "meaning": "Kangaroo",
+  "meaningThai": "จิงโจ้",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "袋鼠生活在澳大利亚。",
+      "pinyin": "Dài shǔ shēng huó zài Ào dà lì yà.",
+      "meaning": "Kangaroos live in Australia.",
+      "meaningThai": "จิงโจ้生活在ออสเตรเลีย"
+    }
+  ]
+},
+{
+  "id": "nature-062",
+  "chinese": "仓鼠",
+  "pinyin": "cāng shǔ",
+  "meaning": "Hamster",
+  "meaningThai": "หนูแฮมสเตอร์",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "很多孩子养仓鼠当宠物。",
+      "pinyin": "Hěn duō hái zi yǎng cāng shǔ dāng chǒng wù.",
+      "meaning": "Many kids keep hamsters as pets.",
+      "meaningThai": "เด็กหลายคนเลี้ยงหนูแฮมสเตอร์เป็นสัตว์เลี้ยง"
+    }
+  ]
+},
+{
+  "id": "nature-063",
+  "chinese": "黄牛",
+  "pinyin": "huáng niú",
+  "meaning": "Cattle; Ox",
+  "meaningThai": "วัว",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "农民用黄牛耕地。",
+      "pinyin": "Nóng mín yòng huáng niú gēng dì.",
+      "meaning": "Farmers use oxen to plow fields.",
+      "meaningThai": "ชาวนาใช้วัวไถนา"
+    }
+  ]
+},
+{
+  "id": "nature-064",
+  "chinese": "鲨鱼",
+  "pinyin": "shā yú",
+  "meaning": "Shark",
+  "meaningThai": "ฉลาม",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "鲨鱼是海洋的顶级掠食者。",
+      "pinyin": "Shā yú shì hǎi yáng de dǐng jí lüè shí zhě.",
+      "meaning": "Sharks are top predators in the ocean.",
+      "meaningThai": "ฉลามเป็นผู้ล่าอันดับสูงสุดในทะเล"
+    }
+  ]
+},
+{
+  "id": "nature-065",
+  "chinese": "燕子",
+  "pinyin": "yàn zi",
+  "meaning": "Swallow (bird)",
+  "meaningThai": "นกนางแอ่น",
+  "category": "nature",
+  "subcategory": "animals",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "春天燕子飞回来了。",
+      "pinyin": "Chūn tiān yàn zi fēi huí lái le.",
+      "meaning": "Swallows fly back in spring.",
+      "meaningThai": "ฤดูใบไม้ผลินกนางแอ่นบินกลับมา"
+    }
+  ]
+},
+{
+  "id": "nature-066",
+  "chinese": "芦苇",
+  "pinyin": "lú wěi",
+  "meaning": "Reed",
+  "meaningThai": "ต้นกก",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "芦苇生长在河边。",
+      "pinyin": "Lú wěi shēng zhǎng zài hé biān.",
+      "meaning": "Reeds grow by the river.",
+      "meaningThai": "ต้นกกขึ้นริมแม่น้ำ"
+    }
+  ]
+},
+{
+  "id": "nature-067",
+  "chinese": "苔藓",
+  "pinyin": "tái xiǎn",
+  "meaning": "Moss",
+  "meaningThai": "มอส",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "石头上长满了苔藓。",
+      "pinyin": "Shí tou shàng zhǎng mǎn le tái xiǎn.",
+      "meaning": "The rocks are covered with moss.",
+      "meaningThai": "หินเต็มไปด้วยมอส"
+    }
+  ]
+},
+{
+  "id": "nature-068",
+  "chinese": "松果",
+  "pinyin": "sōng guǒ",
+  "meaning": "Pine cone",
+  "meaningThai": "ลูกสน",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "松鼠收集松果。",
+      "pinyin": "Sōng shǔ shōu jí sōng guǒ.",
+      "meaning": "Squirrels collect pine cones.",
+      "meaningThai": "กระรอกเก็บลูกสน"
+    }
+  ]
+},
+{
+  "id": "nature-069",
+  "chinese": "橄榄",
+  "pinyin": "gǎn lǎn",
+  "meaning": "Olive",
+  "meaningThai": "มะกอก",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "橄榄可以榨油。",
+      "pinyin": "Gǎn lǎn kě yǐ zhà yóu.",
+      "meaning": "Olives can be pressed for oil.",
+      "meaningThai": "มะกอกใช้สกัดน้ำมันได้"
+    }
+  ]
+},
+{
+  "id": "nature-070",
+  "chinese": "枫叶",
+  "pinyin": "fēng yè",
+  "meaning": "Maple leaf",
+  "meaningThai": "ใบเมเปิล",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "秋天枫叶变红了。",
+      "pinyin": "Qiū tiān fēng yè biàn hóng le.",
+      "meaning": "Maple leaves turn red in autumn.",
+      "meaningThai": "ใบเมเปิลเปลี่ยนเป็นสีแดงในฤดูใบไม้ร่วง"
+    }
+  ]
+},
+{
+  "id": "nature-071",
+  "chinese": "向日葵",
+  "pinyin": "xiàng rì kuí",
+  "meaning": "Sunflower",
+  "meaningThai": "ดอกทานตะวัน",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "向日葵向着太阳生长。",
+      "pinyin": "Xiàng rì kuí xiàng zhe tài yáng shēng zhǎng.",
+      "meaning": "Sunflowers grow facing the sun.",
+      "meaningThai": "ดอกทานตะวันหันตามดวงอาทิตย์"
+    }
+  ]
+},
+{
+  "id": "nature-072",
+  "chinese": "橡树",
+  "pinyin": "xiàng shù",
+  "meaning": "Oak tree",
+  "meaningThai": "ต้นโอ๊ก",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "橡树的寿命可以很长。",
+      "pinyin": "Xiàng shù de shòu mìng kě yǐ hěn cháng.",
+      "meaning": "Oak trees can live for a long time.",
+      "meaningThai": "ต้นโอ๊กมีอายุยืนยาว"
+    }
+  ]
+},
+{
+  "id": "nature-073",
+  "chinese": "椰子树",
+  "pinyin": "yē zi shù",
+  "meaning": "Coconut tree",
+  "meaningThai": "ต้นมะพร้าว",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "椰子树生长在热带地区。",
+      "pinyin": "Yē zi shù shēng zhǎng zài rè dài dì qū.",
+      "meaning": "Coconut trees grow in tropical regions.",
+      "meaningThai": "ต้นมะพร้าวขึ้นในเขตร้อน"
+    }
+  ]
+},
+{
+  "id": "nature-074",
+  "chinese": "苔藓植物",
+  "pinyin": "tái xiǎn zhí wù",
+  "meaning": "Bryophyte",
+  "meaningThai": "พืชไร้ท่อลำเลียง",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "苔藓植物喜欢潮湿的环境。",
+      "pinyin": "Tái xiǎn zhí wù xǐ huān cháo shī de huán jìng.",
+      "meaning": "Bryophytes like moist environments.",
+      "meaningThai": "พืชไร้ท่อลำเลียงชอบสภาพแวดล้อมชื้น"
+    }
+  ]
+},
+{
+  "id": "nature-075",
+  "chinese": "花瓣",
+  "pinyin": "huā bàn",
+  "meaning": "Petal",
+  "meaningThai": "กลีบดอกไม้",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "玫瑰的花瓣很柔软。",
+      "pinyin": "Méi guī de huā bàn hěn róu ruǎn.",
+      "meaning": "Rose petals are very soft.",
+      "meaningThai": "กลีบกุหลาบนุ่มมาก"
+    }
+  ]
+},
+{
+  "id": "nature-076",
+  "chinese": "丛林",
+  "pinyin": "cóng lín",
+  "meaning": "Jungle",
+  "meaningThai": "ป่าดิบ",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "丛林里有很多野生动物。",
+      "pinyin": "Cóng lín lǐ yǒu hěn duō yě shēng dòng wù.",
+      "meaning": "There are many wild animals in the jungle.",
+      "meaningThai": "ในป่าดิบมีสัตว์ป่ามากมาย"
+    }
+  ]
+},
+{
+  "id": "nature-077",
+  "chinese": "常青树",
+  "pinyin": "cháng qīng shù",
+  "meaning": "Evergreen tree",
+  "meaningThai": "ต้นไม้ไม่ผลัดใบ",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "松树是常青树。",
+      "pinyin": "Sōng shù shì cháng qīng shù.",
+      "meaning": "Pine trees are evergreens.",
+      "meaningThai": "ต้นสนเป็นต้นไม้ไม่ผลัดใบ"
+    }
+  ]
+},
+{
+  "id": "nature-078",
+  "chinese": "落叶",
+  "pinyin": "luò yè",
+  "meaning": "Fallen leaves",
+  "meaningThai": "ใบไม้ร่วง",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "秋天满地落叶。",
+      "pinyin": "Qiū tiān mǎn dì luò yè.",
+      "meaning": "The ground is covered with fallen leaves in autumn.",
+      "meaningThai": "ฤดูใบไม้ร่วงพื้นเต็มไปด้วยใบไม้ร่วง"
+    }
+  ]
+},
+{
+  "id": "nature-079",
+  "chinese": "热带雨林",
+  "pinyin": "rè dài yǔ lín",
+  "meaning": "Rainforest",
+  "meaningThai": "ป่าฝนเขตร้อน",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "热带雨林是地球的肺。",
+      "pinyin": "Rè dài yǔ lín shì dì qiú de fèi.",
+      "meaning": "Rainforests are the lungs of the earth.",
+      "meaningThai": "ป่าฝนเขตร้อนคือปอดของโลก"
+    }
+  ]
+},
+{
+  "id": "nature-080",
+  "chinese": "树苗",
+  "pinyin": "shù miáo",
+  "meaning": "Sapling",
+  "meaningThai": "ต้นกล้า",
+  "category": "nature",
+  "subcategory": "plants",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "春天种下树苗。",
+      "pinyin": "Chūn tiān zhǒng xià shù miáo.",
+      "meaning": "Plant saplings in spring.",
+      "meaningThai": "ปลูกต้นกล้าในฤดูใบไม้ผลิ"
+    }
+  ]
+},
+{
+  "id": "nature-081",
+  "chinese": "海峡",
+  "pinyin": "hǎi xiá",
+  "meaning": "Strait",
+  "meaningThai": "ช่องแคบ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "台湾海峡连接中国和台湾。",
+      "pinyin": "Tái wān hǎi xiá lián jiē Zhōng guó hé Tái wān.",
+      "meaning": "The Taiwan Strait connects China and Taiwan.",
+      "meaningThai": "ช่องแคบไต้หวันเชื่อมจีนและไต้หวัน"
+    }
+  ]
+},
+{
+  "id": "nature-082",
+  "chinese": "河流",
+  "pinyin": "hé liú",
+  "meaning": "River",
+  "meaningThai": "แม่น้ำ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "长江是中国最长的河流。",
+      "pinyin": "Cháng jiāng shì Zhōng guó zuì cháng de hé liú.",
+      "meaning": "The Yangtze River is China's longest river.",
+      "meaningThai": "แม่น้ำแยงซีเป็นแม่น้ำที่ยาวที่สุดของจีน"
+    }
+  ]
+},
+{
+  "id": "nature-083",
+  "chinese": "湖泊",
+  "pinyin": "hú pō",
+  "meaning": "Lake",
+  "meaningThai": "ทะเลสาบ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个湖泊很清澈。",
+      "pinyin": "Zhè ge hú pō hěn qīng chè.",
+      "meaning": "This lake is very clear.",
+      "meaningThai": "ทะเลสาบนี้ใสสะอาด"
+    }
+  ]
+},
+{
+  "id": "nature-084",
+  "chinese": "半岛",
+  "pinyin": "bàn dǎo",
+  "meaning": "Peninsula",
+  "meaningThai": "คาบสมุทร",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "朝鲜半岛位于东亚。",
+      "pinyin": "Cháo xiǎn bàn dǎo wèi yú Dōng Yà.",
+      "meaning": "The Korean Peninsula is in East Asia.",
+      "meaningThai": "คาบสมุทรเกาหลีตั้งอยู่ในเอเชียตะวันออก"
+    }
+  ]
+},
+{
+  "id": "nature-085",
+  "chinese": "悬崖",
+  "pinyin": "xuán yá",
+  "meaning": "Cliff",
+  "meaningThai": "หน้าผา",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "悬崖高达数百米。",
+      "pinyin": "Xuán yá gāo dá shù bǎi mǐ.",
+      "meaning": "The cliff is hundreds of meters high.",
+      "meaningThai": "หน้าผาสูงหลายร้อยเมตร"
+    }
+  ]
+},
+{
+  "id": "nature-086",
+  "chinese": "三角洲",
+  "pinyin": "sān jiǎo zhōu",
+  "meaning": "Delta",
+  "meaningThai": "สามเหลี่ยมปากแม่น้ำ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "珠江三角洲经济发达。",
+      "pinyin": "Zhū jiāng sān jiǎo zhōu jīng jì fā dá.",
+      "meaning": "The Pearl River Delta has a developed economy.",
+      "meaningThai": "สามเหลี่ยมปากแม่น้ำไข่มุกมีเศรษฐกิจพัฒนา"
+    }
+  ]
+},
+{
+  "id": "nature-087",
+  "chinese": "湿地",
+  "pinyin": "shī dì",
+  "meaning": "Wetland",
+  "meaningThai": "พื้นที่ชุ่มน้ำ",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "湿地是重要的生态系统。",
+      "pinyin": "Shī dì shì zhòng yào de shēng tài xì tǒng.",
+      "meaning": "Wetlands are important ecosystems.",
+      "meaningThai": "พื้นที่ชุ่มน้ำเป็นระบบนิเวศสำคัญ"
+    }
+  ]
+},
+{
+  "id": "nature-088",
+  "chinese": "绿洲",
+  "pinyin": "lǜ zhōu",
+  "meaning": "Oasis",
+  "meaningThai": "โอเอซิส",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "沙漠中偶尔有绿洲。",
+      "pinyin": "Shā mò zhōng ǒu ěr yǒu lǜ zhōu.",
+      "meaning": "There are occasional oases in the desert.",
+      "meaningThai": "ในทะเลทรายมีโอเอซิสเป็นครั้งคราว"
+    }
+  ]
+},
+{
+  "id": "nature-089",
+  "chinese": "山丘",
+  "pinyin": "shān qiū",
+  "meaning": "Hill",
+  "meaningThai": "เนินเขา",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "山丘上种满了果树。",
+      "pinyin": "Shān qiū shàng zhòng mǎn le guǒ shù.",
+      "meaning": "The hill is planted with fruit trees.",
+      "meaningThai": "บนเนินเขาปลูกต้นผลไม้เต็มไปหมด"
+    }
+  ]
+},
+{
+  "id": "nature-090",
+  "chinese": "峡谷",
+  "pinyin": "xiá gǔ",
+  "meaning": "Canyon; Gorge",
+  "meaningThai": "หุบผา",
+  "category": "nature",
+  "subcategory": "geography",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "科罗拉多大峡谷很壮观。",
+      "pinyin": "Kē luó lā duō dà xiá gǔ hěn zhuàng guān.",
+      "meaning": "The Grand Canyon is spectacular.",
+      "meaningThai": "แกรนด์แคนยอนยิ่งใหญ่ตระการตา"
+    }
+  ]
+},
+{
+  "id": "nature-091",
+  "chinese": "大气层",
+  "pinyin": "dà qì céng",
+  "meaning": "Atmosphere",
+  "meaningThai": "ชั้นบรรยากาศ",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "大气层保护地球上的生命。",
+      "pinyin": "Dà qì céng bǎo hù dì qiú shàng de shēng mìng.",
+      "meaning": "The atmosphere protects life on Earth.",
+      "meaningThai": "ชั้นบรรยากาศ保护สิ่งมีชีวิตบนโลก"
+    }
+  ]
+},
+{
+  "id": "nature-092",
+  "chinese": "臭氧层",
+  "pinyin": "chòu yǎng céng",
+  "meaning": "Ozone layer",
+  "meaningThai": "ชั้นโอโซน",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "臭氧层阻挡紫外线。",
+      "pinyin": "Chòu yǎng céng zǔ dǎng zǐ wài xiàn.",
+      "meaning": "The ozone layer blocks UV rays.",
+      "meaningThai": "ชั้นโอโซนกรองรังสีอัลตราไวโอเลต"
+    }
+  ]
+},
+{
+  "id": "nature-093",
+  "chinese": "生物多样性",
+  "pinyin": "shēng wù duō yàng xìng",
+  "meaning": "Biodiversity",
+  "meaningThai": "ความหลากหลายทางชีวภาพ",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "保护生物多样性很重要。",
+      "pinyin": "Bǎo hù shēng wù duō yàng xìng hěn zhòng yào.",
+      "meaning": "Protecting biodiversity is very important.",
+      "meaningThai": "การ保护ความหลากหลายทางชีวภาพสำคัญมาก"
+    }
+  ]
+},
+{
+  "id": "nature-094",
+  "chinese": "碳达峰",
+  "pinyin": "tàn dá fēng",
+  "meaning": "Carbon peak",
+  "meaningThai": "การปล่อยคาร์บอนสูงสุด",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "中国承诺在2030年前实现碳达峰。",
+      "pinyin": "Zhōng guó chéng nuò zài 2030 nián qián shí xiàn tàn dá fēng.",
+      "meaning": "China pledged to achieve carbon peak by 2030.",
+      "meaningThai": "จีนให้คำมั่นปล่อยคาร์บอนสูงสุดภายในปี 2030"
+    }
+  ]
+},
+{
+  "id": "nature-095",
+  "chinese": "碳中和",
+  "pinyin": "tàn zhōng hé",
+  "meaning": "Carbon neutrality",
+  "meaningThai": "ความเป็นกลางทางคาร์บอน",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "许多国家计划在2050年前实现碳中和。",
+      "pinyin": "Xǔ duō guó jiā jì huà zài 2050 nián qián shí xiàn tàn zhōng hé.",
+      "meaning": "Many countries plan to achieve carbon neutrality by 2050.",
+      "meaningThai": "หลายประเทศวางแผนเป็นกลางทางคาร์บอนภายในปี 2050"
+    }
+  ]
+},
+{
+  "id": "nature-096",
+  "chinese": "自然保护区",
+  "pinyin": "zì rán bǎo hù qū",
+  "meaning": "Nature reserve",
+  "meaningThai": "เขตอนุรักษ์ธรรมชาติ",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "自然保护区禁止开发。",
+      "pinyin": "Zì rán bǎo hù qū jìn zhǐ kāi fā.",
+      "meaning": "Development is prohibited in nature reserves.",
+      "meaningThai": "เขตอนุรักษ์ธรรมชาติห้ามพัฒนา"
+    }
+  ]
+},
+{
+  "id": "nature-097",
+  "chinese": "噪音污染",
+  "pinyin": "zào yīn wū rǎn",
+  "meaning": "Noise pollution",
+  "meaningThai": "มลพิษทางเสียง",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "城市噪音污染影响健康。",
+      "pinyin": "Chéng shì zào yīn wū rǎn yǐng xiǎng jiàn kāng.",
+      "meaning": "Urban noise pollution affects health.",
+      "meaningThai": "มลพิษทางเสียงในเมืองส่งผลต่อสุขภาพ"
+    }
+  ]
+},
+{
+  "id": "nature-098",
+  "chinese": "水土流失",
+  "pinyin": "shuǐ tǔ liú shī",
+  "meaning": "Soil erosion",
+  "meaningThai": "การสูญเสียหน้าดิน",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "植被可以防止水土流失。",
+      "pinyin": "Zhí bèi kě yǐ fáng zhǐ shuǐ tǔ liú shī.",
+      "meaning": "Vegetation can prevent soil erosion.",
+      "meaningThai": "พืชปกคลุมป้องกันการสูญเสียหน้าดิน"
+    }
+  ]
+},
+{
+  "id": "nature-099",
+  "chinese": "植树造林",
+  "pinyin": "zhí shù zào lín",
+  "meaning": "Afforestation",
+  "meaningThai": "การปลูกป่า",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "植树造林可以改善环境。",
+      "pinyin": "Zhí shù zào lín kě yǐ gǎi shàn huán jìng.",
+      "meaning": "Afforestation can improve the environment.",
+      "meaningThai": "การปลูกป่าสามารถปรับปรุงสิ่งแวดล้อม"
+    }
+  ]
+},
+{
+  "id": "nature-100",
+  "chinese": "物种灭绝",
+  "pinyin": "wù zhǒng miè jué",
+  "meaning": "Species extinction",
+  "meaningThai": "การสูญพันธุ์ของ物种",
+  "category": "nature",
+  "subcategory": "environment",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "人类活动加速了物种灭绝。",
+      "pinyin": "Rén lèi huó dòng jiā sù le wù zhǒng miè jué.",
+      "meaning": "Human activities accelerate species extinction.",
+      "meaningThai": "กิจกรรมของมนุษย์เร่งการสูญพันธุ์ของสิ่งมีชีวิต"
+    }
+  ]
+}
+];
+// Build VOCABULARY from HSK word lists

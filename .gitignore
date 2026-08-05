@@ -27,9 +27,19 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Downloaded third-party HSK source and generated local audit output
+chinese-learn-vite/scripts/data/hsk-2.0/*.csv
+chinese-learn-vite/scripts/data/hsk3/
+chinese-learn-vite/scripts/data/pdf-extracted.txt
+chinese-learn-vite/scripts/data/pdf-rows.json
+chinese-learn-vite/reports/hsk/*.json
+chinese-learn-vite/reports/hsk/*.md
+chinese-learn-vite/scripts/cache/
+
 # Misc
 .cache/
 *.tsbuildinfo
+*.bak
 
 # Vite optimized deps cache (regenerated on every build)
 .vite/

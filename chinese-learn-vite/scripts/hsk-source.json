@@ -1,0 +1,16 @@
+{
+  "standard": "HSK 2.0",
+  "edition": "2012 legacy HSK vocabulary (levels 1-6)",
+  "sourceType": "third-party transcription",
+  "repository": "https://github.com/plaktos/hsk_csv",
+  "licenseNote": "Verify upstream licensing before redistribution; this project stores provenance and hashes, not the upstream glosses.",
+  "caveat": "This is a community transcription of the legacy HSK 2.0 lists, not a current official HSK 3.0 list. The audit reports evidence and mismatches; it does not certify correctness.",
+  "files": [
+    { "level": 1, "file": "hsk1.csv", "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk1.csv" },
+    { "level": 2, "file": "hsk2.csv", "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk2.csv" },
+    { "level": 3, "file": "hsk3.csv", "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk3.csv" },
+    { "level": 4, "file": "hsk4.csv", "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk4.csv" },
+    { "level": 5, "file": "hsk5.csv", "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk5.csv" },
+    { "level": 6, "file": "hsk6.csv", "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk6.csv" }
+  ]
+}

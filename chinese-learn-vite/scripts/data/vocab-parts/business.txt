@@ -1,0 +1,1903 @@
+const BUSINESS_WORDS = [
+  {
+    "id": "business-001",
+    "chinese": "职业",
+    "pinyin": "zhí yè",
+    "meaning": "Occupation; Career",
+    "meaningThai": "อาชีพ",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "你的职业是什么？",
+        "pinyin": "Nǐ de zhí yè shì shén me?",
+        "meaning": "What is your occupation?",
+        "meaningThai": "คุณประกอบอาชีพอะไร?"
+      }
+    ]
+  },
+  {
+    "id": "business-002",
+    "chinese": "简历",
+    "pinyin": "jiǎn lì",
+    "meaning": "Resume; CV",
+    "meaningThai": "เรซูเม่",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请把你的简历发给我。",
+        "pinyin": "Qǐng bǎ nǐ de jiǎn lì fā gěi wǒ.",
+        "meaning": "Please send me your resume.",
+        "meaningThai": "กรุณาส่งเรซูเม่ของคุณมาให้ฉัน"
+      }
+    ]
+  },
+  {
+    "id": "business-003",
+    "chinese": "面试官",
+    "pinyin": "miàn shì guān",
+    "meaning": "Interviewer",
+    "meaningThai": "ผู้สัมภาษณ์",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "面试官问了很多问题。",
+        "pinyin": "Miàn shì guān wèn le hěn duō wèn tí.",
+        "meaning": "The interviewer asked many questions.",
+        "meaningThai": "ผู้สัมภาษณ์ถามคำถามมากมาย"
+      }
+    ]
+  },
+  {
+    "id": "business-004",
+    "chinese": "晋升",
+    "pinyin": "jìn shēng",
+    "meaning": "Promotion",
+    "meaningThai": "เลื่อนตำแหน่ง",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他获得了晋升机会。",
+        "pinyin": "Tā huò dé le jìn shēng jī huì.",
+        "meaning": "He got a promotion opportunity.",
+        "meaningThai": "เขาได้รับโอกาสเลื่อนตำแหน่ง"
+      }
+    ]
+  },
+  {
+    "id": "business-005",
+    "chinese": "辞职",
+    "pinyin": "cí zhí",
+    "meaning": "To resign",
+    "meaningThai": "ลาออก",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他决定辞职创业。",
+        "pinyin": "Tā jué dìng cí zhí chuàng yè.",
+        "meaning": "He decided to resign and start a business.",
+        "meaningThai": "เขาตัดสินใจลาออกไปเริ่มธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "business-006",
+    "chinese": "招聘",
+    "pinyin": "zhāo pìn",
+    "meaning": "To recruit",
+    "meaningThai": "รับสมัครงาน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司正在招聘新员工。",
+        "pinyin": "Gōng sī zhèng zài zhāo pìn xīn yuán gōng.",
+        "meaning": "The company is recruiting new employees.",
+        "meaningThai": "บริษัทกำลังรับสมัครพนักงานใหม่"
+      }
+    ]
+  },
+  {
+    "id": "business-007",
+    "chinese": "薪水",
+    "pinyin": "xīn shuǐ",
+    "meaning": "Salary",
+    "meaningThai": "เงินเดือน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这份工作的薪水不错。",
+        "pinyin": "Zhè fèn gōng zuò de xīn shuǐ bù cuò.",
+        "meaning": "This job has a good salary.",
+        "meaningThai": "งานนี้เงินเดือนดี"
+      }
+    ]
+  },
+  {
+    "id": "business-008",
+    "chinese": "福利",
+    "pinyin": "fú lì",
+    "meaning": "Benefits; Welfare",
+    "meaningThai": "สวัสดิการ",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司的福利很好。",
+        "pinyin": "Gōng sī de fú lì hěn hǎo.",
+        "meaning": "The company has good benefits.",
+        "meaningThai": "บริษัทมีสวัสดิการดี"
+      }
+    ]
+  },
+  {
+    "id": "business-009",
+    "chinese": "加班",
+    "pinyin": "jiā bān",
+    "meaning": "Overtime work",
+    "meaningThai": "ทำงานล่วงเวลา",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今天要加班到很晚。",
+        "pinyin": "Jīn tiān yào jiā bān dào hěn wǎn.",
+        "meaning": "Need to work overtime until very late today.",
+        "meaningThai": "วันนี้ต้องทำงานล่วงเวลาจนดึก"
+      }
+    ]
+  },
+  {
+    "id": "business-010",
+    "chinese": "退休",
+    "pinyin": "tuì xiū",
+    "meaning": "To retire",
+    "meaningThai": "เกษียณ",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他明年退休。",
+        "pinyin": "Tā míng nián tuì xiū.",
+        "meaning": "He will retire next year.",
+        "meaningThai": "เขาเกษียณปีหน้า"
+      }
+    ]
+  },
+  {
+    "id": "business-011",
+    "chinese": "实习",
+    "pinyin": "shí xí",
+    "meaning": "Internship",
+    "meaningThai": "ฝึกงาน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "暑假她在公司实习。",
+        "pinyin": "Shǔ jià tā zài gōng sī shí xí.",
+        "meaning": "She is interning at a company during summer break.",
+        "meaningThai": "ช่วงปิดเทอมฤดูร้อนเธอฝึกงานที่บริษัท"
+      }
+    ]
+  },
+  {
+    "id": "business-012",
+    "chinese": "猎头",
+    "pinyin": "liè tóu",
+    "meaning": "Headhunter",
+    "meaningThai": "นายหน้าหางาน",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "猎头公司推荐了这个职位。",
+        "pinyin": "Liè tóu gōng sī tuī jiàn le zhè ge zhí wèi.",
+        "meaning": "The headhunter company recommended this position.",
+        "meaningThai": "บริษัทนายหน้าหางานแนะนำตำแหน่งนี้"
+      }
+    ]
+  },
+  {
+    "id": "business-013",
+    "chinese": "全职",
+    "pinyin": "quán zhí",
+    "meaning": "Full-time",
+    "meaningThai": "เต็มเวลา",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这是一份全职工作。",
+        "pinyin": "Zhè shì yī fèn quán zhí gōng zuò.",
+        "meaning": "This is a full-time job.",
+        "meaningThai": "นี่คืองานเต็มเวลา"
+      }
+    ]
+  },
+  {
+    "id": "business-014",
+    "chinese": "兼职",
+    "pinyin": "jiān zhí",
+    "meaning": "Part-time",
+    "meaningThai": "พาร์ทไทม์",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在做兼职工作。",
+        "pinyin": "Tā zài zuò jiān zhí gōng zuò.",
+        "meaning": "He is doing part-time work.",
+        "meaningThai": "เขาทำงานพาร์ทไทม์"
+      }
+    ]
+  },
+  {
+    "id": "business-015",
+    "chinese": "行业",
+    "pinyin": "háng yè",
+    "meaning": "Industry",
+    "meaningThai": "อุตสาหกรรม",
+    "category": "business",
+    "subcategory": "work",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个行业发展很快。",
+        "pinyin": "Zhè ge háng yè fā zhǎn hěn kuài.",
+        "meaning": "This industry is developing rapidly.",
+        "meaningThai": "อุตสาหกรรมนี้พัฒนารวดเร็ว"
+      }
+    ]
+  },
+  {
+    "id": "business-016",
+    "chinese": "投资",
+    "pinyin": "tóu zī",
+    "meaning": "To invest; Investment",
+    "meaningThai": "ลงทุน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他投资了股票市场。",
+        "pinyin": "Tā tóu zī le gǔ piào shì chǎng.",
+        "meaning": "He invested in the stock market.",
+        "meaningThai": "เขาลงทุนในตลาดหุ้น"
+      }
+    ]
+  },
+  {
+    "id": "business-017",
+    "chinese": "股票",
+    "pinyin": "gǔ piào",
+    "meaning": "Stock; Share",
+    "meaningThai": "หุ้น",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "股票价格波动很大。",
+        "pinyin": "Gǔ piào jià gé bō dòng hěn dà.",
+        "meaning": "Stock prices fluctuate greatly.",
+        "meaningThai": "ราคาหุ้นผันผวนมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-018",
+    "chinese": "基金",
+    "pinyin": "jī jīn",
+    "meaning": "Fund",
+    "meaningThai": "กองทุน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "买基金是一种投资方式。",
+        "pinyin": "Mǎi jī jīn shì yī zhǒng tóu zī fāng shì.",
+        "meaning": "Buying funds is a way of investing.",
+        "meaningThai": "ซื้อกองทุนเป็นวิธีการลงทุนอย่างหนึ่ง"
+      }
+    ]
+  },
+  {
+    "id": "business-019",
+    "chinese": "保险",
+    "pinyin": "bǎo xiǎn",
+    "meaning": "Insurance",
+    "meaningThai": "ประกัน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我买了健康保险。",
+        "pinyin": "Wǒ mǎi le jiàn kāng bǎo xiǎn.",
+        "meaning": "I bought health insurance.",
+        "meaningThai": "ฉันซื้อประกันสุขภาพ"
+      }
+    ]
+  },
+  {
+    "id": "business-020",
+    "chinese": "通货膨胀",
+    "pinyin": "tōng huò péng zhàng",
+    "meaning": "Inflation",
+    "meaningThai": "เงินเฟ้อ",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "通货膨胀影响物价。",
+        "pinyin": "Tōng huò péng zhàng yǐng xiǎng wù jià.",
+        "meaning": "Inflation affects prices.",
+        "meaningThai": "เงินเฟ้อส่งผลต่อราคาสินค้า"
+      }
+    ]
+  },
+  {
+    "id": "business-021",
+    "chinese": "利率",
+    "pinyin": "lì lǜ",
+    "meaning": "Interest rate",
+    "meaningThai": "อัตราดอกเบี้ย",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "银行贷款利率下调了。",
+        "pinyin": "Yín háng dài kuǎn lì lǜ xià tiáo le.",
+        "meaning": "Bank loan interest rates have been lowered.",
+        "meaningThai": "อัตราดอกเบี้ยเงินกู้ธนาคารลดลง"
+      }
+    ]
+  },
+  {
+    "id": "business-022",
+    "chinese": "贷款",
+    "pinyin": "dài kuǎn",
+    "meaning": "Loan",
+    "meaningThai": "เงินกู้",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "需要向银行贷款买房。",
+        "pinyin": "Xū yào xiàng yín háng dài kuǎn mǎi fáng.",
+        "meaning": "Need a bank loan to buy a house.",
+        "meaningThai": "ต้องกู้เงินธนาคารซื้อบ้าน"
+      }
+    ]
+  },
+  {
+    "id": "business-023",
+    "chinese": "预算",
+    "pinyin": "yù suàn",
+    "meaning": "Budget",
+    "meaningThai": "งบประมาณ",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今年的预算已经批准了。",
+        "pinyin": "Jīn nián de yù suàn yǐ jīng pī zhǔn le.",
+        "meaning": "This year's budget has been approved.",
+        "meaningThai": "งบประมาณปีนี้ได้รับการอนุมัติแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "business-024",
+    "chinese": "税务",
+    "pinyin": "shuì wù",
+    "meaning": "Taxation",
+    "meaningThai": "ภาษี",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "企业需要申报税务。",
+        "pinyin": "Qǐ yè xū yào shēn bào shuì wù.",
+        "meaning": "Businesses need to file taxes.",
+        "meaningThai": "องค์กรต้องยื่นแบบภาษี"
+      }
+    ]
+  },
+  {
+    "id": "business-025",
+    "chinese": "资产",
+    "pinyin": "zī chǎn",
+    "meaning": "Assets",
+    "meaningThai": "ทรัพย์สิน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司资产总额超过一亿。",
+        "pinyin": "Gōng sī zī chǎn zǒng é chāo guò yī yì.",
+        "meaning": "The company's total assets exceed 100 million.",
+        "meaningThai": "รวมทรัพย์สินของบริษัทเกินหนึ่งร้อยล้าน"
+      }
+    ]
+  },
+  {
+    "id": "business-026",
+    "chinese": "负债",
+    "pinyin": "fù zhài",
+    "meaning": "Liabilities; Debt",
+    "meaningThai": "หนี้สิน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司负债率很低。",
+        "pinyin": "Gōng sī fù zhài lǜ hěn dī.",
+        "meaning": "The company's debt ratio is very low.",
+        "meaningThai": "อัตราหนี้สินของบริษัทต่ำมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-027",
+    "chinese": "利润",
+    "pinyin": "lì rùn",
+    "meaning": "Profit",
+    "meaningThai": "กำไร",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今年公司的利润增长了。",
+        "pinyin": "Jīn nián gōng sī de lì rùn zēng zhǎng le.",
+        "meaning": "This year the company's profit grew.",
+        "meaningThai": "ปีนี้กำไรของบริษัทเพิ่มขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "business-028",
+    "chinese": "亏损",
+    "pinyin": "kuī sǔn",
+    "meaning": "Loss; Deficit",
+    "meaningThai": "ขาดทุน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司去年亏损严重。",
+        "pinyin": "Gōng sī qù nián kuī sǔn yán zhòng.",
+        "meaning": "The company suffered severe losses last year.",
+        "meaningThai": "ปีที่แล้วบริษัทขาดทุนอย่างหนัก"
+      }
+    ]
+  },
+  {
+    "id": "business-029",
+    "chinese": "股份",
+    "pinyin": "gǔ fèn",
+    "meaning": "Shares; Equity",
+    "meaningThai": "หุ้นส่วน",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他拥有公司百分之十的股份。",
+        "pinyin": "Tā yōng yǒu gōng sī bǎi fēn zhī shí de gǔ fèn.",
+        "meaning": "He owns 10% of the company's shares.",
+        "meaningThai": "เขาถือหุ้นร้อยละสิบของบริษัท"
+      }
+    ]
+  },
+  {
+    "id": "business-030",
+    "chinese": "破产",
+    "pinyin": "pò chǎn",
+    "meaning": "Bankruptcy",
+    "meaningThai": "ล้มละลาย",
+    "category": "business",
+    "subcategory": "finance",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司面临破产风险。",
+        "pinyin": "Gōng sī miàn lín pò chǎn fēng xiǎn.",
+        "meaning": "The company faces bankruptcy risk.",
+        "meaningThai": "บริษัท面临ความเสี่ยงล้มละลาย"
+      }
+    ]
+  },
+  {
+    "id": "business-031",
+    "chinese": "会议室",
+    "pinyin": "huì yì shì",
+    "meaning": "Meeting room",
+    "meaningThai": "ห้องประชุม",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "会议室已经准备好了。",
+        "pinyin": "Huì yì shì yǐ jīng zhǔn bèi hǎo le.",
+        "meaning": "The meeting room is ready.",
+        "meaningThai": "ห้องประชุมพร้อมแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "business-032",
+    "chinese": "文件",
+    "pinyin": "wén jiàn",
+    "meaning": "Document; File",
+    "meaningThai": "เอกสาร",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请把文件打印出来。",
+        "pinyin": "Qǐng bǎ wén jiàn dǎ yìn chū lái.",
+        "meaning": "Please print out the document.",
+        "meaningThai": "กรุณาพิมพ์เอกสาร"
+      }
+    ]
+  },
+  {
+    "id": "business-033",
+    "chinese": "打印机",
+    "pinyin": "dǎ yìn jī",
+    "meaning": "Printer",
+    "meaningThai": "เครื่องพิมพ์",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "打印机没有墨了。",
+        "pinyin": "Dǎ yìn jī méi yǒu mò le.",
+        "meaning": "The printer is out of ink.",
+        "meaningThai": "เครื่องพิมพ์หมึกหมด"
+      }
+    ]
+  },
+  {
+    "id": "business-034",
+    "chinese": "复印",
+    "pinyin": "fù yìn",
+    "meaning": "To photocopy",
+    "meaningThai": "ถ่ายเอกสาร",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请复印这份合同。",
+        "pinyin": "Qǐng fù yìn zhè fèn hé tong.",
+        "meaning": "Please photocopy this contract.",
+        "meaningThai": "กรุณาถ่ายเอกสารสัญญานี้"
+      }
+    ]
+  },
+  {
+    "id": "business-035",
+    "chinese": "职员",
+    "pinyin": "zhí yuán",
+    "meaning": "Employee; Staff",
+    "meaningThai": "พนักงาน",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司有五百名职员。",
+        "pinyin": "Gōng sī yǒu wǔ bǎi míng zhí yuán.",
+        "meaning": "The company has 500 employees.",
+        "meaningThai": "บริษัทมีพนักงานห้าร้อยคน"
+      }
+    ]
+  },
+  {
+    "id": "business-036",
+    "chinese": "办公桌",
+    "pinyin": "bàn gōng zhuō",
+    "meaning": "Desk",
+    "meaningThai": "โต๊ะทำงาน",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "办公桌上堆满了文件。",
+        "pinyin": "Bàn gōng zhuō shàng duī mǎn le wén jiàn.",
+        "meaning": "The desk is piled with documents.",
+        "meaningThai": "โต๊ะทำงานเต็มไปด้วยเอกสาร"
+      }
+    ]
+  },
+  {
+    "id": "business-037",
+    "chinese": "考勤",
+    "pinyin": "kǎo qín",
+    "meaning": "Attendance",
+    "meaningThai": "การลงเวลา",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司用指纹考勤。",
+        "pinyin": "Gōng sī yòng zhǐ wén kǎo qín.",
+        "meaning": "The company uses fingerprint attendance.",
+        "meaningThai": "บริษัทใช้ลายนิ้วมือลงเวลา"
+      }
+    ]
+  },
+  {
+    "id": "business-038",
+    "chinese": "名片",
+    "pinyin": "míng piàn",
+    "meaning": "Business card",
+    "meaningThai": "นามบัตร",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "交换名片是商务礼仪。",
+        "pinyin": "Jiāo huàn míng piàn shì shāng wù lǐ yí.",
+        "meaning": "Exchanging business cards is business etiquette.",
+        "meaningThai": "การแลกนามบัตรเป็นมารยาททางธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "business-039",
+    "chinese": "项目",
+    "pinyin": "xiàng mù",
+    "meaning": "Project",
+    "meaningThai": "โครงการ",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个项目需要三个月完成。",
+        "pinyin": "Zhè ge xiàng mù xū yào sān gè yuè wán chéng.",
+        "meaning": "This project needs three months to complete.",
+        "meaningThai": "โครงการนี้ต้องใช้เวลาสามเดือน"
+      }
+    ]
+  },
+  {
+    "id": "business-040",
+    "chinese": "截止日期",
+    "pinyin": "jié zhǐ rì qī",
+    "meaning": "Deadline",
+    "meaningThai": "วันกำหนดส่ง",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "截止日期是下周五。",
+        "pinyin": "Jié zhǐ rì qī shì xià zhōu wǔ.",
+        "meaning": "The deadline is next Friday.",
+        "meaningThai": "วันกำหนดส่งคือวันศุกร์หน้า"
+      }
+    ]
+  },
+  {
+    "id": "business-041",
+    "chinese": "备忘录",
+    "pinyin": "bèi wàng lù",
+    "meaning": "Memo; Memorandum",
+    "meaningThai": "บันทึกช่วยจำ",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "发一份备忘录给所有员工。",
+        "pinyin": "Fā yī fèn bèi wàng lù gěi suǒ yǒu yuán gōng.",
+        "meaning": "Send a memo to all employees.",
+        "meaningThai": "ส่งบันทึกช่วยจำถึงพนักงานทุกคน"
+      }
+    ]
+  },
+  {
+    "id": "business-042",
+    "chinese": "日程",
+    "pinyin": "rì chéng",
+    "meaning": "Schedule; Itinerary",
+    "meaningThai": "ตารางเวลา",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今天的日程安排很满。",
+        "pinyin": "Jīn tiān de rì chéng ān pái hěn mǎn.",
+        "meaning": "Today's schedule is very full.",
+        "meaningThai": "ตารางวันนี้แน่นมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-043",
+    "chinese": "供应商",
+    "pinyin": "gōng yìng shāng",
+    "meaning": "Supplier",
+    "meaningThai": "ผู้จัดหา",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我们正在寻找新供应商。",
+        "pinyin": "Wǒ men zhèng zài xún zhǎo xīn gōng yìng shāng.",
+        "meaning": "We are looking for new suppliers.",
+        "meaningThai": "เรากำลังหาผู้จัดหารายใหม่"
+      }
+    ]
+  },
+  {
+    "id": "business-044",
+    "chinese": "客户",
+    "pinyin": "kè hù",
+    "meaning": "Client; Customer",
+    "meaningThai": "ลูกค้า",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "客户对我们的服务很满意。",
+        "pinyin": "Kè hù duì wǒ men de fú wù hěn mǎn yì.",
+        "meaning": "Clients are very satisfied with our service.",
+        "meaningThai": "ลูกค้าพอใจกับการบริการของเรามาก"
+      }
+    ]
+  },
+  {
+    "id": "business-045",
+    "chinese": "总部",
+    "pinyin": "zǒng bù",
+    "meaning": "Headquarters",
+    "meaningThai": "สำนักงานใหญ่",
+    "category": "business",
+    "subcategory": "office",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司总部在北京。",
+        "pinyin": "Gōng sī zǒng bù zài Běi jīng.",
+        "meaning": "The company headquarters is in Beijing.",
+        "meaningThai": "สำนักงานใหญ่อยู่ที่ปักกิ่ง"
+      }
+    ]
+  },
+  {
+    "id": "business-046",
+    "chinese": "品牌",
+    "pinyin": "pǐn pái",
+    "meaning": "Brand",
+    "meaningThai": "แบรนด์",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个品牌很有名。",
+        "pinyin": "Zhè ge pǐn pái hěn yǒu míng.",
+        "meaning": "This brand is very famous.",
+        "meaningThai": "แบรนด์นี้มีชื่อเสียงมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-047",
+    "chinese": "广告",
+    "pinyin": "guǎng gào",
+    "meaning": "Advertisement",
+    "meaningThai": "โฆษณา",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "广告在电视上播放。",
+        "pinyin": "Guǎng gào zài diàn shì shàng bō fàng.",
+        "meaning": "The ad is playing on TV.",
+        "meaningThai": "โฆษณาออกอากาศทางทีวี"
+      }
+    ]
+  },
+  {
+    "id": "business-048",
+    "chinese": "营销",
+    "pinyin": "yíng xiāo",
+    "meaning": "Marketing",
+    "meaningThai": "การตลาด",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "营销策略决定销售业绩。",
+        "pinyin": "Yíng xiāo cè lüè jué dìng xiāo shòu yè jì.",
+        "meaning": "Marketing strategy determines sales performance.",
+        "meaningThai": "กลยุทธ์การตลาดกำหนดผลการขาย"
+      }
+    ]
+  },
+  {
+    "id": "business-049",
+    "chinese": "促销",
+    "pinyin": "cù xiāo",
+    "meaning": "Promotion; Sales event",
+    "meaningThai": "ส่งเสริมการขาย",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "商场正在进行促销活动。",
+        "pinyin": "Shāng chǎng zhèng zài jìn xíng cù xiāo huó dòng.",
+        "meaning": "The mall is having a promotion event.",
+        "meaningThai": "ห้างสรรพสินค้ากำลังมีกิจกรรมส่งเสริมการขาย"
+      }
+    ]
+  },
+  {
+    "id": "business-050",
+    "chinese": "零售",
+    "pinyin": "líng shòu",
+    "meaning": "Retail",
+    "meaningThai": "ค้าปลีก",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "零售业受到电商冲击。",
+        "pinyin": "Líng shòu yè shòu dào diàn shāng chōng jī.",
+        "meaning": "The retail industry is impacted by e-commerce.",
+        "meaningThai": "ธุรกิจค้าปลีกได้รับผลกระทบจากอีคอมเมิร์ซ"
+      }
+    ]
+  },
+  {
+    "id": "business-051",
+    "chinese": "批发",
+    "pinyin": "pī fā",
+    "meaning": "Wholesale",
+    "meaningThai": "ค้าส่ง",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "批发价格更优惠。",
+        "pinyin": "Pī fā jià gé gèng yōu huì.",
+        "meaning": "Wholesale prices are more favorable.",
+        "meaningThai": "ราคาส่งถูกกว่า"
+      }
+    ]
+  },
+  {
+    "id": "business-052",
+    "chinese": "出口",
+    "pinyin": "chū kǒu",
+    "meaning": "Export",
+    "meaningThai": "ส่งออก",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "该公司主要出口电子产品。",
+        "pinyin": "Gāi gōng sī zhǔ yào chū kǒu diàn zǐ chǎn pǐn.",
+        "meaning": "The company mainly exports electronic products.",
+        "meaningThai": "บริษัทนี้ส่งออกสินค้าอิเล็กทรอนิกส์เป็นหลัก"
+      }
+    ]
+  },
+  {
+    "id": "business-053",
+    "chinese": "进口",
+    "pinyin": "jìn kǒu",
+    "meaning": "Import",
+    "meaningThai": "นำเข้า",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "进口商品价格较高。",
+        "pinyin": "Jìn kǒu shāng pǐn jià gé jiào gāo.",
+        "meaning": "Imported goods have higher prices.",
+        "meaningThai": "สินค้านำเข้าราคาสูงกว่า"
+      }
+    ]
+  },
+  {
+    "id": "business-054",
+    "chinese": "竞争",
+    "pinyin": "jìng zhēng",
+    "meaning": "Competition",
+    "meaningThai": "การแข่งขัน",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "市场竞争非常激烈。",
+        "pinyin": "Shì chǎng jìng zhēng fēi cháng jī liè.",
+        "meaning": "Market competition is very intense.",
+        "meaningThai": "การแข่งขันในตลาดรุนแรงมาก"
+      }
+    ]
+  },
+  {
+    "id": "business-055",
+    "chinese": "垄断",
+    "pinyin": "lǒng duàn",
+    "meaning": "Monopoly",
+    "meaningThai": "ผูกขาด",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "反垄断法保护市场竞争。",
+        "pinyin": "Fǎn lǒng duàn fǎ bǎo hù shì chǎng jìng zhēng.",
+        "meaning": "Anti-monopoly laws protect market competition.",
+        "meaningThai": "กฎหมายป้องกันการผูกขาดปกป้องการแข่งขันในตลาด"
+      }
+    ]
+  },
+  {
+    "id": "business-056",
+    "chinese": "市场份额",
+    "pinyin": "shì chǎng fèn é",
+    "meaning": "Market share",
+    "meaningThai": "ส่วนแบ่งตลาด",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司市场份额持续增长。",
+        "pinyin": "Gōng sī shì chǎng fèn é chí xù zēng zhǎng.",
+        "meaning": "The company's market share continues to grow.",
+        "meaningThai": "ส่วนแบ่งตลาดของบริษัทเติบโตอย่างต่อเนื่อง"
+      }
+    ]
+  },
+  {
+    "id": "business-057",
+    "chinese": "电子商务",
+    "pinyin": "diàn zǐ shāng wù",
+    "meaning": "E-commerce",
+    "meaningThai": "พาณิชย์อิเล็กทรอนิกส์",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电子商务改变了购物方式。",
+        "pinyin": "Diàn zǐ shāng wù gǎi biàn le gòu wù fāng shì.",
+        "meaning": "E-commerce has changed the way we shop.",
+        "meaningThai": "พาณิชย์อิเล็กทรอนิกส์เปลี่ยนวิธีการช้อปปิ้ง"
+      }
+    ]
+  },
+  {
+    "id": "business-058",
+    "chinese": "创业",
+    "pinyin": "chuàng yè",
+    "meaning": "To start a business",
+    "meaningThai": "เริ่มธุรกิจ",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "年轻人创业需要勇气。",
+        "pinyin": "Nián qīng rén chuàng yè xū yào yǒng qì.",
+        "meaning": "Young people need courage to start a business.",
+        "meaningThai": "คนรุ่นใหม่ต้องกล้าที่จะเริ่มธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "business-059",
+    "chinese": "风险投资",
+    "pinyin": "fēng xiǎn tóu zī",
+    "meaning": "Venture capital",
+    "meaningThai": "เงินร่วมลงทุน",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "初创公司获得了风险投资。",
+        "pinyin": "Chū chuàng gōng sī huò dé le fēng xiǎn tóu zī.",
+        "meaning": "The startup received venture capital.",
+        "meaningThai": "สตาร์ทอัพได้รับเงินร่วมลงทุน"
+      }
+    ]
+  },
+  {
+    "id": "business-060",
+    "chinese": "上市",
+    "pinyin": "shàng shì",
+    "meaning": "To go public (IPO)",
+    "meaningThai": "เข้าตลาดหลักทรัพย์",
+    "category": "business",
+    "subcategory": "market",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司计划明年上市。",
+        "pinyin": "Gōng sī jì huà míng nián shàng shì.",
+        "meaning": "The company plans to go public next year.",
+        "meaningThai": "บริษัทวางแผนเข้าตลาดหลักทรัพย์ปีหน้า"
+      }
+    ]
+  },
+{
+  "id": "business-061",
+  "chinese": "跳槽",
+  "pinyin": "tiào cáo",
+  "meaning": "Job hopping",
+  "meaningThai": "เปลี่ยนงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他每年都跳槽。",
+      "pinyin": "Tā měi nián dōu tiào cáo.",
+      "meaning": "He changes jobs every year.",
+      "meaningThai": "เขาเปลี่ยนงานทุกปี"
+    }
+  ]
+},
+{
+  "id": "business-062",
+  "chinese": "履历",
+  "pinyin": "lǚ lì",
+  "meaning": "Work experience; CV",
+  "meaningThai": "ประวัติการทำงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他的履历非常丰富。",
+      "pinyin": "Tā de lǚ lì fēi cháng fēng fù.",
+      "meaning": "His work experience is very rich.",
+      "meaningThai": "ประวัติการทำงานของเขาหลากหลายมาก"
+    }
+  ]
+},
+{
+  "id": "business-063",
+  "chinese": "实习期",
+  "pinyin": "shí xí qī",
+  "meaning": "Probation period",
+  "meaningThai": "ระยะเวลาทดลองงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "实习期为三个月。",
+      "pinyin": "Shí xí qī wéi sān gè yuè.",
+      "meaning": "The probation period is three months.",
+      "meaningThai": "ระยะเวลาทดลองงานสามเดือน"
+    }
+  ]
+},
+{
+  "id": "business-064",
+  "chinese": "白领",
+  "pinyin": "bái lǐng",
+  "meaning": "White-collar worker",
+  "meaningThai": "พนักงานออฟฟิศ",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "很多白领在写字楼工作。",
+      "pinyin": "Hěn duō bái lǐng zài xiě zì lóu gōng zuò.",
+      "meaning": "Many white-collar workers work in office buildings.",
+      "meaningThai": "พนักงานออฟฟิศหลายคนทำงานในตึกสำนักงาน"
+    }
+  ]
+},
+{
+  "id": "business-065",
+  "chinese": "蓝领",
+  "pinyin": "lán lǐng",
+  "meaning": "Blue-collar worker",
+  "meaningThai": "พนักงานใช้แรงงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蓝领工人对经济发展很重要。",
+      "pinyin": "Lán lǐng gōng rén duì jīng jì fā zhǎn hěn zhòng yào.",
+      "meaning": "Blue-collar workers are important for economic development.",
+      "meaningThai": "พนักงานใช้แรงงานสำคัญต่อการพัฒนาเศรษฐกิจ"
+    }
+  ]
+},
+{
+  "id": "business-066",
+  "chinese": "轮班",
+  "pinyin": "lún bān",
+  "meaning": "Shift work",
+  "meaningThai": "กะทำงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "医院护士需要轮班工作。",
+      "pinyin": "Yī yuàn hù shi xū yào lún bān gōng zuò.",
+      "meaning": "Hospital nurses need to work in shifts.",
+      "meaningThai": "พยาบาลต้องทำงานเป็นกะ"
+    }
+  ]
+},
+{
+  "id": "business-067",
+  "chinese": "失业率",
+  "pinyin": "shī yè lǜ",
+  "meaning": "Unemployment rate",
+  "meaningThai": "อัตราการว่างงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "经济危机导致失业率上升。",
+      "pinyin": "Jīng jì wēi jī dǎo zhì shī yè lǜ shàng shēng.",
+      "meaning": "The economic crisis caused unemployment to rise.",
+      "meaningThai": "วิกฤตเศรษฐกิจทำให้อัตราการว่างงานเพิ่มขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-068",
+  "chinese": "劳动合同",
+  "pinyin": "láo dòng hé tóng",
+  "meaning": "Labor contract",
+  "meaningThai": "สัญญาจ้างงาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "签订劳动合同保障权益。",
+      "pinyin": "Qiān dìng láo dòng hé tóng bǎo zhàng quán yì.",
+      "meaning": "Signing a labor contract protects rights.",
+      "meaningThai": "เซ็นสัญญาจ้างงานคุ้มครองสิทธิประโยชน์"
+    }
+  ]
+},
+{
+  "id": "business-069",
+  "chinese": "自由职业",
+  "pinyin": "zì yóu zhí yè",
+  "meaning": "Freelance",
+  "meaningThai": "ฟรีแลนซ์",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "越来越多的人选择自由职业。",
+      "pinyin": "Yuè lái yuè duō de rén xuǎn zé zì yóu zhí yè.",
+      "meaning": "More and more people choose freelancing.",
+      "meaningThai": "คนเลือกทำงานฟรีแลนซ์มากขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-070",
+  "chinese": "猎头公司",
+  "pinyin": "liè tóu gōng sī",
+  "meaning": "Headhunting firm",
+  "meaningThai": "บริษัทจัดหางาน",
+  "category": "business",
+  "subcategory": "work",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "猎头公司帮他找到了新工作。",
+      "pinyin": "Liè tóu gōng sī bāng tā zhǎo dào le xīn gōng zuò.",
+      "meaning": "The headhunting firm helped him find a new job.",
+      "meaningThai": "บริษัทจัดหางานช่วยเขาหางานใหม่"
+    }
+  ]
+},
+{
+  "id": "business-071",
+  "chinese": "汇率",
+  "pinyin": "huì lǜ",
+  "meaning": "Exchange rate",
+  "meaningThai": "อัตราแลกเปลี่ยน",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "人民币兑美元汇率上升了。",
+      "pinyin": "Rén mín bì duì Měi yuán huì lǜ shàng shēng le.",
+      "meaning": "The RMB to USD exchange rate has risen.",
+      "meaningThai": "อัตราแลกเปลี่ยนหยวนต่อดอลลาร์เพิ่มขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-072",
+  "chinese": "基金定投",
+  "pinyin": "jī jīn dìng tóu",
+  "meaning": "Dollar-cost averaging",
+  "meaningThai": "การลงทุนแบบ DCA",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "基金定投适合长期投资。",
+      "pinyin": "Jī jīn dìng tóu shì hé cháng qī tóu zī.",
+      "meaning": "DCA investing is suitable for long-term investment.",
+      "meaningThai": "การลงทุนแบบ DCA เหมาะสำหรับการลงทุนระยะยาว"
+    }
+  ]
+},
+{
+  "id": "business-073",
+  "chinese": "市盈率",
+  "pinyin": "shì yíng lǜ",
+  "meaning": "P/E ratio",
+  "meaningThai": "อัตราส่วนราคาต่อกำไร",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "市盈率反映股票估值水平。",
+      "pinyin": "Shì yíng lǜ fǎn yìng gǔ piào gū zhí shuǐ píng.",
+      "meaning": "The P/E ratio reflects stock valuation levels.",
+      "meaningThai": "อัตราส่วนราคาต่อกำไรสะท้อนระดับมูลค่าหุ้น"
+    }
+  ]
+},
+{
+  "id": "business-074",
+  "chinese": "国库券",
+  "pinyin": "guó kù quàn",
+  "meaning": "Treasury bond",
+  "meaningThai": "พันธบัตรรัฐบาล",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "国库券是安全的投资方式。",
+      "pinyin": "Guó kù quàn shì ān quán de tóu zī fāng shì.",
+      "meaning": "Treasury bonds are a safe investment.",
+      "meaningThai": "พันธบัตรรัฐบาลเป็นการลงทุนที่ปลอดภัย"
+    }
+  ]
+},
+{
+  "id": "business-075",
+  "chinese": "散户",
+  "pinyin": "sǎn hù",
+  "meaning": "Retail investor",
+  "meaningThai": "นักลงทุนรายย่อย",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "散户在股市中占很大比例。",
+      "pinyin": "Sǎn hù zài gǔ shì zhōng zhàn hěn dà bǐ lì.",
+      "meaning": "Retail investors make up a large proportion of the stock market.",
+      "meaningThai": "นักลงทุนรายย่อยมีสัดส่วนมากในตลาดหุ้น"
+    }
+  ]
+},
+{
+  "id": "business-076",
+  "chinese": "做空",
+  "pinyin": "zuò kōng",
+  "meaning": "Short selling",
+  "meaningThai": "ขายชอร์ต",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "做空是一种高风险投资策略。",
+      "pinyin": "Zuò kōng shì yī zhǒng gāo fēng xiǎn tóu zī cè lüè.",
+      "meaning": "Short selling is a high-risk investment strategy.",
+      "meaningThai": "การขายชอร์ตเป็นกลยุทธ์การลงทุนความเสี่ยงสูง"
+    }
+  ]
+},
+{
+  "id": "business-077",
+  "chinese": "融资",
+  "pinyin": "róng zī",
+  "meaning": "Financing",
+  "meaningThai": "การระดมทุน",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "初创公司需要融资来发展。",
+      "pinyin": "Chū chuàng gōng sī xū yào róng zī lái fā zhǎn.",
+      "meaning": "Startups need financing to grow.",
+      "meaningThai": "สตาร์ทอัพ需要การระดมทุนเพื่อเติบโต"
+    }
+  ]
+},
+{
+  "id": "business-078",
+  "chinese": "债务",
+  "pinyin": "zhài wù",
+  "meaning": "Debt",
+  "meaningThai": "หนี้",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司债务过高会增加风险。",
+      "pinyin": "Gōng sī zhài wù guò gāo huì zēng jiā fēng xiǎn.",
+      "meaning": "Excessive corporate debt increases risk.",
+      "meaningThai": "หนี้บริษัทสูงเกินไปเพิ่มความเสี่ยง"
+    }
+  ]
+},
+{
+  "id": "business-079",
+  "chinese": "货币政策",
+  "pinyin": "huò bì zhèng cè",
+  "meaning": "Monetary policy",
+  "meaningThai": "นโยบายการเงิน",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "中央银行调整货币政策。",
+      "pinyin": "Zhōng yāng yín háng tiáo zhěng huò bì zhèng cè.",
+      "meaning": "The central bank adjusts monetary policy.",
+      "meaningThai": "ธนาคารกลางปรับนโยบายการเงิน"
+    }
+  ]
+},
+{
+  "id": "business-080",
+  "chinese": "经济衰退",
+  "pinyin": "jīng jì shuāi tuì",
+  "meaning": "Economic recession",
+  "meaningThai": "ภาวะเศรษฐกิจถดถอย",
+  "category": "business",
+  "subcategory": "finance",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "经济衰退期间失业率上升。",
+      "pinyin": "Jīng jì shuāi tuì qī jiān shī yè lǜ shàng shēng.",
+      "meaning": "Unemployment rises during an economic recession.",
+      "meaningThai": "ช่วงเศรษฐกิจถดถอยอัตราการว่างงานเพิ่มขึ้น"
+    }
+  ]
+},
+{
+  "id": "business-081",
+  "chinese": "办公用品",
+  "pinyin": "bàn gōng yòng pǐn",
+  "meaning": "Office supplies",
+  "meaningThai": "อุปกรณ์สำนักงาน",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "需要采购办公用品。",
+      "pinyin": "Xū yào cǎi gòu bàn gōng yòng pǐn.",
+      "meaning": "Need to purchase office supplies.",
+      "meaningThai": "ต้องจัดซื้ออุปกรณ์สำนักงาน"
+    }
+  ]
+},
+{
+  "id": "business-082",
+  "chinese": "公文包",
+  "pinyin": "gōng wén bāo",
+  "meaning": "Briefcase",
+  "meaningThai": "กระเป๋าเอกสาร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他提着公文包去上班。",
+      "pinyin": "Tā tí zhe gōng wén bāo qù shàng bān.",
+      "meaning": "He carries a briefcase to work.",
+      "meaningThai": "เขาถือกระเป๋าเอกสารไปทำงาน"
+    }
+  ]
+},
+{
+  "id": "business-083",
+  "chinese": "碎纸机",
+  "pinyin": "suì zhǐ jī",
+  "meaning": "Paper shredder",
+  "meaningThai": "เครื่องทำลายเอกสาร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "机密文件要用碎纸机处理。",
+      "pinyin": "Jī mì wén jiàn yào yòng suì zhǐ jī chǔ lǐ.",
+      "meaning": "Confidential documents should be shredded.",
+      "meaningThai": "เอกสารลับต้องใช้เครื่องทำลายเอกสาร"
+    }
+  ]
+},
+{
+  "id": "business-084",
+  "chinese": "投影仪",
+  "pinyin": "tóu yǐng yí",
+  "meaning": "Projector",
+  "meaningThai": "เครื่องฉายภาพ",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "会议需要使用投影仪。",
+      "pinyin": "Huì yì xū yào shǐ yòng tóu yǐng yí.",
+      "meaning": "The meeting needs a projector.",
+      "meaningThai": "การประชุมต้องใช้เครื่องฉายภาพ"
+    }
+  ]
+},
+{
+  "id": "business-085",
+  "chinese": "公司文化",
+  "pinyin": "gōng sī wén huà",
+  "meaning": "Company culture",
+  "meaningThai": "วัฒนธรรมองค์กร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司文化影响员工满意度。",
+      "pinyin": "Gōng sī wén huà yǐng xiǎng yuán gōng mǎn yì dù.",
+      "meaning": "Company culture affects employee satisfaction.",
+      "meaningThai": "วัฒนธรรมองค์กรส่งผลต่อความพึงพอใจของพนักงาน"
+    }
+  ]
+},
+{
+  "id": "business-086",
+  "chinese": "集体活动",
+  "pinyin": "jí tǐ huó dòng",
+  "meaning": "Team building",
+  "meaningThai": "กิจกรรมกลุ่ม",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司每季度都有集体活动。",
+      "pinyin": "Gōng sī měi jì dù dōu yǒu jí tǐ huó dòng.",
+      "meaning": "The company has team building every quarter.",
+      "meaningThai": "บริษัทมีกิจกรรมกลุ่มทุกไตรมาส"
+    }
+  ]
+},
+{
+  "id": "business-087",
+  "chinese": "业绩",
+  "pinyin": "yè jì",
+  "meaning": "Performance",
+  "meaningThai": "ผลงาน",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "今年业绩比去年好。",
+      "pinyin": "Jīn nián yè jì bǐ qù nián hǎo.",
+      "meaning": "This year's performance is better than last year.",
+      "meaningThai": "ปีนี้ผลงานดีกว่าปีที่แล้ว"
+    }
+  ]
+},
+{
+  "id": "business-088",
+  "chinese": "评估",
+  "pinyin": "píng gū",
+  "meaning": "Evaluation; Assessment",
+  "meaningThai": "ประเมินผล",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司每年做一次绩效评估。",
+      "pinyin": "Gōng sī měi nián zuò yī cì jì xiào píng gū.",
+      "meaning": "The company does a performance evaluation every year.",
+      "meaningThai": "บริษัทประเมินผลการปฏิบัติงานปีละครั้ง"
+    }
+  ]
+},
+{
+  "id": "business-089",
+  "chinese": "通知",
+  "pinyin": "tōng zhī",
+  "meaning": "Notice; Announcement",
+  "meaningThai": "ประกาศ",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司发了一则通知。",
+      "pinyin": "Gōng sī fā le yī zé tōng zhī.",
+      "meaning": "The company issued a notice.",
+      "meaningThai": "บริษัทออกประกาศ"
+    }
+  ]
+},
+{
+  "id": "business-090",
+  "chinese": "值班",
+  "pinyin": "zhí bān",
+  "meaning": "On duty",
+  "meaningThai": "เข้าเวร",
+  "category": "business",
+  "subcategory": "office",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "今晚谁值班？",
+      "pinyin": "Jīn wǎn shuí zhí bān?",
+      "meaning": "Who is on duty tonight?",
+      "meaningThai": "คืนนี้ใครเข้าเวร?"
+    }
+  ]
+},
+{
+  "id": "business-091",
+  "chinese": "品牌形象",
+  "pinyin": "pǐn pái xíng xiàng",
+  "meaning": "Brand image",
+  "meaningThai": "ภาพลักษณ์แบรนด์",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "品牌形象影响消费者选择。",
+      "pinyin": "Pǐn pái xíng xiàng yǐng xiǎng xiāo fèi zhě xuǎn zé.",
+      "meaning": "Brand image affects consumer choices.",
+      "meaningThai": "ภาพลักษณ์แบรนด์ส่งผลต่อการเลือกของผู้บริโภค"
+    }
+  ]
+},
+{
+  "id": "business-092",
+  "chinese": "市场调研",
+  "pinyin": "shì chǎng diào yán",
+  "meaning": "Market research",
+  "meaningThai": "วิจัยตลาด",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "新产品需要先做市场调研。",
+      "pinyin": "Xīn chǎn pǐn xū yào xiān zuò shì chǎng diào yán.",
+      "meaning": "New products need market research first.",
+      "meaningThai": "สินค้าใหม่ต้องทำวิจัยตลาดก่อน"
+    }
+  ]
+},
+{
+  "id": "business-093",
+  "chinese": "目标客户",
+  "pinyin": "mù biāo kè hù",
+  "meaning": "Target customer",
+  "meaningThai": "กลุ่มลูกค้าเป้าหมาย",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "确定目标客户是营销的第一步。",
+      "pinyin": "Què dìng mù biāo kè hù shì yíng xiāo de dì yī bù.",
+      "meaning": "Identifying target customers is the first step in marketing.",
+      "meaningThai": "กำหนดกลุ่มลูกค้าเป้าหมายเป็นขั้นตอนแรกของการตลาด"
+    }
+  ]
+},
+{
+  "id": "business-094",
+  "chinese": "定价策略",
+  "pinyin": "dìng jià cè lüè",
+  "meaning": "Pricing strategy",
+  "meaningThai": "กลยุทธ์การกำหนดราคา",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "合理的定价策略可以提高销量。",
+      "pinyin": "Hé lǐ de dìng jià cè lüè kě yǐ tí gāo xiāo liàng.",
+      "meaning": "A reasonable pricing strategy can increase sales.",
+      "meaningThai": "กลยุทธ์การกำหนดราคาที่เหมาะสมเพิ่มยอดขาย"
+    }
+  ]
+},
+{
+  "id": "business-095",
+  "chinese": "供应链",
+  "pinyin": "gōng yìng liàn",
+  "meaning": "Supply chain",
+  "meaningThai": "ห่วงโซ่อุปทาน",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "供应链管理对制造业很重要。",
+      "pinyin": "Gōng yìng liàn guǎn lǐ duì zhì zào yè hěn zhòng yào.",
+      "meaning": "Supply chain management is important for manufacturing.",
+      "meaningThai": "การจัดการห่วงโซ่อุปทานสำคัญต่ออุตสาหกรรมการผลิต"
+    }
+  ]
+},
+{
+  "id": "business-096",
+  "chinese": "跨国公司",
+  "pinyin": "kuà guó gōng sī",
+  "meaning": "Multinational corporation",
+  "meaningThai": "บริษัทข้ามชาติ",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "跨国公司在全球开展业务。",
+      "pinyin": "Kuà guó gōng sī zài quán qiú kāi zhǎn yè wù.",
+      "meaning": "Multinational corporations operate globally.",
+      "meaningThai": "บริษัทข้ามชาติดำเนินธุรกิจทั่วโลก"
+    }
+  ]
+},
+{
+  "id": "business-097",
+  "chinese": "外包",
+  "pinyin": "wài bāo",
+  "meaning": "Outsourcing",
+  "meaningThai": "การจ้างภายนอก",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "公司将客服业务外包。",
+      "pinyin": "Gōng sī jiāng kè fú yè wù wài bāo.",
+      "meaning": "The company outsources customer service.",
+      "meaningThai": "บริษัทจ้างบริษัทภายนอกดูแลบริการลูกค้า"
+    }
+  ]
+},
+{
+  "id": "business-098",
+  "chinese": "经销商",
+  "pinyin": "jīng xiāo shāng",
+  "meaning": "Distributor",
+  "meaningThai": "ตัวแทนจำหน่าย",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "我们正在寻找本地区经销商。",
+      "pinyin": "Wǒ men zhèng zài xún zhǎo běn dì qū jīng xiāo shāng.",
+      "meaning": "We are looking for regional distributors.",
+      "meaningThai": "เรากำลังหาตัวแทนจำหน่ายในภูมิภาค"
+    }
+  ]
+},
+{
+  "id": "business-099",
+  "chinese": "合同",
+  "pinyin": "hé tong",
+  "meaning": "Contract",
+  "meaningThai": "สัญญา",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "双方签署了合作协议。",
+      "pinyin": "Shuāng fāng qiān shǔ le hé zuò xié yì.",
+      "meaning": "Both parties signed a cooperation agreement.",
+      "meaningThai": "ทั้งสองฝ่ายเซ็นสัญญาความร่วมมือ"
+    }
+  ]
+},
+{
+  "id": "business-100",
+  "chinese": "谈判",
+  "pinyin": "tán pàn",
+  "meaning": "Negotiation",
+  "meaningThai": "การเจรจาต่อรอง",
+  "category": "business",
+  "subcategory": "market",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "商务谈判需要技巧。",
+      "pinyin": "Shāng wù tán pàn xū yào jì qiǎo.",
+      "meaning": "Business negotiations require skill.",
+      "meaningThai": "การเจรจาต่อรองทางธุรกิจต้องใช้ทักษะ"
+    }
+  ]
+}
+];
+

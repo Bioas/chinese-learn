@@ -1,0 +1,16 @@
+export const VOCABULARY = [...HSK1_WORDS, ...HSK2_WORDS, ...HSK3_WORDS, ...HSK4_WORDS, ...HSK5_WORDS, ...HSK6_WORDS, ...GREETINGS_WORDS, ...FOOD_WORDS, ...SHOPPING_WORDS, ...TRAVEL_WORDS, ...WEATHER_WORDS, ...TIME_WORDS, ...FAMILY_WORDS, ...COLORS_WORDS, ...NUMBERS_WORDS, ...HEALTH_WORDS, ...EDUCATION_WORDS, ...TECHNOLOGY_WORDS, ...BUSINESS_WORDS, ...NATURE_WORDS];
+
+// Helper: get word by ID
+export function getWordById(id) {
+  return VOCABULARY.find(w => w.id === id);
+}
+
+// Helper: get words by category
+export function getWordsByCategory(categoryId) {
+  return VOCABULARY.filter(w => w.category === categoryId);
+}
+
+// Helper: get words by subcategory
+export function getWordsBySubcategory(subId) {
+  return VOCABULARY.filter(w => w.subcategory === subId);
+}

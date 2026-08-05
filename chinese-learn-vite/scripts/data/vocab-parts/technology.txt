@@ -1,0 +1,1903 @@
+const TECHNOLOGY_WORDS = [
+  {
+    "id": "technology-001",
+    "chinese": "软件",
+    "pinyin": "ruǎn jiàn",
+    "meaning": "Software",
+    "meaningThai": "ซอฟต์แวร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "安装新的软件。",
+        "pinyin": "Ān zhuāng xīn de ruǎn jiàn.",
+        "meaning": "Install new software.",
+        "meaningThai": "ติดตั้งซอฟต์แวร์ใหม่"
+      }
+    ]
+  },
+  {
+    "id": "technology-002",
+    "chinese": "硬件",
+    "pinyin": "yìng jiàn",
+    "meaning": "Hardware",
+    "meaningThai": "ฮาร์ดแวร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电脑硬件升级了。",
+        "pinyin": "Diàn nǎo yìng jiàn shēng jí le.",
+        "meaning": "The computer hardware was upgraded.",
+        "meaningThai": "อัพเกรดฮาร์ดแวร์คอมพิวเตอร์แล้ว"
+      }
+    ]
+  },
+  {
+    "id": "technology-003",
+    "chinese": "编程",
+    "pinyin": "biān chéng",
+    "meaning": "Programming",
+    "meaningThai": "เขียนโปรแกรม",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在学习编程。",
+        "pinyin": "Tā zài xué xí biān chéng.",
+        "meaning": "He is learning programming.",
+        "meaningThai": "เขากำลังเรียนเขียนโปรแกรม"
+      }
+    ]
+  },
+  {
+    "id": "technology-004",
+    "chinese": "代码",
+    "pinyin": "dài mǎ",
+    "meaning": "Code",
+    "meaningThai": "โค้ด",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这段代码有错误。",
+        "pinyin": "Zhè duàn dài mǎ yǒu cuò wù.",
+        "meaning": "This piece of code has errors.",
+        "meaningThai": "โค้ดส่วนนี้มีข้อผิดพลาด"
+      }
+    ]
+  },
+  {
+    "id": "technology-005",
+    "chinese": "服务器",
+    "pinyin": "fú wù qì",
+    "meaning": "Server",
+    "meaningThai": "เซิร์ฟเวอร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "服务器需要维护。",
+        "pinyin": "Fú wù qì xū yào wéi hù.",
+        "meaning": "The server needs maintenance.",
+        "meaningThai": "เซิร์ฟเวอร์ต้องการการบำรุงรักษา"
+      }
+    ]
+  },
+  {
+    "id": "technology-006",
+    "chinese": "数据库",
+    "pinyin": "shù jù kù",
+    "meaning": "Database",
+    "meaningThai": "ฐานข้อมูล",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数据库存储用户信息。",
+        "pinyin": "Shù jù kù chǔ cún yòng hù xìn xī.",
+        "meaning": "The database stores user information.",
+        "meaningThai": "ฐานข้อมูลเก็บข้อมูลผู้ใช้"
+      }
+    ]
+  },
+  {
+    "id": "technology-007",
+    "chinese": "算法",
+    "pinyin": "suàn fǎ",
+    "meaning": "Algorithm",
+    "meaningThai": "อัลกอริทึม",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个算法效率很高。",
+        "pinyin": "Zhè ge suàn fǎ xiào lǜ hěn gāo.",
+        "meaning": "This algorithm is very efficient.",
+        "meaningThai": "อัลกอริทึมนี้มีประสิทธิภาพสูง"
+      }
+    ]
+  },
+  {
+    "id": "technology-008",
+    "chinese": "操作系统",
+    "pinyin": "cāo zuò xì tǒng",
+    "meaning": "Operating system",
+    "meaningThai": "ระบบปฏิบัติการ",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "最新版本的操作系统。",
+        "pinyin": "Zuì xīn bǎn běn de cāo zuò xì tǒng.",
+        "meaning": "The latest version of the operating system.",
+        "meaningThai": "ระบบปฏิบัติการเวอร์ชันล่าสุด"
+      }
+    ]
+  },
+  {
+    "id": "technology-009",
+    "chinese": "浏览器",
+    "pinyin": "liú lǎn qì",
+    "meaning": "Browser",
+    "meaningThai": "เบราว์เซอร์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "打开浏览器搜索。",
+        "pinyin": "Dǎ kāi liú lǎn qì sōu suǒ.",
+        "meaning": "Open the browser and search.",
+        "meaningThai": "เปิดเบราว์เซอร์ค้นหา"
+      }
+    ]
+  },
+  {
+    "id": "technology-010",
+    "chinese": "防火墙",
+    "pinyin": "fáng huǒ qiáng",
+    "meaning": "Firewall",
+    "meaningThai": "ไฟร์วอลล์",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "防火墙保护网络安全。",
+        "pinyin": "Fáng huǒ qiáng bǎo hù wǎng luò ān quán.",
+        "meaning": "Firewalls protect network security.",
+        "meaningThai": "ไฟร์วอลล์ปกป้องความปลอดภัยเครือข่าย"
+      }
+    ]
+  },
+  {
+    "id": "technology-011",
+    "chinese": "芯片",
+    "pinyin": "xīn piàn",
+    "meaning": "Chip; Microchip",
+    "meaningThai": "ชิป",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "新的芯片性能更强。",
+        "pinyin": "Xīn de xīn piàn xìng néng gèng qiáng.",
+        "meaning": "The new chip has stronger performance.",
+        "meaningThai": "ชิปตัวใหม่มีประสิทธิภาพดีกว่า"
+      }
+    ]
+  },
+  {
+    "id": "technology-012",
+    "chinese": "内存",
+    "pinyin": "nèi cún",
+    "meaning": "Memory (RAM)",
+    "meaningThai": "แรม",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电脑内存不够用了。",
+        "pinyin": "Diàn nǎo nèi cún bù gòu yòng le.",
+        "meaning": "The computer doesn't have enough memory.",
+        "meaningThai": "แรมคอมพิวเตอร์ไม่พอ"
+      }
+    ]
+  },
+  {
+    "id": "technology-013",
+    "chinese": "键盘",
+    "pinyin": "jiàn pán",
+    "meaning": "Keyboard",
+    "meaningThai": "คีย์บอร์ด",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "无线键盘很方便。",
+        "pinyin": "Wú xiàn jiàn pán hěn fāng biàn.",
+        "meaning": "Wireless keyboards are very convenient.",
+        "meaningThai": "คีย์บอร์ดไร้สายสะดวกมาก"
+      }
+    ]
+  },
+  {
+    "id": "technology-014",
+    "chinese": "显示器",
+    "pinyin": "xiǎn shì qì",
+    "meaning": "Monitor; Display",
+    "meaningThai": "จอภาพ",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "显示器的分辨率很高。",
+        "pinyin": "Xiǎn shì qì de fēn biàn lǜ hěn gāo.",
+        "meaning": "The monitor has high resolution.",
+        "meaningThai": "จอภาพมีความละเอียดสูง"
+      }
+    ]
+  },
+  {
+    "id": "technology-015",
+    "chinese": "密码",
+    "pinyin": "mì mǎ",
+    "meaning": "Password",
+    "meaningThai": "รหัสผ่าน",
+    "category": "technology",
+    "subcategory": "computers",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请设置一个强密码。",
+        "pinyin": "Qǐng shè zhì yī gè qiáng mì mǎ.",
+        "meaning": "Please set a strong password.",
+        "meaningThai": "กรุณาตั้งรหัสผ่านที่รัดกุม"
+      }
+    ]
+  },
+  {
+    "id": "technology-016",
+    "chinese": "网络",
+    "pinyin": "wǎng luò",
+    "meaning": "Network; Internet",
+    "meaningThai": "เครือข่าย",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "网络连接不稳定。",
+        "pinyin": "Wǎng luò lián jiē bù wěn dìng.",
+        "meaning": "The network connection is unstable.",
+        "meaningThai": "การเชื่อมต่อเครือข่ายไม่เสถียร"
+      }
+    ]
+  },
+  {
+    "id": "technology-017",
+    "chinese": "视频通话",
+    "pinyin": "shì pín tōng huà",
+    "meaning": "Video call",
+    "meaningThai": "วิดีโอคอล",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我们用视频通话联系。",
+        "pinyin": "Wǒ men yòng shì pín tōng huà lián xì.",
+        "meaning": "We keep in touch via video calls.",
+        "meaningThai": "เราติดต่อกันผ่านวิดีโอคอล"
+      }
+    ]
+  },
+  {
+    "id": "technology-018",
+    "chinese": "电子邮件",
+    "pinyin": "diàn zǐ yóu jiàn",
+    "meaning": "Email",
+    "meaningThai": "อีเมล",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请发电子邮件给我。",
+        "pinyin": "Qǐng fā diàn zǐ yóu jiàn gěi wǒ.",
+        "meaning": "Please send me an email.",
+        "meaningThai": "กรุณาส่งอีเมลถึงฉัน"
+      }
+    ]
+  },
+  {
+    "id": "technology-019",
+    "chinese": "社交媒体",
+    "pinyin": "shè jiāo méi tǐ",
+    "meaning": "Social media",
+    "meaningThai": "โซเชียลมีเดีย",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "社交媒体改变了沟通方式。",
+        "pinyin": "Shè jiāo méi tǐ gǎi biàn le gōu tōng fāng shì.",
+        "meaning": "Social media changed the way we communicate.",
+        "meaningThai": "โซเชียลมีเดียเปลี่ยนวิธีการสื่อสาร"
+      }
+    ]
+  },
+  {
+    "id": "technology-020",
+    "chinese": "论坛",
+    "pinyin": "lùn tán",
+    "meaning": "Forum",
+    "meaningThai": "เว็บบอร์ด",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "在论坛上讨论问题。",
+        "pinyin": "Zài lùn tán shàng tǎo lùn wèn tí.",
+        "meaning": "Discuss questions on the forum.",
+        "meaningThai": "อภิปรายปัญหาบนเว็บบอร์ด"
+      }
+    ]
+  },
+  {
+    "id": "technology-021",
+    "chinese": "带宽",
+    "pinyin": "dài kuān",
+    "meaning": "Bandwidth",
+    "meaningThai": "แบนด์วิดท์",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "带宽不够导致视频卡顿。",
+        "pinyin": "Dài kuān bù gòu dǎo zhì shì pín kǎ dùn.",
+        "meaning": "Insufficient bandwidth causes video lag.",
+        "meaningThai": "แบนด์วิดท์ไม่พอทำให้วิดีโอสะดุด"
+      }
+    ]
+  },
+  {
+    "id": "technology-022",
+    "chinese": "路由器",
+    "pinyin": "lù yóu qì",
+    "meaning": "Router",
+    "meaningThai": "เราเตอร์",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "路由器信号很强。",
+        "pinyin": "Lù yóu qì xìn hào hěn qiáng.",
+        "meaning": "The router has a strong signal.",
+        "meaningThai": "สัญญาณเราเตอร์แรง"
+      }
+    ]
+  },
+  {
+    "id": "technology-023",
+    "chinese": "病毒",
+    "pinyin": "bìng dú",
+    "meaning": "Computer virus",
+    "meaningThai": "ไวรัสคอมพิวเตอร์",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电脑中毒了需要杀毒。",
+        "pinyin": "Diàn nǎo zhòng dú le xū yào shā dú.",
+        "meaning": "The computer has a virus and needs to be cleaned.",
+        "meaningThai": "คอมพิวเตอร์ติดไวรัสต้องกำจัดไวรัส"
+      }
+    ]
+  },
+  {
+    "id": "technology-024",
+    "chinese": "云存储",
+    "pinyin": "yún chǔ chú",
+    "meaning": "Cloud storage",
+    "meaningThai": "คลาวด์สตอเรจ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "文件存在云存储里。",
+        "pinyin": "Wén jiàn cún zài yún chǔ chú lǐ.",
+        "meaning": "Files are stored in the cloud.",
+        "meaningThai": "ไฟล์เก็บไว้ในคลาวด์สตอเรจ"
+      }
+    ]
+  },
+  {
+    "id": "technology-025",
+    "chinese": "蓝牙",
+    "pinyin": "lán yá",
+    "meaning": "Bluetooth",
+    "meaningThai": "บลูทูธ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "通过蓝牙连接设备。",
+        "pinyin": "Tōng guò lán yá lián jiē shè bèi.",
+        "meaning": "Connect devices via Bluetooth.",
+        "meaningThai": "เชื่อมต่ออุปกรณ์ผ่านบลูทูธ"
+      }
+    ]
+  },
+  {
+    "id": "technology-026",
+    "chinese": "流量",
+    "pinyin": "liú liàng",
+    "meaning": "Data traffic",
+    "meaningThai": "ข้อมูลมือถือ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "手机流量用完了。",
+        "pinyin": "Shǒu jī liú liàng yòng wán le.",
+        "meaning": "The mobile data ran out.",
+        "meaningThai": "ข้อมูลมือถือหมดแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "technology-027",
+    "chinese": "信号",
+    "pinyin": "xìn hào",
+    "meaning": "Signal",
+    "meaningThai": "สัญญาณ",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这里信号不好。",
+        "pinyin": "Zhè lǐ xìn hào bù hǎo.",
+        "meaning": "The signal is bad here.",
+        "meaningThai": "ที่นี่สัญญาณไม่ดี"
+      }
+    ]
+  },
+  {
+    "id": "technology-028",
+    "chinese": "加密",
+    "pinyin": "jiā mì",
+    "meaning": "Encryption",
+    "meaningThai": "การเข้ารหัส",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数据需要加密传输。",
+        "pinyin": "Shù jù xū yào jiā mì chuán shū.",
+        "meaning": "Data needs encrypted transmission.",
+        "meaningThai": "ข้อมูลต้องส่งแบบเข้ารหัส"
+      }
+    ]
+  },
+  {
+    "id": "technology-029",
+    "chinese": "光纤",
+    "pinyin": "guāng xiān",
+    "meaning": "Fiber optic",
+    "meaningThai": "ไฟเบอร์ออปติก",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "光纤网络速度更快。",
+        "pinyin": "Guāng xiān wǎng luò sù dù gèng kuài.",
+        "meaning": "Fiber optic networks are faster.",
+        "meaningThai": "เครือข่ายไฟเบอร์ออปติกเร็วกว่า"
+      }
+    ]
+  },
+  {
+    "id": "technology-030",
+    "chinese": "物联网",
+    "pinyin": "wù lián wǎng",
+    "meaning": "Internet of Things",
+    "meaningThai": "อินเทอร์เน็ตของสรรพสิ่ง",
+    "category": "technology",
+    "subcategory": "communication",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "物联网让家居更智能。",
+        "pinyin": "Wù lián wǎng ràng jiā jū gèng zhì néng.",
+        "meaning": "IoT makes homes smarter.",
+        "meaningThai": "IoT ทำให้บ้านอัจฉริยะมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-031",
+    "chinese": "应用程序",
+    "pinyin": "yìng yòng chéng xù",
+    "meaning": "Application (App)",
+    "meaningThai": "แอปพลิเคชัน",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "手机上下载了新的应用程序。",
+        "pinyin": "Shǒu jī shàng xià zài le xīn de yìng yòng chéng xù.",
+        "meaning": "Downloaded a new app on the phone.",
+        "meaningThai": "ดาวน์โหลดแอปพลิเคชันใหม่บนมือถือ"
+      }
+    ]
+  },
+  {
+    "id": "technology-032",
+    "chinese": "数码相机",
+    "pinyin": "shù mǎ xiàng jī",
+    "meaning": "Digital camera",
+    "meaningThai": "กล้องดิจิทัล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数码相机拍照很方便。",
+        "pinyin": "Shù mǎ xiàng jī pāi zhào hěn fāng biàn.",
+        "meaning": "Digital cameras are convenient for taking photos.",
+        "meaningThai": "กล้องดิจิทัลถ่ายรูปสะดวกมาก"
+      }
+    ]
+  },
+  {
+    "id": "technology-033",
+    "chinese": "在线",
+    "pinyin": "zài xiàn",
+    "meaning": "Online",
+    "meaningThai": "ออนไลน์",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "在线课程越来越流行。",
+        "pinyin": "Zài xiàn kè chéng yuè lái yuè liú xíng.",
+        "meaning": "Online courses are becoming more popular.",
+        "meaningThai": "คอร์สออนไลน์กำลังเป็นที่นิยมมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-034",
+    "chinese": "直播",
+    "pinyin": "zhí bō",
+    "meaning": "Live streaming",
+    "meaningThai": "ไลฟ์สตรีม",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她在做直播带货。",
+        "pinyin": "Tā zài zuò zhí bō dài huò.",
+        "meaning": "She is doing live-streaming sales.",
+        "meaningThai": "เธอกำลังไลฟ์สดขายของ"
+      }
+    ]
+  },
+  {
+    "id": "technology-035",
+    "chinese": "虚拟现实",
+    "pinyin": "xū nǐ xiàn shí",
+    "meaning": "Virtual reality",
+    "meaningThai": "ความเป็นจริงเสมือน",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "虚拟现实技术不断发展。",
+        "pinyin": "Xū nǐ xiàn shí jì shù bù duàn fā zhǎn.",
+        "meaning": "VR technology keeps advancing.",
+        "meaningThai": "เทคโนโลยี VR พัฒนาอย่างต่อเนื่อง"
+      }
+    ]
+  },
+  {
+    "id": "technology-036",
+    "chinese": "增强现实",
+    "pinyin": "zēng qiáng xiàn shí",
+    "meaning": "Augmented reality",
+    "meaningThai": "ความเป็นจริงเสริม",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "手机游戏使用了增强现实技术。",
+        "pinyin": "Shǒu jī yóu xì shǐ yòng le zēng qiáng xiàn shí jì shù.",
+        "meaning": "Mobile games use AR technology.",
+        "meaningThai": "เกมมือถือใช้เทคโนโลยี AR"
+      }
+    ]
+  },
+  {
+    "id": "technology-037",
+    "chinese": "电子支付",
+    "pinyin": "diàn zǐ zhī fù",
+    "meaning": "Electronic payment",
+    "meaningThai": "ชำระเงินอิเล็กทรอนิกส์",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "电子支付很方便。",
+        "pinyin": "Diàn zǐ zhī fù hěn fāng biàn.",
+        "meaning": "Electronic payment is very convenient.",
+        "meaningThai": "การชำระเงินอิเล็กทรอนิกส์สะดวกมาก"
+      }
+    ]
+  },
+  {
+    "id": "technology-038",
+    "chinese": "二维码",
+    "pinyin": "èr wéi mǎ",
+    "meaning": "QR code",
+    "meaningThai": "คิวอาร์โค้ด",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "扫二维码加好友。",
+        "pinyin": "Sǎo èr wéi mǎ jiā hǎo yǒu.",
+        "meaning": "Scan the QR code to add a friend.",
+        "meaningThai": "สแกนคิวอาร์โค้ดเพื่อเพิ่มเพื่อน"
+      }
+    ]
+  },
+  {
+    "id": "technology-039",
+    "chinese": "区块链",
+    "pinyin": "qū kuài liàn",
+    "meaning": "Blockchain",
+    "meaningThai": "บล็อกเชน",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "区块链技术用于加密货币。",
+        "pinyin": "Qū kuài liàn jì shù yòng yú jiā mì huò bì.",
+        "meaning": "Blockchain technology is used for cryptocurrency.",
+        "meaningThai": "เทคโนโลยีบล็อกเชนใช้สำหรับสกุลเงินดิจิทัล"
+      }
+    ]
+  },
+  {
+    "id": "technology-040",
+    "chinese": "自媒体",
+    "pinyin": "zì méi tǐ",
+    "meaning": "Self-media; We-media",
+    "meaningThai": "สื่อส่วนตัว",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "很多人通过自媒体赚钱。",
+        "pinyin": "Hěn duō rén tōng guò zì méi tǐ zhuàn qián.",
+        "meaning": "Many people make money through self-media.",
+        "meaningThai": "หลายคนหารายได้ผ่านสื่อส่วนตัว"
+      }
+    ]
+  },
+  {
+    "id": "technology-041",
+    "chinese": "数字营销",
+    "pinyin": "shù zì yíng xiāo",
+    "meaning": "Digital marketing",
+    "meaningThai": "การตลาดดิจิทัล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "公司重视数字营销策略。",
+        "pinyin": "Gōng sī zhòng shì shù zì yíng xiāo cè lüè.",
+        "meaning": "The company values digital marketing strategies.",
+        "meaningThai": "บริษัทให้ความสำคัญกับกลยุทธ์การตลาดดิจิทัล"
+      }
+    ]
+  },
+  {
+    "id": "technology-042",
+    "chinese": "网络安全",
+    "pinyin": "wǎng luò ān quán",
+    "meaning": "Cybersecurity",
+    "meaningThai": "ความปลอดภัยทางไซเบอร์",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "网络安全越来越重要。",
+        "pinyin": "Wǎng luò ān quán yuè lái yuè zhòng yào.",
+        "meaning": "Cybersecurity is increasingly important.",
+        "meaningThai": "ความปลอดภัยทางไซเบอร์สำคัญมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-043",
+    "chinese": "数据挖掘",
+    "pinyin": "shù jù wā jué",
+    "meaning": "Data mining",
+    "meaningThai": "การทำเหมืองข้อมูล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数据挖掘发现隐藏的模式。",
+        "pinyin": "Shù jù wā jué fā xiàn yǐn cáng de mó shì.",
+        "meaning": "Data mining discovers hidden patterns.",
+        "meaningThai": "การทำเหมืองข้อมูลค้นพบรูปแบบที่ซ่อนอยู่"
+      }
+    ]
+  },
+  {
+    "id": "technology-044",
+    "chinese": "备份",
+    "pinyin": "bèi fèn",
+    "meaning": "Backup",
+    "meaningThai": "สำรองข้อมูล",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "重要文件要定期备份。",
+        "pinyin": "Zhòng yào wén jiàn yào dìng qī bèi fèn.",
+        "meaning": "Important files should be backed up regularly.",
+        "meaningThai": "ไฟล์สำคัญต้องสำรองข้อมูลเป็นประจำ"
+      }
+    ]
+  },
+  {
+    "id": "technology-045",
+    "chinese": "界面",
+    "pinyin": "jiè miàn",
+    "meaning": "Interface; UI",
+    "meaningThai": "อินเทอร์เฟซ",
+    "category": "technology",
+    "subcategory": "digital",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个应用程序界面很友好。",
+        "pinyin": "Zhè ge yìng yòng chéng xù jiè miàn hěn yǒu hǎo.",
+        "meaning": "This app has a user-friendly interface.",
+        "meaningThai": "แอปนี้มีอินเทอร์เฟซที่ใช้งานง่าย"
+      }
+    ]
+  },
+  {
+    "id": "technology-046",
+    "chinese": "人工智能",
+    "pinyin": "rén gōng zhì néng",
+    "meaning": "Artificial Intelligence",
+    "meaningThai": "ปัญญาประดิษฐ์",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "人工智能正在改变世界。",
+        "pinyin": "Rén gōng zhì néng zhèng zài gǎi biàn shì jiè.",
+        "meaning": "AI is changing the world.",
+        "meaningThai": "AI กำลังเปลี่ยนแปลงโลก"
+      }
+    ]
+  },
+  {
+    "id": "technology-047",
+    "chinese": "机器学习",
+    "pinyin": "jī qì xué xí",
+    "meaning": "Machine learning",
+    "meaningThai": "การเรียนรู้ของเครื่อง",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "机器学习是人工智能的一个分支。",
+        "pinyin": "Jī qì xué xí shì rén gōng zhì néng de yī gè fēn zhī.",
+        "meaning": "Machine learning is a branch of AI.",
+        "meaningThai": "Machine Learning เป็นสาขาหนึ่งของ AI"
+      }
+    ]
+  },
+  {
+    "id": "technology-048",
+    "chinese": "深度学习",
+    "pinyin": "shēn dù xué xí",
+    "meaning": "Deep learning",
+    "meaningThai": "การเรียนรู้เชิงลึก",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "深度学习在图像识别中表现优异。",
+        "pinyin": "Shēn dù xué xí zài tú xiàng shí bié zhōng biǎo xiàn yōu yì.",
+        "meaning": "Deep learning performs well in image recognition.",
+        "meaningThai": "การเรียนรู้เชิงลึกมีประสิทธิภาพดีในการจดจำภาพ"
+      }
+    ]
+  },
+  {
+    "id": "technology-049",
+    "chinese": "神经网络",
+    "pinyin": "shén jīng wǎng luò",
+    "meaning": "Neural network",
+    "meaningThai": "โครงข่ายประสาทเทียม",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "神经网络模拟人脑工作方式。",
+        "pinyin": "Shén jīng wǎng luò mó nǐ rén nǎo gōng zuò fāng shì.",
+        "meaning": "Neural networks simulate the way the brain works.",
+        "meaningThai": "โครงข่ายประสาทเทียมเลียนแบบการทำงานของสมอง"
+      }
+    ]
+  },
+  {
+    "id": "technology-050",
+    "chinese": "大数据",
+    "pinyin": "dà shù jù",
+    "meaning": "Big data",
+    "meaningThai": "ข้อมูลขนาดใหญ่",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大数据分析帮助企业决策。",
+        "pinyin": "Dà shù jù fēn xī bāng zhù qǐ yè jué cè.",
+        "meaning": "Big data analysis helps business decisions.",
+        "meaningThai": "การวิเคราะห์ข้อมูลขนาดใหญ่ช่วยตัดสินใจทางธุรกิจ"
+      }
+    ]
+  },
+  {
+    "id": "technology-051",
+    "chinese": "自动化",
+    "pinyin": "zì dòng huà",
+    "meaning": "Automation",
+    "meaningThai": "อัตโนมัติ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "工厂实现了自动化生产。",
+        "pinyin": "Gōng chǎng shí xiàn le zì dòng huà shēng chǎn.",
+        "meaning": "The factory has achieved automated production.",
+        "meaningThai": "โรงงาน实现了การผลิตแบบอัตโนมัติ"
+      }
+    ]
+  },
+  {
+    "id": "technology-052",
+    "chinese": "机器人",
+    "pinyin": "jī qì rén",
+    "meaning": "Robot",
+    "meaningThai": "หุ่นยนต์",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "机器人可以完成重复性工作。",
+        "pinyin": "Jī qì rén kě yǐ wán chéng chóng fù xìng gōng zuò.",
+        "meaning": "Robots can complete repetitive tasks.",
+        "meaningThai": "หุ่นยนต์สามารถทำงานที่ซ้ำซากได้"
+      }
+    ]
+  },
+  {
+    "id": "technology-053",
+    "chinese": "智能家居",
+    "pinyin": "zhì néng jiā jū",
+    "meaning": "Smart home",
+    "meaningThai": "บ้านอัจฉริยะ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "智能家居让生活更方便。",
+        "pinyin": "Zhì néng jiā jū ràng shēng huó gèng fāng biàn.",
+        "meaning": "Smart homes make life more convenient.",
+        "meaningThai": "บ้านอัจฉริยะทำให้ชีวิตสะดวกมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-054",
+    "chinese": "云计算",
+    "pinyin": "yún jì suàn",
+    "meaning": "Cloud computing",
+    "meaningThai": "คลาวด์คอมพิวติ้ง",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "云计算提供了强大的计算能力。",
+        "pinyin": "Yún jì suàn tí gōng le qiáng dà de jì suàn néng lì.",
+        "meaning": "Cloud computing provides powerful computing capabilities.",
+        "meaningThai": "คลาวด์คอมพิวติ้งให้ความสามารถในการคำนวณที่ทรงพลัง"
+      }
+    ]
+  },
+  {
+    "id": "technology-055",
+    "chinese": "自然语言处理",
+    "pinyin": "zì rán yǔ yán chǔ lǐ",
+    "meaning": "Natural Language Processing",
+    "meaningThai": "การประมวลผลภาษาธรรมชาติ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "自然语言处理用于翻译和聊天机器人。",
+        "pinyin": "Zì rán yǔ yán chǔ lǐ yòng yú fān yì hé liáo tiān jī qì rén.",
+        "meaning": "NLP is used for translation and chatbots.",
+        "meaningThai": "NLP ใช้สำหรับการแปลและแชทบอท"
+      }
+    ]
+  },
+  {
+    "id": "technology-056",
+    "chinese": "计算机视觉",
+    "pinyin": "jì suàn jī shì jué",
+    "meaning": "Computer vision",
+    "meaningThai": "คอมพิวเตอร์วิทัศน์",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "计算机视觉让机器能够看见。",
+        "pinyin": "Jì suàn jī shì jué ràng jī qì néng gòu kàn jiàn.",
+        "meaning": "Computer vision enables machines to see.",
+        "meaningThai": "คอมพิวเตอร์วิทัศน์ทำให้เครื่องจักรมองเห็น"
+      }
+    ]
+  },
+  {
+    "id": "technology-057",
+    "chinese": "语音识别",
+    "pinyin": "yǔ yīn shí bié",
+    "meaning": "Speech recognition",
+    "meaningThai": "การรู้จำเสียง",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "语音识别技术越来越准确。",
+        "pinyin": "Yǔ yīn shí bié jì shù yuè lái yuè zhǔn què.",
+        "meaning": "Speech recognition technology is increasingly accurate.",
+        "meaningThai": "เทคโนโลยีรู้จำเสียงแม่นยำมากขึ้น"
+      }
+    ]
+  },
+  {
+    "id": "technology-058",
+    "chinese": "推荐算法",
+    "pinyin": "tuī jiàn suàn fǎ",
+    "meaning": "Recommendation algorithm",
+    "meaningThai": "อัลกอริทึมแนะนำ",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "推荐算法根据浏览历史推荐内容。",
+        "pinyin": "Tuī jiàn suàn fǎ gēn jù liú lǎn lì shǐ tuī jiàn nèi róng.",
+        "meaning": "Recommendation algorithms suggest content based on browsing history.",
+        "meaningThai": "อัลกอริทึมแนะนำแนะนำเนื้อหาตามประวัติการรับชม"
+      }
+    ]
+  },
+  {
+    "id": "technology-059",
+    "chinese": "聊天机器人",
+    "pinyin": "liáo tiān jī qì rén",
+    "meaning": "Chatbot",
+    "meaningThai": "แชทบอท",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "客服聊天机器人24小时在线。",
+        "pinyin": "Kè fú liáo tiān jī qì rén èr shí sì xiǎo shí zài xiàn.",
+        "meaning": "Customer service chatbots are online 24/7.",
+        "meaningThai": "แชทบอทบริการลูกค้าออนไลน์ตลอด 24 ชม."
+      }
+    ]
+  },
+  {
+    "id": "technology-060",
+    "chinese": "深度学习框架",
+    "pinyin": "shēn dù xué xí kuàng jià",
+    "meaning": "Deep learning framework",
+    "meaningThai": "เฟรมเวิร์กการเรียนรู้เชิงลึก",
+    "category": "technology",
+    "subcategory": "ai",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "TensorFlow是常用的深度学习框架。",
+        "pinyin": "TensorFlow shì cháng yòng de shēn dù xué xí kuàng jià.",
+        "meaning": "TensorFlow is a commonly used deep learning framework.",
+        "meaningThai": "TensorFlow เป็นเฟรมเวิร์ก深度学习ที่ใช้บ่อย"
+      }
+    ]
+  },
+{
+  "id": "technology-061",
+  "chinese": "编译器",
+  "pinyin": "biān yì qì",
+  "meaning": "Compiler",
+  "meaningThai": "คอมไพเลอร์",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "编译器将源代码转换成机器代码。",
+      "pinyin": "Biān yì qì jiāng yuán dài mǎ zhuǎn huàn chéng jī qì dài mǎ.",
+      "meaning": "A compiler converts source code into machine code.",
+      "meaningThai": "คอมไพเลอร์แปลงซอร์สโค้ดเป็นรหัสเครื่อง"
+    }
+  ]
+},
+{
+  "id": "technology-062",
+  "chinese": "调试",
+  "pinyin": "diào shì",
+  "meaning": "Debugging",
+  "meaningThai": "การดีบัก",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "程序员花很多时间调试代码。",
+      "pinyin": "Chéng xù yuán huā hěn duō shí jiān diào shì dài mǎ.",
+      "meaning": "Programmers spend a lot of time debugging code.",
+      "meaningThai": "โปรแกรมเมอร์ใช้เวลามากในการดีบักโค้ด"
+    }
+  ]
+},
+{
+  "id": "technology-063",
+  "chinese": "部署",
+  "pinyin": "bù shǔ",
+  "meaning": "Deployment",
+  "meaningThai": "การติดตั้งใช้งาน",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "新版本已经部署到服务器。",
+      "pinyin": "Xīn bǎn běn yǐ jīng bù shǔ dào fú wù qì.",
+      "meaning": "The new version has been deployed to the server.",
+      "meaningThai": "เวอร์ชันใหม่ได้ติดตั้งบนเซิร์ฟเวอร์แล้ว"
+    }
+  ]
+},
+{
+  "id": "technology-064",
+  "chinese": "开源",
+  "pinyin": "kāi yuán",
+  "meaning": "Open source",
+  "meaningThai": "โอเพนซอร์ส",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "开源软件可以自由修改。",
+      "pinyin": "Kāi yuán ruǎn jiàn kě yǐ zì yóu xiū gǎi.",
+      "meaning": "Open source software can be freely modified.",
+      "meaningThai": "ซอฟต์แวร์โอเพนซอร์สสามารถแก้ไขได้อย่างอิสระ"
+    }
+  ]
+},
+{
+  "id": "technology-065",
+  "chinese": "版本控制",
+  "pinyin": "bǎn běn kòng zhì",
+  "meaning": "Version control",
+  "meaningThai": "การควบคุมเวอร์ชัน",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "Git是最流行的版本控制系统。",
+      "pinyin": "Git shì zuì liú xíng de bǎn běn kòng zhì xì tǒng.",
+      "meaning": "Git is the most popular version control system.",
+      "meaningThai": "Git เป็นระบบควบคุมเวอร์ชันที่นิยมที่สุด"
+    }
+  ]
+},
+{
+  "id": "technology-066",
+  "chinese": "API",
+  "pinyin": "API",
+  "meaning": "Application Programming Interface",
+  "meaningThai": "API",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "开发者使用API来集成服务。",
+      "pinyin": "Kāi fā zhě shǐ yòng API lái jí chéng fú wù.",
+      "meaning": "Developers use APIs to integrate services.",
+      "meaningThai": "นักพัฒนาใช้ API เพื่อเชื่อมต่อบริการ"
+    }
+  ]
+},
+{
+  "id": "technology-067",
+  "chinese": "框架",
+  "pinyin": "kuàng jià",
+  "meaning": "Framework",
+  "meaningThai": "เฟรมเวิร์ก",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个框架简化了开发流程。",
+      "pinyin": "Zhè ge kuàng jià jiǎn huà le kāi fā liú chéng.",
+      "meaning": "This framework simplifies the development process.",
+      "meaningThai": "เฟรมเวิร์กนี้ทำให้ขั้นตอนการพัฒนาง่ายขึ้น"
+    }
+  ]
+},
+{
+  "id": "technology-068",
+  "chinese": "前端",
+  "pinyin": "qián duān",
+  "meaning": "Frontend",
+  "meaningThai": "ฟร้อนท์เอนด์",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "前端开发涉及用户界面设计。",
+      "pinyin": "Qián duān kāi fā shè jí yòng hù jiè miàn shè jì.",
+      "meaning": "Frontend development involves user interface design.",
+      "meaningThai": "การพัฒนาฟร้อนท์เอนด์เกี่ยวข้องกับการออกแบบอินเทอร์เฟซผู้ใช้"
+    }
+  ]
+},
+{
+  "id": "technology-069",
+  "chinese": "后端",
+  "pinyin": "hòu duān",
+  "meaning": "Backend",
+  "meaningThai": "แบ็คเอนด์",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "后端处理数据和业务逻辑。",
+      "pinyin": "Hòu duān chǔ lǐ shù jù hé yè wù luó jí.",
+      "meaning": "The backend handles data and business logic.",
+      "meaningThai": "แบ็คเอนด์จัดการข้อมูลและตรรกะทางธุรกิจ"
+    }
+  ]
+},
+{
+  "id": "technology-070",
+  "chinese": "测试",
+  "pinyin": "cè shì",
+  "meaning": "Testing",
+  "meaningThai": "การทดสอบ",
+  "category": "technology",
+  "subcategory": "computers",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "发布前要做充分的测试。",
+      "pinyin": "Fā bù qián yào zuò chōng fèn de cè shì.",
+      "meaning": "Do thorough testing before release.",
+      "meaningThai": "ต้องทดสอบอย่างเพียงพอก่อนปล่อย"
+    }
+  ]
+},
+{
+  "id": "technology-071",
+  "chinese": "短信",
+  "pinyin": "duǎn xìn",
+  "meaning": "Text message",
+  "meaningThai": "ข้อความ",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "发短信告诉我你的地址。",
+      "pinyin": "Fā duǎn xìn gào sù wǒ nǐ de dì zhǐ.",
+      "meaning": "Send me a text message with your address.",
+      "meaningThai": "ส่งข้อความบอกที่อยู่ของคุณมา"
+    }
+  ]
+},
+{
+  "id": "technology-072",
+  "chinese": "群聊",
+  "pinyin": "qún liáo",
+  "meaning": "Group chat",
+  "meaningThai": "แชทกลุ่ม",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "我们在微信上有一个群聊。",
+      "pinyin": "Wǒ men zài Wēi xìn shàng yǒu yī gè qún liáo.",
+      "meaning": "We have a group chat on WeChat.",
+      "meaningThai": "เรามีแชทกลุ่มบน WeChat"
+    }
+  ]
+},
+{
+  "id": "technology-073",
+  "chinese": "表情符号",
+  "pinyin": "biǎo qíng fú hào",
+  "meaning": "Emoji",
+  "meaningThai": "อิโมจิ",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "表情符号让对话更生动。",
+      "pinyin": "Biǎo qíng fú hào ràng duì huà gèng shēng dòng.",
+      "meaning": "Emojis make conversations more lively.",
+      "meaningThai": "อิโมจิทำให้การสนทนามีชีวิตชีวามากขึ้น"
+    }
+  ]
+},
+{
+  "id": "technology-074",
+  "chinese": "视频会议",
+  "pinyin": "shì pín huì yì",
+  "meaning": "Video conference",
+  "meaningThai": "ประชุมทางวิดีโอ",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "远程团队每周开视频会议。",
+      "pinyin": "Yuǎn chéng tuán duì měi zhōu kāi shì pín huì yì.",
+      "meaning": "Remote teams have video conferences every week.",
+      "meaningThai": "ทีม远程มีประชุมทางวิดีโอทุกสัปดาห์"
+    }
+  ]
+},
+{
+  "id": "technology-075",
+  "chinese": "网络电话",
+  "pinyin": "wǎng luò diàn huà",
+  "meaning": "VoIP call",
+  "meaningThai": "โทรศัพท์อินเทอร์เน็ต",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "网络电话可以节省通话费用。",
+      "pinyin": "Wǎng luò diàn huà kě yǐ jié shěng tōng huà fèi yòng.",
+      "meaning": "VoIP calls can save on call costs.",
+      "meaningThai": "โทรศัพท์อินเทอร์เน็ตประหยัดค่าโทร"
+    }
+  ]
+},
+{
+  "id": "technology-076",
+  "chinese": "带宽",
+  "pinyin": "dài kuān",
+  "meaning": "Bandwidth",
+  "meaningThai": "แบนด์วิดท์",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "高清视频需要很大的带宽。",
+      "pinyin": "Gāo qīng shì pín xū yào hěn dà de dài kuān.",
+      "meaning": "HD video requires a lot of bandwidth.",
+      "meaningThai": "วิดีโอความละเอียดสูงต้องใช้แบนด์วิดท์มาก"
+    }
+  ]
+},
+{
+  "id": "technology-077",
+  "chinese": "延迟",
+  "pinyin": "yán chí",
+  "meaning": "Latency",
+  "meaningThai": "เวลาแฝง",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "网络延迟影响在线游戏体验。",
+      "pinyin": "Wǎng luò yán chí yǐng xiǎng zài xiàn yóu xì tǐ yàn.",
+      "meaning": "Network latency affects online gaming experience.",
+      "meaningThai": "เวลาแฝงของเครือข่ายส่งผลต่อประสบการณ์เกมออนไลน์"
+    }
+  ]
+},
+{
+  "id": "technology-078",
+  "chinese": "数据漫游",
+  "pinyin": "shù jù màn yóu",
+  "meaning": "Data roaming",
+  "meaningThai": "โรมมิ่งข้อมูล",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "出国时关闭数据漫游可以省钱。",
+      "pinyin": "Chū guó shí guān bì shù jù màn yóu kě yǐ shěng qián.",
+      "meaning": "Turning off data roaming abroad can save money.",
+      "meaningThai": "ปิดโรมมิ่งข้อมูลเมื่อต่างประเทศประหยัดเงิน"
+    }
+  ]
+},
+{
+  "id": "technology-079",
+  "chinese": "基站",
+  "pinyin": "jī zhàn",
+  "meaning": "Cell tower; Base station",
+  "meaningThai": "สถานีฐาน",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "5G基站覆盖范围更广。",
+      "pinyin": "5G jī zhàn fù gài fàn wéi gèng guǎng.",
+      "meaning": "5G base stations have wider coverage.",
+      "meaningThai": "สถานีฐาน 5G มีพื้นที่ครอบคลุมกว้างขึ้น"
+    }
+  ]
+},
+{
+  "id": "technology-080",
+  "chinese": "卫星通信",
+  "pinyin": "wèi xīng tōng xìn",
+  "meaning": "Satellite communication",
+  "meaningThai": "การสื่อสารผ่านดาวเทียม",
+  "category": "technology",
+  "subcategory": "communication",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "卫星通信可以在偏远地区使用。",
+      "pinyin": "Wèi xīng tōng xìn kě yǐ zài piān yuǎn dì qū shǐ yòng.",
+      "meaning": "Satellite communication can be used in remote areas.",
+      "meaningThai": "การสื่อสารผ่านดาวเทียมใช้ได้ในพื้นที่ห่างไกล"
+    }
+  ]
+},
+{
+  "id": "technology-081",
+  "chinese": "电子书",
+  "pinyin": "diàn zǐ shū",
+  "meaning": "E-book",
+  "meaningThai": "หนังสืออิเล็กทรอนิกส์",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "电子书很方便携带。",
+      "pinyin": "Diàn zǐ shū hěn fāng biàn xié dài.",
+      "meaning": "E-books are very convenient to carry.",
+      "meaningThai": "หนังสืออิเล็กทรอนิกส์พกพาสะดวก"
+    }
+  ]
+},
+{
+  "id": "technology-082",
+  "chinese": "流媒体",
+  "pinyin": "liú méi tǐ",
+  "meaning": "Streaming media",
+  "meaningThai": "สตรีมมิ่ง",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "流媒体取代了传统电视。",
+      "pinyin": "Liú méi tǐ qǔ dài le chuán tǒng diàn shì.",
+      "meaning": "Streaming media has replaced traditional TV.",
+      "meaningThai": "สตรีมมิ่งเข้ามาแทนที่ทีวีแบบดั้งเดิม"
+    }
+  ]
+},
+{
+  "id": "technology-083",
+  "chinese": "比特",
+  "pinyin": "bǐ tè",
+  "meaning": "Bit",
+  "meaningThai": "บิต",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "比特是计算机数据的最小单位。",
+      "pinyin": "Bǐ tè shì jì suàn jī shù jù de zuì xiǎo dān wèi.",
+      "meaning": "A bit is the smallest unit of computer data.",
+      "meaningThai": "บิตเป็นหน่วยข้อมูลที่เล็กที่สุดของคอมพิวเตอร์"
+    }
+  ]
+},
+{
+  "id": "technology-084",
+  "chinese": "字节",
+  "pinyin": "zì jié",
+  "meaning": "Byte",
+  "meaningThai": "ไบต์",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "一个字节由八个比特组成。",
+      "pinyin": "Yī gè zì jié yóu bā gè bǐ tè zǔ chéng.",
+      "meaning": "A byte consists of eight bits.",
+      "meaningThai": "หนึ่งไบต์ประกอบด้วยแปดบิต"
+    }
+  ]
+},
+{
+  "id": "technology-085",
+  "chinese": "像素",
+  "pinyin": "xiàng sù",
+  "meaning": "Pixel",
+  "meaningThai": "พิกเซล",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "相机像素越高照片越清晰。",
+      "pinyin": "Xiàng jī xiàng sù yuè gāo zhào piàn yuè qīng xī.",
+      "meaning": "Higher camera pixels result in clearer photos.",
+      "meaningThai": "พิกเซลกล้องยิ่งสูงรูปยิ่งชัด"
+    }
+  ]
+},
+{
+  "id": "technology-086",
+  "chinese": "分辨率",
+  "pinyin": "fēn biàn lǜ",
+  "meaning": "Resolution",
+  "meaningThai": "ความละเอียด",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "4K分辨率的画面非常清晰。",
+      "pinyin": "4K fēn biàn lǜ de huà miàn fēi cháng qīng xī.",
+      "meaning": "4K resolution images are very clear.",
+      "meaningThai": "ภาพความละเอียด 4K ชัดเจนมาก"
+    }
+  ]
+},
+{
+  "id": "technology-087",
+  "chinese": "算法推荐",
+  "pinyin": "suàn fǎ tuī jiàn",
+  "meaning": "Algorithmic recommendation",
+  "meaningThai": "การแนะนำด้วยอัลกอริทึม",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "短视频平台使用算法推荐内容。",
+      "pinyin": "Duǎn shì pín píng tái shǐ yòng suàn fǎ tuī jiàn nèi róng.",
+      "meaning": "Short video platforms use algorithms to recommend content.",
+      "meaningThai": "แพลตฟอร์มวิดีโอสั้นใช้อัลกอริทึมแนะนำเนื้อหา"
+    }
+  ]
+},
+{
+  "id": "technology-088",
+  "chinese": "数字签名",
+  "pinyin": "shù zì qiān míng",
+  "meaning": "Digital signature",
+  "meaningThai": "ลายเซ็นดิจิทัล",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "数字签名可以验证文件真实性。",
+      "pinyin": "Shù zì qiān míng kě yǐ yàn zhèng wén jiàn zhēn shí xìng.",
+      "meaning": "Digital signatures verify document authenticity.",
+      "meaningThai": "ลายเซ็นดิจิทัลยืนยันความถูกต้องของเอกสาร"
+    }
+  ]
+},
+{
+  "id": "technology-089",
+  "chinese": "搜索引擎",
+  "pinyin": "sōu suǒ yǐn qíng",
+  "meaning": "Search engine",
+  "meaningThai": "เสิร์ชเอนจิน",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "谷歌是全球最大的搜索引擎。",
+      "pinyin": "Gǔ gē shì quán qiú zuì dà de sōu suǒ yǐn qíng.",
+      "meaning": "Google is the world's largest search engine.",
+      "meaningThai": "Google เป็นเสิร์ชเอนจินที่ใหญ่ที่สุดในโลก"
+    }
+  ]
+},
+{
+  "id": "technology-090",
+  "chinese": "点击量",
+  "pinyin": "diǎn jī liàng",
+  "meaning": "Click count",
+  "meaningThai": "จำนวนคลิก",
+  "category": "technology",
+  "subcategory": "digital",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个视频的点击量超过一百万。",
+      "pinyin": "Zhè ge shì pín de diǎn jī liàng chāo guò yī bǎi wàn.",
+      "meaning": "This video has over one million clicks.",
+      "meaningThai": "วิดีโอนี้มีจำนวนคลิกเกินหนึ่งล้าน"
+    }
+  ]
+},
+{
+  "id": "technology-091",
+  "chinese": "模型",
+  "pinyin": "mó xíng",
+  "meaning": "Model (AI)",
+  "meaningThai": "โมเดล",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "训练AI模型需要大量数据。",
+      "pinyin": "Xùn liàn AI mó xíng xū yào dà liàng shù jù.",
+      "meaning": "Training an AI model requires large amounts of data.",
+      "meaningThai": "การฝึกสอนโมเดล AI ต้องใช้ข้อมูลจำนวนมาก"
+    }
+  ]
+},
+{
+  "id": "technology-092",
+  "chinese": "训练数据",
+  "pinyin": "xùn liàn shù jù",
+  "meaning": "Training data",
+  "meaningThai": "ข้อมูลฝึกสอน",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "训练数据的质量影响模型性能。",
+      "pinyin": "Xùn liàn shù jù de zhì liàng yǐng xiǎng mó xíng xìng néng.",
+      "meaning": "The quality of training data affects model performance.",
+      "meaningThai": "คุณภาพข้อมูลฝึกสอนส่งผลต่อประสิทธิภาพโมเดล"
+    }
+  ]
+},
+{
+  "id": "technology-093",
+  "chinese": "图像识别",
+  "pinyin": "tú xiàng shí bié",
+  "meaning": "Image recognition",
+  "meaningThai": "การจดจำภาพ",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "图像识别用于人脸解锁。",
+      "pinyin": "Tú xiàng shí bié yòng yú rén liǎn jiě suǒ.",
+      "meaning": "Image recognition is used for face unlock.",
+      "meaningThai": "การจดจำภาพใช้สำหรับปลดล็อกใบหน้า"
+    }
+  ]
+},
+{
+  "id": "technology-094",
+  "chinese": "强化学习",
+  "pinyin": "qiáng huà xué xí",
+  "meaning": "Reinforcement learning",
+  "meaningThai": "การเรียนรู้แบบเสริมกำลัง",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "强化学习让AI通过试错学习。",
+      "pinyin": "Qiáng huà xué xí ràng AI tōng guò shì cuò xué xí.",
+      "meaning": "Reinforcement learning lets AI learn through trial and error.",
+      "meaningThai": "การเรียนรู้แบบเสริมกำลังให้ AI เรียนรู้ผ่านการลองผิดลองถูก"
+    }
+  ]
+},
+{
+  "id": "technology-095",
+  "chinese": "生成式AI",
+  "pinyin": "shēng chéng shì AI",
+  "meaning": "Generative AI",
+  "meaningThai": "AI เชิงสร้างสรรค์",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "生成式AI可以创造文字和图像。",
+      "pinyin": "Shēng chéng shì AI kě yǐ chuàng zào wén zì hé tú xiàng.",
+      "meaning": "Generative AI can create text and images.",
+      "meaningThai": "AI เชิงสร้างสรรค์สามารถสร้างข้อความและภาพ"
+    }
+  ]
+},
+{
+  "id": "technology-096",
+  "chinese": "大语言模型",
+  "pinyin": "dà yǔ yán mó xíng",
+  "meaning": "Large Language Model",
+  "meaningThai": "โมเดลภาษาขนาดใหญ่",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "大语言模型可以理解和生成人类语言。",
+      "pinyin": "Dà yǔ yán mó xíng kě yǐ lǐ jiě hé shēng chéng rén lèi yǔ yán.",
+      "meaning": "Large language models can understand and generate human language.",
+      "meaningThai": "โมเดลภาษาขนาดใหญ่สามารถเข้าใจและสร้างภาษามนุษย์"
+    }
+  ]
+},
+{
+  "id": "technology-097",
+  "chinese": "监督学习",
+  "pinyin": "jiān dū xué xí",
+  "meaning": "Supervised learning",
+  "meaningThai": "การเรียนรู้แบบมีผู้สอน",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "监督学习需要标注好的数据。",
+      "pinyin": "Jiān dū xué xí xū yào biāo zhù hǎo de shù jù.",
+      "meaning": "Supervised learning requires labeled data.",
+      "meaningThai": "การเรียนรู้แบบมีผู้สอนต้องใช้ข้อมูลที่ติดป้ายกำกับ"
+    }
+  ]
+},
+{
+  "id": "technology-098",
+  "chinese": "无监督学习",
+  "pinyin": "wú jiān dū xué xí",
+  "meaning": "Unsupervised learning",
+  "meaningThai": "การเรียนรู้แบบไม่มีผู้สอน",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "无监督学习用于发现数据中的模式。",
+      "pinyin": "Wú jiān dū xué xí yòng yú fā xiàn shù jù zhōng de mó shì.",
+      "meaning": "Unsupervised learning is used to discover patterns in data.",
+      "meaningThai": "การเรียนรู้แบบไม่มีผู้สอนใช้ค้นหารูปแบบในข้อมูล"
+    }
+  ]
+},
+{
+  "id": "technology-099",
+  "chinese": "过拟合",
+  "pinyin": "guò nǐ hé",
+  "meaning": "Overfitting",
+  "meaningThai": "การ overfit",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "过拟合导致模型在新数据上表现差。",
+      "pinyin": "Guò nǐ hé dǎo zhì mó xíng zài xīn shù jù shàng biǎo xiàn chà.",
+      "meaning": "Overfitting causes the model to perform poorly on new data.",
+      "meaningThai": "Overfit ทำให้โมเดลทำงานแย่บนข้อมูลใหม่"
+    }
+  ]
+},
+{
+  "id": "technology-100",
+  "chinese": "特征工程",
+  "pinyin": "tè zhēng gōng chéng",
+  "meaning": "Feature engineering",
+  "meaningThai": "วิศวกรรมคุณลักษณะ",
+  "category": "technology",
+  "subcategory": "ai",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "特征工程是机器学习的关键步骤。",
+      "pinyin": "Tè zhēng gōng chéng shì jī qì xué xí de guān jiàn bù zhòu.",
+      "meaning": "Feature engineering is a key step in machine learning.",
+      "meaningThai": "วิศวกรรมคุณลักษณะเป็นขั้นตอนสำคัญของการเรียนรู้ของเครื่อง"
+    }
+  ]
+}
+];
+

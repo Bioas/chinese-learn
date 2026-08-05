@@ -1,0 +1,51 @@
+{
+  "standard": "HSK 2.0",
+  "edition": "2012 legacy HSK vocabulary (levels 1-6)",
+  "sourceType": "third-party transcription",
+  "repository": "https://github.com/plaktos/hsk_csv",
+  "syncedAt": "2026-08-03T08:02:01.275Z",
+  "files": [
+    {
+      "level": 1,
+      "file": "hsk1.csv",
+      "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk1.csv",
+      "sha256": "fd65c6b0c221ac2766ad3f42e0f19e1851f75cdc8067c48d266f9a8ea6cab9b3",
+      "rows": 150
+    },
+    {
+      "level": 2,
+      "file": "hsk2.csv",
+      "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk2.csv",
+      "sha256": "fc788044b8ae709fb33c9b9a0f9516b6bf46d13c126b4d60366ce004a5a6091e",
+      "rows": 150
+    },
+    {
+      "level": 3,
+      "file": "hsk3.csv",
+      "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk3.csv",
+      "sha256": "ff3e8b74d251abeae2e0ec4c22c2d4640071b2a236924846a161ac9ba255a70a",
+      "rows": 299
+    },
+    {
+      "level": 4,
+      "file": "hsk4.csv",
+      "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk4.csv",
+      "sha256": "d5a3869d4d2877a7d5e467b9e00926972ffc31fb52767a9df309fce5ff6ee6cd",
+      "rows": 601
+    },
+    {
+      "level": 5,
+      "file": "hsk5.csv",
+      "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk5.csv",
+      "sha256": "fa9997655735b725002b66a091365a6ce6e1bcad216c658eb7eccfee15866fdf",
+      "rows": 1300
+    },
+    {
+      "level": 6,
+      "file": "hsk6.csv",
+      "url": "https://raw.githubusercontent.com/plaktos/hsk_csv/615534d/hsk6.csv",
+      "sha256": "146839cf1649d29e7fa75446f7c2df6aaf4b2b55e38ef4b09cc5dd866d925e5f",
+      "rows": 2500
+    }
+  ]
+}

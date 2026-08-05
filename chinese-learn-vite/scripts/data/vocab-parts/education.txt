@@ -1,0 +1,1903 @@
+const EDUCATION_WORDS = [
+  {
+    "id": "education-001",
+    "chinese": "语文",
+    "pinyin": "yǔ wén",
+    "meaning": "Chinese language (subject)",
+    "meaningThai": "ภาษาจีน (วิชา)",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我最喜欢语文课。",
+        "pinyin": "Wǒ zuì xǐ huān yǔ wén kè.",
+        "meaning": "I like Chinese class the most.",
+        "meaningThai": "ฉันชอบวิชาภาษาจีนมากที่สุด"
+      }
+    ]
+  },
+  {
+    "id": "education-002",
+    "chinese": "数学",
+    "pinyin": "shù xué",
+    "meaning": "Mathematics",
+    "meaningThai": "คณิตศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "数学考试很难。",
+        "pinyin": "Shù xué kǎo shì hěn nán.",
+        "meaning": "The math exam is very hard.",
+        "meaningThai": "ข้อสอบคณิตศาสตร์ยากมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-003",
+    "chinese": "历史",
+    "pinyin": "lì shǐ",
+    "meaning": "History",
+    "meaningThai": "ประวัติศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "历史课很有趣。",
+        "pinyin": "Lì shǐ kè hěn yǒu qù.",
+        "meaning": "History class is very interesting.",
+        "meaningThai": "วิชาประวัติศาสตร์น่าสนใจ"
+      }
+    ]
+  },
+  {
+    "id": "education-004",
+    "chinese": "地理",
+    "pinyin": "dì lǐ",
+    "meaning": "Geography",
+    "meaningThai": "ภูมิศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "地理课学习世界各国的位置。",
+        "pinyin": "Dì lǐ kè xué xí shì jiè gè guó de wèi zhì.",
+        "meaning": "Geography class learns the locations of countries.",
+        "meaningThai": "วิชาภูมิศาสตร์เรียนตำแหน่งที่ตั้งของประเทศต่างๆ"
+      }
+    ]
+  },
+  {
+    "id": "education-005",
+    "chinese": "物理",
+    "pinyin": "wù lǐ",
+    "meaning": "Physics",
+    "meaningThai": "ฟิสิกส์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "物理实验很有意思。",
+        "pinyin": "Wù lǐ shí yàn hěn yǒu yì si.",
+        "meaning": "Physics experiments are very interesting.",
+        "meaningThai": "การทดลองฟิสิกส์สนุกมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-006",
+    "chinese": "化学",
+    "pinyin": "huà xué",
+    "meaning": "Chemistry",
+    "meaningThai": "เคมี",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "化学课要做实验。",
+        "pinyin": "Huà xué kè yào zuò shí yàn.",
+        "meaning": "Chemistry class requires experiments.",
+        "meaningThai": "วิชาเคมีต้องทำการทดลอง"
+      }
+    ]
+  },
+  {
+    "id": "education-007",
+    "chinese": "生物",
+    "pinyin": "shēng wù",
+    "meaning": "Biology",
+    "meaningThai": "ชีววิทยา",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我们明天有生物考试。",
+        "pinyin": "Wǒ men míng tiān yǒu shēng wù kǎo shì.",
+        "meaning": "We have a biology exam tomorrow.",
+        "meaningThai": "พรุ่งนี้เราสอบชีววิทยา"
+      }
+    ]
+  },
+  {
+    "id": "education-008",
+    "chinese": "英语",
+    "pinyin": "Yīng yǔ",
+    "meaning": "English language",
+    "meaningThai": "ภาษาอังกฤษ",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她英语说得很好。",
+        "pinyin": "Tā Yīng yǔ shuō dé hěn hǎo.",
+        "meaning": "She speaks English very well.",
+        "meaningThai": "เธอพูดภาษาอังกฤษได้ดีมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-009",
+    "chinese": "音乐",
+    "pinyin": "yīn yuè",
+    "meaning": "Music",
+    "meaningThai": "ดนตรี",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "音乐课学习唱歌。",
+        "pinyin": "Yīn yuè kè xué xí chàng gē.",
+        "meaning": "Music class teaches singing.",
+        "meaningThai": "วิชาดนตรีเรียนร้องเพลง"
+      }
+    ]
+  },
+  {
+    "id": "education-010",
+    "chinese": "美术",
+    "pinyin": "měi shù",
+    "meaning": "Fine arts",
+    "meaningThai": "ศิลปะ",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她的美术作品获奖了。",
+        "pinyin": "Tā de měi shù zuò pǐn huò jiǎng le.",
+        "meaning": "Her art work won an award.",
+        "meaningThai": "ผลงานศิลปะของเธอได้รับรางวัล"
+      }
+    ]
+  },
+  {
+    "id": "education-011",
+    "chinese": "哲学",
+    "pinyin": "zhé xué",
+    "meaning": "Philosophy",
+    "meaningThai": "ปรัชญา",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "哲学课讨论人生的意义。",
+        "pinyin": "Zhé xué kè tǎo lùn rén shēng de yì yì.",
+        "meaning": "Philosophy class discusses the meaning of life.",
+        "meaningThai": "วิชาปรัชญาอภิปรายความหมายของชีวิต"
+      }
+    ]
+  },
+  {
+    "id": "education-012",
+    "chinese": "心理学",
+    "pinyin": "xīn lǐ xué",
+    "meaning": "Psychology",
+    "meaningThai": "จิตวิทยา",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "心理学研究人的行为。",
+        "pinyin": "Xīn lǐ xué yán jiū rén de xíng wéi.",
+        "meaning": "Psychology studies human behavior.",
+        "meaningThai": "จิตวิทยาศึกษาพฤติกรรมของมนุษย์"
+      }
+    ]
+  },
+  {
+    "id": "education-013",
+    "chinese": "经济学",
+    "pinyin": "jīng jì xué",
+    "meaning": "Economics",
+    "meaningThai": "เศรษฐศาสตร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在大学学习经济学。",
+        "pinyin": "Tā zài dà xué xué xí jīng jì xué.",
+        "meaning": "He studies economics at university.",
+        "meaningThai": "เขาเรียนเศรษฐศาสตร์ที่มหาวิทยาลัย"
+      }
+    ]
+  },
+  {
+    "id": "education-014",
+    "chinese": "计算机科学",
+    "pinyin": "jì suàn jī kē xué",
+    "meaning": "Computer science",
+    "meaningThai": "วิทยาการคอมพิวเตอร์",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "计算机科学很热门。",
+        "pinyin": "Jì suàn jī kē xué hěn rè mén.",
+        "meaning": "Computer science is very popular.",
+        "meaningThai": "วิทยาการคอมพิวเตอร์เป็นที่นิยมมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-015",
+    "chinese": "留学",
+    "pinyin": "liú xué",
+    "meaning": "To study abroad",
+    "meaningThai": "เรียนต่อต่างประเทศ",
+    "category": "education",
+    "subcategory": "school",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她想去美国留学。",
+        "pinyin": "Tā xiǎng qù Měi guó liú xué.",
+        "meaning": "She wants to study abroad in the US.",
+        "meaningThai": "เธออยากไปเรียนต่อที่อเมริกา"
+      }
+    ]
+  },
+  {
+    "id": "education-016",
+    "chinese": "背诵",
+    "pinyin": "bèi sòng",
+    "meaning": "To recite",
+    "meaningThai": "ท่องจำ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "学生需要背诵古诗。",
+        "pinyin": "Xué shēng xū yào bèi sòng gǔ shī.",
+        "meaning": "Students need to recite ancient poems.",
+        "meaningThai": "นักเรียนต้องท่องจำบทกวีโบราณ"
+      }
+    ]
+  },
+  {
+    "id": "education-017",
+    "chinese": "理解",
+    "pinyin": "lǐ jiě",
+    "meaning": "To understand",
+    "meaningThai": "เข้าใจ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我理解了这道题。",
+        "pinyin": "Wǒ lǐ jiě le zhè dào tí.",
+        "meaning": "I understand this problem.",
+        "meaningThai": "ฉันเข้าใจโจทย์นี้แล้ว"
+      }
+    ]
+  },
+  {
+    "id": "education-018",
+    "chinese": "预习",
+    "pinyin": "yù xí",
+    "meaning": "To preview (lessons)",
+    "meaningThai": "เตรียมบทเรียน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "上课前要先预习。",
+        "pinyin": "Shàng kè qián yào xiān yù xí.",
+        "meaning": "Preview before class.",
+        "meaningThai": "ต้องเตรียมบทเรียนก่อนเข้าเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-019",
+    "chinese": "复习",
+    "pinyin": "fù xí",
+    "meaning": "To review",
+    "meaningThai": "ทบทวน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "考试前要好好复习。",
+        "pinyin": "Kǎo shì qián yào hǎo hǎo fù xí.",
+        "meaning": "Review well before exams.",
+        "meaningThai": "ต้องทบทวนให้ดีก่อนสอบ"
+      }
+    ]
+  },
+  {
+    "id": "education-020",
+    "chinese": "笔记",
+    "pinyin": "bǐ jì",
+    "meaning": "Notes",
+    "meaningThai": "บันทึก",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "上课认真做笔记。",
+        "pinyin": "Shàng kè rèn zhēn zuò bǐ jì.",
+        "meaning": "Take notes carefully in class.",
+        "meaningThai": "ตั้งใจจดบันทึกในชั้นเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-021",
+    "chinese": "教材",
+    "pinyin": "jiào cái",
+    "meaning": "Teaching materials",
+    "meaningThai": "สื่อการเรียน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老师发了新教材。",
+        "pinyin": "Lǎo shī fā le xīn jiào cái.",
+        "meaning": "The teacher handed out new materials.",
+        "meaningThai": "ครูแจกสื่อการเรียนใหม่"
+      }
+    ]
+  },
+  {
+    "id": "education-022",
+    "chinese": "作业",
+    "pinyin": "zuò yè",
+    "meaning": "Homework",
+    "meaningThai": "การบ้าน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "今天的作业很多。",
+        "pinyin": "Jīn tiān de zuò yè hěn duō.",
+        "meaning": "There is a lot of homework today.",
+        "meaningThai": "วันนี้การบ้านเยอะ"
+      }
+    ]
+  },
+  {
+    "id": "education-023",
+    "chinese": "论文",
+    "pinyin": "lùn wén",
+    "meaning": "Thesis; Paper",
+    "meaningThai": "วิทยานิพนธ์",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在写毕业论文。",
+        "pinyin": "Tā zài xiě bì yè lùn wén.",
+        "meaning": "He is writing his graduation thesis.",
+        "meaningThai": "เขากำลังเขียนวิทยานิพนธ์จบ"
+      }
+    ]
+  },
+  {
+    "id": "education-024",
+    "chinese": "图书馆",
+    "pinyin": "tú shū guǎn",
+    "meaning": "Library",
+    "meaningThai": "ห้องสมุด",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "图书馆里很安静。",
+        "pinyin": "Tú shū guǎn lǐ hěn ān jìng.",
+        "meaning": "The library is very quiet.",
+        "meaningThai": "ในห้องสมุดเงียบมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-025",
+    "chinese": "自习",
+    "pinyin": "zì xí",
+    "meaning": "Self-study",
+    "meaningThai": "เรียนด้วยตนเอง",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "晚上我来自习室学习。",
+        "pinyin": "Wǎn shàng wǒ lái zì xí shì xué xí.",
+        "meaning": "I come to the self-study room in the evening.",
+        "meaningThai": "ตอนเย็นฉันมาห้องเรียนด้วยตนเอง"
+      }
+    ]
+  },
+  {
+    "id": "education-026",
+    "chinese": "演讲",
+    "pinyin": "yǎn jiǎng",
+    "meaning": "Speech; Lecture",
+    "meaningThai": "บรรยาย",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他的演讲很精彩。",
+        "pinyin": "Tā de yǎn jiǎng hěn jīng cǎi.",
+        "meaning": "His speech was wonderful.",
+        "meaningThai": "การบรรยายของเขายอดเยี่ยมมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-027",
+    "chinese": "辅导",
+    "pinyin": "fǔ dǎo",
+    "meaning": "To tutor",
+    "meaningThai": "สอนพิเศษ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "周末有数学辅导班。",
+        "pinyin": "Zhōu mò yǒu shù xué fǔ dǎo bān.",
+        "meaning": "There is a math tutoring class on weekends.",
+        "meaningThai": "มีคอร์สสอนพิเศษคณิตศาสตร์วันหยุด"
+      }
+    ]
+  },
+  {
+    "id": "education-028",
+    "chinese": "教科书",
+    "pinyin": "jiào kē shū",
+    "meaning": "Textbook",
+    "meaningThai": "หนังสือเรียน",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "请打开教科书第十页。",
+        "pinyin": "Qǐng dǎ kāi jiào kē shū dì shí yè.",
+        "meaning": "Please open the textbook to page ten.",
+        "meaningThai": "กรุณาเปิดหนังสือเรียนหน้าที่สิบ"
+      }
+    ]
+  },
+  {
+    "id": "education-029",
+    "chinese": "学术",
+    "pinyin": "xué shù",
+    "meaning": "Academic",
+    "meaningThai": "วิชาการ",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他在学术方面很有成就。",
+        "pinyin": "Tā zài xué shù fāng miàn hěn yǒu chéng jiù.",
+        "meaning": "He has great achievements in academia.",
+        "meaningThai": "เขามีความสำเร็จด้านวิชาการ"
+      }
+    ]
+  },
+  {
+    "id": "education-030",
+    "chinese": "课程",
+    "pinyin": "kè chéng",
+    "meaning": "Course; Curriculum",
+    "meaningThai": "หลักสูตร",
+    "category": "education",
+    "subcategory": "study",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这学期的课程很丰富。",
+        "pinyin": "Zhè xué qī de kè chéng hěn fēng fù.",
+        "meaning": "This semester's courses are very rich.",
+        "meaningThai": "หลักสูตรเทอมนี้หลากหลาย"
+      }
+    ]
+  },
+  {
+    "id": "education-031",
+    "chinese": "期末考试",
+    "pinyin": "qī mò kǎo shì",
+    "meaning": "Final exam",
+    "meaningThai": "สอบปลายภาค",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "期末考试在下周。",
+        "pinyin": "Qī mò kǎo shì zài xià zhōu.",
+        "meaning": "The final exam is next week.",
+        "meaningThai": "สอบปลายภาคอาทิตย์หน้า"
+      }
+    ]
+  },
+  {
+    "id": "education-032",
+    "chinese": "及格",
+    "pinyin": "jí gé",
+    "meaning": "To pass (an exam)",
+    "meaningThai": "ผ่าน",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "考试六十分及格。",
+        "pinyin": "Kǎo shì liù shí fēn jí gé.",
+        "meaning": "Sixty points passes the exam.",
+        "meaningThai": "สอบได้หกสิบถึงผ่าน"
+      }
+    ]
+  },
+  {
+    "id": "education-033",
+    "chinese": "满分",
+    "pinyin": "mǎn fēn",
+    "meaning": "Perfect score",
+    "meaningThai": "คะแนนเต็ม",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他考了满分。",
+        "pinyin": "Tā kǎo le mǎn fēn.",
+        "meaning": "He got a perfect score.",
+        "meaningThai": "เขาได้คะแนนเต็ม"
+      }
+    ]
+  },
+  {
+    "id": "education-034",
+    "chinese": "成绩单",
+    "pinyin": "chéng jì dān",
+    "meaning": "Report card",
+    "meaningThai": "ใบแสดงผลการเรียน",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "学期末发成绩单。",
+        "pinyin": "Xué qī mò fā chéng jì dān.",
+        "meaning": "Report cards are issued at the end of the semester.",
+        "meaningThai": "สิ้นเทอมแจกใบแสดงผลการเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-035",
+    "chinese": "入学考试",
+    "pinyin": "rù xué kǎo shì",
+    "meaning": "Entrance exam",
+    "meaningThai": "สอบเข้า",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大学入学考试竞争激烈。",
+        "pinyin": "Dà xué rù xué kǎo shì jìng zhēng jī liè.",
+        "meaning": "University entrance exams are highly competitive.",
+        "meaningThai": "การสอบเข้ามหาวิทยาลัยแข่งขันสูง"
+      }
+    ]
+  },
+  {
+    "id": "education-036",
+    "chinese": "选择题",
+    "pinyin": "xuǎn zé tí",
+    "meaning": "Multiple choice question",
+    "meaningThai": "ข้อสอบปรนัย",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "选择题只有四个选项。",
+        "pinyin": "Xuǎn zé tí zhǐ yǒu sì gè xuǎn xiàng.",
+        "meaning": "Multiple choice questions have only four options.",
+        "meaningThai": "ข้อสอบปรนัยมีแค่สี่ตัวเลือก"
+      }
+    ]
+  },
+  {
+    "id": "education-037",
+    "chinese": "填空题",
+    "pinyin": "tián kòng tí",
+    "meaning": "Fill-in-the-blank question",
+    "meaningThai": "ข้อสอบเติมคำ",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "填空题需要填写正确的词。",
+        "pinyin": "Tián kòng tí xū yào tián xiě zhèng què de cí.",
+        "meaning": "Fill-in-the-blank questions need the correct word.",
+        "meaningThai": "ข้อสอบเติมคำต้องใส่คำที่ถูกต้อง"
+      }
+    ]
+  },
+  {
+    "id": "education-038",
+    "chinese": "论文答辩",
+    "pinyin": "lùn wén dá biàn",
+    "meaning": "Thesis defense",
+    "meaningThai": "สอบป้องกันวิทยานิพนธ์",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "论文答辩通过了。",
+        "pinyin": "Lùn wén dá biàn tōng guò le.",
+        "meaning": "The thesis defense was passed.",
+        "meaningThai": "สอบป้องกันวิทยานิพนธ์ผ่าน"
+      }
+    ]
+  },
+  {
+    "id": "education-039",
+    "chinese": "奖学金",
+    "pinyin": "jiǎng xué jīn",
+    "meaning": "Scholarship",
+    "meaningThai": "ทุนการศึกษา",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她获得了全额奖学金。",
+        "pinyin": "Tā huò dé le quán é jiǎng xué jīn.",
+        "meaning": "She received a full scholarship.",
+        "meaningThai": "เธอได้รับทุนการศึกษาเต็มจำนวน"
+      }
+    ]
+  },
+  {
+    "id": "education-040",
+    "chinese": "作弊",
+    "pinyin": "zuò bì",
+    "meaning": "To cheat (on exams)",
+    "meaningThai": "โกง",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "考试不能作弊。",
+        "pinyin": "Kǎo shì bù néng zuò bì.",
+        "meaning": "Cannot cheat on exams.",
+        "meaningThai": "สอบต้องไม่โกง"
+      }
+    ]
+  },
+  {
+    "id": "education-041",
+    "chinese": "报名",
+    "pinyin": "bào míng",
+    "meaning": "To register",
+    "meaningThai": "สมัคร",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "下个月开始报名。",
+        "pinyin": "Xià gè yuè kāi shǐ bào míng.",
+        "meaning": "Registration starts next month.",
+        "meaningThai": "เริ่มสมัครเดือนหน้า"
+      }
+    ]
+  },
+  {
+    "id": "education-042",
+    "chinese": "学位",
+    "pinyin": "xué wèi",
+    "meaning": "Degree; Diploma",
+    "meaningThai": "ปริญญา",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他获得了硕士学位。",
+        "pinyin": "Tā huò dé le shuò shì xué wèi.",
+        "meaning": "He earned a master's degree.",
+        "meaningThai": "เขาได้รับปริญญาโท"
+      }
+    ]
+  },
+  {
+    "id": "education-043",
+    "chinese": "本科",
+    "pinyin": "běn kē",
+    "meaning": "Undergraduate",
+    "meaningThai": "ปริญญาตรี",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "本科四年制。",
+        "pinyin": "Běn kē sì nián zhì.",
+        "meaning": "Undergraduate is a four-year program.",
+        "meaningThai": "ปริญญาตรีสี่ปี"
+      }
+    ]
+  },
+  {
+    "id": "education-044",
+    "chinese": "面试",
+    "pinyin": "miàn shì",
+    "meaning": "Interview",
+    "meaningThai": "สัมภาษณ์",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "明天有入学面试。",
+        "pinyin": "Míng tiān yǒu rù xué miàn shì.",
+        "meaning": "There is an admission interview tomorrow.",
+        "meaningThai": "พรุ่งนี้มีสัมภาษณ์เข้าเรียน"
+      }
+    ]
+  },
+  {
+    "id": "education-045",
+    "chinese": "淘汰",
+    "pinyin": "táo tài",
+    "meaning": "To eliminate",
+    "meaningThai": "คัดออก",
+    "category": "education",
+    "subcategory": "exams",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "初赛淘汰了一半选手。",
+        "pinyin": "Chū sài táo tài le yī bàn xuǎn shǒu.",
+        "meaning": "The preliminary round eliminated half the contestants.",
+        "meaningThai": "รอบแรกคัดผู้แข่งขันออกครึ่งหนึ่ง"
+      }
+    ]
+  },
+  {
+    "id": "education-046",
+    "chinese": "实验",
+    "pinyin": "shí yàn",
+    "meaning": "Experiment",
+    "meaningThai": "การทดลอง",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "实验室里做化学实验。",
+        "pinyin": "Shí yàn shì lǐ zuò huà xué shí yàn.",
+        "meaning": "Do chemistry experiments in the lab.",
+        "meaningThai": "ทำการทดลองเคมีในห้องแล็บ"
+      }
+    ]
+  },
+  {
+    "id": "education-047",
+    "chinese": "数据",
+    "pinyin": "shù jù",
+    "meaning": "Data",
+    "meaningThai": "ข้อมูล",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "收集数据进行分析。",
+        "pinyin": "Shōu jí shù jù jìn xíng fēn xī.",
+        "meaning": "Collect data for analysis.",
+        "meaningThai": "เก็บข้อมูลเพื่อวิเคราะห์"
+      }
+    ]
+  },
+  {
+    "id": "education-048",
+    "chinese": "分析",
+    "pinyin": "fēn xī",
+    "meaning": "To analyze",
+    "meaningThai": "วิเคราะห์",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "分析结果非常复杂。",
+        "pinyin": "Fēn xī jié guǒ fēi cháng fù zá.",
+        "meaning": "The analysis results are very complex.",
+        "meaningThai": "ผลการวิเคราะห์ซับซ้อนมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-049",
+    "chinese": "结论",
+    "pinyin": "jié lùn",
+    "meaning": "Conclusion",
+    "meaningThai": "ข้อสรุป",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "研究得出了重要结论。",
+        "pinyin": "Yán jiū dé chū le zhòng yào jié lùn.",
+        "meaning": "The research reached an important conclusion.",
+        "meaningThai": "งานวิจัยได้ข้อสรุปสำคัญ"
+      }
+    ]
+  },
+  {
+    "id": "education-050",
+    "chinese": "调查",
+    "pinyin": "diào chá",
+    "meaning": "Survey; Investigation",
+    "meaningThai": "สำรวจ",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "做问卷调查。",
+        "pinyin": "Zuò wèn juàn diào chá.",
+        "meaning": "Conduct a questionnaire survey.",
+        "meaningThai": "ทำแบบสำรวจ"
+      }
+    ]
+  },
+  {
+    "id": "education-051",
+    "chinese": "统计",
+    "pinyin": "tǒng jì",
+    "meaning": "Statistics",
+    "meaningThai": "สถิติ",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "统计数据显示明显变化。",
+        "pinyin": "Tǒng jì shù jù xiǎn shì míng xiǎn biàn huà.",
+        "meaning": "Statistical data shows significant changes.",
+        "meaningThai": "ข้อมูลทางสถิติแสดงการเปลี่ยนแปลงชัดเจน"
+      }
+    ]
+  },
+  {
+    "id": "education-052",
+    "chinese": "学术会议",
+    "pinyin": "xué shù huì yì",
+    "meaning": "Academic conference",
+    "meaningThai": "ประชุมวิชาการ",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他参加了国际学术会议。",
+        "pinyin": "Tā cān jiā le guó jì xué shù huì yì.",
+        "meaning": "He attended an international academic conference.",
+        "meaningThai": "เขาเข้าร่วมประชุมวิชาการนานาชาติ"
+      }
+    ]
+  },
+  {
+    "id": "education-053",
+    "chinese": "期刊",
+    "pinyin": "qī kān",
+    "meaning": "Journal; Periodical",
+    "meaningThai": "วารสาร",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "论文发表在科学期刊上。",
+        "pinyin": "Lùn wén fā biǎo zài kē xué qī kān shàng.",
+        "meaning": "The paper was published in a science journal.",
+        "meaningThai": "บทความตีพิมพ์ในวารสารวิทยาศาสตร์"
+      }
+    ]
+  },
+  {
+    "id": "education-054",
+    "chinese": "引用",
+    "pinyin": "yǐn yòng",
+    "meaning": "To cite",
+    "meaningThai": "อ้างอิง",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "写论文要注明引用来源。",
+        "pinyin": "Xiě lùn wén yào zhù míng yǐn yòng lái yuán.",
+        "meaning": "When writing a paper, cite your sources.",
+        "meaningThai": "เขียนวิทยานิพนธ์ต้องระบุแหล่งอ้างอิง"
+      }
+    ]
+  },
+  {
+    "id": "education-055",
+    "chinese": "假设",
+    "pinyin": "jiǎ shè",
+    "meaning": "Hypothesis",
+    "meaningThai": "สมมติฐาน",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "科学需要验证假设。",
+        "pinyin": "Kē xué xū yào yàn zhèng jiǎ shè.",
+        "meaning": "Science requires testing hypotheses.",
+        "meaningThai": "วิทยาศาสตร์ต้องการการพิสูจน์สมมติฐาน"
+      }
+    ]
+  },
+  {
+    "id": "education-056",
+    "chinese": "验证",
+    "pinyin": "yàn zhèng",
+    "meaning": "To verify",
+    "meaningThai": "พิสูจน์",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "实验结果验证了理论。",
+        "pinyin": "Shí yàn jié guǒ yàn zhèng le lǐ lùn.",
+        "meaning": "Experimental results verified the theory.",
+        "meaningThai": "ผลการทดลองพิสูจน์ทฤษฎี"
+      }
+    ]
+  },
+  {
+    "id": "education-057",
+    "chinese": "方法论",
+    "pinyin": "fāng fǎ lùn",
+    "meaning": "Methodology",
+    "meaningThai": "ระเบียบวิธี",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "研究方法论非常重要。",
+        "pinyin": "Yán jiū fāng fǎ lùn fēi cháng zhòng yào.",
+        "meaning": "Research methodology is very important.",
+        "meaningThai": "ระเบียบวิธีวิจัยสำคัญมาก"
+      }
+    ]
+  },
+  {
+    "id": "education-058",
+    "chinese": "博士",
+    "pinyin": "bó shì",
+    "meaning": "Doctor (PhD)",
+    "meaningThai": "ปริญญาเอก",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他正在读博士。",
+        "pinyin": "Tā zhèng zài dú bó shì.",
+        "meaning": "He is studying for a PhD.",
+        "meaningThai": "เขากำลังเรียนปริญญาเอก"
+      }
+    ]
+  },
+  {
+    "id": "education-059",
+    "chinese": "实验室",
+    "pinyin": "shí yàn shì",
+    "meaning": "Laboratory",
+    "meaningThai": "ห้องทดลอง",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "实验室里设备齐全。",
+        "pinyin": "Shí yàn shì lǐ shè bèi qí quán.",
+        "meaning": "The lab is fully equipped.",
+        "meaningThai": "ห้องทดลองมีอุปกรณ์ครบครัน"
+      }
+    ]
+  },
+  {
+    "id": "education-060",
+    "chinese": "研究经费",
+    "pinyin": "yán jiū jīng fèi",
+    "meaning": "Research funding",
+    "meaningThai": "ทุนวิจัย",
+    "category": "education",
+    "subcategory": "research",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "研究经费需要申请。",
+        "pinyin": "Yán jiū jīng fèi xū yào shēn qǐng.",
+        "meaning": "Research funding needs to be applied for.",
+        "meaningThai": "ทุนวิจัยต้องขอรับการจัดสรร"
+      }
+    ]
+  },
+{
+  "id": "education-061",
+  "chinese": "政治",
+  "pinyin": "zhèng zhì",
+  "meaning": "Politics",
+  "meaningThai": "การเมือง",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "政治课讨论国家大事。",
+      "pinyin": "Zhèng zhì kè tǎo lùn guó jiā dà shì.",
+      "meaning": "Politics class discusses national affairs.",
+      "meaningThai": "วิชาการเมืองอภิปรายเรื่องสำคัญของประเทศ"
+    }
+  ]
+},
+{
+  "id": "education-062",
+  "chinese": "文学",
+  "pinyin": "wén xué",
+  "meaning": "Literature",
+  "meaningThai": "วรรณกรรม",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "文学课要读很多小说。",
+      "pinyin": "Wén xué kè yào dú hěn duō xiǎo shuō.",
+      "meaning": "Literature class requires reading many novels.",
+      "meaningThai": "วิชาวรรณกรรมต้องอ่านนิยายมากมาย"
+    }
+  ]
+},
+{
+  "id": "education-063",
+  "chinese": "工程学",
+  "pinyin": "gōng chéng xué",
+  "meaning": "Engineering",
+  "meaningThai": "วิศวกรรมศาสตร์",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "工程学应用科学知识解决问题。",
+      "pinyin": "Gōng chéng xué yìng yòng kē xué zhī shí jiě jué wèn tí.",
+      "meaning": "Engineering applies scientific knowledge to solve problems.",
+      "meaningThai": "วิศวกรรมศาสตร์ประยุกต์ความรู้วิทยาศาสตร์แก้ปัญหา"
+    }
+  ]
+},
+{
+  "id": "education-064",
+  "chinese": "法律",
+  "pinyin": "fǎ lǜ",
+  "meaning": "Law",
+  "meaningThai": "กฎหมาย",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他在法学院学习法律。",
+      "pinyin": "Tā zài fǎ xué yuàn xué xí fǎ lǜ.",
+      "meaning": "He studies law at the law school.",
+      "meaningThai": "เขาเรียนกฎหมายที่คณะนิติศาสตร์"
+    }
+  ]
+},
+{
+  "id": "education-065",
+  "chinese": "医学",
+  "pinyin": "yī xué",
+  "meaning": "Medicine",
+  "meaningThai": "แพทยศาสตร์",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "医学专业需要学习六年。",
+      "pinyin": "Yī xué zhuān yè xū yào xué xí liù nián.",
+      "meaning": "Medical programs require six years of study.",
+      "meaningThai": "สาขาแพทยศาสตร์ต้องเรียนหกปี"
+    }
+  ]
+},
+{
+  "id": "education-066",
+  "chinese": "商学院",
+  "pinyin": "shāng xué yuàn",
+  "meaning": "Business school",
+  "meaningThai": "คณะบริหารธุรกิจ",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "她在商学院读MBA。",
+      "pinyin": "Tā zài shāng xué yuàn dú MBA.",
+      "meaning": "She is studying MBA at the business school.",
+      "meaningThai": "เธอเรียน MBA ที่คณะบริหารธุรกิจ"
+    }
+  ]
+},
+{
+  "id": "education-067",
+  "chinese": "专业",
+  "pinyin": "zhuān yè",
+  "meaning": "Major; Specialty",
+  "meaningThai": "สาขาวิชาเอก",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "你的大学专业是什么？",
+      "pinyin": "Nǐ de dà xué zhuān yè shì shén me?",
+      "meaning": "What is your college major?",
+      "meaningThai": "สาขาวิชาเอกของคุณคืออะไร?"
+    }
+  ]
+},
+{
+  "id": "education-068",
+  "chinese": "必修课",
+  "pinyin": "bì xiū kè",
+  "meaning": "Required course",
+  "meaningThai": "วิชาบังคับ",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "英语是所有学生的必修课。",
+      "pinyin": "Yīng yǔ shì suǒ yǒu xué shēng de bì xiū kè.",
+      "meaning": "English is a required course for all students.",
+      "meaningThai": "ภาษาอังกฤษเป็นวิชาบังคับของนักเรียนทุกคน"
+    }
+  ]
+},
+{
+  "id": "education-069",
+  "chinese": "选修课",
+  "pinyin": "xuǎn xiū kè",
+  "meaning": "Elective course",
+  "meaningThai": "วิชาเลือก",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这学期我选了三门选修课。",
+      "pinyin": "Zhè xué qī wǒ xuǎn le sān mén xuǎn xiū kè.",
+      "meaning": "I chose three elective courses this semester.",
+      "meaningThai": "เทอมนี้ฉันเลือกวิชาเลือกสามวิชา"
+    }
+  ]
+},
+{
+  "id": "education-070",
+  "chinese": "学分",
+  "pinyin": "xué fēn",
+  "meaning": "Credit (academic)",
+  "meaningThai": "หน่วยกิต",
+  "category": "education",
+  "subcategory": "school",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "毕业需要修满一定学分。",
+      "pinyin": "Bì yè xū yào xiū mǎn yī dìng xué fēn.",
+      "meaning": "Graduation requires completing sufficient credits.",
+      "meaningThai": "จบการศึกษาต้องเก็บหน่วยกิตให้ครบ"
+    }
+  ]
+},
+{
+  "id": "education-071",
+  "chinese": "听写",
+  "pinyin": "tīng xiě",
+  "meaning": "Dictation",
+  "meaningThai": "เขียนตามคำบอก",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "老师每个星期做一次听写。",
+      "pinyin": "Lǎo shī měi gè xīng qī zuò yī cì tīng xiě.",
+      "meaning": "The teacher does dictation once a week.",
+      "meaningThai": "ครูเขียนตามคำบอกอาทิตย์ละครั้ง"
+    }
+  ]
+},
+{
+  "id": "education-072",
+  "chinese": "阅读理解",
+  "pinyin": "yuè dú lǐ jiě",
+  "meaning": "Reading comprehension",
+  "meaningThai": "การอ่านเพื่อความเข้าใจ",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "考试中有阅读理解题。",
+      "pinyin": "Kǎo shì zhōng yǒu yuè dú lǐ jiě tí.",
+      "meaning": "There are reading comprehension questions in the exam.",
+      "meaningThai": "ในข้อสอบมีข้อสอบการอ่านเพื่อความเข้าใจ"
+    }
+  ]
+},
+{
+  "id": "education-073",
+  "chinese": "背诵课文",
+  "pinyin": "bèi sòng kè wén",
+  "meaning": "Recite the text",
+  "meaningThai": "ท่องบทเรียน",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "学生需要背诵课文。",
+      "pinyin": "Xué shēng xū yào bèi sòng kè wén.",
+      "meaning": "Students need to recite the text.",
+      "meaningThai": "นักเรียนต้องท่องบทเรียน"
+    }
+  ]
+},
+{
+  "id": "education-074",
+  "chinese": "笔记法",
+  "pinyin": "bǐ jì fǎ",
+  "meaning": "Note-taking method",
+  "meaningThai": "วิธีการจดบันทึก",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "康奈尔笔记法很有效。",
+      "pinyin": "Kāng nài ěr bǐ jì fǎ hěn yǒu xiào.",
+      "meaning": "The Cornell note-taking method is very effective.",
+      "meaningThai": "วิธีการจดบันทึกแบบคอร์เนลล์มีประสิทธิภาพมาก"
+    }
+  ]
+},
+{
+  "id": "education-075",
+  "chinese": "记忆法",
+  "pinyin": "jì yì fǎ",
+  "meaning": "Memory technique",
+  "meaningThai": "เทคนิคการจำ",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "联想记忆法帮助记单词。",
+      "pinyin": "Lián xiǎng jì yì fǎ bāng zhù jì dān cí.",
+      "meaning": "Association memory technique helps memorize words.",
+      "meaningThai": "เทคนิคการจำแบบเชื่อมโยงช่วยจำคำศัพท์"
+    }
+  ]
+},
+{
+  "id": "education-076",
+  "chinese": "思维导图",
+  "pinyin": "sī wéi dǎo tú",
+  "meaning": "Mind map",
+  "meaningThai": "แผนผังความคิด",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "用思维导图整理知识。",
+      "pinyin": "Yòng sī wéi dǎo tú zhěng lǐ zhī shí.",
+      "meaning": "Use mind maps to organize knowledge.",
+      "meaningThai": "ใช้แผนผังความคิดจัดระเบียบความรู้"
+    }
+  ]
+},
+{
+  "id": "education-077",
+  "chinese": "暑期学校",
+  "pinyin": "shǔ qī xué xiào",
+  "meaning": "Summer school",
+  "meaningThai": "โรงเรียนฤดูร้อน",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "暑假她去参加了暑期学校。",
+      "pinyin": "Shǔ jià tā qù cān jiā le shǔ qī xué xiào.",
+      "meaning": "She attended summer school during break.",
+      "meaningThai": "ช่วงปิดเทอมเธอไปโรงเรียนฤดูร้อน"
+    }
+  ]
+},
+{
+  "id": "education-078",
+  "chinese": "培训班",
+  "pinyin": "péi xùn bān",
+  "meaning": "Training class",
+  "meaningThai": "คอร์สฝึกอบรม",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "周末她上英语培训班。",
+      "pinyin": "Zhōu mò tā shàng Yīng yǔ péi xùn bān.",
+      "meaning": "She attends an English training class on weekends.",
+      "meaningThai": "วันหยุดเธอเรียนคอร์สฝึกอบรมภาษาอังกฤษ"
+    }
+  ]
+},
+{
+  "id": "education-079",
+  "chinese": "口语",
+  "pinyin": "kǒu yǔ",
+  "meaning": "Spoken language",
+  "meaningThai": "ภาษาพูด",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "多练习可以提高口语水平。",
+      "pinyin": "Duō liàn xí kě yǐ tí gāo kǒu yǔ shuǐ píng.",
+      "meaning": "More practice can improve spoken language skills.",
+      "meaningThai": "ฝึกฝนมากๆ สามารถพัฒนาระดับภาษาพูดได้"
+    }
+  ]
+},
+{
+  "id": "education-080",
+  "chinese": "作文",
+  "pinyin": "zuò wén",
+  "meaning": "Composition; Essay",
+  "meaningThai": "เรียงความ",
+  "category": "education",
+  "subcategory": "study",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "下周要交一篇作文。",
+      "pinyin": "Xià zhōu yào jiāo yī piān zuò wén.",
+      "meaning": "Need to submit an essay next week.",
+      "meaningThai": "อาทิตย์หน้าต้องส่งเรียงความ"
+    }
+  ]
+},
+{
+  "id": "education-081",
+  "chinese": "中考",
+  "pinyin": "zhōng kǎo",
+  "meaning": "High school entrance exam",
+  "meaningThai": "สอบเข้ามัธยมปลาย",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "中考成绩决定上哪所高中。",
+      "pinyin": "Zhōng kǎo chéng jì jué dìng shàng nǎ suǒ gāo zhōng.",
+      "meaning": "The exam score determines which high school to attend.",
+      "meaningThai": "ผลสอบเข้ามัธยมปลายกำหนดโรงเรียนที่เรียน"
+    }
+  ]
+},
+{
+  "id": "education-082",
+  "chinese": "高考",
+  "pinyin": "gāo kǎo",
+  "meaning": "College entrance exam",
+  "meaningThai": "สอบเข้ามหาวิทยาลัย",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "高考是中国最重要的考试之一。",
+      "pinyin": "Gāo kǎo shì Zhōng guó zuì zhòng yào de kǎo shì zhī yī.",
+      "meaning": "The college entrance exam is one of China's most important exams.",
+      "meaningThai": "สอบเข้ามหาวิทยาลัยเป็นหนึ่งในการสอบสำคัญที่สุดของจีน"
+    }
+  ]
+},
+{
+  "id": "education-083",
+  "chinese": "模拟考试",
+  "pinyin": "mó nǐ kǎo shì",
+  "meaning": "Mock exam",
+  "meaningThai": "สอบจำลอง",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "下周有一次模拟考试。",
+      "pinyin": "Xià zhōu yǒu yī cì mó nǐ kǎo shì.",
+      "meaning": "There is a mock exam next week.",
+      "meaningThai": "อาทิตย์หน้ามีสอบจำลอง"
+    }
+  ]
+},
+{
+  "id": "education-084",
+  "chinese": "笔试",
+  "pinyin": "bǐ shì",
+  "meaning": "Written exam",
+  "meaningThai": "ข้อสอบข้อเขียน",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "笔试部分有两个小时。",
+      "pinyin": "Bǐ shì bù fèn yǒu liǎng gè xiǎo shí.",
+      "meaning": "The written exam part is two hours.",
+      "meaningThai": "ส่วนข้อสอบข้อเขียนมีสองชั่วโมง"
+    }
+  ]
+},
+{
+  "id": "education-085",
+  "chinese": "口试",
+  "pinyin": "kǒu shì",
+  "meaning": "Oral exam",
+  "meaningThai": "สอบปากเปล่า",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "语言考试包括口试部分。",
+      "pinyin": "Yǔ yán kǎo shì bāo kuò kǒu shì bù fèn.",
+      "meaning": "Language exams include an oral exam section.",
+      "meaningThai": "สอบภาษา включает частьสอบปากเปล่า"
+    }
+  ]
+},
+{
+  "id": "education-086",
+  "chinese": "补考",
+  "pinyin": "bǔ kǎo",
+  "meaning": "Makeup exam",
+  "meaningThai": "สอบแก้",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "不及格的学生可以参加补考。",
+      "pinyin": "Bù jí gé de xué shēng kě yǐ cān jiā bǔ kǎo.",
+      "meaning": "Students who fail can take a makeup exam.",
+      "meaningThai": "นักเรียนที่สอบไม่ผ่านสามารถสอบแก้ได้"
+    }
+  ]
+},
+{
+  "id": "education-087",
+  "chinese": "旷考",
+  "pinyin": "kuàng kǎo",
+  "meaning": "Miss an exam",
+  "meaningThai": "ขาดสอบ",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "旷考会影响成绩。",
+      "pinyin": "Kuàng kǎo huì yǐng xiǎng chéng jì.",
+      "meaning": "Missing an exam will affect the grade.",
+      "meaningThai": "การขาดสอบจะส่งผลต่อคะแนน"
+    }
+  ]
+},
+{
+  "id": "education-088",
+  "chinese": "分数",
+  "pinyin": "fēn shù",
+  "meaning": "Score; Grade",
+  "meaningThai": "คะแนน",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这次考试分数很高。",
+      "pinyin": "Zhè cì kǎo shì fēn shù hěn gāo.",
+      "meaning": "This exam had high scores.",
+      "meaningThai": "คะแนนสอบครั้งนี้สูงมาก"
+    }
+  ]
+},
+{
+  "id": "education-089",
+  "chinese": "排名",
+  "pinyin": "pái míng",
+  "meaning": "Ranking",
+  "meaningThai": "อันดับ",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "她在全班排名第一。",
+      "pinyin": "Tā zài quán bān pái míng dì yī.",
+      "meaning": "She ranks first in the class.",
+      "meaningThai": "เธออยู่อันดับหนึ่งของห้อง"
+    }
+  ]
+},
+{
+  "id": "education-090",
+  "chinese": "毕业典礼",
+  "pinyin": "bì yè diǎn lǐ",
+  "meaning": "Graduation ceremony",
+  "meaningThai": "พิธีรับปริญญา",
+  "category": "education",
+  "subcategory": "exams",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "毕业典礼在六月举行。",
+      "pinyin": "Bì yè diǎn lǐ zài liù yuè jǔ xíng.",
+      "meaning": "The graduation ceremony is held in June.",
+      "meaningThai": "พิธีรับปริญญาจัดในเดือนมิถุนายน"
+    }
+  ]
+},
+{
+  "id": "education-091",
+  "chinese": "同行评审",
+  "pinyin": "tóng háng píng shěn",
+  "meaning": "Peer review",
+  "meaningThai": "การทบทวนโดยเพื่อนร่วมวิชาชีพ",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "学术论文需要同行评审。",
+      "pinyin": "Xué shù lùn wén xū yào tóng háng píng shěn.",
+      "meaning": "Academic papers require peer review.",
+      "meaningThai": "บทความวิชาการต้องผ่านการทบทวนโดยผู้ทรงคุณวุฒิ"
+    }
+  ]
+},
+{
+  "id": "education-092",
+  "chinese": "课题",
+  "pinyin": "kè tí",
+  "meaning": "Research topic",
+  "meaningThai": "หัวข้อวิจัย",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "这个课题很有研究价值。",
+      "pinyin": "Zhè ge kè tí hěn yǒu yán jiū jià zhí.",
+      "meaning": "This research topic has great value.",
+      "meaningThai": "หัวข้อวิจัยนี้มีคุณค่าต่อการวิจัย"
+    }
+  ]
+},
+{
+  "id": "education-093",
+  "chinese": "数据收集",
+  "pinyin": "shù jù shōu jí",
+  "meaning": "Data collection",
+  "meaningThai": "การเก็บข้อมูล",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "数据收集是研究的第一步。",
+      "pinyin": "Shù jù shōu jí shì yán jiū de dì yī bù.",
+      "meaning": "Data collection is the first step of research.",
+      "meaningThai": "การเก็บข้อมูลเป็นขั้นตอนแรกของการวิจัย"
+    }
+  ]
+},
+{
+  "id": "education-094",
+  "chinese": "文献综述",
+  "pinyin": "wén xiàn zōng shù",
+  "meaning": "Literature review",
+  "meaningThai": "การทบทวนวรรณกรรม",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "写论文前要做文献综述。",
+      "pinyin": "Xiě lùn wén qián yào zuò wén xiàn zōng shù.",
+      "meaning": "Do a literature review before writing the paper.",
+      "meaningThai": "ต้องทบทวนวรรณกรรมก่อนเขียนวิทยานิพนธ์"
+    }
+  ]
+},
+{
+  "id": "education-095",
+  "chinese": "实验组",
+  "pinyin": "shí yàn zǔ",
+  "meaning": "Experimental group",
+  "meaningThai": "กลุ่มทดลอง",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "实验组接受新的治疗方法。",
+      "pinyin": "Shí yàn zǔ jiē shòu xīn de zhì liáo fāng fǎ.",
+      "meaning": "The experimental group receives the new treatment.",
+      "meaningThai": "กลุ่มทดลองได้รับการรักษาวิธีใหม่"
+    }
+  ]
+},
+{
+  "id": "education-096",
+  "chinese": "对照组",
+  "pinyin": "duì zhào zǔ",
+  "meaning": "Control group",
+  "meaningThai": "กลุ่มควบคุม",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "对照组不接受治疗。",
+      "pinyin": "Duì zhào zǔ bù jiē shòu zhì liáo.",
+      "meaning": "The control group does not receive treatment.",
+      "meaningThai": "กลุ่มควบคุมไม่ได้รับการรักษา"
+    }
+  ]
+},
+{
+  "id": "education-097",
+  "chinese": "样本量",
+  "pinyin": "yàng běn liàng",
+  "meaning": "Sample size",
+  "meaningThai": "ขนาดตัวอย่าง",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "样本量越大结果越准确。",
+      "pinyin": "Yàng běn liàng yuè dà jié guǒ yuè zhǔn què.",
+      "meaning": "The larger the sample size, the more accurate the results.",
+      "meaningThai": "ขนาดตัวอย่างยิ่งใหญ่ผลลัพธ์ยิ่งแม่นยำ"
+    }
+  ]
+},
+{
+  "id": "education-098",
+  "chinese": "出版",
+  "pinyin": "chū bǎn",
+  "meaning": "To publish",
+  "meaningThai": "ตีพิมพ์",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "她的研究发表在著名期刊上。",
+      "pinyin": "Tā de yán jiū fā biǎo zài zhù míng qī kān shàng.",
+      "meaning": "Her research was published in a famous journal.",
+      "meaningThai": "งานวิจัยของเธอตีพิมพ์ในวารสาร著名"
+    }
+  ]
+},
+{
+  "id": "education-099",
+  "chinese": "科研经费",
+  "pinyin": "kē yán jīng fèi",
+  "meaning": "Research funding",
+  "meaningThai": "ทุนวิจัย",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "申请科研经费需要详细的预算。",
+      "pinyin": "Shēn qǐng kē yán jīng fèi xū yào xiáng xì de yù suàn.",
+      "meaning": "Applying for research funding requires a detailed budget.",
+      "meaningThai": "การขอทุนวิจัยต้องมีงบประมาณโดยละเอียด"
+    }
+  ]
+},
+{
+  "id": "education-100",
+  "chinese": "答辩",
+  "pinyin": "dá biàn",
+  "meaning": "Thesis defense",
+  "meaningThai": "สอบป้องกัน",
+  "category": "education",
+  "subcategory": "research",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "博士论文答辩通过了。",
+      "pinyin": "Bó shì lùn wén dá biàn tōng guò le.",
+      "meaning": "The PhD thesis defense was passed.",
+      "meaningThai": "สอบป้องกันวิทยานิพนธ์ปริญญาเอกผ่าน"
+    }
+  ]
+}
+];
+

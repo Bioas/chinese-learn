@@ -1,0 +1,1903 @@
+const HEALTH_WORDS = [
+  {
+    "id": "health-001",
+    "chinese": "心脏",
+    "pinyin": "xīn zàng",
+    "meaning": "Heart",
+    "meaningThai": "หัวใจ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "心脏跳动很快。",
+        "pinyin": "Xīn zàng tiào dòng hěn kuài.",
+        "meaning": "The heart beats very fast.",
+        "meaningThai": "หัวใจเต้นเร็วมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-002",
+    "chinese": "肝脏",
+    "pinyin": "gān zàng",
+    "meaning": "Liver",
+    "meaningThai": "ตับ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "肝脏是重要的器官。",
+        "pinyin": "Gān zàng shì zhòng yào de qì guān.",
+        "meaning": "The liver is an important organ.",
+        "meaningThai": "ตับเป็นอวัยวะสำคัญ"
+      }
+    ]
+  },
+  {
+    "id": "health-003",
+    "chinese": "骨骼",
+    "pinyin": "gǔ gé",
+    "meaning": "Skeleton; Bones",
+    "meaningThai": "โครงกระดูก",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "骨骼支撑着身体。",
+        "pinyin": "Gǔ gé zhī chēng zhe shēn tǐ.",
+        "meaning": "The skeleton supports the body.",
+        "meaningThai": "โครงกระดูกค้ำจุนร่างกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-004",
+    "chinese": "肌肉",
+    "pinyin": "jī ròu",
+    "meaning": "Muscle",
+    "meaningThai": "กล้ามเนื้อ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "运动可以增强肌肉。",
+        "pinyin": "Yùn dòng kě yǐ zēng qiáng jī ròu.",
+        "meaning": "Exercise can strengthen muscles.",
+        "meaningThai": "การออกกำลังกายช่วยเสริมสร้างกล้ามเนื้อ"
+      }
+    ]
+  },
+  {
+    "id": "health-005",
+    "chinese": "神经",
+    "pinyin": "shén jīng",
+    "meaning": "Nerve",
+    "meaningThai": "เส้นประสาท",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "神经传递信号。",
+        "pinyin": "Shén jīng chuán dì xìn hào.",
+        "meaning": "Nerves transmit signals.",
+        "meaningThai": "เส้นประสาทส่งสัญญาณ"
+      }
+    ]
+  },
+  {
+    "id": "health-006",
+    "chinese": "血管",
+    "pinyin": "xuè guǎn",
+    "meaning": "Blood vessel",
+    "meaningThai": "หลอดเลือด",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "血管输送血液。",
+        "pinyin": "Xuè guǎn shū sòng xuè yè.",
+        "meaning": "Blood vessels carry blood.",
+        "meaningThai": "หลอดเลือดลำเลียงเลือด"
+      }
+    ]
+  },
+  {
+    "id": "health-007",
+    "chinese": "皮肤",
+    "pinyin": "pí fū",
+    "meaning": "Skin",
+    "meaningThai": "ผิวหนัง",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "皮肤需要保护。",
+        "pinyin": "Pí fū xū yào bǎo hù.",
+        "meaning": "Skin needs protection.",
+        "meaningThai": "ผิวหนังต้องการการปกป้อง"
+      }
+    ]
+  },
+  {
+    "id": "health-008",
+    "chinese": "肠胃",
+    "pinyin": "cháng wèi",
+    "meaning": "Digestive system",
+    "meaningThai": "ระบบทางเดินอาหาร",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "肠胃健康很重要。",
+        "pinyin": "Cháng wèi jiàn kāng hěn zhòng yào.",
+        "meaning": "Digestive health is very important.",
+        "meaningThai": "สุขภาพทางเดินอาหารสำคัญมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-009",
+    "chinese": "大脑",
+    "pinyin": "dà nǎo",
+    "meaning": "Brain",
+    "meaningThai": "สมอง",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "大脑控制身体。",
+        "pinyin": "Dà nǎo kòng zhì shēn tǐ.",
+        "meaning": "The brain controls the body.",
+        "meaningThai": "สมองควบคุมร่างกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-010",
+    "chinese": "呼吸",
+    "pinyin": "hū xī",
+    "meaning": "To breathe; Breathing",
+    "meaningThai": "หายใจ",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "深呼吸可以放松。",
+        "pinyin": "Shēn hū xī kě yǐ fàng sōng.",
+        "meaning": "Deep breathing can relax you.",
+        "meaningThai": "การหายใจลึกๆ ช่วยผ่อนคลาย"
+      }
+    ]
+  },
+  {
+    "id": "health-011",
+    "chinese": "脉搏",
+    "pinyin": "mài bó",
+    "meaning": "Pulse",
+    "meaningThai": "ชีพจร",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "医生检查脉搏。",
+        "pinyin": "Yī shēng jiǎn chá mài bó.",
+        "meaning": "The doctor checks the pulse.",
+        "meaningThai": "หมอตรวจชีพจร"
+      }
+    ]
+  },
+  {
+    "id": "health-012",
+    "chinese": "体温",
+    "pinyin": "tǐ wēn",
+    "meaning": "Body temperature",
+    "meaningThai": "อุณหภูมิร่างกาย",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "量一下体温。",
+        "pinyin": "Liáng yī xià tǐ wēn.",
+        "meaning": "Take your temperature.",
+        "meaningThai": "วัดอุณหภูมิร่างกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-013",
+    "chinese": "舌头",
+    "pinyin": "shé tou",
+    "meaning": "Tongue",
+    "meaningThai": "ลิ้น",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "伸出舌头。",
+        "pinyin": "Shēn chū shé tou.",
+        "meaning": "Stick out your tongue.",
+        "meaningThai": "แลบลิ้น"
+      }
+    ]
+  },
+  {
+    "id": "health-014",
+    "chinese": "牙齿",
+    "pinyin": "yá chǐ",
+    "meaning": "Teeth",
+    "meaningThai": "ฟัน",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每天刷牙保护牙齿。",
+        "pinyin": "Měi tiān shuā yá bǎo hù yá chǐ.",
+        "meaning": "Brush your teeth every day to protect them.",
+        "meaningThai": "แปรงฟันทุกวันเพื่อปกป้องฟัน"
+      }
+    ]
+  },
+  {
+    "id": "health-015",
+    "chinese": "肩膀",
+    "pinyin": "jiān bǎng",
+    "meaning": "Shoulder",
+    "meaningThai": "ไหล่",
+    "category": "health",
+    "subcategory": "body",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我的肩膀很酸痛。",
+        "pinyin": "Wǒ de jiān bǎng hěn suān tòng.",
+        "meaning": "My shoulders are very sore.",
+        "meaningThai": "ไหล่ของฉันปวดเมื่อยมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-016",
+    "chinese": "咳嗽",
+    "pinyin": "ké sou",
+    "meaning": "To cough",
+    "meaningThai": "ไอ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他一直在咳嗽。",
+        "pinyin": "Tā yī zhí zài ké sou.",
+        "meaning": "He keeps coughing.",
+        "meaningThai": "เขาไอตลอดเวลา"
+      }
+    ]
+  },
+  {
+    "id": "health-017",
+    "chinese": "头痛",
+    "pinyin": "tóu tòng",
+    "meaning": "Headache",
+    "meaningThai": "ปวดหัว",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我头痛得厉害。",
+        "pinyin": "Wǒ tóu tòng dé lì hài.",
+        "meaning": "I have a bad headache.",
+        "meaningThai": "ฉันปวดหัวมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-018",
+    "chinese": "胃痛",
+    "pinyin": "wèi tòng",
+    "meaning": "Stomach ache",
+    "meaningThai": "ปวดท้อง",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "吃了不干净的东西会胃痛。",
+        "pinyin": "Chī le bù gān jìng de dōng xi huì wèi tòng.",
+        "meaning": "Eating unclean things causes stomach aches.",
+        "meaningThai": "กินของไม่สะอาดจะทำให้ปวดท้อง"
+      }
+    ]
+  },
+  {
+    "id": "health-019",
+    "chinese": "发烧",
+    "pinyin": "fā shāo",
+    "meaning": "To have a fever",
+    "meaningThai": "มีไข้",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "孩子发烧了。",
+        "pinyin": "Hái zi fā shāo le.",
+        "meaning": "The child has a fever.",
+        "meaningThai": "เด็กมีไข้"
+      }
+    ]
+  },
+  {
+    "id": "health-020",
+    "chinese": "流感",
+    "pinyin": "liú gǎn",
+    "meaning": "Influenza; Flu",
+    "meaningThai": "ไข้หวัดใหญ่",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每年冬天很多人得流感。",
+        "pinyin": "Měi nián dōng tiān hěn duō rén dé liú gǎn.",
+        "meaning": "Many people get the flu every winter.",
+        "meaningThai": "ทุกฤดูหนาวคนเป็นไข้หวัดใหญ่จำนวนมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-021",
+    "chinese": "过敏",
+    "pinyin": "guò mǐn",
+    "meaning": "Allergy; Allergic",
+    "meaningThai": "แพ้",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我对花粉过敏。",
+        "pinyin": "Wǒ duì huā fěn guò mǐn.",
+        "meaning": "I am allergic to pollen.",
+        "meaningThai": "ฉันแพ้ละอองเกสรดอกไม้"
+      }
+    ]
+  },
+  {
+    "id": "health-022",
+    "chinese": "骨折",
+    "pinyin": "gǔ zhé",
+    "meaning": "Bone fracture",
+    "meaningThai": "กระดูกหัก",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "摔倒了造成骨折。",
+        "pinyin": "Shuāi dǎo le zào chéng gǔ zhé.",
+        "meaning": "A fall caused a bone fracture.",
+        "meaningThai": "ล้มทำให้กระดูกหัก"
+      }
+    ]
+  },
+  {
+    "id": "health-023",
+    "chinese": "高血压",
+    "pinyin": "gāo xuè yā",
+    "meaning": "High blood pressure",
+    "meaningThai": "ความดันโลหิตสูง",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老年人容易患高血压。",
+        "pinyin": "Lǎo nián rén róng yì huàn gāo xuè yā.",
+        "meaning": "Elderly people easily get high blood pressure.",
+        "meaningThai": "ผู้สูงอายุมีแนวโน้มเป็นความดันโลหิตสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-024",
+    "chinese": "糖尿病",
+    "pinyin": "táng niào bìng",
+    "meaning": "Diabetes",
+    "meaningThai": "เบาหวาน",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "糖尿病患者要注意饮食。",
+        "pinyin": "Táng niào bìng huàn zhě yào zhù yì yǐn shí.",
+        "meaning": "Diabetes patients should watch their diet.",
+        "meaningThai": "ผู้ป่วยเบาหวานต้องระวังการกิน"
+      }
+    ]
+  },
+  {
+    "id": "health-025",
+    "chinese": "失眠",
+    "pinyin": "shī mián",
+    "meaning": "Insomnia",
+    "meaningThai": "นอนไม่หลับ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "压力大会导致失眠。",
+        "pinyin": "Yā lì dà huì dǎo zhì shī mián.",
+        "meaning": "High stress can cause insomnia.",
+        "meaningThai": "ความเครียดสูงทำให้นอนไม่หลับ"
+      }
+    ]
+  },
+  {
+    "id": "health-026",
+    "chinese": "发炎",
+    "pinyin": "fā yán",
+    "meaning": "Inflammation",
+    "meaningThai": "อักเสบ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "伤口发炎了。",
+        "pinyin": "Shāng kǒu fā yán le.",
+        "meaning": "The wound is inflamed.",
+        "meaningThai": "แผลอักเสบ"
+      }
+    ]
+  },
+  {
+    "id": "health-027",
+    "chinese": "感染",
+    "pinyin": "gǎn rǎn",
+    "meaning": "Infection",
+    "meaningThai": "ติดเชื้อ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "要注意防止伤口感染。",
+        "pinyin": "Yào zhù yì fáng zhǐ shāng kǒu gǎn rǎn.",
+        "meaning": "Be careful to prevent wound infection.",
+        "meaningThai": "ต้องระวังป้องกันแผลติดเชื้อ"
+      }
+    ]
+  },
+  {
+    "id": "health-028",
+    "chinese": "症状",
+    "pinyin": "zhèng zhuàng",
+    "meaning": "Symptom",
+    "meaningThai": "อาการ",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这些症状持续了三天。",
+        "pinyin": "Zhè xiē zhèng zhuàng chí xù le sān tiān.",
+        "meaning": "These symptoms have lasted three days.",
+        "meaningThai": "อาการเหล่านี้เกิดขึ้นสามวันแล้ว"
+      }
+    ]
+  },
+  {
+    "id": "health-029",
+    "chinese": "扭伤",
+    "pinyin": "niǔ shāng",
+    "meaning": "To sprain",
+    "meaningThai": "เคล็ด",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "打球时扭伤了脚踝。",
+        "pinyin": "Dǎ qiú shí niǔ shāng le jiǎo huái.",
+        "meaning": "Sprained my ankle while playing ball.",
+        "meaningThai": "เล่นบอลแล้วข้อเท้าเคล็ด"
+      }
+    ]
+  },
+  {
+    "id": "health-030",
+    "chinese": "癌症",
+    "pinyin": "ái zhèng",
+    "meaning": "Cancer",
+    "meaningThai": "มะเร็ง",
+    "category": "health",
+    "subcategory": "illness",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "早发现癌症可以治愈。",
+        "pinyin": "Zǎo fā xiàn ái zhèng kě yǐ zhì yù.",
+        "meaning": "Early detection of cancer can be cured.",
+        "meaningThai": "พบมะเร็งเร็วสามารถรักษาหายได้"
+      }
+    ]
+  },
+  {
+    "id": "health-031",
+    "chinese": "跑步",
+    "pinyin": "pǎo bù",
+    "meaning": "To jog; To run",
+    "meaningThai": "วิ่ง",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每天早上跑步。",
+        "pinyin": "Měi tiān zǎo shàng pǎo bù.",
+        "meaning": "Jog every morning.",
+        "meaningThai": "วิ่งทุกเช้า"
+      }
+    ]
+  },
+  {
+    "id": "health-032",
+    "chinese": "瑜伽",
+    "pinyin": "yú jiā",
+    "meaning": "Yoga",
+    "meaningThai": "โยคะ",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "瑜伽可以放松身心。",
+        "pinyin": "Yú jiā kě yǐ fàng sōng shēn xīn.",
+        "meaning": "Yoga can relax the body and mind.",
+        "meaningThai": "โยคะช่วยผ่อนคลายร่างกายและจิตใจ"
+      }
+    ]
+  },
+  {
+    "id": "health-033",
+    "chinese": "游泳",
+    "pinyin": "yóu yǒng",
+    "meaning": "To swim",
+    "meaningThai": "ว่ายน้ำ",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "夏天我喜欢游泳。",
+        "pinyin": "Xià tiān wǒ xǐ huān yóu yǒng.",
+        "meaning": "I like to swim in summer.",
+        "meaningThai": "ฤดูร้อนฉันชอบว่ายน้ำ"
+      }
+    ]
+  },
+  {
+    "id": "health-034",
+    "chinese": "健身",
+    "pinyin": "jiàn shēn",
+    "meaning": "To work out; Fitness",
+    "meaningThai": "ออกกำลังกาย",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "我每周去健身房三次。",
+        "pinyin": "Wǒ měi zhōu qù jiàn shēn fáng sān cì.",
+        "meaning": "I go to the gym three times a week.",
+        "meaningThai": "ฉันไปยิมอาทิตย์ละสามครั้ง"
+      }
+    ]
+  },
+  {
+    "id": "health-035",
+    "chinese": "拉伸",
+    "pinyin": "lā shēn",
+    "meaning": "To stretch",
+    "meaningThai": "ยืดเหยียด",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "运动前要拉伸。",
+        "pinyin": "Yùn dòng qián yào lā shēn.",
+        "meaning": "Stretch before exercise.",
+        "meaningThai": "ต้องยืดเหยียดก่อนออกกำลังกาย"
+      }
+    ]
+  },
+  {
+    "id": "health-036",
+    "chinese": "登山",
+    "pinyin": "dēng shān",
+    "meaning": "Mountain climbing",
+    "meaningThai": "ปีนเขา",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "周末我们去登山。",
+        "pinyin": "Zhōu mò wǒ men qù dēng shān.",
+        "meaning": "We go mountain climbing on weekends.",
+        "meaningThai": "วันหยุดสุดสัปดาห์เราไปปีนเขา"
+      }
+    ]
+  },
+  {
+    "id": "health-037",
+    "chinese": "太极",
+    "pinyin": "tài jí",
+    "meaning": "Tai Chi",
+    "meaningThai": "ไทเก๊ก",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "老人喜欢打太极。",
+        "pinyin": "Lǎo rén xǐ huān dǎ tài jí.",
+        "meaning": "Elderly people like to practice Tai Chi.",
+        "meaningThai": "ผู้สูงอายุชอบเล่นไทเก๊ก"
+      }
+    ]
+  },
+  {
+    "id": "health-038",
+    "chinese": "散步",
+    "pinyin": "sàn bù",
+    "meaning": "To take a walk",
+    "meaningThai": "เดินเล่น",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "饭后散步有助消化。",
+        "pinyin": "Fàn hòu sàn bù yǒu zhù xiāo huà.",
+        "meaning": "Walking after meals aids digestion.",
+        "meaningThai": "เดินเล่นหลังกินข้าวช่วยย่อยอาหาร"
+      }
+    ]
+  },
+  {
+    "id": "health-039",
+    "chinese": "骑自行车",
+    "pinyin": "qí zì xíng chē",
+    "meaning": "Ride a bicycle",
+    "meaningThai": "ขี่จักรยาน",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "骑自行车是很好的运动。",
+        "pinyin": "Qí zì xíng chē shì hěn hǎo de yùn dòng.",
+        "meaning": "Riding a bicycle is great exercise.",
+        "meaningThai": "การขี่จักรยานเป็นการออกกำลังกายที่ดี"
+      }
+    ]
+  },
+  {
+    "id": "health-040",
+    "chinese": "拳击",
+    "pinyin": "quán jī",
+    "meaning": "Boxing",
+    "meaningThai": "ชกมวย",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "拳击需要很好的体力。",
+        "pinyin": "Quán jī xū yào hěn hǎo de tǐ lì.",
+        "meaning": "Boxing requires great physical strength.",
+        "meaningThai": "การชกมวยต้องใช้กำลังมาก"
+      }
+    ]
+  },
+  {
+    "id": "health-041",
+    "chinese": "马拉松",
+    "pinyin": "mǎ lā sōng",
+    "meaning": "Marathon",
+    "meaningThai": "มาราธอน",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "他参加了马拉松比赛。",
+        "pinyin": "Tā cān jiā le mǎ lā sōng bǐ sài.",
+        "meaning": "He participated in a marathon race.",
+        "meaningThai": "เขาเข้าร่วมการแข่งขันมาราธอน"
+      }
+    ]
+  },
+  {
+    "id": "health-042",
+    "chinese": "哑铃",
+    "pinyin": "yǎ líng",
+    "meaning": "Dumbbell",
+    "meaningThai": "ดัมเบล",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "用哑铃锻炼手臂肌肉。",
+        "pinyin": "Yòng yǎ líng duàn liàn shǒu bì jī ròu.",
+        "meaning": "Use dumbbells to exercise arm muscles.",
+        "meaningThai": "ใช้ดัมเบลบริหารกล้ามเนื้อแขน"
+      }
+    ]
+  },
+  {
+    "id": "health-043",
+    "chinese": "仰卧起坐",
+    "pinyin": "yǎng wò qǐ zuò",
+    "meaning": "Sit-up",
+    "meaningThai": "ซิทอัพ",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "每天做五十个仰卧起坐。",
+        "pinyin": "Měi tiān zuò wǔ shí gè yǎng wò qǐ zuò.",
+        "meaning": "Do fifty sit-ups every day.",
+        "meaningThai": "ทำซิทอัพห้าสิบครั้งทุกวัน"
+      }
+    ]
+  },
+  {
+    "id": "health-044",
+    "chinese": "跳绳",
+    "pinyin": "tiào shéng",
+    "meaning": "Jump rope",
+    "meaningThai": "กระโดดเชือก",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "跳绳是很好的有氧运动。",
+        "pinyin": "Tiào shéng shì hěn hǎo de yǒu yǎng yùn dòng.",
+        "meaning": "Jump rope is great aerobic exercise.",
+        "meaningThai": "การกระโดดเชือกเป็นการออกกำลังกายแบบคาร์ดิโอที่ดี"
+      }
+    ]
+  },
+  {
+    "id": "health-045",
+    "chinese": "有氧运动",
+    "pinyin": "yǒu yǎng yùn dòng",
+    "meaning": "Aerobic exercise",
+    "meaningThai": "การออกกำลังกายแบบแอโรบิก",
+    "category": "health",
+    "subcategory": "exercise",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "有氧运动对心脏好。",
+        "pinyin": "Yǒu yǎng yùn dòng duì xīn zàng hǎo.",
+        "meaning": "Aerobic exercise is good for the heart.",
+        "meaningThai": "การออกกำลังกายแบบแอโรบิกดีต่อหัวใจ"
+      }
+    ]
+  },
+  {
+    "id": "health-046",
+    "chinese": "蛋白质",
+    "pinyin": "dàn bái zhì",
+    "meaning": "Protein",
+    "meaningThai": "โปรตีน",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "鸡蛋含有丰富的蛋白质。",
+        "pinyin": "Jī dàn hán yǒu fēng fù de dàn bái zhì.",
+        "meaning": "Eggs are rich in protein.",
+        "meaningThai": "ไข่มีโปรตีนสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-047",
+    "chinese": "维生素",
+    "pinyin": "wéi shēng sù",
+    "meaning": "Vitamin",
+    "meaningThai": "วิตามิน",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "多吃水果补充维生素。",
+        "pinyin": "Duō chī shuǐ guǒ bǔ chōng wéi shēng sù.",
+        "meaning": "Eat more fruits to supplement vitamins.",
+        "meaningThai": "กินผลไม้เยอะๆ เพื่อเสริมวิตามิน"
+      }
+    ]
+  },
+  {
+    "id": "health-048",
+    "chinese": "矿物质",
+    "pinyin": "kuàng wù zhì",
+    "meaning": "Mineral",
+    "meaningThai": "แร่ธาตุ",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "身体需要各种矿物质。",
+        "pinyin": "Shēn tǐ xū yào gè zhǒng kuàng wù zhì.",
+        "meaning": "The body needs various minerals.",
+        "meaningThai": "ร่างกายต้องการแร่ธาตุต่างๆ"
+      }
+    ]
+  },
+  {
+    "id": "health-049",
+    "chinese": "热量",
+    "pinyin": "rè liàng",
+    "meaning": "Calorie",
+    "meaningThai": "แคลอรี่",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "要注意控制热量摄入。",
+        "pinyin": "Yào zhù yì kòng zhì rè liàng shè rù.",
+        "meaning": "Be careful to control calorie intake.",
+        "meaningThai": "ต้องระวังการรับแคลอรี่"
+      }
+    ]
+  },
+  {
+    "id": "health-050",
+    "chinese": "膳食纤维",
+    "pinyin": "shàn shí xiān wéi",
+    "meaning": "Dietary fiber",
+    "meaningThai": "ใยอาหาร",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "蔬菜含有大量膳食纤维。",
+        "pinyin": "Shū cài hán yǒu dà liàng shàn shí xiān wéi.",
+        "meaning": "Vegetables contain a lot of dietary fiber.",
+        "meaningThai": "ผักมีใยอาหารสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-051",
+    "chinese": "碳水化合物",
+    "pinyin": "tàn shuǐ huà hé wù",
+    "meaning": "Carbohydrate",
+    "meaningThai": "คาร์โบไฮเดรต",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "米饭富含碳水化合物。",
+        "pinyin": "Mǐ fàn fù hán tàn shuǐ huà hé wù.",
+        "meaning": "Rice is rich in carbohydrates.",
+        "meaningThai": "ข้าวมีคาร์โบไฮเดรตสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-052",
+    "chinese": "脂肪",
+    "pinyin": "zhī fáng",
+    "meaning": "Fat",
+    "meaningThai": "ไขมัน",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "要控制脂肪的摄入量。",
+        "pinyin": "Yào kòng zhì zhī fáng de shè rù liàng.",
+        "meaning": "Control your fat intake.",
+        "meaningThai": "ต้องควบคุมปริมาณไขมันที่รับเข้าไป"
+      }
+    ]
+  },
+  {
+    "id": "health-053",
+    "chinese": "有机食品",
+    "pinyin": "yǒu jī shí pǐn",
+    "meaning": "Organic food",
+    "meaningThai": "อาหารออร์แกนิก",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "有机食品更健康。",
+        "pinyin": "Yǒu jī shí pǐn gèng jiàn kāng.",
+        "meaning": "Organic food is healthier.",
+        "meaningThai": "อาหารออร์แกนิกดีต่อสุขภาพมากกว่า"
+      }
+    ]
+  },
+  {
+    "id": "health-054",
+    "chinese": "均衡饮食",
+    "pinyin": "jūn héng yǐn shí",
+    "meaning": "Balanced diet",
+    "meaningThai": "อาหารสมดุล",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "保持均衡饮食很重要。",
+        "pinyin": "Bǎo chí jūn héng yǐn shí hěn zhòng yào.",
+        "meaning": "Maintaining a balanced diet is important.",
+        "meaningThai": "การรักษาอาหารสมดุลเป็นสิ่งสำคัญ"
+      }
+    ]
+  },
+  {
+    "id": "health-055",
+    "chinese": "素食",
+    "pinyin": "sù shí",
+    "meaning": "Vegetarian food",
+    "meaningThai": "อาหารเจ",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "越来越多的人选择素食。",
+        "pinyin": "Yuè lái yuè duō de rén xuǎn zé sù shí.",
+        "meaning": "More and more people choose vegetarian food.",
+        "meaningThai": "คนเลือกกินเจมากขึ้นเรื่อยๆ"
+      }
+    ]
+  },
+  {
+    "id": "health-056",
+    "chinese": "营养",
+    "pinyin": "yíng yǎng",
+    "meaning": "Nutrition",
+    "meaningThai": "โภชนาการ",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "这个食谱营养丰富。",
+        "pinyin": "Zhè ge shí pǔ yíng yǎng fēng fù.",
+        "meaning": "This recipe is very nutritious.",
+        "meaningThai": "สูตรอาหารนี้มีโภชนาการสูง"
+      }
+    ]
+  },
+  {
+    "id": "health-057",
+    "chinese": "添加剂",
+    "pinyin": "tiān jiā jì",
+    "meaning": "Food additive",
+    "meaningThai": "สารปรุงแต่ง",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "尽量少吃含添加剂的食物。",
+        "pinyin": "Jǐn liàng shǎo chī hán tiān jiā jì de shí wù.",
+        "meaning": "Try to eat less food with additives.",
+        "meaningThai": "พยายามกินอาหารที่มีสารปรุงแต่งน้อย"
+      }
+    ]
+  },
+  {
+    "id": "health-058",
+    "chinese": "胆固醇",
+    "pinyin": "dǎn gù chún",
+    "meaning": "Cholesterol",
+    "meaningThai": "คอเลสเตอรอล",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "高胆固醇对健康不好。",
+        "pinyin": "Gāo dǎn gù chún duì jiàn kāng bù hǎo.",
+        "meaning": "High cholesterol is bad for health.",
+        "meaningThai": "คอเลสเตอรอลสูงไม่ดีต่อสุขภาพ"
+      }
+    ]
+  },
+  {
+    "id": "health-059",
+    "chinese": "减肥",
+    "pinyin": "jiǎn féi",
+    "meaning": "To lose weight",
+    "meaningThai": "ลดน้ำหนัก",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "她在减肥，不吃甜食。",
+        "pinyin": "Tā zài jiǎn féi, bù chī tián shí.",
+        "meaning": "She is losing weight and doesn't eat sweets.",
+        "meaningThai": "เธอกำลังลดน้ำหนัก ไม่กินของหวาน"
+      }
+    ]
+  },
+  {
+    "id": "health-060",
+    "chinese": "禁食",
+    "pinyin": "jìn shí",
+    "meaning": "Fasting",
+    "meaningThai": "อดอาหาร",
+    "category": "health",
+    "subcategory": "nutrition",
+    "hskLevel": 0,
+    "status": "new",
+    "examples": [
+      {
+        "chinese": "间歇性禁食是一种饮食方法。",
+        "pinyin": "Jiàn xiē xìng jìn shí shì yī zhǒng yǐn shí fāng fǎ.",
+        "meaning": "Intermittent fasting is a dietary method.",
+        "meaningThai": "การอดอาหารเป็นช่วงเป็นวิธีควบคุมอาหาร"
+      }
+    ]
+  },
+{
+  "id": "health-061",
+  "chinese": "关节",
+  "pinyin": "guān jié",
+  "meaning": "Joint",
+  "meaningThai": "ข้อต่อ",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "关节痛影响走路。",
+      "pinyin": "Guān jié tòng yǐng xiǎng zǒu lù.",
+      "meaning": "Joint pain affects walking.",
+      "meaningThai": "ปวดข้อต่อส่งผลต่อการเดิน"
+    }
+  ]
+},
+{
+  "id": "health-062",
+  "chinese": "脊椎",
+  "pinyin": "jǐ zhuī",
+  "meaning": "Spine; Vertebra",
+  "meaningThai": "กระดูกสันหลัง",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "脊椎支撑整个身体。",
+      "pinyin": "Jǐ zhuī zhī chēng zhěng gè shēn tǐ.",
+      "meaning": "The spine supports the whole body.",
+      "meaningThai": "กระดูกสันหลังค้ำจุนร่างกายทั้งหมด"
+    }
+  ]
+},
+{
+  "id": "health-063",
+  "chinese": "韧带",
+  "pinyin": "rèn dài",
+  "meaning": "Ligament",
+  "meaningThai": "เอ็น",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "运动员容易拉伤韧带。",
+      "pinyin": "Yùn dòng yuán róng yì lā shāng rèn dài.",
+      "meaning": "Athletes easily pull ligaments.",
+      "meaningThai": "นักกีฬามักมีอาการเอ็นฉีก"
+    }
+  ]
+},
+{
+  "id": "health-064",
+  "chinese": "骨髓",
+  "pinyin": "gǔ suǐ",
+  "meaning": "Bone marrow",
+  "meaningThai": "ไขกระดูก",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "骨髓移植可以治疗白血病。",
+      "pinyin": "Gǔ suǐ yí zhí kě yǐ zhì liáo bái xuè bìng.",
+      "meaning": "Bone marrow transplant can treat leukemia.",
+      "meaningThai": "การปลูกถ่ายไขกระดูกสามารถรักษามะเร็งเม็ดเลือดขาว"
+    }
+  ]
+},
+{
+  "id": "health-065",
+  "chinese": "肺",
+  "pinyin": "fèi",
+  "meaning": "Lung",
+  "meaningThai": "ปอด",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "吸烟对肺不好。",
+      "pinyin": "Xī yān duì fèi bù hǎo.",
+      "meaning": "Smoking is bad for the lungs.",
+      "meaningThai": "การสูบบุหรี่ไม่ดีต่อปอด"
+    }
+  ]
+},
+{
+  "id": "health-066",
+  "chinese": "肾脏",
+  "pinyin": "shèn zàng",
+  "meaning": "Kidney",
+  "meaningThai": "ไต",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "肾脏帮助过滤血液。",
+      "pinyin": "Shèn zàng bāng zhù guò lǜ xuè yè.",
+      "meaning": "Kidneys help filter blood.",
+      "meaningThai": "ไตช่วยกรองเลือด"
+    }
+  ]
+},
+{
+  "id": "health-067",
+  "chinese": "膀胱",
+  "pinyin": "páng guāng",
+  "meaning": "Bladder",
+  "meaningThai": "กระเพาะปัสสาวะ",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "膀胱储存尿液。",
+      "pinyin": "Páng guāng chǔ cún niào yè.",
+      "meaning": "The bladder stores urine.",
+      "meaningThai": "กระเพาะปัสสาวะเก็บปัสสาวะ"
+    }
+  ]
+},
+{
+  "id": "health-068",
+  "chinese": "食道",
+  "pinyin": "shí dào",
+  "meaning": "Esophagus",
+  "meaningThai": "หลอดอาหาร",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "食物经过食道到胃。",
+      "pinyin": "Shí wù jīng guò shí dào dào wèi.",
+      "meaning": "Food passes through the esophagus to the stomach.",
+      "meaningThai": "อาหารผ่านหลอดอาหารไปยังกระเพาะ"
+    }
+  ]
+},
+{
+  "id": "health-069",
+  "chinese": "气管",
+  "pinyin": "qì guǎn",
+  "meaning": "Windpipe; Trachea",
+  "meaningThai": "หลอดลม",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "气管连接喉咙和肺。",
+      "pinyin": "Qì guǎn lián jiē hóu lóng hé fèi.",
+      "meaning": "The trachea connects the throat and lungs.",
+      "meaningThai": "หลอดลมเชื่อมต่อคอและปอด"
+    }
+  ]
+},
+{
+  "id": "health-070",
+  "chinese": "扁桃体",
+  "pinyin": "biǎn táo tǐ",
+  "meaning": "Tonsil",
+  "meaningThai": "ต่อมทอนซิล",
+  "category": "health",
+  "subcategory": "body",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "扁桃体发炎会喉咙痛。",
+      "pinyin": "Biǎn táo tǐ fā yán huì hóu lóng tòng.",
+      "meaning": "Inflamed tonsils cause sore throat.",
+      "meaningThai": "ต่อมทอนซิลอักเสบทำให้เจ็บคอ"
+    }
+  ]
+},
+{
+  "id": "health-071",
+  "chinese": "腹泻",
+  "pinyin": "fù xiè",
+  "meaning": "Diarrhea",
+  "meaningThai": "ท้องเสีย",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "吃了不干净的食物会腹泻。",
+      "pinyin": "Chī le bù gān jìng de shí wù huì fù xiè.",
+      "meaning": "Eating unclean food causes diarrhea.",
+      "meaningThai": "กินอาหารไม่สะอาดทำให้ท้องเสีย"
+    }
+  ]
+},
+{
+  "id": "health-072",
+  "chinese": "呕吐",
+  "pinyin": "ǒu tù",
+  "meaning": "To vomit",
+  "meaningThai": "อาเจียน",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "他吃了药就呕吐了。",
+      "pinyin": "Tā chī le yào jiù ǒu tù le.",
+      "meaning": "He vomited after taking the medicine.",
+      "meaningThai": "เขาอาเจียนหลังจากกินยา"
+    }
+  ]
+},
+{
+  "id": "health-073",
+  "chinese": "眩晕",
+  "pinyin": "xuàn yūn",
+  "meaning": "Dizziness",
+  "meaningThai": "วิงเวียน",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "眩晕时不能开车。",
+      "pinyin": "Xuàn yūn shí bù néng kāi chē.",
+      "meaning": "Can't drive when dizzy.",
+      "meaningThai": "เวลาวิงเวียนไม่สามารถขับรถได้"
+    }
+  ]
+},
+{
+  "id": "health-074",
+  "chinese": "皮疹",
+  "pinyin": "pí zhěn",
+  "meaning": "Rash; Skin eruption",
+  "meaningThai": "ผื่น",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "过敏引起皮疹。",
+      "pinyin": "Guò mǐn yǐn qǐ pí zhěn.",
+      "meaning": "Allergies cause rashes.",
+      "meaningThai": "การแพ้ทำให้เกิดผื่น"
+    }
+  ]
+},
+{
+  "id": "health-075",
+  "chinese": "哮喘",
+  "pinyin": "xiào chuǎn",
+  "meaning": "Asthma",
+  "meaningThai": "หอบหืด",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "哮喘患者需要带吸入器。",
+      "pinyin": "Xiào chuǎn huàn zhě xū yào dài xī rù qì.",
+      "meaning": "Asthma patients need to carry an inhaler.",
+      "meaningThai": "ผู้ป่วยหอบหืดต้องพกยาสูดพ่น"
+    }
+  ]
+},
+{
+  "id": "health-076",
+  "chinese": "中风",
+  "pinyin": "zhòng fēng",
+  "meaning": "Stroke",
+  "meaningThai": "โรคหลอดเลือดสมอง",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "老年人中风风险较高。",
+      "pinyin": "Lǎo nián rén zhòng fēng fēng xiǎn jiào gāo.",
+      "meaning": "Elderly people have a higher risk of stroke.",
+      "meaningThai": "ผู้สูงอายุมีความเสี่ยงโรคหลอดเลือดสมองสูง"
+    }
+  ]
+},
+{
+  "id": "health-077",
+  "chinese": "肝炎",
+  "pinyin": "gān yán",
+  "meaning": "Hepatitis",
+  "meaningThai": "ตับอักเสบ",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "接种疫苗可以预防肝炎。",
+      "pinyin": "Jiē zhǒng yì miáo kě yǐ yù fáng gān yán.",
+      "meaning": "Vaccination can prevent hepatitis.",
+      "meaningThai": "การฉีดวัคซีนสามารถป้องกันตับอักเสบได้"
+    }
+  ]
+},
+{
+  "id": "health-078",
+  "chinese": "肺炎",
+  "pinyin": "fèi yán",
+  "meaning": "Pneumonia",
+  "meaningThai": "ปอดบวม",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "肺炎需要及时治疗。",
+      "pinyin": "Fèi yán xū yào jí shí zhì liáo.",
+      "meaning": "Pneumonia requires timely treatment.",
+      "meaningThai": "ปอดบวมต้องรักษาทันเวลา"
+    }
+  ]
+},
+{
+  "id": "health-079",
+  "chinese": "贫血",
+  "pinyin": "pín xuè",
+  "meaning": "Anemia",
+  "meaningThai": "โลหิตจาง",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "贫血的人会感到疲劳。",
+      "pinyin": "Pín xuè de rén huì gǎn dào pí láo.",
+      "meaning": "Anemic people feel tired.",
+      "meaningThai": "คนโลหิตจางจะรู้สึกเหนื่อยล้า"
+    }
+  ]
+},
+{
+  "id": "health-080",
+  "chinese": "传染病",
+  "pinyin": "chuán rǎn bìng",
+  "meaning": "Infectious disease",
+  "meaningThai": "โรคติดต่อ",
+  "category": "health",
+  "subcategory": "illness",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "预防传染病要勤洗手。",
+      "pinyin": "Yù fáng chuán rǎn bìng yào qín xǐ shǒu.",
+      "meaning": "Wash hands frequently to prevent infectious diseases.",
+      "meaningThai": "ป้องกันโรคติดต่อต้องล้างมือบ่อยๆ"
+    }
+  ]
+},
+{
+  "id": "health-081",
+  "chinese": "俯卧撑",
+  "pinyin": "fǔ wò chēng",
+  "meaning": "Push-up",
+  "meaningThai": "วิดพื้น",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "每天做五十个俯卧撑。",
+      "pinyin": "Měi tiān zuò wǔ shí gè fǔ wò chēng.",
+      "meaning": "Do fifty push-ups every day.",
+      "meaningThai": "ทำวิดพื้นห้าสิบครั้งทุกวัน"
+    }
+  ]
+},
+{
+  "id": "health-082",
+  "chinese": "深蹲",
+  "pinyin": "shēn dūn",
+  "meaning": "Squat",
+  "meaningThai": "สควอท",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "深蹲锻炼大腿肌肉。",
+      "pinyin": "Shēn dūn duàn liàn dà tuǐ jī ròu.",
+      "meaning": "Squats exercise the thigh muscles.",
+      "meaningThai": "สควอทบริหารกล้ามเนื้อต้นขา"
+    }
+  ]
+},
+{
+  "id": "health-083",
+  "chinese": "引体向上",
+  "pinyin": "yǐn tǐ xiàng shàng",
+  "meaning": "Pull-up",
+  "meaningThai": "ดึงข้อ",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "引体向上需要手臂力量。",
+      "pinyin": "Yǐn tǐ xiàng shàng xū yào shǒu bì lì liàng.",
+      "meaning": "Pull-ups require arm strength.",
+      "meaningThai": "การดึงข้อต้องใช้แรงแขน"
+    }
+  ]
+},
+{
+  "id": "health-084",
+  "chinese": "平板支撑",
+  "pinyin": "píng bǎn zhī chēng",
+  "meaning": "Plank",
+  "meaningThai": "แพลงก์",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "平板支撑锻炼核心肌群。",
+      "pinyin": "Píng bǎn zhī chēng duàn liàn hé xīn jī qún.",
+      "meaning": "The plank exercise strengthens the core.",
+      "meaningThai": "แพลงก์บริหารกล้ามเนื้อแกนกลาง"
+    }
+  ]
+},
+{
+  "id": "health-085",
+  "chinese": "慢跑",
+  "pinyin": "màn pǎo",
+  "meaning": "Jogging",
+  "meaningThai": "วิ่งเหยาะ",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "慢跑是最简单的有氧运动。",
+      "pinyin": "Màn pǎo shì zuì jiǎn dān de yǒu yǎng yùn dòng.",
+      "meaning": "Jogging is the simplest aerobic exercise.",
+      "meaningThai": "วิ่งเหยาะเป็นการออกกำลังกายแบบคาร์ดิโอที่ง่ายที่สุด"
+    }
+  ]
+},
+{
+  "id": "health-086",
+  "chinese": "举重",
+  "pinyin": "jǔ zhòng",
+  "meaning": "Weightlifting",
+  "meaningThai": "ยกน้ำหนัก",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "举重可以增强力量。",
+      "pinyin": "Jǔ zhòng kě yǐ zēng qiáng lì liàng.",
+      "meaning": "Weightlifting can increase strength.",
+      "meaningThai": "การยกน้ำหนักช่วยเพิ่มความแข็งแรง"
+    }
+  ]
+},
+{
+  "id": "health-087",
+  "chinese": "拉伸运动",
+  "pinyin": "lā shēn yùn dòng",
+  "meaning": "Stretching exercise",
+  "meaningThai": "การยืดเหยียด",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "运动前后都要做拉伸运动。",
+      "pinyin": "Yùn dòng qián hòu dōu yào zuò lā shēn yùn dòng.",
+      "meaning": "Do stretching before and after exercise.",
+      "meaningThai": "ต้องยืดเหยียดก่อนและหลังออกกำลังกาย"
+    }
+  ]
+},
+{
+  "id": "health-088",
+  "chinese": "普拉提",
+  "pinyin": "pǔ lā tí",
+  "meaning": "Pilates",
+  "meaningThai": "พิลาทิส",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "普拉提改善身体姿态。",
+      "pinyin": "Pǔ lā tí gǎi shàn shēn tǐ zī tài.",
+      "meaning": "Pilates improves body posture.",
+      "meaningThai": "พิลาทิสช่วยปรับปรุงท่าทางร่างกาย"
+    }
+  ]
+},
+{
+  "id": "health-089",
+  "chinese": "骑行",
+  "pinyin": "qí xíng",
+  "meaning": "Cycling",
+  "meaningThai": "ปั่นจักรยาน",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "骑行是一种绿色出行方式。",
+      "pinyin": "Qí xíng shì yī zhǒng lǜ sè chū xíng fāng shì.",
+      "meaning": "Cycling is a green way to travel.",
+      "meaningThai": "การปั่นจักรยานเป็นวิธีการเดินทางที่เป็นมิตรต่อสิ่งแวดล้อม"
+    }
+  ]
+},
+{
+  "id": "health-090",
+  "chinese": "登山运动",
+  "pinyin": "dēng shān yùn dòng",
+  "meaning": "Mountaineering",
+  "meaningThai": "การปีนเขา",
+  "category": "health",
+  "subcategory": "exercise",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "登山运动需要很好的体力。",
+      "pinyin": "Dēng shān yùn dòng xū yào hěn hǎo de tǐ lì.",
+      "meaning": "Mountaineering requires great physical strength.",
+      "meaningThai": "การปีนเขาต้องใช้กำลังมาก"
+    }
+  ]
+},
+{
+  "id": "health-091",
+  "chinese": "卡路里",
+  "pinyin": "kǎ lù lǐ",
+  "meaning": "Calorie",
+  "meaningThai": "แคลอรี่",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "每天需要摄入多少卡路里？",
+      "pinyin": "Měi tiān xū yào shè rù duō shao kǎ lù lǐ?",
+      "meaning": "How many calories do we need each day?",
+      "meaningThai": "แต่ละวันต้องรับแคลอรี่เท่าไหร่?"
+    }
+  ]
+},
+{
+  "id": "health-092",
+  "chinese": "抗氧化剂",
+  "pinyin": "kàng yǎng huà jì",
+  "meaning": "Antioxidant",
+  "meaningThai": "สารต้านอนุมูลอิสระ",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "蓝莓富含抗氧化剂。",
+      "pinyin": "Lán méi fù hán kàng yǎng huà jì.",
+      "meaning": "Blueberries are rich in antioxidants.",
+      "meaningThai": "บลูเบอร์รี่มีสารต้านอนุมูลอิสระสูง"
+    }
+  ]
+},
+{
+  "id": "health-093",
+  "chinese": "益生菌",
+  "pinyin": "yì shēng jūn",
+  "meaning": "Probiotics",
+  "meaningThai": "โปรไบโอติก",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "酸奶含有益生菌。",
+      "pinyin": "Suān nǎi hán yǒu yì shēng jūn.",
+      "meaning": "Yogurt contains probiotics.",
+      "meaningThai": "โยเกิร์ตมีโปรไบโอติก"
+    }
+  ]
+},
+{
+  "id": "health-094",
+  "chinese": "钠",
+  "pinyin": "nà",
+  "meaning": "Sodium",
+  "meaningThai": "โซเดียม",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "摄入过多钠对心脏不好。",
+      "pinyin": "Shè rù guò duō nà duì xīn zàng bù hǎo.",
+      "meaning": "Too much sodium is bad for the heart.",
+      "meaningThai": "รับโซเดียมมากเกินไปไม่ดีต่อหัวใจ"
+    }
+  ]
+},
+{
+  "id": "health-095",
+  "chinese": "血糖",
+  "pinyin": "xuè táng",
+  "meaning": "Blood sugar",
+  "meaningThai": "น้ำตาลในเลือด",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "糖尿病患者要控制血糖。",
+      "pinyin": "Táng niào bìng huàn zhě yào kòng zhì xuè táng.",
+      "meaning": "Diabetes patients need to control blood sugar.",
+      "meaningThai": "ผู้ป่วยเบาหวานต้องควบคุมน้ำตาลในเลือด"
+    }
+  ]
+},
+{
+  "id": "health-096",
+  "chinese": "维生素D",
+  "pinyin": "wéi shēng sù D",
+  "meaning": "Vitamin D",
+  "meaningThai": "วิตามินดี",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "晒太阳可以帮助身体合成维生素D。",
+      "pinyin": "Shài tài yáng kě yǐ bāng zhù shēn tǐ hé chéng wéi shēng sù D.",
+      "meaning": "Sun exposure helps the body produce vitamin D.",
+      "meaningThai": "การตากแดดช่วยให้ร่างกายสังเคราะห์วิตามินดี"
+    }
+  ]
+},
+{
+  "id": "health-097",
+  "chinese": "矿物质水",
+  "pinyin": "kuàng wù zhì shuǐ",
+  "meaning": "Mineral water",
+  "meaningThai": "น้ำแร่",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "矿物质水含有人体需要的微量元素。",
+      "pinyin": "Kuàng wù zhì shuǐ hán yǒu rén tǐ xū yào de wēi liàng yuán sù.",
+      "meaning": "Mineral water contains trace elements needed by the body.",
+      "meaningThai": "น้ำแร่มีธาตุอาหารที่ร่างกายต้องการ"
+    }
+  ]
+},
+{
+  "id": "health-098",
+  "chinese": "膳食补充剂",
+  "pinyin": "shàn shí bǔ chōng jì",
+  "meaning": "Dietary supplement",
+  "meaningThai": "อาหารเสริม",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "服用膳食补充剂前应咨询医生。",
+      "pinyin": "Fú yòng shàn shí bǔ chōng jì qián yīng zī xún yī shēng.",
+      "meaning": "Consult a doctor before taking dietary supplements.",
+      "meaningThai": "ควรปรึกษาแพทย์ก่อนกินอาหารเสริม"
+    }
+  ]
+},
+{
+  "id": "health-099",
+  "chinese": "水分",
+  "pinyin": "shuǐ fèn",
+  "meaning": "Moisture; Hydration",
+  "meaningThai": "ความชื้น, น้ำ",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "每天要补充足够的水分。",
+      "pinyin": "Měi tiān yào bǔ chōng zú gòu de shuǐ fèn.",
+      "meaning": "Replenish enough water every day.",
+      "meaningThai": "แต่ละวันต้องเติมน้ำให้เพียงพอ"
+    }
+  ]
+},
+{
+  "id": "health-100",
+  "chinese": "代谢",
+  "pinyin": "dài xiè",
+  "meaning": "Metabolism",
+  "meaningThai": "เมตาบอลิซึม",
+  "category": "health",
+  "subcategory": "nutrition",
+  "hskLevel": 0,
+  "status": "new",
+  "examples": [
+    {
+      "chinese": "运动可以提高新陈代谢。",
+      "pinyin": "Yùn dòng kě yǐ tí gāo xīn chén dài xiè.",
+      "meaning": "Exercise can boost metabolism.",
+      "meaningThai": "การออกกำลังกายช่วยเพิ่มการเผาผลาญ"
+    }
+  ]
+}
+];
+
