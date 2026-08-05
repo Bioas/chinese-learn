@@ -286,16 +286,17 @@ export default function WordMap() {
 
                 {/* Bilingual metadata — editorial label-prefix pattern */}
                 <div className="px-5 pt-3 pb-5 space-y-1.5">
-                  {state.showPinyin && (
-                    <p className="flex items-baseline gap-2.5">
-                      <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-muted/70 shrink-0" style={{ minWidth: '54px' }}>
-                        Pinyin
-                      </span>
-                      <span className="text-[12px] italic tracking-[0.04em] text-secondary/85 leading-snug">
-                        {word.pinyin}
-                      </span>
-                    </p>
-                  )}
+                  {/* Pinyin always shown on the map card — the showPinyin toggle
+                      is a test-mode preference for Flashcards/Quiz only and has
+                      no visible control on this page (same fix as Vocabulary). */}
+                  <p className="flex items-baseline gap-2.5">
+                    <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-muted/70 shrink-0" style={{ minWidth: '54px' }}>
+                      Pinyin
+                    </span>
+                    <span className="text-[12px] italic tracking-[0.04em] text-secondary/85 leading-snug">
+                      {word.pinyin}
+                    </span>
+                  </p>
                   <p className="flex items-baseline gap-2.5">
                     <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-muted/70 shrink-0" style={{ minWidth: '54px' }}>
                       {state.language === 'th' ? 'แปลว่า' : 'Meaning'}
@@ -543,9 +544,8 @@ export default function WordMap() {
                       <SpeakButton text={popupWord.chinese} variant="icon" size="md" />
                     </div>
                   </div>
-                  {state.showPinyin && (
-                    <p className="text-sm text-secondary/80 italic tracking-wide mt-2">{popupWord.pinyin}</p>
-                  )}
+                  {/* Pinyin always shown in the popup — same rationale as Vocabulary. */}
+                  <p className="text-sm text-secondary/80 italic tracking-wide mt-2">{popupWord.pinyin}</p>
                   <p className="text-base text-primary/90 mt-2 font-medium">{meaning(popupWord)}</p>
 
                   <div className="flex flex-wrap items-center justify-center gap-2 mt-3">
