@@ -265,7 +265,20 @@ export function AppProvider({ children }) {
       const saved = localStorage.getItem('chinese-learn-state');
       if (saved) {
         const parsed = JSON.parse(saved);
-        return { ...initial, ...parsed };
+        // Sanitize — older schemas or interrupted sync writes may have stored
+        // null for these collection fields. Object.values(null) throws, which
+        // would unmount the entire app on first render of Dashboard/WordMap.
+        // Hard-require non-null defaults so no consumer can crash on it.
+        return {
+          ...initial,
+          ...parsed,
+          wordStatuses: parsed.wordStatuses || {},
+          learningHistory: parsed.learningHistory || {},
+          convStatuses: parsed.convStatuses || {},
+          savedWordIds: Array.isArray(parsed.savedWordIds) ? parsed.savedWordIds : [],
+          savedConvIds: Array.isArray(parsed.savedConvIds) ? parsed.savedConvIds : [],
+          pinnedSubcategories: Array.isArray(parsed.pinnedSubcategories) ? parsed.pinnedSubcategories : [],
+        };
       }
     } catch {}
     return initial;

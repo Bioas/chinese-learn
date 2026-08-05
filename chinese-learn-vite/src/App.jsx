@@ -1,5 +1,5 @@
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import Navigation from './components/Navigation'
 import ThemeSplash from './components/ThemeSplash'
 
@@ -32,6 +32,57 @@ function PageLoader() {
   )
 }
 
+// Lightweight error boundary so an unhandled throw in any lazy chunk or
+// context consumer renders a recoverable fallback UI instead of leaving the
+// user staring at a blank white page (root unmounts entirely without this).
+class AppErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+  componentDidCatch(error, info) {
+    // eslint-disable-next-line no-console
+    console.error('AppErrorBoundary caught:', error, info?.componentStack);
+  }
+  handleReset = () => {
+    try {
+      // Clear stale per-device state that may have caused the crash; keep
+      // auth tokens so the user stays signed in.
+      localStorage.removeItem('chinese-learn-state');
+      sessionStorage.removeItem('splashShown');
+    } catch {}
+    this.setState({ error: null });
+    // Force a full reload so the next paint re-runs initial state cleanly.
+    window.location.reload();
+  };
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="min-h-screen flex items-center justify-center p-6" style={{ backgroundColor: 'var(--bg-primary)' }}>
+          <div className="glass-card p-8 max-w-md text-center space-y-4">
+            <p className="text-5xl">🌧️</p>
+            <h1 className="text-xl font-semibold text-primary">Something went wrong</h1>
+            <p className="text-sm text-secondary">
+              The app ran into an unexpected error. Reset local progress to recover — your cloud sync is safe.
+            </p>
+            <button
+              onClick={this.handleReset}
+              className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:scale-105 active:scale-95"
+              style={{ background: 'var(--accent-gradient)' }}
+            >
+              Reset & reload
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showSplash, setShowSplash] = useState(() => {
@@ -61,7 +112,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <AppErrorBoundary>
       {/* Particle background — lazy loaded */}
       <Suspense fallback={null}>
         <ParticleBackground />
@@ -109,6 +160,6 @@ export default function App() {
           <polyline points="18 15 12 9 6 15" />
         </svg>
       </button>
-    </>
+    </AppErrorBoundary>
   )
 }

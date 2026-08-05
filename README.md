@@ -240,6 +240,52 @@ npm install            # install deps
 npm run dev            # vite dev server (default port 5173)
 npm run build          # production build → dist/
 npm run preview        # serve the built dist/ locally
+npm run hsk:sync       # download and hash the pinned HSK 2.0 source snapshot
+npm run hsk:audit      # compare the snapshot with src/data/vocabulary.js
+npm run hsk:review      # create the focused HSK 1–3 review queue
+npm run hsk:sync-and-audit
+                       # refresh the snapshot, then write JSON + Markdown reports
+```
+
+### Automated HSK 2.0 audit
+
+The repository includes a Node-only tool in `chinese-learn-vite/scripts/`.
+It uses the six CSV files declared in `scripts/hsk-source.json`, downloads them
+into `scripts/data/hsk-2.0/`, records SHA-256 hashes in `source-lock.json`, and
+compares normalized Chinese headwords plus HSK levels with the app vocabulary.
+It does **not** modify runtime vocabulary data.
+
+Generated review files are written locally to `chinese-learn-vite/reports/hsk/`:
+
+- `mismatch-report.json` — complete machine-readable queues and provenance.
+- `mismatch-report.md` — concise human-review table.
+- `review-queue-hsk1-3.json` — categorized candidate actions.
+- `review-queue-hsk1-3.md` — focused list for human review.
+
+The HSK 1–3 queue has three categories:
+
+- **Auto-fix candidate** — one app level vs one reference level, with no duplicate app record. It is still only a proposal; no file is changed.
+- **Needs review** — ambiguous levels, duplicates, or words missing from the app/reference.
+- **Ignored app-only** — present in the app but absent from this third-party snapshot; retained for traceability and not treated as an error.
+
+The downloaded CSV files and generated reports are ignored by Git because the
+upstream dataset's redistribution terms are not established here. Commit the
+manifest and `source-lock.json` as provenance; each developer or CI job runs
+`npm run hsk:sync` before auditing.
+
+The comparison reports words missing from either dataset, level mismatches,
+duplicates, invalid source rows, and source hashes. To make CI fail when any
+word-level mismatch exists, run:
+
+```bash
+npm run hsk:audit -- --fail-on-mismatch
+```
+
+The selected source is a **third-party transcription of the legacy 2012 HSK
+2.0 list**, not the current HSK 3.0 standard. A mismatch is therefore a review
+queue, not proof that the app or source is correct. Review the report before
+changing levels, especially where one Chinese form has multiple senses or
+appears at more than one level.
 ```
 
 The build is fast (≈ 7 s) and emits:

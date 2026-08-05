@@ -14,6 +14,7 @@ export const CATEGORIES = [
       { id: 'hsk4', name: 'HSK 4', nameThai: 'HSK 4', icon: 'circle' },
       { id: 'hsk5', name: 'HSK 5', nameThai: 'HSK 5', icon: 'circle' },
       { id: 'hsk6', name: 'HSK 6', nameThai: 'HSK 6', icon: 'circle' },
+      { id: 'hsk7', name: 'HSK 7-9', nameThai: 'HSK 7-9', icon: 'circle' },
     ]
   },
   {
@@ -110,6 +111,7 @@ const SUBCATEGORY_ICONS = {
   hsk4: 'circle',
   hsk5: 'circle',
   hsk6: 'circle',
+  hsk7: 'circle',
   greetings: 'wave',
   food: 'food',
   shopping: 'shopping',
@@ -145,7 +147,26 @@ export function getSubcategoryIcon(subId) {
   return SUBCATEGORY_ICONS[subId] || 'circle';
 }
 
+// Per-category accent colors — single source of truth used by every page
+// (Vocabulary, WordMap, Conversations, Dashboard) for card stripes, badges,
+// eyebrows and popup accents. Keep this in sync with CATEGORIES above.
+export const CATEGORY_COLORS = {
+  hsk: '#f97316',
+  daily: '#e11d48',
+  topics: '#8b5cf6',
+  health: '#f43f5e',
+  education: '#8b5cf6',
+  technology: '#06b6d4',
+  business: '#eab308',
+  nature: '#22c55e',
+};
+
+// Resolve a category id to its accent color; falls back for unknown ids.
+export function getCategoryColor(catId, fallback = '#a89488') {
+  return CATEGORY_COLORS[catId] || fallback;
+}
+
 // Total number of words in VOCABULARY (from vocabulary.js).
 // Kept here as a lightweight constant so Dashboard can display the count
 // without pulling in the 1.1 MB word array.
-export const TOTAL_VOCAB_COUNT = 3018;
+export const TOTAL_VOCAB_COUNT = 11824;

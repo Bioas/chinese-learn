@@ -7,6 +7,7 @@ import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
 import { VOCABULARY } from '../data/vocabulary';
 import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
+import HskLevelBadge from '../components/HskLevelBadge';
 
 const FLASHCARD_INK_CHARS = ['學', '書', '墨', '筆', '紙', '硯', '畫', '文', '字', '詞'];
 
@@ -47,10 +48,14 @@ export default function Flashcards() {
     }
     if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
       const subIds = currentCategory.subcategories.map(s => s.id);
-      words = words.filter(w => subIds.includes(w.subcategory));
+      words = words.filter(w => currentCategory.id === 'hsk'
+        ? subIds.includes(`hsk${w.vocabularyHskLevel ?? w.hskLevel}`)
+        : subIds.includes(w.subcategory));
     }
     if (selectedSubcategories.length > 0) {
-      words = words.filter(w => selectedSubcategories.includes(w.subcategory));
+      words = words.filter(w => currentCategory?.id === 'hsk'
+        ? selectedSubcategories.includes(`hsk${w.vocabularyHskLevel ?? w.hskLevel}`)
+        : selectedSubcategories.includes(w.subcategory));
     }
     if (selectedStatuses.length > 0) {
       words = words.filter(w => {
@@ -186,6 +191,7 @@ export default function Flashcards() {
                       <p className="text-sm text-secondary italic mb-2 tracking-wider">({currentWord.pinyin})</p>
                     )}
                     <p className="text-xl sm:text-2xl font-medium text-center mb-2">{meaning(currentWord)}</p>
+                    <HskLevelBadge word={currentWord} language={state.language} className="mb-2" />
                     <StrokeOrder character={currentWord.chinese} size={80} />
                     {currentWord.examples[0] && (
                       <div className="mt-2 pt-2 border-t border-app text-center w-full max-w-xs">

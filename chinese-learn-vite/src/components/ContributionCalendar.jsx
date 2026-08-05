@@ -91,7 +91,8 @@ export default function ContributionCalendar({ history }) {
           <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="calendar" /> {t('calendar.title')}</h3>
           <p className="text-xs text-secondary mt-0.5">{t('calendar.subtitle')}</p>
         </div>
-        <div className="flex items-center gap-3 text-xs text-secondary">
+        {/* Days/Best stats — desktop: top-right; mobile: shown on the same row as the legend below */}
+        <div className="hidden sm:flex items-center gap-3 text-xs text-secondary">
           <span>{t('calendar.days', { n: totalDays })}</span>
           <span className="w-px h-4 bg-card-hover" />
           <span>{t('calendar.best', { n: longestStreak })}</span>
@@ -122,14 +123,24 @@ export default function ContributionCalendar({ history }) {
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-1.5 mt-3 text-[10px] text-muted">
-        <span>{t('calendar.less')}</span>
-        <div className="w-[10px] h-[10px] rounded-sm bg-gray-200 dark:bg-card-hover" />
-        <div className="w-[10px] h-[10px] rounded-sm bg-green-300 dark:bg-green-900/60" />
-        <div className="w-[10px] h-[10px] rounded-sm bg-green-400 dark:bg-green-700/60" />
-        <div className="w-[10px] h-[10px] rounded-sm bg-green-500 dark:bg-green-500/60" />
-        <div className="w-[10px] h-[10px] rounded-sm bg-green-600 dark:bg-green-400/80" />
-        <span>{t('calendar.more')}</span>
+      {/* Bottom row: mobile stats (left) + legend (right) on the same line */}
+      <div className="flex items-center justify-between gap-3 mt-3">
+        {/* Days/Best stats — mobile only, on the same row as the legend */}
+        <div className="sm:hidden flex items-center gap-3 text-xs text-secondary min-w-0">
+          <span>{t('calendar.days', { n: totalDays })}</span>
+          <span className="w-px h-4 bg-card-hover" />
+          <span>{t('calendar.best', { n: longestStreak })}</span>
+        </div>
+        {/* Legend — Less / squares / More */}
+        <div className="flex items-center gap-1.5 text-[10px] text-muted ml-auto">
+          <span>{t('calendar.less')}</span>
+          <div className="w-[10px] h-[10px] rounded-sm bg-gray-200 dark:bg-card-hover" />
+          <div className="w-[10px] h-[10px] rounded-sm bg-green-300 dark:bg-green-900/60" />
+          <div className="w-[10px] h-[10px] rounded-sm bg-green-400 dark:bg-green-700/60" />
+          <div className="w-[10px] h-[10px] rounded-sm bg-green-500 dark:bg-green-500/60" />
+          <div className="w-[10px] h-[10px] rounded-sm bg-green-600 dark:bg-green-400/80" />
+          <span>{t('calendar.more')}</span>
+        </div>
       </div>
     </div>
   );

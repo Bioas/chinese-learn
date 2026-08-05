@@ -6,6 +6,7 @@ import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
 import { VOCABULARY } from '../data/vocabulary';
 import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
+import HskLevelBadge from '../components/HskLevelBadge';
 
 const QUIZ_INK_CHARS = ['問', '答', '考', '試', '学', '習', '知', '解', '思', '得'];
 
@@ -45,11 +46,15 @@ export default function Quiz() {
 
     if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
       const subIds = currentCategory.subcategories.map(s => s.id);
-      words = words.filter(w => subIds.includes(w.subcategory));
+      words = words.filter(w => currentCategory.id === 'hsk'
+        ? subIds.includes(`hsk${w.vocabularyHskLevel ?? w.hskLevel}`)
+        : subIds.includes(w.subcategory));
     }
 
     if (selectedSubcategories.length > 0) {
-      words = words.filter(w => selectedSubcategories.includes(w.subcategory));
+      words = words.filter(w => currentCategory?.id === 'hsk'
+        ? selectedSubcategories.includes(`hsk${w.vocabularyHskLevel ?? w.hskLevel}`)
+        : selectedSubcategories.includes(w.subcategory));
     }
 
     if (selectedStatuses.length > 0) {
@@ -196,9 +201,9 @@ export default function Quiz() {
                     {currentWord.chinese}
                   </span>
                   {state.showPinyin && (
-                    <p className="text-base text-secondary italic tracking-wider mb-3">({currentWord.pinyin})</p>
-                  )}
+                    <p className="text-base text-secondary italic tracking-wider mb-3">({currentWord.pinyin})</p>                  )}
                   <SpeakButton text={currentWord.chinese} size="md" />
+                  <HskLevelBadge word={currentWord} language={state.language} className="mt-3" />
                 </div>
               )}
 
@@ -207,9 +212,9 @@ export default function Quiz() {
                   <p className="text-xs text-secondary tracking-wider mb-3">{t('quiz.questionPinyin')}</p>
                   <span className="block text-5xl font-light mb-2" style={{ fontFamily: "'Noto Sans SC', serif" }}>
                     {currentWord.chinese}
-                  </span>
-                  <p className="text-base text-secondary mb-3">{meaning(currentWord)}</p>
+                  </span>                  <p className="text-base text-secondary mb-3">{meaning(currentWord)}</p>
                   <SpeakButton text={currentWord.chinese} size="md" />
+                  <HskLevelBadge word={currentWord} language={state.language} className="mt-3" />
                 </div>
               )}
 
@@ -218,9 +223,9 @@ export default function Quiz() {
                   <p className="text-xs text-secondary tracking-wider mb-3">{t('quiz.questionChinese')}</p>
                   <p className="text-2xl font-medium mb-2">{meaning(currentWord)}</p>
                   {state.showPinyin && (
-                    <p className="text-base text-secondary italic tracking-wider mb-3">({currentWord.pinyin})</p>
-                  )}
+                    <p className="text-base text-secondary italic tracking-wider mb-3">({currentWord.pinyin})</p>                  )}
                   <SpeakButton text={currentWord.chinese} size="md" />
+                  <HskLevelBadge word={currentWord} language={state.language} className="mt-3" />
                 </div>
               )}
 

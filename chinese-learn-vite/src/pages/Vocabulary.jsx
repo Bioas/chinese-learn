@@ -7,7 +7,8 @@ import StrokeOrder from '../components/StrokeOrder';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
 import { VOCABULARY } from '../data/vocabulary';
-import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
+import { CATEGORIES, getSubcategoryIcon, getCategoryColor } from '../data/categories';
+import HskLevelBadge from '../components/HskLevelBadge';
 
 const VOCAB_INK_CHARS = ['詞', '字', '典', '学', '習', '句', '文', '義', '读', '書'];
 
@@ -65,17 +66,60 @@ function shuffleArray(arr) {
   return a;
 }
 
+// Per-status accent colors — same palette as the Dashboard analytics & word-card status buttons.
+const STATUS_META = [
+  { id: 'new', color: '#64748b' },
+  { id: 'learning', color: '#eab308' },
+  { id: 'reviewing', color: '#ef4444' },
+  { id: 'mastered', color: '#22c55e' },
+];
+
+
+// Localized subcategory label e.g. "Food & Drink" (en) / "อาหารและเครื่องดื่ม" (th).
+// Falls back to the raw subcategory id (e.g. "hsk5") if the subcategory is unknown.
+function getSubcategoryLabel(word, language) {
+  const cat = CATEGORIES.find((c) => c.id === word?.category);
+  const sub = cat?.subcategories.find((s) => s.id === word?.subcategory);
+  return sub ? (language === 'th' ? sub.nameThai : sub.name) : word?.subcategory || '';
+}
+
+// Per-part-of-speech accent colors — popup badges echo the HSK badge style with a distinct hue each.
+const POS_META = {
+  noun: '#f97316',
+  verb: '#22c55e',
+  adjective: '#8b5cf6',
+  adverb: '#06b6d4',
+  particle: '#64748b',
+  'measure word': '#eab308',
+  numeral: '#ec4899',
+  pronoun: '#6366f1',
+  preposition: '#14b8a6',
+  conjunction: '#f43f5e',
+  expression: '#f59e0b',
+  interjection: '#ef4444',
+  prefix: '#0ea5e9',
+  suffix: '#84cc16',
+  'quantity expression': '#a855f7',
+  other: '#94a3b8',
+};
+
 export default function Vocabulary() {
   const { t, meaning } = useTranslation();
+  const formatPartOfSpeech = useCallback((part) => {
+    const rawPart = String(part ?? '').trim();
+    const key = `vocab.pos.${rawPart.toLowerCase()}`;
+    const translated = t(key);
+    return translated === key ? rawPart : translated;
+  }, [t]);
   const { state, dispatch, togglePinned, studyWord, toggleSavedWord } = useApp();
-  const [selectedCategory, setSelectedCategory] = useState('hsk');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [showSaved, setShowSaved] = useState(false);
   const [popupWord, setPopupWord] = useState(null);
+  const [showAllExamples, setShowAllExamples] = useState(false);
   const [page, setPage] = useState(1);
-  // Bump this counter to force the filtered-words memo to re-shuffle on demand (manual reshuffle button).
-  const [shuffleKey, setShuffleKey] = useState(0);
   // Responsive pagination: 20 cards on mobile (< 768px), 60 cards on desktop
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
@@ -89,6 +133,10 @@ export default function Vocabulary() {
   const ITEMS_PER_PAGE = isMobile ? 20 : 60;
 
   useEffect(() => {
+    setShowAllExamples(false);
+  }, [popupWord?.id]);
+
+  useEffect(() => {
     if (!popupWord) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -100,7 +148,12 @@ export default function Vocabulary() {
     };
   }, [popupWord]);
 
-  useEffect(() => { setPage(1); }, [selectedSubcategories, selectedStatuses, showSaved, isMobile]);
+  useEffect(() => { setPage(1); }, [selectedCategory, selectedSubcategories, selectedStatuses, searchTerm, showSaved, isMobile]);
+
+  // Scroll back to the top whenever the page changes, so the user doesn't stay at the bottom
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
 
   const currentCategory = useMemo(
     () => CATEGORIES.find(c => c.id === selectedCategory),
@@ -111,39 +164,73 @@ export default function Vocabulary() {
   // so bookmark/status toggles won't re-shuffle the deck below.
   const intentWords = useMemo(() => {
     let words = VOCABULARY;
+    if (searchTerm) {
+      const query = searchTerm.trim().toLowerCase();
+      if (query) {
+        words = words.filter(w =>
+          (w.chinese && w.chinese.includes(query)) ||
+          (w.pinyin && w.pinyin.toLowerCase().includes(query)) ||
+          (w.meaning && w.meaning.toLowerCase().includes(query)) ||
+          (w.meaningThai && w.meaningThai.toLowerCase().includes(query))
+        );
+      }
+    }
     if (!showSaved && selectedSubcategories.length === 0 && currentCategory) {
       // No subcategory selected → show ALL words from the current category
       const subIds = currentCategory.subcategories.map(s => s.id);
-      words = words.filter(w => subIds.includes(w.subcategory));
+      words = words.filter(w => currentCategory.id === 'hsk'
+        ? subIds.includes(`hsk${w.vocabularyHskLevel ?? w.hskLevel}`)
+        : subIds.includes(w.subcategory));
     }
     if (selectedSubcategories.length > 0) {
-      words = words.filter(w => selectedSubcategories.includes(w.subcategory));
+      words = words.filter(w => currentCategory?.id === 'hsk'
+        ? selectedSubcategories.includes(`hsk${w.vocabularyHskLevel ?? w.hskLevel}`)
+        : selectedSubcategories.includes(w.subcategory));
     }
-    // Deduplicate by Chinese text — the vocabulary has the same `chinese`
-    // word across multiple HSK levels with different IDs (e.g. 可能 as hsk2-054,
-    // hsk3-109, hsk4-069). Without this, the grid would show the same card
-    // multiple times for one logical word.
-    const seenVocabChinese = new Set();
+    // Deduplicate identical vocabulary entries, not Chinese characters alone.
+    // A single character can represent different words/senses, e.g. HSK 2
+    // has 过 (guò, verb) and 过 (guo, particle), plus 花 (verb/noun).
+    // Keep those cards separate while still collapsing the same entry repeated
+    // across HSK levels (e.g. 可能 with the same pinyin, meaning, and POS).
+    const seenVocabEntries = new Set();
     words = words.filter(w => {
-      if (seenVocabChinese.has(w.chinese)) return false;
-      seenVocabChinese.add(w.chinese);
+      const partOfSpeech = Array.isArray(w.partOfSpeech)
+        ? w.partOfSpeech.join('|')
+        : (w.partOfSpeech || '');
+      const entryKey = [w.chinese, w.pinyin, w.meaning, partOfSpeech].join('\\u0000');
+      if (seenVocabEntries.has(entryKey)) return false;
+      seenVocabEntries.add(entryKey);
       return true;
     });
     return words;
-  }, [showSaved, selectedSubcategories, currentCategory]);
+  }, [searchTerm, showSaved, selectedSubcategories, currentCategory]);
 
-  // Layer 2: shuffle — re-shuffles ONLY when filter-intent (category/subcategory/showSaved flag) changes,
-  // or when user explicitly clicks the Shuffle button. Bookmark + status toggles do NOT re-shuffle.
+  // Layer 2: shuffle — re-shuffles ONLY when filter-intent (category/subcategory/showSaved flag) changes.
+  // Bookmark + status toggles do NOT re-shuffle.
   const shuffledIntent = useMemo(() => {
     return shuffleArray(intentWords);
-  }, [intentWords, shuffleKey]);
+  }, [intentWords]);
 
   // Layer 3: apply state-dependent filters ON TOP of the stable shuffled order (showSaved + status).
-  const filteredWords = useMemo(() => {
-    let words = shuffledIntent;
-    if (showSaved) {
-      words = words.filter(w => state.savedWordIds.includes(w.id));
+  // Base view = shuffled intent with saved-filtering applied (status not yet) —
+  // used both for the per-status counts and the final filtered list.
+  const savedFilteredWords = useMemo(() => {
+    if (!showSaved) return shuffledIntent;
+    return shuffledIntent.filter(w => state.savedWordIds.includes(w.id));
+  }, [shuffledIntent, showSaved, state.savedWordIds]);
+
+  // Per-status word counts within the current view (category/search/saved applied, status not yet).
+  const statusCounts = useMemo(() => {
+    const counts = { new: 0, learning: 0, reviewing: 0, mastered: 0 };
+    for (const w of savedFilteredWords) {
+      const s = state.wordStatuses[w.id] || 'new';
+      counts[s] = (counts[s] || 0) + 1;
     }
+    return counts;
+  }, [savedFilteredWords, state.wordStatuses]);
+
+  const filteredWords = useMemo(() => {
+    let words = savedFilteredWords;
     if (selectedStatuses.length > 0) {
       words = words.filter(w => {
         const status = state.wordStatuses[w.id] || 'new';
@@ -151,7 +238,7 @@ export default function Vocabulary() {
       });
     }
     return words;
-  }, [shuffledIntent, showSaved, selectedStatuses, state.wordStatuses, state.savedWordIds]);
+  }, [savedFilteredWords, selectedStatuses, state.wordStatuses]);
 
   const totalPages = useMemo(() => Math.max(1, Math.ceil(filteredWords.length / ITEMS_PER_PAGE)), [filteredWords, ITEMS_PER_PAGE]);
   const paginatedWords = useMemo(() => {
@@ -210,87 +297,171 @@ export default function Vocabulary() {
         </div>
       )}
 
-      <div className="w-full md:w-fit relative z-10 animate-slide-up">
-        <ScrollFadeRow className="md:flex-wrap md:overflow-visible">
-          {CATEGORIES.map(cat => (
+      {/* Search + category filters — mirror the Word Map filter treatment. */}
+      <div className="glass-card p-4 animate-slide-up relative z-10">
+        <div className="relative mb-4">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder={t('vocab.searchPlaceholder')}
+            className="input-field pl-10"
+          />
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm">
+            <Icon name="search" />
+          </span>
+          {searchTerm && (
             <button
-              key={cat.id}
+              type="button"
+              onClick={() => setSearchTerm('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-primary transition-colors text-sm"
+              aria-label={t('vocab.clearSearch')}
+            >
+              <Icon name="xmark" />
+            </button>
+          )}
+        </div>
+
+        <div className="relative min-w-0 mb-2">
+          <ScrollFadeRow className="md:flex-wrap md:overflow-visible">
+            <button
+              type="button"
               onClick={() => {
-                setSelectedCategory(cat.id);
+                setSelectedCategory('all');
                 setSelectedSubcategories([]);
                 setShowSaved(false);
               }}
-              className={`chip flex items-center gap-1.5 snap-start shrink-0 ${selectedCategory === cat.id && !showSaved ? 'active' : ''}`}
+              className={`chip text-xs snap-start shrink-0 ${selectedCategory === 'all' && selectedSubcategories.length === 0 && !searchTerm && !showSaved ? 'active' : ''}`}
             >
-              <Icon name={cat.icon} />
-              <span>{state.language === 'th' ? cat.nameThai : cat.name}</span>
+              {t('vocab.allCategories')}
             </button>
-          ))}
-          <button
-            onClick={() => {
-              setShowSaved(true);
-              setSelectedSubcategories([]);
-            }}
-            className={`chip flex items-center gap-1.5 snap-start shrink-0 ${showSaved ? 'active' : ''}`}
-          >
-            <Icon name="bookmark" />
-            <span>{t('vocab.saved')}</span>
-          </button>
-        </ScrollFadeRow>
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setSelectedCategory(cat.id);
+                  setSelectedSubcategories([]);
+                  setShowSaved(false);
+                }}
+                className={`chip text-xs snap-start shrink-0 ${selectedCategory === cat.id && !showSaved ? 'active' : ''}`}
+              >
+                <Icon name={cat.icon} className="text-[10px] mr-1" />
+                {state.language === 'th' ? cat.nameThai : cat.name}
+              </button>
+            ))}
+            <button
+              onClick={() => {
+                setShowSaved(true);
+                setSelectedSubcategories([]);
+              }}
+              className={`chip text-xs snap-start shrink-0 ${showSaved ? 'active' : ''}`}
+            >
+              <Icon name="bookmark" className="text-[10px] mr-1" />
+              {t('vocab.saved')}
+            </button>
+          </ScrollFadeRow>
+        </div>
 
-      </div>
-
-      {!showSaved && currentCategory && (
-        <div className="flex flex-wrap gap-2 animate-fade-in relative z-10">
-          {currentCategory.subcategories.map(sub => {
-            const isPinned = state.pinnedSubcategories.includes(sub.id);
-            return (
-              <div key={sub.id} className="relative group">
+        {/* Keep this row at a stable height so switching All/HSK never moves the content below. */}
+        <div className="relative min-w-0 mt-2 h-8">
+          <ScrollFadeRow className="h-8 overflow-x-auto">
+            {!showSaved && currentCategory?.subcategories.map(sub => {
+              const isPinned = state.pinnedSubcategories.includes(sub.id);
+              return (
                 <button
+                  key={sub.id}
                   onClick={() => toggleSubcategory(sub.id)}
                   onDoubleClick={() => togglePinned(sub.id)}
-                  className={`chip flex items-center gap-1.5 ${
+                  className={`chip text-xs snap-start shrink-0 ${
                     selectedSubcategories.includes(sub.id) ? 'active' : ''
                   } ${isPinned ? 'pinned' : ''}`}
                   title={isPinned ? t('vocab.doubleClickUnpin') : t('vocab.doubleClickPin')}
                 >
-                  <Icon name={sub.icon} />
-                  <span>{state.language === 'th' ? sub.nameThai : sub.name}</span>
-                  {isPinned && <Icon name="pin" className="text-[10px] text-pink-400" />}
+                  <Icon name={sub.icon} className="text-[10px] mr-1" />
+                  {state.language === 'th' ? sub.nameThai : sub.name}
+                  {isPinned && <Icon name="pin" className="text-[10px] text-pink-400 ml-1" />}
                 </button>
-              </div>
-            );
-          })}
+              );
+            })}
+          </ScrollFadeRow>
         </div>
-      )}
+      </div>
 
       <div className="glass-card p-4 animate-fade-in relative z-10">
-        <div className="flex md:flex-nowrap flex-wrap items-center gap-x-4 gap-y-2">
-          <span className="text-sm text-secondary shrink-0">{t('vocab.filterByStatus')}</span>
-          <ScrollFadeRow className="md:overflow-visible">
-            {['new', 'learning', 'reviewing', 'mastered'].map(status => (
-              <button
-                key={status}
-                onClick={() => toggleStatus(status)}
-                className={`chip text-xs snap-start shrink-0 ${selectedStatuses.includes(status) ? 'active' : ''}`}
-              >
-                {t('status.' + status)}
-              </button>
-            ))}
-          </ScrollFadeRow>
-          {/* Reshuffle button — re-randomizes order of currently-filtered vocab */}
+        <div className="relative min-w-0">
+          <ScrollFadeRow className="md:flex-wrap md:overflow-visible">
+          {/* All — clears every status filter */}
           <button
-            onClick={() => setShuffleKey(k => k + 1)}
-            className="ml-auto flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
-            title={state.language === 'th' ? 'สุ่มลำดับคำศัพท์ใหม่' : 'Reshuffle order'}
+            type="button"
+            onClick={() => setSelectedStatuses([])}
+            aria-pressed={selectedStatuses.length === 0}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 active:scale-95 snap-start shrink-0"
+            style={{
+              background: selectedStatuses.length === 0 ? 'var(--accent-gradient)' : 'color-mix(in srgb, var(--bg-card) 70%, transparent)',
+              border: `1px solid ${selectedStatuses.length === 0 ? 'transparent' : 'var(--border-color)'}`,
+              color: selectedStatuses.length === 0 ? '#fff' : 'var(--text-secondary)',
+              boxShadow: selectedStatuses.length === 0 ? '0 2px 10px var(--accent-glow)' : 'none',
+            }}
           >
-            <Icon name="shuffle" className="text-sm" />
-            <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
+            <span>{t('vocab.allStatuses')}</span>
+            <span
+              className="text-[10px] font-semibold tabular-nums px-1.5 py-px rounded-full"
+              style={{
+                background: selectedStatuses.length === 0 ? 'rgba(255,255,255,0.22)' : 'color-mix(in srgb, var(--text-muted) 12%, transparent)',
+                color: selectedStatuses.length === 0 ? '#fff' : 'var(--text-muted)',
+              }}
+            >
+              {savedFilteredWords.length}
+            </span>
           </button>
+
+          {STATUS_META.map(({ id, color }) => {
+            const active = selectedStatuses.includes(id);
+            const textColor = active ? `color-mix(in srgb, ${color} 60%, var(--text-primary))` : 'var(--text-secondary)';
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => toggleStatus(id)}
+                aria-pressed={active}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 active:scale-95 snap-start shrink-0"
+                style={{
+                  background: active ? `color-mix(in srgb, ${color} 15%, transparent)` : 'color-mix(in srgb, var(--bg-card) 70%, transparent)',
+                  border: `1px solid ${active ? `color-mix(in srgb, ${color} 45%, transparent)` : 'var(--border-color)'}`,
+                  color: textColor,
+                  boxShadow: active ? `0 0 0 3px color-mix(in srgb, ${color} 12%, transparent)` : 'none',
+                }}
+                onMouseEnter={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.borderColor = `color-mix(in srgb, ${color} 45%, transparent)`;
+                    e.currentTarget.style.background = `color-mix(in srgb, ${color} 8%, transparent)`;
+                    e.currentTarget.style.color = `color-mix(in srgb, ${color} 65%, var(--text-primary))`;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.borderColor = 'var(--border-color)';
+                    e.currentTarget.style.background = 'color-mix(in srgb, var(--bg-card) 70%, transparent)';
+                    e.currentTarget.style.color = 'var(--text-secondary)';
+                  }
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
+                <span>{t('status.' + id)}</span>
+                <span
+                  className="text-[10px] font-semibold tabular-nums px-1.5 py-px rounded-full"
+                  style={{
+                    background: active ? `color-mix(in srgb, ${color} 22%, transparent)` : 'color-mix(in srgb, var(--text-muted) 12%, transparent)',
+                    color: active ? textColor : 'var(--text-muted)',
+                  }}
+                >
+                  {statusCounts[id]}
+                </span>
+              </button>
+            );
+          })}
+          </ScrollFadeRow>
         </div>
-        <span className="absolute top-4 right-4 text-[10px] text-muted tracking-wider">
-          {t('vocab.wordCount', { n: filteredWords.length })}
-        </span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 animate-fade-in relative z-10">
@@ -312,7 +483,7 @@ export default function Vocabulary() {
         ) : (
           paginatedWords.map((word, index) => {
             const s = state.wordStatuses[word.id] || 'new';
-            const catColor = word.category === 'hsk' ? 'var(--accent-from)' : word.category === 'daily' ? 'var(--accent-to)' : word.category === 'health' ? '#f43f5e' : word.category === 'education' ? '#8b5cf6' : word.category === 'technology' ? '#06b6d4' : word.category === 'business' ? '#eab308' : word.category === 'nature' ? '#22c55e' : 'var(--text-muted)';
+            const catColor = getCategoryColor(word.category);
             return (
               <div
                 key={word.id}
@@ -346,7 +517,7 @@ export default function Vocabulary() {
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-[10px] font-medium tracking-wider uppercase" style={{color: `color-mix(in srgb, ${catColor} 70%, var(--text-secondary))`}}>
                       <Icon name={getSubcategoryIcon(word.subcategory)} className="text-[9px] mr-1" />
-                      {word.subcategory}
+                      {getSubcategoryLabel(word, state.language)}
                     </span>
                   </div>
 
@@ -593,10 +764,63 @@ export default function Vocabulary() {
               <p className="text-xs sm:text-base text-primary/90 mt-2 font-medium whitespace-nowrap">
                 {meaning(popupWord)}
               </p>
-              <div className="flex items-center justify-center gap-2 mt-3">
-                <span className="text-[11px] px-3 py-1 rounded-full" style={{background: 'color-mix(in srgb, var(--accent-from) 15%, transparent)', color: 'var(--accent-from)'}}>
-                  {popupWord.hskLevel > 0 ? `HSK ${popupWord.hskLevel}` : popupWord.subcategory}
-                </span>
+              <div className="flex flex-wrap items-center justify-center gap-2 mt-3">
+                {popupWord.category !== 'hsk' && (() => {
+                  const subLabel = getSubcategoryLabel(popupWord, state.language);
+                  const catColor = getCategoryColor(popupWord.category);
+                  return (
+                    <span
+                      className="inline-flex items-center gap-1 text-[10px] px-2.5 py-1 rounded-full whitespace-nowrap"
+                      style={{
+                        background: `color-mix(in srgb, ${catColor} 14%, transparent)`,
+                        color: `color-mix(in srgb, ${catColor} 70%, var(--text-primary))`,
+                        border: `1px solid color-mix(in srgb, ${catColor} 26%, transparent)`,
+                      }}
+                      title={(() => {
+                        const cat = CATEGORIES.find((c) => c.id === popupWord.category);
+                        return cat ? (state.language === 'th' ? cat.nameThai : cat.name) : popupWord.category;
+                      })()}
+                    >
+                      <Icon name={getSubcategoryIcon(popupWord.subcategory)} className="text-[10px]" />
+                      {subLabel}
+                    </span>
+                  );
+                })()}
+                <HskLevelBadge word={popupWord} language={state.language} compact />
+                {popupWord.partOfSpeech &&
+                  (Array.isArray(popupWord.partOfSpeech)
+                    ? popupWord.partOfSpeech.length > 0
+                    : Boolean(popupWord.partOfSpeech)) && (
+                  <>
+                    <span
+                      aria-hidden="true"
+                      className="w-px h-4"
+                      style={{ background: 'var(--border-color)' }}
+                    />
+                    <div className="flex flex-wrap justify-center gap-1.5" role="list" aria-label={t('vocab.partOfSpeech')}>
+                        {(Array.isArray(popupWord.partOfSpeech)
+                          ? popupWord.partOfSpeech
+                          : [popupWord.partOfSpeech]
+                        ).map((part) => {
+                          const posColor = POS_META[part] || 'var(--accent-from)';
+                          return (
+                          <span
+                            key={part}
+                            role="listitem"
+                            className="px-2.5 py-1 rounded-full text-[10px] font-medium whitespace-nowrap"
+                            title={part}
+                            style={{
+                              background: `color-mix(in srgb, ${posColor} 15%, transparent)`,
+                              color: `color-mix(in srgb, ${posColor} 70%, var(--text-primary))`,
+                            }}
+                          >
+                            {formatPartOfSpeech(part)}
+                          </span>
+                          );
+                        })}
+                      </div>
+                  </>
+                )}
               </div>
             </div>
 
@@ -624,7 +848,7 @@ export default function Vocabulary() {
                     <span className="w-4 h-px" style={{background: 'var(--accent-from)'}} />
                     {t('vocab.exampleSentences')}
                   </p>
-                  {popupWord.examples.map((ex, i) => (
+                  {(showAllExamples ? popupWord.examples : popupWord.examples.slice(0, 1)).map((ex, i) => (
                     <div
                       key={i}
                       className="rounded-xl p-4 transition-colors hover:bg-white/[0.03]"
@@ -653,6 +877,21 @@ export default function Vocabulary() {
                       </div>
                     </div>
                   ))}
+                  {popupWord.examples.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllExamples((open) => !open)}
+                      aria-expanded={showAllExamples}
+                      className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium text-secondary transition-colors hover:text-primary hover:bg-white/[0.04]"
+                      style={{ border: '1px solid var(--border-color)' }}
+                    >
+                      <span>{t(showAllExamples ? 'vocab.showLessExamples' : 'vocab.showMoreExamples')}</span>
+                      <Icon
+                        name="chevronDown"
+                        className={`text-[10px] transition-transform duration-200 ${showAllExamples ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

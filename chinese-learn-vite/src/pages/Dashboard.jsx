@@ -1,13 +1,13 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { ConversationPopup } from './Conversations';
+import { ConversationPopup } from '../components/ConversationPopup';
 import ContributionCalendar from '../components/ContributionCalendar';
 import SpeakButton from '../components/SpeakButton';
 import Icon from '../components/Icon';
 import useTranslation from '../hooks/useTranslation';
 import InkParticles from '../components/InkParticles';
-import { VOCABULARY } from '../data/vocabulary';
-import { CATEGORIES } from '../data/categories';
+import { TOTAL_WORDS, QUICK_STUDY_POOL } from '../data/vocabMeta';
+import { CATEGORIES, getCategoryColor } from '../data/categories';
 import { CONVERSATIONS } from '../data/conversations';
 
 const DASHBOARD_INK_CHARS = ['学', '习', '进', '步', '成', '功', '日', '积', '月', '累'];
@@ -38,35 +38,63 @@ export default function Dashboard() {
   const [popupConv, setPopupConv] = useState(null);
   const closePopup = useCallback(() => setPopupConv(null), []);
 
-  const totalWords = VOCABULARY.length;
+  const totalWords = TOTAL_WORDS;
+  // Defensive default — localStorage hydration may have left a null field
+  // (e.g. from an older schema). Object.values(null) throws a TypeError and
+  // would unmount the entire app. Guard once here so every consumer is safe.
+  const safeWordStatuses = state.wordStatuses || {};
   const masteredWords = useMemo(
-    () => Object.values(state.wordStatuses).filter(s => s === 'mastered').length,
-    [state.wordStatuses]
+    () => Object.values(safeWordStatuses).filter(s => s === 'mastered').length,
+    [safeWordStatuses]
   );
   const reviewingWords = useMemo(
-    () => Object.values(state.wordStatuses).filter(s => s === 'reviewing').length,
-    [state.wordStatuses]
+    () => Object.values(safeWordStatuses).filter(s => s === 'reviewing').length,
+    [safeWordStatuses]
   );
   const learningWords = useMemo(
-    () => Object.values(state.wordStatuses).filter(s => s === 'learning').length,
-    [state.wordStatuses]
+    () => Object.values(safeWordStatuses).filter(s => s === 'learning').length,
+    [safeWordStatuses]
   );
   const newWords = useMemo(
     () => totalWords - masteredWords - reviewingWords - learningWords,
     [masteredWords, reviewingWords, learningWords]
   );
 
-  // Quick Study: dedupe + random-pick 6 vocab cards, re-shuffles when user clicks the Shuffle button.
+  // Responsive Quick Study: mobile shows 4 cards stacked (1 per row), desktop shows 6 cards in 3 columns
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    const handler = (e) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+
+  // Quick Study: render instantly from the precomputed pool (a deterministic
+  // sample of the full vocabulary, see scripts/gen-vocab-meta.mjs) so first
+  // paint never blocks on the ≈6 MB VOCABULARY chunk. Then fetch the full list
+  // in the background and upgrade to true full-vocabulary randomness once it
+  // arrives — best of both: fast first paint + full variety.
   const [studyShuffleKey, setStudyShuffleKey] = useState(0);
+  const [fullVocab, setFullVocab] = useState(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('../data/vocabulary')
+      .then(({ VOCABULARY }) => { if (!cancelled) setFullVocab(VOCABULARY); })
+      .catch(() => { /* stay on the pool if the lazy chunk fails */ });
+    return () => { cancelled = true; };
+  }, []);
   const recentWords = useMemo(() => {
+    const source = fullVocab || QUICK_STUDY_POOL;
     const seen = new Set();
-    const deduped = VOCABULARY.filter(w => {
+    const deduped = source.filter(w => {
       if (seen.has(w.chinese)) return false;
       seen.add(w.chinese);
       return true;
     });
-    return shuffleArray(deduped).slice(0, 6);
-  }, [studyShuffleKey]);
+    return shuffleArray(deduped).slice(0, isMobile ? 4 : 6);
+  }, [studyShuffleKey, isMobile, fullVocab]);
 
   // Quick Conversations: random-pick 3 conversation cards
   const [convShuffleKey, setConvShuffleKey] = useState(0);
@@ -172,27 +200,24 @@ export default function Dashboard() {
       </div>
 
       <div className="animate-slide-up relative z-10">
-        <ContributionCalendar history={state.learningHistory} />
+        <ContributionCalendar history={state.learningHistory || {}} />
       </div>
 
       <div className="glass-card p-5 animate-slide-up relative z-10">
         <div className="flex items-center justify-between mb-4 gap-2">
           <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="star" className="text-amber-400" /> {t('dash.quickStudy')}</h3>
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-secondary">{t('dash.newWordsToTry')}</span>
-            <button
-              onClick={() => setStudyShuffleKey(k => k + 1)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
-              title={state.language === 'th' ? 'สุ่มคำใหม่' : 'Reshuffle'}
-            >
-              <Icon name="shuffle" className="text-sm" />
-              <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
-            </button>
-          </div>
+          <button
+            onClick={() => setStudyShuffleKey(k => k + 1)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
+            title={state.language === 'th' ? 'สุ่มคำใหม่' : 'Reshuffle'}
+          >
+            <Icon name="shuffle" className="text-sm" />
+            <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
+          </button>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {recentWords.map(word => {
-            const s = state.wordStatuses[word.id] || 'new';
+            const s = safeWordStatuses[word.id] || 'new';
             return (
               <div key={word.id} className="glass-card p-4 hover:bg-card-hover transition-all border flex flex-col gap-2 text-left" style={{ borderColor: 'var(--border-color)' }}>
                 {/* Top: Chinese char + SpeakButton on the right */}
@@ -251,21 +276,18 @@ export default function Dashboard() {
       <div className="glass-card p-5 animate-slide-up relative z-10">
         <div className="flex items-center justify-between mb-4 gap-2">
           <h3 className="font-semibold text-primary flex items-center gap-2"><Icon name="messageDetail" className="text-amber-400" /> {t('dash.quickConv')}</h3>
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-secondary">{t('dash.convToTry')}</span>
-            <button
-              onClick={() => setConvShuffleKey(k => k + 1)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
-              title={state.language === 'th' ? 'สุ่มบทสนทนาใหม่' : 'Reshuffle'}
-            >
-              <Icon name="shuffle" className="text-sm" />
-              <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
-            </button>
-          </div>
+          <button
+            onClick={() => setConvShuffleKey(k => k + 1)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-muted hover:text-primary hover:bg-white/[0.04] transition-colors shrink-0"
+            title={state.language === 'th' ? 'สุ่มบทสนทนาใหม่' : 'Reshuffle'}
+          >
+            <Icon name="shuffle" className="text-sm" />
+            <span className="hidden md:inline">{state.language === 'th' ? 'สุ่มใหม่' : 'Shuffle'}</span>
+          </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {recentConvs.map(conv => {
-            const catColor = conv.category === 'hsk' ? '#f97316' : conv.category === 'daily' ? '#e11d48' : conv.category === 'health' ? '#f43f5e' : conv.category === 'education' ? '#8b5cf6' : conv.category === 'technology' ? '#06b6d4' : conv.category === 'business' ? '#eab308' : conv.category === 'nature' ? '#22c55e' : '#a89488';
+            const catColor = getCategoryColor(conv.category);
             return (
               <div
                 key={conv.id}

@@ -27,7 +27,12 @@ export default function useWordMap({ searchTerm, selectedCategory, selectedSubca
 
     // Filter by subcategories
     if (selectedSubcategories.length > 0) {
-      words = words.filter(w => selectedSubcategories.includes(w.subcategory));
+      words = words.filter(w => {
+        const subcategory = w.category === 'hsk'
+          ? `hsk${w.vocabularyHskLevel ?? w.hskLevel}`
+          : w.subcategory;
+        return selectedSubcategories.includes(subcategory);
+      });
     }
 
     // Deduplicate by Chinese text — the vocabulary contains the same `chinese`

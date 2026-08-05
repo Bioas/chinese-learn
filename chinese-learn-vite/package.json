@@ -5,8 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "npm run gen:vocab-meta && vite build",
+    "preview": "vite preview",
+    "hsk:sync": "node scripts/hsk-audit.mjs sync",
+    "hsk:audit": "node scripts/hsk-audit.mjs audit",
+    "hsk:review": "node scripts/hsk-audit.mjs review",
+    "hsk:sync-and-audit": "node scripts/hsk-audit.mjs sync-and-audit",
+    "hsk:apply": "node scripts/hsk-apply.mjs",
+    "hsk:enrich-nonhsk": "node scripts/enrich-nonhsk.mjs",
+    "hsk3:generate": "node scripts/hsk3-generate.mjs",
+    "hsk3:build": "node scripts/build-vocabulary.mjs",
+    "hsk:enrich-pos": "node scripts/enrich-studycli-pos.mjs",
+    "gen:vocab-meta": "node scripts/gen-vocab-meta.mjs",
+    "hsk:translate-thai-examples": "node scripts/translate-thai-examples.mjs",
+    "hsk56:merge": "node scripts/merge-pdf-hsk56.mjs",
+    "hsk56:fill-meanings": "node scripts/fill-missing-meanings.mjs",
+    "hsk56:translate-thai": "node scripts/translate-thai-words.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.9",
@@ -16,11 +30,16 @@
     "react-router-dom": "^6.26.1"
   },
   "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "pdf-parse": "^2.4.5",
+    "pinyin": "^4.0.0",
     "playwright": "^1.62.0",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
+    "typescript": "^7.0.2",
     "vite": "^6.0.0"
   }
 }

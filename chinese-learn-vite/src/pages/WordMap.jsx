@@ -7,18 +7,18 @@ import InkParticles from '../components/InkParticles';
 import useTranslation from '../hooks/useTranslation';
 import useWordMap from '../hooks/useWordMap';
 import { VOCABULARY } from '../data/vocabulary';
-import { CATEGORIES, getSubcategoryIcon } from '../data/categories';
+import { CATEGORIES, getSubcategoryIcon, getCategoryColor } from '../data/categories';
+import HskLevelBadge from '../components/HskLevelBadge';
 
 const WORDMAP_INK_CHARS = ['網', '絡', '連', '繫', '字', '詞', '關', '聯', '圖', '譜'];
 
-const CATEGORY_COLORS = {
-  hsk: '#f97316', daily: '#e11d48', topics: '#8b5cf6',
-  health: '#f43f5e', education: '#8b5cf6', technology: '#06b6d4',
-  business: '#eab308', nature: '#22c55e',
-};
 
-function getCatColor(cat) {
-  return CATEGORY_COLORS[cat] || '#a89488';
+// Localized subcategory label e.g. "Food & Drink" (en) / "อาหารและเครื่องดื่ม" (th).
+// Falls back to the raw subcategory id (e.g. "hsk5") if the subcategory is unknown.
+function getSubcategoryLabel(word, language) {
+  const cat = CATEGORIES.find((c) => c.id === word?.category);
+  const sub = cat?.subcategories.find((s) => s.id === word?.subcategory);
+  return sub ? (language === 'th' ? sub.nameThai : sub.name) : word?.subcategory || '';
 }
 
 export default function WordMap() {
@@ -45,6 +45,11 @@ export default function WordMap() {
   const ITEMS_PER_PAGE = isMobile ? 10 : 50;
   // Reset to page 1 when filter inputs or breakpoint change
   useEffect(() => { setPage(1); }, [selectedCategory, selectedSubcategories, searchTerm, isMobile]);
+
+  // Scroll back to the top whenever the page changes, so the user doesn't stay at the bottom
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
 
   const currentCategory = useMemo(
     () => CATEGORIES.find(c => c.id === selectedCategory),
@@ -205,7 +210,7 @@ export default function WordMap() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-fade-in relative z-10">
           {paginatedClusters.map(({ word, clusters: wordClusters }) => {
-            const catColor = getCatColor(word.category);
+            const catColor = getCategoryColor(word.category);
             return (
               // Editorial card enriched — calm magazine layout + vocab-style accent stripe / subcategory eyebrow / prominent bookmark
               <article
@@ -233,7 +238,7 @@ export default function WordMap() {
                     style={{ color: catColor }}
                   >
                     <Icon name={getSubcategoryIcon(word.subcategory)} className="text-[9px] opacity-80" />
-                    {word.subcategory}
+                    {getSubcategoryLabel(word, state.language)}
                   </span>
 
                   <div className="flex items-center gap-1.5">
@@ -543,11 +548,24 @@ export default function WordMap() {
                   )}
                   <p className="text-base text-primary/90 mt-2 font-medium">{meaning(popupWord)}</p>
 
-                  <div className="flex items-center justify-center gap-2 mt-3">
-                    <span className="text-[11px] px-3 py-1 rounded-full" style={{ background: 'color-mix(in srgb, var(--accent-from) 15%, transparent)', color: 'var(--accent-from)' }}>
-                      <Icon name={getSubcategoryIcon(popupWord.subcategory)} className="text-[9px] mr-1" />
-                      {popupWord.hskLevel > 0 ? `HSK ${popupWord.hskLevel}` : popupWord.subcategory}
-                    </span>
+                  <div className="flex flex-wrap items-center justify-center gap-2 mt-3">
+                    {popupWord.category !== 'hsk' && (() => {
+                      const catColor = getCategoryColor(popupWord.category);
+                      return (
+                        <span
+                          className="text-[11px] px-3 py-1 rounded-full"
+                          style={{
+                            background: `color-mix(in srgb, ${catColor} 15%, transparent)`,
+                            color: `color-mix(in srgb, ${catColor} 70%, var(--text-primary))`,
+                            border: `1px solid color-mix(in srgb, ${catColor} 26%, transparent)`,
+                          }}
+                        >
+                          <Icon name={getSubcategoryIcon(popupWord.subcategory)} className="text-[9px] mr-1" />
+                          {getSubcategoryLabel(popupWord, state.language)}
+                        </span>
+                      );
+                    })()}
+                    <HskLevelBadge word={popupWord} language={state.language} compact />
                     <button
                       onClick={() => toggleSavedWord(popupWord.id)}
                       className="text-[11px] px-3 py-1 rounded-full flex items-center gap-1 transition-colors"
