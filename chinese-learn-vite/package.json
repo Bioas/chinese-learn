@@ -20,7 +20,10 @@
     "hsk:translate-thai-examples": "node scripts/translate-thai-examples.mjs",
     "hsk56:merge": "node scripts/merge-pdf-hsk56.mjs",
     "hsk56:fill-meanings": "node scripts/fill-missing-meanings.mjs",
-    "hsk56:translate-thai": "node scripts/translate-thai-words.mjs"
+    "hsk56:translate-thai": "node scripts/translate-thai-words.mjs",
+    "hsk7:fill-examples": "node scripts/fill-hsk7-examples.mjs",
+    "hsk7:translate-examples": "node scripts/translate-thai-examples-hsk56.mjs --levels 7",
+    "hsk7:refresh-examples": "node scripts/refresh-hsk7-examples.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.9",

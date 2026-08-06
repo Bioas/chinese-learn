@@ -1,7 +1,17 @@
 #!/usr/bin/env node
 /**
- * Translate missing Thai word-level meanings (meaningThai) for HSK 5/6 words
- * that came from the new-syllabus PDF (the 119 new words with no Thai gloss).
+ * Translate missing Thai word-level meanings (meaningThai) for HSK vocabulary.
+ * The default scope remains HSK 5/6 for backwards compatibility; pass
+ * --levels 7 to translate the HSK 7–9 dataset.
+
+ * For example:
+ *   node scripts/translate-thai-words.mjs --levels 7 --delay 350
+ *
+ * Existing Thai translations are never overwritten. The cache is resumable,
+ * and data files are published atomically only after every requested word has
+ * a valid Thai translation.
+ *
+ * The HSK 5/6 PDF-only mode remains available with --new-only.
  *
  * Mirrors translate-thai-examples.mjs: Google Translate (batch + single) with
  * MyMemory fallback, a resumable disk cache, THAI_RE validation, and atomic
@@ -22,8 +32,10 @@ const APP_ROOT = resolve(SCRIPT_DIR, '..');
 const DATA_DIR = resolve(APP_ROOT, 'src', 'data', 'hsk3');
 const CACHE_DIR = resolve(SCRIPT_DIR, 'cache');
 const CACHE_PATH = resolve(CACHE_DIR, 'thai-word-translations.json');
-const LEVELS = [5, 6];
+const DEFAULT_LEVELS = [5, 6];
 const THAI_RE = /[\u0E00-\u0E7F]/;
+const CJK_RE = /[一-龯㐀-䶵]/;
+const isValidThai = (value) => THAI_RE.test(String(value || '')) && !CJK_RE.test(String(value || ''));
 const REQUEST_TIMEOUT_MS = 20_000;
 
 async function fetchWithTimeout(url, options = {}) {
@@ -47,9 +59,18 @@ for (let i = 2; i < process.argv.length; i += 1) {
 
 const limit = args.has('limit') ? Math.max(0, Number(args.get('limit'))) : Infinity;
 const delayMs = args.has('delay') ? Math.max(0, Number(args.get('delay'))) : 250;
-// Default: translate EVERY HSK 5/6 word missing a Thai gloss. Pass --new-only
-// to restrict to the new-syllabus PDF words (the zh-en cache keys).
+const requestedLevels = String(args.get('levels') ?? DEFAULT_LEVELS.join(','))
+  .split(',')
+  .map((value) => Number(value.trim()))
+  .filter((level) => Number.isInteger(level) && level >= 1 && level <= 7);
+const LEVELS = [...new Set(requestedLevels)];
+if (LEVELS.length === 0) throw new Error('No valid levels. Use --levels 5,6 or --levels 7.');
+// Default: translate EVERY selected HSK word missing a Thai gloss. Pass
+// --new-only to restrict to the new-syllabus PDF words (the zh-en cache keys).
 const newOnly = args.has('new-only');
+if (newOnly && LEVELS.some((level) => level > 6)) {
+  throw new Error('--new-only is only supported for HSK 5/6 PDF words; omit it for HSK 7–9.');
+}
 
 function sleep(ms) {
   return new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
@@ -61,7 +82,9 @@ async function loadCache() {
 }
 
 async function saveCache(cache) {
-  const tempPath = `${CACHE_PATH}.tmp`;
+  // Include the process id and a random suffix so an interrupted/parallel run
+  // cannot delete another run's temporary cache file during rename.
+  const tempPath = `${CACHE_PATH}.${process.pid}.${Math.random().toString(36).slice(2)}.tmp`;
   await writeFile(tempPath, `${JSON.stringify(cache, null, 2)}\n`, 'utf8');
   await rename(tempPath, CACHE_PATH);
 }
@@ -80,7 +103,7 @@ async function requestGoogleBatch(texts) {
   const data = await response.json();
   const segments = Array.isArray(data?.[0]) ? data[0] : [];
   const translated = segments.map((part) => String(part?.[0] || '').replace(/\n/g, '').trim());
-  if (translated.length !== texts.length || translated.some((text) => !THAI_RE.test(text))) {
+  if (translated.length !== texts.length || translated.some((text) => !isValidThai(text))) {
     throw new Error(`Google returned ${translated.length}/${texts.length} valid Thai segments`);
   }
   return translated;
@@ -101,7 +124,7 @@ async function requestGoogleSingle(text) {
   const translated = Array.isArray(data?.[0])
     ? data[0].map((part) => part?.[0] || '').join('').replace(/\n/g, '').trim()
     : '';
-  if (!THAI_RE.test(translated)) throw new Error('Google returned no Thai translation');
+  if (!isValidThai(translated)) throw new Error('Google returned no clean Thai translation');
   return translated;
 }
 
@@ -113,7 +136,7 @@ async function requestMyMemory(text) {
   if (!response.ok) throw new Error(`MyMemory HTTP ${response.status}`);
   const data = await response.json();
   const translated = String(data?.responseData?.translatedText || '').trim();
-  if (!THAI_RE.test(translated)) throw new Error('MyMemory returned no Thai translation');
+  if (!isValidThai(translated)) throw new Error('MyMemory returned no clean Thai translation');
   return translated;
 }
 
@@ -182,15 +205,15 @@ for (const level of LEVELS) {
 }
 
 const isTarget = ({ word }) =>
-  !word.meaningThai || !THAI_RE.test(word.meaningThai)
+  !isValidThai(word.meaningThai)
     ? newOnly
       ? zhEnKeys.has(word.chinese)
       : true
     : false;
 const targets = allWords.filter(isTarget);
-console.log(`Targets without Thai: ${targets.length}${newOnly ? ' (new PDF words only)' : ' (all HSK 5/6 words)'}`);
+console.log(`Targets without Thai: ${targets.length}${newOnly ? ' (new PDF words only)' : ` (all HSK ${LEVELS.join(', ')} words)`}`);
 
-const pending = targets.filter(({ word }) => !cache[word.chinese]?.translation);
+const pending = targets.filter(({ word }) => !isValidThai(cache[word.chinese]?.translation));
 const toTranslate = pending.slice(0, limit);
 const BATCH_SIZE = 8;
 console.log(`Cached Thai: ${targets.length - pending.length}`);
@@ -219,7 +242,10 @@ if (pending.length > toTranslate.length) {
   for (const level of LEVELS) {
     const words = allWords.filter(({ level: l }) => l === level).map(({ word }) => {
       const translation = cache[word.chinese]?.translation;
-      if (!translation || !THAI_RE.test(translation)) return word;
+      // Preserve any existing clean translation; the cache is only for blanks
+      // or previously rejected values such as CJK left in Thai.
+      if (isValidThai(word.meaningThai)) return word;
+      if (!translation || !isValidThai(translation)) return word;
       return { ...word, meaningThai: translation };
     });
 
@@ -245,7 +271,7 @@ if (pending.length > toTranslate.length) {
     if (words.length !== allWords.filter(({ level: l }) => l === level).length) {
       throw new Error(`HSK ${level}: entry count changed (${words.length}) — aborting publish`);
     }
-    const missingAfter = words.filter((w) => isTarget({ word: w }) && !THAI_RE.test(w.meaningThai || '')).length;
+    const missingAfter = words.filter((w) => isTarget({ word: w }) && !isValidThai(w.meaningThai)).length;
     if (missingAfter > 0) throw new Error(`HSK ${level}: ${missingAfter} target words still lack Thai — aborting publish`);
 
     const tempPath = `${path}.tmp`;
@@ -253,5 +279,5 @@ if (pending.length > toTranslate.length) {
     await rename(tempPath, path);
     console.log(`Updated HSK ${level}: ${words.length} words`);
   }
-  console.log('All HSK 5/6 word translations updated atomically.');
+  console.log(`All HSK ${LEVELS.join('/')} word translations updated atomically.`);
 }

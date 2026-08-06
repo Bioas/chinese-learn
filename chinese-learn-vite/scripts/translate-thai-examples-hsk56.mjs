@@ -23,8 +23,10 @@ const APP_ROOT = resolve(SCRIPT_DIR, '..');
 const DATA_DIR = resolve(APP_ROOT, 'src', 'data', 'hsk3');
 const CACHE_DIR = resolve(SCRIPT_DIR, 'cache');
 const CACHE_PATH = resolve(CACHE_DIR, 'thai-example-translations.json');
-const LEVELS = [5, 6];
+const DEFAULT_LEVELS = [5, 6];
 const THAI_RE = /[\u0E00-\u0E7F]/;
+const CJK_RE = /[一-龯㐀-䶵]/;
+const isValidThai = (value) => THAI_RE.test(String(value || '')) && !CJK_RE.test(String(value || ''));
 const REQUEST_TIMEOUT_MS = 20_000;
 
 async function fetchWithTimeout(url, options = {}) {
@@ -48,6 +50,12 @@ for (let i = 2; i < process.argv.length; i += 1) {
 
 const limit = args.has('limit') ? Math.max(0, Number(args.get('limit'))) : Infinity;
 const delayMs = args.has('delay') ? Math.max(0, Number(args.get('delay'))) : 250;
+const requestedLevels = String(args.get('levels') ?? DEFAULT_LEVELS.join(','))
+  .split(',')
+  .map((value) => Number(value.trim()))
+  .filter((level) => Number.isInteger(level) && level >= 1 && level <= 7);
+const LEVELS = [...new Set(requestedLevels)];
+if (LEVELS.length === 0) throw new Error('No valid levels. Use --levels 5,6 or --levels 7.');
 
 function decodeHtml(value) {
   return String(value ?? '')
@@ -88,7 +96,7 @@ async function requestGoogleBatch(texts) {
   const data = await response.json();
   const segments = Array.isArray(data?.[0]) ? data[0] : [];
   const translated = segments.map((part) => String(part?.[0] || '').replace(/\n/g, '').trim());
-  if (translated.length !== texts.length || translated.some((text) => !THAI_RE.test(text))) {
+  if (translated.length !== texts.length || translated.some((text) => !isValidThai(text))) {
     throw new Error(`Google returned ${translated.length}/${texts.length} valid Thai segments`);
   }
   return translated;
@@ -109,7 +117,7 @@ async function requestGoogleSingle(text) {
   const translated = Array.isArray(data?.[0])
     ? data[0].map((part) => part?.[0] || '').join('').replace(/\n/g, '').trim()
     : '';
-  if (!THAI_RE.test(translated)) throw new Error('Google returned no Thai translation');
+  if (!isValidThai(translated)) throw new Error('Google returned no clean Thai translation');
   return translated;
 }
 
@@ -121,7 +129,7 @@ async function requestMyMemory(text) {
   if (!response.ok) throw new Error(`MyMemory HTTP ${response.status}`);
   const data = await response.json();
   const translated = String(data?.responseData?.translatedText || '').trim();
-  if (!THAI_RE.test(translated)) throw new Error('MyMemory returned no Thai translation');
+  if (!isValidThai(translated)) throw new Error('MyMemory returned no clean Thai translation');
   return translated;
 }
 
@@ -201,12 +209,15 @@ for (const level of LEVELS) {
 }
 
 const uniqueEnglish = [...new Set(
-  allWords.flatMap(({ words }) => (words).flatMap((word) => (word.examples || []).map((example) => decodeHtml(example.meaning).trim()).filter(Boolean)))
+  allWords.flatMap(({ words }) => words.flatMap((word) => (word.examples || [])
+    .filter((example) => !isValidThai(example.meaningThai))
+    .map((example) => decodeHtml(example.meaning).trim())
+    .filter(Boolean)))
 )];
-const pending = uniqueEnglish.filter((text) => !cache[text]?.translation || !THAI_RE.test(cache[text].translation));
+const pending = uniqueEnglish.filter((text) => !cache[text]?.translation || !isValidThai(cache[text].translation));
 const toTranslate = pending.slice(0, limit);
 const BATCH_SIZE = 8;
-console.log(`HSK5/6 examples: ${allWords.reduce((sum, item) => sum + item.words.reduce((s, w) => s + (w.examples?.length || 0), 0), 0)}`);
+console.log(`HSK${LEVELS.join('/')} examples: ${allWords.reduce((sum, item) => sum + item.words.reduce((s, w) => s + (w.examples?.length || 0), 0), 0)}`);
 console.log(`Unique English sentences: ${uniqueEnglish.length}`);
 console.log(`Cached Thai translations: ${uniqueEnglish.length - pending.length}`);
 console.log(`Requests this run: ${toTranslate.length} sentences in batches of ${BATCH_SIZE}`);
@@ -235,7 +246,8 @@ if (pending.length > toTranslate.length) {
       const examples = (word.examples || []).map((example) => {
         const text = decodeHtml(example.meaning).trim();
         const translation = cache[text]?.translation;
-        if (!translation || !THAI_RE.test(translation)) {
+        if (isValidThai(example.meaningThai)) return example;
+        if (!translation || !isValidThai(translation)) {
           throw new Error(`Missing Thai translation for ${word.id}: ${JSON.stringify(text)}`);
         }
         return { ...example, meaningThai: translation };
@@ -253,5 +265,5 @@ if (pending.length > toTranslate.length) {
     await rename(tempPath, path);
     console.log(`Updated HSK ${level}: ${translatedWords.get(level).length} words`);
   }
-  console.log('All HSK 5–6 example translations updated atomically.');
+  console.log(`All HSK ${LEVELS.join('/')} example translations updated atomically.`);
 }

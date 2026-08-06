@@ -842,7 +842,7 @@ export const QUICK_STUDY_POOL = [
     "chinese": "阿拉伯语",
     "pinyin": "Ā lā bó yǔ",
     "meaning": "Arabic (language)",
-    "meaningThai": "",
+    "meaningThai": "ภาษาอาหรับ",
     "category": "hsk",
     "subcategory": "hsk7"
   },
@@ -851,7 +851,7 @@ export const QUICK_STUDY_POOL = [
     "chinese": "独身",
     "pinyin": "dú shēn",
     "meaning": "unmarried, single",
-    "meaningThai": "",
+    "meaningThai": "เดี่ยว",
     "category": "hsk",
     "subcategory": "hsk7"
   },
@@ -860,7 +860,7 @@ export const QUICK_STUDY_POOL = [
     "chinese": "极力",
     "pinyin": "jí lì",
     "meaning": "to make a supreme effort, at all costs",
-    "meaningThai": "",
+    "meaningThai": "พยายามอย่างเต็มที่",
     "category": "hsk",
     "subcategory": "hsk7"
   },
@@ -869,7 +869,7 @@ export const QUICK_STUDY_POOL = [
     "chinese": "美满",
     "pinyin": "měi mǎn",
     "meaning": "happy, blissful",
-    "meaningThai": "",
+    "meaningThai": "มีความสุข",
     "category": "hsk",
     "subcategory": "hsk7"
   },
@@ -878,7 +878,7 @@ export const QUICK_STUDY_POOL = [
     "chinese": "收视率",
     "pinyin": "shōu shì lǜ",
     "meaning": "ratings (of a TV show)",
-    "meaningThai": "",
+    "meaningThai": "การให้คะแนน",
     "category": "hsk",
     "subcategory": "hsk7"
   },
@@ -887,7 +887,7 @@ export const QUICK_STUDY_POOL = [
     "chinese": "宣告",
     "pinyin": "xuān gào",
     "meaning": "to declare, to proclaim",
-    "meaningThai": "",
+    "meaningThai": "ประกาศ",
     "category": "hsk",
     "subcategory": "hsk7"
   }
