@@ -87,15 +87,39 @@ function CopyButton({ text, label }) {
   );
 }
 
+/* Animated vertical reveal — uses the grid-template-rows 0fr → 1fr trick
+   so height transitions smoothly without JS measurement. GPU-friendly and
+   naturally honours prefers-reduced-motion via the duration below. */
+function CollapseReveal({ open, duration = 320, children, className = '' }) {
+  return (
+    <div
+      className={`grid transition-[grid-template-rows,opacity] ease-out ${className}`}
+      style={{
+        gridTemplateRows: open ? '1fr' : '0fr',
+        opacity: open ? 1 : 0,
+        transitionDuration: `${duration}ms`,
+      }}
+      aria-hidden={!open}
+    >
+      <div className="min-h-0 overflow-hidden">{children}</div>
+    </div>
+  );
+}
+
 function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
   const { lang } = useTranslation();
-  const accent = LEVEL_ACCENT[pattern.level] || '#eab308';
-  const titleId = `g-${pattern.level}-${pattern.rank}`;
+  // Patterns don't carry their own level — derive it from the wrapped
+  // levelMeta so accent colors and badges reflect the actual level.
+  const level = pattern.level ?? levelMeta.level;
+  const accent = LEVEL_ACCENT[level] || '#eab308';
+  const titleId = `g-${level}-${pattern.rank}`;
   return (
     <article
       id={titleId}
-      className={`relative rounded-xl flex flex-col overflow-hidden animate-slide-up cursor-pointer transition-shadow duration-200`}
+      className={`relative rounded-xl flex flex-col overflow-hidden animate-slide-up cursor-pointer transition-shadow duration-200 md:min-h-[320px]`}
       style={{
+        // Body stays white/default. Each level is signalled ONLY by the
+        // top accent stripe and the inner accents (badge, formula, etc.).
         background: 'var(--bg-card)',
         border: '1px solid var(--border-color)',
         boxShadow: expanded
@@ -105,7 +129,7 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
       }}
       onClick={onToggle}
     >
-      {/* Accent stripe */}
+      {/* Accent stripe — level color, matching Vocabulary/WordMap card stripe */}
       <div className="h-0.5 w-full flex-shrink-0" style={{ background: `linear-gradient(90deg, ${accent}, color-mix(in srgb, ${accent} 40%, transparent))` }} />
 
       {/* HSK badge + rank + structure */}
@@ -116,7 +140,7 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
             style={{ background: `color-mix(in srgb, ${accent} 14%, transparent)`, color: accent }}
           >
             <Icon name="library" className="text-[9px]" />
-            HSK {pattern.level === 7 ? '7-9' : pattern.level}
+            HSK {level === 7 ? '7-9' : level}
           </span>
           <span
             className="inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full text-[10px] font-bold tabular-nums"
@@ -130,14 +154,16 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
         </div>
         {/* Structure */}
         <h3
-          className="font-serif font-bold leading-tight"
+          className={lang === 'th' ? 'font-bold leading-tight' : 'font-serif font-bold leading-tight'}
           style={{
             fontSize: '1.45rem',
             color: 'var(--text-primary)',
-            fontFamily: '"Noto Serif SC", "Songti SC", serif',
+            fontFamily: lang === 'th'
+              ? '"Noto Sans Thai", "Inter", "Sarabun", sans-serif'
+              : '"Noto Serif SC", "Songti SC", serif',
           }}
         >
-          {pattern.structure}
+          {lang === 'th' ? (pattern.titleTh || pattern.structure) : pattern.structure}
         </h3>
         <p
           className="text-xs mt-1 italic"
@@ -153,12 +179,37 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
         >
           {lang === 'th' ? (pattern.thai || pattern.english) : pattern.english}
         </p>
+
+        {/* Formula chip — relatively large "usage pattern" badge like
+            studycli.org's "A + 比 + B + Adjective" tiles. Mirrors lang
+            swap. Hidden when no formula is provided. */}
+        {(pattern.formula || pattern.formulaTh) && (
+          <div
+            className="mt-3 self-start inline-block leading-snug px-3 py-2 rounded-lg"
+            style={{
+              background: `color-mix(in srgb, ${accent} 16%, transparent)`,
+              border: `1px solid color-mix(in srgb, ${accent} 32%, transparent)`,
+              color: accent,
+              fontSize: '1.05rem',
+              fontWeight: 600,
+              fontFamily:
+                lang === 'th'
+                  ? '"Noto Sans Thai", "Inter", "Sarabun", sans-serif'
+                  : '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
+              letterSpacing: lang === 'th' ? 0 : '0.005em',
+            }}
+          >
+            {lang === 'th' ? (pattern.formulaTh || pattern.formula) : pattern.formula}
+          </div>
+        )}
       </div>
 
-      {/* Bottom row: example + actions */}
-      <div className="px-5 pb-4 mt-auto">
+      {/* Bottom row: example + actions — flex-grow so the example pushes
+          toward the card's bottom while the hint still flushes at the end,
+          giving a balanced look when cards are stretched to row height. */}
+      <div className="px-5 pb-4 flex-grow flex flex-col">
         <div
-          className="rounded-lg px-3 py-2.5 flex flex-col gap-1.5 transition-all duration-200 cursor-pointer"
+          className="rounded-lg px-3 py-2.5 flex flex-col gap-1.5 transition-all duration-200 cursor-pointer mt-auto"
           style={{
             background: expanded
               ? `color-mix(in srgb, ${accent} 9%, transparent)`
@@ -188,56 +239,57 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
             </p>
             <SpeakButton text={pattern.example_zh} className="shrink-0" />
           </div>
-          {expanded && (
-            <>
+          {/* Pinyin + translation — animated reveal when expanded */}
+          <CollapseReveal open={expanded}>
+            <div className="space-y-1 pt-1">
               <p
-                className="text-[12px] italic mt-1"
+                className="text-[12px] italic"
                 style={{ color: 'var(--text-muted)' }}
               >
                 {pattern.example_py}
               </p>
               <p
-                className="text-[12.5px] mt-1 leading-snug"
+                className="text-[12.5px] leading-snug"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 {lang === 'th'
                   ? (pattern.example_th || pattern.example_en)
                   : pattern.example_en}
               </p>
-            </>
-          )}
+            </div>
+          </CollapseReveal>
         </div>
       </div>
 
-      {/* Extra examples (only HSK 1-4 carry more_examples from studycli.org) */}
-      {expanded && pattern.more_examples && pattern.more_examples.length > 0 && (
-        <div className="px-5 pb-4 -mt-2 space-y-2">
-          <p className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: accent }}>
-            {lang === 'th' ? `ตัวอย่างเพิ่มเติม (${pattern.more_examples.length})` : `More examples (${pattern.more_examples.length})`}
-          </p>
-          {pattern.more_examples.map((ex, idx) => (
-            <div
-              key={idx}
-              className="rounded-lg px-3 py-2 flex flex-col gap-1"
-              style={{
-                background: `color-mix(in srgb, ${accent} 5%, transparent)`,
-                border: `1px solid color-mix(in srgb, ${accent} 18%, transparent)`,
-              }}
-            >
-              <div className="flex items-start justify-between gap-2">
-                <p
-                  className="font-medium leading-snug flex-1"
-                  style={{
-                    fontFamily: '"Noto Serif SC", "Songti SC", serif',
-                    fontSize: '0.95rem',
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  {ex.zh}
-                  <CopyButton text={ex.zh} label="Copy CN sentence" />
-                </p>
-                <SpeakButton text={ex.zh} className="shrink-0" />
-              </div>                <p
+      {/* Extra examples (only HSK 1-4 carry more_examples from studycli.org) —
+          animations remain so each card still pops in slightly staggered. */}
+      {pattern.more_examples && pattern.more_examples.length > 0 && (
+        <CollapseReveal open={expanded} duration={420} className="px-5">
+          <div className="pt-1 space-y-2 pb-3">
+            {pattern.more_examples.map((ex, idx) => (
+              <div
+                key={idx}
+                className="rounded-lg px-3 py-2 flex flex-col gap-1 transition-transform duration-300"
+                style={{
+                  background: `color-mix(in srgb, ${accent} 5%, transparent)`,
+                  border: `1px solid color-mix(in srgb, ${accent} 18%, transparent)`,
+                  transitionDelay: expanded ? `${Math.min(idx * 35, 280)}ms` : '0ms',
+                }}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <p
+                    className="font-medium leading-snug flex-1"
+                    style={{
+                      fontFamily: '"Noto Serif SC", "Songti SC", serif',
+                      fontSize: '0.95rem',
+                      color: 'var(--text-primary)',
+                    }}
+                  >
+                    {ex.zh}
+                    <CopyButton text={ex.zh} label="Copy CN sentence" />
+                  </p>
+                  <SpeakButton text={ex.zh} className="shrink-0" />
+                </div>                <p
                   className="text-[12px] italic mt-0.5"
                   style={{ color: 'var(--text-muted)' }}
                 >
@@ -246,39 +298,58 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
                 <p className="text-[12.5px] mt-0.5 leading-snug" style={{ color: 'var(--text-secondary)' }}>
                   {lang === 'th' ? (ex.th || ex.en) : ex.en}
                 </p>
-            </div>
-          ))}
-          {pattern.source_url && (
-            <a
-              href={pattern.source_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[10px] hover:underline"
-              style={{ color: accent }}
-            >
-              <Icon name="library" className="text-[10px]" />
-              <span>{lang === 'th' ? 'ที่มา: studycli.org' : 'Source: studycli.org'}</span>
-              <Icon name="chevronDown" className="text-[9px] -rotate-90" />
-            </a>
-          )}
-        </div>
+              </div>
+            ))}
+            {pattern.source_url && (
+              <a
+                href={pattern.source_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[10px] hover:underline"
+                style={{ color: accent }}
+              >
+                <Icon name="library" className="text-[10px]" />
+                <span>{lang === 'th' ? 'ที่มา: studycli.org' : 'Source: studycli.org'}</span>
+                <Icon name="chevronDown" className="text-[9px] -rotate-90" />
+              </a>
+            )}
+          </div>
+        </CollapseReveal>
       )}
 
-      {/* Subtle expand hint */}
-      {!expanded && (
-        <div className="px-5 pb-3 -mt-1 flex items-center gap-1 text-[10px]" style={{ color: 'var(--text-muted)' }}>
-          <Icon name="chevronDown" className="text-[10px]" />
-          <span>
-            {lang === 'th'
-              ? (pattern.more_examples?.length
-                  ? `แตะเพื่อดู ${pattern.more_examples.length + 1} ตัวอย่าง`
-                  : 'แตะเพื่อดูตัวอย่างเพิ่มเติม')
-              : (pattern.more_examples?.length
-                  ? `Tap to reveal ${pattern.more_examples.length + 1} examples`
-                  : 'Tap to reveal pinyin + translation')}
-          </span>
+      {/* Subtle expand hint — slides + fades away when expanded.
+          Generous leading + pt so the Thai upper vowel marks (ึ/ิ/ั/ัะ)
+          don't get clipped by the grid trick's overflow-hidden wrapper. */}
+      <div
+        className="px-5 grid transition-[grid-template-rows,opacity] ease-out"
+        style={{
+          gridTemplateRows: expanded ? '0fr' : '1fr',
+          opacity: expanded ? 0 : 1,
+          transitionDuration: '220ms',
+        }}
+        aria-hidden={expanded}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div
+            className="pb-3 -mt-1 pt-1 flex items-center gap-1 text-[10px]"
+            style={{ color: 'var(--text-muted)', lineHeight: lang === 'th' ? '1.55' : '1.2' }}
+          >
+            <Icon
+              name="chevronDown"
+              className={`text-[10px] transition-transform duration-300 shrink-0 ${expanded ? '-rotate-180' : ''}`}
+            />
+            <span>
+              {lang === 'th'
+                ? (pattern.more_examples?.length
+                    ? `แตะเพื่อดู ${pattern.more_examples.length + 1} ตัวอย่าง`
+                    : 'แตะเพื่อดูตัวอย่างเพิ่มเติม')
+                : (pattern.more_examples?.length
+                    ? `Tap to reveal ${pattern.more_examples.length + 1} examples`
+                    : 'Tap to reveal pinyin + translation')}
+            </span>
+          </div>
         </div>
-      )}
+      </div>
     </article>
   );
 }
@@ -469,13 +540,14 @@ export default function HskGrammar() {
             className="space-y-3 animate-fade-in relative z-10"
             style={{ animationDelay: `${levelIndex * 80}ms` }}
           >
-            {/* Level header */}
+            {/* Level header — stacked on mobile (title → subtitle →
+                count chip), row on md+ (title · subtitle … count > right). */}
             <header
-              className="flex items-baseline gap-3 px-1"
+              className="px-1 flex flex-col gap-1 md:flex-row md:items-baseline md:gap-3"
               style={{ borderLeft: `3px solid ${levelAccent}`, paddingLeft: '12px' }}
             >
               <h2
-                className="font-bold"
+                className="font-bold leading-snug"
                 style={{
                   fontSize: '1.05rem',
                   color: 'var(--text-primary)',
@@ -486,29 +558,60 @@ export default function HskGrammar() {
                   : level.title}
               </h2>
               <span
-                className="text-[10px] uppercase tracking-[0.08em] font-semibold"
+                className="text-[10px] uppercase tracking-[0.08em] font-semibold leading-snug"
                 style={{ color: levelAccent }}
               >
                 {lang === 'th'
                   ? (level.subtitleTh || level.subtitle)
                   : level.subtitle}
               </span>
-              <span className="ml-auto text-[10px] text-muted tabular-nums">
-                {level.patterns.length} {t('grammar.patterns')}
+              <span
+                className="self-start md:self-auto md:ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold tabular-nums whitespace-nowrap"
+                style={{
+                  background: `color-mix(in srgb, ${levelAccent} 16%, transparent)`,
+                  border: `1px solid color-mix(in srgb, ${levelAccent} 32%, transparent)`,
+                  color: levelAccent,
+                }}
+              >
+                {level.patterns.length}{' '}
+                <span className="font-medium opacity-80">
+                  {t('grammar.patterns')}
+                </span>
               </span>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* CSS-columns masonry on md+: cards flow top-down per column,
+                backfilling after every row so an expanded tall card never
+                leaves an empty friend on the right. Each wrapper has
+                `break-inside-avoid` so the contained card never splits
+                across columns. Mobile uses column-count: 1 for sequential
+                stacking.
+
+                Why not simple 2-col grid (1-2 / 3-4 / 5-6):
+                Row-major grid orders by DOM, so when #1 expands, #2 keeps
+                its collapsed height and the row grows tall — producing an
+                awkward empty gap below #2. CSS-column masonry reorders
+                items into column-fill order to pack tightly; the trade-off
+                is the visual reading order becomes 1-3-5 / 2-4-6 (the
+                same approach that Pinterest / Unsplash / YouTube gallery
+                pages use to avoid gaps). */}
+            <div className="[column-count:1] md:[column-count:2] [column-gap:1rem]">
               {level.patterns.map((pattern) => {
-                const key = `${pattern.level}-${pattern.rank}`;
+                // Fix: use the outer `level.level` rather than `pattern.level`
+                // because pattern objects inside level.patterns do NOT carry a
+                // `level` field — only flatPatterns (in useMemo) do. Without
+                // this, all section cards at the same rank shared an
+                // "undefined-N" key, so expanding one expanded them all.
+                const key = `${level.level}-${pattern.rank}`;
                 return (
-                  <PatternCard
-                    key={key}
-                    pattern={pattern}
-                    levelMeta={level}
-                    expanded={expandedKey === key}
-                    onToggle={() => setExpandedKey(expandedKey === key ? null : key)}
-                  />
+                  <div key={key} className="break-inside-avoid mb-4">
+                    <PatternCard
+                      pattern={pattern}
+                      levelMeta={level}
+                      expanded={expandedKey === key}
+                      onToggle={() => setExpandedKey(expandedKey === key ? null : key)}
+                    />
+                  </div>
                 );
               })}
             </div>
