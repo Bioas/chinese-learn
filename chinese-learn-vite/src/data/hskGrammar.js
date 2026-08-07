@@ -215,8 +215,8 @@ const HSK_GRAMMAR = [
   },
     {
     level: 2,
-    title: 'HSK 2 — Comparisons & completion',
-    titleTh: 'HSK 2 — การเปรียบเทียบ & การเสร็จสิ้น',
+    title: 'HSK 2 — Comparisons with 比 (bǐ)',
+    titleTh: 'HSK 2 — การเปรียบเทียบด้วย 比 (bǐ)',
     subtitle: 'Comparisons, degrees, direction, cause-effect',
     subtitleTh: 'เปรียบเทียบ, ระดับ, ทิศทาง, เหตุ-ผล',
     source_url: 'https://studycli.org/chinese-tools/hsk-2-vocabulary/',
