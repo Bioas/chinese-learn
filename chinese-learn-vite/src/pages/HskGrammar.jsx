@@ -146,21 +146,13 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
           {pattern.pinyin}
         </p>
 
-        {/* English / Thai description */}
+        {/* Description — EN or TH only, never both */}
         <p
           className="text-sm mt-3 leading-relaxed"
           style={{ color: 'var(--text-secondary)' }}
         >
-          {pattern.english}
+          {lang === 'th' ? (pattern.thai || pattern.english) : pattern.english}
         </p>
-        {lang === 'th' && (
-          <p
-            className="text-[13px] mt-1.5 leading-relaxed"
-            style={{ color: 'var(--text-secondary)', opacity: 0.85 }}
-          >
-            {pattern.thai}
-          </p>
-        )}
       </div>
 
       {/* Bottom row: example + actions */}
@@ -208,13 +200,9 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
                 className="text-[12.5px] mt-1 leading-snug"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                {pattern.example_en}
-              </p>
-              <p
-                className="text-[12.5px] leading-snug"
-                style={{ color: 'var(--text-secondary)', opacity: 0.85 }}
-              >
-                {pattern.example_th}
+                {lang === 'th'
+                  ? (pattern.example_th || pattern.example_en)
+                  : pattern.example_en}
               </p>
             </>
           )}
@@ -249,19 +237,15 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
                   <CopyButton text={ex.zh} label="Copy CN sentence" />
                 </p>
                 <SpeakButton text={ex.zh} className="shrink-0" />
-              </div>
-              <p
-                className="text-[12px] italic mt-0.5"
-                style={{ color: 'var(--text-muted)' }}
-              >
-                {ex.py}
-              </p>
-              <p className="text-[12.5px] mt-0.5 leading-snug" style={{ color: 'var(--text-secondary)' }}>
-                {ex.en}
-              </p>
-              <p className="text-[12.5px] leading-snug" style={{ color: 'var(--text-secondary)', opacity: 0.85 }}>
-                {ex.th}
-              </p>
+              </div>                <p
+                  className="text-[12px] italic mt-0.5"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {ex.py}
+                </p>
+                <p className="text-[12.5px] mt-0.5 leading-snug" style={{ color: 'var(--text-secondary)' }}>
+                  {lang === 'th' ? (ex.th || ex.en) : ex.en}
+                </p>
             </div>
           ))}
           {pattern.source_url && (
@@ -498,14 +482,16 @@ export default function HskGrammar() {
                 }}
               >
                 {lang === 'th'
-                  ? (level.level === 7 ? 'HSK 7-9' : `HSK ${level.level}`)
+                  ? (level.titleTh || level.title)
                   : level.title}
               </h2>
               <span
                 className="text-[10px] uppercase tracking-[0.08em] font-semibold"
                 style={{ color: levelAccent }}
               >
-                {lang === 'th' ? level.title : level.subtitle}
+                {lang === 'th'
+                  ? (level.subtitleTh || level.subtitle)
+                  : level.subtitle}
               </span>
               <span className="ml-auto text-[10px] text-muted tabular-nums">
                 {level.patterns.length} {t('grammar.patterns')}

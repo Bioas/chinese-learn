@@ -46,7 +46,9 @@ const HSK_GRAMMAR = [
     {
     level: 1,
     title: 'HSK 1 — Foundations',
+    titleTh: 'HSK 1 — ไวยากรณ์พื้นฐาน',
     subtitle: 'Word order, identification, possession, time',
+    subtitleTh: 'คำบอกลำดับ, การระบุ, การครอบครอง, เวลา',
     source_url: 'https://studycli.org/chinese-tools/hsk-1-vocabulary/',
     patterns: [
       {
@@ -214,7 +216,9 @@ const HSK_GRAMMAR = [
     {
     level: 2,
     title: 'HSK 2 — Comparisons & completion',
+    titleTh: 'HSK 2 — การเปรียบเทียบ & การเสร็จสิ้น',
     subtitle: 'Comparisons, degrees, direction, cause-effect',
+    subtitleTh: 'เปรียบเทียบ, ระดับ, ทิศทาง, เหตุ-ผล',
     source_url: 'https://studycli.org/chinese-tools/hsk-2-vocabulary/',
     patterns: [
       {
@@ -380,7 +384,9 @@ const HSK_GRAMMAR = [
     {
     level: 3,
     title: 'HSK 3 — Constructions & linking',
+    titleTh: 'HSK 3 — โครงสร้าง & การเชื่อม',
     subtitle: '把, 被, conditional, parallel, motion',
+    subtitleTh: '把, 被, เงื่อนไข, คู่ขนาน, การเคลื่อน',
     source_url: 'https://studycli.org/chinese-tools/hsk-3-vocabulary/',
     patterns: [
       {
@@ -542,7 +548,9 @@ const HSK_GRAMMAR = [
     {
     level: 4,
     title: 'HSK 4 — Compound clauses',
+    titleTh: 'HSK 4 — ประโยคซ้อน',
     subtitle: 'Foregrounding, concession, condition, range',
+    subtitleTh: 'การเน้น, ข้อยกเว้น, เงื่อนไข, ขอบเขต',
     source_url: 'https://studycli.org/chinese-tools/hsk-4-vocabulary/',
     patterns: [
       {
@@ -700,7 +708,9 @@ const HSK_GRAMMAR = [
   {
     level: 5,
     title: 'HSK 5 — Logic & reasoning',
+    titleTh: 'HSK 5 — ตรรกะ & เหตุผล',
     subtitle: 'Concession pairs, alternatives, formal connectors',
+    subtitleTh: 'คู่ยอมรับ, ทางเลือก, ตัวเชื่อมทางการ',
     patterns: [
       {
         rank: 1,
@@ -817,7 +827,9 @@ const HSK_GRAMMAR = [
   {
     level: 6,
     title: 'HSK 6 — Formal & literary',
+    titleTh: 'HSK 6 — ทางการ & วรรณคดี',
     subtitle: 'Let-alone, high-register connectors, hypotheticals',
+    subtitleTh: 'ปล่อยตาม, ตัวเชื่อมขั้นสูง, สมมุติฐาน',
     patterns: [
       {
         rank: 1,
@@ -934,7 +946,9 @@ const HSK_GRAMMAR = [
   {
     level: 7,
     title: 'HSK 7-9 — Mastery & nuance',
+    titleTh: 'HSK 7-9 — ความเชี่ยวชาญ & เลือกใช้คำ',
     subtitle: 'Literary tone, hypotheticals, register shifts',
+    subtitleTh: 'ท่วงทำนองวรรณกรรม, สมมุติฐาน, เปลี่ยนระดับภาษา',
     patterns: [
       {
         rank: 1,
