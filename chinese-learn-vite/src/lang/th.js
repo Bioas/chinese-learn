@@ -284,7 +284,7 @@ const th = {
 
   // HSK Grammar
   'grammar.title': 'ไวยากรณ์ HSK',
-  'grammar.subtitle': '10 โครงสร้างไวยากรณ์หลักต่อระดับ HSK (HSK 1 → HSK 7-9)',
+  'grammar.subtitle': 'HSK 1-4 ดึงจาก studycli.org · HSK 5-7 คัดเลือกเอง · 10 โครงสร้างต่อระดับ',
   'grammar.searchPlaceholder': 'ค้นหาโครงสร้างไวยากรณ์ พินอิน ไทย อังกฤษ...',
   'grammar.allLevels': 'ทุกระดับ',
   'grammar.reset': 'รีเซ็ตตัวกรอง',
@@ -293,8 +293,8 @@ const th = {
   'grammar.patterns': 'โครงสร้าง',
   'grammar.noResults': 'ไม่พบโครงสร้างที่ตรงกับคำค้น',
   'grammar.noResultsHint': 'ลองคำค้นหรือระดับ HSK อื่น',
-  'grammar.attribution': 'แต่ละระดับรวบ 10 โครงสร้างสำคัญจากคู่มือไวยากรณ์ HSK มาตรฐาน (HSK 1 → HSK 7-9) คำแปลตัวอย่างเน้นโครงสร้างชัดเจน — ควรตรวจสอบกับเจ้าของภาษาก่อนใช้ในการสอบ',
-  'grammar.attributionLink': 'studycli.org — Chinese Grammar',
+  'grammar.attribution': 'HSK 1-4 (โครงสร้าง+พินอิน) ดึงจากหน้า #grammar ของ studycli.org ส่วน HSK 5-7 studycli ไม่ได้เผยแยก จึงคัดเลือกจากคู่มือไวยากรณ์ HSK มาตรฐาน คำแปลไทยใช้ Google Translate — ควรตรวจกับเจ้าของภาษาก่อนใช้สอบ',
+  'grammar.attributionLink': 'studycli.org — แหล่งข้อมูล HSK 1-4',
 
 };
 

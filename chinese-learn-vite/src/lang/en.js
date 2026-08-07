@@ -284,7 +284,7 @@ const en = {
 
   // HSK Grammar
   'grammar.title': 'HSK Grammar',
-  'grammar.subtitle': '10 essential grammar patterns per HSK level (HSK 1 → HSK 7-9)',
+  'grammar.subtitle': 'HSK 1-4 sourced from studycli.org · HSK 5-7 curated · 10 patterns per level',
   'grammar.searchPlaceholder': 'Search grammar patterns, pinyin, EN, TH…',
   'grammar.allLevels': 'All levels',
   'grammar.reset': 'Reset filters',
@@ -293,8 +293,8 @@ const en = {
   'grammar.patterns': 'patterns',
   'grammar.noResults': 'No grammar patterns match your search.',
   'grammar.noResultsHint': 'Try a different keyword or HSK level',
-  'grammar.attribution': 'Each level compiles 10 essential structures drawn from standard HSK grammar references (HSK 1 → HSK 7-9). Translations are kept minimal so the structure stays visible — verify nuance with native speakers before exams.',
-  'grammar.attributionLink': 'studycli.org — Chinese Grammar',
+  'grammar.attribution': 'HSK 1-4 patterns + pinyin are taken from studycli.org per-level pages (#grammar). HSK 5-7 are not separately published there and are curated from standard HSK references. Thai glosses are machine-translated — verify nuance with native speakers before exams.',
+  'grammar.attributionLink': 'studycli.org — HSK 1-4 source',
 
 };
 

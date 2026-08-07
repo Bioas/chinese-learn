@@ -221,11 +221,78 @@ function PatternCard({ pattern, levelMeta, expanded, onToggle }) {
         </div>
       </div>
 
+      {/* Extra examples (only HSK 1-4 carry more_examples from studycli.org) */}
+      {expanded && pattern.more_examples && pattern.more_examples.length > 0 && (
+        <div className="px-5 pb-4 -mt-2 space-y-2">
+          <p className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: accent }}>
+            {lang === 'th' ? `ตัวอย่างเพิ่มเติม (${pattern.more_examples.length})` : `More examples (${pattern.more_examples.length})`}
+          </p>
+          {pattern.more_examples.map((ex, idx) => (
+            <div
+              key={idx}
+              className="rounded-lg px-3 py-2 flex flex-col gap-1"
+              style={{
+                background: `color-mix(in srgb, ${accent} 5%, transparent)`,
+                border: `1px solid color-mix(in srgb, ${accent} 18%, transparent)`,
+              }}
+            >
+              <div className="flex items-start justify-between gap-2">
+                <p
+                  className="font-medium leading-snug flex-1"
+                  style={{
+                    fontFamily: '"Noto Serif SC", "Songti SC", serif',
+                    fontSize: '0.95rem',
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  {ex.zh}
+                  <CopyButton text={ex.zh} label="Copy CN sentence" />
+                </p>
+                <SpeakButton text={ex.zh} className="shrink-0" />
+              </div>
+              <p
+                className="text-[12px] italic mt-0.5"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                {ex.py}
+              </p>
+              <p className="text-[12.5px] mt-0.5 leading-snug" style={{ color: 'var(--text-secondary)' }}>
+                {ex.en}
+              </p>
+              <p className="text-[12.5px] leading-snug" style={{ color: 'var(--text-secondary)', opacity: 0.85 }}>
+                {ex.th}
+              </p>
+            </div>
+          ))}
+          {pattern.source_url && (
+            <a
+              href={pattern.source_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[10px] hover:underline"
+              style={{ color: accent }}
+            >
+              <Icon name="library" className="text-[10px]" />
+              <span>{lang === 'th' ? 'ที่มา: studycli.org' : 'Source: studycli.org'}</span>
+              <Icon name="chevronDown" className="text-[9px] -rotate-90" />
+            </a>
+          )}
+        </div>
+      )}
+
       {/* Subtle expand hint */}
       {!expanded && (
         <div className="px-5 pb-3 -mt-1 flex items-center gap-1 text-[10px]" style={{ color: 'var(--text-muted)' }}>
           <Icon name="chevronDown" className="text-[10px]" />
-          <span>{lang === 'th' ? 'แตะเพื่อดูตัวอย่างเพิ่มเติม' : 'Tap to reveal pinyin + translation'}</span>
+          <span>
+            {lang === 'th'
+              ? (pattern.more_examples?.length
+                  ? `แตะเพื่อดู ${pattern.more_examples.length + 1} ตัวอย่าง`
+                  : 'แตะเพื่อดูตัวอย่างเพิ่มเติม')
+              : (pattern.more_examples?.length
+                  ? `Tap to reveal ${pattern.more_examples.length + 1} examples`
+                  : 'Tap to reveal pinyin + translation')}
+          </span>
         </div>
       )}
     </article>
@@ -469,7 +536,7 @@ export default function HskGrammar() {
           {t('grammar.attribution')}
         </p>
         <a
-          href="https://studycli.org/learn-chinese/chinese-grammar/"
+          href="https://studycli.org/chinese-tools/hsk-1-vocabulary/#grammar"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 mt-2 text-[12px] font-medium transition-colors duration-200 hover:opacity-80"
