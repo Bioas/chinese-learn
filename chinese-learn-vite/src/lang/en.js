@@ -284,7 +284,7 @@ const en = {
 
   // HSK Grammar
   'grammar.title': 'HSK Grammar',
-  'grammar.subtitle': '10 high-value grammar patterns organised by HSK level',
+  'grammar.subtitle': '10 essential grammar patterns per HSK level (HSK 1 → HSK 7-9)',
   'grammar.searchPlaceholder': 'Search grammar patterns, pinyin, EN, TH…',
   'grammar.allLevels': 'All levels',
   'grammar.reset': 'Reset filters',
@@ -293,7 +293,7 @@ const en = {
   'grammar.patterns': 'patterns',
   'grammar.noResults': 'No grammar patterns match your search.',
   'grammar.noResultsHint': 'Try a different keyword or HSK level',
-  'grammar.attribution': 'Selected patterns from CLI Mandarin’s “Introduction to Basic Chinese Grammar Rules” and other HSK study guides. Sentence translations are kept plain so the structure stays visible — verify nuance with native speakers before exams.',
+  'grammar.attribution': 'Each level compiles 10 essential structures drawn from standard HSK grammar references (HSK 1 → HSK 7-9). Translations are kept minimal so the structure stays visible — verify nuance with native speakers before exams.',
   'grammar.attributionLink': 'studycli.org — Chinese Grammar',
 
 };
