@@ -26,9 +26,18 @@ const CACHE_PATH = resolve(CACHE_DIR, 'thai-example-translations.json');
 const LEVELS = [7];
 const THAI_RE = /[\u0E00-\u0E7F]/;
 const CJK_RE = /[\u4E00-\u9FFF\u3400-\u4DBF]/;
+// Translations that look like Thai but are actually meta/placeholder text
+// leaked from earlier pipelines. The translate-thai-examples-hsk7 script
+// (and any QC that uses isValidThai) should treat these as INVALID so they
+// get re-fetched from the real en->th provider.
+const BAD_THAI_PHRASES = Object.freeze([
+  String.raw`กำลังเรียนรู้การใช้คำศัพท์นี้ในประโยค`,
+]);
+const isBadThai = (text) => BAD_THAI_PHRASES.some((phrase) => text.includes(phrase));
 const isValidThai = (value) => {
   const text = String(value || '').trim();
   if (!text) return false;
+  if (isBadThai(text)) return false;
   return THAI_RE.test(text) && !CJK_RE.test(text);
 };
 const REQUEST_TIMEOUT_MS = 20_000;
