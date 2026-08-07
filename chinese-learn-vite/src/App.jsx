@@ -10,6 +10,7 @@ const Flashcards = lazy(() => import('./pages/Flashcards'))
 const Quiz = lazy(() => import('./pages/Quiz'))
 const WordMap = lazy(() => import('./pages/WordMap'))
 const Conversations = lazy(() => import('./pages/Conversations'))
+const HskGrammar = lazy(() => import('./pages/HskGrammar'))
 
 // ParticleBackground is heavy and not critical — lazy load it
 const ParticleBackground = lazy(() => import('./components/ParticleBackground'))
@@ -136,6 +137,7 @@ export default function App() {
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/wordmap" element={<WordMap />} />
                 <Route path="/conversations" element={<Conversations />} />
+                <Route path="/hsk-grammar" element={<HskGrammar />} />
               </Routes>
             </Suspense>
           </div>

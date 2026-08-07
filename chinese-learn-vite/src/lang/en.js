@@ -11,6 +11,7 @@ const en = {
   'nav.quiz': 'Quiz',
   'nav.wordmap': 'Word Map',
   'nav.conversation': 'Conversations',
+  'nav.grammar': 'HSK Grammar',
   'nav.toggleMenu': 'Toggle menu',
 
   // Sidebar
@@ -280,6 +281,20 @@ const en = {
   'greeting.morning': '早上好! Good Morning!',
   'greeting.afternoon': '下午好! Good Afternoon!',
   'greeting.evening': '晚上好! Good Evening!',
+
+  // HSK Grammar
+  'grammar.title': 'HSK Grammar',
+  'grammar.subtitle': '10 high-value grammar patterns organised by HSK level',
+  'grammar.searchPlaceholder': 'Search grammar patterns, pinyin, EN, TH…',
+  'grammar.allLevels': 'All levels',
+  'grammar.reset': 'Reset filters',
+  'grammar.matchCount': '{shown} of {total} patterns match',
+  'grammar.totalCount': '{n} patterns across 6 HSK levels',
+  'grammar.patterns': 'patterns',
+  'grammar.noResults': 'No grammar patterns match your search.',
+  'grammar.noResultsHint': 'Try a different keyword or HSK level',
+  'grammar.attribution': 'Selected patterns from CLI Mandarin’s “Introduction to Basic Chinese Grammar Rules” and other HSK study guides. Sentence translations are kept plain so the structure stays visible — verify nuance with native speakers before exams.',
+  'grammar.attributionLink': 'studycli.org — Chinese Grammar',
 
 };
 

@@ -11,6 +11,7 @@ const th = {
   'nav.quiz': 'แบบทดสอบ',
   'nav.wordmap': 'แผนที่คำศัพท์',
   'nav.conversation': 'บทสนทนา',
+  'nav.grammar': 'ไวยากรณ์ HSK',
   'nav.toggleMenu': 'เปิด/ปิดเมนู',
 
   // Sidebar
@@ -280,6 +281,20 @@ const th = {
   'greeting.morning': '早上好! สวัสดีตอนเช้า!',
   'greeting.afternoon': '下午好! สวัสดีตอนบ่าย!',
   'greeting.evening': '晚上好! สวัสดีตอนเย็น!',
+
+  // HSK Grammar
+  'grammar.title': 'ไวยากรณ์ HSK',
+  'grammar.subtitle': 'รวม 10 โครงสร้างไวยากรณ์ที่ใช้บ่อย แยกตามระดับ HSK',
+  'grammar.searchPlaceholder': 'ค้นหาโครงสร้างไวยากรณ์ พินอิน ไทย อังกฤษ...',
+  'grammar.allLevels': 'ทุกระดับ',
+  'grammar.reset': 'รีเซ็ตตัวกรอง',
+  'grammar.matchCount': 'พบ {shown} จาก {total} โครงสร้าง',
+  'grammar.totalCount': '{n} โครงสร้างจาก 6 ระดับ HSK',
+  'grammar.patterns': 'โครงสร้าง',
+  'grammar.noResults': 'ไม่พบโครงสร้างที่ตรงกับคำค้น',
+  'grammar.noResultsHint': 'ลองคำค้นหรือระดับ HSK อื่น',
+  'grammar.attribution': 'โครงสร้างคัดเลือกจาก CLI Mandarin “Introduction to Basic Chinese Grammar Rules” และคู่มือเตรียมสอบ HSK ต่าง ๆ คำแปลตัวอย่างเน้นโครงสร้างชัดเจน — ควรตรวจสอบกับเจ้าของภาษาก่อนใช้ในการสอบ',
+  'grammar.attributionLink': 'studycli.org — Chinese Grammar',
 
 };
 

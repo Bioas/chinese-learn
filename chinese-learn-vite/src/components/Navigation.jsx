@@ -84,6 +84,7 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }) {
     { path: '/vocabulary', label: t('nav.vocabulary'), icon: 'vocabulary' },
     { path: '/wordmap', label: t('nav.wordmap'), icon: 'wordmap' },
     { path: '/conversations', label: t('nav.conversation'), icon: 'messageDetail' },
+    { path: '/hsk-grammar', label: t('nav.grammar'), icon: 'library' },
     { path: '/flashcards', label: t('nav.flashcards'), icon: 'flashcards' },
     { path: '/quiz', label: t('nav.quiz'), icon: 'quiz' },
   ];
